@@ -1,3 +1,7 @@
+// Copyright 2019 Communication Service/Software Laboratory, National Chiao Tung University (free5gc.org)
+//
+// SPDX-License-Identifier: Apache-2.0
+
 /*
  * Nudr_DataRepository API OpenAPI file
  *
@@ -11,15 +15,15 @@ package Nudr_DataRepository
 
 import (
 
-	// "free5gc/lib/openapi/models"
-
+	// "github.com/omec-project/openapi/models"
 	"context"
 	"fmt"
-	"free5gc/lib/openapi"
 	"io/ioutil"
 	"net/http"
 	"net/url"
 	"strings"
+
+	"github.com/omec-project/openapi"
 )
 
 // Linger please

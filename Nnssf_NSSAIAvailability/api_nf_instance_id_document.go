@@ -1,3 +1,7 @@
+// Copyright 2019 Communication Service/Software Laboratory, National Chiao Tung University (free5gc.org)
+//
+// SPDX-License-Identifier: Apache-2.0
+
 /*
  * NSSF NSSAI Availability
  *
@@ -17,8 +21,8 @@ import (
 	"net/url"
 	"strings"
 
-	"free5gc/lib/openapi"
-	. "free5gc/lib/openapi/models"
+	"github.com/omec-project/openapi"
+	. "github.com/omec-project/openapi/models"
 )
 
 // Linger please

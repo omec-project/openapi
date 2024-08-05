@@ -1,11 +1,13 @@
+// Copyright 2019 Communication Service/Software Laboratory, National Chiao Tung University (free5gc.org)
+//
+// SPDX-License-Identifier: Apache-2.0
+
 package openapi
 
 import (
 	"encoding/json"
 	"encoding/xml"
 	"errors"
-
-	"free5gc/lib/openapi/logger"
 )
 
 // Serialize - serialize data v to corresponding media type
@@ -20,10 +22,7 @@ func Serialize(v interface{}, mediaType string) ([]byte, error) {
 	case MediaKindMultipartRelated:
 		b, _, err = MultipartSerialize(v)
 	default:
-		if err = errors.New("openapi client not supported serialize media type: " + mediaType); err != nil {
-			logger.OpenApiLog.Warnf("Error encode failed: %v", err)
-			return nil, err
-		}
+		return nil, errors.New("openapi client not supported serialize media type: " + mediaType)
 	}
 	return b, err
 }

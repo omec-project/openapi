@@ -1,3 +1,7 @@
+// Copyright 2019 Communication Service/Software Laboratory, National Chiao Tung University (free5gc.org)
+//
+// SPDX-License-Identifier: Apache-2.0
+
 /*
  * NRF OAuth2
  *
@@ -9,7 +13,7 @@
 
 package models
 
-import "github.com/dgrijalva/jwt-go"
+import "github.com/golang-jwt/jwt"
 
 type AccessTokenClaims struct {
 	Iss   string      `json:"iss" yaml:"iss" bson:"iss" mapstructure:"Iss"`

@@ -1,3 +1,7 @@
+// Copyright 2019 Communication Service/Software Laboratory, National Chiao Tung University (free5gc.org)
+//
+// SPDX-License-Identifier: Apache-2.0
+
 /*
  * Nnef_PFDmanagement Sevice API
  *
@@ -10,8 +14,8 @@
 package models
 
 type PfdChangeNotification struct {
-	ApplicationId string       `json:"applicationId" yaml:"applicationId" bson:"applicationId"`
-	RemovalFlag   bool         `json:"removalFlag,omitempty" yaml:"removalFlag" bson:"removalFlag"`
-	PartialFlag   bool         `json:"partialFlag,omitempty" yaml:"partialFlag" bson:"partialFlag"`
-	Pfds          []PfdContent `json:"pfds,omitempty" yaml:"pfds" bson:"pfds"`
+	ApplicationId string       `json:"applicationId" yaml:"applicationId" bson:"applicationId" mapstructure:"ApplicationId"`
+	RemovalFlag   bool         `json:"removalFlag,omitempty" yaml:"removalFlag" bson:"removalFlag" mapstructure:"RemovalFlag"`
+	PartialFlag   bool         `json:"partialFlag,omitempty" yaml:"partialFlag" bson:"partialFlag" mapstructure:"PartialFlag"`
+	Pfds          []PfdContent `json:"pfds,omitempty" yaml:"pfds" bson:"pfds" mapstructure:"Pfds"`
 }

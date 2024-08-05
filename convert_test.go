@@ -1,7 +1,10 @@
-package openapi_test
+// Copyright 2019 Communication Service/Software Laboratory, National Chiao Tung University (free5gc.org)
+//
+// SPDX-License-Identifier: Apache-2.0
+
+package openapi
 
 import (
-	"free5gc/lib/openapi"
 	"testing"
 	"time"
 
@@ -31,7 +34,7 @@ func TestConvert(t *testing.T) {
 
 	var to Struct
 
-	err := openapi.Convert(from, &to)
+	err := Convert(from, &to)
 	assert.Nil(t, err, "convert failed")
 
 	// check data is correct
@@ -45,5 +48,4 @@ func TestConvert(t *testing.T) {
 	}, to.M)
 	expectTime, err := time.Parse(time.RFC3339, "2020-05-01T12:04:05+08:00")
 	assert.Equal(t, expectTime, *to.DT)
-
 }

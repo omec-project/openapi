@@ -1,3 +1,7 @@
+// Copyright 2019 Communication Service/Software Laboratory, National Chiao Tung University (free5gc.org)
+//
+// SPDX-License-Identifier: Apache-2.0
+
 /*
  * Npcf_UEPolicyControl
  *
@@ -12,6 +16,7 @@ package Npcf_UEPolicy
 import (
 	"bytes"
 	"context"
+	"crypto/tls"
 	"encoding/json"
 	"encoding/xml"
 	"errors"
@@ -28,8 +33,6 @@ import (
 	"strings"
 	"time"
 	"unicode/utf8"
-
-	"crypto/tls"
 
 	"golang.org/x/net/http2"
 	"golang.org/x/oauth2"

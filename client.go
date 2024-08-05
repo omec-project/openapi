@@ -1,3 +1,7 @@
+// Copyright 2019 Communication Service/Software Laboratory, National Chiao Tung University (free5gc.org)
+//
+// SPDX-License-Identifier: Apache-2.0
+
 /*
  * Nsmf_PDUSession
  *
@@ -33,6 +37,7 @@ import (
 
 	"golang.org/x/net/http2"
 	"golang.org/x/oauth2"
+	"gopkg.in/h2non/gock.v1"
 )
 
 var (
@@ -152,6 +157,7 @@ func parseMultipartFieldParameters(str string) (contentType string, ref string, 
 	}
 	return
 }
+
 func getContentID(v reflect.Value, ref string, class string) (contentID string, err error) {
 	recursiveVal := v
 	if ref[0] == '{' {
@@ -235,6 +241,7 @@ func getContentID(v reflect.Value, ref string, class string) (contentID string, 
 	contentID = recursiveVal.String()
 	return
 }
+
 func MultipartEncode(v interface{}, body io.Writer) (string, error) {
 	val := reflect.Indirect(reflect.ValueOf(v))
 	w := multipart.NewWriter(body)
@@ -497,7 +504,6 @@ func PrepareRequest(
 }
 
 func MultipartDeserialize(b []byte, v interface{}, boundary string) (err error) {
-
 	body := bytes.NewReader(b)
 	r := multipart.NewReader(body, boundary)
 	val := reflect.Indirect(reflect.ValueOf(v))
@@ -726,4 +732,12 @@ func CacheExpires(r *http.Response) time.Time {
 
 func strlen(s string) int {
 	return utf8.RuneCountInString(s)
+}
+
+func InterceptH2CClient() {
+	gock.InterceptClient(innerHTTP2CleartextClient)
+}
+
+func RestoreH2CClient() {
+	gock.RestoreClient(innerHTTP2CleartextClient)
 }

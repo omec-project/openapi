@@ -1,3 +1,7 @@
+// Copyright 2019 Communication Service/Software Laboratory, National Chiao Tung University (free5gc.org)
+//
+// SPDX-License-Identifier: Apache-2.0
+
 /*
  * Nnef_PFDmanagement Sevice API
  *
@@ -10,6 +14,6 @@
 package models
 
 type PfdChangeReport struct {
-	PfdError      *ProblemDetails `json:"pfdError" yaml:"pfdError" bson:"pfdError"`
-	ApplicationId []string        `json:"applicationId" yaml:"applicationId" bson:"applicationId"`
+	PfdError      *ProblemDetails `json:"pfdError" yaml:"pfdError" bson:"pfdError" mapstructure:"PfdError"`
+	ApplicationId []string        `json:"applicationId" yaml:"applicationId" bson:"applicationId" mapstructure:"ApplicationId"`
 }

@@ -1,13 +1,18 @@
+// Copyright 2019 Communication Service/Software Laboratory, National Chiao Tung University (free5gc.org)
+//
+// SPDX-License-Identifier: Apache-2.0
+
 package Npcf_SMPolicyControl
 
 import (
 	"context"
-	"free5gc/lib/openapi"
-	"free5gc/lib/openapi/models"
 	"io/ioutil"
 	"net/http"
 	"net/url"
 	"strings"
+
+	"github.com/omec-project/openapi"
+	"github.com/omec-project/openapi/models"
 )
 
 type DefaultCallbackApi service

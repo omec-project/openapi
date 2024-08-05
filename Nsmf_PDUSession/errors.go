@@ -1,8 +1,13 @@
+// Copyright 2019 Communication Service/Software Laboratory, National Chiao Tung University (free5gc.org)
+//
+// SPDX-License-Identifier: Apache-2.0
+
 package Nsmf_PDUSession
 
 import (
-	"free5gc/lib/openapi/models"
 	"net/http"
+
+	"github.com/omec-project/openapi/models"
 )
 
 var (
@@ -31,6 +36,20 @@ var (
 		Status:        http.StatusInternalServerError,
 		Detail:        "The request cannot be provided due to insufficient resources for the specific slice and DNN.",
 		Cause:         "INSUFFICIENT_RESOURCES_SLICE_DNN",
+		InvalidParams: nil,
+	}
+	SubscriptionDenied = models.ProblemDetails{
+		Title:         "Subscription Denied",
+		Status:        http.StatusForbidden,
+		Detail:        "This indicates an error, other than those listed in this table, due to lack of necessary subscription to serve the UE request.",
+		Cause:         "SUBSCRIPTION_DENIED",
+		InvalidParams: nil,
+	}
+	NetworkFailure = models.ProblemDetails{
+		Title:         "Network failure",
+		Status:        http.StatusGatewayTimeout,
+		Detail:        "The request is rejected due to a network problem.",
+		Cause:         "NETWORK_FAILURE",
 		InvalidParams: nil,
 	}
 )
