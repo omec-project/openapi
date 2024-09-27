@@ -17,6 +17,7 @@ import (
 	"time"
 
 	"github.com/antihax/optional"
+	"github.com/omec-project/openapi/logger"
 	"github.com/omec-project/openapi/Nnrf_NFDiscovery"
 	"github.com/omec-project/openapi/models"
 )
@@ -443,7 +444,7 @@ func MarshToJsonString(v interface{}) (result []string) {
 		for i := 0; i < val.Len(); i++ {
 			tmp, err := json.Marshal(val.Index(i).Interface())
 			if err != nil {
-				fmt.Printf("marshal error: %+v", err)
+				logger.NrfcacheLog.Errorf("marshal error: %+v", err)
 			}
 
 			result = append(result, string(tmp))
@@ -451,7 +452,7 @@ func MarshToJsonString(v interface{}) (result []string) {
 	} else {
 		tmp, err := json.Marshal(v)
 		if err != nil {
-			fmt.Printf("marshal error: %+v", err)
+			logger.NrfcacheLog.Errorf("marshal error: %+v", err)
 		}
 
 		result = append(result, string(tmp))
@@ -495,7 +496,7 @@ func getNfProfiles(targetNfType models.NfType) ([]models.NfProfile, error) {
 
 func nrfDbCallback(nrfUri string, targetNfType, requestNfType models.NfType,
 	param *Nnrf_NFDiscovery.SearchNFInstancesParamOpts) (models.SearchResult, error) {
-	fmt.Println("nrfDbCallback Entry")
+	logger.NrfcacheLog.Infoln("nrfDbCallback Entry")
 
 	nrfDbCallbackCallCount++
 

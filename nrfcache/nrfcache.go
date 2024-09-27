@@ -9,11 +9,11 @@ package nrfcache
 
 import (
 	"container/heap"
-	"fmt"
 	"sync"
 	"time"
 
 	"github.com/omec-project/openapi/Nnrf_NFDiscovery"
+	"github.com/omec-project/openapi/logger"
 	"github.com/omec-project/openapi/models"
 )
 
@@ -147,7 +147,7 @@ func (c *NrfCache) handleLookup(nrfUri string, targetNfType, requestNfType model
 	c.mutex.RUnlock()
 
 	if len(searchResult.NfInstances) == 0 {
-		fmt.Printf("cache miss for nftype %s", targetNfType)
+		logger.NrfcacheLog.Warnf("cache miss for nftype %s", targetNfType)
 		c.mutex.Lock()
 		defer c.mutex.Unlock()
 		searchResult.NfInstances = c.get(param)
@@ -193,7 +193,7 @@ func (c *NrfCache) get(opts *Nnrf_NFDiscovery.SearchNFInstancesParamOpts) []mode
 				if ok {
 					matchFound, err := cb(element.nfProfile, opts)
 					if err != nil {
-						fmt.Printf("match filter returned error %v", err)
+						logger.NrfcacheLog.Errorf("match filter returned error %v", err)
 					} else if matchFound {
 						nfProfiles = append(nfProfiles, *(element.nfProfile))
 					}
@@ -226,9 +226,9 @@ func (c *NrfCache) remove(item *NfProfileItem) {
 
 // cleanupExpiredItems - removes the profiles with expired TTLs
 func (c *NrfCache) cleanupExpiredItems() {
-	fmt.Println("nrf cache: cleanup expired items")
+	logger.NrfcacheLog.Infoln("nrf cache: cleanup expired items")
 	for item := c.priorityQ.at(0); item.isExpired(); {
-		fmt.Printf("evicted nf instance %s", item.nfProfile.NfInstanceId)
+		logger.NrfcacheLog.Debugf("evicted nf instance %s", item.nfProfile.NfInstanceId)
 		c.remove(item)
 		if c.priorityQ.Len() == 0 {
 			break
@@ -297,7 +297,7 @@ func (c *NrfMasterCache) GetNrfCacheInstance(targetNfType models.NfType) *NrfCac
 
 	cache, exists := c.nfTypeToCacheMap[targetNfType]
 	if exists == false {
-		fmt.Printf("creating cache for nftype %v", targetNfType)
+		logger.NrfcacheLog.Infof("creating cache for nftype %v", targetNfType)
 		cache = NewNrfCache(c.evictionInterval, c.nrfDiscoveryQueryCb)
 		c.nfTypeToCacheMap[targetNfType] = cache
 	}
@@ -353,11 +353,11 @@ func SearchNFInstances(nrfUri string, targetNfType, requestNfType models.NfType,
 	if c != nil {
 		searchResult, err = c.handleLookup(nrfUri, targetNfType, requestNfType, param)
 	} else {
-		fmt.Println("failed to find cache for nf type")
+		logger.NrfcacheLog.Errorln("failed to find cache for nf type")
 
 	}
 	for _, np := range searchResult.NfInstances {
-		fmt.Printf("%v", np)
+		logger.NrfcacheLog.Infof("%v", np)
 	}
 	return searchResult, err
 

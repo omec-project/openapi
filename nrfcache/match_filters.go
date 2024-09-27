@@ -14,10 +14,10 @@ package nrfcache
 
 import (
 	"encoding/json"
-	"fmt"
 	"regexp"
 
 	"github.com/omec-project/openapi/Nnrf_NFDiscovery"
+	"github.com/omec-project/openapi/logger"
 	"github.com/omec-project/openapi/models"
 )
 
@@ -61,7 +61,7 @@ func MatchSmfProfile(profile *models.NfProfile, opts *Nnrf_NFDiscovery.SearchNFI
 			var snssai models.Snssai
 			err := json.Unmarshal([]byte(reqSnssai), &snssai)
 			if err != nil {
-				fmt.Printf("error Unmarshaling nssai : %+v", err)
+				logger.NrfcacheLog.Errorf("error Unmarshaling nssai: %+v", err)
 				return false, err
 			}
 
@@ -113,7 +113,7 @@ func MatchSmfProfile(profile *models.NfProfile, opts *Nnrf_NFDiscovery.SearchNFI
 			return false, nil
 		}
 	}
-	fmt.Printf("smf match found, nfInstance Id %v", profile.NfInstanceId)
+	logger.NrfcacheLog.Infof("smf match found, nfInstance Id %v", profile.NfInstanceId)
 	return true, nil
 }
 
@@ -143,12 +143,12 @@ func MatchAusfProfile(profile *models.NfProfile, opts *Nnrf_NFDiscovery.SearchNF
 			matchFound = MatchSupiRange(opts.Supi.Value(), profile.AusfInfo.SupiRanges)
 		}
 	}
-	fmt.Printf("ausf match found = %v", matchFound)
+	logger.NrfcacheLog.Infof("ausf match found = %v", matchFound)
 	return matchFound, nil
 }
 
 func MatchNssfProfile(profile *models.NfProfile, opts *Nnrf_NFDiscovery.SearchNFInstancesParamOpts) (bool, error) {
-	fmt.Println("nssf match found ")
+	logger.NrfcacheLog.Infoln("nssf match found")
 	return true, nil
 }
 
@@ -164,7 +164,7 @@ func MatchAmfProfile(profile *models.NfProfile, opts *Nnrf_NFDiscovery.SearchNFI
 				err := json.Unmarshal([]byte(targetPlmn), &plmn)
 
 				if err != nil {
-					fmt.Printf("error Unmarshaling plmn : %+v", err)
+					logger.NrfcacheLog.Errorf("error Unmarshaling plmn: %+v", err)
 					return false, err
 				}
 
@@ -192,7 +192,7 @@ func MatchAmfProfile(profile *models.NfProfile, opts *Nnrf_NFDiscovery.SearchNFI
 					err := json.Unmarshal([]byte(guami), &guamiOpt)
 
 					if err != nil {
-						fmt.Printf("error Unmarshaling guami : %+v", err)
+						logger.NrfcacheLog.Errorf("error Unmarshaling guami: %+v", err)
 						return false, err
 					}
 
@@ -233,7 +233,7 @@ func MatchAmfProfile(profile *models.NfProfile, opts *Nnrf_NFDiscovery.SearchNFI
 			}
 		}
 	}
-	fmt.Printf("amf match found = %v", profile.NfInstanceId)
+	logger.NrfcacheLog.Infof("amf match found = %v", profile.NfInstanceId)
 	return true, nil
 }
 
@@ -244,7 +244,7 @@ func MatchPcfProfile(profile *models.NfProfile, opts *Nnrf_NFDiscovery.SearchNFI
 			matchFound = MatchSupiRange(opts.Supi.Value(), profile.PcfInfo.SupiRanges)
 		}
 	}
-	fmt.Printf("pcf match found = %v", matchFound)
+	logger.NrfcacheLog.Infof("pcf match found = %v", matchFound)
 	return matchFound, nil
 }
 
@@ -255,6 +255,6 @@ func MatchUdmProfile(profile *models.NfProfile, opts *Nnrf_NFDiscovery.SearchNFI
 			matchFound = MatchSupiRange(opts.Supi.Value(), profile.UdmInfo.SupiRanges)
 		}
 	}
-	fmt.Printf("udm match found = %v", matchFound)
+	logger.NrfcacheLog.Infof("udm match found = %v", matchFound)
 	return matchFound, nil
 }
