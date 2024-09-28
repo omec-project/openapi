@@ -28,8 +28,12 @@ func TestNewSupportedFeature(t *testing.T) {
 	assert.NotNil(t, err, "should retrun error")
 	assert.Equal(t, SupportedFeature{}, suppFeat)
 }
+
 func TestGetFeatureOfSupportedFeature(t *testing.T) {
-	suppFeat, _ := NewSupportedFeature("1324")
+	suppFeat, err := NewSupportedFeature("1324")
+	if err != nil {
+		assert.FailNow(t, "failed to create new supported feature from string")
+	}
 
 	assert.False(t, suppFeat.GetFeature(1))
 	assert.False(t, suppFeat.GetFeature(2))
@@ -53,41 +57,81 @@ func TestGetFeatureOfSupportedFeature(t *testing.T) {
 }
 
 func TestStringOfSupportedFeature(t *testing.T) {
-	suppFeat, _ := NewSupportedFeature("1324")
+	suppFeat, err := NewSupportedFeature("1324")
+	if err != nil {
+		assert.FailNow(t, "failed to create new supported feature from string")
+	}
 	assert.Equal(t, "1324", suppFeat.String())
 
 	// testing padding
-	suppFeat, _ = NewSupportedFeature("1")
+	suppFeat, err = NewSupportedFeature("1")
+	if err != nil {
+		assert.FailNow(t, "failed to create new supported feature from string")
+	}
 	assert.Equal(t, "01", suppFeat.String())
 
-	suppFeat, _ = NewSupportedFeature("ABCDE")
+	suppFeat, err = NewSupportedFeature("ABCDE")
+	if err != nil {
+		assert.FailNow(t, "failed to create new supported feature from string")
+	}
 	assert.Equal(t, "0abcde", suppFeat.String())
 }
 
 func TestNegotiateWithOfSupportedFeature(t *testing.T) {
 	var suppFeatA, suppFeatB, negotiatedFeat SupportedFeature
-	suppFeatA, _ = NewSupportedFeature("0FFF")
-	suppFeatB, _ = NewSupportedFeature("1324")
+	var err error
+	suppFeatA, err = NewSupportedFeature("0FFF")
+	if err != nil {
+		assert.FailNow(t, "failed to create new supported feature from string")
+	}
+	suppFeatB, err = NewSupportedFeature("1324")
+	if err != nil {
+		assert.FailNow(t, "failed to create new supported feature from string")
+	}
 	negotiatedFeat = suppFeatA.NegotiateWith(suppFeatB)
 	assert.Equal(t, SupportedFeature{0x03, 0x24}, negotiatedFeat)
 
-	suppFeatA, _ = NewSupportedFeature("0234")
-	suppFeatB, _ = NewSupportedFeature("0001")
+	suppFeatA, err = NewSupportedFeature("0234")
+	if err != nil {
+		assert.FailNow(t, "failed to create new supported feature from string")
+	}
+	suppFeatB, err = NewSupportedFeature("0001")
+	if err != nil {
+		assert.FailNow(t, "failed to create new supported feature from string")
+	}
 	negotiatedFeat = suppFeatA.NegotiateWith(suppFeatB)
 	assert.Equal(t, SupportedFeature{0x00, 0x00}, negotiatedFeat)
 
-	suppFeatA, _ = NewSupportedFeature("FFFF")
-	suppFeatB, _ = NewSupportedFeature("F")
+	suppFeatA, err = NewSupportedFeature("FFFF")
+	if err != nil {
+		assert.FailNow(t, "failed to create new supported feature from string")
+	}
+	suppFeatB, err = NewSupportedFeature("F")
+	if err != nil {
+		assert.FailNow(t, "failed to create new supported feature from string")
+	}
 	negotiatedFeat = suppFeatA.NegotiateWith(suppFeatB)
 	assert.Equal(t, SupportedFeature{0x00, 0x0F}, negotiatedFeat)
 
-	suppFeatA, _ = NewSupportedFeature("3000")
-	suppFeatB, _ = NewSupportedFeature("3")
+	suppFeatA, err = NewSupportedFeature("3000")
+	if err != nil {
+		assert.FailNow(t, "failed to create new supported feature from string")
+	}
+	suppFeatB, err = NewSupportedFeature("3")
+	if err != nil {
+		assert.FailNow(t, "failed to create new supported feature from string")
+	}
 	negotiatedFeat = suppFeatA.NegotiateWith(suppFeatB)
 	assert.Equal(t, SupportedFeature{0x00, 0x00}, negotiatedFeat)
 
-	suppFeatA, _ = NewSupportedFeature("23E3")
-	suppFeatB, _ = NewSupportedFeature("1")
+	suppFeatA, err = NewSupportedFeature("23E3")
+	if err != nil {
+		assert.FailNow(t, "failed to create new supported feature from string")
+	}
+	suppFeatB, err = NewSupportedFeature("1")
+	if err != nil {
+		assert.FailNow(t, "failed to create new supported feature from string")
+	}
 	negotiatedFeat = suppFeatA.NegotiateWith(suppFeatB)
 	assert.Equal(t, SupportedFeature{0x00, 0x01}, negotiatedFeat)
 }

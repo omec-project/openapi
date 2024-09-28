@@ -17,8 +17,10 @@ import (
 	"github.com/omec-project/openapi/models"
 )
 
-const defaultCacheTTl = time.Hour
-const defaultNfProfileTTl = time.Minute
+const (
+	defaultCacheTTl     = time.Hour
+	defaultNfProfileTTl = time.Minute
+)
 
 type NfProfileItem struct {
 	nfProfile  *models.NfProfile
@@ -296,7 +298,7 @@ func (c *NrfMasterCache) GetNrfCacheInstance(targetNfType models.NfType) *NrfCac
 	defer c.mutex.Unlock()
 
 	cache, exists := c.nfTypeToCacheMap[targetNfType]
-	if exists == false {
+	if !exists {
 		logger.NrfcacheLog.Infof("creating cache for nftype %v", targetNfType)
 		cache = NewNrfCache(c.evictionInterval, c.nrfDiscoveryQueryCb)
 		c.nfTypeToCacheMap[targetNfType] = cache
@@ -354,13 +356,11 @@ func SearchNFInstances(nrfUri string, targetNfType, requestNfType models.NfType,
 		searchResult, err = c.handleLookup(nrfUri, targetNfType, requestNfType, param)
 	} else {
 		logger.NrfcacheLog.Errorln("failed to find cache for nf type")
-
 	}
 	for _, np := range searchResult.NfInstances {
 		logger.NrfcacheLog.Infof("%v", np)
 	}
 	return searchResult, err
-
 }
 
 func RemoveNfProfileFromNrfCache(nfInstanceId string) bool {

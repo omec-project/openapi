@@ -17,18 +17,19 @@ import (
 	"time"
 
 	"github.com/antihax/optional"
-	"github.com/omec-project/openapi/logger"
 	"github.com/omec-project/openapi/Nnrf_NFDiscovery"
+	"github.com/omec-project/openapi/logger"
 	"github.com/omec-project/openapi/models"
 )
 
-var nfProfilesDb map[string]string
-var validityPeriod int32
-var evictionInterval int32
-var nrfDbCallbackCallCount int32
+var (
+	nfProfilesDb           map[string]string
+	validityPeriod         int32
+	evictionInterval       int32
+	nrfDbCallbackCallCount int32
+)
 
 func init() {
-
 	validityPeriod = 60
 	evictionInterval = 120
 
@@ -434,7 +435,6 @@ func init() {
 		]
 	  }
 	} `
-
 }
 
 func MarshToJsonString(v interface{}) (result []string) {
@@ -480,7 +480,6 @@ func getNfProfiles(targetNfType models.NfType) ([]models.NfProfile, error) {
 
 	for key, elem := range nfProfilesDb {
 		if strings.Contains(key, string(targetNfType)) {
-
 			var profile models.NfProfile
 			err := json.Unmarshal([]byte(elem), &profile)
 			if err != nil {
@@ -495,7 +494,8 @@ func getNfProfiles(targetNfType models.NfType) ([]models.NfProfile, error) {
 }
 
 func nrfDbCallback(nrfUri string, targetNfType, requestNfType models.NfType,
-	param *Nnrf_NFDiscovery.SearchNFInstancesParamOpts) (models.SearchResult, error) {
+	param *Nnrf_NFDiscovery.SearchNFInstancesParamOpts,
+) (models.SearchResult, error) {
 	logger.NrfcacheLog.Infoln("nrfDbCallback Entry")
 
 	nrfDbCallbackCallCount++
@@ -533,7 +533,6 @@ func nrfDbCallback(nrfUri string, targetNfType, requestNfType models.NfType,
 			}
 
 			searchResult.NfInstances = append(searchResult.NfInstances, nfProfile)
-
 		} else {
 			searchResult.NfInstances, err = getNfProfiles(targetNfType)
 		}
@@ -547,7 +546,6 @@ func nrfDbCallback(nrfUri string, targetNfType, requestNfType models.NfType,
 }
 
 func TestCacheMissAndHits(t *testing.T) {
-
 	var result models.SearchResult
 	var err error
 
@@ -679,7 +677,6 @@ func TestCacheMissOnTTlExpiry(t *testing.T) {
 	}
 
 	result, err = SearchNFInstances("testNrf", models.NfType_SMF, models.NfType_AMF, &param)
-
 	if err != nil {
 		t.Errorf("test failed, %s", err.Error())
 	}
@@ -721,7 +718,6 @@ func TestCacheEviction(t *testing.T) {
 	}
 
 	result, err = SearchNFInstances("testNrf", models.NfType_SMF, models.NfType_AMF, &param)
-
 	if err != nil {
 		t.Errorf("test failed, %s", err.Error())
 	}
@@ -734,7 +730,6 @@ func TestCacheEviction(t *testing.T) {
 	}
 
 	result, err = SearchNFInstances("testNrf", models.NfType_SMF, models.NfType_AMF, &param)
-
 	if err != nil {
 		t.Errorf("test failed, %s", err.Error())
 	}
@@ -751,7 +746,6 @@ func TestCacheEviction(t *testing.T) {
 }
 
 func TestCacheConcurrency(t *testing.T) {
-
 	evictionTimerVal := time.Duration(evictionInterval)
 	InitNrfCaching(evictionTimerVal*time.Second, nrfDbCallback)
 
@@ -772,7 +766,6 @@ func TestCacheConcurrency(t *testing.T) {
 	for i := 0; i < n; i++ {
 		go func() {
 			_, err := SearchNFInstances("testNrf", models.NfType_SMF, models.NfType_AMF, &param)
-
 			if err != nil {
 				errCh <- err
 			}
@@ -792,7 +785,6 @@ func TestCacheConcurrency(t *testing.T) {
 		t.Errorf("test timed out")
 	case e := <-errCh:
 		t.Errorf("error %s", e.Error())
-
 	}
 
 	if expectedCallCount != nrfDbCallbackCallCount {
@@ -816,7 +808,6 @@ func TestAusfMatchFilters(t *testing.T) {
 	expectedCallCount++
 
 	result, err := SearchNFInstances("testNrf", models.NfType_AUSF, models.NfType_AMF, &param)
-
 	if err != nil {
 		t.Errorf("test failed, %s", err.Error())
 	}
@@ -828,7 +819,6 @@ func TestAusfMatchFilters(t *testing.T) {
 	}
 
 	result, err = SearchNFInstances("testNrf", models.NfType_AUSF, models.NfType_AMF, &param)
-
 	if err != nil {
 		t.Errorf("test failed, %s", err.Error())
 	}
@@ -844,7 +834,6 @@ func TestAusfMatchFilters(t *testing.T) {
 	}
 
 	result, err = SearchNFInstances("testNrf", models.NfType_AUSF, models.NfType_AMF, &param)
-
 	if err != nil {
 		t.Errorf("test failed, %s", err.Error())
 	}
@@ -870,7 +859,6 @@ func TestAmfMatchFilters(t *testing.T) {
 	expectedCallCount++
 
 	result, err := SearchNFInstances("testNrf", models.NfType_AMF, models.NfType_AMF, &param)
-
 	if err != nil {
 		t.Errorf("test failed, %s", err.Error())
 	}
@@ -888,7 +876,6 @@ func TestAmfMatchFilters(t *testing.T) {
 	}
 
 	result, err = SearchNFInstances("testNrf", models.NfType_AMF, models.NfType_AMF, &param)
-
 	if err != nil {
 		t.Errorf("test failed, %s", err.Error())
 	}

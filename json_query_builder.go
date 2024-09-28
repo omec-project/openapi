@@ -7,6 +7,8 @@ package openapi
 import (
 	"encoding/json"
 	"reflect"
+
+	"github.com/omec-project/openapi/logger"
 )
 
 func MarshToJsonString(v interface{}) (result []string) {
@@ -14,11 +16,18 @@ func MarshToJsonString(v interface{}) (result []string) {
 	val := reflect.ValueOf(v)
 	if types.Kind() == reflect.Slice {
 		for i := 0; i < val.Len(); i++ {
-			tmp, _ := json.Marshal(val.Index(i).Interface())
+			tmp, err := json.Marshal(val.Index(i).Interface())
+			if err != nil {
+				logger.OpenapiLog.Errorf("failed to json encode: %v", err)
+			}
 			result = append(result, string(tmp))
 		}
 	} else {
-		tmp, _ := json.Marshal(v)
+		tmp, err := json.Marshal(v)
+		if err != nil {
+			logger.OpenapiLog.Errorf("failed to json encode: %v", err)
+		}
+
 		result = append(result, string(tmp))
 	}
 	return
