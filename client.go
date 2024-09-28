@@ -33,7 +33,6 @@ import (
 	"strconv"
 	"strings"
 	"time"
-	"unicode/utf8"
 
 	"golang.org/x/net/http2"
 	"golang.org/x/oauth2"
@@ -83,7 +82,7 @@ func SelectHeaderAccept(accepts []string) string {
 // contains is a case insenstive match, finding needle in a haystack
 func contains(haystack []string, needle string) bool {
 	for _, a := range haystack {
-		if strings.ToLower(a) == strings.ToLower(needle) {
+		if strings.EqualFold(a, needle) {
 			return true
 		}
 	}
@@ -99,7 +98,7 @@ func TypeCheckParameter(obj interface{}, expected string, name string) error {
 
 	// Check the type is as expected.
 	if reflect.TypeOf(obj).String() != expected {
-		return fmt.Errorf("Expected %s to be of type %s but received %s.", name, expected, reflect.TypeOf(obj).String())
+		return fmt.Errorf("expected %s to be of type %s but received %s", name, expected, reflect.TypeOf(obj).String())
 	}
 	return nil
 }
@@ -162,7 +161,7 @@ func getContentID(v reflect.Value, ref string, class string) (contentID string, 
 	recursiveVal := v
 	if ref[0] == '{' {
 		contentID = ref[1 : len(ref)-1]
-		return
+		return contentID, err
 	}
 	if class != "" {
 		var lastVal reflect.Value
@@ -170,7 +169,7 @@ func getContentID(v reflect.Value, ref string, class string) (contentID string, 
 			lastVal = recursiveVal
 			recursiveVal = recursiveVal.FieldByName(part)
 			if !recursiveVal.IsValid() {
-				return "", fmt.Errorf("Do not have reference field %s in %s for multipart", part, lastVal.Type().String())
+				return "", fmt.Errorf("do not have reference field %s in %s for multipart", part, lastVal.Type().String())
 			}
 			if recursiveVal.Kind() == reflect.Ptr {
 				if recursiveVal.IsNil() {
@@ -216,14 +215,14 @@ func getContentID(v reflect.Value, ref string, class string) (contentID string, 
 				}
 			}
 			if i == lastValType.NumField() {
-				return "", fmt.Errorf("Do not have reference field Type %s in %s for multipart", fieldTypeString, lastValType.String())
+				return "", fmt.Errorf("do not have reference field Type %s in %s for multipart", fieldTypeString, lastValType.String())
 			}
 		} else {
 			recursiveVal = recursiveVal.FieldByName(part)
 		}
 
 		if !recursiveVal.IsValid() {
-			return "", fmt.Errorf("Do not have reference field %s in %s for multipart", part, lastValType.String())
+			return "", fmt.Errorf("do not have reference field %s in %s for multipart", part, lastValType.String())
 		}
 		if recursiveVal.Kind() == reflect.Ptr {
 			if recursiveVal.IsNil() {
@@ -239,7 +238,7 @@ func getContentID(v reflect.Value, ref string, class string) (contentID string, 
 		}
 	}
 	contentID = recursiveVal.String()
-	return
+	return contentID, err
 }
 
 func MultipartEncode(v interface{}, body io.Writer) (string, error) {
@@ -344,13 +343,12 @@ func PrepareRequest(
 	formParams url.Values,
 	formFileName string,
 	fileName string,
-	fileBytes []byte) (localVarRequest *http.Request, err error) {
-
+	fileBytes []byte,
+) (localVarRequest *http.Request, err error) {
 	var body *bytes.Buffer
 
 	// Detect postBody type and post.
 	if postBody != nil {
-
 		contentType := headerParams["Content-Type"]
 		if contentType == "" {
 			contentType = detectContentType(postBody)
@@ -358,14 +356,12 @@ func PrepareRequest(
 		}
 
 		if strings.HasPrefix(headerParams["Content-Type"], "multipart/related") {
-
 			body = &bytes.Buffer{}
 			contentType, err = MultipartEncode(postBody, body)
 			if err != nil {
 				return nil, err
 			}
 			headerParams["Content-Type"] = contentType
-
 		} else {
 			body, err = setBody(postBody, contentType)
 			if err != nil {
@@ -377,7 +373,7 @@ func PrepareRequest(
 	// add form parameters and file if available.
 	if strings.HasPrefix(headerParams["Content-Type"], "multipart/form-data") && len(formParams) > 0 || (len(fileBytes) > 0 && fileName != "") {
 		if body != nil {
-			return nil, errors.New("Cannot specify postBody and multipart form at the same time.")
+			return nil, errors.New("cannot specify postBody and multipart form at the same time")
 		}
 		body = &bytes.Buffer{}
 		w := multipart.NewWriter(body)
@@ -416,7 +412,7 @@ func PrepareRequest(
 
 	if strings.HasPrefix(headerParams["Content-Type"], "application/x-www-form-urlencoded") && len(formParams) > 0 {
 		if body != nil {
-			return nil, errors.New("Cannot specify postBody and x-www-form-urlencoded form at the same time.")
+			return nil, errors.New("cannot specify postBody and x-www-form-urlencoded form at the same time")
 		}
 		body = &bytes.Buffer{}
 		body.WriteString(formParams.Encode())
@@ -507,6 +503,7 @@ func MultipartDeserialize(b []byte, v interface{}, boundary string) (err error) 
 	body := bytes.NewReader(b)
 	r := multipart.NewReader(body, boundary)
 	val := reflect.Indirect(reflect.ValueOf(v))
+	var nextPart *multipart.Part
 
 	contentIDIndex := make(map[string]int)
 
@@ -515,7 +512,7 @@ func MultipartDeserialize(b []byte, v interface{}, boundary string) (err error) 
 		multipartBody := make([]byte, 1000)
 
 		// if no remian part, break this loop
-		if nextPart, err := r.NextPart(); err == io.EOF {
+		if nextPart, err = r.NextPart(); err == io.EOF {
 			break
 		} else {
 			part = nextPart
@@ -525,7 +522,7 @@ func MultipartDeserialize(b []byte, v interface{}, boundary string) (err error) 
 		var n int
 		n, err = part.Read(multipartBody)
 		if err == nil {
-			return
+			return err
 		}
 		multipartBody = multipartBody[:n]
 
@@ -628,9 +625,7 @@ func ReportError(format string, a ...interface{}) error {
 
 // set request body from an interface{}
 func setBody(body interface{}, contentType string) (bodyBuf *bytes.Buffer, err error) {
-	if bodyBuf == nil {
-		bodyBuf = &bytes.Buffer{}
-	}
+	bodyBuf = &bytes.Buffer{}
 
 	if reader, ok := body.(io.Reader); ok {
 		_, err = bodyBuf.ReadFrom(reader)
@@ -653,7 +648,7 @@ func setBody(body interface{}, contentType string) (bodyBuf *bytes.Buffer, err e
 	}
 
 	if bodyBuf.Len() == 0 {
-		err = fmt.Errorf("Invalid body type %s\n", contentType)
+		err = fmt.Errorf("invalid body type %s", contentType)
 		return nil, err
 	}
 	return bodyBuf, nil
@@ -728,10 +723,6 @@ func CacheExpires(r *http.Response) time.Time {
 		}
 	}
 	return expires
-}
-
-func strlen(s string) int {
-	return utf8.RuneCountInString(s)
 }
 
 func InterceptH2CClient() {

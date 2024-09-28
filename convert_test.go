@@ -47,5 +47,8 @@ func TestConvert(t *testing.T) {
 		3: "three",
 	}, to.M)
 	expectTime, err := time.Parse(time.RFC3339, "2020-05-01T12:04:05+08:00")
+	if err != nil {
+		assert.FailNow(t, "failed to parse time")
+	}
 	assert.Equal(t, expectTime, *to.DT)
 }

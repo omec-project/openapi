@@ -10,6 +10,8 @@ import (
 	"io/ioutil"
 	"net/http"
 	"regexp"
+
+	"github.com/omec-project/openapi/logger"
 )
 
 type MultipartRelatedBinding struct{}
@@ -27,7 +29,11 @@ func (MultipartRelatedBinding) Bind(req *http.Request, obj interface{}) error {
 }
 
 func (MultipartRelatedBinding) BindBody(body []byte, obj interface{}) error {
-	re, _ := regexp.Compile(`--([a-zA-Z0-9+\-_]+)--`)
+	re, err := regexp.Compile(`--([a-zA-Z0-9+\-_]+)--`)
+	if err != nil {
+		logger.OpenapiLog.Errorf("failed to parse expresion")
+		return errors.New("failed to parse expresion")
+	}
 	submatch := re.FindSubmatch(body)
 	if len(submatch) < 1 {
 		return errors.New("cannot parse multipart boundary")
