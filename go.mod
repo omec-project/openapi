@@ -5,7 +5,7 @@ go 1.21
 require (
 	github.com/antihax/optional v1.0.0
 	github.com/golang-jwt/jwt v3.2.1+incompatible
-	github.com/mitchellh/mapstructure v1.4.1
+	github.com/mitchellh/mapstructure v1.5.0
 	github.com/stretchr/testify v1.9.0
 	go.uber.org/zap v1.27.0
 	golang.org/x/net v0.0.0-20210805182204-aaa1db679c0d
