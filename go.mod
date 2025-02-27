@@ -1,7 +1,6 @@
 module github.com/omec-project/openapi
 
 go 1.23
-
 require (
 	github.com/antihax/optional v1.0.0
 	github.com/golang-jwt/jwt v3.2.2+incompatible
@@ -9,7 +8,7 @@ require (
 	github.com/stretchr/testify v1.10.0
 	go.uber.org/zap v1.27.0
 	golang.org/x/net v0.35.0
-	golang.org/x/oauth2 v0.26.0
+	golang.org/x/oauth2 v0.27.0
 	gopkg.in/h2non/gock.v1 v1.1.2
 )
 
