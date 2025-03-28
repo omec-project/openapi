@@ -1,8 +1,7 @@
 # Copyright 2019 Communication Service/Software Laboratory, National Chiao Tung University (free5gc.org)
+# Copyright 2025 Canonical Ltd.
 #
 # SPDX-License-Identifier: Apache-2.0
-
-name: Main workflow
 
 on:
   push:
@@ -14,58 +13,26 @@ on:
 
 jobs:
   build:
-    runs-on: ubuntu-latest
-    steps:
-      - uses: actions/checkout@v4
-
-      - uses: actions/setup-go@v5
-        with:
-          go-version-file: 'go.mod'
-
-      - name: Build
-        run: go build ./...
+    uses: omec-project/.github/.github/workflows/build.yml@main
+    with:
+      branch_name: ${{ github.ref }}
 
   lint:
-    runs-on: ubuntu-latest
-    steps:
-      - uses: actions/checkout@v4
-
-      - uses: actions/setup-go@v5
-        with:
-          go-version-file: 'go.mod'
-
-      - name: golangci-lint
-        uses: golangci/golangci-lint-action@v7.0.0
-        with:
-          version: latest
-          args: -v --config ./.golangci.yml
+    uses: omec-project/.github/.github/workflows/lint.yml@main
+    with:
+      branch_name: ${{ github.ref }}
 
   license-check:
-    runs-on: ubuntu-latest
-    steps:
-      - uses: actions/checkout@v4
+    uses: omec-project/.github/.github/workflows/license-check.yml@main
+    with:
+      branch_name: ${{ github.ref }}
 
-      - name: reuse lint
-        uses: fsfe/reuse-action@v5
-
-  fossa-check:
-    runs-on: ubuntu-latest
-    steps:
-      - uses: actions/checkout@v4
-
-      - name: FOSSA scan
-        uses: fossa-contrib/fossa-action@v3
-        with:
-          fossa-api-key: 0c3bbcdf20e157bbd487dae173751b28
+  fossa-scan:
+    uses: omec-project/.github/.github/workflows/fossa-scan.yml@main
+    with:
+      branch_name: ${{ github.ref }}
 
   unit-tests:
-    runs-on: ubuntu-latest
-    steps:
-      - uses: actions/checkout@v4
-
-      - uses: actions/setup-go@v5
-        with:
-          go-version-file: 'go.mod'
-
-      - name: Unit tests
-        run: go test ./...
+    uses: omec-project/.github/.github/workflows/unit-test.yml@main
+    with:
+      branch_name: ${{ github.ref }}
