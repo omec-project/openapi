@@ -1,6 +1,7 @@
 module github.com/omec-project/openapi
 
 go 1.24.0
+
 require (
 	github.com/antihax/optional v1.0.0
 	github.com/golang-jwt/jwt v3.2.2+incompatible
