@@ -2,12 +2,11 @@
 # Copyright 2025 Canonical Ltd.
 #
 # SPDX-License-Identifier: Apache-2.0
-
 on:
-  push:
+  pull_request:
     branches:
       - main
-  pull_request:
+  push:
     branches:
       - main
 
@@ -16,6 +15,11 @@ jobs:
     uses: omec-project/.github/.github/workflows/build.yml@main
     with:
       branch_name: ${{ github.ref }}
+
+  # static-analysis:
+  #   uses: omec-project/.github/.github/workflows/static-analysis.yml@main
+  #   with:
+  #     branch_name: ${{ github.ref }}
 
   lint:
     uses: omec-project/.github/.github/workflows/lint.yml@main
