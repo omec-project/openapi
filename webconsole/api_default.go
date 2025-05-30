@@ -1,3 +1,8 @@
+// SPDX-FileCopyrightText: 2025 Canonical Ltd
+//
+// SPDX-License-Identifier: Apache-2.0
+//
+
 /*
  * WebConsole NFConfig API
  *
@@ -17,37 +22,36 @@ type DefaultAPI struct {
 }
 
 // Get /nfconfig/access-mobility
-// Get Access and Mobility Configuration 
+// Get Access and Mobility Configuration
 func (api *DefaultAPI) NfconfigAccessMobilityGet(c *gin.Context) {
 	// Your handler implementation
 	c.JSON(200, gin.H{"status": "OK"})
 }
 
 // Get /nfconfig/plmn
-// Get PLMN ID Configuration 
+// Get PLMN ID Configuration
 func (api *DefaultAPI) NfconfigPlmnGet(c *gin.Context) {
 	// Your handler implementation
 	c.JSON(200, gin.H{"status": "OK"})
 }
 
 // Get /nfconfig/plmn-snssai
-// Get PLMN-SNSSAI Configuration 
+// Get PLMN-SNSSAI Configuration
 func (api *DefaultAPI) NfconfigPlmnSnssaiGet(c *gin.Context) {
 	// Your handler implementation
 	c.JSON(200, gin.H{"status": "OK"})
 }
 
 // Get /nfconfig/policy-control
-// Get Policy Control Configuration 
+// Get Policy Control Configuration
 func (api *DefaultAPI) NfconfigPolicyControlGet(c *gin.Context) {
 	// Your handler implementation
 	c.JSON(200, gin.H{"status": "OK"})
 }
 
 // Get /nfconfig/session-management
-// Get Session Management Configuration 
+// Get Session Management Configuration
 func (api *DefaultAPI) NfconfigSessionManagementGet(c *gin.Context) {
 	// Your handler implementation
 	c.JSON(200, gin.H{"status": "OK"})
 }
-

@@ -1,3 +1,8 @@
+// SPDX-FileCopyrightText: 2025 Canonical Ltd
+//
+// SPDX-License-Identifier: Apache-2.0
+//
+
 /*
  * WebConsole NFConfig API
  *
@@ -10,7 +15,6 @@
 package openapi
 
 type PccQos struct {
-
 	FiveQi int32 `json:"fiveQi,omitempty"`
 
 	MaxBrUl string `json:"maxBrUl,omitempty"`
