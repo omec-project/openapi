@@ -66,7 +66,6 @@ func DefaultHandleFunc(c *gin.Context) {
 }
 
 type ApiHandleFunctions struct {
-
 	// Routes for the DefaultAPI part of the API
 	DefaultAPI DefaultAPI
 }
