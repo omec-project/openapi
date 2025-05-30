@@ -1,0 +1,234 @@
+openapi: 3.0.0
+info:
+  title: WebConsole NFConfig API
+  version: 1.0.0
+  description: API for managing access, mobility, policy, session and PLMN information.
+
+servers:
+  - url: http://localhost:9090
+
+paths:
+  /nfconfig/access-mobility:
+    get:
+      summary: Get Access and Mobility Configuration
+      responses:
+        '200':
+          description: List of access and mobility configs
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/AccessAndMobility'
+
+  /nfconfig/plmn:
+    get:
+      summary: Get PLMN ID Configuration
+      responses:
+        '200':
+          description: List of PLMN IDs
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/PlmnId'
+
+  /nfconfig/plmn-snssai:
+    get:
+      summary: Get PLMN-SNSSAI Configuration
+      responses:
+        '200':
+          description: List of PLMN-SNSSAI
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/PlmnSnssai'
+
+  /nfconfig/policy-control:
+    get:
+      summary: Get Policy Control Configuration
+      responses:
+        '200':
+          description: List of policy control configurations
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/PolicyControl'
+
+  /nfconfig/session-management:
+    get:
+      summary: Get Session Management Configuration
+      responses:
+        '200':
+          description: List of session management configurations
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/SessionManagement'
+
+components:
+  schemas:
+    AccessAndMobility:
+      type: object
+      properties:
+        plmnId:
+          $ref: '#/components/schemas/PlmnId'
+        snssai:
+          $ref: '#/components/schemas/Snssai'
+        tacs:
+          type: array
+          items:
+            type: string
+
+    PlmnId:
+      type: object
+      properties:
+        mcc:
+          type: string
+        mnc:
+          type: string
+
+    Snssai:
+      type: object
+      properties:
+        sst:
+          type: integer
+        sd:
+          type: string
+
+    PlmnSnssai:
+      type: object
+      properties:
+        plmnId:
+          $ref: '#/components/schemas/PlmnId'
+        snssais:
+          type: array
+          items:
+            $ref: '#/components/schemas/Snssai'
+
+    PolicyControl:
+      type: object
+      properties:
+        plmnId:
+          $ref: '#/components/schemas/PlmnId'
+        snssai:
+          $ref: '#/components/schemas/Snssai'
+        dnnQos:
+          type: array
+          items:
+            $ref: '#/components/schemas/DnnQos'
+        pccRules:
+          type: array
+          items:
+            $ref: '#/components/schemas/PccRule'
+
+    DnnQos:
+      type: object
+      properties:
+        dnnName:
+          type: string
+        mbrUplink:
+          type: string
+        mbrDownlink:
+          type: string
+        fiveQi:
+          type: integer
+        arpPriorityLevel:
+          type: integer
+
+    PccRule:
+      type: object
+      properties:
+        ruleId:
+          type: string
+        flows:
+          type: array
+          items:
+            $ref: '#/components/schemas/PccFlow'
+        qos:
+          $ref: '#/components/schemas/PccQos'
+        precedence:
+          type: integer
+
+    PccFlow:
+      type: object
+      properties:
+        description:
+          type: string
+        direction:
+          type: string
+          enum: [DOWNLINK, UPLINK, BIDIRECTIONAL, UNSPECIFIED]
+        status:
+          type: string
+          enum: [ENABLED-UPLINK, ENABLED-DOWNLINK, ENABLED, DISABLED, REMOVED]
+
+    PccQos:
+      type: object
+      properties:
+        fiveQi:
+          type: integer
+        maxBrUl:
+          type: string
+        maxBrDl:
+          type: string
+        arp:
+          $ref: '#/components/schemas/Arp'
+
+    Arp:
+      type: object
+      properties:
+        priorityLevel:
+          type: integer
+        pc:
+          type: string
+          enum: [NOT_PREEMPT, MAY_PREEMPT]
+        pv:
+          type: string
+          enum: [NOT_PREEMPTABLE, PREEMPTABLE]
+
+    SessionManagement:
+      type: object
+      properties:
+        sliceName:
+          type: string
+        plmnId:
+          $ref: '#/components/schemas/PlmnId'
+        snssai:
+          $ref: '#/components/schemas/Snssai'
+        ipDomain:
+          type: array
+          items:
+            $ref: '#/components/schemas/IpDomain'
+        upf:
+          $ref: '#/components/schemas/Upf'
+        gnbNames:
+          type: array
+          items:
+            type: string
+
+    IpDomain:
+      type: object
+      properties:
+        dnnName:
+          type: string
+        dnsIpv4:
+          type: string
+        ueSubnet:
+          type: string
+        mtu:
+          type: integer
+
+    Upf:
+      type: object
+      properties:
+        hostname:
+          type: string
+        port:
+          type: integer
