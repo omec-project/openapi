@@ -8,16 +8,18 @@ SPDX-License-Identifier: Apache-2.0
 
 nfConfigApi models are used to implement nfConfig Server/client services.
 
-The provided models are generated using `webconsole-api.yaml` in this folder by ensuring the struct definitions (including required fields) are kept in sync with the OpenAPI specification.
+The provided models are generated using `webconsole-api.yaml` in this folder, ensuring the struct definitions (including required fields) are kept in sync with the OpenAPI specification.
 
 ## How to Regenerate Models
- 
-To regenerate nfConfig models, after updating `webconsole-api.yaml`, please run the following command:
 
-```
+Make sure you have Node.js, `npx` and `openapi-generator-cli` installed.
+
+To regenerate nfConfig models after updating `webconsole-api.yaml`, run:
+
+```shell
 npx openapi-generator-cli version
 
-sudo openapi-generator-cli generate \
+openapi-generator-cli generate \
   -i ./webconsole-api.yaml \
   -g go-gin-server \
   -o ./webconsole-server \
