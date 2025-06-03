@@ -15,6 +15,6 @@
 package nfConfigApi
 
 type PlmnSnssai struct {
-	PlmnId  PlmnId   `json:"plmnId"`
-	Snssais []Snssai `json:"snssais"`
+	PlmnId     PlmnId   `json:"plmnId"`
+	SNssaiList []Snssai `json:"sNssaiList"`
 }
