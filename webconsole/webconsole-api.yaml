@@ -1,7 +1,7 @@
 # SPDX-FileCopyrightText: 2025 Canonical Ltd
 #
 # SPDX-License-Identifier: Apache-2.0
-#
+
 openapi: 3.0.0
 info:
   title: WebConsole NFConfig API
@@ -9,7 +9,7 @@ info:
   description: API for managing access, mobility, policy, session and PLMN information.
 
 servers:
-  - url: http://localhost:9090
+  - url: https://localhost:9090
 
 paths:
   /nfconfig/access-mobility:
@@ -81,6 +81,9 @@ components:
   schemas:
     AccessAndMobility:
       type: object
+      required:
+        - plmnId
+        - snssai
       properties:
         plmnId:
           $ref: '#/components/schemas/PlmnId'
@@ -93,6 +96,9 @@ components:
 
     PlmnId:
       type: object
+      required:
+        - mcc
+        - mnc
       properties:
         mcc:
           type: string
@@ -101,6 +107,8 @@ components:
 
     Snssai:
       type: object
+      required:
+        - sst
       properties:
         sst:
           type: integer
@@ -109,16 +117,23 @@ components:
 
     PlmnSnssai:
       type: object
+      required:
+        - plmnId
+        - sNssaiList
       properties:
         plmnId:
           $ref: '#/components/schemas/PlmnId'
-        snssais:
+        sNssaiList:
           type: array
           items:
             $ref: '#/components/schemas/Snssai'
 
     PolicyControl:
       type: object
+      required:
+        - plmnId
+        - snssai
+        - pccRules
       properties:
         plmnId:
           $ref: '#/components/schemas/PlmnId'
@@ -135,6 +150,10 @@ components:
 
     DnnQos:
       type: object
+      required:
+        - dnnName
+        - mbrUplink
+        - mbrDownlink
       properties:
         dnnName:
           type: string
@@ -149,6 +168,11 @@ components:
 
     PccRule:
       type: object
+      required:
+        - ruleId
+        - flows
+        - qos
+        - precedence
       properties:
         ruleId:
           type: string
@@ -163,6 +187,9 @@ components:
 
     PccFlow:
       type: object
+      required:
+        - description
+        - direction
       properties:
         description:
           type: string
@@ -175,6 +202,11 @@ components:
 
     PccQos:
       type: object
+      required:
+        - fiveQi
+        - maxBrDl
+        - maxBrUl
+        - arp
       properties:
         fiveQi:
           type: integer
@@ -187,18 +219,26 @@ components:
 
     Arp:
       type: object
+      required:
+        - priorityLevel
+        - preemptCap
+        - preemptVuln
       properties:
         priorityLevel:
           type: integer
-        pc:
+        preemptCap:
           type: string
           enum: [NOT_PREEMPT, MAY_PREEMPT]
-        pv:
+        preemptVuln:
           type: string
           enum: [NOT_PREEMPTABLE, PREEMPTABLE]
 
     SessionManagement:
       type: object
+      required:
+        - sliceName
+        - plmnId
+        - snssai
       properties:
         sliceName:
           type: string
@@ -219,6 +259,11 @@ components:
 
     IpDomain:
       type: object
+      required:
+        - dnnName
+        - dnsIpv4
+        - ueSubnet
+        - mtu
       properties:
         dnnName:
           type: string
@@ -231,6 +276,8 @@ components:
 
     Upf:
       type: object
+      required:
+        - hostname
       properties:
         hostname:
           type: string

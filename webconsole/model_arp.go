@@ -16,6 +16,6 @@ package nfConfigApi
 
 type Arp struct {
 	PriorityLevel int32  `json:"priorityLevel"`
-	Pc            string `json:"pc"`
-	Pv            string `json:"pv"`
+	PreemptCap    string `json:"preemptCap"`
+	PreemptVuln   string `json:"preemptVuln"`
 }
