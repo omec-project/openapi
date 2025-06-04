@@ -4,7 +4,7 @@
 SPDX-License-Identifier: Apache-2.0
 -->
 
-# nfConfigApi models 
+# nfConfigApi Models 
 
 nfConfigApi models are used to implement nfConfig Server/client services.
 
