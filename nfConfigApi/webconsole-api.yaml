@@ -24,6 +24,11 @@ paths:
                 type: array
                 items:
                   $ref: '#/components/schemas/AccessAndMobility'
+        '404':
+          description: Resource not found
+        '500':
+          description: Internal server error
+
 
   /nfconfig/plmn:
     get:
@@ -37,6 +42,10 @@ paths:
                 type: array
                 items:
                   $ref: '#/components/schemas/PlmnId'
+        '404':
+          description: Resource not found
+        '500':
+          description: Internal server error
 
   /nfconfig/plmn-snssai:
     get:
@@ -50,6 +59,10 @@ paths:
                 type: array
                 items:
                   $ref: '#/components/schemas/PlmnSnssai'
+        '404':
+          description: Resource not found
+        '500':
+          description: Internal server error
 
   /nfconfig/policy-control:
     get:
@@ -63,6 +76,10 @@ paths:
                 type: array
                 items:
                   $ref: '#/components/schemas/PolicyControl'
+        '404':
+          description: Resource not found
+        '500':
+          description: Internal server error
 
   /nfconfig/session-management:
     get:
@@ -76,6 +93,10 @@ paths:
                 type: array
                 items:
                   $ref: '#/components/schemas/SessionManagement'
+        '404':
+          description: Resource not found
+        '500':
+          description: Internal server error
 
 components:
   schemas:
