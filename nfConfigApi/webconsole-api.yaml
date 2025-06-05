@@ -9,7 +9,7 @@ info:
   description: API for managing access, mobility, policy, session and PLMN information.
 
 servers:
-  - url: https://localhost:9090
+  - url: https://localhost:5001
 
 paths:
   /nfconfig/access-mobility:
@@ -216,10 +216,19 @@ components:
           type: string
         direction:
           type: string
-          enum: [DOWNLINK, UPLINK, BIDIRECTIONAL, UNSPECIFIED]
+          enum:
+            - DOWNLINK
+            - UPLINK
+            - BIDIRECTIONAL
+            - UNSPECIFIED
         status:
           type: string
-          enum: [ENABLED-UPLINK, ENABLED-DOWNLINK, ENABLED, DISABLED, REMOVED]
+          enum:
+            - ENABLED-UPLINK
+            - ENABLED-DOWNLINK
+            - ENABLED
+            - DISABLED
+            - REMOVED
 
     PccQos:
       type: object
@@ -249,10 +258,14 @@ components:
           type: integer
         preemptCap:
           type: string
-          enum: [NOT_PREEMPT, MAY_PREEMPT]
+          enum:
+            - NOT_PREEMPT
+            - MAY_PREEMPT
         preemptVuln:
           type: string
-          enum: [NOT_PREEMPTABLE, PREEMPTABLE]
+          enum:
+            - NOT_PREEMPTABLE
+            - PREEMPTABLE
 
     SessionManagement:
       type: object
