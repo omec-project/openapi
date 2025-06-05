@@ -4,15 +4,18 @@
 SPDX-License-Identifier: Apache-2.0
 -->
 
-# nfConfigApi Models 
+# nfConfigApi Models
 
 nfConfigApi models are used to implement nfConfig Server/client services.
 
-The provided models are generated using `webconsole-api.yaml` in this folder, ensuring the struct definitions (including required fields) are kept in sync with the OpenAPI specification.
+The provided models are generated using `webconsole-api.yaml` in this folder,
+ensuring the struct definitions (including required fields) are kept in sync
+with the OpenAPI specification.
 
 ## Directory Independence
 
-This directory is completely self-contained and independent. It does not share or reuse any code or models from other directories. Please note that:
+This directory is completely self-contained and independent. It does not share
+or reuse any code or models from other directories. Please note that:
 
 - Changes in other components won't affect the models in this directory.
 - Any updates to SBI APIs or models in other locations won't impact the compatibility of these models.
@@ -33,7 +36,3 @@ openapi-generator-cli generate \
   -o ./webconsole-server \
   --additional-properties=validateRequired=true
 ```
-
-
-
-
