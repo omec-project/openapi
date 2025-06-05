@@ -215,20 +215,9 @@ components:
         description:
           type: string
         direction:
-          type: string
-          enum:
-            - DOWNLINK
-            - UPLINK
-            - BIDIRECTIONAL
-            - UNSPECIFIED
+          $ref: '#/components/schemas/Direction'
         status:
-          type: string
-          enum:
-            - ENABLED-UPLINK
-            - ENABLED-DOWNLINK
-            - ENABLED
-            - DISABLED
-            - REMOVED
+          $ref: '#/components/schemas/Status'
 
     PccQos:
       type: object
@@ -257,15 +246,9 @@ components:
         priorityLevel:
           type: integer
         preemptCap:
-          type: string
-          enum:
-            - NOT_PREEMPT
-            - MAY_PREEMPT
+          $ref: '#/components/schemas/PreemptCap'
         preemptVuln:
-          type: string
-          enum:
-            - NOT_PREEMPTABLE
-            - PREEMPTABLE
+          $ref: '#/components/schemas/PreemptVuln'
 
     SessionManagement:
       type: object
@@ -317,3 +300,33 @@ components:
           type: string
         port:
           type: integer
+
+    Status:
+      type: string
+      enum:
+        - ENABLED-UPLINK
+        - ENABLED-DOWNLINK
+        - ENABLED
+        - DISABLED
+        - REMOVED
+
+    Direction:
+      type: string
+      enum:
+        - DOWNLINK
+        - UPLINK
+        - BIDIRECTIONAL
+        - UNSPECIFIED
+
+    PreemptCap:
+      type: string
+      enum:
+        - NOT_PREEMPT
+        - MAY_PREEMPT
+
+    PreemptVuln:
+      type: string
+      enum:
+        - NOT_PREEMPTABLE
+        - PREEMPTABLE
+

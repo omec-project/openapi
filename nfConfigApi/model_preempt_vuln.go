@@ -14,8 +14,9 @@
 
 package nfConfigApi
 
-type Arp struct {
-	PriorityLevel int32       `json:"priorityLevel"`
-	PreemptCap    PreemptCap  `json:"preemptCap"`
-	PreemptVuln   PreemptVuln `json:"preemptVuln"`
-}
+type PreemptVuln string
+
+const (
+	NOT_PREEMPTABLE PreemptVuln = "NOT_PREEMPTABLE"
+	PREEMPTABLE     PreemptVuln = "PREEMPTABLE"
+)

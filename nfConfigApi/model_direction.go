@@ -14,8 +14,11 @@
 
 package nfConfigApi
 
-type Arp struct {
-	PriorityLevel int32       `json:"priorityLevel"`
-	PreemptCap    PreemptCap  `json:"preemptCap"`
-	PreemptVuln   PreemptVuln `json:"preemptVuln"`
-}
+type Direction string
+
+const (
+	DOWNLINK      Direction = "DOWNLINK"
+	UPLINK        Direction = "UPLINK"
+	BIDIRECTIONAL Direction = "BIDIRECTIONAL"
+	UNSPECIFIED   Direction = "UNSPECIFIED"
+)

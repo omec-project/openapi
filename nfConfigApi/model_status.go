@@ -14,8 +14,12 @@
 
 package nfConfigApi
 
-type Arp struct {
-	PriorityLevel int32       `json:"priorityLevel"`
-	PreemptCap    PreemptCap  `json:"preemptCap"`
-	PreemptVuln   PreemptVuln `json:"preemptVuln"`
-}
+type Status string
+
+const (
+	ENABLED_UPLINK   Status = "ENABLED-UPLINK"
+	ENABLED_DOWNLINK Status = "ENABLED-DOWNLINK"
+	ENABLED          Status = "ENABLED"
+	DISABLED         Status = "DISABLED"
+	REMOVED          Status = "REMOVED"
+)
