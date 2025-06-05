@@ -16,6 +16,8 @@ package nfConfigApi
 
 type PccFlow struct {
 	Description string `json:"description"`
-	Direction   string `json:"direction"`
-	Status      string `json:"status,omitempty"`
+
+	Direction Direction `json:"direction"`
+
+	Status Status `json:"status,omitempty"`
 }
