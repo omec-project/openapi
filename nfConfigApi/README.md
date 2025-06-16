@@ -25,24 +25,36 @@ or reuse any code or models from other directories. Please note that:
 
 Make sure you have Node.js, `npx` and `openapi-generator-cli` installed.
 
+To generate shared models which are used in both server and client side after updating `webconsole-api.yaml`, run:
+
+```shell
+npx openapi-generator-cli generate \
+-i ./webconsole-api.yaml \
+-g go \
+-o ./nfConfigModels \
+--global-property=models \
+--additional-properties=packageName=nfConfigModels
+```
+
 To regenerate nfConfig server models after updating `webconsole-api.yaml`, run:
 
 ```shell
 npx openapi-generator-cli version
 
-openapi-generator-cli generate \
+npx openapi-generator-cli generate \
   -i ./webconsole-api.yaml \
   -g go-gin-server \
-  -o ./webconsole-server \
-  --additional-properties=validateRequired=true
+  -o ./nfConfigServer \
+  --global-property=apis \
+  --additional-properties=packageName=nfConfigServer,validateRequired=true
 ```
 
 To regenerate nfConfig client models after updating `webconsole-api.yaml`, run:
 
 ```
-sudo openapi-generator-cli generate \
+npx openapi-generator-cli generate \
   -i ./webconsole-api.yaml \
   -g go \
-  -o ./nfconfig-client \
-  --additional-properties=packageName=webconsoleClient,validateRequired=true
+  -o ./nfConfigClient \
+  --additional-properties=packageName=nfConfigClient,validateRequired=true
 ```
