@@ -21,11 +21,13 @@ import (
 	"fmt"
 )
 
+// checks if the PolicyControl type satisfies the MappedNullable interface at compile time
+var _ MappedNullable = &PolicyControl{}
+
 // PolicyControl struct for PolicyControl
 type PolicyControl struct {
 	PlmnId   PlmnId    `json:"plmnId"`
 	Snssai   Snssai    `json:"snssai"`
-	DnnQos   []DnnQos  `json:"dnnQos,omitempty"`
 	PccRules []PccRule `json:"pccRules"`
 }
 
@@ -99,38 +101,6 @@ func (o *PolicyControl) SetSnssai(v Snssai) {
 	o.Snssai = v
 }
 
-// GetDnnQos returns the DnnQos field value if set, zero value otherwise.
-func (o *PolicyControl) GetDnnQos() []DnnQos {
-	if o == nil || IsNil(o.DnnQos) {
-		var ret []DnnQos
-		return ret
-	}
-	return o.DnnQos
-}
-
-// GetDnnQosOk returns a tuple with the DnnQos field value if set, nil otherwise
-// and a boolean to check if the value has been set.
-func (o *PolicyControl) GetDnnQosOk() ([]DnnQos, bool) {
-	if o == nil || IsNil(o.DnnQos) {
-		return nil, false
-	}
-	return o.DnnQos, true
-}
-
-// HasDnnQos returns a boolean if a field has been set.
-func (o *PolicyControl) HasDnnQos() bool {
-	if o != nil && !IsNil(o.DnnQos) {
-		return true
-	}
-
-	return false
-}
-
-// SetDnnQos gets a reference to the given []DnnQos and assigns it to the DnnQos field.
-func (o *PolicyControl) SetDnnQos(v []DnnQos) {
-	o.DnnQos = v
-}
-
 // GetPccRules returns the PccRules field value
 func (o *PolicyControl) GetPccRules() []PccRule {
 	if o == nil {
@@ -167,9 +137,6 @@ func (o PolicyControl) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
 	toSerialize["plmnId"] = o.PlmnId
 	toSerialize["snssai"] = o.Snssai
-	if !IsNil(o.DnnQos) {
-		toSerialize["dnnQos"] = o.DnnQos
-	}
 	toSerialize["pccRules"] = o.PccRules
 	return toSerialize, nil
 }

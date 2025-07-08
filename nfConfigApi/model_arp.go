@@ -21,6 +21,9 @@ import (
 	"fmt"
 )
 
+// checks if the Arp type satisfies the MappedNullable interface at compile time
+var _ MappedNullable = &Arp{}
+
 // Arp struct for Arp
 type Arp struct {
 	PriorityLevel int32       `json:"priorityLevel"`

@@ -25,8 +25,8 @@ type PreemptVuln string
 
 // List of PreemptVuln
 const (
-	PREEMPTVULN_NOT_PREEMPTABLE PreemptVuln = "NOT_PREEMPTABLE"
-	PREEMPTVULN_PREEMPTABLE     PreemptVuln = "PREEMPTABLE"
+	NOT_PREEMPTABLE PreemptVuln = "NOT_PREEMPTABLE"
+	PREEMPTABLE     PreemptVuln = "PREEMPTABLE"
 )
 
 // All allowed values of PreemptVuln enum

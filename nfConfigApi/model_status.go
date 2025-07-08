@@ -25,11 +25,11 @@ type Status string
 
 // List of Status
 const (
-	STATUS_ENABLED_UPLINK   Status = "ENABLED-UPLINK"
-	STATUS_ENABLED_DOWNLINK Status = "ENABLED-DOWNLINK"
-	STATUS_ENABLED          Status = "ENABLED"
-	STATUS_DISABLED         Status = "DISABLED"
-	STATUS_REMOVED          Status = "REMOVED"
+	ENABLED_UPLINK   Status = "ENABLED-UPLINK"
+	ENABLED_DOWNLINK Status = "ENABLED-DOWNLINK"
+	ENABLED          Status = "ENABLED"
+	DISABLED         Status = "DISABLED"
+	REMOVED          Status = "REMOVED"
 )
 
 // All allowed values of Status enum

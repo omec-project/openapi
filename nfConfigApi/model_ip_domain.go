@@ -21,6 +21,9 @@ import (
 	"fmt"
 )
 
+// checks if the IpDomain type satisfies the MappedNullable interface at compile time
+var _ MappedNullable = &IpDomain{}
+
 // IpDomain struct for IpDomain
 type IpDomain struct {
 	DnnName  string `json:"dnnName"`

@@ -25,8 +25,8 @@ type PreemptCap string
 
 // List of PreemptCap
 const (
-	PREEMPTCAP_NOT_PREEMPT PreemptCap = "NOT_PREEMPT"
-	PREEMPTCAP_MAY_PREEMPT PreemptCap = "MAY_PREEMPT"
+	NOT_PREEMPT PreemptCap = "NOT_PREEMPT"
+	MAY_PREEMPT PreemptCap = "MAY_PREEMPT"
 )
 
 // All allowed values of PreemptCap enum

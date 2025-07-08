@@ -25,10 +25,10 @@ type Direction string
 
 // List of Direction
 const (
-	DIRECTION_DOWNLINK      Direction = "DOWNLINK"
-	DIRECTION_UPLINK        Direction = "UPLINK"
-	DIRECTION_BIDIRECTIONAL Direction = "BIDIRECTIONAL"
-	DIRECTION_UNSPECIFIED   Direction = "UNSPECIFIED"
+	DOWNLINK      Direction = "DOWNLINK"
+	UPLINK        Direction = "UPLINK"
+	BIDIRECTIONAL Direction = "BIDIRECTIONAL"
+	UNSPECIFIED   Direction = "UNSPECIFIED"
 )
 
 // All allowed values of Direction enum
