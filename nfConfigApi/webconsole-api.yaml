@@ -116,7 +116,7 @@ paths:
           description: IMSI in format “imsi-” followed by 15 or 16 digits
       responses:
         '200':
-          description: Subsciber's QoS configuration
+          description: Subscriber's QoS configuration
           content:
             application/json:
               schema:
