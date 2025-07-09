@@ -562,7 +562,7 @@ func TestCacheMissAndHits(t *testing.T) {
 		Snssais:      optional.NewInterface(MarshToJsonString([]models.Snssai{{Sst: 1, Sd: "010203"}})),
 	}
 
-	result, err = SearchNFInstances(context.Background(), "testNrf", models.NfType_SMF, models.NfType_AMF, &param)
+	result, err = SearchNFInstances("testNrf", models.NfType_SMF, models.NfType_AMF, &param)
 	expectedCallCount++
 
 	if err != nil {
@@ -576,7 +576,7 @@ func TestCacheMissAndHits(t *testing.T) {
 	}
 
 	// Cache hit scenario
-	result, err = SearchNFInstances(context.Background(), "testNrf", models.NfType_SMF, models.NfType_AMF, &param)
+	result, err = SearchNFInstances("testNrf", models.NfType_SMF, models.NfType_AMF, &param)
 	if err != nil {
 		t.Errorf("test failed, %s", err.Error())
 	}
@@ -594,7 +594,7 @@ func TestCacheMissAndHits(t *testing.T) {
 		Snssais:      optional.NewInterface(MarshToJsonString([]models.Snssai{{Sst: 1, Sd: "010203"}})),
 	}
 
-	result, err = SearchNFInstances(context.Background(), "testNrf", models.NfType_SMF, models.NfType_AMF, &param)
+	result, err = SearchNFInstances("testNrf", models.NfType_SMF, models.NfType_AMF, &param)
 	expectedCallCount++
 
 	if err != nil {
@@ -614,7 +614,7 @@ func TestCacheMissAndHits(t *testing.T) {
 		Snssais:      optional.NewInterface(MarshToJsonString([]models.Snssai{{Sst: 1, Sd: "0a0b0c"}})),
 	}
 
-	result, err = SearchNFInstances(context.Background(), "testNrf", models.NfType_SMF, models.NfType_AMF, &param)
+	result, err = SearchNFInstances("testNrf", models.NfType_SMF, models.NfType_AMF, &param)
 	expectedCallCount++
 
 	if err != nil {
@@ -639,7 +639,7 @@ func TestCacheMissOnTTlExpiry(t *testing.T) {
 	evictionTimerVal := time.Duration(evictionInterval)
 	InitNrfCaching(evictionTimerVal*time.Second, nrfDbCallback)
 
-	result, err = SearchNFInstances(context.Background(), "testNrf", models.NfType_SMF, models.NfType_AMF, nil)
+	result, err = SearchNFInstances("testNrf", models.NfType_SMF, models.NfType_AMF, nil)
 	expectedCallCount++
 
 	if err != nil {
@@ -663,7 +663,7 @@ func TestCacheMissOnTTlExpiry(t *testing.T) {
 		Snssais:      optional.NewInterface(MarshToJsonString([]models.Snssai{{Sst: 1, Sd: "0a0b0c"}})),
 	}
 
-	result, err = SearchNFInstances(context.Background(), "testNrf", models.NfType_SMF, models.NfType_AMF, &param)
+	result, err = SearchNFInstances("testNrf", models.NfType_SMF, models.NfType_AMF, &param)
 	expectedCallCount++
 
 	if err != nil {
@@ -677,7 +677,7 @@ func TestCacheMissOnTTlExpiry(t *testing.T) {
 			expectedCallCount, nrfDbCallbackCallCount)
 	}
 
-	result, err = SearchNFInstances(context.Background(), "testNrf", models.NfType_SMF, models.NfType_AMF, &param)
+	result, err = SearchNFInstances("testNrf", models.NfType_SMF, models.NfType_AMF, &param)
 	if err != nil {
 		t.Errorf("test failed, %s", err.Error())
 	}
@@ -706,7 +706,7 @@ func TestCacheEviction(t *testing.T) {
 		Snssais:      optional.NewInterface(MarshToJsonString([]models.Snssai{{Sst: 1, Sd: "010203"}})),
 	}
 
-	result, err = SearchNFInstances(context.Background(), "testNrf", models.NfType_SMF, models.NfType_AMF, &param)
+	result, err = SearchNFInstances("testNrf", models.NfType_SMF, models.NfType_AMF, &param)
 	if err != nil {
 		t.Errorf("test failed, %s", err.Error())
 	}
@@ -718,7 +718,7 @@ func TestCacheEviction(t *testing.T) {
 		Snssais:      optional.NewInterface(MarshToJsonString([]models.Snssai{{Sst: 1, Sd: "010203"}})),
 	}
 
-	result, err = SearchNFInstances(context.Background(), "testNrf", models.NfType_SMF, models.NfType_AMF, &param)
+	result, err = SearchNFInstances("testNrf", models.NfType_SMF, models.NfType_AMF, &param)
 	if err != nil {
 		t.Errorf("test failed, %s", err.Error())
 	}
@@ -730,7 +730,7 @@ func TestCacheEviction(t *testing.T) {
 		Snssais:      optional.NewInterface(MarshToJsonString([]models.Snssai{{Sst: 1, Sd: "0a0b0c"}})),
 	}
 
-	result, err = SearchNFInstances(context.Background(), "testNrf", models.NfType_SMF, models.NfType_AMF, &param)
+	result, err = SearchNFInstances("testNrf", models.NfType_SMF, models.NfType_AMF, &param)
 	if err != nil {
 		t.Errorf("test failed, %s", err.Error())
 	}
@@ -766,7 +766,7 @@ func TestCacheConcurrency(t *testing.T) {
 
 	for i := 0; i < n; i++ {
 		go func() {
-			_, err := SearchNFInstances(context.Background(), "testNrf", models.NfType_SMF, models.NfType_AMF, &param)
+			_, err := SearchNFInstances("testNrf", models.NfType_SMF, models.NfType_AMF, &param)
 			if err != nil {
 				errCh <- err
 			}
@@ -808,7 +808,7 @@ func TestAusfMatchFilters(t *testing.T) {
 	expectedCallCount := nrfDbCallbackCallCount
 	expectedCallCount++
 
-	result, err := SearchNFInstances(context.Background(), "testNrf", models.NfType_AUSF, models.NfType_AMF, &param)
+	result, err := SearchNFInstances("testNrf", models.NfType_AUSF, models.NfType_AMF, &param)
 	if err != nil {
 		t.Errorf("test failed, %s", err.Error())
 	}
@@ -819,7 +819,7 @@ func TestAusfMatchFilters(t *testing.T) {
 		t.Error("unexpected nrfDbCallbackCallCount")
 	}
 
-	result, err = SearchNFInstances(context.Background(), "testNrf", models.NfType_AUSF, models.NfType_AMF, &param)
+	result, err = SearchNFInstances("testNrf", models.NfType_AUSF, models.NfType_AMF, &param)
 	if err != nil {
 		t.Errorf("test failed, %s", err.Error())
 	}
@@ -834,7 +834,7 @@ func TestAusfMatchFilters(t *testing.T) {
 		Supi: optional.NewString("imsi-223456789041111"),
 	}
 
-	result, err = SearchNFInstances(context.Background(), "testNrf", models.NfType_AUSF, models.NfType_AMF, &param)
+	result, err = SearchNFInstances("testNrf", models.NfType_AUSF, models.NfType_AMF, &param)
 	if err != nil {
 		t.Errorf("test failed, %s", err.Error())
 	}
@@ -859,7 +859,7 @@ func TestAmfMatchFilters(t *testing.T) {
 	expectedCallCount := nrfDbCallbackCallCount
 	expectedCallCount++
 
-	result, err := SearchNFInstances(context.Background(), "testNrf", models.NfType_AMF, models.NfType_AMF, &param)
+	result, err := SearchNFInstances("testNrf", models.NfType_AMF, models.NfType_AMF, &param)
 	if err != nil {
 		t.Errorf("test failed, %s", err.Error())
 	}
@@ -876,7 +876,7 @@ func TestAmfMatchFilters(t *testing.T) {
 		AmfSetId:       optional.NewString("3f8"),
 	}
 
-	result, err = SearchNFInstances(context.Background(), "testNrf", models.NfType_AMF, models.NfType_AMF, &param)
+	result, err = SearchNFInstances("testNrf", models.NfType_AMF, models.NfType_AMF, &param)
 	if err != nil {
 		t.Errorf("test failed, %s", err.Error())
 	}
