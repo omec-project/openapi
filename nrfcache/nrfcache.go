@@ -348,7 +348,7 @@ func disableNrfCaching() {
 	masterCache = nil
 }
 
-func SearchNFInstancesWithContext(ctx context.Context, nrfUri string, targetNfType, requestNfType models.NfType, param *Nnrf_NFDiscovery.SearchNFInstancesParamOpts) (models.SearchResult, error) {
+func SearchNFInstances(ctx context.Context, nrfUri string, targetNfType, requestNfType models.NfType, param *Nnrf_NFDiscovery.SearchNFInstancesParamOpts) (models.SearchResult, error) {
 	var searchResult models.SearchResult
 	var err error
 
@@ -362,10 +362,6 @@ func SearchNFInstancesWithContext(ctx context.Context, nrfUri string, targetNfTy
 		logger.NrfcacheLog.Infof("%v", np)
 	}
 	return searchResult, err
-}
-
-func SearchNFInstances(nrfUri string, targetNfType, requestNfType models.NfType, param *Nnrf_NFDiscovery.SearchNFInstancesParamOpts) (models.SearchResult, error) {
-	return SearchNFInstancesWithContext(context.Background(), nrfUri, targetNfType, requestNfType, param)
 }
 
 func RemoveNfProfileFromNrfCache(nfInstanceId string) bool {
