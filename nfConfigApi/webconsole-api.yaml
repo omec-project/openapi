@@ -325,6 +325,8 @@ components:
           type: string
         port:
           type: integer
+          minimum: 0
+          maximum: 65535
 
     Status:
       type: string
