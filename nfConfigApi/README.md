@@ -29,8 +29,25 @@ To regenerate nfConfig client and models after updating `webconsole-api.yaml`, r
 
 ```
 npx openapi-generator-cli generate \
-  -i ./webconsole-api.yaml \
+  -i ./nfConfigApi/webconsole-api.yaml \
   -g go \
   -o ./nfConfigApi \
-  --additional-properties=packageName=nfConfigApi,validateRequired=true
+  --additional-properties=packageName=nfConfigApi,validateRequired=true,enumClassPrefix=true
+```
+
+To format the code after generating the nfConfig client and models, run:
+
+```
+gofumpt -l -w ./nfConfigApi
+```
+
+Finally, to restore the required header in .go files, run:
+
+```
+sed -i '1i\
+// SPDX-FileCopyrightText: 2025 Canonical Ltd\
+//\
+// SPDX-License-Identifier: Apache-2.0\
+//\
+' ./nfConfigApi/*.go
 ```

@@ -21,6 +21,9 @@ import (
 	"fmt"
 )
 
+// checks if the AccessAndMobility type satisfies the MappedNullable interface at compile time
+var _ MappedNullable = &AccessAndMobility{}
+
 // AccessAndMobility struct for AccessAndMobility
 type AccessAndMobility struct {
 	PlmnId PlmnId   `json:"plmnId"`

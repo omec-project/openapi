@@ -21,6 +21,9 @@ import (
 	"fmt"
 )
 
+// checks if the PccRule type satisfies the MappedNullable interface at compile time
+var _ MappedNullable = &PccRule{}
+
 // PccRule struct for PccRule
 type PccRule struct {
 	RuleId     string    `json:"ruleId"`

@@ -98,6 +98,36 @@ paths:
         '500':
           description: Internal server error
 
+  /nfconfig/qos/{dnn}/{imsi}:
+    get:
+      summary: Get QoS for given IMSI and DNN
+      parameters:
+        - in: path
+          name: dnn
+          schema:
+            type: string
+          required: true
+          description: Data Network Name
+        - in: path
+          name: imsi
+          schema:
+            type: string
+          required: true
+          description: IMSI in format “imsi-” followed by 15 or 16 digits
+      responses:
+        '200':
+          description: Subscriber's QoS configuration
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/ImsiQos'
+        '404':
+          description: Resource not found
+        '500':
+          description: Internal server error
+
 components:
   schemas:
     AccessAndMobility:
@@ -160,32 +190,10 @@ components:
           $ref: '#/components/schemas/PlmnId'
         snssai:
           $ref: '#/components/schemas/Snssai'
-        dnnQos:
-          type: array
-          items:
-            $ref: '#/components/schemas/DnnQos'
         pccRules:
           type: array
           items:
             $ref: '#/components/schemas/PccRule'
-
-    DnnQos:
-      type: object
-      required:
-        - dnnName
-        - mbrUplink
-        - mbrDownlink
-      properties:
-        dnnName:
-          type: string
-        mbrUplink:
-          type: string
-        mbrDownlink:
-          type: string
-        fiveQi:
-          type: integer
-        arpPriorityLevel:
-          type: integer
 
     PccRule:
       type: object
@@ -250,6 +258,23 @@ components:
         preemptVuln:
           $ref: '#/components/schemas/PreemptVuln'
 
+    ImsiQos:
+      type: object
+      required:
+        - mbrUplink
+        - mbrDownlink
+        - fiveQi
+        - arpPriorityLevel
+      properties:
+        mbrUplink:
+          type: string
+        mbrDownlink:
+          type: string
+        fiveQi:
+          type: integer
+        arpPriorityLevel:
+          type: integer
+
     SessionManagement:
       type: object
       required:
@@ -300,6 +325,8 @@ components:
           type: string
         port:
           type: integer
+          minimum: 0
+          maximum: 65535
 
     Status:
       type: string

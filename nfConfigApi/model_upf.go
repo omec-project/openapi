@@ -21,6 +21,9 @@ import (
 	"fmt"
 )
 
+// checks if the Upf type satisfies the MappedNullable interface at compile time
+var _ MappedNullable = &Upf{}
+
 // Upf struct for Upf
 type Upf struct {
 	Hostname string `json:"hostname"`

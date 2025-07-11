@@ -21,6 +21,9 @@ import (
 	"fmt"
 )
 
+// checks if the PccFlow type satisfies the MappedNullable interface at compile time
+var _ MappedNullable = &PccFlow{}
+
 // PccFlow struct for PccFlow
 type PccFlow struct {
 	Description string    `json:"description"`
