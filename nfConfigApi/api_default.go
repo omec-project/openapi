@@ -464,8 +464,8 @@ func (a *DefaultAPIService) NfconfigQosDnnImsiGetExecute(r ApiNfconfigQosDnnImsi
 	}
 
 	localVarPath := localBasePath + "/nfconfig/qos/{dnn}/{imsi}"
-	localVarPath = strings.Replace(localVarPath, "{"+"dnn"+"}", url.PathEscape(parameterValueToString(r.dnn, "dnn")), -1)
-	localVarPath = strings.Replace(localVarPath, "{"+"imsi"+"}", url.PathEscape(parameterValueToString(r.imsi, "imsi")), -1)
+	localVarPath = strings.ReplaceAll(localVarPath, "{"+"dnn"+"}", url.PathEscape(parameterValueToString(r.dnn, "dnn")))
+	localVarPath = strings.ReplaceAll(localVarPath, "{"+"imsi"+"}", url.PathEscape(parameterValueToString(r.imsi, "imsi")))
 
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}
