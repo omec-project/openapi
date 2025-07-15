@@ -21,6 +21,9 @@ import (
 	"fmt"
 )
 
+// checks if the SessionManagement type satisfies the MappedNullable interface at compile time
+var _ MappedNullable = &SessionManagement{}
+
 // SessionManagement struct for SessionManagement
 type SessionManagement struct {
 	SliceName string     `json:"sliceName"`
