@@ -4,7 +4,7 @@ go 1.24.0
 
 require (
 	github.com/antihax/optional v1.0.0
-	github.com/golang-jwt/jwt/v5 v5.2.2
+	github.com/golang-jwt/jwt/v5 v5.2.3
 	github.com/mitchellh/mapstructure v1.5.0
 	github.com/stretchr/testify v1.10.0
 	go.uber.org/zap v1.27.0
