@@ -219,6 +219,7 @@ components:
       required:
         - description
         - direction
+        - status
       properties:
         description:
           type: string
