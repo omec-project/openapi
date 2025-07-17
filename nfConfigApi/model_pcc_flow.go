@@ -28,7 +28,7 @@ var _ MappedNullable = &PccFlow{}
 type PccFlow struct {
 	Description string    `json:"description"`
 	Direction   Direction `json:"direction"`
-	Status      *Status   `json:"status,omitempty"`
+	Status      Status    `json:"status"`
 }
 
 type _PccFlow PccFlow
@@ -37,10 +37,11 @@ type _PccFlow PccFlow
 // This constructor will assign default values to properties that have it defined,
 // and makes sure properties required by API are set, but the set of arguments
 // will change when the set of required properties is changed
-func NewPccFlow(description string, direction Direction) *PccFlow {
+func NewPccFlow(description string, direction Direction, status Status) *PccFlow {
 	this := PccFlow{}
 	this.Description = description
 	this.Direction = direction
+	this.Status = status
 	return &this
 }
 
@@ -100,36 +101,28 @@ func (o *PccFlow) SetDirection(v Direction) {
 	o.Direction = v
 }
 
-// GetStatus returns the Status field value if set, zero value otherwise.
+// GetStatus returns the Status field value
 func (o *PccFlow) GetStatus() Status {
-	if o == nil || IsNil(o.Status) {
+	if o == nil {
 		var ret Status
 		return ret
 	}
-	return *o.Status
+
+	return o.Status
 }
 
-// GetStatusOk returns a tuple with the Status field value if set, nil otherwise
+// GetStatusOk returns a tuple with the Status field value
 // and a boolean to check if the value has been set.
 func (o *PccFlow) GetStatusOk() (*Status, bool) {
-	if o == nil || IsNil(o.Status) {
+	if o == nil {
 		return nil, false
 	}
-	return o.Status, true
+	return &o.Status, true
 }
 
-// HasStatus returns a boolean if a field has been set.
-func (o *PccFlow) HasStatus() bool {
-	if o != nil && !IsNil(o.Status) {
-		return true
-	}
-
-	return false
-}
-
-// SetStatus gets a reference to the given Status and assigns it to the Status field.
+// SetStatus sets field value
 func (o *PccFlow) SetStatus(v Status) {
-	o.Status = &v
+	o.Status = v
 }
 
 func (o PccFlow) MarshalJSON() ([]byte, error) {
@@ -144,9 +137,7 @@ func (o PccFlow) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
 	toSerialize["description"] = o.Description
 	toSerialize["direction"] = o.Direction
-	if !IsNil(o.Status) {
-		toSerialize["status"] = o.Status
-	}
+	toSerialize["status"] = o.Status
 	return toSerialize, nil
 }
 
@@ -157,6 +148,7 @@ func (o *PccFlow) UnmarshalJSON(data []byte) (err error) {
 	requiredProperties := []string{
 		"description",
 		"direction",
+		"status",
 	}
 
 	allProperties := make(map[string]interface{})
