@@ -28,6 +28,7 @@ var _ MappedNullable = &PolicyControl{}
 type PolicyControl struct {
 	PlmnId   PlmnId    `json:"plmnId"`
 	Snssai   Snssai    `json:"snssai"`
+	Dnns     []string  `json:"dnns"`
 	PccRules []PccRule `json:"pccRules"`
 }
 
@@ -37,10 +38,11 @@ type _PolicyControl PolicyControl
 // This constructor will assign default values to properties that have it defined,
 // and makes sure properties required by API are set, but the set of arguments
 // will change when the set of required properties is changed
-func NewPolicyControl(plmnId PlmnId, snssai Snssai, pccRules []PccRule) *PolicyControl {
+func NewPolicyControl(plmnId PlmnId, snssai Snssai, dnns []string, pccRules []PccRule) *PolicyControl {
 	this := PolicyControl{}
 	this.PlmnId = plmnId
 	this.Snssai = snssai
+	this.Dnns = dnns
 	this.PccRules = pccRules
 	return &this
 }
@@ -101,6 +103,30 @@ func (o *PolicyControl) SetSnssai(v Snssai) {
 	o.Snssai = v
 }
 
+// GetDnns returns the Dnns field value
+func (o *PolicyControl) GetDnns() []string {
+	if o == nil {
+		var ret []string
+		return ret
+	}
+
+	return o.Dnns
+}
+
+// GetDnnsOk returns a tuple with the Dnns field value
+// and a boolean to check if the value has been set.
+func (o *PolicyControl) GetDnnsOk() ([]string, bool) {
+	if o == nil {
+		return nil, false
+	}
+	return o.Dnns, true
+}
+
+// SetDnns sets field value
+func (o *PolicyControl) SetDnns(v []string) {
+	o.Dnns = v
+}
+
 // GetPccRules returns the PccRules field value
 func (o *PolicyControl) GetPccRules() []PccRule {
 	if o == nil {
@@ -137,6 +163,7 @@ func (o PolicyControl) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
 	toSerialize["plmnId"] = o.PlmnId
 	toSerialize["snssai"] = o.Snssai
+	toSerialize["dnns"] = o.Dnns
 	toSerialize["pccRules"] = o.PccRules
 	return toSerialize, nil
 }
@@ -148,6 +175,7 @@ func (o *PolicyControl) UnmarshalJSON(data []byte) (err error) {
 	requiredProperties := []string{
 		"plmnId",
 		"snssai",
+		"dnns",
 		"pccRules",
 	}
 

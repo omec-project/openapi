@@ -184,12 +184,17 @@ components:
       required:
         - plmnId
         - snssai
+        - dnns
         - pccRules
       properties:
         plmnId:
           $ref: '#/components/schemas/PlmnId'
         snssai:
           $ref: '#/components/schemas/Snssai'
+        dnns:
+          type: array
+          items:
+            type: string
         pccRules:
           type: array
           items:
