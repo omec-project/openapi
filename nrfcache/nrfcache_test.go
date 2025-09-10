@@ -438,7 +438,7 @@ func init() {
 	} `
 }
 
-func MarshToJsonString(v interface{}) (result []string) {
+func MarshToJsonString(v any) (result []string) {
 	types := reflect.TypeOf(v)
 	val := reflect.ValueOf(v)
 	if types.Kind() == reflect.Slice {
@@ -508,7 +508,8 @@ func nrfDbCallback(ctx context.Context, nrfUri string, targetNfType, requestNfTy
 
 	searchResult.ValidityPeriod = validityPeriod
 
-	if targetNfType == models.NfType_SMF {
+	switch targetNfType {
+	case models.NfType_SMF:
 		key = "SMF"
 
 		if param != nil {
@@ -537,9 +538,9 @@ func nrfDbCallback(ctx context.Context, nrfUri string, targetNfType, requestNfTy
 		} else {
 			searchResult.NfInstances, err = getNfProfiles(targetNfType)
 		}
-	} else if targetNfType == models.NfType_AUSF {
+	case models.NfType_AUSF:
 		searchResult.NfInstances, err = getNfProfiles(targetNfType)
-	} else if targetNfType == models.NfType_AMF {
+	case models.NfType_AMF:
 		searchResult.NfInstances, err = getNfProfiles(targetNfType)
 	}
 

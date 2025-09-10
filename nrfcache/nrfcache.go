@@ -359,7 +359,7 @@ func SearchNFInstances(ctx context.Context, nrfUri string, targetNfType, request
 		logger.NrfcacheLog.Errorln("failed to find cache for nf type")
 	}
 	for _, np := range searchResult.NfInstances {
-		logger.NrfcacheLog.Infof("%v", np)
+		logger.NrfcacheLog.Infof("%+v", np)
 	}
 	return searchResult, err
 }
