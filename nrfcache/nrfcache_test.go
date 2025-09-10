@@ -542,6 +542,8 @@ func nrfDbCallback(ctx context.Context, nrfUri string, targetNfType, requestNfTy
 		searchResult.NfInstances, err = getNfProfiles(targetNfType)
 	case models.NfType_AMF:
 		searchResult.NfInstances, err = getNfProfiles(targetNfType)
+	default:
+		err = fmt.Errorf("unsupported NF type: %v", targetNfType)
 	}
 
 	return searchResult, err
