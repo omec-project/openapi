@@ -29,8 +29,8 @@ type Configuration struct {
 
 func NewConfiguration() *Configuration {
 	cfg := &Configuration{
-		basePath:      "https://example.com/nnssf-nsselection/v1",
-		url:           "{apiRoot}/nnssf-nsselection/v1",
+		basePath:      "https://example.com/nnssf-nsselection/v2",
+		url:           "{apiRoot}/nnssf-nsselection/v2",
 		defaultHeader: make(map[string]string),
 		userAgent:     "OpenAPI-Generator/1.0.0/go",
 	}
