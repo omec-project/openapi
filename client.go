@@ -36,7 +36,6 @@ import (
 
 	"golang.org/x/net/http2"
 	"golang.org/x/oauth2"
-	"gopkg.in/h2non/gock.v1"
 )
 
 var (
@@ -723,12 +722,4 @@ func CacheExpires(r *http.Response) time.Time {
 		}
 	}
 	return expires
-}
-
-func InterceptH2CClient() {
-	gock.InterceptClient(innerHTTP2CleartextClient)
-}
-
-func RestoreH2CClient() {
-	gock.RestoreClient(innerHTTP2CleartextClient)
 }
