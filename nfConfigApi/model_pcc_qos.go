@@ -26,10 +26,10 @@ var _ MappedNullable = &PccQos{}
 
 // PccQos struct for PccQos
 type PccQos struct {
-	FiveQi  int32  `json:"fiveQi"`
-	MaxBrUl string `json:"maxBrUl"`
-	MaxBrDl string `json:"maxBrDl"`
-	Arp     Arp    `json:"arp"`
+	FiveQi  int32   `json:"fiveQi"`
+	MaxBrUl *string `json:"maxBrUl,omitempty"`
+	MaxBrDl *string `json:"maxBrDl,omitempty"`
+	Arp     Arp     `json:"arp"`
 }
 
 type _PccQos PccQos
@@ -38,11 +38,9 @@ type _PccQos PccQos
 // This constructor will assign default values to properties that have it defined,
 // and makes sure properties required by API are set, but the set of arguments
 // will change when the set of required properties is changed
-func NewPccQos(fiveQi int32, maxBrUl string, maxBrDl string, arp Arp) *PccQos {
+func NewPccQos(fiveQi int32, arp Arp) *PccQos {
 	this := PccQos{}
 	this.FiveQi = fiveQi
-	this.MaxBrUl = maxBrUl
-	this.MaxBrDl = maxBrDl
 	this.Arp = arp
 	return &this
 }
@@ -79,52 +77,68 @@ func (o *PccQos) SetFiveQi(v int32) {
 	o.FiveQi = v
 }
 
-// GetMaxBrUl returns the MaxBrUl field value
+// GetMaxBrUl returns the MaxBrUl field value if set, zero value otherwise.
 func (o *PccQos) GetMaxBrUl() string {
-	if o == nil {
+	if o == nil || IsNil(o.MaxBrUl) {
 		var ret string
 		return ret
 	}
-
-	return o.MaxBrUl
+	return *o.MaxBrUl
 }
 
-// GetMaxBrUlOk returns a tuple with the MaxBrUl field value
+// GetMaxBrUlOk returns a tuple with the MaxBrUl field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *PccQos) GetMaxBrUlOk() (*string, bool) {
-	if o == nil {
+	if o == nil || IsNil(o.MaxBrUl) {
 		return nil, false
 	}
-	return &o.MaxBrUl, true
+	return o.MaxBrUl, true
 }
 
-// SetMaxBrUl sets field value
+// HasMaxBrUl returns a boolean if a field has been set.
+func (o *PccQos) HasMaxBrUl() bool {
+	if o != nil && !IsNil(o.MaxBrUl) {
+		return true
+	}
+
+	return false
+}
+
+// SetMaxBrUl gets a reference to the given string and assigns it to the MaxBrUl field.
 func (o *PccQos) SetMaxBrUl(v string) {
-	o.MaxBrUl = v
+	o.MaxBrUl = &v
 }
 
-// GetMaxBrDl returns the MaxBrDl field value
+// GetMaxBrDl returns the MaxBrDl field value if set, zero value otherwise.
 func (o *PccQos) GetMaxBrDl() string {
-	if o == nil {
+	if o == nil || IsNil(o.MaxBrDl) {
 		var ret string
 		return ret
 	}
-
-	return o.MaxBrDl
+	return *o.MaxBrDl
 }
 
-// GetMaxBrDlOk returns a tuple with the MaxBrDl field value
+// GetMaxBrDlOk returns a tuple with the MaxBrDl field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *PccQos) GetMaxBrDlOk() (*string, bool) {
-	if o == nil {
+	if o == nil || IsNil(o.MaxBrDl) {
 		return nil, false
 	}
-	return &o.MaxBrDl, true
+	return o.MaxBrDl, true
 }
 
-// SetMaxBrDl sets field value
+// HasMaxBrDl returns a boolean if a field has been set.
+func (o *PccQos) HasMaxBrDl() bool {
+	if o != nil && !IsNil(o.MaxBrDl) {
+		return true
+	}
+
+	return false
+}
+
+// SetMaxBrDl gets a reference to the given string and assigns it to the MaxBrDl field.
 func (o *PccQos) SetMaxBrDl(v string) {
-	o.MaxBrDl = v
+	o.MaxBrDl = &v
 }
 
 // GetArp returns the Arp field value
@@ -162,8 +176,12 @@ func (o PccQos) MarshalJSON() ([]byte, error) {
 func (o PccQos) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
 	toSerialize["fiveQi"] = o.FiveQi
-	toSerialize["maxBrUl"] = o.MaxBrUl
-	toSerialize["maxBrDl"] = o.MaxBrDl
+	if !IsNil(o.MaxBrUl) {
+		toSerialize["maxBrUl"] = o.MaxBrUl
+	}
+	if !IsNil(o.MaxBrDl) {
+		toSerialize["maxBrDl"] = o.MaxBrDl
+	}
 	toSerialize["arp"] = o.Arp
 	return toSerialize, nil
 }
@@ -174,8 +192,6 @@ func (o *PccQos) UnmarshalJSON(data []byte) (err error) {
 	// that every required field exists as a key in the generic map.
 	requiredProperties := []string{
 		"fiveQi",
-		"maxBrUl",
-		"maxBrDl",
 		"arp",
 	}
 
