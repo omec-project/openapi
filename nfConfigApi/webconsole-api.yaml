@@ -237,8 +237,6 @@ components:
       type: object
       required:
         - fiveQi
-        - maxBrDl
-        - maxBrUl
         - arp
       properties:
         fiveQi:
