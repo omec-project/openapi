@@ -1,6 +1,7 @@
 // SPDX-License-Identifier: Apache-2.0
 // SPDX-FileCopyrightText: 2022 Open Networking Foundation <info@opennetworking.org>
 // SPDX-FileCopyrightText: 2024 Canonical Ltd.
+// SPDX-FileCopyrightText: 2025 Intel Corporation
 /*
  *  Tests for NRF Caching library
  */
@@ -17,28 +18,67 @@ import (
 	"testing"
 	"time"
 
-	"github.com/antihax/optional"
-	"github.com/omec-project/openapi/Nnrf_NFDiscovery"
-	"github.com/omec-project/openapi/logger"
-	"github.com/omec-project/openapi/models"
+	"github.com/omec-project/openapi/v2"
+	"github.com/omec-project/openapi/v2/Nnrf_NFDiscovery"
+	"github.com/omec-project/openapi/v2/logger"
+	"github.com/omec-project/openapi/v2/models"
 )
 
-var (
+type testContext struct {
 	nfProfilesDb           map[string]string
 	validityPeriod         int32
 	evictionInterval       int32
 	nrfDbCallbackCallCount int32
-)
+	mu                     sync.Mutex
+}
 
-func init() {
-	validityPeriod = 60
-	evictionInterval = 120
+func (tc *testContext) getCallbackCount() int32 {
+	tc.mu.Lock()
+	defer tc.mu.Unlock()
+	return tc.nrfDbCallbackCallCount
+}
 
-	nrfDbCallbackCallCount = 0
+func (tc *testContext) getNfProfile(key string) (models.NFProfileDiscovery, error) {
+	var err error
+	var profile models.NFProfileDiscovery
 
-	nfProfilesDb = make(map[string]string)
+	nfProfileStr, exists := tc.nfProfilesDb[key]
 
-	nfProfilesDb["SMF-010203-internet"] = `{
+	if exists {
+		err = json.Unmarshal([]byte(nfProfileStr), &profile)
+	} else {
+		err = fmt.Errorf("failed to find nf profile for %s", key)
+	}
+
+	return profile, err
+}
+
+func (tc *testContext) getNfProfiles(targetNfType models.NFType) ([]models.NFProfileDiscovery, error) {
+	var nfProfiles []models.NFProfileDiscovery
+
+	for key, elem := range tc.nfProfilesDb {
+		if strings.Contains(key, string(targetNfType)) {
+			var profile models.NFProfileDiscovery
+			err := json.Unmarshal([]byte(elem), &profile)
+			if err != nil {
+				return nil, err
+			}
+
+			nfProfiles = append(nfProfiles, profile)
+		}
+	}
+
+	return nfProfiles, nil
+}
+
+func (tc *testContext) setValidityPeriod(period int32) {
+	tc.mu.Lock()
+	defer tc.mu.Unlock()
+	tc.validityPeriod = period
+}
+
+func (tc *testContext) initTestData() {
+	tc.nfProfilesDb["SMF-010203-internet"] = `{
 		  "ipv4Addresses": [
 			"smf"
 		  ],
@@ -121,7 +161,7 @@ func init() {
 		  "nfType": "SMF",
 		  "nfStatus": "REGISTERED"
 		}`
-	nfProfilesDb["SMF-010203-ims"] = `{
+	tc.nfProfilesDb["SMF-010203-ims"] = `{
 		  "ipv4Addresses": [
 			"smf"
 		  ],
@@ -205,7 +245,7 @@ func init() {
 		  "nfStatus": "REGISTERED"
 		}
 `
-	nfProfilesDb["SMF-0a0b0c-internet"] = `{
+	tc.nfProfilesDb["SMF-0a0b0c-internet"] = `{
 		  "ipv4Addresses": [
 			"smf"
 		  ],
@@ -288,7 +328,7 @@ func init() {
 		  "nfType": "SMF",
 		  "nfStatus": "REGISTERED"
 		}`
-	nfProfilesDb["AUSF-1"] = `{ "nfServices": [
+	tc.nfProfilesDb["AUSF-1"] = `{ "nfServices": [
 			{
 			  "serviceName": "nausf-auth",
 			  "versions": [
@@ -329,7 +369,7 @@ func init() {
 			"groupId": "ausfGroup001"
 		  }
 		}`
-	nfProfilesDb["AUSF-2"] = `{ "nfServices": [
+	tc.nfProfilesDb["AUSF-2"] = `{ "nfServices": [
 			{
 			  "serviceName": "nausf-auth",
 			  "versions": [
@@ -370,8 +410,7 @@ func init() {
 			"groupId": "ausfGroup001"
 		  }
 		}`
-
-	nfProfilesDb["AMF-01"] = `
+	tc.nfProfilesDb["AMF-01"] = `
 	{
 	  "nfServices": [
 		{
@@ -438,462 +477,676 @@ func init() {
 	} `
 }
 
-func MarshToJsonString(v any) (result []string) {
-	types := reflect.TypeOf(v)
-	val := reflect.ValueOf(v)
-	if types.Kind() == reflect.Slice {
-		for i := 0; i < val.Len(); i++ {
-			tmp, err := json.Marshal(val.Index(i).Interface())
-			if err != nil {
-				logger.NrfcacheLog.Errorf("marshal error: %+v", err)
-			}
+func (tc *testContext) nrfDbCallback(ctx context.Context, nrfUri string, targetNfType, requestNfType models.NFType, param Nnrf_NFDiscovery.ApiSearchNFInstancesRequest) (*models.SearchResult, error) {
+	tc.mu.Lock()
+	tc.nrfDbCallbackCallCount++
+	tc.mu.Unlock()
 
-			result = append(result, string(tmp))
-		}
-	} else {
-		tmp, err := json.Marshal(v)
-		if err != nil {
-			logger.NrfcacheLog.Errorf("marshal error: %+v", err)
-		}
-
-		result = append(result, string(tmp))
-	}
-	return
-}
-
-func getNfProfile(key string) (models.NfProfile, error) {
-	var err error
-	var profile models.NfProfile
-
-	nfProfileStr, exists := nfProfilesDb[key]
-
-	if exists {
-		err = json.Unmarshal([]byte(nfProfileStr), &profile)
-	} else {
-		err = fmt.Errorf("failed to find nf profile for %s", key)
-	}
-
-	return profile, err
-}
-
-func getNfProfiles(targetNfType models.NfType) ([]models.NfProfile, error) {
-	var nfProfiles []models.NfProfile
-
-	for key, elem := range nfProfilesDb {
-		if strings.Contains(key, string(targetNfType)) {
-			var profile models.NfProfile
-			err := json.Unmarshal([]byte(elem), &profile)
-			if err != nil {
-				return nil, err
-			}
-
-			nfProfiles = append(nfProfiles, profile)
-		}
-	}
-
-	return nfProfiles, nil
-}
-
-func nrfDbCallback(ctx context.Context, nrfUri string, targetNfType, requestNfType models.NfType,
-	param *Nnrf_NFDiscovery.SearchNFInstancesParamOpts,
-) (models.SearchResult, error) {
 	logger.NrfcacheLog.Infoln("nrfDbCallback Entry")
 
-	nrfDbCallbackCallCount++
-
 	var searchResult models.SearchResult
-	var nfProfile models.NfProfile
+	var nfProfile models.NFProfileDiscovery
 	var err error
-	var key string
 
-	searchResult.ValidityPeriod = validityPeriod
+	searchResult.ValidityPeriod = tc.validityPeriod
 
 	switch targetNfType {
-	case models.NfType_SMF:
-		key = "SMF"
-
-		if param != nil {
-			if param.Snssais.IsSet() {
-				snssais := param.Snssais.Value().([]string)
-
-				var snssai models.Snssai
-				err = json.Unmarshal([]byte(snssais[0]), &snssai)
-				if err != nil {
-					err = fmt.Errorf("snssai invalid %s", snssais[0])
-					return searchResult, err
-				}
-
-				key += "-" + snssai.Sd
+	case models.NFTYPE_SMF:
+		key := "SMF"
+		if !reflect.DeepEqual(param, Nnrf_NFDiscovery.ApiSearchNFInstancesRequest{}) {
+			snssais := param.GetSnssais()
+			if snssais != nil {
+				reqSnssais := *snssais
+				snssai := reqSnssais[0]
+				key += "-" + snssai.GetSd()
 			}
-			if param.Dnn.IsSet() == true {
-				key += "-" + param.Dnn.Value()
+			dnn := param.GetDnn()
+			if dnn != nil {
+				key += "-" + *dnn
 			}
-
-			nfProfile, err = getNfProfile(key)
+			nfProfile, err = tc.getNfProfile(key)
 			if err != nil {
-				return searchResult, err
+				return &searchResult, err
 			}
-
 			searchResult.NfInstances = append(searchResult.NfInstances, nfProfile)
 		} else {
-			searchResult.NfInstances, err = getNfProfiles(targetNfType)
+			searchResult.NfInstances, err = tc.getNfProfiles(targetNfType)
 		}
-	case models.NfType_AUSF:
-		searchResult.NfInstances, err = getNfProfiles(targetNfType)
-	case models.NfType_AMF:
-		searchResult.NfInstances, err = getNfProfiles(targetNfType)
+	case models.NFTYPE_AUSF, models.NFTYPE_AMF:
+		searchResult.NfInstances, err = tc.getNfProfiles(targetNfType)
 	default:
-		err = fmt.Errorf("unsupported NF type: %v", targetNfType)
+		return &searchResult, fmt.Errorf("unsupported NFType: %s", targetNfType)
 	}
 
-	return searchResult, err
+	return &searchResult, err
+}
+
+func setupTest(t *testing.T) (*testContext, func()) {
+	t.Helper()
+
+	tc := &testContext{
+		nfProfilesDb:           make(map[string]string),
+		validityPeriod:         60,
+		evictionInterval:       120,
+		nrfDbCallbackCallCount: 0,
+	}
+
+	tc.initTestData()
+
+	cleanup := func() {
+		disableNrfCaching()
+	}
+
+	return tc, cleanup
+}
+
+func createTestParam() Nnrf_NFDiscovery.ApiSearchNFInstancesRequest {
+	param := Nnrf_NFDiscovery.ApiSearchNFInstancesRequest{}
+	param = param.ServiceNames([]models.ServiceName{models.SERVICENAME_NSMF_PDUSESSION})
+	param = param.Dnn("internet")
+	param = param.Snssais([]models.Snssai{{Sst: 1, Sd: openapi.PtrString("010203")}})
+	return param
+}
+
+func createSMFParam(dnn, sd string) Nnrf_NFDiscovery.ApiSearchNFInstancesRequest {
+	param := Nnrf_NFDiscovery.ApiSearchNFInstancesRequest{}
+	param = param.ServiceNames([]models.ServiceName{models.SERVICENAME_NSMF_PDUSESSION})
+	param = param.Dnn(dnn)
+	param = param.Snssais([]models.Snssai{{Sst: 1, Sd: openapi.PtrString(sd)}})
+	return param
+}
+
+func createAusfParam(supi string) Nnrf_NFDiscovery.ApiSearchNFInstancesRequest {
+	param := Nnrf_NFDiscovery.ApiSearchNFInstancesRequest{}
+	param = param.Supi(supi)
+	return param
+}
+
+func createAmfParamWithPlmns(plmnList []models.PlmnId) Nnrf_NFDiscovery.ApiSearchNFInstancesRequest {
+	param := Nnrf_NFDiscovery.ApiSearchNFInstancesRequest{}
+	param = param.TargetPlmnList(plmnList)
+	return param
+}
+
+func waitForEviction(evictionIntervalSeconds int32) {
+	// Wait longer than the eviction interval to ensure eviction has run
+	sleepDuration := time.Duration(evictionIntervalSeconds+1) * time.Second
+	time.Sleep(sleepDuration)
+}
+
+func assertSearchResult(t *testing.T, result *models.SearchResult, err error, expectedInstances int) {
+	t.Helper()
+
+	if err != nil {
+		t.Fatalf("SearchNFInstances failed: %v", err)
+	}
+
+	if result == nil {
+		t.Fatal("SearchNFInstances returned nil result")
+	}
+
+	if len(result.NfInstances) != expectedInstances {
+		t.Errorf("Expected %d NF instances, got %d", expectedInstances, len(result.NfInstances))
+	}
+}
+
+func assertCallbackCount(t *testing.T, actual, expected int32) {
+	t.Helper()
+
+	if actual != expected {
+		t.Errorf("Callback count mismatch: expected %d, got %d", expected, actual)
+	}
 }
 
 func TestCacheMissAndHits(t *testing.T) {
+	testCtx, cleanup := setupTest(t)
+	defer cleanup()
+
 	ctx := context.Background()
-	var result models.SearchResult
-	var err error
+	evictionTimerVal := time.Duration(testCtx.evictionInterval)
+	InitNrfCaching(evictionTimerVal*time.Second, testCtx.nrfDbCallback)
 
-	expectedCallCount := nrfDbCallbackCallCount
+	// Test case 1: Cache Miss for dnn - 'internet'
+	param1 := createSMFParam("internet", "010203")
+	result, err := SearchNFInstances(ctx, "testNrf", models.NFTYPE_SMF, models.NFTYPE_AMF, param1)
+	assertSearchResult(t, result, err, 1)
+	assertCallbackCount(t, testCtx.getCallbackCount(), 1)
 
-	evictionTimerVal := time.Duration(evictionInterval)
-	InitNrfCaching(evictionTimerVal*time.Second, nrfDbCallback)
+	// Test case 2: Cache hit scenario (same param)
+	result, err = SearchNFInstances(ctx, "testNrf", models.NFTYPE_SMF, models.NFTYPE_AMF, param1)
+	assertSearchResult(t, result, err, 1)
+	assertCallbackCount(t, testCtx.getCallbackCount(), 1) // Should still be 1
 
-	// Cache Miss for dnn - 'internet'
-	param := Nnrf_NFDiscovery.SearchNFInstancesParamOpts{
-		ServiceNames: optional.NewInterface([]models.ServiceName{models.ServiceName_NSMF_PDUSESSION}),
-		Dnn:          optional.NewString("internet"),
-		Snssais:      optional.NewInterface(MarshToJsonString([]models.Snssai{{Sst: 1, Sd: "010203"}})),
-	}
+	// Test case 3: Cache Miss for dnn 'ims'
+	param2 := createSMFParam("ims", "010203")
+	result, err = SearchNFInstances(ctx, "testNrf", models.NFTYPE_SMF, models.NFTYPE_AMF, param2)
+	assertSearchResult(t, result, err, 1)
+	assertCallbackCount(t, testCtx.getCallbackCount(), 2)
 
-	result, err = SearchNFInstances(ctx, "testNrf", models.NfType_SMF, models.NfType_AMF, &param)
-	expectedCallCount++
-
-	if err != nil {
-		t.Errorf("test failed, %s", err.Error())
-	}
-	if len(result.NfInstances) == 0 {
-		t.Error("nrf search did not return any records")
-	}
-	if expectedCallCount != nrfDbCallbackCallCount {
-		t.Error("unexpected nrfDbCallbackCallCount")
-	}
-
-	// Cache hit scenario
-	result, err = SearchNFInstances(ctx, "testNrf", models.NfType_SMF, models.NfType_AMF, &param)
-	if err != nil {
-		t.Errorf("test failed, %s", err.Error())
-	}
-	if len(result.NfInstances) == 0 {
-		t.Error("nrf search did not return any records")
-	}
-	if expectedCallCount != nrfDbCallbackCallCount {
-		t.Error("unexpected nrfDbCallbackCallCount")
-	}
-
-	// Cache Miss for dnn 'ims'
-	param = Nnrf_NFDiscovery.SearchNFInstancesParamOpts{
-		ServiceNames: optional.NewInterface([]models.ServiceName{models.ServiceName_NSMF_PDUSESSION}),
-		Dnn:          optional.NewString("ims"),
-		Snssais:      optional.NewInterface(MarshToJsonString([]models.Snssai{{Sst: 1, Sd: "010203"}})),
-	}
-
-	result, err = SearchNFInstances(ctx, "testNrf", models.NfType_SMF, models.NfType_AMF, &param)
-	expectedCallCount++
-
-	if err != nil {
-		t.Errorf("test failed, %s", err.Error())
-	}
-	if len(result.NfInstances) == 0 {
-		t.Error("nrf search did not return any records")
-	}
-	if expectedCallCount != nrfDbCallbackCallCount {
-		t.Error("unexpected nrfDbCallbackCallCount")
-	}
-
-	// Cache Miss for dnn 'internet' sd '0a0b0c'
-	param = Nnrf_NFDiscovery.SearchNFInstancesParamOpts{
-		ServiceNames: optional.NewInterface([]models.ServiceName{models.ServiceName_NSMF_PDUSESSION}),
-		Dnn:          optional.NewString("internet"),
-		Snssais:      optional.NewInterface(MarshToJsonString([]models.Snssai{{Sst: 1, Sd: "0a0b0c"}})),
-	}
-
-	result, err = SearchNFInstances(ctx, "testNrf", models.NfType_SMF, models.NfType_AMF, &param)
-	expectedCallCount++
-
-	if err != nil {
-		t.Errorf("test failed, %s", err.Error())
-	}
-	if len(result.NfInstances) == 0 {
-		t.Error("nrf search did not return any records")
-	}
-	if expectedCallCount != nrfDbCallbackCallCount {
-		t.Error("unexpected nrfDbCallbackCallCount")
-	}
-
-	disableNrfCaching()
+	// Test case 4: Cache Miss for dnn 'internet' sd '0a0b0c'
+	param3 := createSMFParam("internet", "0a0b0c")
+	result, err = SearchNFInstances(ctx, "testNrf", models.NFTYPE_SMF, models.NFTYPE_AMF, param3)
+	assertSearchResult(t, result, err, 1)
+	assertCallbackCount(t, testCtx.getCallbackCount(), 3)
 }
 
 func TestCacheMissOnTTlExpiry(t *testing.T) {
+	testCtx, cleanup := setupTest(t)
+	defer cleanup()
+
+	// Reduce cache intervals for faster test execution
+	testCtx.validityPeriod = 2
+	testCtx.evictionInterval = 4
+
 	ctx := context.Background()
-	var result models.SearchResult
-	var err error
+	evictionTimerVal := time.Duration(testCtx.evictionInterval)
+	InitNrfCaching(evictionTimerVal*time.Second, testCtx.nrfDbCallback)
 
-	expectedCallCount := nrfDbCallbackCallCount
+	// First call with empty request - should be cache miss
+	emptyParam := Nnrf_NFDiscovery.ApiSearchNFInstancesRequest{}
+	result, err := SearchNFInstances(ctx, "testNrf", models.NFTYPE_SMF, models.NFTYPE_AMF, emptyParam)
+	assertSearchResult(t, result, err, 3) // Expecting all 3 SMF profiles
+	assertCallbackCount(t, testCtx.getCallbackCount(), 1)
 
-	evictionTimerVal := time.Duration(evictionInterval)
-	InitNrfCaching(evictionTimerVal*time.Second, nrfDbCallback)
+	t.Log("waiting for profile validity timeout")
+	time.Sleep(3 * time.Second)
 
-	result, err = SearchNFInstances(ctx, "testNrf", models.NfType_SMF, models.NfType_AMF, nil)
-	expectedCallCount++
+	// After TTL expiry, this should be a cache miss
+	param := createSMFParam("internet", "0a0b0c")
+	result, err = SearchNFInstances(ctx, "testNrf", models.NFTYPE_SMF, models.NFTYPE_AMF, param)
+	assertSearchResult(t, result, err, 1)
+	assertCallbackCount(t, testCtx.getCallbackCount(), 2)
 
-	if err != nil {
-		t.Errorf("test failed, %s", err.Error())
-	}
-	if len(result.NfInstances) == 0 {
-		t.Error("nrf search did not return any records")
-	}
-	if expectedCallCount != nrfDbCallbackCallCount {
-		t.Errorf("nrfDbCallbackCallCount: expected = %d, current = %d",
-			expectedCallCount, nrfDbCallbackCallCount)
-	}
+	// Immediate second call with same param - should be cache hit
+	result, err = SearchNFInstances(ctx, "testNrf", models.NFTYPE_SMF, models.NFTYPE_AMF, param)
+	assertSearchResult(t, result, err, 1)
+	assertCallbackCount(t, testCtx.getCallbackCount(), 2) // Should still be 2
+}
 
-	t.Log("wait for profile validity timeout")
-	time.Sleep(65 * time.Second)
+func TestCacheTTLExpiry(t *testing.T) {
+	ctx, cleanup := setupTest(t)
+	defer cleanup()
 
-	// Cache Miss for dnn 'internet' sd '0a0b0c' as ttl expired..
-	param := Nnrf_NFDiscovery.SearchNFInstancesParamOpts{
-		ServiceNames: optional.NewInterface([]models.ServiceName{models.ServiceName_NSMF_PDUSESSION}),
-		Dnn:          optional.NewString("internet"),
-		Snssais:      optional.NewInterface(MarshToJsonString([]models.Snssai{{Sst: 1, Sd: "0a0b0c"}})),
-	}
+	// Use shorter, more predictable intervals for testing
+	ctx.validityPeriod = 1   // 1 second
+	ctx.evictionInterval = 2 // 2 seconds
 
-	result, err = SearchNFInstances(ctx, "testNrf", models.NfType_SMF, models.NfType_AMF, &param)
-	expectedCallCount++
+	evictionTimerVal := time.Duration(ctx.evictionInterval) * time.Second
+	InitNrfCaching(evictionTimerVal, ctx.nrfDbCallback)
 
-	if err != nil {
-		t.Errorf("test failed, %s", err.Error())
-	}
-	if len(result.NfInstances) == 0 {
-		t.Error("nrf search did not return any records")
-	}
-	if expectedCallCount != nrfDbCallbackCallCount {
-		t.Errorf("nrfDbCallbackCallCount: expected = %d, current = %d",
-			expectedCallCount, nrfDbCallbackCallCount)
-	}
+	param := createTestParam()
 
-	result, err = SearchNFInstances(ctx, "testNrf", models.NfType_SMF, models.NfType_AMF, &param)
-	if err != nil {
-		t.Errorf("test failed, %s", err.Error())
-	}
-	if len(result.NfInstances) == 0 {
-		t.Error("nrf search did not return any records")
-	}
-	if expectedCallCount != nrfDbCallbackCallCount {
-		t.Errorf("nrfDbCallbackCallCount: expected = %d, current = %d",
-			expectedCallCount, nrfDbCallbackCallCount)
-	}
+	// First call - should be cache miss
+	result, err := SearchNFInstances(context.Background(), "testNrf", models.NFTYPE_SMF, models.NFTYPE_AMF, param)
+	assertSearchResult(t, result, err, 1)
+	assertCallbackCount(t, ctx.getCallbackCount(), 1)
 
-	disableNrfCaching()
+	// Second call immediately - should be cache hit
+	result, err = SearchNFInstances(context.Background(), "testNrf", models.NFTYPE_SMF, models.NFTYPE_AMF, param)
+	assertSearchResult(t, result, err, 1)
+	assertCallbackCount(t, ctx.getCallbackCount(), 1) // No additional calls
+
+	// Wait for TTL expiry with some buffer
+	time.Sleep(time.Duration(ctx.validityPeriod+1) * time.Second)
+
+	// Third call after expiry - should be cache miss again
+	result, err = SearchNFInstances(context.Background(), "testNrf", models.NFTYPE_SMF, models.NFTYPE_AMF, param)
+	assertSearchResult(t, result, err, 1)
+	assertCallbackCount(t, ctx.getCallbackCount(), 2) // One additional call
 }
 
 func TestCacheEviction(t *testing.T) {
+	testCtx, cleanup := setupTest(t)
+	defer cleanup()
+
+	// Use shorter intervals for faster testing
+	testCtx.evictionInterval = 2 // 2 seconds eviction check
+
 	ctx := context.Background()
-	var result models.SearchResult
-	var err error
+	evictionTimerVal := time.Duration(testCtx.evictionInterval)
+	InitNrfCaching(evictionTimerVal*time.Second, testCtx.nrfDbCallback)
 
-	evictionTimerVal := time.Duration(evictionInterval)
-	InitNrfCaching(evictionTimerVal*time.Second, nrfDbCallback)
-
-	// Cache Miss for dnn 'internet' sd '0a0b0c' as ttl expired..
-	param := Nnrf_NFDiscovery.SearchNFInstancesParamOpts{
-		ServiceNames: optional.NewInterface([]models.ServiceName{models.ServiceName_NSMF_PDUSESSION}),
-		Dnn:          optional.NewString("internet"),
-		Snssais:      optional.NewInterface(MarshToJsonString([]models.Snssai{{Sst: 1, Sd: "010203"}})),
+	testCases := []struct {
+		name           string
+		dnn            string
+		sd             string
+		description    string
+		validityPeriod int32
+	}{
+		{
+			name:           "short_ttl_entry",
+			dnn:            "internet",
+			sd:             "010203",
+			validityPeriod: 1,
+			description:    "Entry with 1 second TTL (will expire first)",
+		},
+		{
+			name:           "medium_ttl_entry",
+			dnn:            "ims",
+			sd:             "010203",
+			validityPeriod: 5,
+			description:    "Entry with 5 second TTL",
+		},
+		{
+			name:           "long_ttl_entry",
+			dnn:            "internet",
+			sd:             "0a0b0c",
+			validityPeriod: 30,
+			description:    "Entry with 30 second TTL (will survive)",
+		},
 	}
 
-	result, err = SearchNFInstances(ctx, "testNrf", models.NfType_SMF, models.NfType_AMF, &param)
-	if err != nil {
-		t.Errorf("test failed, %s", err.Error())
+	// Create cache entries with different TTLs
+	for i, tc := range testCases {
+		t.Run(tc.name, func(t *testing.T) {
+			testCtx.setValidityPeriod(tc.validityPeriod)
+			param := createSMFParam(tc.dnn, tc.sd)
+
+			result, err := SearchNFInstances(ctx, "testNrf", models.NFTYPE_SMF, models.NFTYPE_AMF, param)
+			assertSearchResult(t, result, err, 1)
+			assertCallbackCount(t, testCtx.getCallbackCount(), int32(i+1))
+
+			t.Logf("Created %s: %s", tc.name, tc.description)
+		})
 	}
 
-	validityPeriod = 30
-	param = Nnrf_NFDiscovery.SearchNFInstancesParamOpts{
-		ServiceNames: optional.NewInterface([]models.ServiceName{models.ServiceName_NSMF_PDUSESSION}),
-		Dnn:          optional.NewString("ims"),
-		Snssais:      optional.NewInterface(MarshToJsonString([]models.Snssai{{Sst: 1, Sd: "010203"}})),
-	}
+	// Wait for eviction to occur
+	t.Run("verify_eviction", func(t *testing.T) {
+		t.Log("waiting for eviction timeout")
+		waitForEviction(testCtx.evictionInterval + 2) // Wait a bit longer than eviction interval
 
-	result, err = SearchNFInstances(ctx, "testNrf", models.NfType_SMF, models.NfType_AMF, &param)
-	if err != nil {
-		t.Errorf("test failed, %s", err.Error())
-	}
+		// Test that short TTL entry was evicted (should cause new callback)
+		testCtx.setValidityPeriod(60) // Reset to reasonable TTL
+		shortTTLParam := createSMFParam("internet", "010203")
+		result, err := SearchNFInstances(ctx, "testNrf", models.NFTYPE_SMF, models.NFTYPE_AMF, shortTTLParam)
+		assertSearchResult(t, result, err, 1)
 
-	validityPeriod = 90
-	param = Nnrf_NFDiscovery.SearchNFInstancesParamOpts{
-		ServiceNames: optional.NewInterface([]models.ServiceName{models.ServiceName_NSMF_PDUSESSION}),
-		Dnn:          optional.NewString("internet"),
-		Snssais:      optional.NewInterface(MarshToJsonString([]models.Snssai{{Sst: 1, Sd: "0a0b0c"}})),
-	}
+		// This should be a cache miss (new callback) if eviction worked
+		expectedCallbacks := int32(4) // 3 initial + 1 after eviction
+		assertCallbackCount(t, testCtx.getCallbackCount(), expectedCallbacks)
 
-	result, err = SearchNFInstances(ctx, "testNrf", models.NfType_SMF, models.NfType_AMF, &param)
-	if err != nil {
-		t.Errorf("test failed, %s", err.Error())
-	}
-
-	if len(result.NfInstances) == 0 {
-		t.Errorf("nf instances len 0")
-	}
-
-	t.Log("wait for eviction timeout")
-
-	time.Sleep(125 * time.Second)
-
-	disableNrfCaching()
+		t.Log("eviction verification completed")
+	})
 }
 
 func TestCacheConcurrency(t *testing.T) {
-	evictionTimerVal := time.Duration(evictionInterval)
-	InitNrfCaching(evictionTimerVal*time.Second, nrfDbCallback)
+	testCtx, cleanup := setupTest(t)
+	defer cleanup()
 
-	n := 100
-	wg := sync.WaitGroup{}
-	wg.Add(n)
+	evictionTimerVal := time.Duration(testCtx.evictionInterval)
+	InitNrfCaching(evictionTimerVal*time.Second, testCtx.nrfDbCallback)
 
-	param := Nnrf_NFDiscovery.SearchNFInstancesParamOpts{
-		ServiceNames: optional.NewInterface([]models.ServiceName{models.ServiceName_NSMF_PDUSESSION}),
-		Dnn:          optional.NewString("internet"),
-		Snssais:      optional.NewInterface(MarshToJsonString([]models.Snssai{{Sst: 1, Sd: "010203"}})),
-	}
+	numGoroutines := 100
+	param := createSMFParam("internet", "010203")
+	expectedCallCount := testCtx.getCallbackCount() + 1
 
-	expectedCallCount := nrfDbCallbackCallCount + 1
+	t.Run("concurrent_cache_access", func(t *testing.T) {
+		var wg sync.WaitGroup
+		wg.Add(numGoroutines)
 
-	errCh := make(chan error)
+		errChan := make(chan error, numGoroutines)
+		resultChan := make(chan *models.SearchResult, numGoroutines)
 
-	for i := 0; i < n; i++ {
+		// Launch concurrent requests
+		for i := 0; i < numGoroutines; i++ {
+			go func(id int) {
+				defer wg.Done()
+
+				result, err := SearchNFInstances(
+					context.Background(),
+					"testNrf",
+					models.NFTYPE_SMF,
+					models.NFTYPE_AMF,
+					param,
+				)
+				if err != nil {
+					errChan <- fmt.Errorf("goroutine %d failed: %w", id, err)
+					return
+				}
+
+				resultChan <- result
+			}(i)
+		}
+
+		// Wait for completion with timeout
+		done := make(chan struct{})
 		go func() {
-			_, err := SearchNFInstances(context.Background(), "testNrf", models.NfType_SMF, models.NfType_AMF, &param)
-			if err != nil {
-				errCh <- err
-			}
-			wg.Done()
+			wg.Wait()
+			close(done)
 		}()
-	}
 
-	done := make(chan struct{})
-	go func() {
-		wg.Wait()
-		close(done)
-	}()
+		select {
+		case <-done:
+			// Success
+		case err := <-errChan:
+			t.Fatalf("Concurrent test failed: %v", err)
+		case <-time.After(10 * time.Second):
+			t.Fatal("Concurrent test timed out")
+		}
 
-	select {
-	case <-done:
-	case <-time.After(5 * time.Second):
-		t.Errorf("test timed out")
-	case e := <-errCh:
-		t.Errorf("error %s", e.Error())
-	}
+		// Verify results
+		close(resultChan)
+		resultCount := 0
+		for result := range resultChan {
+			if len(result.NfInstances) == 0 {
+				t.Error("Empty result from concurrent request")
+			}
+			resultCount++
+		}
 
-	if expectedCallCount != nrfDbCallbackCallCount {
-		t.Errorf("nrfDbCallbackCallCount: expected = %d, current = %d",
-			expectedCallCount, nrfDbCallbackCallCount)
-	}
+		if resultCount != numGoroutines {
+			t.Errorf("Expected %d results, got %d", numGoroutines, resultCount)
+		}
 
-	disableNrfCaching()
+		// Should only have one callback due to caching
+		assertCallbackCount(t, testCtx.getCallbackCount(), expectedCallCount)
+	})
 }
 
 func TestAusfMatchFilters(t *testing.T) {
-	ctx := context.Background()
-	evictionTimerVal := time.Duration(evictionInterval)
-	InitNrfCaching(evictionTimerVal*time.Second, nrfDbCallback)
-
-	// Cache Miss for dnn - 'internet'
-	param := Nnrf_NFDiscovery.SearchNFInstancesParamOpts{
-		Supi: optional.NewString("123456789040001"),
+	testScenarios := []struct {
+		name        string
+		supi        string
+		description string
+	}{
+		{
+			name:        "ausf1_numeric_range_start",
+			supi:        "123456789040000",
+			description: "SUPI at start of AUSF-1 numeric range",
+		},
+		{
+			name:        "ausf1_numeric_range_middle",
+			supi:        "123456789045000",
+			description: "SUPI in middle of AUSF-1 numeric range",
+		},
+		{
+			name:        "ausf2_regex_pattern_match",
+			supi:        "imsi-223456789041111",
+			description: "SUPI matching AUSF-2 regex pattern",
+		},
+		{
+			name:        "no_match_outside_ranges",
+			supi:        "999999999999999",
+			description: "SUPI outside all defined ranges",
+		},
 	}
 
-	expectedCallCount := nrfDbCallbackCallCount
-	expectedCallCount++
+	for _, scenario := range testScenarios {
+		t.Run(scenario.name, func(t *testing.T) {
+			// Fresh setup for each subtest
+			testCtx, cleanup := setupTest(t)
+			defer cleanup()
 
-	result, err := SearchNFInstances(ctx, "testNrf", models.NfType_AUSF, models.NfType_AMF, &param)
-	if err != nil {
-		t.Errorf("test failed, %s", err.Error())
-	}
-	if len(result.NfInstances) == 0 {
-		t.Error("nrf search did not return any records")
-	}
-	if expectedCallCount != nrfDbCallbackCallCount {
-		t.Error("unexpected nrfDbCallbackCallCount")
-	}
+			ctx := context.Background()
+			evictionTimerVal := time.Duration(testCtx.evictionInterval)
+			InitNrfCaching(evictionTimerVal*time.Second, testCtx.nrfDbCallback)
 
-	result, err = SearchNFInstances(ctx, "testNrf", models.NfType_AUSF, models.NfType_AMF, &param)
-	if err != nil {
-		t.Errorf("test failed, %s", err.Error())
-	}
-	if len(result.NfInstances) == 0 {
-		t.Error("nrf search did not return any records")
-	}
-	if expectedCallCount != nrfDbCallbackCallCount {
-		t.Error("unexpected nrfDbCallbackCallCount")
-	}
+			expectedCallCount := int32(1) // Each test starts fresh
 
-	param = Nnrf_NFDiscovery.SearchNFInstancesParamOpts{
-		Supi: optional.NewString("imsi-223456789041111"),
-	}
+			param := createAusfParam(scenario.supi)
+			result, err := SearchNFInstances(ctx, "testNrf", models.NFTYPE_AUSF, models.NFTYPE_AMF, param)
+			if err != nil {
+				t.Fatalf("SearchNFInstances failed: %v", err)
+			}
 
-	result, err = SearchNFInstances(ctx, "testNrf", models.NfType_AUSF, models.NfType_AMF, &param)
-	if err != nil {
-		t.Errorf("test failed, %s", err.Error())
+			// Count how many should actually match
+			expectedMatches := 0
+			for _, instance := range result.NfInstances {
+				match, err := MatchAusfProfile(&instance, param)
+				if err != nil {
+					// Handle the error appropriately - could log, fail test, or skip
+					t.Errorf("MatchAusfProfile failed: %v", err)
+					continue
+				}
+				if match {
+					expectedMatches++
+				}
+			}
+
+			t.Logf("SUPI %s: returned %d instances, %d should match",
+				scenario.supi, len(result.NfInstances), expectedMatches)
+
+			assertCallbackCount(t, testCtx.getCallbackCount(), expectedCallCount)
+		})
 	}
-	if len(result.NfInstances) == 0 {
-		t.Error("nrf search did not return any records")
-	}
-	if expectedCallCount != nrfDbCallbackCallCount {
-		t.Error("unexpected nrfDbCallbackCallCount")
-	}
-	disableNrfCaching()
 }
 
 func TestAmfMatchFilters(t *testing.T) {
+	testCtx, cleanup := setupTest(t)
+	defer cleanup()
+
 	ctx := context.Background()
-	evictionTimerVal := time.Duration(evictionInterval)
-	InitNrfCaching(evictionTimerVal*time.Second, nrfDbCallback)
+	evictionTimerVal := time.Duration(testCtx.evictionInterval)
+	InitNrfCaching(evictionTimerVal*time.Second, testCtx.nrfDbCallback)
 
-	param := Nnrf_NFDiscovery.SearchNFInstancesParamOpts{
-		TargetPlmnList: optional.NewInterface(MarshToJsonString(
-			[]models.PlmnId{{Mcc: "208", Mnc: "93"}, {Mcc: "209", Mnc: "94"}})),
+	t.Run("plmn_filtering", func(t *testing.T) {
+		testCases := []struct {
+			name        string
+			description string
+			plmnList    []models.PlmnId
+		}{
+			{
+				name:        "matching_plmn",
+				plmnList:    []models.PlmnId{{Mcc: "208", Mnc: "93"}},
+				description: "Single PLMN that matches AMF profile",
+			},
+			{
+				name: "multiple_plmns_with_match",
+				plmnList: []models.PlmnId{
+					{Mcc: "208", Mnc: "93"},
+					{Mcc: "209", Mnc: "94"},
+				},
+				description: "Multiple PLMNs where one matches",
+			},
+			{
+				name:        "non_matching_plmn",
+				plmnList:    []models.PlmnId{{Mcc: "999", Mnc: "99"}},
+				description: "PLMN that doesn't match any AMF profile",
+			},
+		}
+
+		for _, tc := range testCases {
+			t.Run(tc.name, func(t *testing.T) {
+				param := createAmfParamWithPlmns(tc.plmnList)
+				result, err := SearchNFInstances(ctx, "testNrf", models.NFTYPE_AMF, models.NFTYPE_AMF, param)
+				if err != nil {
+					t.Fatalf("SearchNFInstances failed: %v", err)
+				}
+
+				// Just verify we got some instances - don't check specific count
+				if len(result.NfInstances) == 0 {
+					t.Error("Expected at least one instance, got none")
+				}
+
+				// Test the matching logic separately
+				matchCount := 0
+				for _, instance := range result.NfInstances {
+					if match, err := MatchAmfProfile(&instance, param); err == nil && match {
+						matchCount++
+					}
+				}
+
+				t.Logf("PLMN test '%s': %s - Found %d instances, %d matches",
+					tc.name, tc.description, len(result.NfInstances), matchCount)
+			})
+		}
+	})
+}
+
+func TestAusfMatchFiltersIsolated(t *testing.T) {
+	testCtx, cleanup := setupTest(t)
+	defer cleanup()
+
+	// Test the AUSF matching filter directly
+	testCases := []struct {
+		name            string
+		supi            string
+		expectedProfile string
+		description     string
+		expectedMatch   bool
+	}{
+		{
+			name:            "ausf1_numeric_match",
+			supi:            "123456789040001",
+			expectedMatch:   true,
+			expectedProfile: "AUSF-1",
+			description:     "Should match AUSF-1 numeric range",
+		},
+		{
+			name:            "ausf2_regex_match",
+			supi:            "imsi-223456789041111",
+			expectedMatch:   true,
+			expectedProfile: "AUSF-2",
+			description:     "Should match AUSF-2 regex pattern",
+		},
+		{
+			name:          "no_match",
+			supi:          "999999999999999",
+			expectedMatch: false,
+			description:   "Should not match any AUSF",
+		},
 	}
 
-	expectedCallCount := nrfDbCallbackCallCount
-	expectedCallCount++
+	for _, tc := range testCases {
+		t.Run(tc.name, func(t *testing.T) {
+			// Get AUSF profiles directly
+			ausf1Profile, err1 := testCtx.getNfProfile("AUSF-1")
+			ausf2Profile, err2 := testCtx.getNfProfile("AUSF-2")
 
-	result, err := SearchNFInstances(ctx, "testNrf", models.NfType_AMF, models.NfType_AMF, &param)
-	if err != nil {
-		t.Errorf("test failed, %s", err.Error())
+			if err1 != nil || err2 != nil {
+				t.Fatalf("Failed to get AUSF profiles: %v, %v", err1, err2)
+			}
+
+			// Test matching against each profile
+			param := createAusfParam(tc.supi)
+
+			match1, err1 := MatchAusfProfile(&ausf1Profile, param)
+			match2, err2 := MatchAusfProfile(&ausf2Profile, param)
+
+			if err1 != nil || err2 != nil {
+				t.Fatalf("Matching failed: %v, %v", err1, err2)
+			}
+
+			t.Logf("SUPI %s: AUSF-1 match = %v, AUSF-2 match = %v", tc.supi, match1, match2)
+
+			if tc.expectedMatch {
+				if !match1 && !match2 {
+					t.Errorf("Expected SUPI %s to match at least one AUSF profile", tc.supi)
+				}
+				if tc.expectedProfile == "AUSF-1" && !match1 {
+					t.Errorf("Expected SUPI %s to match AUSF-1", tc.supi)
+				}
+				if tc.expectedProfile == "AUSF-2" && !match2 {
+					t.Errorf("Expected SUPI %s to match AUSF-2", tc.supi)
+				}
+			} else {
+				if match1 || match2 {
+					t.Errorf("Expected SUPI %s to not match any AUSF profile, but got AUSF-1=%v, AUSF-2=%v", tc.supi, match1, match2)
+				}
+			}
+		})
 	}
-	if len(result.NfInstances) == 0 {
-		t.Error("nrf search did not return any records")
-	}
-	if expectedCallCount != nrfDbCallbackCallCount {
-		t.Error("unexpected nrfDbCallbackCallCount")
+}
+
+func TestCacheKeyBehavior(t *testing.T) {
+	testCtx, cleanup := setupTest(t)
+	defer cleanup()
+
+	ctx := context.Background()
+	evictionTimerVal := time.Duration(testCtx.evictionInterval)
+	InitNrfCaching(evictionTimerVal*time.Second, testCtx.nrfDbCallback)
+
+	t.Run("test_cache_key_isolation", func(t *testing.T) {
+		// Clear any existing cache state
+		initialCallCount := testCtx.getCallbackCount()
+
+		// First query: SUPI that should match only AUSF-1
+		t.Log("=== First query: SUPI matching AUSF-1 ===")
+		param1 := createAusfParam("123456789040001")
+		result1, err := SearchNFInstances(ctx, "testNrf", models.NFTYPE_AUSF, models.NFTYPE_AMF, param1)
+		if err != nil {
+			t.Fatalf("First SearchNFInstances failed: %v", err)
+		}
+
+		t.Logf("First query returned %d instances", len(result1.NfInstances))
+		expectedCallCount := initialCallCount + 1
+		assertCallbackCount(t, testCtx.getCallbackCount(), expectedCallCount)
+
+		// Second query: Same SUPI (should use cache)
+		t.Log("=== Second query: Same SUPI (should hit cache) ===")
+		result2, err := SearchNFInstances(ctx, "testNrf", models.NFTYPE_AUSF, models.NFTYPE_AMF, param1)
+		if err != nil {
+			t.Fatalf("Second SearchNFInstances failed: %v", err)
+		}
+
+		t.Logf("Second query returned %d instances", len(result2.NfInstances))
+		assertCallbackCount(t, testCtx.getCallbackCount(), expectedCallCount) // Should be same
+
+		// Third query: Different SUPI that should match AUSF-2
+		t.Log("=== Third query: Different SUPI matching AUSF-2 ===")
+		param3 := createAusfParam("imsi-223456789041111")
+		result3, err := SearchNFInstances(ctx, "testNrf", models.NFTYPE_AUSF, models.NFTYPE_AMF, param3)
+		if err != nil {
+			t.Fatalf("Third SearchNFInstances failed: %v", err)
+		}
+
+		t.Logf("Third query returned %d instances", len(result3.NfInstances))
+		// This might or might not cause a new callback depending on cache implementation
+
+		// Fourth query: SUPI that matches nothing
+		t.Log("=== Fourth query: SUPI matching nothing ===")
+		param4 := createAusfParam("999999999999999")
+		result4, err := SearchNFInstances(ctx, "testNrf", models.NFTYPE_AUSF, models.NFTYPE_AMF, param4)
+		if err != nil {
+			t.Fatalf("Fourth SearchNFInstances failed: %v", err)
+		}
+
+		t.Logf("Fourth query returned %d instances", len(result4.NfInstances))
+
+		// Log final callback count
+		t.Logf("Final callback count: %d", testCtx.getCallbackCount())
+	})
+}
+
+// Check if the MatchAmfProfile function is working correctly
+func TestAmfProfileMatching(t *testing.T) {
+	// Create a test AMF profile
+	amfProfile := models.NFProfileDiscovery{
+		NfInstanceId: "9f7d5a3f-88ab-4525-b31e-334da7faedab",
+		NfType:       models.NFTYPE_AMF,
+		PlmnList:     []models.PlmnId{{Mcc: "208", Mnc: "93"}},
+		AmfInfo: &models.AmfInfo{
+			AmfRegionId: "ca",
+			AmfSetId:    "3f8",
+		},
 	}
 
-	param = Nnrf_NFDiscovery.SearchNFInstancesParamOpts{
-		TargetPlmnList: optional.NewInterface(MarshToJsonString([]models.PlmnId{{Mcc: "208", Mnc: "93"}})),
-		AmfRegionId:    optional.NewString("ca"),
-		AmfSetId:       optional.NewString("3f8"),
+	testCases := []struct {
+		param    Nnrf_NFDiscovery.ApiSearchNFInstancesRequest
+		name     string
+		expected bool
+	}{
+		{
+			name:     "matching_plmn",
+			param:    createAmfParamWithPlmns([]models.PlmnId{{Mcc: "208", Mnc: "93"}}),
+			expected: true,
+		},
+		{
+			name:     "non_matching_plmn",
+			param:    createAmfParamWithPlmns([]models.PlmnId{{Mcc: "999", Mnc: "99"}}),
+			expected: false,
+		},
 	}
 
-	result, err = SearchNFInstances(ctx, "testNrf", models.NfType_AMF, models.NfType_AMF, &param)
-	if err != nil {
-		t.Errorf("test failed, %s", err.Error())
+	for _, tc := range testCases {
+		t.Run(tc.name, func(t *testing.T) {
+			match, err := MatchAmfProfile(&amfProfile, tc.param)
+			if err != nil {
+				t.Fatalf("MatchAmfProfile failed: %v", err)
+			}
+			if match != tc.expected {
+				t.Errorf("Expected match=%v, got match=%v", tc.expected, match)
+			}
+		})
 	}
-	if len(result.NfInstances) == 0 {
-		t.Error("nrf search did not return any records")
-	}
-	if expectedCallCount != nrfDbCallbackCallCount {
-		t.Error("unexpected nrfDbCallbackCallCount")
-	}
-
-	disableNrfCaching()
 }

@@ -20,6 +20,7 @@ linters:
     - goconst
     - godox
     - gomodguard
+    - govet
     - misspell
     - nakedret
     - noctx
@@ -27,7 +28,6 @@ linters:
     - unconvert
     - whitespace
   disable:
-    - govet
     - staticcheck
   settings:
     errcheck:
@@ -98,10 +98,6 @@ linters:
       - legacy
       - std-error-handling
     paths:
-      - api_.*\.go$
-      - model_.*\.go$
-      - client.go
-      - configuration.go
       - third_party$
       - builtin$
       - examples$
@@ -129,10 +125,6 @@ formatters:
   exclusions:
     generated: lax
     paths:
-      - api_.*\.go$
-      - model_.*\.go$
-      - client.go
-      - configuration.go
       - third_party$
       - builtin$
       - examples$

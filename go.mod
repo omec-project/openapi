@@ -1,20 +1,14 @@
-module github.com/omec-project/openapi
+module github.com/omec-project/openapi/v2
 
 go 1.25.0
 
 require (
-	github.com/antihax/optional v1.0.0
-	github.com/golang-jwt/jwt/v5 v5.3.1
-	github.com/stretchr/testify v1.11.1
 	go.uber.org/zap v1.28.0
-	golang.org/x/net v0.53.0
 	golang.org/x/oauth2 v0.36.0
+	gopkg.in/validator.v2 v2.0.1
 )
 
 require (
-	github.com/davecgh/go-spew v1.1.1 // indirect
-	github.com/pmezard/go-difflib v1.0.0 // indirect
+	github.com/stretchr/testify v1.11.1 // indirect
 	go.uber.org/multierr v1.11.0 // indirect
-	golang.org/x/text v0.36.0 // indirect
-	gopkg.in/yaml.v3 v3.0.1 // indirect
 )
