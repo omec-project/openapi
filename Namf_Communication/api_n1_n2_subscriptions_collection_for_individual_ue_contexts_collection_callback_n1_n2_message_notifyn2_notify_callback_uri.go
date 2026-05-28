@@ -24,7 +24,6 @@ import (
 	"io"
 	"net/http"
 	"net/url"
-
 	"os"
 
 	"github.com/omec-project/openapi/v2"
