@@ -31,10 +31,9 @@ import (
 	"path/filepath"
 	"strings"
 
-	"golang.org/x/oauth2"
-
 	"github.com/omec-project/openapi/v2"
 	"github.com/omec-project/openapi/v2/logger"
+	"golang.org/x/oauth2"
 )
 
 // APIClient manages communication with the NSSF NS Selection API v2.3.0-alpha.3

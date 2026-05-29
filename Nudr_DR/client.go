@@ -31,10 +31,9 @@ import (
 	"path/filepath"
 	"strings"
 
-	"golang.org/x/oauth2"
-
 	"github.com/omec-project/openapi/v2"
 	"github.com/omec-project/openapi/v2/logger"
+	"golang.org/x/oauth2"
 )
 
 // APIClient manages communication with the Nudr_DataRepository API OpenAPI file API v2.3.0-alpha.6
