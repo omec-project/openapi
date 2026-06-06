@@ -30,7 +30,7 @@ var _ openapi.MappedNullable = &TrafficCorrelationInfo{}
 // TrafficCorrelationInfo Contains the information for traffic correlation.
 type TrafficCorrelationInfo struct {
 	CorrType *CorrelationType `json:"corrType,omitempty" yaml:"corrType,omitempty"`
-	// Identification of a set of UEs accessing the application identified by the  Application Identifier or traffic filtering information.
+	// Identification of a set of UEs accessing the application identified by the Application Identifier or traffic filtering information.
 	TfcCorrId *string `json:"tfcCorrId,omitempty" yaml:"tfcCorrId,omitempty"`
 	// String identifying a IPv4 address formatted in the 'dotted decimal' notation as defined in RFC 1166 with the OpenAPI defined 'nullable: true' property.
 	ComEasIpv4Addr openapi.NullableString `json:"comEasIpv4Addr" yaml:"comEasIpv4Addr,omitempty" validate:"regexp=^(([0-9]|[1-9][0-9]|1[0-9][0-9]|2[0-4][0-9]|25[0-5])\\\\.){3}([0-9]|[1-9][0-9]|1[0-9][0-9]|2[0-4][0-9]|25[0-5])$"`

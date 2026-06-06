@@ -315,6 +315,8 @@ components:
           type: string
         dnsIpv4:
           type: string
+        pcscfIpv4:
+          type: string
         ueSubnet:
           type: string
         mtu:

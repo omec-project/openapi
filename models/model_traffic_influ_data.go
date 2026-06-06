@@ -87,7 +87,7 @@ type TrafficInfluData struct {
 	// String providing an URI formatted according to RFC 3986.
 	ResUri   *string  `json:"resUri,omitempty" yaml:"resUri,omitempty"`
 	ResetIds []string `json:"resetIds,omitempty" yaml:"resetIds,omitempty"`
-	// Identifies a list of Network Function Service Consumer supported per service. The key  used in this map for each entry is the ServiceName value as defined in 3GPP TS 29.510[24].
+	// Identifies a list of Network Function Service Consumer supported per service. The key used in this map for each entry is the ServiceName value as defined in 3GPP TS 29.510[24].
 	NscSuppFeats *map[string]string `json:"nscSuppFeats,omitempty" yaml:"nscSuppFeats,omitempty"`
 }
 
