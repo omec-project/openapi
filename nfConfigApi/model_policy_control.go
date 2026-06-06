@@ -164,13 +164,13 @@ func (o PolicyControl) MarshalJSON() ([]byte, error) {
 
 func (o PolicyControl) ToMap() (map[string]any, error) {
 	toSerialize := map[string]any{}
+
+	maps.Copy(toSerialize, o.AdditionalProperties)
+
 	toSerialize["plmnId"] = o.PlmnId
 	toSerialize["snssai"] = o.Snssai
 	toSerialize["dnns"] = o.Dnns
 	toSerialize["pccRules"] = o.PccRules
-
-	maps.Copy(toSerialize, o.AdditionalProperties)
-
 	return toSerialize, nil
 }
 

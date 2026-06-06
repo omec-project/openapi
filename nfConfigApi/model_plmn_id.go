@@ -112,11 +112,11 @@ func (o PlmnId) MarshalJSON() ([]byte, error) {
 
 func (o PlmnId) ToMap() (map[string]any, error) {
 	toSerialize := map[string]any{}
-	toSerialize["mcc"] = o.Mcc
-	toSerialize["mnc"] = o.Mnc
 
 	maps.Copy(toSerialize, o.AdditionalProperties)
 
+	toSerialize["mcc"] = o.Mcc
+	toSerialize["mnc"] = o.Mnc
 	return toSerialize, nil
 }
 

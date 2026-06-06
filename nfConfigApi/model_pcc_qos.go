@@ -178,6 +178,9 @@ func (o PccQos) MarshalJSON() ([]byte, error) {
 
 func (o PccQos) ToMap() (map[string]any, error) {
 	toSerialize := map[string]any{}
+
+	maps.Copy(toSerialize, o.AdditionalProperties)
+
 	toSerialize["fiveQi"] = o.FiveQi
 	if !openapi.IsNil(o.MaxBrUl) {
 		toSerialize["maxBrUl"] = o.MaxBrUl
@@ -186,9 +189,6 @@ func (o PccQos) ToMap() (map[string]any, error) {
 		toSerialize["maxBrDl"] = o.MaxBrDl
 	}
 	toSerialize["arp"] = o.Arp
-
-	maps.Copy(toSerialize, o.AdditionalProperties)
-
 	return toSerialize, nil
 }
 

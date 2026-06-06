@@ -119,13 +119,13 @@ func (o Snssai) MarshalJSON() ([]byte, error) {
 
 func (o Snssai) ToMap() (map[string]any, error) {
 	toSerialize := map[string]any{}
+
+	maps.Copy(toSerialize, o.AdditionalProperties)
+
 	toSerialize["sst"] = o.Sst
 	if !openapi.IsNil(o.Sd) {
 		toSerialize["sd"] = o.Sd
 	}
-
-	maps.Copy(toSerialize, o.AdditionalProperties)
-
 	return toSerialize, nil
 }
 

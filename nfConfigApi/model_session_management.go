@@ -237,6 +237,9 @@ func (o SessionManagement) MarshalJSON() ([]byte, error) {
 
 func (o SessionManagement) ToMap() (map[string]any, error) {
 	toSerialize := map[string]any{}
+
+	maps.Copy(toSerialize, o.AdditionalProperties)
+
 	toSerialize["sliceName"] = o.SliceName
 	toSerialize["plmnId"] = o.PlmnId
 	toSerialize["snssai"] = o.Snssai
@@ -249,9 +252,6 @@ func (o SessionManagement) ToMap() (map[string]any, error) {
 	if !openapi.IsNil(o.GnbNames) {
 		toSerialize["gnbNames"] = o.GnbNames
 	}
-
-	maps.Copy(toSerialize, o.AdditionalProperties)
-
 	return toSerialize, nil
 }
 

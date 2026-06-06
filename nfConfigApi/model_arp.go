@@ -138,12 +138,12 @@ func (o Arp) MarshalJSON() ([]byte, error) {
 
 func (o Arp) ToMap() (map[string]any, error) {
 	toSerialize := map[string]any{}
-	toSerialize["priorityLevel"] = o.PriorityLevel
-	toSerialize["preemptCap"] = o.PreemptCap
-	toSerialize["preemptVuln"] = o.PreemptVuln
 
 	maps.Copy(toSerialize, o.AdditionalProperties)
 
+	toSerialize["priorityLevel"] = o.PriorityLevel
+	toSerialize["preemptCap"] = o.PreemptCap
+	toSerialize["preemptVuln"] = o.PreemptVuln
 	return toSerialize, nil
 }
 

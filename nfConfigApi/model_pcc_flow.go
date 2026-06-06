@@ -138,12 +138,12 @@ func (o PccFlow) MarshalJSON() ([]byte, error) {
 
 func (o PccFlow) ToMap() (map[string]any, error) {
 	toSerialize := map[string]any{}
-	toSerialize["description"] = o.Description
-	toSerialize["direction"] = o.Direction
-	toSerialize["status"] = o.Status
 
 	maps.Copy(toSerialize, o.AdditionalProperties)
 
+	toSerialize["description"] = o.Description
+	toSerialize["direction"] = o.Direction
+	toSerialize["status"] = o.Status
 	return toSerialize, nil
 }
 

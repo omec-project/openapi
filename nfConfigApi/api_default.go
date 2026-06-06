@@ -1,5 +1,5 @@
-// SPDX-FileCopyrightText: 2025 Canonical Ltd
 // Copyright (C) 2026 Intel Corporation
+// SPDX-FileCopyrightText: 2025 Canonical Ltd
 // SPDX-License-Identifier: Apache-2.0
 
 /*

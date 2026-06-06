@@ -197,6 +197,9 @@ func (o IpDomain) MarshalJSON() ([]byte, error) {
 
 func (o IpDomain) ToMap() (map[string]any, error) {
 	toSerialize := map[string]any{}
+
+	maps.Copy(toSerialize, o.AdditionalProperties)
+
 	toSerialize["dnnName"] = o.DnnName
 	toSerialize["dnsIpv4"] = o.DnsIpv4
 	if !openapi.IsNil(o.PcscfIpv4) {
@@ -204,9 +207,6 @@ func (o IpDomain) ToMap() (map[string]any, error) {
 	}
 	toSerialize["ueSubnet"] = o.UeSubnet
 	toSerialize["mtu"] = o.Mtu
-
-	maps.Copy(toSerialize, o.AdditionalProperties)
-
 	return toSerialize, nil
 }
 

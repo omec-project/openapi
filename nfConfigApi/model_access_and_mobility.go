@@ -145,14 +145,14 @@ func (o AccessAndMobility) MarshalJSON() ([]byte, error) {
 
 func (o AccessAndMobility) ToMap() (map[string]any, error) {
 	toSerialize := map[string]any{}
+
+	maps.Copy(toSerialize, o.AdditionalProperties)
+
 	toSerialize["plmnId"] = o.PlmnId
 	toSerialize["snssai"] = o.Snssai
 	if !openapi.IsNil(o.Tacs) {
 		toSerialize["tacs"] = o.Tacs
 	}
-
-	maps.Copy(toSerialize, o.AdditionalProperties)
-
 	return toSerialize, nil
 }
 

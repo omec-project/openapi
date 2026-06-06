@@ -164,13 +164,13 @@ func (o ImsiQos) MarshalJSON() ([]byte, error) {
 
 func (o ImsiQos) ToMap() (map[string]any, error) {
 	toSerialize := map[string]any{}
+
+	maps.Copy(toSerialize, o.AdditionalProperties)
+
 	toSerialize["mbrUplink"] = o.MbrUplink
 	toSerialize["mbrDownlink"] = o.MbrDownlink
 	toSerialize["fiveQi"] = o.FiveQi
 	toSerialize["arpPriorityLevel"] = o.ArpPriorityLevel
-
-	maps.Copy(toSerialize, o.AdditionalProperties)
-
 	return toSerialize, nil
 }
 

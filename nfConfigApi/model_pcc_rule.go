@@ -164,13 +164,13 @@ func (o PccRule) MarshalJSON() ([]byte, error) {
 
 func (o PccRule) ToMap() (map[string]any, error) {
 	toSerialize := map[string]any{}
+
+	maps.Copy(toSerialize, o.AdditionalProperties)
+
 	toSerialize["ruleId"] = o.RuleId
 	toSerialize["flows"] = o.Flows
 	toSerialize["qos"] = o.Qos
 	toSerialize["precedence"] = o.Precedence
-
-	maps.Copy(toSerialize, o.AdditionalProperties)
-
 	return toSerialize, nil
 }
 

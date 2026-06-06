@@ -119,13 +119,13 @@ func (o Upf) MarshalJSON() ([]byte, error) {
 
 func (o Upf) ToMap() (map[string]any, error) {
 	toSerialize := map[string]any{}
+
+	maps.Copy(toSerialize, o.AdditionalProperties)
+
 	toSerialize["hostname"] = o.Hostname
 	if !openapi.IsNil(o.Port) {
 		toSerialize["port"] = o.Port
 	}
-
-	maps.Copy(toSerialize, o.AdditionalProperties)
-
 	return toSerialize, nil
 }
 
