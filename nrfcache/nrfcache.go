@@ -80,7 +80,7 @@ func (npq NfProfilePriorityQ) at(index int) *NfProfileItem {
 
 // push - adds an entry to the priority queue. Invokes heap api to
 // push the entry to the correct location in the queue
-func (npq *NfProfilePriorityQ) push(item any) {
+func (npq *NfProfilePriorityQ) push(item *NfProfileItem) {
 	heap.Push(npq, item)
 }
 
