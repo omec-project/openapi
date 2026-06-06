@@ -1111,15 +1111,12 @@ func TestCacheKeyBehavior(t *testing.T) {
 // Check if the MatchAmfProfile function is working correctly
 func TestAmfProfileMatching(t *testing.T) {
 	// Create a test AMF profile
-	amfProfile := models.NFProfileDiscovery{
-		NfInstanceId: "9f7d5a3f-88ab-4525-b31e-334da7faedab",
-		NfType:       models.NFTYPE_AMF,
-		PlmnList:     []models.PlmnId{{Mcc: "208", Mnc: "93"}},
-		AmfInfo: &models.AmfInfo{
-			AmfRegionId: "ca",
-			AmfSetId:    "3f8",
-		},
-	}
+	amfProfile := models.NewNFProfileDiscovery("9f7d5a3f-88ab-4525-b31e-334da7faedab", models.NFTYPE_AMF, models.NFSTATUS_REGISTERED)
+	amfProfile.SetPlmnList([]models.PlmnId{{Mcc: "208", Mnc: "93"}})
+	amfProfile.SetAmfInfo(models.AmfInfo{
+		AmfRegionId: "ca",
+		AmfSetId:    "3f8",
+	})
 
 	testCases := []struct {
 		param    Nnrf_NFDiscovery.ApiSearchNFInstancesRequest
@@ -1140,7 +1137,7 @@ func TestAmfProfileMatching(t *testing.T) {
 
 	for _, tc := range testCases {
 		t.Run(tc.name, func(t *testing.T) {
-			match, err := MatchAmfProfile(&amfProfile, tc.param)
+			match, err := MatchAmfProfile(amfProfile, tc.param)
 			if err != nil {
 				t.Fatalf("MatchAmfProfile failed: %v", err)
 			}

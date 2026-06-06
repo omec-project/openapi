@@ -80,7 +80,7 @@ func (npq NfProfilePriorityQ) at(index int) *NfProfileItem {
 
 // push - adds an entry to the priority queue. Invokes heap api to
 // push the entry to the correct location in the queue
-func (npq *NfProfilePriorityQ) push(item interface{}) {
+func (npq *NfProfilePriorityQ) push(item *NfProfileItem) {
 	heap.Push(npq, item)
 }
 
@@ -98,7 +98,7 @@ func (npq *NfProfilePriorityQ) remove(item *NfProfileItem) {
 }
 
 // Push - implemented for heap interface. appends an element to the priority queue
-func (npq *NfProfilePriorityQ) Push(item interface{}) {
+func (npq *NfProfilePriorityQ) Push(item any) {
 	n := len(*npq)
 	entry := item.(*NfProfileItem)
 	entry.index = n
@@ -106,7 +106,7 @@ func (npq *NfProfilePriorityQ) Push(item interface{}) {
 }
 
 // Pop - implemented for heap interface. Removes the entry with expiry time
-func (npq *NfProfilePriorityQ) Pop() interface{} {
+func (npq *NfProfilePriorityQ) Pop() any {
 	old := *npq
 	n := len(old)
 	item := old[n-1]
