@@ -51,7 +51,7 @@ type AmInfluData struct {
 	NotifCorrId *string `json:"notifCorrId,omitempty" yaml:"notifCorrId,omitempty"`
 	// Contains the headers provisioned by the NEF.
 	Headers []string `json:"headers,omitempty" yaml:"headers,omitempty"`
-	// When set to true, it indicates whether high throughput is desired for the  indicated UE traffic. Otherwise set to \"false\". Default value is \"false\" if omitted.
+	// When set to true, it indicates whether high throughput is desired for the indicated UE traffic. Otherwise set to \"false\". Default value is \"false\" if omitted.
 	ThruReq *bool `json:"thruReq,omitempty" yaml:"thruReq,omitempty"`
 	// Indicates the service area coverage requirement.
 	CovReq []ServiceAreaCoverageInfo `json:"covReq,omitempty" yaml:"covReq,omitempty"`
