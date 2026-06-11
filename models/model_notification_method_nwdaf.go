@@ -25,7 +25,7 @@ import (
 	"github.com/omec-project/openapi/v2"
 )
 
-// NotificationMethodNwdaf Represents the notification methods for the subscribed events.   Possible values are: - PERIODIC: The notification of the subscribed NWDAF Event is periodical. The period   between the notifications is identified by repetitionPeriod and represents time in   seconds. - THRESHOLD: The subscribe of NWDAF Event is upon threshold exceeded.
+// NotificationMethodNwdaf Represents the notification methods for the subscribed events. Possible values are: - PERIODIC: The notification of the subscribed NWDAF Event is periodical. The period   between the notifications is identified by repetitionPeriod and represents time in   seconds. - THRESHOLD: The subscribe of NWDAF Event is upon threshold exceeded.
 type NotificationMethodNwdaf string
 
 // List of NotificationMethodNwdaf

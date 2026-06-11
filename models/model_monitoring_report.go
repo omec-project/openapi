@@ -35,7 +35,7 @@ type MonitoringReport struct {
 	EventType                EventTypeUdm              `json:"eventType" yaml:"eventType"`
 	Report                   *Report                   `json:"report,omitempty" yaml:"report,omitempty"`
 	ReachabilityForSmsReport *ReachabilityForSmsReport `json:"reachabilityForSmsReport,omitempty" yaml:"reachabilityForSmsReport,omitempty"`
-	// String identifying a Gpsi shall contain either an External Id or an MSISDN.  It shall be formatted as follows -External Identifier= \"extid-'extid', where 'extid'  shall be formatted according to clause 19.7.2 of 3GPP TS 23.003 that describes an  External Identifier.
+	// String identifying a Gpsi shall contain either an External Id or an MSISDN. It shall be formatted as follows -External Identifier= \"extid-'extid', where 'extid' shall be formatted according to clause 19.7.2 of 3GPP TS 23.003 that describes an External Identifier.
 	Gpsi *string `json:"gpsi,omitempty" yaml:"gpsi,omitempty" validate:"regexp=^(msisdn-[0-9]{5,15}|extid-[^@]+@[^@]+|.+)$"`
 	// string with format 'date-time' as defined in OpenAPI.
 	TimeStamp          time.Time           `json:"timeStamp" yaml:"timeStamp"`

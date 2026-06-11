@@ -25,7 +25,7 @@ import (
 	"github.com/omec-project/openapi/v2"
 )
 
-// Accuracy Represents the preferred level of accuracy of the analytics.   Possible values are: - LOW: Low accuracy. - MEDIUM: Medium accuracy. - HIGH: High accuracy. - HIGHEST: Highest accuracy.
+// Accuracy Represents the preferred level of accuracy of the analytics. Possible values are: - LOW: Low accuracy. - MEDIUM: Medium accuracy. - HIGH: High accuracy. - HIGHEST: Highest accuracy.
 type Accuracy string
 
 // List of Accuracy

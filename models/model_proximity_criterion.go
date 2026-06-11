@@ -25,7 +25,7 @@ import (
 	"github.com/omec-project/openapi/v2"
 )
 
-// ProximityCriterion Possible values are:     - VELOCITY: Velocity.   - AVG_SPD: Average speed.   - ORIENTATION: Orientation.   - TRAJECTORY: Mobility trajectory.
+// ProximityCriterion Possible values are:   - VELOCITY: Velocity.   - AVG_SPD: Average speed.   - ORIENTATION: Orientation.   - TRAJECTORY: Mobility trajectory.
 type ProximityCriterion string
 
 // List of ProximityCriterion

@@ -29,9 +29,9 @@ var _ openapi.MappedNullable = &AmfInfo{}
 
 // AmfInfo Information of an AMF NF Instance
 type AmfInfo struct {
-	// String identifying the AMF Set ID (10 bits) as specified in clause 2.10.1 of 3GPP TS 23.003.  It is encoded as a string of 3 hexadecimal characters where the first character is limited to  values 0 to 3 (i.e. 10 bits).
+	// String identifying the AMF Set ID (10 bits) as specified in clause 2.10.1 of 3GPP TS 23.003. It is encoded as a string of 3 hexadecimal characters where the first character is limited to  values 0 to 3 (i.e. 10 bits).
 	AmfSetId string `json:"amfSetId" yaml:"amfSetId" validate:"regexp=^[0-3][A-Fa-f0-9]{2}$"`
-	// String identifying the AMF Set ID (10 bits) as specified in clause 2.10.1 of 3GPP TS 23.003.  It is encoded as a string of 3 hexadecimal characters where the first character is limited to  values 0 to 3 (i.e. 10 bits)
+	// String identifying the AMF Set ID (10 bits) as specified in clause 2.10.1 of 3GPP TS 23.003. It is encoded as a string of 3 hexadecimal characters where the first character is limited to  values 0 to 3 (i.e. 10 bits)
 	AmfRegionId             string                     `json:"amfRegionId" yaml:"amfRegionId" validate:"regexp=^[A-Fa-f0-9]{2}$"`
 	GuamiList               []Guami                    `json:"guamiList" yaml:"guamiList"`
 	TaiList                 []Tai                      `json:"taiList,omitempty" yaml:"taiList,omitempty"`

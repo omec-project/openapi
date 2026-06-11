@@ -46,7 +46,7 @@ type GeraLocation struct {
 	UeLocationTimestamp *time.Time
 	// Refer to geographical Information.See 3GPP TS 23.032 clause 7.3.2. Only the description of an ellipsoid point with uncertainty circle is allowed to be used.
 	GeographicalInformation *string
-	// Refers to Calling Geodetic Location.See ITU-T Recommendation Q.763 (1999) clause 3.88.2.  Only the description of an ellipsoid point with uncertainty circle is allowed to be used.
+	// Refers to Calling Geodetic Location.See ITU-T Recommendation Q.763 (1999) clause 3.88.2. Only the description of an ellipsoid point with uncertainty circle is allowed to be used.
 	GeodeticInformation *string
 }
 

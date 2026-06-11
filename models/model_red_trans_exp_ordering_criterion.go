@@ -25,7 +25,7 @@ import (
 	"github.com/omec-project/openapi/v2"
 )
 
-// RedTransExpOrderingCriterion Represents the order criterion for the list of Redundant Transmission Experience.   Possible values are: - TIME_SLOT_START: Indicates the order of time slot start. - RED_TRANS_EXP: Indicates the order of Redundant Transmission Experience.
+// RedTransExpOrderingCriterion Represents the order criterion for the list of Redundant Transmission Experience. Possible values are: - TIME_SLOT_START: Indicates the order of time slot start. - RED_TRANS_EXP: Indicates the order of Redundant Transmission Experience.
 type RedTransExpOrderingCriterion string
 
 // List of RedTransExpOrderingCriterion

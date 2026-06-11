@@ -25,7 +25,7 @@ import (
 	"github.com/omec-project/openapi/v2"
 )
 
-// Direction Possible values are:     - NORTH: North direction.   - SOUTH: South direction.   - EAST: EAST direction.   - WEST: WEST direction.   - NORTHWEST: Northwest direction.   - NORTHEAST: Northeast direction.   - SOUTHWEST: Southwest direction.   - SOUTHEAST: Southeast direction.
+// Direction Possible values are:   - NORTH: North direction.   - SOUTH: South direction.   - EAST: EAST direction.   - WEST: WEST direction.   - NORTHWEST: Northwest direction.   - NORTHEAST: Northeast direction.   - SOUTHWEST: Southwest direction.   - SOUTHEAST: Southeast direction.
 type Direction string
 
 // List of Direction

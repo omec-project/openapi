@@ -25,7 +25,7 @@ import (
 	"github.com/omec-project/openapi/v2"
 )
 
-// ExceptionId Describes the Exception Id.   Possible values are: - UNEXPECTED_UE_LOCATION: Unexpected UE location. - UNEXPECTED_LONG_LIVE_FLOW: Unexpected long-live rate flows. - UNEXPECTED_LARGE_RATE_FLOW: Unexpected large rate flows. - UNEXPECTED_WAKEUP: Unexpected wakeup. - SUSPICION_OF_DDOS_ATTACK: Suspicion of DDoS attack. - WRONG_DESTINATION_ADDRESS: Wrong destination address. - TOO_FREQUENT_SERVICE_ACCESS: Too frequent Service Access. - UNEXPECTED_RADIO_LINK_FAILURES: Unexpected radio link failures. - PING_PONG_ACROSS_CELLS: Ping-ponging across neighbouring cells.
+// ExceptionId Describes the Exception Id. Possible values are: - UNEXPECTED_UE_LOCATION: Unexpected UE location. - UNEXPECTED_LONG_LIVE_FLOW: Unexpected long-live rate flows. - UNEXPECTED_LARGE_RATE_FLOW: Unexpected large rate flows. - UNEXPECTED_WAKEUP: Unexpected wakeup. - SUSPICION_OF_DDOS_ATTACK: Suspicion of DDoS attack. - WRONG_DESTINATION_ADDRESS: Wrong destination address. - TOO_FREQUENT_SERVICE_ACCESS: Too frequent Service Access. - UNEXPECTED_RADIO_LINK_FAILURES: Unexpected radio link failures. - PING_PONG_ACROSS_CELLS: Ping-ponging across neighbouring cells.
 type ExceptionId string
 
 // List of ExceptionId

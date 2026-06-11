@@ -25,7 +25,7 @@ import (
 	"github.com/omec-project/openapi/v2"
 )
 
-// DnPerfOrderingCriterion Represents the order criterion for the list of DN performance analytics.   Possible values are:   - AVERAGE_TRAFFIC_RATE: Indicates the average traffic rate.   - MAXIMUM_TRAFFIC_RATE: Indicates the maximum traffic rate.   - AVERAGE_PACKET_DELAY: Indicates the average packet delay.   - MAXIMUM_PACKET_DELAY: Indicates the maximum packet delay.   - AVERAGE_PACKET_LOSS_RATE: Indicates the average packet loss rate.
+// DnPerfOrderingCriterion Represents the order criterion for the list of DN performance analytics. Possible values are: - AVERAGE_TRAFFIC_RATE: Indicates the average traffic rate. - MAXIMUM_TRAFFIC_RATE: Indicates the maximum traffic rate. - AVERAGE_PACKET_DELAY: Indicates the average packet delay. - MAXIMUM_PACKET_DELAY: Indicates the maximum packet delay. - AVERAGE_PACKET_LOSS_RATE: Indicates the average packet loss rate.
 type DnPerfOrderingCriterion string
 
 // List of DnPerfOrderingCriterion

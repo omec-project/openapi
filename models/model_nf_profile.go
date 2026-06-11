@@ -30,7 +30,7 @@ var _ openapi.MappedNullable = &NFProfile{}
 
 // NFProfile Information of an NF Instance registered in the NRF
 type NFProfile struct {
-	// String uniquely identifying a NF instance. The format of the NF Instance ID shall be a  Universally Unique Identifier (UUID) version 4, as described in IETF RFC 4122.
+	// String uniquely identifying a NF instance. The format of the NF Instance ID shall be a Universally Unique Identifier (UUID) version 4, as described in IETF RFC 4122.
 	NfInstanceId          string
 	NfInstanceName        *string
 	NfType                NFType

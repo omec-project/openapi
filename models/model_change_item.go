@@ -30,9 +30,9 @@ var _ openapi.MappedNullable = &ChangeItem{}
 // ChangeItem It contains data which need to be changed.
 type ChangeItem struct {
 	Op ChangeType `json:"op" yaml:"op"`
-	// contains a JSON pointer value (as defined in IETF RFC 6901) that references a target  location within the resource on which the change has been applied.
+	// contains a JSON pointer value (as defined in IETF RFC 6901) that references a target location within the resource on which the change has been applied.
 	Path string `json:"path" yaml:"path"`
-	// indicates the path of the source JSON element (according to JSON Pointer syntax)  being moved or copied to the location indicated by the \"path\" attribute. It shall  be present if the \"op\" attribute is of value \"MOVE\".
+	// indicates the path of the source JSON element (according to JSON Pointer syntax) being moved or copied to the location indicated by the \"path\" attribute. It shall be present if the \"op\" attribute is of value \"MOVE\".
 	From      *string `json:"from,omitempty" yaml:"from,omitempty"`
 	OrigValue any     `json:"origValue,omitempty" yaml:"origValue,omitempty"`
 	NewValue  any     `json:"newValue,omitempty" yaml:"newValue,omitempty"`

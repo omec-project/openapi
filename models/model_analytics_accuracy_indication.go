@@ -25,7 +25,7 @@ import (
 	"github.com/omec-project/openapi/v2"
 )
 
-// AnalyticsAccuracyIndication Represents the notification methods for the subscribed events.   Possible values are: - MEET: Indicates meet the analytics accuracy requirement. - NOT_MEET: Indicates not meet the analytics accuracy requirement.
+// AnalyticsAccuracyIndication Represents the notification methods for the subscribed events. Possible values are: - MEET: Indicates meet the analytics accuracy requirement. - NOT_MEET: Indicates not meet the analytics accuracy requirement.
 type AnalyticsAccuracyIndication string
 
 // List of AnalyticsAccuracyIndication

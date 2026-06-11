@@ -29,7 +29,7 @@ var _ openapi.MappedNullable = &CollocatedNfInstance{}
 
 // CollocatedNfInstance Information of an collocated NF Instance registered in the NRF
 type CollocatedNfInstance struct {
-	// String uniquely identifying a NF instance. The format of the NF Instance ID shall be a  Universally Unique Identifier (UUID) version 4, as described in IETF RFC 4122.
+	// String uniquely identifying a NF instance. The format of the NF Instance ID shall be a Universally Unique Identifier (UUID) version 4, as described in IETF RFC 4122.
 	NfInstanceId string           `json:"nfInstanceId" yaml:"nfInstanceId"`
 	NfType       CollocatedNfType `json:"nfType" yaml:"nfType"`
 }
