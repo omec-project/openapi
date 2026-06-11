@@ -25,7 +25,7 @@ import (
 	"github.com/omec-project/openapi/v2"
 )
 
-// TimeUnit Represents the unit for the session active time.   Possible values are: - MINUTE: Time unit is per minute. - HOUR: Time unit is per hour. - DAY: Time unit is per day.
+// TimeUnit Represents the unit for the session active time. Possible values are: - MINUTE: Time unit is per minute. - HOUR: Time unit is per hour. - DAY: Time unit is per day.
 type TimeUnit string
 
 // List of TimeUnit

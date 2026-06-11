@@ -25,7 +25,7 @@ import (
 	"github.com/omec-project/openapi/v2"
 )
 
-// ServiceExperienceType Represents the type of the service experience analytics.   Possible values are:   - VOICE: Indicates that the service experience analytics is for voice service. - VIDEO: Indicates that the service experience analytics is for video service. - OTHER: Indicates that the service experience analytics is for other service.
+// ServiceExperienceType Represents the type of the service experience analytics. Possible values are: - VOICE: Indicates that the service experience analytics is for voice service. - VIDEO: Indicates that the service experience analytics is for video service. - OTHER: Indicates that the service experience analytics is for other service.
 type ServiceExperienceType string
 
 // List of ServiceExperienceType

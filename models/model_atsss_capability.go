@@ -29,11 +29,11 @@ var _ openapi.MappedNullable = &AtsssCapability{}
 
 // AtsssCapability Containes Capability to support procedures related to Access Traffic Steering, Switching, Splitting.
 type AtsssCapability struct {
-	// Indicates the support of Access Traffic Steering, Switching and Splitting procedures  using the ATSSS-LL steering functionality (see clauses 4.2.10, 5.32 of 3GPP TS 23.501). true: Supported false (default): Not Supported
+	// Indicates the support of Access Traffic Steering, Switching and Splitting procedures using the ATSSS-LL steering functionality (see clauses 4.2.10, 5.32 of 3GPP TS 23.501). true: Supported false (default): Not Supported
 	AtsssLL *bool `json:"atsssLL,omitempty" yaml:"atsssLL,omitempty"`
 	// Indicates the support of Access Traffic Steering, Switching and Splitting procedures using the MPTCP steering functionality (see clauses 4.2.10, 5.32 of 3GPP TS 23.501 true: Supported false (default): Not Supported
 	Mptcp *bool `json:"mptcp,omitempty" yaml:"mptcp,omitempty"`
-	// Indicates the support of Access Traffic Steering, Switching and Splitting procedures  using the MPQUIC steering functionality (see clauses 4.2.10, 5.32 of 3GPP TS 23.501) true: Supported false (default): Not Supported
+	// Indicates the support of Access Traffic Steering, Switching and Splitting procedures using the MPQUIC steering functionality (see clauses 4.2.10, 5.32 of 3GPP TS 23.501) true: Supported false (default): Not Supported
 	Mpquic *bool `json:"mpquic,omitempty" yaml:"mpquic,omitempty"`
 	// This IE is only used by the UPF to indicate whether the UPF supports RTT measurement without PMF (see clauses 5.32.2, 6.3.3.3 of 3GPP TS 23.501 true: Supported false (default): Not Supported
 	RttWithoutPmf *bool `json:"rttWithoutPmf,omitempty" yaml:"rttWithoutPmf,omitempty"`

@@ -25,7 +25,7 @@ import (
 	"gopkg.in/validator.v2"
 )
 
-// SelectionConditions - It contains the set of conditions that shall be evaluated to determine whether a consumer shall select a given producer. The producer shall only be selected if the evaluation of the conditions is <true>. The set of conditions can be represented by a single  ConditionItem or by a ConditionGroup, where the latter contains a (recursive) list of conditions joined by the \"and\" or \"or\" logical relationships.
+// SelectionConditions - It contains the set of conditions that shall be evaluated to determine whether a consumer shall select a given producer. The producer shall only be selected if the evaluation of the conditions is <true>. The set of conditions can be represented by a single ConditionItem or by a ConditionGroup, where the latter contains a (recursive) list of conditions joined by the \"and\" or \"or\" logical relationships.
 type SelectionConditions struct {
 	ConditionGroup *ConditionGroup
 	ConditionItem  *ConditionItem

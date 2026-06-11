@@ -25,7 +25,7 @@ import (
 	"github.com/omec-project/openapi/v2"
 )
 
-// AssociationType Indicates association type to be included to identify  whether it is IMSI-IMEI or IMSI-IMEISV.
+// AssociationType Indicates association type to be included to identify whether it is IMSI-IMEI or IMSI-IMEISV.
 type AssociationType string
 
 // List of AssociationType

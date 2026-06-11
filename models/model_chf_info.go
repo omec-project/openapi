@@ -34,9 +34,9 @@ type ChfInfo struct {
 	PlmnRangeList []PlmnRange     `json:"plmnRangeList,omitempty" yaml:"plmnRangeList,omitempty"`
 	// Identifier of a group of NFs.
 	GroupId *string `json:"groupId,omitempty" yaml:"groupId,omitempty"`
-	// String uniquely identifying a NF instance. The format of the NF Instance ID shall be a  Universally Unique Identifier (UUID) version 4, as described in IETF RFC 4122.
+	// String uniquely identifying a NF instance. The format of the NF Instance ID shall be a Universally Unique Identifier (UUID) version 4, as described in IETF RFC 4122.
 	PrimaryChfInstance *string `json:"primaryChfInstance,omitempty" yaml:"primaryChfInstance,omitempty"`
-	// String uniquely identifying a NF instance. The format of the NF Instance ID shall be a  Universally Unique Identifier (UUID) version 4, as described in IETF RFC 4122.
+	// String uniquely identifying a NF instance. The format of the NF Instance ID shall be a Universally Unique Identifier (UUID) version 4, as described in IETF RFC 4122.
 	SecondaryChfInstance *string `json:"secondaryChfInstance,omitempty" yaml:"secondaryChfInstance,omitempty"`
 }
 

@@ -30,7 +30,7 @@ var _ openapi.MappedNullable = &N3gaLocation{}
 // N3gaLocation Contains the Non-3GPP access user location.
 type N3gaLocation struct {
 	N3gppTai *Tai `json:"n3gppTai,omitempty" yaml:"n3gppTai,omitempty"`
-	// This IE shall contain the N3IWF identifier received over NGAP and shall be encoded as a  string of hexadecimal characters. Each character in the string shall take a value of \"0\"  to \"9\", \"a\" to \"f\" or \"A\" to \"F\" and shall represent 4 bits. The most significant  character representing the 4 most significant bits of the N3IWF ID shall appear first in  the string, and the character representing the 4 least significant bit of the N3IWF ID  shall appear last in the string.
+	// This IE shall contain the N3IWF identifier received over NGAP and shall be encoded as a string of hexadecimal characters. Each character in the string shall take a value of \"0\" to \"9\", \"a\" to \"f\" or \"A\" to \"F\" and shall represent 4 bits. The most significant character representing the 4 most significant bits of the N3IWF ID shall appear first in the string, and the character representing the 4 least significant bit of the N3IWF ID shall appear last in the string.
 	N3IwfId *string `json:"n3IwfId,omitempty" yaml:"n3IwfId,omitempty" validate:"regexp=^[A-Fa-f0-9]+$"`
 	// String identifying a IPv4 address formatted in the 'dotted decimal' notation as defined in RFC 1166.
 	UeIpv4Addr *string `json:"ueIpv4Addr,omitempty" yaml:"ueIpv4Addr,omitempty" validate:"regexp=^(([0-9]|[1-9][0-9]|1[0-9][0-9]|2[0-4][0-9]|25[0-5])\\\\.){3}([0-9]|[1-9][0-9]|1[0-9][0-9]|2[0-4][0-9]|25[0-5])$"`
@@ -45,7 +45,7 @@ type N3gaLocation struct {
 	// string with format 'bytes' as defined in OpenAPI
 	Gli            *string   `json:"gli,omitempty" yaml:"gli,omitempty"`
 	W5gbanLineType *LineType `json:"w5gbanLineType,omitempty" yaml:"w5gbanLineType,omitempty"`
-	// Global Cable Identifier uniquely identifying the connection between the 5G-CRG or FN-CRG to the 5GS. See clause 28.15.4 of 3GPP TS 23.003. This shall be encoded as a string per clause 28.15.4 of 3GPP TS 23.003, and compliant with the syntax specified  in clause 2.2  of IETF RFC 7542 for the username part of a NAI. The GCI value is specified in CableLabs WR-TR-5WWC-ARCH.
+	// Global Cable Identifier uniquely identifying the connection between the 5G-CRG or FN-CRG to the 5GS. See clause 28.15.4 of 3GPP TS 23.003. This shall be encoded as a string per clause 28.15.4 of 3GPP TS 23.003, and compliant with the syntax specified  in clause 2.2 of IETF RFC 7542 for the username part of a NAI. The GCI value is specified in CableLabs WR-TR-5WWC-ARCH.
 	Gci *string `json:"gci,omitempty" yaml:"gci,omitempty"`
 }
 

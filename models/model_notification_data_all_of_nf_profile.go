@@ -30,7 +30,7 @@ var _ openapi.MappedNullable = &NotificationDataAllOfNfProfile{}
 
 // NotificationDataAllOfNfProfile struct for NotificationDataAllOfNfProfile
 type NotificationDataAllOfNfProfile struct {
-	// String uniquely identifying a NF instance. The format of the NF Instance ID shall be a  Universally Unique Identifier (UUID) version 4, as described in IETF RFC 4122.
+	// String uniquely identifying a NF instance. The format of the NF Instance ID shall be a Universally Unique Identifier (UUID) version 4, as described in IETF RFC 4122.
 	NfInstanceId          string                 `json:"nfInstanceId" yaml:"nfInstanceId"`
 	NfInstanceName        *string                `json:"nfInstanceName,omitempty" yaml:"nfInstanceName,omitempty"`
 	NfType                NFType                 `json:"nfType" yaml:"nfType"`

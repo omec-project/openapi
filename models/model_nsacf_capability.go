@@ -29,11 +29,11 @@ var _ openapi.MappedNullable = &NsacfCapability{}
 
 // NsacfCapability NSACF service capabilities (e.g. to monitor and control the number of registered UEs or established PDU sessions per network slice)
 type NsacfCapability struct {
-	// Indicates the service capability of the NSACF to monitor and control the number of registered UEs per network slice for the network slice that is subject to NSAC   true: Supported   false (default): Not Supported
+	// Indicates the service capability of the NSACF to monitor and control the number of registered UEs per network slice for the network slice that is subject to NSAC true: Supported false (default): Not Supported
 	SupportUeSAC *bool `json:"supportUeSAC,omitempty" yaml:"supportUeSAC,omitempty"`
-	// Indicates the service capability of the NSACF to monitor and control the number of established PDU sessions per network slice for the network slice that is subject to NSAC   true: Supported   false (default): Not Supported
+	// Indicates the service capability of the NSACF to monitor and control the number of established PDU sessions per network slice for the network slice that is subject to NSAC true: Supported false (default): Not Supported
 	SupportPduSAC *bool `json:"supportPduSAC,omitempty" yaml:"supportPduSAC,omitempty"`
-	// Indicates the service capability of the NSACF to control the number of registered UEs with at least one PDU session / PDN connection per network slice for the network slice that is subject to NSAC, if EPS counting is supported by the NSACF.   true: Supported   false (default): Not Supported
+	// Indicates the service capability of the NSACF to control the number of registered UEs with at least one PDU session / PDN connection per network slice for the network slice that is subject to NSAC, if EPS counting is supported by the NSACF. true: Supported false (default): Not Supported
 	SupportUeWithPduSAC *bool `json:"supportUeWithPduSAC,omitempty" yaml:"supportUeWithPduSAC,omitempty"`
 }
 

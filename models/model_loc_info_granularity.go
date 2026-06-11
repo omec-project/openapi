@@ -25,7 +25,7 @@ import (
 	"github.com/omec-project/openapi/v2"
 )
 
-// LocInfoGranularity Represents the preferred granularity of location information.   Possible values are:     - TA_LEVEL: Indicates location granularity of TA level.   - CELL_LEVEL: Indicates location granularity of Cell level.   - LON_AND_LAT_LEVEL: Indicates location granularity of longitude and latitude level.
+// LocInfoGranularity Represents the preferred granularity of location information. Possible values are:   - TA_LEVEL: Indicates location granularity of TA level.   - CELL_LEVEL: Indicates location granularity of Cell level.   - LON_AND_LAT_LEVEL: Indicates location granularity of longitude and latitude level.
 type LocInfoGranularity string
 
 // List of LocInfoGranularity

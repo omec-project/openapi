@@ -34,7 +34,7 @@ type UtraLocation struct {
 	Sai *ServiceAreaId
 	Lai *LocationAreaId
 	Rai *RoutingAreaId
-	// The value represents the elapsed time in minutes since the last network contact of the mobile station.  Value \"0\" indicates that the location information was obtained after a successful paging procedure for  Active Location Retrieval when the UE is in idle mode  or after a successful location reporting procedure  the UE is in connected mode. Any other value than \"0\" indicates that the location information is the last known one.  See 3GPP TS 29.002 clause 17.7.8.
+	// The value represents the elapsed time in minutes since the last network contact of the mobile station.  Value \"0\" indicates that the location information was obtained after a successful paging procedure for  Active Location Retrieval when the UE is in idle mode  or after a successful location reporting procedure  the UE is in connected mode. Any other value than \"0\" indicates that the location information is the last known one. See 3GPP TS 29.002 clause 17.7.8.
 	AgeOfLocationInformation *int32
 	// string with format 'date-time' as defined in OpenAPI.
 	UeLocationTimestamp *time.Time

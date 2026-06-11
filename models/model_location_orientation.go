@@ -25,7 +25,7 @@ import (
 	"github.com/omec-project/openapi/v2"
 )
 
-// LocationOrientation Possible values are:     - HORIZONTAL: Indicates horizontal orientation.   - VERTICAL: Indicates vertical orientation.   - HOR_AND_VER: Indicates both horizontal and vertical orientation.
+// LocationOrientation Possible values are:   - HORIZONTAL: Indicates horizontal orientation.   - VERTICAL: Indicates vertical orientation.   - HOR_AND_VER: Indicates both horizontal and vertical orientation.
 type LocationOrientation string
 
 // List of LocationOrientation

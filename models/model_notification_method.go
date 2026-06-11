@@ -25,7 +25,7 @@ import (
 	"github.com/omec-project/openapi/v2"
 )
 
-// NotificationMethod Represents the notification methods that can be subscribed.   Possible values are: - PERIODIC - ONE_TIME - ON_EVENT_DETECTION
+// NotificationMethod Represents the notification methods that can be subscribed. Possible values are: - PERIODIC - ONE_TIME - ON_EVENT_DETECTION
 type NotificationMethod string
 
 // List of NotificationMethod

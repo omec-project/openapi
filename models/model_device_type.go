@@ -25,7 +25,7 @@ import (
 	"github.com/omec-project/openapi/v2"
 )
 
-// DeviceType Represents the device type.   Possible values are:     - MOBILE_PHONE: Mobile Phone.   - SMART_PHONE: Smartphone.   - TABLET: Tablet.   - DONGLE: Dongle.   - MODEM: Modem.   - WLAN_ROUTER: WLAN Router.   - IOT_DEVICE: IoT Device.   - WEARABLE: Wearable.   - MOBILE_TEST_PLATFORM: Mobile Test Platform.   - UNDEFINED: Undefined.
+// DeviceType Represents the device type. Possible values are:   - MOBILE_PHONE: Mobile Phone.   - SMART_PHONE: Smartphone.   - TABLET: Tablet.   - DONGLE: Dongle.   - MODEM: Modem.   - WLAN_ROUTER: WLAN Router.   - IOT_DEVICE: IoT Device.   - WEARABLE: Wearable.   - MOBILE_TEST_PLATFORM: Mobile Test Platform.   - UNDEFINED: Undefined.
 type DeviceType string
 
 // List of DeviceType

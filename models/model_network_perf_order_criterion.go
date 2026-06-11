@@ -25,7 +25,7 @@ import (
 	"github.com/omec-project/openapi/v2"
 )
 
-// NetworkPerfOrderCriterion Represents the ordering criterion for the list of network performance analytics.   Possible values are:     - NUMBER_OF_UES: The ordering criterion of the analytics is the number of UEs.   - COMMUNICATION_PERF: The ordering criterion of the analytics is the communication performance.   - MOBILITY_PERF: The ordering criterion of the analytics is themobility performance.
+// NetworkPerfOrderCriterion Represents the ordering criterion for the list of network performance analytics. Possible values are:   - NUMBER_OF_UES: The ordering criterion of the analytics is the number of UEs.   - COMMUNICATION_PERF: The ordering criterion of the analytics is the communication performance.   - MOBILITY_PERF: The ordering criterion of the analytics is themobility performance.
 type NetworkPerfOrderCriterion string
 
 // List of NetworkPerfOrderCriterion

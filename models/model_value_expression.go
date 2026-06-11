@@ -25,7 +25,7 @@ import (
 	"github.com/omec-project/openapi/v2"
 )
 
-// ValueExpression Represents the average or peak value of the resource usage for the network performance type.   Possible values are:     - AVERAGE: Resource usage information in average value.   - PEAK: Resource usage information in peak value.
+// ValueExpression Represents the average or peak value of the resource usage for the network performance type. Possible values are:   - AVERAGE: Resource usage information in average value.   - PEAK: Resource usage information in peak value.
 type ValueExpression string
 
 // List of ValueExpression

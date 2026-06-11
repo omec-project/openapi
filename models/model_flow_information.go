@@ -36,7 +36,7 @@ type FlowInformation struct {
 	PackFiltId *string `json:"packFiltId,omitempty" yaml:"packFiltId,omitempty"`
 	// The packet shall be sent to the UE.
 	PacketFilterUsage *bool `json:"packetFilterUsage,omitempty" yaml:"packetFilterUsage,omitempty"`
-	// Contains the Ipv4 Type-of-Service and mask field or the Ipv6 Traffic-Class field and  mask field.
+	// Contains the Ipv4 Type-of-Service and mask field or the Ipv6 Traffic-Class field and mask field.
 	TosTrafficClass openapi.NullableString `json:"tosTrafficClass" yaml:"tosTrafficClass,omitempty"`
 	// the security parameter index of the IPSec packet.
 	Spi openapi.NullableString `json:"spi" yaml:"spi,omitempty"`

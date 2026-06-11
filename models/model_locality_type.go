@@ -25,7 +25,7 @@ import (
 	"github.com/omec-project/openapi/v2"
 )
 
-// LocalityType Type of locality description. An operator may define custom locality type values other  than those listed in this enumeration.
+// LocalityType Type of locality description. An operator may define custom locality type values other than those listed in this enumeration.
 type LocalityType string
 
 // List of LocalityType

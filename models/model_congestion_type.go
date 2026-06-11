@@ -25,7 +25,7 @@ import (
 	"github.com/omec-project/openapi/v2"
 )
 
-// CongestionType Indicates the congestion analytics type.   Possible values are: - USER_PLANE: The congestion analytics type is User Plane. - CONTROL_PLANE: The congestion analytics type is Control Plane. - USER_AND_CONTROL_PLANE: The congestion analytics type is User Plane and Control Plane.
+// CongestionType Indicates the congestion analytics type. Possible values are: - USER_PLANE: The congestion analytics type is User Plane. - CONTROL_PLANE: The congestion analytics type is Control Plane. - USER_AND_CONTROL_PLANE: The congestion analytics type is User Plane and Control Plane.
 type CongestionType string
 
 // List of CongestionType

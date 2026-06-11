@@ -29,7 +29,7 @@ var _ openapi.MappedNullable = &RelatedUE{}
 
 // RelatedUE Related UE Information
 type RelatedUE struct {
-	// String identifying an UE with application layer ID. The format of the application  layer ID parameter is same as the Application layer ID defined in clause 11.3.4 of  3GPP TS 24.554.
+	// String identifying an UE with application layer ID. The format of the application layer ID parameter is same as the Application layer ID defined in clause 11.3.4 of 3GPP TS 24.554.
 	ApplicationlayerId string        `json:"applicationlayerId" yaml:"applicationlayerId"`
 	RelatedUEType      RelatedUEType `json:"relatedUEType" yaml:"relatedUEType"`
 }

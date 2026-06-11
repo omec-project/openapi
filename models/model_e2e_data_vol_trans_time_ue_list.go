@@ -27,7 +27,7 @@ import (
 // checks if the E2eDataVolTransTimeUeList type satisfies the MappedNullable interface at compile time
 var _ openapi.MappedNullable = &E2eDataVolTransTimeUeList{}
 
-// E2eDataVolTransTimeUeList Contains the list of UEs classified based on experience level of E2E Data Volume Transfer  Time
+// E2eDataVolTransTimeUeList Contains the list of UEs classified based on experience level of E2E Data Volume Transfer Time
 type E2eDataVolTransTimeUeList struct {
 	HighLevel   []string
 	MediumLevel []string
