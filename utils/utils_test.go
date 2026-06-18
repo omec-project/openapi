@@ -208,3 +208,88 @@ func TestProblemDetailsUserNotFoundOmitsDetail(t *testing.T) {
 		t.Fatalf("expected Detail to be nil, got %q", pd.GetDetail())
 	}
 }
+
+func TestProblemDetailsContextNotFound(t *testing.T) {
+	pd := ProblemDetailsContextNotFound("Guti[12345] Not Found")
+
+	if pd.GetTitle() != "Context not found" {
+		t.Fatalf("expected title %q, got %q", "Context not found", pd.GetTitle())
+	}
+	if pd.GetStatus() != http.StatusNotFound {
+		t.Fatalf("expected status %d, got %d", http.StatusNotFound, pd.GetStatus())
+	}
+	if pd.GetCause() != CauseContextNotFound {
+		t.Fatalf("expected cause CONTEXT_NOT_FOUND, got %q", pd.GetCause())
+	}
+	if pd.GetDetail() != "Guti[12345] Not Found" {
+		t.Fatalf("expected detail %q, got %q", "Guti[12345] Not Found", pd.GetDetail())
+	}
+}
+
+func TestProblemDetailsNotImplemented(t *testing.T) {
+	pd := ProblemDetailsNotImplemented("feature not available")
+
+	if pd.GetTitle() != "Not implemented" {
+		t.Fatalf("expected title %q, got %q", "Not implemented", pd.GetTitle())
+	}
+	if pd.GetStatus() != http.StatusNotImplemented {
+		t.Fatalf("expected status %d, got %d", http.StatusNotImplemented, pd.GetStatus())
+	}
+	if pd.GetCause() != CauseNotImplemented {
+		t.Fatalf("expected cause NOT_IMPLEMENTED, got %q", pd.GetCause())
+	}
+	if pd.GetDetail() != "feature not available" {
+		t.Fatalf("expected detail %q, got %q", "feature not available", pd.GetDetail())
+	}
+}
+
+func TestProblemDetailsMandatoryIeMissing(t *testing.T) {
+	pd := ProblemDetailsMandatoryIeMissing("required field missing")
+
+	if pd.GetTitle() != "Mandatory IE missing" {
+		t.Fatalf("expected title %q, got %q", "Mandatory IE missing", pd.GetTitle())
+	}
+	if pd.GetStatus() != http.StatusBadRequest {
+		t.Fatalf("expected status %d, got %d", http.StatusBadRequest, pd.GetStatus())
+	}
+	if pd.GetCause() != CauseMandatoryIeMissing {
+		t.Fatalf("expected cause MANDATORY_IE_MISSING, got %q", pd.GetCause())
+	}
+	if pd.GetDetail() != "required field missing" {
+		t.Fatalf("expected detail %q, got %q", "required field missing", pd.GetDetail())
+	}
+}
+
+func TestProblemDetailsMandatoryIeIncorrect(t *testing.T) {
+	pd := ProblemDetailsMandatoryIeIncorrect("field format incorrect")
+
+	if pd.GetTitle() != "Mandatory IE incorrect" {
+		t.Fatalf("expected title %q, got %q", "Mandatory IE incorrect", pd.GetTitle())
+	}
+	if pd.GetStatus() != http.StatusBadRequest {
+		t.Fatalf("expected status %d, got %d", http.StatusBadRequest, pd.GetStatus())
+	}
+	if pd.GetCause() != CauseMandatoryIeIncorrect {
+		t.Fatalf("expected cause MANDATORY_IE_INCORRECT, got %q", pd.GetCause())
+	}
+	if pd.GetDetail() != "field format incorrect" {
+		t.Fatalf("expected detail %q, got %q", "field format incorrect", pd.GetDetail())
+	}
+}
+
+func TestProblemDetailsWithCause(t *testing.T) {
+	pd := ProblemDetailsWithCause("Custom Error", http.StatusServiceUnavailable, "service unavailable", "CUSTOM_CAUSE")
+
+	if pd.GetTitle() != "Custom Error" {
+		t.Fatalf("expected title %q, got %q", "Custom Error", pd.GetTitle())
+	}
+	if pd.GetStatus() != http.StatusServiceUnavailable {
+		t.Fatalf("expected status %d, got %d", http.StatusServiceUnavailable, pd.GetStatus())
+	}
+	if pd.GetCause() != "CUSTOM_CAUSE" {
+		t.Fatalf("expected cause CUSTOM_CAUSE, got %q", pd.GetCause())
+	}
+	if pd.GetDetail() != "service unavailable" {
+		t.Fatalf("expected detail %q, got %q", "service unavailable", pd.GetDetail())
+	}
+}
