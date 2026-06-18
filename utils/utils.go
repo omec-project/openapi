@@ -6,6 +6,7 @@ package utils
 import (
 	"net/http"
 
+	openapi "github.com/omec-project/openapi/v2"
 	"github.com/omec-project/openapi/v2/models"
 )
 
@@ -31,5 +32,49 @@ func ProblemDetailsUnspecified() *models.ProblemDetails {
 	problemDetails.SetTitle("Unspecified")
 	problemDetails.SetStatus(http.StatusForbidden)
 	problemDetails.SetCause("UNSPECIFIED")
+	return problemDetails
+}
+
+func ProblemDetailsDataNotFound() *models.ProblemDetails {
+	problemDetails := models.NewProblemDetails()
+	problemDetails.SetTitle("Data not found")
+	problemDetails.SetStatus(http.StatusNotFound)
+	problemDetails.SetCause("DATA_NOT_FOUND")
+	return problemDetails
+}
+
+func ProblemDetailsUserNotFound() *models.ProblemDetails {
+	problemDetails := models.NewProblemDetails()
+	problemDetails.SetTitle("User not found")
+	problemDetails.SetStatus(http.StatusNotFound)
+	problemDetails.SetCause("USER_NOT_FOUND")
+	return problemDetails
+}
+
+func ProblemDetailsFromOpenAPIError(res *http.Response, err error) *models.ProblemDetails {
+	if err == nil {
+		return nil
+	}
+
+	problemDetails := ProblemDetailsSystemFailure(err.Error())
+	if res != nil {
+		problemDetails.SetStatus(int32(res.StatusCode))
+	}
+
+	if details, ok := openapi.ErrorModel[models.ProblemDetails](err); ok {
+		if details.Title != nil {
+			problemDetails.SetTitle(details.GetTitle())
+		}
+		if details.Detail != nil {
+			problemDetails.SetDetail(details.GetDetail())
+		}
+		if details.Cause != nil {
+			problemDetails.SetCause(details.GetCause())
+		}
+		if details.Status != nil {
+			problemDetails.SetStatus(details.GetStatus())
+		}
+	}
+
 	return problemDetails
 }
