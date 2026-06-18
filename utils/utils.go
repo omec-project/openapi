@@ -55,19 +55,22 @@ func ProblemDetailsFromOpenAPIError(res *http.Response, err error) *models.Probl
 	}
 
 	problemDetails := ProblemDetailsSystemFailure(err.Error())
-	if res == nil || err.Error() != res.Status {
-		return problemDetails
+	if res != nil {
+		problemDetails.SetStatus(int32(res.StatusCode))
 	}
 
-	problemDetails.SetStatus(int32(res.StatusCode))
-	if openapiErr, ok := err.(openapi.GenericOpenAPIError); ok {
-		if details, ok := openapiErr.Model().(models.ProblemDetails); ok {
-			if details.Cause != nil {
-				problemDetails.SetCause(details.GetCause())
-			}
-			if details.Status != nil {
-				problemDetails.SetStatus(details.GetStatus())
-			}
+	if details, ok := openapi.ErrorModel[models.ProblemDetails](err); ok {
+		if details.Title != nil {
+			problemDetails.SetTitle(details.GetTitle())
+		}
+		if details.Detail != nil {
+			problemDetails.SetDetail(details.GetDetail())
+		}
+		if details.Cause != nil {
+			problemDetails.SetCause(details.GetCause())
+		}
+		if details.Status != nil {
+			problemDetails.SetStatus(details.GetStatus())
 		}
 	}
 
