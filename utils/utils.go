@@ -37,6 +37,7 @@ func ProblemDetailsUnspecified() *models.ProblemDetails {
 
 func ProblemDetailsDataNotFound() *models.ProblemDetails {
 	problemDetails := models.NewProblemDetails()
+	problemDetails.SetTitle("Data not found")
 	problemDetails.SetStatus(http.StatusNotFound)
 	problemDetails.SetCause("DATA_NOT_FOUND")
 	return problemDetails
@@ -44,6 +45,7 @@ func ProblemDetailsDataNotFound() *models.ProblemDetails {
 
 func ProblemDetailsUserNotFound() *models.ProblemDetails {
 	problemDetails := models.NewProblemDetails()
+	problemDetails.SetTitle("User not found")
 	problemDetails.SetStatus(http.StatusNotFound)
 	problemDetails.SetCause("USER_NOT_FOUND")
 	return problemDetails

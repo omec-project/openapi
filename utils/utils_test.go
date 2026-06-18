@@ -26,7 +26,7 @@ func TestProblemDetailsFromOpenAPIErrorHandlesTransportError(t *testing.T) {
 	}
 }
 
-func TestProblemDetailsFromOpenAPIErrorUsesResponseStatusForClientError(t *testing.T) {
+func TestProblemDetailsFromOpenAPIErrorUsesResponseStatusForHTTPError(t *testing.T) {
 	problemDetails := ProblemDetailsFromOpenAPIError(
 		&http.Response{StatusCode: http.StatusBadGateway, Status: "502 Bad Gateway"},
 		errors.New("EOF"),
