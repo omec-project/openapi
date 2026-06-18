@@ -10,44 +10,92 @@ import (
 	"github.com/omec-project/openapi/v2/models"
 )
 
-func ProblemDetailsSystemFailure(detail string) *models.ProblemDetails {
+// Problem detail cause constants
+const (
+	CauseAllocBdtPolicyIdFailed             = "ALLOC_BDT_POLICY_ID_FAILED"
+	CauseAmfSubscriptionNotFound            = "AMFSUBSCRIPTION_NOT_FOUND"
+	CauseContextNotFound                    = "CONTEXT_NOT_FOUND"
+	CauseCreateSubscriptionError            = "CREATE_SUBSCRIPTION_ERROR"
+	CauseDataNotFound                       = "DATA_NOT_FOUND"
+	CauseDeregistrationNotificationError    = "DEREGISTRATION_NOTIFICATION_ERROR"
+	CauseEapPacketParseError                = "EAP_PACKET_PARSE_ERROR"
+	CauseFetchError                         = "FETCH_ERROR"
+	CauseHandoverFailure                    = "HANDOVER_FAILURE"
+	CauseHigherPriorityRequestOngoing       = "HIGHER_PRIORITY_REQUEST_ONGOING"
+	CauseIntegrityCheckFail                 = "INTEGRITY_CHECK_FAIL"
+	CauseInvalidBodyFormat                  = "INVALID_BODY_FORMAT"
+	CauseInvalidGuami                       = "INVALID_GUAMI"
+	CauseInvalidMsgFormat                   = "INVALID_MSG_FORMAT"
+	CauseInvalidRequest                     = "INVALID_REQUEST"
+	CauseMandatoryIeIncorrect               = "MANDATORY_IE_INCORRECT"
+	CauseMandatoryIeMissing                 = "MANDATORY_IE_MISSING"
+	CauseMessageNotReceived                 = "MESSAGE_NOT_RECEIVED"
+	CauseModifyNotAllowed                   = "MODIFY_NOT_ALLOWED"
+	CauseNfDeleteError                      = "NF_DELETE_ERROR"
+	CauseNotificationError                  = "NOTIFICATION_ERROR"
+	CauseNotImplemented                     = "NOT_IMPLEMENTED"
+	CauseServerError                        = "SERVER_ERROR"
+	CauseSnssaiNotSupported                 = "SNSSAI_NOT_SUPPORTED"
+	CauseSubscriptionDeleteError            = "SUBSCRIPTION_DELETE_ERROR"
+	CauseSubscriptionEmpty                  = "SUBSCRIPTION_EMPTY"
+	CauseSubscriptionEventlistEmpty         = "SUBSCRIPTION_EVENTLIST_EMPTY"
+	CauseSubscriptionNotFound               = "SUBSCRIPTION_NOT_FOUND"
+	CauseSystemFailure                      = "SYSTEM_FAILURE"
+	CauseTemporaryRejectHandoverOngoing     = "TEMPORARY_REJECT_HANDOVER_ONGOING"
+	CauseTemporaryRejectRegistrationOngoing = "TEMPORARY_REJECT_REGISTRATION_ONGOING"
+	CauseUdrNotFound                        = "UDR_NOT_FOUND"
+	CauseUdrQueryFailed                     = "UDR_QUERY_FAILED"
+	CauseUeInCmIdleState                    = "UE_IN_CM_IDLE_STATE"
+	CauseUeNotReachable                     = "UE_NOT_REACHABLE"
+	CauseUeNotServedByAmf                   = "UE_NOT_SERVED_BY_AMF"
+	CauseUnexpectedResponseType             = "UNEXPECTED_RESPONSE_TYPE"
+	CauseUnspecified                        = "UNSPECIFIED"
+	CauseUnspecifiedNfFailure               = "UNSPECIFIED_NF_FAILURE"
+	CauseUnsupportedResourceUri             = "UNSUPPORTED_RESOURCE_URI"
+	CauseUserNotFound                       = "USER_NOT_FOUND"
+)
+
+func ProblemDetails(title string, status int, detail string) *models.ProblemDetails {
 	problemDetails := models.NewProblemDetails()
-	problemDetails.SetTitle("System failure")
-	problemDetails.SetStatus(http.StatusInternalServerError)
-	problemDetails.SetCause("SYSTEM_FAILURE")
-	problemDetails.SetDetail(detail)
+	problemDetails.SetTitle(title)
+	problemDetails.SetStatus(int32(status))
+	if detail != "" {
+		problemDetails.SetDetail(detail)
+	}
+	return problemDetails
+}
+
+func ProblemDetailsWithInvalidParams(title string, status int, detail string, invalidParams []models.InvalidParam) *models.ProblemDetails {
+	problemDetails := ProblemDetails(title, status, detail)
+	problemDetails.SetInvalidParams(invalidParams)
+	return problemDetails
+}
+
+func ProblemDetailsSystemFailure(detail string) *models.ProblemDetails {
+	problemDetails := ProblemDetails("System failure", http.StatusInternalServerError, detail)
+	problemDetails.SetCause(CauseSystemFailure)
 	return problemDetails
 }
 
 func ProblemDetailsMalformedRequestSyntax(detail string) *models.ProblemDetails {
-	problemDetails := models.NewProblemDetails()
-	problemDetails.SetTitle("Malformed request syntax")
-	problemDetails.SetStatus(http.StatusBadRequest)
-	problemDetails.SetDetail(detail)
-	return problemDetails
+	return ProblemDetails("Malformed request syntax", http.StatusBadRequest, detail)
 }
 
 func ProblemDetailsUnspecified() *models.ProblemDetails {
-	problemDetails := models.NewProblemDetails()
-	problemDetails.SetTitle("Unspecified")
-	problemDetails.SetStatus(http.StatusForbidden)
-	problemDetails.SetCause("UNSPECIFIED")
+	problemDetails := ProblemDetails("Unspecified", http.StatusForbidden, "")
+	problemDetails.SetCause(CauseUnspecified)
 	return problemDetails
 }
 
 func ProblemDetailsDataNotFound() *models.ProblemDetails {
-	problemDetails := models.NewProblemDetails()
-	problemDetails.SetTitle("Data not found")
-	problemDetails.SetStatus(http.StatusNotFound)
-	problemDetails.SetCause("DATA_NOT_FOUND")
+	problemDetails := ProblemDetails("Data not found", http.StatusNotFound, "")
+	problemDetails.SetCause(CauseDataNotFound)
 	return problemDetails
 }
 
 func ProblemDetailsUserNotFound() *models.ProblemDetails {
-	problemDetails := models.NewProblemDetails()
-	problemDetails.SetTitle("User not found")
-	problemDetails.SetStatus(http.StatusNotFound)
-	problemDetails.SetCause("USER_NOT_FOUND")
+	problemDetails := ProblemDetails("User not found", http.StatusNotFound, "")
+	problemDetails.SetCause(CauseUserNotFound)
 	return problemDetails
 }
 
