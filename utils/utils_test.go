@@ -18,7 +18,7 @@ func TestProblemDetailsFromOpenAPIErrorHandlesTransportError(t *testing.T) {
 	if problemDetails.GetStatus() != http.StatusInternalServerError {
 		t.Fatalf("expected status %d, got %d", http.StatusInternalServerError, problemDetails.GetStatus())
 	}
-	if problemDetails.GetCause() != "SYSTEM_FAILURE" {
+	if problemDetails.GetCause() != CauseSystemFailure {
 		t.Fatalf("expected cause SYSTEM_FAILURE, got %q", problemDetails.GetCause())
 	}
 	if problemDetails.GetDetail() != "EOF" {
@@ -35,7 +35,7 @@ func TestProblemDetailsFromOpenAPIErrorUsesResponseStatusForHTTPError(t *testing
 	if problemDetails.GetStatus() != http.StatusBadGateway {
 		t.Fatalf("expected status %d, got %d", http.StatusBadGateway, problemDetails.GetStatus())
 	}
-	if problemDetails.GetCause() != "SYSTEM_FAILURE" {
+	if problemDetails.GetCause() != CauseSystemFailure {
 		t.Fatalf("expected cause SYSTEM_FAILURE, got %q", problemDetails.GetCause())
 	}
 	if problemDetails.GetDetail() != "EOF" {
@@ -46,7 +46,7 @@ func TestProblemDetailsFromOpenAPIErrorUsesResponseStatusForHTTPError(t *testing
 func TestProblemDetailsFromOpenAPIErrorPreservesStructuredProblemDetails(t *testing.T) {
 	title := "Data not found"
 	detail := "subscription was not found"
-	cause := "DATA_NOT_FOUND"
+	cause := CauseDataNotFound
 	status := int32(http.StatusNotFound)
 	rawModel := models.NewProblemDetails()
 	rawModel.SetTitle(title)
@@ -73,5 +73,138 @@ func TestProblemDetailsFromOpenAPIErrorPreservesStructuredProblemDetails(t *test
 	}
 	if problemDetails.GetStatus() != http.StatusNotFound {
 		t.Fatalf("expected status %d, got %d", http.StatusNotFound, problemDetails.GetStatus())
+	}
+}
+
+func TestProblemDetailsWithDetail(t *testing.T) {
+	pd := ProblemDetails("Test Title", http.StatusBadRequest, "test detail")
+
+	if pd.GetTitle() != "Test Title" {
+		t.Fatalf("expected title %q, got %q", "Test Title", pd.GetTitle())
+	}
+	if pd.GetStatus() != http.StatusBadRequest {
+		t.Fatalf("expected status %d, got %d", http.StatusBadRequest, pd.GetStatus())
+	}
+	if pd.GetDetail() != "test detail" {
+		t.Fatalf("expected detail %q, got %q", "test detail", pd.GetDetail())
+	}
+}
+
+func TestProblemDetailsWithEmptyDetail(t *testing.T) {
+	pd := ProblemDetails("Test Title", http.StatusBadRequest, "")
+
+	if pd.GetTitle() != "Test Title" {
+		t.Fatalf("expected title %q, got %q", "Test Title", pd.GetTitle())
+	}
+	if pd.GetStatus() != http.StatusBadRequest {
+		t.Fatalf("expected status %d, got %d", http.StatusBadRequest, pd.GetStatus())
+	}
+	// Detail should be unset (nil) when empty string is passed
+	if pd.Detail != nil {
+		t.Fatalf("expected Detail to be nil, got %q", pd.GetDetail())
+	}
+}
+
+func TestProblemDetailsWithInvalidParams(t *testing.T) {
+	reason1 := "missing"
+	reason2 := "invalid format"
+	invalidParams := []models.InvalidParam{
+		{Param: "field1", Reason: &reason1},
+		{Param: "field2", Reason: &reason2},
+	}
+	pd := ProblemDetailsWithInvalidParams("Validation Error", http.StatusBadRequest, "request validation failed", invalidParams)
+
+	if pd.GetTitle() != "Validation Error" {
+		t.Fatalf("expected title %q, got %q", "Validation Error", pd.GetTitle())
+	}
+	if pd.GetStatus() != http.StatusBadRequest {
+		t.Fatalf("expected status %d, got %d", http.StatusBadRequest, pd.GetStatus())
+	}
+	if pd.GetDetail() != "request validation failed" {
+		t.Fatalf("expected detail %q, got %q", "request validation failed", pd.GetDetail())
+	}
+	if len(pd.GetInvalidParams()) != 2 {
+		t.Fatalf("expected 2 invalid params, got %d", len(pd.GetInvalidParams()))
+	}
+}
+
+func TestProblemDetailsSystemFailureAlwaysSetsDetail(t *testing.T) {
+	// In practice, always called with non-empty detail (err.Error())
+	pd := ProblemDetailsSystemFailure("error occurred")
+
+	if pd.GetDetail() != "error occurred" {
+		t.Fatalf("expected detail %q, got %q", "error occurred", pd.GetDetail())
+	}
+	if pd.GetCause() != CauseSystemFailure {
+		t.Fatalf("expected cause SYSTEM_FAILURE, got %q", pd.GetCause())
+	}
+	if pd.GetStatus() != http.StatusInternalServerError {
+		t.Fatalf("expected status %d, got %d", http.StatusInternalServerError, pd.GetStatus())
+	}
+}
+
+func TestProblemDetailsMalformedRequestSyntaxAlwaysSetsDetail(t *testing.T) {
+	// In practice, always called with non-empty detail (error messages)
+	pd := ProblemDetailsMalformedRequestSyntax("invalid JSON")
+
+	if pd.GetDetail() != "invalid JSON" {
+		t.Fatalf("expected detail %q, got %q", "invalid JSON", pd.GetDetail())
+	}
+	if pd.GetStatus() != http.StatusBadRequest {
+		t.Fatalf("expected status %d, got %d", http.StatusBadRequest, pd.GetStatus())
+	}
+}
+
+func TestProblemDetailsUnspecifiedOmitsDetail(t *testing.T) {
+	pd := ProblemDetailsUnspecified()
+
+	if pd.GetTitle() != "Unspecified" {
+		t.Fatalf("expected title %q, got %q", "Unspecified", pd.GetTitle())
+	}
+	if pd.GetStatus() != http.StatusForbidden {
+		t.Fatalf("expected status %d, got %d", http.StatusForbidden, pd.GetStatus())
+	}
+	if pd.GetCause() != CauseUnspecified {
+		t.Fatalf("expected cause UNSPECIFIED, got %q", pd.GetCause())
+	}
+	// Detail should be unset (nil)
+	if pd.Detail != nil {
+		t.Fatalf("expected Detail to be nil, got %q", pd.GetDetail())
+	}
+}
+
+func TestProblemDetailsDataNotFoundOmitsDetail(t *testing.T) {
+	pd := ProblemDetailsDataNotFound()
+
+	if pd.GetTitle() != "Data not found" {
+		t.Fatalf("expected title %q, got %q", "Data not found", pd.GetTitle())
+	}
+	if pd.GetStatus() != http.StatusNotFound {
+		t.Fatalf("expected status %d, got %d", http.StatusNotFound, pd.GetStatus())
+	}
+	if pd.GetCause() != CauseDataNotFound {
+		t.Fatalf("expected cause DATA_NOT_FOUND, got %q", pd.GetCause())
+	}
+	// Detail should be unset (nil)
+	if pd.Detail != nil {
+		t.Fatalf("expected Detail to be nil, got %q", pd.GetDetail())
+	}
+}
+
+func TestProblemDetailsUserNotFoundOmitsDetail(t *testing.T) {
+	pd := ProblemDetailsUserNotFound()
+
+	if pd.GetTitle() != "User not found" {
+		t.Fatalf("expected title %q, got %q", "User not found", pd.GetTitle())
+	}
+	if pd.GetStatus() != http.StatusNotFound {
+		t.Fatalf("expected status %d, got %d", http.StatusNotFound, pd.GetStatus())
+	}
+	if pd.GetCause() != CauseUserNotFound {
+		t.Fatalf("expected cause USER_NOT_FOUND, got %q", pd.GetCause())
+	}
+	// Detail should be unset (nil)
+	if pd.Detail != nil {
+		t.Fatalf("expected Detail to be nil, got %q", pd.GetDetail())
 	}
 }
