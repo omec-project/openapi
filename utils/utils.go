@@ -128,27 +128,19 @@ func ProblemDetailsFromOpenAPIError(res *http.Response, err error) *models.Probl
 }
 
 func ProblemDetailsContextNotFound(detail string) *models.ProblemDetails {
-	problemDetails := ProblemDetails("Context not found", http.StatusNotFound, detail)
-	problemDetails.SetCause(CauseContextNotFound)
-	return problemDetails
+	return ProblemDetailsWithCause("Context not found", http.StatusNotFound, detail, CauseContextNotFound)
 }
 
 func ProblemDetailsNotImplemented(detail string) *models.ProblemDetails {
-	problemDetails := ProblemDetails("Not implemented", http.StatusNotImplemented, detail)
-	problemDetails.SetCause(CauseNotImplemented)
-	return problemDetails
+	return ProblemDetailsWithCause("Not implemented", http.StatusNotImplemented, detail, CauseNotImplemented)
 }
 
 func ProblemDetailsMandatoryIeMissing(detail string) *models.ProblemDetails {
-	problemDetails := ProblemDetails("Mandatory IE missing", http.StatusBadRequest, detail)
-	problemDetails.SetCause(CauseMandatoryIeMissing)
-	return problemDetails
+	return ProblemDetailsWithCause("Mandatory IE missing", http.StatusBadRequest, detail, CauseMandatoryIeMissing)
 }
 
 func ProblemDetailsMandatoryIeIncorrect(detail string) *models.ProblemDetails {
-	problemDetails := ProblemDetails("Mandatory IE incorrect", http.StatusBadRequest, detail)
-	problemDetails.SetCause(CauseMandatoryIeIncorrect)
-	return problemDetails
+	return ProblemDetailsWithCause("Mandatory IE incorrect", http.StatusBadRequest, detail, CauseMandatoryIeIncorrect)
 }
 
 func ProblemDetailsWithCause(title string, status int, detail string, cause string) *models.ProblemDetails {
