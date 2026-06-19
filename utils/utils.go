@@ -126,3 +126,25 @@ func ProblemDetailsFromOpenAPIError(res *http.Response, err error) *models.Probl
 
 	return problemDetails
 }
+
+func ProblemDetailsContextNotFound(detail string) *models.ProblemDetails {
+	return ProblemDetailsWithCause("Context not found", http.StatusNotFound, detail, CauseContextNotFound)
+}
+
+func ProblemDetailsNotImplemented(detail string) *models.ProblemDetails {
+	return ProblemDetailsWithCause("Not implemented", http.StatusNotImplemented, detail, CauseNotImplemented)
+}
+
+func ProblemDetailsMandatoryIeMissing(detail string) *models.ProblemDetails {
+	return ProblemDetailsWithCause("Mandatory IE missing", http.StatusBadRequest, detail, CauseMandatoryIeMissing)
+}
+
+func ProblemDetailsMandatoryIeIncorrect(detail string) *models.ProblemDetails {
+	return ProblemDetailsWithCause("Mandatory IE incorrect", http.StatusBadRequest, detail, CauseMandatoryIeIncorrect)
+}
+
+func ProblemDetailsWithCause(title string, status int, detail string, cause string) *models.ProblemDetails {
+	problemDetails := ProblemDetails(title, status, detail)
+	problemDetails.SetCause(cause)
+	return problemDetails
+}
