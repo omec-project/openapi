@@ -13,6 +13,7 @@ import (
 // Problem detail cause constants
 const (
 	CauseAllocBdtPolicyIdFailed             = "ALLOC_BDT_POLICY_ID_FAILED"
+	CauseAuthenticationRejected             = "AUTHENTICATION_REJECTED"
 	CauseAmfSubscriptionNotFound            = "AMFSUBSCRIPTION_NOT_FOUND"
 	CauseContextNotFound                    = "CONTEXT_NOT_FOUND"
 	CauseCreateSubscriptionError            = "CREATE_SUBSCRIPTION_ERROR"
@@ -34,6 +35,7 @@ const (
 	CauseNfDeleteError                      = "NF_DELETE_ERROR"
 	CauseNotificationError                  = "NOTIFICATION_ERROR"
 	CauseNotImplemented                     = "NOT_IMPLEMENTED"
+	CauseRequestRejected                    = "REQUEST_REJECTED"
 	CauseServerError                        = "SERVER_ERROR"
 	CauseSnssaiNotSupported                 = "SNSSAI_NOT_SUPPORTED"
 	CauseSubscriptionDeleteError            = "SUBSCRIPTION_DELETE_ERROR"
