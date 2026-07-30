@@ -187,9 +187,10 @@ func extractSupiNumber(supi string) string {
 func MatchAusfProfile(profile *models.NFProfileDiscovery, opts Nnrf_NFDiscovery.ApiSearchNFInstancesRequest) (bool, error) {
 	supi := opts.GetSupi()
 	if supi != nil {
+		// Unrestricted when no SUPI ranges are declared; see MatchPcfProfile.
 		if profile.AusfInfo == nil || len(profile.AusfInfo.SupiRanges) == 0 {
-			logger.NrfcacheLog.Debugf("ausf match failed: no SUPI ranges for %s", profile.NfInstanceId)
-			return false, nil
+			logger.NrfcacheLog.Debugf("ausf match successful (unrestricted: no SUPI ranges) for %s", profile.NfInstanceId)
+			return true, nil
 		}
 
 		matchFound := matchSupiRange(*supi, profile.AusfInfo.SupiRanges)
@@ -279,9 +280,15 @@ func MatchAmfProfile(profile *models.NFProfileDiscovery, opts Nnrf_NFDiscovery.A
 func MatchPcfProfile(profile *models.NFProfileDiscovery, opts Nnrf_NFDiscovery.ApiSearchNFInstancesRequest) (bool, error) {
 	supi := opts.GetSupi()
 	if supi != nil {
+		// A profile declaring no SUPI ranges is unrestricted and serves every
+		// SUPI. The NRF's own discovery filter encodes this as an $or over
+		// "a range contains the SUPI" / "supiRanges is null" / "supiRanges is
+		// absent" (nrf producer/nf_discovery.go, [Query-18] supi). Rationale:
+		// the cache must select the same profiles as the NRF it caches,
+		// otherwise a cached lookup and a live discovery disagree.
 		if profile.PcfInfo == nil || len(profile.PcfInfo.SupiRanges) == 0 {
-			logger.NrfcacheLog.Infof("pcf match found = false (no SUPI ranges)")
-			return false, nil
+			logger.NrfcacheLog.Debugf("pcf match found = true (unrestricted: no SUPI ranges)")
+			return true, nil
 		}
 
 		matchFound := matchSupiRange(*supi, profile.PcfInfo.SupiRanges)
@@ -297,9 +304,10 @@ func MatchPcfProfile(profile *models.NFProfileDiscovery, opts Nnrf_NFDiscovery.A
 func MatchUdmProfile(profile *models.NFProfileDiscovery, opts Nnrf_NFDiscovery.ApiSearchNFInstancesRequest) (bool, error) {
 	supi := opts.GetSupi()
 	if supi != nil {
+		// Unrestricted when no SUPI ranges are declared; see MatchPcfProfile.
 		if profile.UdmInfo == nil || len(profile.UdmInfo.GetSupiRanges()) == 0 {
-			logger.NrfcacheLog.Infof("udm match found = false (no SUPI ranges)")
-			return false, nil
+			logger.NrfcacheLog.Debugf("udm match found = true (unrestricted: no SUPI ranges)")
+			return true, nil
 		}
 
 		matchFound := matchSupiRange(*supi, profile.UdmInfo.GetSupiRanges())
