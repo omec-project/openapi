@@ -132,6 +132,7 @@ type NrfCache struct {
 	nrfDiscoveryQueryCb NrfDiscoveryQueryCb // nrf query callback
 	evictionInterval    time.Duration       // timer interval in which the cache is checked for eviction of expired entries
 	mutex               sync.RWMutex
+	discoveryMutex      sync.Mutex
 }
 
 // handleLookup - Checks if the cache has nf cache entry corresponding to the parameters specified.
@@ -154,11 +155,21 @@ func (c *NrfCache) handleLookup(ctx context.Context, nrfUri string, targetNfType
 		return models.SearchResult{NfInstances: nfInstances}, nil
 	}
 
-	// Cache miss - acquire write lock
-	c.mutex.Lock()
-	defer c.mutex.Unlock()
+	// Only one discovery for this NF type runs at a time, so a burst of
+	// concurrent misses collapses into a single NRF query. discoveryMutex is
+	// held instead of the cache lock: a sync.RWMutex queues new readers behind
+	// a waiting writer, so holding the cache write lock across the round trip
+	// stalls every concurrent cache *hit* for this NF type for a full RTT.
+	// With a permanently-missing NF type that stall is unbounded and caps
+	// registration throughput core-wide.
+	c.discoveryMutex.Lock()
+	defer c.discoveryMutex.Unlock()
 
+	// The winner of discoveryMutex may already have populated the entry.
+	c.mutex.RLock()
 	nfInstances = c.get(param)
+	c.mutex.RUnlock()
+
 	if len(nfInstances) > 0 {
 		return models.SearchResult{NfInstances: nfInstances}, nil
 	}
@@ -174,9 +185,12 @@ func (c *NrfCache) handleLookup(ctx context.Context, nrfUri string, targetNfType
 	}
 
 	ttl := time.Duration(searchResult.ValidityPeriod) * time.Second
+
+	c.mutex.Lock()
 	for i := range searchResult.NfInstances {
 		c.set(&searchResult.NfInstances[i], ttl)
 	}
+	c.mutex.Unlock()
 
 	return *searchResult, nil
 }
