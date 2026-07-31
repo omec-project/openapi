@@ -34,6 +34,7 @@ var matchFilters = MatchFilters{
 	models.NFTYPE_PCF:  MatchPcfProfile,
 	models.NFTYPE_NSSF: MatchNssfProfile,
 	models.NFTYPE_UDM:  MatchUdmProfile,
+	models.NFTYPE_UDR:  MatchUdrProfile,
 	models.NFTYPE_AMF:  MatchAmfProfile,
 }
 
@@ -318,4 +319,28 @@ func MatchUdmProfile(profile *models.NFProfileDiscovery, opts Nnrf_NFDiscovery.A
 	// No SUPI filter - match any profile
 	logger.NrfcacheLog.Infof("udm match found = true (no SUPI filter)")
 	return true, nil
+}
+
+// MatchUdrProfile selects UDR profiles for a SUPI-filtered discovery.
+//
+// Without an entry in matchFilters a UDR profile is dropped unconditionally,
+// so a cached UDR lookup returns nothing and every UDM/PCF data access falls
+// through to a live NRF query. Rationale: UDR is resolved on every subscriber
+// data access, which makes it the most frequently discovered NF in the core.
+func MatchUdrProfile(profile *models.NFProfileDiscovery, opts Nnrf_NFDiscovery.ApiSearchNFInstancesRequest) (bool, error) {
+	supi := opts.GetSupi()
+	if supi == nil {
+		logger.NrfcacheLog.Debugf("udr match successful (no SUPI filter) for %s", profile.NfInstanceId)
+		return true, nil
+	}
+
+	// Unrestricted when no SUPI ranges are declared; see MatchPcfProfile.
+	if profile.UdrInfo == nil || len(profile.UdrInfo.GetSupiRanges()) == 0 {
+		logger.NrfcacheLog.Debugf("udr match successful (unrestricted: no SUPI ranges) for %s", profile.NfInstanceId)
+		return true, nil
+	}
+
+	matchFound := matchSupiRange(*supi, profile.UdrInfo.GetSupiRanges())
+	logger.NrfcacheLog.Debugf("udr match found = %v for %s", matchFound, profile.NfInstanceId)
+	return matchFound, nil
 }

@@ -1213,6 +1213,23 @@ func TestMatchProfileWithoutSupiRangesIsUnrestricted(t *testing.T) {
 				NfType:       models.NFTYPE_AUSF,
 			},
 		},
+		{
+			name:    "udr_info_without_supi_ranges",
+			matcher: MatchUdrProfile,
+			profile: models.NFProfileDiscovery{
+				NfInstanceId: "UDR-no-ranges",
+				NfType:       models.NFTYPE_UDR,
+				UdrInfo:      &models.UdrInfo{},
+			},
+		},
+		{
+			name:    "udr_info_absent",
+			matcher: MatchUdrProfile,
+			profile: models.NFProfileDiscovery{
+				NfInstanceId: "UDR-no-info",
+				NfType:       models.NFTYPE_UDR,
+			},
+		},
 	}
 
 	param := Nnrf_NFDiscovery.ApiSearchNFInstancesRequest{}.Supi(supi)
@@ -1248,5 +1265,43 @@ func TestMatchProfileWithSupiRangesStillFiltersOut(t *testing.T) {
 	}
 	if match {
 		t.Error("SUPI outside the declared ranges must not match")
+	}
+}
+
+// TestUdrProfileIsSelectableFromCache guards the registration of UDR in
+// matchFilters. A profile whose NfType has no registered filter is dropped by
+// NrfCache.get, so an unregistered UDR made every cached UDR lookup return
+// empty and forced a live NRF query on every subscriber data access.
+func TestUdrProfileIsSelectableFromCache(t *testing.T) {
+	if _, ok := matchFilters[models.NFTYPE_UDR]; !ok {
+		t.Fatal("UDR has no entry in matchFilters, so cached UDR discovery can never return a profile")
+	}
+
+	profile := models.NFProfileDiscovery{
+		NfInstanceId: "UDR-1",
+		NfType:       models.NFTYPE_UDR,
+		UdrInfo: &models.UdrInfo{
+			SupiRanges: []models.SupiRange{
+				{Start: openapi.PtrString("208930100007500"), End: openapi.PtrString("208930100007599")},
+			},
+		},
+	}
+
+	inRange := Nnrf_NFDiscovery.ApiSearchNFInstancesRequest{}.Supi("imsi-208930100007550")
+	match, err := MatchUdrProfile(&profile, inRange)
+	if err != nil {
+		t.Fatalf("MatchUdrProfile returned error: %v", err)
+	}
+	if !match {
+		t.Error("SUPI inside the declared range must match")
+	}
+
+	outOfRange := Nnrf_NFDiscovery.ApiSearchNFInstancesRequest{}.Supi("imsi-208930100009999")
+	match, err = MatchUdrProfile(&profile, outOfRange)
+	if err != nil {
+		t.Fatalf("MatchUdrProfile returned error: %v", err)
+	}
+	if match {
+		t.Error("SUPI outside the declared range must not match")
 	}
 }
