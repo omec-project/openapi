@@ -165,7 +165,7 @@ func (c *NrfCache) handleLookup(ctx context.Context, nrfUri string, targetNfType
 	c.discoveryMutex.Lock()
 	defer c.discoveryMutex.Unlock()
 
-	// The winner of discoveryMutex may already have populated the entry.
+	// Re-check in case another goroutine already populated the entry.
 	c.mutex.RLock()
 	nfInstances = c.get(param)
 	c.mutex.RUnlock()
