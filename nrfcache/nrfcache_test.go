@@ -1158,9 +1158,9 @@ func TestMatchProfileWithoutSupiRangesIsUnrestricted(t *testing.T) {
 	const supi = "imsi-208930100007500"
 
 	testCases := []struct {
-		name    string
-		matcher MatchFilter
 		profile models.NFProfileDiscovery
+		matcher MatchFilter
+		name    string
 	}{
 		{
 			name:    "udm_info_without_supi_ranges",
