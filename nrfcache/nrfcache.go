@@ -155,13 +155,7 @@ func (c *NrfCache) handleLookup(ctx context.Context, nrfUri string, targetNfType
 		return models.SearchResult{NfInstances: nfInstances}, nil
 	}
 
-	// Only one discovery for this NF type runs at a time, so a burst of
-	// concurrent misses collapses into a single NRF query. discoveryMutex is
-	// held instead of the cache lock: a sync.RWMutex queues new readers behind
-	// a waiting writer, so holding the cache write lock across the round trip
-	// stalls every concurrent cache *hit* for this NF type for a full RTT.
-	// With a permanently-missing NF type that stall is unbounded and caps
-	// registration throughput core-wide.
+	// discoveryMutex serializes NRF round-trips without blocking concurrent cache hits.
 	c.discoveryMutex.Lock()
 	defer c.discoveryMutex.Unlock()
 
