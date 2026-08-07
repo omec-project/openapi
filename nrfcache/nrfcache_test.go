@@ -1359,13 +1359,51 @@ func TestAmfTaiFilter(t *testing.T) {
 
 	// AmfInfo present but taiList absent means unrestricted (TS 29.510 Table 6.1.6.2.11-1).
 	unrestricted := models.NFProfileDiscovery{
-		NfInstanceId: "AMF-no-tail",
+		NfInstanceId: "AMF-no-tai",
 		NfType:       models.NFTYPE_AMF,
 		NfStatus:     models.NFSTATUS_REGISTERED,
 		AmfInfo:      &models.AmfInfo{AmfRegionId: "ca", AmfSetId: "3f8"},
 	}
 	if match, err := MatchAmfProfile(&unrestricted, paramMatch); err != nil || !match {
 		t.Errorf("AMF with absent taiList must match any TAI query: match=%v err=%v", match, err)
+	}
+}
+
+// TestAmfTaiFilterSnpn validates SNPN TAI matching: the Nid field must be
+// included in the comparison so that TAIs with equal PLMN+TAC but different
+// NIDs do not produce false-positive matches across SNPNs (TS 23.501 5.30.2.1).
+func TestAmfTaiFilterSnpn(t *testing.T) {
+	nid1 := openapi.PtrString("1234567890a")
+	nid2 := openapi.PtrString("b0987654321")
+	plmn := models.PlmnId{Mcc: "208", Mnc: "93"}
+	tac := "000001"
+
+	snpnTai1 := models.Tai{PlmnId: plmn, Tac: tac, Nid: nid1}
+	snpnTai2 := models.Tai{PlmnId: plmn, Tac: tac, Nid: nid2}
+	plmnTai := models.Tai{PlmnId: plmn, Tac: tac} // no Nid – standard PLMN context
+
+	profile := models.NFProfileDiscovery{
+		NfInstanceId: "AMF-snpn",
+		NfType:       models.NFTYPE_AMF,
+		NfStatus:     models.NFSTATUS_REGISTERED,
+		AmfInfo: &models.AmfInfo{
+			AmfRegionId: "ca",
+			AmfSetId:    "3f8",
+			TaiList:     []models.Tai{snpnTai1},
+		},
+	}
+
+	// Same NID: must match.
+	if match, err := MatchAmfProfile(&profile, Nnrf_NFDiscovery.ApiSearchNFInstancesRequest{}.Tai(snpnTai1)); err != nil || !match {
+		t.Errorf("expected match for same NID: match=%v err=%v", match, err)
+	}
+	// Different NID, same PLMN+TAC: must not match (cross-SNPN false positive).
+	if match, err := MatchAmfProfile(&profile, Nnrf_NFDiscovery.ApiSearchNFInstancesRequest{}.Tai(snpnTai2)); err != nil || match {
+		t.Errorf("expected no match for different NID: match=%v err=%v", match, err)
+	}
+	// Query without NID against SNPN profile TAI: must not match.
+	if match, err := MatchAmfProfile(&profile, Nnrf_NFDiscovery.ApiSearchNFInstancesRequest{}.Tai(plmnTai)); err != nil || match {
+		t.Errorf("expected no match for PLMN query vs SNPN profile: match=%v err=%v", match, err)
 	}
 }
 

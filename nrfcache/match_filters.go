@@ -19,13 +19,20 @@ import (
 	"strconv"
 	"strings"
 	"sync"
+	"sync/atomic"
 
 	"github.com/omec-project/openapi/v2/Nnrf_NFDiscovery"
 	"github.com/omec-project/openapi/v2/logger"
 	"github.com/omec-project/openapi/v2/models"
 )
 
-var regexpCache sync.Map
+// maxRegexpCacheEntries caps the SUPI-pattern cache to prevent unbounded growth.
+const maxRegexpCacheEntries = 1024
+
+var (
+	regexpCache      sync.Map
+	regexpCacheCount atomic.Int64
+)
 
 type MatchFilter func(profile *models.NFProfileDiscovery, opts Nnrf_NFDiscovery.ApiSearchNFInstancesRequest) (bool, error)
 
@@ -156,7 +163,11 @@ func matchSingleSupiRange(supi string, supiRange models.SupiRange) bool {
 				logger.NrfcacheLog.Errorf("invalid SUPI pattern '%s': %v", pattern, err)
 				return false
 			}
-			regexpCache.Store(pattern, r)
+			if regexpCacheCount.Load() < maxRegexpCacheEntries {
+				if _, loaded := regexpCache.LoadOrStore(pattern, r); !loaded {
+					regexpCacheCount.Add(1)
+				}
+			}
 		}
 		return r.MatchString(supi)
 	}
@@ -298,7 +309,8 @@ func MatchAmfProfile(profile *models.NFProfileDiscovery, opts Nnrf_NFDiscovery.A
 			return false, nil
 		}
 		tai := opts.GetTai()
-		// Absent taiList means unrestricted (TS 29.510 Table 6.1.6.2.11-1)
+		// Absent taiList and taiRangeList means unrestricted (TS 29.510 Table 6.1.6.2.11-1).
+		// taiRangeList matching is not yet implemented; profiles with only taiRangeList pass through.
 		if tai != nil && len(amfInfo.GetTaiList()) > 0 && !taiInList(*tai, amfInfo.GetTaiList()) {
 			logger.NrfcacheLog.Debugf("amf match failed: TAI mismatch for %s", profile.GetNfInstanceId())
 			return false, nil
@@ -314,10 +326,10 @@ func MatchAmfProfile(profile *models.NFProfileDiscovery, opts Nnrf_NFDiscovery.A
 	return true, nil
 }
 
-// taiInList compares PlmnId and Tac only; Nid (SNPN) is omitted intentionally.
+// taiInList matches PlmnId, Tac, and Nid; an absent Nid (PLMN context) matches only another absent Nid.
 func taiInList(tai models.Tai, list []models.Tai) bool {
 	for _, t := range list {
-		if t.GetPlmnId() == tai.GetPlmnId() && t.GetTac() == tai.GetTac() {
+		if t.GetPlmnId() == tai.GetPlmnId() && t.GetTac() == tai.GetTac() && t.GetNid() == tai.GetNid() {
 			return true
 		}
 	}
