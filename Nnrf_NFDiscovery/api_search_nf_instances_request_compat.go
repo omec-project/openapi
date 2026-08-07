@@ -40,3 +40,7 @@ func (r ApiSearchNFInstancesRequest) GetAmfSetId() *string {
 func (r ApiSearchNFInstancesRequest) GetSupi() *string {
 	return r.supi
 }
+
+func (r ApiSearchNFInstancesRequest) GetTai() *models.Tai {
+	return r.tai
+}

@@ -484,11 +484,11 @@ func (tc *testContext) nrfDbCallback(ctx context.Context, nrfUri string, targetN
 
 	logger.NrfcacheLog.Infoln("nrfDbCallback Entry")
 
-	var searchResult models.SearchResult
+	searchResult := models.NewSearchResultWithDefaults()
 	var nfProfile models.NFProfileDiscovery
 	var err error
 
-	searchResult.ValidityPeriod = tc.validityPeriod
+	searchResult.SetValidityPeriod(tc.validityPeriod)
 
 	switch targetNfType {
 	case models.NFTYPE_SMF:
@@ -506,19 +506,23 @@ func (tc *testContext) nrfDbCallback(ctx context.Context, nrfUri string, targetN
 			}
 			nfProfile, err = tc.getNfProfile(key)
 			if err != nil {
-				return &searchResult, err
+				return searchResult, err
 			}
-			searchResult.NfInstances = append(searchResult.NfInstances, nfProfile)
+			searchResult.SetNfInstances(append(searchResult.GetNfInstances(), nfProfile))
 		} else {
-			searchResult.NfInstances, err = tc.getNfProfiles(targetNfType)
+			var profiles []models.NFProfileDiscovery
+			profiles, err = tc.getNfProfiles(targetNfType)
+			searchResult.SetNfInstances(profiles)
 		}
 	case models.NFTYPE_AUSF, models.NFTYPE_AMF:
-		searchResult.NfInstances, err = tc.getNfProfiles(targetNfType)
+		var profiles []models.NFProfileDiscovery
+		profiles, err = tc.getNfProfiles(targetNfType)
+		searchResult.SetNfInstances(profiles)
 	default:
-		return &searchResult, fmt.Errorf("unsupported NFType: %s", targetNfType)
+		return searchResult, fmt.Errorf("unsupported NFType: %s", targetNfType)
 	}
 
-	return &searchResult, err
+	return searchResult, err
 }
 
 func setupTest(t *testing.T) (*testContext, func()) {
@@ -1242,7 +1246,7 @@ func TestMatchProfileWithoutSupiRangesIsUnrestricted(t *testing.T) {
 			}
 			if !match {
 				t.Errorf("profile %s declares no SUPI ranges and must match SUPI %s, got no match",
-					tc.profile.NfInstanceId, supi)
+					tc.profile.GetNfInstanceId(), supi)
 			}
 		})
 	}
@@ -1251,15 +1255,17 @@ func TestMatchProfileWithoutSupiRangesIsUnrestricted(t *testing.T) {
 // TestMatchProfileWithSupiRangesStillFiltersOut guards the complementary case:
 // once a profile declares ranges, a SUPI outside them must not match.
 func TestMatchProfileWithSupiRangesStillFiltersOut(t *testing.T) {
-	ranges := []models.SupiRange{{Start: openapi.PtrString("100000000000000"), End: openapi.PtrString("100000000000009")}}
+	sr := models.NewSupiRange()
+	sr.SetStart("100000000000000")
+	sr.SetEnd("100000000000009")
+	ranges := []models.SupiRange{*sr}
 	param := Nnrf_NFDiscovery.ApiSearchNFInstancesRequest{}.Supi("imsi-208930100007500")
 
-	profile := models.NFProfileDiscovery{
-		NfInstanceId: "UDM-ranged",
-		NfType:       models.NFTYPE_UDM,
-		UdmInfo:      &models.UdmInfo{SupiRanges: ranges},
-	}
-	match, err := MatchUdmProfile(&profile, param)
+	udmInfo := models.NewUdmInfo()
+	udmInfo.SetSupiRanges(ranges)
+	profile := models.NewNFProfileDiscovery("UDM-ranged", models.NFTYPE_UDM, models.NFSTATUS_REGISTERED)
+	profile.SetUdmInfo(*udmInfo)
+	match, err := MatchUdmProfile(profile, param)
 	if err != nil {
 		t.Fatalf("MatchUdmProfile returned error: %v", err)
 	}
@@ -1277,18 +1283,16 @@ func TestUdrProfileIsSelectableFromCache(t *testing.T) {
 		t.Fatal("UDR has no entry in matchFilters, so cached UDR discovery can never return a profile")
 	}
 
-	profile := models.NFProfileDiscovery{
-		NfInstanceId: "UDR-1",
-		NfType:       models.NFTYPE_UDR,
-		UdrInfo: &models.UdrInfo{
-			SupiRanges: []models.SupiRange{
-				{Start: openapi.PtrString("208930100007500"), End: openapi.PtrString("208930100007599")},
-			},
-		},
-	}
+	srUdr := models.NewSupiRange()
+	srUdr.SetStart("208930100007500")
+	srUdr.SetEnd("208930100007599")
+	udrInfo := models.NewUdrInfo()
+	udrInfo.SetSupiRanges([]models.SupiRange{*srUdr})
+	profile := models.NewNFProfileDiscovery("UDR-1", models.NFTYPE_UDR, models.NFSTATUS_REGISTERED)
+	profile.SetUdrInfo(*udrInfo)
 
 	inRange := Nnrf_NFDiscovery.ApiSearchNFInstancesRequest{}.Supi("imsi-208930100007550")
-	match, err := MatchUdrProfile(&profile, inRange)
+	match, err := MatchUdrProfile(profile, inRange)
 	if err != nil {
 		t.Fatalf("MatchUdrProfile returned error: %v", err)
 	}
@@ -1297,7 +1301,7 @@ func TestUdrProfileIsSelectableFromCache(t *testing.T) {
 	}
 
 	outOfRange := Nnrf_NFDiscovery.ApiSearchNFInstancesRequest{}.Supi("imsi-208930100009999")
-	match, err = MatchUdrProfile(&profile, outOfRange)
+	match, err = MatchUdrProfile(profile, outOfRange)
 	if err != nil {
 		t.Fatalf("MatchUdrProfile returned error: %v", err)
 	}

@@ -152,7 +152,9 @@ func (c *NrfCache) handleLookup(ctx context.Context, nrfUri string, targetNfType
 	c.mutex.RUnlock()
 
 	if len(nfInstances) > 0 {
-		return models.SearchResult{NfInstances: nfInstances}, nil
+		var result models.SearchResult
+		result.SetNfInstances(nfInstances)
+		return result, nil
 	}
 
 	// discoveryMutex serializes NRF round-trips without blocking concurrent cache hits.
@@ -165,7 +167,9 @@ func (c *NrfCache) handleLookup(ctx context.Context, nrfUri string, targetNfType
 	c.mutex.RUnlock()
 
 	if len(nfInstances) > 0 {
-		return models.SearchResult{NfInstances: nfInstances}, nil
+		var result models.SearchResult
+		result.SetNfInstances(nfInstances)
+		return result, nil
 	}
 
 	logger.NrfcacheLog.Warnf("cache miss for nftype %s", targetNfType)
@@ -178,11 +182,11 @@ func (c *NrfCache) handleLookup(ctx context.Context, nrfUri string, targetNfType
 		return models.SearchResult{}, fmt.Errorf("NRF discovery returned nil result")
 	}
 
-	ttl := time.Duration(searchResult.ValidityPeriod) * time.Second
-
+	ttl := time.Duration(searchResult.GetValidityPeriod()) * time.Second
 	c.mutex.Lock()
-	for i := range searchResult.NfInstances {
-		c.set(&searchResult.NfInstances[i], ttl)
+	nfInstances = searchResult.GetNfInstances()
+	for i := range nfInstances {
+		c.set(&nfInstances[i], ttl)
 	}
 	c.mutex.Unlock()
 
@@ -200,13 +204,13 @@ func (c *NrfCache) set(nfProfile *models.NFProfileDiscovery, ttl time.Duration) 
 		ttl = ttl * time.Second
 	}
 
-	item, exists := c.cache[nfProfile.NfInstanceId]
+	item, exists := c.cache[nfProfile.GetNfInstanceId()]
 	if exists {
 		// if item.isExpired()
 		c.priorityQ.update(item, nfProfile, ttl)
 	} else {
 		newItem := newNfProfileItem(nfProfile, ttl)
-		c.cache[nfProfile.NfInstanceId] = newItem
+		c.cache[nfProfile.GetNfInstanceId()] = newItem
 		c.priorityQ.push(newItem)
 	}
 }
@@ -240,9 +244,9 @@ func (c *NrfCache) get(opts Nnrf_NFDiscovery.ApiSearchNFInstancesRequest) []mode
 			continue
 		}
 
-		if cb, ok := matchFilters[element.nfProfile.NfType]; ok {
+		if cb, ok := matchFilters[element.nfProfile.GetNfType()]; ok {
 			if matchFound, err := cb(element.nfProfile, opts); err != nil {
-				logger.NrfcacheLog.Errorf("match filter error for %s: %v", element.nfProfile.NfInstanceId, err)
+				logger.NrfcacheLog.Errorf("match filter error for %s: %v", element.nfProfile.GetNfInstanceId(), err)
 			} else if matchFound {
 				nfProfiles = append(nfProfiles, *element.nfProfile)
 			}
@@ -267,7 +271,7 @@ func (c *NrfCache) removeByNfInstanceId(nfInstanceId string) bool {
 // remove -
 func (c *NrfCache) remove(item *NfProfileItem) {
 	c.priorityQ.remove(item)
-	delete(c.cache, item.nfProfile.NfInstanceId)
+	delete(c.cache, item.nfProfile.GetNfInstanceId())
 }
 
 // cleanupExpiredItems - removes the profiles with expired TTLs
@@ -279,7 +283,7 @@ func (c *NrfCache) cleanupExpiredItems() {
 			break
 		}
 
-		logger.NrfcacheLog.Debugf("evicted nf instance %s", item.nfProfile.NfInstanceId)
+		logger.NrfcacheLog.Debugf("evicted nf instance %s", item.nfProfile.GetNfInstanceId())
 		c.remove(item)
 	}
 }
@@ -460,7 +464,7 @@ func SearchNFInstances(ctx context.Context, nrfUri string, targetNfType, request
 		logger.NrfcacheLog.With("nfType", targetNfType, "param", param).Errorln("handleLookup failed:", err)
 		return nil, fmt.Errorf("handleLookup for nfType %v failed: %w", targetNfType, err)
 	}
-	for _, np := range searchResult.NfInstances {
+	for _, np := range searchResult.GetNfInstances() {
 		logger.NrfcacheLog.Infof("%+v", np)
 	}
 	return &searchResult, err
