@@ -1147,3 +1147,161 @@ func TestAmfProfileMatching(t *testing.T) {
 		})
 	}
 }
+
+// TestMatchProfileWithoutSupiRangesIsUnrestricted covers profiles that declare
+// no SUPI ranges. Such a profile serves every SUPI, so a SUPI-filtered
+// discovery must select it. The NRF's own discovery filter encodes this as an
+// $or over "a range contains the SUPI" / "supiRanges is null" / "supiRanges is
+// absent"; a matcher that rejected these profiles would make cached lookups
+// disagree with a live discovery against the same NRF.
+func TestMatchProfileWithoutSupiRangesIsUnrestricted(t *testing.T) {
+	const supi = "imsi-208930100007500"
+
+	testCases := []struct {
+		profile models.NFProfileDiscovery
+		matcher MatchFilter
+		name    string
+	}{
+		{
+			name:    "udm_info_without_supi_ranges",
+			matcher: MatchUdmProfile,
+			profile: models.NFProfileDiscovery{
+				NfInstanceId: "UDM-no-ranges",
+				NfType:       models.NFTYPE_UDM,
+				UdmInfo:      &models.UdmInfo{},
+			},
+		},
+		{
+			name:    "udm_info_absent",
+			matcher: MatchUdmProfile,
+			profile: models.NFProfileDiscovery{
+				NfInstanceId: "UDM-no-info",
+				NfType:       models.NFTYPE_UDM,
+			},
+		},
+		{
+			name:    "pcf_info_without_supi_ranges",
+			matcher: MatchPcfProfile,
+			profile: models.NFProfileDiscovery{
+				NfInstanceId: "PCF-no-ranges",
+				NfType:       models.NFTYPE_PCF,
+				PcfInfo:      &models.PcfInfo{},
+			},
+		},
+		{
+			name:    "pcf_info_absent",
+			matcher: MatchPcfProfile,
+			profile: models.NFProfileDiscovery{
+				NfInstanceId: "PCF-no-info",
+				NfType:       models.NFTYPE_PCF,
+			},
+		},
+		{
+			name:    "ausf_info_without_supi_ranges",
+			matcher: MatchAusfProfile,
+			profile: models.NFProfileDiscovery{
+				NfInstanceId: "AUSF-no-ranges",
+				NfType:       models.NFTYPE_AUSF,
+				AusfInfo:     &models.AusfInfo{},
+			},
+		},
+		{
+			name:    "ausf_info_absent",
+			matcher: MatchAusfProfile,
+			profile: models.NFProfileDiscovery{
+				NfInstanceId: "AUSF-no-info",
+				NfType:       models.NFTYPE_AUSF,
+			},
+		},
+		{
+			name:    "udr_info_without_supi_ranges",
+			matcher: MatchUdrProfile,
+			profile: models.NFProfileDiscovery{
+				NfInstanceId: "UDR-no-ranges",
+				NfType:       models.NFTYPE_UDR,
+				UdrInfo:      &models.UdrInfo{},
+			},
+		},
+		{
+			name:    "udr_info_absent",
+			matcher: MatchUdrProfile,
+			profile: models.NFProfileDiscovery{
+				NfInstanceId: "UDR-no-info",
+				NfType:       models.NFTYPE_UDR,
+			},
+		},
+	}
+
+	param := Nnrf_NFDiscovery.ApiSearchNFInstancesRequest{}.Supi(supi)
+
+	for _, tc := range testCases {
+		t.Run(tc.name, func(t *testing.T) {
+			match, err := tc.matcher(&tc.profile, param)
+			if err != nil {
+				t.Fatalf("matcher returned error: %v", err)
+			}
+			if !match {
+				t.Errorf("profile %s declares no SUPI ranges and must match SUPI %s, got no match",
+					tc.profile.NfInstanceId, supi)
+			}
+		})
+	}
+}
+
+// TestMatchProfileWithSupiRangesStillFiltersOut guards the complementary case:
+// once a profile declares ranges, a SUPI outside them must not match.
+func TestMatchProfileWithSupiRangesStillFiltersOut(t *testing.T) {
+	ranges := []models.SupiRange{{Start: openapi.PtrString("100000000000000"), End: openapi.PtrString("100000000000009")}}
+	param := Nnrf_NFDiscovery.ApiSearchNFInstancesRequest{}.Supi("imsi-208930100007500")
+
+	profile := models.NFProfileDiscovery{
+		NfInstanceId: "UDM-ranged",
+		NfType:       models.NFTYPE_UDM,
+		UdmInfo:      &models.UdmInfo{SupiRanges: ranges},
+	}
+	match, err := MatchUdmProfile(&profile, param)
+	if err != nil {
+		t.Fatalf("MatchUdmProfile returned error: %v", err)
+	}
+	if match {
+		t.Error("SUPI outside the declared ranges must not match")
+	}
+}
+
+// TestUdrProfileIsSelectableFromCache guards the registration of UDR in
+// matchFilters. A profile whose NfType has no registered filter is dropped by
+// NrfCache.get, so an unregistered UDR made every cached UDR lookup return
+// empty and forced a live NRF query on every subscriber data access.
+func TestUdrProfileIsSelectableFromCache(t *testing.T) {
+	if _, ok := matchFilters[models.NFTYPE_UDR]; !ok {
+		t.Fatal("UDR has no entry in matchFilters, so cached UDR discovery can never return a profile")
+	}
+
+	profile := models.NFProfileDiscovery{
+		NfInstanceId: "UDR-1",
+		NfType:       models.NFTYPE_UDR,
+		UdrInfo: &models.UdrInfo{
+			SupiRanges: []models.SupiRange{
+				{Start: openapi.PtrString("208930100007500"), End: openapi.PtrString("208930100007599")},
+			},
+		},
+	}
+
+	inRange := Nnrf_NFDiscovery.ApiSearchNFInstancesRequest{}.Supi("imsi-208930100007550")
+	match, err := MatchUdrProfile(&profile, inRange)
+	if err != nil {
+		t.Fatalf("MatchUdrProfile returned error: %v", err)
+	}
+	if !match {
+		t.Error("SUPI inside the declared range must match")
+	}
+
+	outOfRange := Nnrf_NFDiscovery.ApiSearchNFInstancesRequest{}.Supi("imsi-208930100009999")
+	match, err = MatchUdrProfile(&profile, outOfRange)
+	if err != nil {
+		t.Fatalf("MatchUdrProfile returned error: %v", err)
+	}
+	if match {
+		t.Error("SUPI outside the declared range must not match")
+	}
+}
