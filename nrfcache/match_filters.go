@@ -39,6 +39,9 @@ var matchFilters = MatchFilters{
 }
 
 func MatchSmfProfile(profile *models.NFProfileDiscovery, opts Nnrf_NFDiscovery.ApiSearchNFInstancesRequest) (bool, error) {
+	if profile == nil {
+		return false, fmt.Errorf("profile cannot be nil")
+	}
 	serviceNames := opts.GetServiceNames()
 	if serviceNames != nil && len(*serviceNames) > 0 {
 		found := false
@@ -187,6 +190,9 @@ func extractSupiNumber(supi string) string {
 }
 
 func MatchAusfProfile(profile *models.NFProfileDiscovery, opts Nnrf_NFDiscovery.ApiSearchNFInstancesRequest) (bool, error) {
+	if profile == nil {
+		return false, fmt.Errorf("profile cannot be nil")
+	}
 	supi := opts.GetSupi()
 	if supi != nil {
 		// Unrestricted when no SUPI ranges are declared; see MatchPcfProfile.
@@ -210,6 +216,9 @@ func MatchAusfProfile(profile *models.NFProfileDiscovery, opts Nnrf_NFDiscovery.
 }
 
 func MatchNssfProfile(profile *models.NFProfileDiscovery, opts Nnrf_NFDiscovery.ApiSearchNFInstancesRequest) (bool, error) {
+	if profile == nil {
+		return false, fmt.Errorf("profile cannot be nil")
+	}
 	logger.NrfcacheLog.Infoln("nssf match found")
 	return true, nil
 }
@@ -282,6 +291,9 @@ func MatchAmfProfile(profile *models.NFProfileDiscovery, opts Nnrf_NFDiscovery.A
 }
 
 func MatchPcfProfile(profile *models.NFProfileDiscovery, opts Nnrf_NFDiscovery.ApiSearchNFInstancesRequest) (bool, error) {
+	if profile == nil {
+		return false, fmt.Errorf("profile cannot be nil")
+	}
 	supi := opts.GetSupi()
 	if supi != nil {
 		// A profile declaring no SUPI ranges is unrestricted and serves every
@@ -307,6 +319,9 @@ func MatchPcfProfile(profile *models.NFProfileDiscovery, opts Nnrf_NFDiscovery.A
 }
 
 func MatchUdmProfile(profile *models.NFProfileDiscovery, opts Nnrf_NFDiscovery.ApiSearchNFInstancesRequest) (bool, error) {
+	if profile == nil {
+		return false, fmt.Errorf("profile cannot be nil")
+	}
 	supi := opts.GetSupi()
 	if supi != nil {
 		// Unrestricted when no SUPI ranges are declared; see MatchPcfProfile.
@@ -333,6 +348,9 @@ func MatchUdmProfile(profile *models.NFProfileDiscovery, opts Nnrf_NFDiscovery.A
 // through to a live NRF query. Rationale: UDR is resolved on every subscriber
 // data access, which makes it the most frequently discovered NF in the core.
 func MatchUdrProfile(profile *models.NFProfileDiscovery, opts Nnrf_NFDiscovery.ApiSearchNFInstancesRequest) (bool, error) {
+	if profile == nil {
+		return false, fmt.Errorf("profile cannot be nil")
+	}
 	supi := opts.GetSupi()
 	if supi == nil {
 		logger.NrfcacheLog.Debugf("udr match successful (no SUPI filter) for %s", profile.GetNfInstanceId())
