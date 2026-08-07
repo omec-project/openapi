@@ -18,11 +18,14 @@ import (
 	"slices"
 	"strconv"
 	"strings"
+	"sync"
 
 	"github.com/omec-project/openapi/v2/Nnrf_NFDiscovery"
 	"github.com/omec-project/openapi/v2/logger"
 	"github.com/omec-project/openapi/v2/models"
 )
+
+var regexpCache sync.Map
 
 type MatchFilter func(profile *models.NFProfileDiscovery, opts Nnrf_NFDiscovery.ApiSearchNFInstancesRequest) (bool, error)
 
@@ -91,7 +94,7 @@ func MatchSmfProfile(profile *models.NFProfileDiscovery, opts Nnrf_NFDiscovery.A
 		}
 	}
 
-	// validate dnn
+	// validate dnn within the S-NSSAI context when snssais filter is also active
 	dnn := opts.GetDnn()
 	if dnn != nil {
 		// if a dnn is provided by the upper layer, check for the exact match
@@ -102,6 +105,18 @@ func MatchSmfProfile(profile *models.NFProfileDiscovery, opts Nnrf_NFDiscovery.A
 		if hasSmfInfo {
 		matchDnnLoop:
 			for _, s := range smfInfo.GetSNssaiSmfInfoList() {
+				if snssais != nil {
+					entrySnssaiMatch := false
+					for _, reqSnssai := range *snssais {
+						if s.SNssai.GetSst() == reqSnssai.GetSst() && s.SNssai.GetSd() == reqSnssai.GetSd() {
+							entrySnssaiMatch = true
+							break
+						}
+					}
+					if !entrySnssaiMatch {
+						continue
+					}
+				}
 				for _, d := range s.GetDnnSmfInfoList() {
 					if d.GetDnn() == *dnn || d.GetDnn() == "*" {
 						dnnMatched = true
@@ -131,10 +146,17 @@ func matchSupiRange(supi string, supiRange []models.SupiRange) bool {
 func matchSingleSupiRange(supi string, supiRange models.SupiRange) bool {
 	// Handle regex pattern matching (preferred method)
 	if pattern := supiRange.GetPattern(); pattern != "" {
-		r, err := regexp.Compile(pattern)
-		if err != nil {
-			logger.NrfcacheLog.Errorf("invalid SUPI pattern '%s': %v", pattern, err)
-			return false
+		var r *regexp.Regexp
+		if cached, ok := regexpCache.Load(pattern); ok {
+			r = cached.(*regexp.Regexp)
+		} else {
+			var err error
+			r, err = regexp.Compile(pattern)
+			if err != nil {
+				logger.NrfcacheLog.Errorf("invalid SUPI pattern '%s': %v", pattern, err)
+				return false
+			}
+			regexpCache.Store(pattern, r)
 		}
 		return r.MatchString(supi)
 	}
@@ -234,22 +256,19 @@ func MatchAmfProfile(profile *models.NFProfileDiscovery, opts Nnrf_NFDiscovery.A
 	targetPlmnList := opts.GetTargetPlmnList()
 	if targetPlmnList != nil && len(*targetPlmnList) > 0 {
 		profilePlmnList := profile.GetPlmnList()
-		if len(profilePlmnList) == 0 {
-			logger.NrfcacheLog.Debugf("amf match failed: no profile PLMNs for %s", profile.GetNfInstanceId())
-			return false, nil
-		}
-
-		found := false
-		for _, targetPlmn := range *targetPlmnList {
-			if slices.Contains(profilePlmnList, targetPlmn) {
-				found = true
-				break
+		// A profile without plmnList is available to all PLMNs (TS 29.510 Table 6.2.3.2.3.1-1 [Query-11])
+		if len(profilePlmnList) > 0 {
+			found := false
+			for _, targetPlmn := range *targetPlmnList {
+				if slices.Contains(profilePlmnList, targetPlmn) {
+					found = true
+					break
+				}
 			}
-		}
-
-		if !found {
-			logger.NrfcacheLog.Debugf("amf match failed: no PLMN match for %s", profile.GetNfInstanceId())
-			return false, nil
+			if !found {
+				logger.NrfcacheLog.Debugf("amf match failed: no PLMN match for %s", profile.GetNfInstanceId())
+				return false, nil
+			}
 		}
 	}
 
@@ -278,9 +297,14 @@ func MatchAmfProfile(profile *models.NFProfileDiscovery, opts Nnrf_NFDiscovery.A
 			logger.NrfcacheLog.Debugf("amf match failed: AMF set ID mismatch for %s", profile.GetNfInstanceId())
 			return false, nil
 		}
+		tai := opts.GetTai()
+		// Absent taiList means unrestricted (TS 29.510 Table 6.1.6.2.11-1)
+		if tai != nil && len(amfInfo.GetTaiList()) > 0 && !taiInList(*tai, amfInfo.GetTaiList()) {
+			logger.NrfcacheLog.Debugf("amf match failed: TAI mismatch for %s", profile.GetNfInstanceId())
+			return false, nil
+		}
 	} else {
-		// Handle case where AMF-specific filters are provided but AmfInfo is nil
-		if opts.GetGuami() != nil || opts.GetAmfRegionId() != nil || opts.GetAmfSetId() != nil {
+		if opts.GetGuami() != nil || opts.GetAmfRegionId() != nil || opts.GetAmfSetId() != nil || opts.GetTai() != nil {
 			logger.NrfcacheLog.Debugf("amf match failed: AMF filters provided but no AmfInfo for %s", profile.GetNfInstanceId())
 			return false, nil
 		}
@@ -288,6 +312,16 @@ func MatchAmfProfile(profile *models.NFProfileDiscovery, opts Nnrf_NFDiscovery.A
 
 	logger.NrfcacheLog.Infof("amf match found = %v", profile.GetNfInstanceId())
 	return true, nil
+}
+
+// taiInList compares PlmnId and Tac only; Nid (SNPN) is omitted intentionally.
+func taiInList(tai models.Tai, list []models.Tai) bool {
+	for _, t := range list {
+		if t.GetPlmnId() == tai.GetPlmnId() && t.GetTac() == tai.GetTac() {
+			return true
+		}
+	}
+	return false
 }
 
 func MatchPcfProfile(profile *models.NFProfileDiscovery, opts Nnrf_NFDiscovery.ApiSearchNFInstancesRequest) (bool, error) {

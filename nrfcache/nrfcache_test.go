@@ -1309,3 +1309,108 @@ func TestUdrProfileIsSelectableFromCache(t *testing.T) {
 		t.Error("SUPI outside the declared range must not match")
 	}
 }
+
+// TestAmfMatchesProfileWithoutPlmnList validates TS 29.510 Table 6.2.3.2.3.1-1
+// (target-plmn-list entry): a profile that carries no plmnList is available to
+// all PLMNs and must be included in any target-plmn-list-filtered discovery result.
+func TestAmfMatchesProfileWithoutPlmnList(t *testing.T) {
+	profile := models.NFProfileDiscovery{
+		NfInstanceId: "AMF-no-plmn",
+		NfType:       models.NFTYPE_AMF,
+		NfStatus:     models.NFSTATUS_REGISTERED,
+	}
+	param := createAmfParamWithPlmns([]models.PlmnId{{Mcc: "208", Mnc: "93"}})
+	match, err := MatchAmfProfile(&profile, param)
+	if err != nil {
+		t.Fatalf("MatchAmfProfile returned error: %v", err)
+	}
+	if !match {
+		t.Error("AMF profile without plmnList must match any PLMN filter (TS 29.510 Table 6.2.3.2.3.1-1, target-plmn-list entry)")
+	}
+}
+
+// TestAmfTaiFilter validates that the tai query parameter filters AMF profiles
+// by amfInfo.taiList (TS 29.510 Table 6.2.3.2.3.1-1, tai entry; absence of
+// taiList in AmfInfo means the AMF serves any TAI, per Table 6.1.6.2.11-1).
+func TestAmfTaiFilter(t *testing.T) {
+	matchingTai := models.Tai{PlmnId: models.PlmnId{Mcc: "208", Mnc: "93"}, Tac: "000001"}
+	otherTai := models.Tai{PlmnId: models.PlmnId{Mcc: "208", Mnc: "93"}, Tac: "000002"}
+
+	profile := models.NFProfileDiscovery{
+		NfInstanceId: "AMF-tai",
+		NfType:       models.NFTYPE_AMF,
+		NfStatus:     models.NFSTATUS_REGISTERED,
+		AmfInfo: &models.AmfInfo{
+			AmfRegionId: "ca",
+			AmfSetId:    "3f8",
+			TaiList:     []models.Tai{matchingTai},
+		},
+	}
+
+	paramMatch := Nnrf_NFDiscovery.ApiSearchNFInstancesRequest{}.Tai(matchingTai)
+	if match, err := MatchAmfProfile(&profile, paramMatch); err != nil || !match {
+		t.Errorf("expected TAI match: match=%v err=%v", match, err)
+	}
+
+	paramMiss := Nnrf_NFDiscovery.ApiSearchNFInstancesRequest{}.Tai(otherTai)
+	if match, err := MatchAmfProfile(&profile, paramMiss); err != nil || match {
+		t.Errorf("expected TAI miss: match=%v err=%v", match, err)
+	}
+
+	// AmfInfo present but taiList absent means unrestricted (TS 29.510 Table 6.1.6.2.11-1).
+	unrestricted := models.NFProfileDiscovery{
+		NfInstanceId: "AMF-no-tail",
+		NfType:       models.NFTYPE_AMF,
+		NfStatus:     models.NFSTATUS_REGISTERED,
+		AmfInfo:      &models.AmfInfo{AmfRegionId: "ca", AmfSetId: "3f8"},
+	}
+	if match, err := MatchAmfProfile(&unrestricted, paramMatch); err != nil || !match {
+		t.Errorf("AMF with absent taiList must match any TAI query: match=%v err=%v", match, err)
+	}
+}
+
+// TestSmfDnnScopedToMatchedSnssai guards that a DNN filter is only satisfied
+// when the DNN appears in an sNssaiSmfInfoList entry whose S-NSSAI matches the
+// snssais filter. Without this, an SMF with {snssai-A/dnn-X, snssai-B/dnn-Y}
+// would falsely match a query for {snssai-A, dnn-Y}.
+func TestSmfDnnScopedToMatchedSnssai(t *testing.T) {
+	snssaiA := models.Snssai{Sst: 1, Sd: openapi.PtrString("010203")}
+	snssaiB := models.Snssai{Sst: 1, Sd: openapi.PtrString("0a0b0c")}
+
+	profile := models.NFProfileDiscovery{
+		NfInstanceId: "SMF-cross-snssai",
+		NfType:       models.NFTYPE_SMF,
+		SmfInfo: &models.SmfInfo{
+			SNssaiSmfInfoList: []models.SnssaiSmfInfoItem{
+				{
+					SNssai: snssaiA,
+					DnnSmfInfoList: []models.DnnSmfInfoItem{
+						{Dnn: "internet"},
+					},
+				},
+				{
+					SNssai: snssaiB,
+					DnnSmfInfoList: []models.DnnSmfInfoItem{
+						{Dnn: "ims"},
+					},
+				},
+			},
+		},
+	}
+
+	// snssai-A + dnn "internet" must match (same entry)
+	paramMatch := Nnrf_NFDiscovery.ApiSearchNFInstancesRequest{}.
+		Snssais([]models.Snssai{snssaiA}).
+		Dnn("internet")
+	if match, err := MatchSmfProfile(&profile, paramMatch); err != nil || !match {
+		t.Errorf("expected match for snssai-A/internet: match=%v err=%v", match, err)
+	}
+
+	// snssai-A + dnn "ims" must not match (ims is only in snssai-B)
+	paramCross := Nnrf_NFDiscovery.ApiSearchNFInstancesRequest{}.
+		Snssais([]models.Snssai{snssaiA}).
+		Dnn("ims")
+	if match, err := MatchSmfProfile(&profile, paramCross); err != nil || match {
+		t.Errorf("expected no match for snssai-A/ims cross-SNSSAI: match=%v err=%v", match, err)
+	}
+}
