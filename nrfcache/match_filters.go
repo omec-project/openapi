@@ -34,6 +34,7 @@ var matchFilters = MatchFilters{
 	models.NFTYPE_PCF:  MatchPcfProfile,
 	models.NFTYPE_NSSF: MatchNssfProfile,
 	models.NFTYPE_UDM:  MatchUdmProfile,
+	models.NFTYPE_UDR:  MatchUdrProfile,
 	models.NFTYPE_AMF:  MatchAmfProfile,
 }
 
@@ -187,9 +188,10 @@ func extractSupiNumber(supi string) string {
 func MatchAusfProfile(profile *models.NFProfileDiscovery, opts Nnrf_NFDiscovery.ApiSearchNFInstancesRequest) (bool, error) {
 	supi := opts.GetSupi()
 	if supi != nil {
+		// Unrestricted when no SUPI ranges are declared; see MatchPcfProfile.
 		if profile.AusfInfo == nil || len(profile.AusfInfo.SupiRanges) == 0 {
-			logger.NrfcacheLog.Debugf("ausf match failed: no SUPI ranges for %s", profile.NfInstanceId)
-			return false, nil
+			logger.NrfcacheLog.Debugf("ausf match successful (unrestricted: no SUPI ranges) for %s", profile.NfInstanceId)
+			return true, nil
 		}
 
 		matchFound := matchSupiRange(*supi, profile.AusfInfo.SupiRanges)
@@ -279,9 +281,15 @@ func MatchAmfProfile(profile *models.NFProfileDiscovery, opts Nnrf_NFDiscovery.A
 func MatchPcfProfile(profile *models.NFProfileDiscovery, opts Nnrf_NFDiscovery.ApiSearchNFInstancesRequest) (bool, error) {
 	supi := opts.GetSupi()
 	if supi != nil {
+		// A profile declaring no SUPI ranges is unrestricted and serves every
+		// SUPI. The NRF's own discovery filter encodes this as an $or over
+		// "a range contains the SUPI" / "supiRanges is null" / "supiRanges is
+		// absent" (nrf producer/nf_discovery.go, [Query-18] supi). Rationale:
+		// the cache must select the same profiles as the NRF it caches,
+		// otherwise a cached lookup and a live discovery disagree.
 		if profile.PcfInfo == nil || len(profile.PcfInfo.SupiRanges) == 0 {
-			logger.NrfcacheLog.Infof("pcf match found = false (no SUPI ranges)")
-			return false, nil
+			logger.NrfcacheLog.Debugf("pcf match found = true (unrestricted: no SUPI ranges)")
+			return true, nil
 		}
 
 		matchFound := matchSupiRange(*supi, profile.PcfInfo.SupiRanges)
@@ -297,9 +305,10 @@ func MatchPcfProfile(profile *models.NFProfileDiscovery, opts Nnrf_NFDiscovery.A
 func MatchUdmProfile(profile *models.NFProfileDiscovery, opts Nnrf_NFDiscovery.ApiSearchNFInstancesRequest) (bool, error) {
 	supi := opts.GetSupi()
 	if supi != nil {
+		// Unrestricted when no SUPI ranges are declared; see MatchPcfProfile.
 		if profile.UdmInfo == nil || len(profile.UdmInfo.GetSupiRanges()) == 0 {
-			logger.NrfcacheLog.Infof("udm match found = false (no SUPI ranges)")
-			return false, nil
+			logger.NrfcacheLog.Debugf("udm match found = true (unrestricted: no SUPI ranges)")
+			return true, nil
 		}
 
 		matchFound := matchSupiRange(*supi, profile.UdmInfo.GetSupiRanges())
@@ -310,4 +319,28 @@ func MatchUdmProfile(profile *models.NFProfileDiscovery, opts Nnrf_NFDiscovery.A
 	// No SUPI filter - match any profile
 	logger.NrfcacheLog.Infof("udm match found = true (no SUPI filter)")
 	return true, nil
+}
+
+// MatchUdrProfile selects UDR profiles for a SUPI-filtered discovery.
+//
+// Without an entry in matchFilters a UDR profile is dropped unconditionally,
+// so a cached UDR lookup returns nothing and every UDM/PCF data access falls
+// through to a live NRF query. Rationale: UDR is resolved on every subscriber
+// data access, which makes it the most frequently discovered NF in the core.
+func MatchUdrProfile(profile *models.NFProfileDiscovery, opts Nnrf_NFDiscovery.ApiSearchNFInstancesRequest) (bool, error) {
+	supi := opts.GetSupi()
+	if supi == nil {
+		logger.NrfcacheLog.Debugf("udr match successful (no SUPI filter) for %s", profile.NfInstanceId)
+		return true, nil
+	}
+
+	// Unrestricted when no SUPI ranges are declared; see MatchPcfProfile.
+	if profile.UdrInfo == nil || len(profile.UdrInfo.GetSupiRanges()) == 0 {
+		logger.NrfcacheLog.Debugf("udr match successful (unrestricted: no SUPI ranges) for %s", profile.NfInstanceId)
+		return true, nil
+	}
+
+	matchFound := matchSupiRange(*supi, profile.UdrInfo.GetSupiRanges())
+	logger.NrfcacheLog.Debugf("udr match found = %v for %s", matchFound, profile.NfInstanceId)
+	return matchFound, nil
 }
