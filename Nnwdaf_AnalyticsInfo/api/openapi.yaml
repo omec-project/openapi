@@ -16,60 +16,60 @@ externalDocs:
   description: 3GPP TS 29.520 V18.5.0; 5G System; Network Data Analytics Services.
   url: https://www.3gpp.org/ftp/Specs/archive/29_series/29.520/
 servers:
-- url: "{apiRoot}/nnwdaf-analyticsinfo/v1"
-  variables:
-    apiRoot:
-      default: https://example.com
-      description: apiRoot as defined in clause 4.4 of 3GPP TS 29.501.
+  - url: "{apiRoot}/nnwdaf-analyticsinfo/v1"
+    variables:
+      apiRoot:
+        default: https://example.com
+        description: apiRoot as defined in clause 4.4 of 3GPP TS 29.501.
 security:
-- {}
-- oAuth2ClientCredentials:
-  - nnwdaf-analyticsinfo
+  - {}
+  - oAuth2ClientCredentials:
+      - nnwdaf-analyticsinfo
 paths:
   /analytics:
     get:
       operationId: GetNWDAFAnalytics
       parameters:
-      - description: Identify the analytics.
-        explode: true
-        in: query
-        name: event-id
-        required: true
-        schema:
-          $ref: "#/components/schemas/EventId"
-        style: form
-      - content:
-          application/json:
-            schema:
-              $ref: "#/components/schemas/EventReportingRequirement"
-        description: Identifies the analytics reporting requirement information.
-        in: query
-        name: ana-req
-        required: false
-      - content:
-          application/json:
-            schema:
-              $ref: "#/components/schemas/EventFilter"
-        description: Identify the analytics.
-        in: query
-        name: event-filter
-        required: false
-      - description: To filter irrelevant responses related to unsupported features.
-        explode: true
-        in: query
-        name: supported-features
-        required: false
-        schema:
-          $ref: "#/components/schemas/SupportedFeatures"
-        style: form
-      - content:
-          application/json:
-            schema:
-              $ref: "#/components/schemas/TargetUeInformation"
-        description: Identify the target UE information.
-        in: query
-        name: tgt-ue
-        required: false
+        - description: Identify the analytics.
+          explode: true
+          in: query
+          name: event-id
+          required: true
+          schema:
+            $ref: "#/components/schemas/EventId"
+          style: form
+        - content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/EventReportingRequirement"
+          description: Identifies the analytics reporting requirement information.
+          in: query
+          name: ana-req
+          required: false
+        - content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/EventFilter"
+          description: Identify the analytics.
+          in: query
+          name: event-filter
+          required: false
+        - description: To filter irrelevant responses related to unsupported features.
+          explode: true
+          in: query
+          name: supported-features
+          required: false
+          schema:
+            $ref: "#/components/schemas/SupportedFeatures"
+          style: form
+        - content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/TargetUeInformation"
+          description: Identify the target UE information.
+          in: query
+          name: tgt-ue
+          required: false
       responses:
         "200":
           content:
@@ -141,29 +141,28 @@ paths:
           description: Generic Error
       summary: Read a NWDAF Analytics
       tags:
-      - NWDAF Analytics (Document)
+        - NWDAF Analytics (Document)
   /context:
     get:
       operationId: GetNwdafContext
       parameters:
-      - content:
-          application/json:
-            schema:
-              $ref: "#/components/schemas/ContextIdList"
-        description: Identifies specific context information related to analytics
-          subscriptions.
-        in: query
-        name: context-ids
-        required: true
-      - content:
-          application/json:
-            schema:
-              $ref: "#/components/schemas/RequestedContext"
-        description: |
-          Identfies the type(s) of the analytics context information the consumer wishes to receive.
-        in: query
-        name: req-context
-        required: false
+        - content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/ContextIdList"
+          description: Identifies specific context information related to analytics subscriptions.
+          in: query
+          name: context-ids
+          required: true
+        - content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/RequestedContext"
+          description: |
+            Identfies the type(s) of the analytics context information the consumer wishes to receive.
+          in: query
+          name: req-context
+          required: false
       responses:
         "200":
           content:
@@ -234,12 +233,12 @@ paths:
         default:
           description: Generic Error
       security:
-      - {}
-      - oAuth2ClientCredentials:
-        - nnwdaf-analyticsinfo
-      - oAuth2ClientCredentials:
-        - nnwdaf-analyticsinfo
-        - nnwdaf-analyticsinfo:contexttransfer
+        - {}
+        - oAuth2ClientCredentials:
+            - nnwdaf-analyticsinfo
+        - oAuth2ClientCredentials:
+            - nnwdaf-analyticsinfo
+            - nnwdaf-analyticsinfo:contexttransfer
       summary: Get context information related to analytics subscriptions.
       tags:
-      - NWDAF Context (Document)
+        - NWDAF Context (Document)

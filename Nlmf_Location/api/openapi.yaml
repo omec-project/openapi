@@ -1,6 +1,5 @@
 # Copyright (C) 2026 Intel Corporation
 # SPDX-License-Identifier: Apache-2.0
-
 openapi: 3.0.0
 info:
   description: |
@@ -10,19 +9,18 @@ info:
   title: LMF Location
   version: 1.3.0-alpha.6
 externalDocs:
-  description: 3GPP TS 29.572 V18.5.0; 5G System; Location Management Services; Stage
-    3
+  description: 3GPP TS 29.572 V18.5.0; 5G System; Location Management Services; Stage 3
   url: https://www.3gpp.org/ftp/Specs/archive/29_series/29.572/
 servers:
-- url: "{apiRoot}/nlmf-loc/v1"
-  variables:
-    apiRoot:
-      default: https://example.com
-      description: apiRoot as defined in clause 4.4 of 3GPP TS 29.501
+  - url: "{apiRoot}/nlmf-loc/v1"
+    variables:
+      apiRoot:
+        default: https://example.com
+        description: apiRoot as defined in clause 4.4 of 3GPP TS 29.501
 security:
-- {}
-- oAuth2ClientCredentials:
-  - nlmf-loc
+  - {}
+  - oAuth2ClientCredentials:
+      - nlmf-loc
 paths:
   /determine-location:
     post:
@@ -48,8 +46,7 @@ paths:
                   description: Temporary Redirect
                   headers:
                     Location:
-                      description: The URI pointing to the resource located on the
-                        redirect target
+                      description: The URI pointing to the resource located on the redirect target
                       required: true
                       schema:
                         type: string
@@ -66,8 +63,7 @@ paths:
                   description: Permanent Redirect
                   headers:
                     Location:
-                      description: The URI pointing to the resource located on the
-                        redirect target
+                      description: The URI pointing to the resource located on the redirect target
                       required: true
                       schema:
                         type: string
@@ -200,8 +196,7 @@ paths:
                 $ref: "#/components/schemas/LocationDataExt"
           description: Expected response to a valid request
         "204":
-          description: Expected response for MO-LR requesting location assistance
-            data.
+          description: Expected response for MO-LR requesting location assistance data.
         "307":
           content:
             application/json:
@@ -210,8 +205,7 @@ paths:
           description: Temporary Redirect
           headers:
             Location:
-              description: The URI pointing to the resource located on the redirect
-                target
+              description: The URI pointing to the resource located on the redirect target
               required: true
               schema:
                 type: string
@@ -228,8 +222,7 @@ paths:
           description: Permanent Redirect
           headers:
             Location:
-              description: The URI pointing to the resource located on the redirect
-                target
+              description: The URI pointing to the resource located on the redirect target
               required: true
               schema:
                 type: string
@@ -313,15 +306,15 @@ paths:
         default:
           description: Generic Error
       security:
-      - {}
-      - oAuth2ClientCredentials:
-        - nlmf-loc
-      - oAuth2ClientCredentials:
-        - nlmf-loc
-        - nlmf-loc:determine-location:invoke
+        - {}
+        - oAuth2ClientCredentials:
+            - nlmf-loc
+        - oAuth2ClientCredentials:
+            - nlmf-loc
+            - nlmf-loc:determine-location:invoke
       summary: Determine Location of an UE
       tags:
-      - Determine Location
+        - Determine Location
   /up-subscriptions:
     post:
       callbacks:
@@ -346,8 +339,7 @@ paths:
                   description: Temporary Redirect
                   headers:
                     Location:
-                      description: The URI pointing to the resource located on the
-                        redirect target
+                      description: The URI pointing to the resource located on the redirect target
                       required: true
                       schema:
                         type: string
@@ -364,8 +356,7 @@ paths:
                   description: Permanent Redirect
                   headers:
                     Location:
-                      description: The URI pointing to the resource located on the
-                        redirect target
+                      description: The URI pointing to the resource located on the redirect target
                       required: true
                       schema:
                         type: string
@@ -471,8 +462,7 @@ paths:
           description: Temporary Redirect
           headers:
             Location:
-              description: The URI pointing to the resource located on the redirect
-                target
+              description: The URI pointing to the resource located on the redirect target
               required: true
               schema:
                 type: string
@@ -489,8 +479,7 @@ paths:
           description: Permanent Redirect
           headers:
             Location:
-              description: The URI pointing to the resource located on the redirect
-                target
+              description: The URI pointing to the resource located on the redirect target
               required: true
               schema:
                 type: string
@@ -574,27 +563,27 @@ paths:
         default:
           description: Generic Error
       security:
-      - {}
-      - oAuth2ClientCredentials:
-        - nlmf-loc
-      - oAuth2ClientCredentials:
-        - nlmf-loc
-        - nlmf-loc:up-subscription:invoke
+        - {}
+        - oAuth2ClientCredentials:
+            - nlmf-loc
+        - oAuth2ClientCredentials:
+            - nlmf-loc
+            - nlmf-loc:up-subscription:invoke
       summary: subscribe about status of a secure LCS-UP connection for a target UE
       tags:
-      - UP Subscribe
+        - UP Subscribe
   /up-subscriptions/{subscriptionId}:
     delete:
       operationId: DeleteSubscription
       parameters:
-      - description: Unique subscription Id
-        explode: false
-        in: path
-        name: subscriptionId
-        required: true
-        schema:
-          type: string
-        style: simple
+        - description: Unique subscription Id
+          explode: false
+          in: path
+          name: subscriptionId
+          required: true
+          schema:
+            type: string
+          style: simple
       responses:
         "204":
           description: Expected response to a successful subscription removal
@@ -606,8 +595,7 @@ paths:
           description: Temporary Redirect
           headers:
             Location:
-              description: The URI pointing to the resource located on the redirect
-                target
+              description: The URI pointing to the resource located on the redirect target
               required: true
               schema:
                 type: string
@@ -624,8 +612,7 @@ paths:
           description: Permanent Redirect
           headers:
             Location:
-              description: The URI pointing to the resource located on the redirect
-                target
+              description: The URI pointing to the resource located on the redirect target
               required: true
               schema:
                 type: string
@@ -704,7 +691,7 @@ paths:
           description: Generic Error
       summary: Deletes a subscription
       tags:
-      - UP Unsubscribe
+        - UP Unsubscribe
   /cancel-location:
     post:
       operationId: CancelLocation
@@ -725,8 +712,7 @@ paths:
           description: Temporary Redirect
           headers:
             Location:
-              description: The URI pointing to the resource located on the redirect
-                target
+              description: The URI pointing to the resource located on the redirect target
               required: true
               schema:
                 type: string
@@ -743,8 +729,7 @@ paths:
           description: Permanent Redirect
           headers:
             Location:
-              description: The URI pointing to the resource located on the redirect
-                target
+              description: The URI pointing to the resource located on the redirect target
               required: true
               schema:
                 type: string
@@ -828,15 +813,15 @@ paths:
         default:
           description: Generic Error
       security:
-      - {}
-      - oAuth2ClientCredentials:
-        - nlmf-loc
-      - oAuth2ClientCredentials:
-        - nlmf-loc
-        - nlmf-loc:cancel-location:invoke
+        - {}
+        - oAuth2ClientCredentials:
+            - nlmf-loc
+        - oAuth2ClientCredentials:
+            - nlmf-loc
+            - nlmf-loc:cancel-location:invoke
       summary: request cancellation of periodic or triggered location
       tags:
-      - Cancel Location
+        - Cancel Location
   /location-context-transfer:
     post:
       operationId: LocationContextTransfer
@@ -857,8 +842,7 @@ paths:
           description: Temporary Redirect
           headers:
             Location:
-              description: The URI pointing to the resource located on the redirect
-                target
+              description: The URI pointing to the resource located on the redirect target
               required: true
               schema:
                 type: string
@@ -875,8 +859,7 @@ paths:
           description: Permanent Redirect
           headers:
             Location:
-              description: The URI pointing to the resource located on the redirect
-                target
+              description: The URI pointing to the resource located on the redirect target
               required: true
               schema:
                 type: string
@@ -960,15 +943,15 @@ paths:
         default:
           description: Generic Error
       security:
-      - {}
-      - oAuth2ClientCredentials:
-        - nlmf-loc
-      - oAuth2ClientCredentials:
-        - nlmf-loc
-        - nlmf-loc:location-context-transfer:invoke
+        - {}
+        - oAuth2ClientCredentials:
+            - nlmf-loc
+        - oAuth2ClientCredentials:
+            - nlmf-loc
+            - nlmf-loc:location-context-transfer:invoke
       summary: transfer context information for periodic or triggered location
       tags:
-      - Location Context Transfer
+        - Location Context Transfer
   /measure-location:
     post:
       operationId: LocationMeasure
@@ -993,8 +976,7 @@ paths:
           description: Temporary Redirect
           headers:
             Location:
-              description: The URI pointing to the resource located on the redirect
-                target
+              description: The URI pointing to the resource located on the redirect target
               required: true
               schema:
                 type: string
@@ -1011,8 +993,7 @@ paths:
           description: Permanent Redirect
           headers:
             Location:
-              description: The URI pointing to the resource located on the redirect
-                target
+              description: The URI pointing to the resource located on the redirect target
               required: true
               schema:
                 type: string
@@ -1096,15 +1077,15 @@ paths:
         default:
           description: Generic Error
       security:
-      - {}
-      - oAuth2ClientCredentials:
-        - nlmf-loc
-      - oAuth2ClientCredentials:
-        - nlmf-loc
-        - nlmf-loc:measure-location:invoke
+        - {}
+        - oAuth2ClientCredentials:
+            - nlmf-loc
+        - oAuth2ClientCredentials:
+            - nlmf-loc
+            - nlmf-loc:measure-location:invoke
       summary: PRU location measurement
       tags:
-      - Location Measure
+        - Location Measure
   /configure-up:
     post:
       operationId: UpConfig
@@ -1116,8 +1097,7 @@ paths:
         required: true
       responses:
         "204":
-          description: "Expected response to successful set up, modify or terminate\
-            \ LCS-UP connection."
+          description: "Expected response to successful set up, modify or terminate LCS-UP connection."
         "307":
           content:
             application/json:
@@ -1126,8 +1106,7 @@ paths:
           description: Temporary Redirect
           headers:
             Location:
-              description: The URI pointing to the resource located on the redirect
-                target
+              description: The URI pointing to the resource located on the redirect target
               required: true
               schema:
                 type: string
@@ -1144,8 +1123,7 @@ paths:
           description: Permanent Redirect
           headers:
             Location:
-              description: The URI pointing to the resource located on the redirect
-                target
+              description: The URI pointing to the resource located on the redirect target
               required: true
               schema:
                 type: string
@@ -1229,16 +1207,15 @@ paths:
         default:
           description: Generic Error
       security:
-      - {}
-      - oAuth2ClientCredentials:
-        - nlmf-loc
-      - oAuth2ClientCredentials:
-        - nlmf-loc
-        - nlmf-loc:configure-up:invoke
-      summary: "set up, modify or terminate a secure LCS-UP connection for a target\
-        \ UE"
+        - {}
+        - oAuth2ClientCredentials:
+            - nlmf-loc
+        - oAuth2ClientCredentials:
+            - nlmf-loc
+            - nlmf-loc:configure-up:invoke
+      summary: "set up, modify or terminate a secure LCS-UP connection for a target UE"
       tags:
-      - UP Configure
+        - UP Configure
 components:
   responses:
     "307":
@@ -1372,16 +1349,16 @@ components:
           occurrenceInfo: null
           maximumInterval: null
         ueUpPosCaps:
-        - LCS-UPP
-        - LCS-UPP
+          - LCS-UPP
+          - LCS-UPP
         tnapId:
           bssId: bssId
           civicAddress: null
           ssId: ssId
         maxRespTime: 6
         supportedGADShapes:
-        - POINT
-        - POINT
+          - POINT
+          - POINT
         ueLcsCap:
           lppSupport: true
           ciotOptimisation: false
@@ -1425,111 +1402,111 @@ components:
         lpHapType: LOW_POW_HIGH_ACCU_POS
         ldrReference: ldrReference
         lppMessageExt:
-        - contentId: contentId
-        - contentId: contentId
+          - contentId: contentId
+          - contentId: contentId
         evtRptAllowedAreas:
-        - ncgi:
-            nid: null
-            plmnId:
-              mnc: null
-              mcc: null
-            nrCellId: null
-          areaType: EPS_TRACKING_AREA_IDENTITY
-          tai:
-            tac: null
-            nid: null
-            plmnId:
-              mnc: null
-              mcc: null
-          ecgi:
-            eutraCellId: null
-            nid: null
-            plmnId:
-              mnc: null
-              mcc: null
-        - ncgi:
-            nid: null
-            plmnId:
-              mnc: null
-              mcc: null
-            nrCellId: null
-          areaType: EPS_TRACKING_AREA_IDENTITY
-          tai:
-            tac: null
-            nid: null
-            plmnId:
-              mnc: null
-              mcc: null
-          ecgi:
-            eutraCellId: null
-            nid: null
-            plmnId:
-              mnc: null
-              mcc: null
-        - ncgi:
-            nid: null
-            plmnId:
-              mnc: null
-              mcc: null
-            nrCellId: null
-          areaType: EPS_TRACKING_AREA_IDENTITY
-          tai:
-            tac: null
-            nid: null
-            plmnId:
-              mnc: null
-              mcc: null
-          ecgi:
-            eutraCellId: null
-            nid: null
-            plmnId:
-              mnc: null
-              mcc: null
-        - ncgi:
-            nid: null
-            plmnId:
-              mnc: null
-              mcc: null
-            nrCellId: null
-          areaType: EPS_TRACKING_AREA_IDENTITY
-          tai:
-            tac: null
-            nid: null
-            plmnId:
-              mnc: null
-              mcc: null
-          ecgi:
-            eutraCellId: null
-            nid: null
-            plmnId:
-              mnc: null
-              mcc: null
-        - ncgi:
-            nid: null
-            plmnId:
-              mnc: null
-              mcc: null
-            nrCellId: null
-          areaType: EPS_TRACKING_AREA_IDENTITY
-          tai:
-            tac: null
-            nid: null
-            plmnId:
-              mnc: null
-              mcc: null
-          ecgi:
-            eutraCellId: null
-            nid: null
-            plmnId:
-              mnc: null
-              mcc: null
+          - ncgi:
+              nid: null
+              plmnId:
+                mnc: null
+                mcc: null
+              nrCellId: null
+            areaType: EPS_TRACKING_AREA_IDENTITY
+            tai:
+              tac: null
+              nid: null
+              plmnId:
+                mnc: null
+                mcc: null
+            ecgi:
+              eutraCellId: null
+              nid: null
+              plmnId:
+                mnc: null
+                mcc: null
+          - ncgi:
+              nid: null
+              plmnId:
+                mnc: null
+                mcc: null
+              nrCellId: null
+            areaType: EPS_TRACKING_AREA_IDENTITY
+            tai:
+              tac: null
+              nid: null
+              plmnId:
+                mnc: null
+                mcc: null
+            ecgi:
+              eutraCellId: null
+              nid: null
+              plmnId:
+                mnc: null
+                mcc: null
+          - ncgi:
+              nid: null
+              plmnId:
+                mnc: null
+                mcc: null
+              nrCellId: null
+            areaType: EPS_TRACKING_AREA_IDENTITY
+            tai:
+              tac: null
+              nid: null
+              plmnId:
+                mnc: null
+                mcc: null
+            ecgi:
+              eutraCellId: null
+              nid: null
+              plmnId:
+                mnc: null
+                mcc: null
+          - ncgi:
+              nid: null
+              plmnId:
+                mnc: null
+                mcc: null
+              nrCellId: null
+            areaType: EPS_TRACKING_AREA_IDENTITY
+            tai:
+              tac: null
+              nid: null
+              plmnId:
+                mnc: null
+                mcc: null
+            ecgi:
+              eutraCellId: null
+              nid: null
+              plmnId:
+                mnc: null
+                mcc: null
+          - ncgi:
+              nid: null
+              plmnId:
+                mnc: null
+                mcc: null
+              nrCellId: null
+            areaType: EPS_TRACKING_AREA_IDENTITY
+            tai:
+              tac: null
+              nid: null
+              plmnId:
+                mnc: null
+                mcc: null
+            ecgi:
+              eutraCellId: null
+              nid: null
+              plmnId:
+                mnc: null
+                mcc: null
         supportedFeatures: supportedFeatures
         ueCountryDetInd: true
         relatedUEs:
-        - relatedUEType: LOCATED_UE
-          applicationlayerId: null
-        - relatedUEType: LOCATED_UE
-          applicationlayerId: null
+          - relatedUEType: LOCATED_UE
+            applicationlayerId: null
+          - relatedUEType: LOCATED_UE
+            applicationlayerId: null
         hgmlcCallBackURI: hgmlcCallBackURI
         areaEventInfo:
           samplingInterval: null
@@ -1537,107 +1514,107 @@ components:
           reportingDuration: null
           minimumInterval: null
           areaDefinition:
-          - ncgi:
-              nid: null
-              plmnId:
-                mnc: null
-                mcc: null
-              nrCellId: null
-            areaType: EPS_TRACKING_AREA_IDENTITY
-            tai:
-              tac: null
-              nid: null
-              plmnId:
-                mnc: null
-                mcc: null
-            ecgi:
-              eutraCellId: null
-              nid: null
-              plmnId:
-                mnc: null
-                mcc: null
-          - ncgi:
-              nid: null
-              plmnId:
-                mnc: null
-                mcc: null
-              nrCellId: null
-            areaType: EPS_TRACKING_AREA_IDENTITY
-            tai:
-              tac: null
-              nid: null
-              plmnId:
-                mnc: null
-                mcc: null
-            ecgi:
-              eutraCellId: null
-              nid: null
-              plmnId:
-                mnc: null
-                mcc: null
-          - ncgi:
-              nid: null
-              plmnId:
-                mnc: null
-                mcc: null
-              nrCellId: null
-            areaType: EPS_TRACKING_AREA_IDENTITY
-            tai:
-              tac: null
-              nid: null
-              plmnId:
-                mnc: null
-                mcc: null
-            ecgi:
-              eutraCellId: null
-              nid: null
-              plmnId:
-                mnc: null
-                mcc: null
-          - ncgi:
-              nid: null
-              plmnId:
-                mnc: null
-                mcc: null
-              nrCellId: null
-            areaType: EPS_TRACKING_AREA_IDENTITY
-            tai:
-              tac: null
-              nid: null
-              plmnId:
-                mnc: null
-                mcc: null
-            ecgi:
-              eutraCellId: null
-              nid: null
-              plmnId:
-                mnc: null
-                mcc: null
-          - ncgi:
-              nid: null
-              plmnId:
-                mnc: null
-                mcc: null
-              nrCellId: null
-            areaType: EPS_TRACKING_AREA_IDENTITY
-            tai:
-              tac: null
-              nid: null
-              plmnId:
-                mnc: null
-                mcc: null
-            ecgi:
-              eutraCellId: null
-              nid: null
-              plmnId:
-                mnc: null
-                mcc: null
+            - ncgi:
+                nid: null
+                plmnId:
+                  mnc: null
+                  mcc: null
+                nrCellId: null
+              areaType: EPS_TRACKING_AREA_IDENTITY
+              tai:
+                tac: null
+                nid: null
+                plmnId:
+                  mnc: null
+                  mcc: null
+              ecgi:
+                eutraCellId: null
+                nid: null
+                plmnId:
+                  mnc: null
+                  mcc: null
+            - ncgi:
+                nid: null
+                plmnId:
+                  mnc: null
+                  mcc: null
+                nrCellId: null
+              areaType: EPS_TRACKING_AREA_IDENTITY
+              tai:
+                tac: null
+                nid: null
+                plmnId:
+                  mnc: null
+                  mcc: null
+              ecgi:
+                eutraCellId: null
+                nid: null
+                plmnId:
+                  mnc: null
+                  mcc: null
+            - ncgi:
+                nid: null
+                plmnId:
+                  mnc: null
+                  mcc: null
+                nrCellId: null
+              areaType: EPS_TRACKING_AREA_IDENTITY
+              tai:
+                tac: null
+                nid: null
+                plmnId:
+                  mnc: null
+                  mcc: null
+              ecgi:
+                eutraCellId: null
+                nid: null
+                plmnId:
+                  mnc: null
+                  mcc: null
+            - ncgi:
+                nid: null
+                plmnId:
+                  mnc: null
+                  mcc: null
+                nrCellId: null
+              areaType: EPS_TRACKING_AREA_IDENTITY
+              tai:
+                tac: null
+                nid: null
+                plmnId:
+                  mnc: null
+                  mcc: null
+              ecgi:
+                eutraCellId: null
+                nid: null
+                plmnId:
+                  mnc: null
+                  mcc: null
+            - ncgi:
+                nid: null
+                plmnId:
+                  mnc: null
+                  mcc: null
+                nrCellId: null
+              areaType: EPS_TRACKING_AREA_IDENTITY
+              tai:
+                tac: null
+                nid: null
+                plmnId:
+                  mnc: null
+                  mcc: null
+              ecgi:
+                eutraCellId: null
+                nid: null
+                plmnId:
+                  mnc: null
+                  mcc: null
           occurrenceInfo: ONE_TIME_EVENT
           maximumInterval: null
         coordinateID: 5
         reportingAccessTypes:
-        - NR
-        - NR
+          - NR
+          - NR
         gpsi: gpsi
         vgmlcAddress: vgmlcAddress
         velocityRequested: VELOCITY_IS_NOT_REQUESTED
@@ -1648,17 +1625,17 @@ components:
         upLocRepAddrAf:
           fqdn: null
           ipv6Addrs:
-          - 2001:db8:85a3::8a2e:370:7334
-          - 2001:db8:85a3::8a2e:370:7334
+            - 2001:db8:85a3::8a2e:370:7334
+            - 2001:db8:85a3::8a2e:370:7334
           ipv4Addrs:
-          - 198.51.100.1
-          - 198.51.100.1
+            - 198.51.100.1
+            - 198.51.100.1
         ldrType: UE_AVAILABLE
         uePositioningCap: uePositioningCap
         ueUnawareInd: true
         requestedRangingSlResult:
-        - ABSOLUTE_LOCATION
-        - ABSOLUTE_LOCATION
+          - ABSOLUTE_LOCATION
+          - ABSOLUTE_LOCATION
         ncgi:
           nid: null
           plmnId:
@@ -1680,10 +1657,10 @@ components:
           hAccuracy: null
           vAccuracy: null
           minorLocQoses:
-          - hAccuracy: null
-            vAccuracy: null
-          - hAccuracy: null
-            vAccuracy: null
+            - hAccuracy: null
+              vAccuracy: null
+            - hAccuracy: null
+              vAccuracy: null
           lcsQosClass: BEST_EFFORT
         supi: supi
         intermediateLocationInd: false
@@ -1720,8 +1697,8 @@ components:
             mcc: null
       not:
         required:
-        - ecgi
-        - ncgi
+          - ecgi
+          - ncgi
       properties:
         externalClientType:
           $ref: "#/components/schemas/ExternalClientType"
@@ -1850,9 +1827,7 @@ components:
           pattern: "^[A-Fa-f0-9]*$"
           type: string
         uePositioningCap:
-          description: Positioning capabilities supported by the UE. A string encoding
-            the "ProvideCapabilities-r9-IEs" IE as specified in clause 6.3 of 3GPP
-            TS 37.355 (start from octet 1).
+          description: Positioning capabilities supported by the UE. A string encoding the "ProvideCapabilities-r9-IEs" IE as specified in clause 6.3 of 3GPP TS 37.355 (start from octet 1).
           format: byte
           type: string
         tnapId:
@@ -1891,7 +1866,7 @@ components:
           type: array
         reportingInd:
           allOf:
-          - $ref: "#/components/schemas/ReportingInd"
+            - $ref: "#/components/schemas/ReportingInd"
           default: INSIDE_REPORTING
         mbsrInfo:
           $ref: "#/components/schemas/MbsrInfo"
@@ -1908,15 +1883,14 @@ components:
         coordinateID:
           type: integer
         rangingSlCapability:
-          description: Ranging/Sidelink Positioning Positioning capabilities supported
-            by the UE.
+          description: Ranging/Sidelink Positioning Positioning capabilities supported by the UE.
           format: byte
           type: string
       type: object
     LocationDataExt:
       allOf:
-      - $ref: "#/components/schemas/LocationData"
-      - $ref: "#/components/schemas/AddLocationDatas"
+        - $ref: "#/components/schemas/LocationData"
+        - $ref: "#/components/schemas/AddLocationDatas"
       description: Extended Location Data for UEs
       example:
         altitude: null
@@ -1925,12 +1899,12 @@ components:
           hAccuracy: null
           vAccuracy: null
         gnssPositioningDataList:
-        - mode: null
-          gnss: GPS
-          usage: null
-        - mode: null
-          gnss: GPS
-          usage: null
+          - mode: null
+            gnss: GPS
+            usage: null
+          - mode: null
+            gnss: GPS
+            usage: null
         servingLMFIdentification: null
         relatedApplicationlayerId: null
         locationEstimate:
@@ -1940,226 +1914,226 @@ components:
             lat: 18.494211295267263
         timestampOfLocationEstimate: null
         addLocationDatas:
-        - altitude: null
-          supportedFeatures: null
-          achievedQos:
-            hAccuracy: null
-            vAccuracy: null
-          gnssPositioningDataList:
-          - mode: null
-            gnss: GPS
-            usage: null
-          - mode: null
-            gnss: GPS
-            usage: null
-          servingLMFIdentification: null
-          relatedApplicationlayerId: null
-          locationEstimate: null
-          timestampOfLocationEstimate: null
-          directReportInd: false
-          "2dRelativeLocation":
-            semiMinor: null
-            orientationAngle: null
-            semiMajor: null
-          losNlosMeasureInd: null
-          haGnssMetrics:
-            hdopi: 144
-            fixType: CARRIER_PHASE_FLOAT
-            nrOfUsedSatellites: 38
-            pdopi: 59
-            age: 69
-          uePositioningCap: null
-          ncgi:
-            nid: null
-            plmnId:
-              mnc: null
-              mcc: null
-            nrCellId: null
-          "3dRelativeLocation":
-            semiMinor: null
-            verticalUncertainty: null
-            orientationAngle: null
-            semiMajor: null
-          rangingSlCapability: null
-          ecgi:
-            eutraCellId: null
-            nid: null
-            plmnId:
-              mnc: null
-              mcc: null
-          localLocationEstimate: null
-          barometricPressure: null
-          positioningDataList:
-          - mode: UE_BASED
-            method: CELLID
-            usage: UNSUCCESS
-            methodCode: 18
-          - mode: UE_BASED
-            method: CELLID
-            usage: UNSUCCESS
-            methodCode: 18
-          ueAreaInd:
-            country: country
-            internationalAreaInd: false
-          acceptedPeriodicEventInfo:
-            reportingInterval: null
-            reportingAmount: null
-            reportingInfiniteInd: true
-            reportingIntervalMs: null
-          indoorOutdoorInd: null
-          accuracyFulfilmentIndicator: null
-          civicAddress:
-            POBOX: POBOX
-            usageRules: usageRules
-            country: country
-            PRD: PRD
-            PLC: PLC
-            HNO: HNO
-            PRM: PRM
-            HNS: HNS
-            FLR: FLR
-            A1: A1
-            A2: A2
-            A3: A3
-            A4: A4
-            STS: STS
-            A5: A5
-            A6: A6
-            RDSEC: RDSEC
-            providedBy: providedBy
-            LOC: LOC
-            UNIT: UNIT
-            SEAT: SEAT
-            POD: POD
-            RDBR: RDBR
-            method: method
-            LMK: LMK
-            POM: POM
-            ADDCODE: ADDCODE
-            RD: RD
-            PC: PC
-            PCN: PCN
-            NAM: NAM
-            BLD: BLD
-            ROOM: ROOM
-            RDSUBBR: RDSUBBR
-          relativeVelocity: null
-          ageOfLocationEstimate: null
-          distanceDirection:
-            azimuthDirection: null
-            distance: 9.301444243932576
-            elevationDirection: null
-          velocityEstimate: null
-        - altitude: null
-          supportedFeatures: null
-          achievedQos:
-            hAccuracy: null
-            vAccuracy: null
-          gnssPositioningDataList:
-          - mode: null
-            gnss: GPS
-            usage: null
-          - mode: null
-            gnss: GPS
-            usage: null
-          servingLMFIdentification: null
-          relatedApplicationlayerId: null
-          locationEstimate: null
-          timestampOfLocationEstimate: null
-          directReportInd: false
-          "2dRelativeLocation":
-            semiMinor: null
-            orientationAngle: null
-            semiMajor: null
-          losNlosMeasureInd: null
-          haGnssMetrics:
-            hdopi: 144
-            fixType: CARRIER_PHASE_FLOAT
-            nrOfUsedSatellites: 38
-            pdopi: 59
-            age: 69
-          uePositioningCap: null
-          ncgi:
-            nid: null
-            plmnId:
-              mnc: null
-              mcc: null
-            nrCellId: null
-          "3dRelativeLocation":
-            semiMinor: null
-            verticalUncertainty: null
-            orientationAngle: null
-            semiMajor: null
-          rangingSlCapability: null
-          ecgi:
-            eutraCellId: null
-            nid: null
-            plmnId:
-              mnc: null
-              mcc: null
-          localLocationEstimate: null
-          barometricPressure: null
-          positioningDataList:
-          - mode: UE_BASED
-            method: CELLID
-            usage: UNSUCCESS
-            methodCode: 18
-          - mode: UE_BASED
-            method: CELLID
-            usage: UNSUCCESS
-            methodCode: 18
-          ueAreaInd:
-            country: country
-            internationalAreaInd: false
-          acceptedPeriodicEventInfo:
-            reportingInterval: null
-            reportingAmount: null
-            reportingInfiniteInd: true
-            reportingIntervalMs: null
-          indoorOutdoorInd: null
-          accuracyFulfilmentIndicator: null
-          civicAddress:
-            POBOX: POBOX
-            usageRules: usageRules
-            country: country
-            PRD: PRD
-            PLC: PLC
-            HNO: HNO
-            PRM: PRM
-            HNS: HNS
-            FLR: FLR
-            A1: A1
-            A2: A2
-            A3: A3
-            A4: A4
-            STS: STS
-            A5: A5
-            A6: A6
-            RDSEC: RDSEC
-            providedBy: providedBy
-            LOC: LOC
-            UNIT: UNIT
-            SEAT: SEAT
-            POD: POD
-            RDBR: RDBR
-            method: method
-            LMK: LMK
-            POM: POM
-            ADDCODE: ADDCODE
-            RD: RD
-            PC: PC
-            PCN: PCN
-            NAM: NAM
-            BLD: BLD
-            ROOM: ROOM
-            RDSUBBR: RDSUBBR
-          relativeVelocity: null
-          ageOfLocationEstimate: null
-          distanceDirection:
-            azimuthDirection: null
-            distance: 9.301444243932576
-            elevationDirection: null
-          velocityEstimate: null
+          - altitude: null
+            supportedFeatures: null
+            achievedQos:
+              hAccuracy: null
+              vAccuracy: null
+            gnssPositioningDataList:
+              - mode: null
+                gnss: GPS
+                usage: null
+              - mode: null
+                gnss: GPS
+                usage: null
+            servingLMFIdentification: null
+            relatedApplicationlayerId: null
+            locationEstimate: null
+            timestampOfLocationEstimate: null
+            directReportInd: false
+            "2dRelativeLocation":
+              semiMinor: null
+              orientationAngle: null
+              semiMajor: null
+            losNlosMeasureInd: null
+            haGnssMetrics:
+              hdopi: 144
+              fixType: CARRIER_PHASE_FLOAT
+              nrOfUsedSatellites: 38
+              pdopi: 59
+              age: 69
+            uePositioningCap: null
+            ncgi:
+              nid: null
+              plmnId:
+                mnc: null
+                mcc: null
+              nrCellId: null
+            "3dRelativeLocation":
+              semiMinor: null
+              verticalUncertainty: null
+              orientationAngle: null
+              semiMajor: null
+            rangingSlCapability: null
+            ecgi:
+              eutraCellId: null
+              nid: null
+              plmnId:
+                mnc: null
+                mcc: null
+            localLocationEstimate: null
+            barometricPressure: null
+            positioningDataList:
+              - mode: UE_BASED
+                method: CELLID
+                usage: UNSUCCESS
+                methodCode: 18
+              - mode: UE_BASED
+                method: CELLID
+                usage: UNSUCCESS
+                methodCode: 18
+            ueAreaInd:
+              country: country
+              internationalAreaInd: false
+            acceptedPeriodicEventInfo:
+              reportingInterval: null
+              reportingAmount: null
+              reportingInfiniteInd: true
+              reportingIntervalMs: null
+            indoorOutdoorInd: null
+            accuracyFulfilmentIndicator: null
+            civicAddress:
+              POBOX: POBOX
+              usageRules: usageRules
+              country: country
+              PRD: PRD
+              PLC: PLC
+              HNO: HNO
+              PRM: PRM
+              HNS: HNS
+              FLR: FLR
+              A1: A1
+              A2: A2
+              A3: A3
+              A4: A4
+              STS: STS
+              A5: A5
+              A6: A6
+              RDSEC: RDSEC
+              providedBy: providedBy
+              LOC: LOC
+              UNIT: UNIT
+              SEAT: SEAT
+              POD: POD
+              RDBR: RDBR
+              method: method
+              LMK: LMK
+              POM: POM
+              ADDCODE: ADDCODE
+              RD: RD
+              PC: PC
+              PCN: PCN
+              NAM: NAM
+              BLD: BLD
+              ROOM: ROOM
+              RDSUBBR: RDSUBBR
+            relativeVelocity: null
+            ageOfLocationEstimate: null
+            distanceDirection:
+              azimuthDirection: null
+              distance: 9.301444243932576
+              elevationDirection: null
+            velocityEstimate: null
+          - altitude: null
+            supportedFeatures: null
+            achievedQos:
+              hAccuracy: null
+              vAccuracy: null
+            gnssPositioningDataList:
+              - mode: null
+                gnss: GPS
+                usage: null
+              - mode: null
+                gnss: GPS
+                usage: null
+            servingLMFIdentification: null
+            relatedApplicationlayerId: null
+            locationEstimate: null
+            timestampOfLocationEstimate: null
+            directReportInd: false
+            "2dRelativeLocation":
+              semiMinor: null
+              orientationAngle: null
+              semiMajor: null
+            losNlosMeasureInd: null
+            haGnssMetrics:
+              hdopi: 144
+              fixType: CARRIER_PHASE_FLOAT
+              nrOfUsedSatellites: 38
+              pdopi: 59
+              age: 69
+            uePositioningCap: null
+            ncgi:
+              nid: null
+              plmnId:
+                mnc: null
+                mcc: null
+              nrCellId: null
+            "3dRelativeLocation":
+              semiMinor: null
+              verticalUncertainty: null
+              orientationAngle: null
+              semiMajor: null
+            rangingSlCapability: null
+            ecgi:
+              eutraCellId: null
+              nid: null
+              plmnId:
+                mnc: null
+                mcc: null
+            localLocationEstimate: null
+            barometricPressure: null
+            positioningDataList:
+              - mode: UE_BASED
+                method: CELLID
+                usage: UNSUCCESS
+                methodCode: 18
+              - mode: UE_BASED
+                method: CELLID
+                usage: UNSUCCESS
+                methodCode: 18
+            ueAreaInd:
+              country: country
+              internationalAreaInd: false
+            acceptedPeriodicEventInfo:
+              reportingInterval: null
+              reportingAmount: null
+              reportingInfiniteInd: true
+              reportingIntervalMs: null
+            indoorOutdoorInd: null
+            accuracyFulfilmentIndicator: null
+            civicAddress:
+              POBOX: POBOX
+              usageRules: usageRules
+              country: country
+              PRD: PRD
+              PLC: PLC
+              HNO: HNO
+              PRM: PRM
+              HNS: HNS
+              FLR: FLR
+              A1: A1
+              A2: A2
+              A3: A3
+              A4: A4
+              STS: STS
+              A5: A5
+              A6: A6
+              RDSEC: RDSEC
+              providedBy: providedBy
+              LOC: LOC
+              UNIT: UNIT
+              SEAT: SEAT
+              POD: POD
+              RDBR: RDBR
+              method: method
+              LMK: LMK
+              POM: POM
+              ADDCODE: ADDCODE
+              RD: RD
+              PC: PC
+              PCN: PCN
+              NAM: NAM
+              BLD: BLD
+              ROOM: ROOM
+              RDSUBBR: RDSUBBR
+            relativeVelocity: null
+            ageOfLocationEstimate: null
+            distanceDirection:
+              azimuthDirection: null
+              distance: 9.301444243932576
+              elevationDirection: null
+            velocityEstimate: null
         directReportInd: false
         "2dRelativeLocation":
           semiMinor: null
@@ -2209,14 +2183,14 @@ components:
             semiMajor: null
         barometricPressure: null
         positioningDataList:
-        - mode: UE_BASED
-          method: CELLID
-          usage: UNSUCCESS
-          methodCode: 18
-        - mode: UE_BASED
-          method: CELLID
-          usage: UNSUCCESS
-          methodCode: 18
+          - mode: UE_BASED
+            method: CELLID
+            usage: UNSUCCESS
+            methodCode: 18
+          - mode: UE_BASED
+            method: CELLID
+            usage: UNSUCCESS
+            methodCode: 18
         ueAreaInd:
           country: country
           internationalAreaInd: false
@@ -2280,12 +2254,12 @@ components:
           hAccuracy: null
           vAccuracy: null
         gnssPositioningDataList:
-        - mode: null
-          gnss: GPS
-          usage: null
-        - mode: null
-          gnss: GPS
-          usage: null
+          - mode: null
+            gnss: GPS
+            usage: null
+          - mode: null
+            gnss: GPS
+            usage: null
         servingLMFIdentification: null
         relatedApplicationlayerId: null
         locationEstimate: null
@@ -2324,14 +2298,14 @@ components:
         localLocationEstimate: null
         barometricPressure: null
         positioningDataList:
-        - mode: UE_BASED
-          method: CELLID
-          usage: UNSUCCESS
-          methodCode: 18
-        - mode: UE_BASED
-          method: CELLID
-          usage: UNSUCCESS
-          methodCode: 18
+          - mode: UE_BASED
+            method: CELLID
+            usage: UNSUCCESS
+            methodCode: 18
+          - mode: UE_BASED
+            method: CELLID
+            usage: UNSUCCESS
+            methodCode: 18
         ueAreaInd:
           country: country
           internationalAreaInd: false
@@ -2451,19 +2425,19 @@ components:
         rangingSlCapability:
           $ref: "#/components/schemas/RangingSlCapability"
       required:
-      - locationEstimate
+        - locationEstimate
       type: object
     GeographicArea:
       anyOf:
-      - $ref: "#/components/schemas/Point"
-      - $ref: "#/components/schemas/PointUncertaintyCircle"
-      - $ref: "#/components/schemas/PointUncertaintyEllipse"
-      - $ref: "#/components/schemas/Polygon"
-      - $ref: "#/components/schemas/PointAltitude"
-      - $ref: "#/components/schemas/PointAltitudeUncertainty"
-      - $ref: "#/components/schemas/EllipsoidArc"
-      - $ref: "#/components/schemas/Local2dPointUncertaintyEllipse"
-      - $ref: "#/components/schemas/Local3dPointUncertaintyEllipsoid"
+        - $ref: "#/components/schemas/Point"
+        - $ref: "#/components/schemas/PointUncertaintyCircle"
+        - $ref: "#/components/schemas/PointUncertaintyEllipse"
+        - $ref: "#/components/schemas/Polygon"
+        - $ref: "#/components/schemas/PointAltitude"
+        - $ref: "#/components/schemas/PointAltitudeUncertainty"
+        - $ref: "#/components/schemas/EllipsoidArc"
+        - $ref: "#/components/schemas/Local2dPointUncertaintyEllipse"
+        - $ref: "#/components/schemas/Local3dPointUncertaintyEllipsoid"
       description: Geographic area specified by different shape.
     GADShape:
       description: Common base type for GAD shapes.
@@ -2483,17 +2457,17 @@ components:
         shape:
           $ref: "#/components/schemas/SupportedGADShapes"
       required:
-      - shape
+        - shape
       type: object
     Point:
       allOf:
-      - $ref: "#/components/schemas/GADShape"
-      - properties:
-          point:
-            $ref: "#/components/schemas/GeographicalCoordinates"
-        required:
-        - point
-        type: object
+        - $ref: "#/components/schemas/GADShape"
+        - properties:
+            point:
+              $ref: "#/components/schemas/GeographicalCoordinates"
+          required:
+            - point
+          type: object
       description: Ellipsoid Point.
       example:
         shape: POINT
@@ -2502,79 +2476,79 @@ components:
           lat: 18.494211295267263
     PointUncertaintyCircle:
       allOf:
-      - $ref: "#/components/schemas/GADShape"
-      - properties:
-          point:
-            $ref: "#/components/schemas/GeographicalCoordinates"
-          uncertainty:
-            $ref: "#/components/schemas/Uncertainty"
-        type: object
+        - $ref: "#/components/schemas/GADShape"
+        - properties:
+            point:
+              $ref: "#/components/schemas/GeographicalCoordinates"
+            uncertainty:
+              $ref: "#/components/schemas/Uncertainty"
+          type: object
       description: Ellipsoid point with uncertainty circle.
     PointUncertaintyEllipse:
       allOf:
-      - $ref: "#/components/schemas/GADShape"
-      - properties:
-          point:
-            $ref: "#/components/schemas/GeographicalCoordinates"
-          uncertaintyEllipse:
-            $ref: "#/components/schemas/UncertaintyEllipse"
-          confidence:
-            $ref: "#/components/schemas/Confidence"
-        type: object
+        - $ref: "#/components/schemas/GADShape"
+        - properties:
+            point:
+              $ref: "#/components/schemas/GeographicalCoordinates"
+            uncertaintyEllipse:
+              $ref: "#/components/schemas/UncertaintyEllipse"
+            confidence:
+              $ref: "#/components/schemas/Confidence"
+          type: object
       description: Ellipsoid point with uncertainty ellipse.
     Polygon:
       allOf:
-      - $ref: "#/components/schemas/GADShape"
-      - properties:
-          pointList:
-            $ref: "#/components/schemas/PointList"
-        type: object
+        - $ref: "#/components/schemas/GADShape"
+        - properties:
+            pointList:
+              $ref: "#/components/schemas/PointList"
+          type: object
       description: Polygon.
     PointAltitude:
       allOf:
-      - $ref: "#/components/schemas/GADShape"
-      - properties:
-          point:
-            $ref: "#/components/schemas/GeographicalCoordinates"
-          altitude:
-            $ref: "#/components/schemas/Altitude"
-        type: object
+        - $ref: "#/components/schemas/GADShape"
+        - properties:
+            point:
+              $ref: "#/components/schemas/GeographicalCoordinates"
+            altitude:
+              $ref: "#/components/schemas/Altitude"
+          type: object
       description: Ellipsoid point with altitude.
     PointAltitudeUncertainty:
       allOf:
-      - $ref: "#/components/schemas/GADShape"
-      - properties:
-          point:
-            $ref: "#/components/schemas/GeographicalCoordinates"
-          altitude:
-            $ref: "#/components/schemas/Altitude"
-          uncertaintyEllipse:
-            $ref: "#/components/schemas/UncertaintyEllipse"
-          uncertaintyAltitude:
-            $ref: "#/components/schemas/Uncertainty"
-          confidence:
-            $ref: "#/components/schemas/Confidence"
-          vConfidence:
-            $ref: "#/components/schemas/Confidence"
-        type: object
+        - $ref: "#/components/schemas/GADShape"
+        - properties:
+            point:
+              $ref: "#/components/schemas/GeographicalCoordinates"
+            altitude:
+              $ref: "#/components/schemas/Altitude"
+            uncertaintyEllipse:
+              $ref: "#/components/schemas/UncertaintyEllipse"
+            uncertaintyAltitude:
+              $ref: "#/components/schemas/Uncertainty"
+            confidence:
+              $ref: "#/components/schemas/Confidence"
+            vConfidence:
+              $ref: "#/components/schemas/Confidence"
+          type: object
       description: Ellipsoid point with altitude and uncertainty ellipsoid.
     EllipsoidArc:
       allOf:
-      - $ref: "#/components/schemas/GADShape"
-      - properties:
-          point:
-            $ref: "#/components/schemas/GeographicalCoordinates"
-          innerRadius:
-            $ref: "#/components/schemas/InnerRadius"
-          uncertaintyRadius:
-            $ref: "#/components/schemas/Uncertainty"
-          offsetAngle:
-            $ref: "#/components/schemas/Angle"
-          includedAngle:
-            $ref: "#/components/schemas/Angle"
-          confidence:
-            $ref: "#/components/schemas/Confidence"
-        type: object
+        - $ref: "#/components/schemas/GADShape"
+        - properties:
+            point:
+              $ref: "#/components/schemas/GeographicalCoordinates"
+            innerRadius:
+              $ref: "#/components/schemas/InnerRadius"
+            uncertaintyRadius:
+              $ref: "#/components/schemas/Uncertainty"
+            offsetAngle:
+              $ref: "#/components/schemas/Angle"
+            includedAngle:
+              $ref: "#/components/schemas/Angle"
+            confidence:
+              $ref: "#/components/schemas/Confidence"
+          type: object
       description: Ellipsoid Arc.
     LocalOrigin:
       description: Indicates a Local origin in a reference system
@@ -2603,17 +2577,16 @@ components:
         z:
           $ref: "#/components/schemas/Float"
       required:
-      - x
-      - "y"
+        - x
+        - "y"
       type: object
     LocalArea:
       description: Local area specified by different shape
       oneOf:
-      - $ref: "#/components/schemas/Local2dPointUncertaintyEllipse"
-      - $ref: "#/components/schemas/Local3dPointUncertaintyEllipsoid"
+        - $ref: "#/components/schemas/Local2dPointUncertaintyEllipse"
+        - $ref: "#/components/schemas/Local3dPointUncertaintyEllipsoid"
     UeAreaIndication:
-      description: "Indicates area (country, area in a country or international area)\
-        \ where UE is located"
+      description: "Indicates area (country, area in a country or international area) where UE is located"
       example:
         country: country
         internationalAreaInd: false
@@ -2625,23 +2598,22 @@ components:
           type: string
         internationalAreaInd:
           default: false
-          description: Indicates international area indication if UE is located in
-            international area
+          description: Indicates international area indication if UE is located in international area
           type: boolean
       type: object
     Local2dPointUncertaintyEllipse:
       allOf:
-      - $ref: "#/components/schemas/GADShape"
-      - properties:
-          localOrigin:
-            $ref: "#/components/schemas/LocalOrigin"
-          point:
-            $ref: "#/components/schemas/RelativeCartesianLocation"
-          uncertaintyEllipse:
-            $ref: "#/components/schemas/UncertaintyEllipse"
-          confidence:
-            $ref: "#/components/schemas/Confidence"
-        type: object
+        - $ref: "#/components/schemas/GADShape"
+        - properties:
+            localOrigin:
+              $ref: "#/components/schemas/LocalOrigin"
+            point:
+              $ref: "#/components/schemas/RelativeCartesianLocation"
+            uncertaintyEllipse:
+              $ref: "#/components/schemas/UncertaintyEllipse"
+            confidence:
+              $ref: "#/components/schemas/Confidence"
+          type: object
       description: Local 2D point with uncertainty ellipse
       example:
         localOrigin:
@@ -2661,22 +2633,22 @@ components:
           semiMajor: null
     Local3dPointUncertaintyEllipsoid:
       allOf:
-      - $ref: "#/components/schemas/GADShape"
-      - properties:
-          localOrigin:
-            $ref: "#/components/schemas/LocalOrigin"
-          point:
-            $ref: "#/components/schemas/RelativeCartesianLocation"
-          uncertaintyEllipsoid:
-            $ref: "#/components/schemas/UncertaintyEllipsoid"
-          confidence:
-            $ref: "#/components/schemas/Confidence"
-        required:
-        - confidence
-        - localOrigin
-        - point
-        - uncertaintyEllipsoid
-        type: object
+        - $ref: "#/components/schemas/GADShape"
+        - properties:
+            localOrigin:
+              $ref: "#/components/schemas/LocalOrigin"
+            point:
+              $ref: "#/components/schemas/RelativeCartesianLocation"
+            uncertaintyEllipsoid:
+              $ref: "#/components/schemas/UncertaintyEllipsoid"
+            confidence:
+              $ref: "#/components/schemas/Confidence"
+          required:
+            - confidence
+            - localOrigin
+            - point
+            - uncertaintyEllipsoid
+          type: object
       description: Local 3D point with uncertainty ellipsoid
     GeographicalCoordinates:
       description: Geographical coordinates.
@@ -2695,8 +2667,8 @@ components:
           minimum: -90
           type: number
       required:
-      - lat
-      - lon
+        - lat
+        - lon
       type: object
     UncertaintyEllipse:
       description: Ellipse with uncertainty.
@@ -2712,9 +2684,9 @@ components:
         orientationMajor:
           $ref: "#/components/schemas/Orientation"
       required:
-      - orientationMajor
-      - semiMajor
-      - semiMinor
+        - orientationMajor
+        - semiMajor
+        - semiMinor
       type: object
     UncertaintyEllipsoid:
       description: Ellipsoid with uncertainty
@@ -2728,10 +2700,10 @@ components:
         orientationMajor:
           $ref: "#/components/schemas/Orientation"
       required:
-      - orientationMajor
-      - semiMajor
-      - semiMinor
-      - vertical
+        - orientationMajor
+        - semiMajor
+        - semiMinor
+        - vertical
       type: object
     PointList:
       description: List of points.
@@ -2748,10 +2720,10 @@ components:
         hAccuracy: null
         vAccuracy: null
         minorLocQoses:
-        - hAccuracy: null
-          vAccuracy: null
-        - hAccuracy: null
-          vAccuracy: null
+          - hAccuracy: null
+            vAccuracy: null
+          - hAccuracy: null
+            vAccuracy: null
         lcsQosClass: BEST_EFFORT
       properties:
         hAccuracy:
@@ -2790,13 +2762,12 @@ components:
           minimum: 16
           type: integer
       required:
-      - method
-      - mode
-      - usage
+        - method
+        - mode
+        - usage
       type: object
     GnssPositioningMethodAndUsage:
-      description: Indicates the usage of a Global Navigation Satellite System (GNSS)
-        positioning method.
+      description: Indicates the usage of a Global Navigation Satellite System (GNSS) positioning method.
       example:
         mode: null
         gnss: GPS
@@ -2809,9 +2780,9 @@ components:
         usage:
           $ref: "#/components/schemas/Usage"
       required:
-      - gnss
-      - mode
-      - usage
+        - gnss
+        - mode
+        - usage
       type: object
     CivicAddress:
       description: Indicates a Civic address.
@@ -2923,10 +2894,10 @@ components:
     VelocityEstimate:
       description: Velocity estimate.
       oneOf:
-      - $ref: "#/components/schemas/HorizontalVelocity"
-      - $ref: "#/components/schemas/HorizontalWithVerticalVelocity"
-      - $ref: "#/components/schemas/HorizontalVelocityWithUncertainty"
-      - $ref: "#/components/schemas/HorizontalWithVerticalVelocityAndUncertainty"
+        - $ref: "#/components/schemas/HorizontalVelocity"
+        - $ref: "#/components/schemas/HorizontalWithVerticalVelocity"
+        - $ref: "#/components/schemas/HorizontalVelocityWithUncertainty"
+        - $ref: "#/components/schemas/HorizontalWithVerticalVelocityAndUncertainty"
     HorizontalVelocity:
       description: Horizontal velocity.
       example:
@@ -2938,8 +2909,8 @@ components:
         bearing:
           $ref: "#/components/schemas/Angle"
       required:
-      - bearing
-      - hSpeed
+        - bearing
+        - hSpeed
       type: object
     HorizontalWithVerticalVelocity:
       description: Horizontal and vertical velocity.
@@ -2953,10 +2924,10 @@ components:
         vDirection:
           $ref: "#/components/schemas/VerticalDirection"
       required:
-      - bearing
-      - hSpeed
-      - vDirection
-      - vSpeed
+        - bearing
+        - hSpeed
+        - vDirection
+        - vSpeed
       type: object
     HorizontalVelocityWithUncertainty:
       description: Horizontal velocity with speed uncertainty.
@@ -2968,9 +2939,9 @@ components:
         hUncertainty:
           $ref: "#/components/schemas/SpeedUncertainty"
       required:
-      - bearing
-      - hSpeed
-      - hUncertainty
+        - bearing
+        - hSpeed
+        - hUncertainty
       type: object
     HorizontalWithVerticalVelocityAndUncertainty:
       description: Horizontal and vertical velocity with speed uncertainty.
@@ -2988,12 +2959,12 @@ components:
         vUncertainty:
           $ref: "#/components/schemas/SpeedUncertainty"
       required:
-      - bearing
-      - hSpeed
-      - hUncertainty
-      - vDirection
-      - vSpeed
-      - vUncertainty
+        - bearing
+        - hSpeed
+        - hUncertainty
+        - vDirection
+        - vSpeed
+        - vUncertainty
       type: object
     UeLcsCapability:
       description: Indicates the LCS capability supported by the UE..
@@ -3025,8 +2996,8 @@ components:
         reportingIntervalMs:
           $ref: "#/components/schemas/ReportingIntervalMs"
       required:
-      - reportingAmount
-      - reportingInterval
+        - reportingAmount
+        - reportingInterval
       type: object
     AreaEventInfo:
       description: Indicates the information of area based event reporting.
@@ -3036,101 +3007,101 @@ components:
         reportingDuration: null
         minimumInterval: null
         areaDefinition:
-        - ncgi:
-            nid: null
-            plmnId:
-              mnc: null
-              mcc: null
-            nrCellId: null
-          areaType: EPS_TRACKING_AREA_IDENTITY
-          tai:
-            tac: null
-            nid: null
-            plmnId:
-              mnc: null
-              mcc: null
-          ecgi:
-            eutraCellId: null
-            nid: null
-            plmnId:
-              mnc: null
-              mcc: null
-        - ncgi:
-            nid: null
-            plmnId:
-              mnc: null
-              mcc: null
-            nrCellId: null
-          areaType: EPS_TRACKING_AREA_IDENTITY
-          tai:
-            tac: null
-            nid: null
-            plmnId:
-              mnc: null
-              mcc: null
-          ecgi:
-            eutraCellId: null
-            nid: null
-            plmnId:
-              mnc: null
-              mcc: null
-        - ncgi:
-            nid: null
-            plmnId:
-              mnc: null
-              mcc: null
-            nrCellId: null
-          areaType: EPS_TRACKING_AREA_IDENTITY
-          tai:
-            tac: null
-            nid: null
-            plmnId:
-              mnc: null
-              mcc: null
-          ecgi:
-            eutraCellId: null
-            nid: null
-            plmnId:
-              mnc: null
-              mcc: null
-        - ncgi:
-            nid: null
-            plmnId:
-              mnc: null
-              mcc: null
-            nrCellId: null
-          areaType: EPS_TRACKING_AREA_IDENTITY
-          tai:
-            tac: null
-            nid: null
-            plmnId:
-              mnc: null
-              mcc: null
-          ecgi:
-            eutraCellId: null
-            nid: null
-            plmnId:
-              mnc: null
-              mcc: null
-        - ncgi:
-            nid: null
-            plmnId:
-              mnc: null
-              mcc: null
-            nrCellId: null
-          areaType: EPS_TRACKING_AREA_IDENTITY
-          tai:
-            tac: null
-            nid: null
-            plmnId:
-              mnc: null
-              mcc: null
-          ecgi:
-            eutraCellId: null
-            nid: null
-            plmnId:
-              mnc: null
-              mcc: null
+          - ncgi:
+              nid: null
+              plmnId:
+                mnc: null
+                mcc: null
+              nrCellId: null
+            areaType: EPS_TRACKING_AREA_IDENTITY
+            tai:
+              tac: null
+              nid: null
+              plmnId:
+                mnc: null
+                mcc: null
+            ecgi:
+              eutraCellId: null
+              nid: null
+              plmnId:
+                mnc: null
+                mcc: null
+          - ncgi:
+              nid: null
+              plmnId:
+                mnc: null
+                mcc: null
+              nrCellId: null
+            areaType: EPS_TRACKING_AREA_IDENTITY
+            tai:
+              tac: null
+              nid: null
+              plmnId:
+                mnc: null
+                mcc: null
+            ecgi:
+              eutraCellId: null
+              nid: null
+              plmnId:
+                mnc: null
+                mcc: null
+          - ncgi:
+              nid: null
+              plmnId:
+                mnc: null
+                mcc: null
+              nrCellId: null
+            areaType: EPS_TRACKING_AREA_IDENTITY
+            tai:
+              tac: null
+              nid: null
+              plmnId:
+                mnc: null
+                mcc: null
+            ecgi:
+              eutraCellId: null
+              nid: null
+              plmnId:
+                mnc: null
+                mcc: null
+          - ncgi:
+              nid: null
+              plmnId:
+                mnc: null
+                mcc: null
+              nrCellId: null
+            areaType: EPS_TRACKING_AREA_IDENTITY
+            tai:
+              tac: null
+              nid: null
+              plmnId:
+                mnc: null
+                mcc: null
+            ecgi:
+              eutraCellId: null
+              nid: null
+              plmnId:
+                mnc: null
+                mcc: null
+          - ncgi:
+              nid: null
+              plmnId:
+                mnc: null
+                mcc: null
+              nrCellId: null
+            areaType: EPS_TRACKING_AREA_IDENTITY
+            tai:
+              tac: null
+              nid: null
+              plmnId:
+                mnc: null
+                mcc: null
+            ecgi:
+              eutraCellId: null
+              nid: null
+              plmnId:
+                mnc: null
+                mcc: null
         occurrenceInfo: ONE_TIME_EVENT
         maximumInterval: null
       properties:
@@ -3154,7 +3125,7 @@ components:
           default: true
           type: boolean
       required:
-      - areaDefinition
+        - areaDefinition
       type: object
     ReportingArea:
       description: Indicates an area for event reporting.
@@ -3188,7 +3159,7 @@ components:
         ncgi:
           $ref: "#/components/schemas/Ncgi"
       required:
-      - areaType
+        - areaType
       type: object
     MotionEventInfo:
       description: Indicates the information of motion based event reporting.
@@ -3217,7 +3188,7 @@ components:
           default: true
           type: boolean
       required:
-      - linearDistance
+        - linearDistance
       type: object
     CancelLocData:
       description: Information within Cancel Location Request.
@@ -3240,8 +3211,8 @@ components:
           pattern: "^[A-Fa-f0-9]*$"
           type: string
       required:
-      - hgmlcCallBackURI
-      - ldrReference
+        - hgmlcCallBackURI
+        - ldrReference
       type: object
     LocContextData:
       description: Information within Transfer Location Context Request.
@@ -3271,101 +3242,101 @@ components:
           reportingDuration: null
           minimumInterval: null
           areaDefinition:
-          - ncgi:
-              nid: null
-              plmnId:
-                mnc: null
-                mcc: null
-              nrCellId: null
-            areaType: EPS_TRACKING_AREA_IDENTITY
-            tai:
-              tac: null
-              nid: null
-              plmnId:
-                mnc: null
-                mcc: null
-            ecgi:
-              eutraCellId: null
-              nid: null
-              plmnId:
-                mnc: null
-                mcc: null
-          - ncgi:
-              nid: null
-              plmnId:
-                mnc: null
-                mcc: null
-              nrCellId: null
-            areaType: EPS_TRACKING_AREA_IDENTITY
-            tai:
-              tac: null
-              nid: null
-              plmnId:
-                mnc: null
-                mcc: null
-            ecgi:
-              eutraCellId: null
-              nid: null
-              plmnId:
-                mnc: null
-                mcc: null
-          - ncgi:
-              nid: null
-              plmnId:
-                mnc: null
-                mcc: null
-              nrCellId: null
-            areaType: EPS_TRACKING_AREA_IDENTITY
-            tai:
-              tac: null
-              nid: null
-              plmnId:
-                mnc: null
-                mcc: null
-            ecgi:
-              eutraCellId: null
-              nid: null
-              plmnId:
-                mnc: null
-                mcc: null
-          - ncgi:
-              nid: null
-              plmnId:
-                mnc: null
-                mcc: null
-              nrCellId: null
-            areaType: EPS_TRACKING_AREA_IDENTITY
-            tai:
-              tac: null
-              nid: null
-              plmnId:
-                mnc: null
-                mcc: null
-            ecgi:
-              eutraCellId: null
-              nid: null
-              plmnId:
-                mnc: null
-                mcc: null
-          - ncgi:
-              nid: null
-              plmnId:
-                mnc: null
-                mcc: null
-              nrCellId: null
-            areaType: EPS_TRACKING_AREA_IDENTITY
-            tai:
-              tac: null
-              nid: null
-              plmnId:
-                mnc: null
-                mcc: null
-            ecgi:
-              eutraCellId: null
-              nid: null
-              plmnId:
-                mnc: null
-                mcc: null
+            - ncgi:
+                nid: null
+                plmnId:
+                  mnc: null
+                  mcc: null
+                nrCellId: null
+              areaType: EPS_TRACKING_AREA_IDENTITY
+              tai:
+                tac: null
+                nid: null
+                plmnId:
+                  mnc: null
+                  mcc: null
+              ecgi:
+                eutraCellId: null
+                nid: null
+                plmnId:
+                  mnc: null
+                  mcc: null
+            - ncgi:
+                nid: null
+                plmnId:
+                  mnc: null
+                  mcc: null
+                nrCellId: null
+              areaType: EPS_TRACKING_AREA_IDENTITY
+              tai:
+                tac: null
+                nid: null
+                plmnId:
+                  mnc: null
+                  mcc: null
+              ecgi:
+                eutraCellId: null
+                nid: null
+                plmnId:
+                  mnc: null
+                  mcc: null
+            - ncgi:
+                nid: null
+                plmnId:
+                  mnc: null
+                  mcc: null
+                nrCellId: null
+              areaType: EPS_TRACKING_AREA_IDENTITY
+              tai:
+                tac: null
+                nid: null
+                plmnId:
+                  mnc: null
+                  mcc: null
+              ecgi:
+                eutraCellId: null
+                nid: null
+                plmnId:
+                  mnc: null
+                  mcc: null
+            - ncgi:
+                nid: null
+                plmnId:
+                  mnc: null
+                  mcc: null
+                nrCellId: null
+              areaType: EPS_TRACKING_AREA_IDENTITY
+              tai:
+                tac: null
+                nid: null
+                plmnId:
+                  mnc: null
+                  mcc: null
+              ecgi:
+                eutraCellId: null
+                nid: null
+                plmnId:
+                  mnc: null
+                  mcc: null
+            - ncgi:
+                nid: null
+                plmnId:
+                  mnc: null
+                  mcc: null
+                nrCellId: null
+              areaType: EPS_TRACKING_AREA_IDENTITY
+              tai:
+                tac: null
+                nid: null
+                plmnId:
+                  mnc: null
+                  mcc: null
+              ecgi:
+                eutraCellId: null
+                nid: null
+                plmnId:
+                  mnc: null
+                  mcc: null
           occurrenceInfo: ONE_TIME_EVENT
           maximumInterval: null
         ueLocationInfo:
@@ -3390,10 +3361,10 @@ components:
           hAccuracy: null
           vAccuracy: null
           minorLocQoses:
-          - hAccuracy: null
-            vAccuracy: null
-          - hAccuracy: null
-            vAccuracy: null
+            - hAccuracy: null
+              vAccuracy: null
+            - hAccuracy: null
+              vAccuracy: null
           lcsQosClass: BEST_EFFORT
         supi: supi
         guami:
@@ -3403,8 +3374,8 @@ components:
             mcc: null
           amfId: null
         supportedGADShapes:
-        - POINT
-        - POINT
+          - POINT
+          - POINT
         gpsi: gpsi
         ecgi:
           eutraCellId: null
@@ -3501,9 +3472,7 @@ components:
           pattern: "^[A-Fa-f0-9]*$"
           type: string
         uePositioningCap:
-          description: Positioning capabilities supported by the UE. A string encoding
-            the "ProvideCapabilities-r9-IEs" IE as specified in clause 6.3 of 3GPP
-            TS 37.355 (start from octet 1).
+          description: Positioning capabilities supported by the UE. A string encoding the "ProvideCapabilities-r9-IEs" IE as specified in clause 6.3 of 3GPP TS 37.355 (start from octet 1).
           format: byte
           type: string
         scheduledLocTime:
@@ -3517,11 +3486,11 @@ components:
         upCumEvtRptCriteria:
           $ref: "#/components/schemas/UpCumEvtRptCriteria"
       required:
-      - amfId
-      - eventReportMessage
-      - hgmlcCallBackURI
-      - ldrReference
-      - ldrType
+        - amfId
+        - eventReportMessage
+        - hgmlcCallBackURI
+        - ldrReference
+        - ldrType
       type: object
     EventReportMessage:
       description: Indicates an event report message.
@@ -3535,8 +3504,8 @@ components:
         eventContent:
           $ref: "#/components/schemas/RefToBinaryData"
       required:
-      - eventClass
-      - eventContent
+        - eventClass
+        - eventContent
       type: object
     EventReportingStatus:
       description: Indicates the status of event reporting.
@@ -3580,8 +3549,8 @@ components:
       type: object
     EventNotifyDataExt:
       allOf:
-      - $ref: "#/components/schemas/EventNotifyData"
-      - $ref: "#/components/schemas/AddEventNotifyDatas"
+        - $ref: "#/components/schemas/EventNotifyData"
+        - $ref: "#/components/schemas/AddEventNotifyDatas"
       description: Extended Event Notify Data for UEs
       example:
         altitude: null
@@ -3591,12 +3560,12 @@ components:
           vAccuracy: null
         hgmlcCallBackURI: null
         gnssPositioningDataList:
-        - mode: null
-          gnss: GPS
-          usage: null
-        - mode: null
-          gnss: GPS
-          usage: null
+          - mode: null
+            gnss: GPS
+            usage: null
+          - mode: null
+            gnss: GPS
+            usage: null
         relatedApplicationlayerId: null
         reportedEventType: PERIODIC_EVENT
         gpsi: null
@@ -3625,192 +3594,192 @@ components:
           orientationAngle: null
           semiMajor: null
         addEventNotifyDatas:
-        - altitude: null
-          supportedFeatures: null
-          achievedQos:
-            hAccuracy: null
-            vAccuracy: null
-          hgmlcCallBackURI: null
-          gnssPositioningDataList:
-          - mode: null
-            gnss: GPS
-            usage: null
-          - mode: null
-            gnss: GPS
-            usage: null
-          relatedApplicationlayerId: null
-          reportedEventType: null
-          gpsi: null
-          locationEstimate: null
-          timestampOfLocationEstimate: null
-          "2dRelativeLocation":
-            semiMinor: null
-            orientationAngle: null
-            semiMajor: null
-          losNlosMeasureInd: null
-          upLocRepStatAf: 6
-          haGnssMetrics:
-            hdopi: 144
-            fixType: CARRIER_PHASE_FLOAT
-            nrOfUsedSatellites: 38
-            pdopi: 59
-            age: 69
-          servingLMFidentification: null
-          "3dRelativeLocation":
-            semiMinor: null
-            verticalUncertainty: null
-            orientationAngle: null
-            semiMajor: null
-          supi: null
-          localLocationEstimate: null
-          positioningDataList:
-          - mode: UE_BASED
-            method: CELLID
-            usage: UNSUCCESS
-            methodCode: 18
-          - mode: UE_BASED
-            method: CELLID
-            usage: UNSUCCESS
-            methodCode: 18
-          terminationCause: null
-          lirReference: null
-          ldrReference: null
-          indoorOutdoorInd: null
-          civicAddress:
-            POBOX: POBOX
-            usageRules: usageRules
-            country: country
-            PRD: PRD
-            PLC: PLC
-            HNO: HNO
-            PRM: PRM
-            HNS: HNS
-            FLR: FLR
-            A1: A1
-            A2: A2
-            A3: A3
-            A4: A4
-            STS: STS
-            A5: A5
-            A6: A6
-            RDSEC: RDSEC
-            providedBy: providedBy
-            LOC: LOC
-            UNIT: UNIT
-            SEAT: SEAT
-            POD: POD
-            RDBR: RDBR
-            method: method
-            LMK: LMK
-            POM: POM
-            ADDCODE: ADDCODE
-            RD: RD
-            PC: PC
-            PCN: PCN
-            NAM: NAM
-            BLD: BLD
-            ROOM: ROOM
-            RDSUBBR: RDSUBBR
-          relativeVelocity: null
-          ageOfLocationEstimate: null
-          distanceDirection:
-            azimuthDirection: null
-            distance: 9.301444243932576
-            elevationDirection: null
-          velocityEstimate: null
-        - altitude: null
-          supportedFeatures: null
-          achievedQos:
-            hAccuracy: null
-            vAccuracy: null
-          hgmlcCallBackURI: null
-          gnssPositioningDataList:
-          - mode: null
-            gnss: GPS
-            usage: null
-          - mode: null
-            gnss: GPS
-            usage: null
-          relatedApplicationlayerId: null
-          reportedEventType: null
-          gpsi: null
-          locationEstimate: null
-          timestampOfLocationEstimate: null
-          "2dRelativeLocation":
-            semiMinor: null
-            orientationAngle: null
-            semiMajor: null
-          losNlosMeasureInd: null
-          upLocRepStatAf: 6
-          haGnssMetrics:
-            hdopi: 144
-            fixType: CARRIER_PHASE_FLOAT
-            nrOfUsedSatellites: 38
-            pdopi: 59
-            age: 69
-          servingLMFidentification: null
-          "3dRelativeLocation":
-            semiMinor: null
-            verticalUncertainty: null
-            orientationAngle: null
-            semiMajor: null
-          supi: null
-          localLocationEstimate: null
-          positioningDataList:
-          - mode: UE_BASED
-            method: CELLID
-            usage: UNSUCCESS
-            methodCode: 18
-          - mode: UE_BASED
-            method: CELLID
-            usage: UNSUCCESS
-            methodCode: 18
-          terminationCause: null
-          lirReference: null
-          ldrReference: null
-          indoorOutdoorInd: null
-          civicAddress:
-            POBOX: POBOX
-            usageRules: usageRules
-            country: country
-            PRD: PRD
-            PLC: PLC
-            HNO: HNO
-            PRM: PRM
-            HNS: HNS
-            FLR: FLR
-            A1: A1
-            A2: A2
-            A3: A3
-            A4: A4
-            STS: STS
-            A5: A5
-            A6: A6
-            RDSEC: RDSEC
-            providedBy: providedBy
-            LOC: LOC
-            UNIT: UNIT
-            SEAT: SEAT
-            POD: POD
-            RDBR: RDBR
-            method: method
-            LMK: LMK
-            POM: POM
-            ADDCODE: ADDCODE
-            RD: RD
-            PC: PC
-            PCN: PCN
-            NAM: NAM
-            BLD: BLD
-            ROOM: ROOM
-            RDSUBBR: RDSUBBR
-          relativeVelocity: null
-          ageOfLocationEstimate: null
-          distanceDirection:
-            azimuthDirection: null
-            distance: 9.301444243932576
-            elevationDirection: null
-          velocityEstimate: null
+          - altitude: null
+            supportedFeatures: null
+            achievedQos:
+              hAccuracy: null
+              vAccuracy: null
+            hgmlcCallBackURI: null
+            gnssPositioningDataList:
+              - mode: null
+                gnss: GPS
+                usage: null
+              - mode: null
+                gnss: GPS
+                usage: null
+            relatedApplicationlayerId: null
+            reportedEventType: null
+            gpsi: null
+            locationEstimate: null
+            timestampOfLocationEstimate: null
+            "2dRelativeLocation":
+              semiMinor: null
+              orientationAngle: null
+              semiMajor: null
+            losNlosMeasureInd: null
+            upLocRepStatAf: 6
+            haGnssMetrics:
+              hdopi: 144
+              fixType: CARRIER_PHASE_FLOAT
+              nrOfUsedSatellites: 38
+              pdopi: 59
+              age: 69
+            servingLMFidentification: null
+            "3dRelativeLocation":
+              semiMinor: null
+              verticalUncertainty: null
+              orientationAngle: null
+              semiMajor: null
+            supi: null
+            localLocationEstimate: null
+            positioningDataList:
+              - mode: UE_BASED
+                method: CELLID
+                usage: UNSUCCESS
+                methodCode: 18
+              - mode: UE_BASED
+                method: CELLID
+                usage: UNSUCCESS
+                methodCode: 18
+            terminationCause: null
+            lirReference: null
+            ldrReference: null
+            indoorOutdoorInd: null
+            civicAddress:
+              POBOX: POBOX
+              usageRules: usageRules
+              country: country
+              PRD: PRD
+              PLC: PLC
+              HNO: HNO
+              PRM: PRM
+              HNS: HNS
+              FLR: FLR
+              A1: A1
+              A2: A2
+              A3: A3
+              A4: A4
+              STS: STS
+              A5: A5
+              A6: A6
+              RDSEC: RDSEC
+              providedBy: providedBy
+              LOC: LOC
+              UNIT: UNIT
+              SEAT: SEAT
+              POD: POD
+              RDBR: RDBR
+              method: method
+              LMK: LMK
+              POM: POM
+              ADDCODE: ADDCODE
+              RD: RD
+              PC: PC
+              PCN: PCN
+              NAM: NAM
+              BLD: BLD
+              ROOM: ROOM
+              RDSUBBR: RDSUBBR
+            relativeVelocity: null
+            ageOfLocationEstimate: null
+            distanceDirection:
+              azimuthDirection: null
+              distance: 9.301444243932576
+              elevationDirection: null
+            velocityEstimate: null
+          - altitude: null
+            supportedFeatures: null
+            achievedQos:
+              hAccuracy: null
+              vAccuracy: null
+            hgmlcCallBackURI: null
+            gnssPositioningDataList:
+              - mode: null
+                gnss: GPS
+                usage: null
+              - mode: null
+                gnss: GPS
+                usage: null
+            relatedApplicationlayerId: null
+            reportedEventType: null
+            gpsi: null
+            locationEstimate: null
+            timestampOfLocationEstimate: null
+            "2dRelativeLocation":
+              semiMinor: null
+              orientationAngle: null
+              semiMajor: null
+            losNlosMeasureInd: null
+            upLocRepStatAf: 6
+            haGnssMetrics:
+              hdopi: 144
+              fixType: CARRIER_PHASE_FLOAT
+              nrOfUsedSatellites: 38
+              pdopi: 59
+              age: 69
+            servingLMFidentification: null
+            "3dRelativeLocation":
+              semiMinor: null
+              verticalUncertainty: null
+              orientationAngle: null
+              semiMajor: null
+            supi: null
+            localLocationEstimate: null
+            positioningDataList:
+              - mode: UE_BASED
+                method: CELLID
+                usage: UNSUCCESS
+                methodCode: 18
+              - mode: UE_BASED
+                method: CELLID
+                usage: UNSUCCESS
+                methodCode: 18
+            terminationCause: null
+            lirReference: null
+            ldrReference: null
+            indoorOutdoorInd: null
+            civicAddress:
+              POBOX: POBOX
+              usageRules: usageRules
+              country: country
+              PRD: PRD
+              PLC: PLC
+              HNO: HNO
+              PRM: PRM
+              HNS: HNS
+              FLR: FLR
+              A1: A1
+              A2: A2
+              A3: A3
+              A4: A4
+              STS: STS
+              A5: A5
+              A6: A6
+              RDSEC: RDSEC
+              providedBy: providedBy
+              LOC: LOC
+              UNIT: UNIT
+              SEAT: SEAT
+              POD: POD
+              RDBR: RDBR
+              method: method
+              LMK: LMK
+              POM: POM
+              ADDCODE: ADDCODE
+              RD: RD
+              PC: PC
+              PCN: PCN
+              NAM: NAM
+              BLD: BLD
+              ROOM: ROOM
+              RDSUBBR: RDSUBBR
+            relativeVelocity: null
+            ageOfLocationEstimate: null
+            distanceDirection:
+              azimuthDirection: null
+              distance: 9.301444243932576
+              elevationDirection: null
+            velocityEstimate: null
         supi: null
         localLocationEstimate:
           localOrigin:
@@ -3829,14 +3798,14 @@ components:
             orientationMajor: null
             semiMajor: null
         positioningDataList:
-        - mode: UE_BASED
-          method: CELLID
-          usage: UNSUCCESS
-          methodCode: 18
-        - mode: UE_BASED
-          method: CELLID
-          usage: UNSUCCESS
-          methodCode: 18
+          - mode: UE_BASED
+            method: CELLID
+            usage: UNSUCCESS
+            methodCode: 18
+          - mode: UE_BASED
+            method: CELLID
+            usage: UNSUCCESS
+            methodCode: 18
         terminationCause: TERMINATION_BY_UE
         lirReference: null
         ldrReference: null
@@ -3895,12 +3864,12 @@ components:
           vAccuracy: null
         hgmlcCallBackURI: null
         gnssPositioningDataList:
-        - mode: null
-          gnss: GPS
-          usage: null
-        - mode: null
-          gnss: GPS
-          usage: null
+          - mode: null
+            gnss: GPS
+            usage: null
+          - mode: null
+            gnss: GPS
+            usage: null
         relatedApplicationlayerId: null
         reportedEventType: null
         gpsi: null
@@ -3927,14 +3896,14 @@ components:
         supi: null
         localLocationEstimate: null
         positioningDataList:
-        - mode: UE_BASED
-          method: CELLID
-          usage: UNSUCCESS
-          methodCode: 18
-        - mode: UE_BASED
-          method: CELLID
-          usage: UNSUCCESS
-          methodCode: 18
+          - mode: UE_BASED
+            method: CELLID
+            usage: UNSUCCESS
+            methodCode: 18
+          - mode: UE_BASED
+            method: CELLID
+            usage: UNSUCCESS
+            methodCode: 18
         terminationCause: null
         lirReference: null
         ldrReference: null
@@ -4045,8 +4014,8 @@ components:
         relativeVelocity:
           $ref: "#/components/schemas/VelocityEstimate"
       required:
-      - ldrReference
-      - reportedEventType
+        - ldrReference
+        - reportedEventType
       type: object
     UeConnectivityState:
       description: Indicates the connectivity state of a UE.
@@ -4059,7 +4028,7 @@ components:
         connectivitystate:
           $ref: "#/components/schemas/CmState"
       required:
-      - accessType
+        - accessType
       type: object
     MinorLocationQoS:
       description: Contain Minor Location QoS.
@@ -4104,8 +4073,8 @@ components:
             mcc: null
           nrCellId: null
         timeWindows:
-        - null
-        - null
+          - null
+          - null
         preCalcuLocEstimate:
           shape: POINT
           point:
@@ -4184,8 +4153,8 @@ components:
         localLocationEstimate:
           $ref: "#/components/schemas/LocalArea"
       required:
-      - locMeasurements
-      - locationEstimate
+        - locMeasurements
+        - locationEstimate
       type: object
     LocMeasurements:
       description: PRU Location Measurements.
@@ -4241,8 +4210,8 @@ components:
           description: LMF identification.
           type: string
       required:
-      - notifCorrelationId
-      - upConnectionStatus
+        - notifCorrelationId
+        - upConnectionStatus
       type: object
     UpSubscription:
       description: UP Subscription
@@ -4283,9 +4252,9 @@ components:
           pattern: "^(msisdn-[0-9]{5,15}|extid-[^@]+@[^@]+|.+)$"
           type: string
       required:
-      - notifCorrelationId
-      - supi
-      - upNotifyCallBackUri
+        - notifCorrelationId
+        - supi
+        - upNotifyCallBackUri
       type: object
     RelatedUE:
       description: Related UE Information
@@ -4298,8 +4267,8 @@ components:
         relatedUEType:
           $ref: "#/components/schemas/RelatedUEType"
       required:
-      - applicationlayerId
-      - relatedUEType
+        - applicationlayerId
+        - relatedUEType
       type: object
     UpConfig:
       description: UP Config
@@ -4351,8 +4320,8 @@ components:
           description: LMF identification.
           type: string
       required:
-      - notifCorrelationId
-      - upNotifyCallBackUri
+        - notifCorrelationId
+        - upNotifyCallBackUri
       type: object
     RangeDirection:
       description: Represents a distance and direction from a point A to a point B.
@@ -4426,7 +4395,7 @@ components:
         vAccuracy:
           $ref: "#/components/schemas/Accuracy"
       required:
-      - hAccuracy
+        - hAccuracy
       type: object
     AdditionalUeInfo:
       description: MBSR UE Information
@@ -4560,8 +4529,7 @@ components:
       minimum: 1
       type: integer
     SamplingInterval:
-      description: Maximum time interval between consecutive evaluations by a UE of
-        a trigger event.
+      description: Maximum time interval between consecutive evaluations by a UE of a trigger event.
       maximum: 3600
       minimum: 1
       type: integer
@@ -4571,8 +4539,7 @@ components:
       minimum: 1
       type: integer
     LinearDistance:
-      description: Minimum straight line distance moved by a UE to trigger a motion
-        event report.
+      description: Minimum straight line distance moved by a UE to trigger a motion event report.
       maximum: 10000
       minimum: 1
       type: integer
@@ -4590,9 +4557,7 @@ components:
       minimum: 1
       type: integer
     UePositioningCapabilities:
-      description: Positioning capabilities supported by the UE. A string encoding
-        the "ProvideCapabilities-r9-IEs" IE as specified in clause 6.3 of 3GPP TS
-        37.355 (start from octet 1).
+      description: Positioning capabilities supported by the UE. A string encoding the "ProvideCapabilities-r9-IEs" IE as specified in clause 6.3 of 3GPP TS 37.355 (start from octet 1).
       format: byte
       type: string
     TimeWindow:
@@ -4600,251 +4565,248 @@ components:
       format: byte
       type: string
     RangingSlCapability:
-      description: Ranging/Sidelink Positioning Positioning capabilities supported
-        by the UE.
+      description: Ranging/Sidelink Positioning Positioning capabilities supported by the UE.
       format: byte
       type: string
     ExternalClientType:
       description: Indicates types of External Clients.
       enum:
-      - EMERGENCY_SERVICES
-      - VALUE_ADDED_SERVICES
-      - PLMN_OPERATOR_SERVICES
-      - LAWFUL_INTERCEPT_SERVICES
-      - PLMN_OPERATOR_BROADCAST_SERVICES
-      - PLMN_OPERATOR_OM
-      - PLMN_OPERATOR_ANONYMOUS_STATISTICS
-      - PLMN_OPERATOR_TARGET_MS_SERVICE_SUPPORT
-      - SL_POS
+        - EMERGENCY_SERVICES
+        - VALUE_ADDED_SERVICES
+        - PLMN_OPERATOR_SERVICES
+        - LAWFUL_INTERCEPT_SERVICES
+        - PLMN_OPERATOR_BROADCAST_SERVICES
+        - PLMN_OPERATOR_OM
+        - PLMN_OPERATOR_ANONYMOUS_STATISTICS
+        - PLMN_OPERATOR_TARGET_MS_SERVICE_SUPPORT
+        - SL_POS
       type: string
     SupportedGADShapes:
       description: Indicates supported GAD shapes.
       enum:
-      - POINT
-      - POINT_UNCERTAINTY_CIRCLE
-      - POINT_UNCERTAINTY_ELLIPSE
-      - POLYGON
-      - POINT_ALTITUDE
-      - POINT_ALTITUDE_UNCERTAINTY
-      - ELLIPSOID_ARC
-      - LOCAL_2D_POINT_UNCERTAINTY_ELLIPSE
-      - LOCAL_3D_POINT_UNCERTAINTY_ELLIPSOID
-      - DISTANCE_DIRECTION
-      - RELATIVE_2D_LOCATION_UNCERTAINTY_ELLIPSE
-      - RELATIVE_3D_LOCATION_UNCERTAINTY_ELLIPSOID
+        - POINT
+        - POINT_UNCERTAINTY_CIRCLE
+        - POINT_UNCERTAINTY_ELLIPSE
+        - POLYGON
+        - POINT_ALTITUDE
+        - POINT_ALTITUDE_UNCERTAINTY
+        - ELLIPSOID_ARC
+        - LOCAL_2D_POINT_UNCERTAINTY_ELLIPSE
+        - LOCAL_3D_POINT_UNCERTAINTY_ELLIPSOID
+        - DISTANCE_DIRECTION
+        - RELATIVE_2D_LOCATION_UNCERTAINTY_ELLIPSE
+        - RELATIVE_3D_LOCATION_UNCERTAINTY_ELLIPSOID
       type: string
     ResponseTime:
       description: Indicates acceptable delay of location request.
       enum:
-      - LOW_DELAY
-      - DELAY_TOLERANT
-      - NO_DELAY
+        - LOW_DELAY
+        - DELAY_TOLERANT
+        - NO_DELAY
       type: string
     PositioningMethod:
       description: Indicates supported positioning methods.
       enum:
-      - CELLID
-      - ECID
-      - OTDOA
-      - BAROMETRIC_PRESSURE
-      - WLAN
-      - BLUETOOTH
-      - MBS
-      - MOTION_SENSOR
-      - DL_TDOA
-      - DL_AOD
-      - MULTI-RTT
-      - NR_ECID
-      - UL_TDOA
-      - UL_AOA
-      - NETWORK_SPECIFIC
-      - SL_TDOA
-      - SL_TOA
-      - SL_AoA
-      - SL_RT
+        - CELLID
+        - ECID
+        - OTDOA
+        - BAROMETRIC_PRESSURE
+        - WLAN
+        - BLUETOOTH
+        - MBS
+        - MOTION_SENSOR
+        - DL_TDOA
+        - DL_AOD
+        - MULTI-RTT
+        - NR_ECID
+        - UL_TDOA
+        - UL_AOA
+        - NETWORK_SPECIFIC
+        - SL_TDOA
+        - SL_TOA
+        - SL_AoA
+        - SL_RT
       type: string
     PositioningMode:
       description: Indicates supported modes used for positioning method.
       enum:
-      - UE_BASED
-      - UE_ASSISTED
-      - CONVENTIONAL
+        - UE_BASED
+        - UE_ASSISTED
+        - CONVENTIONAL
       type: string
     GnssId:
       description: Global Navigation Satellite System (GNSS) ID.
       enum:
-      - GPS
-      - GALILEO
-      - SBAS
-      - MODERNIZED_GPS
-      - QZSS
-      - GLONASS
-      - BDS
-      - NAVIC
+        - GPS
+        - GALILEO
+        - SBAS
+        - MODERNIZED_GPS
+        - QZSS
+        - GLONASS
+        - BDS
+        - NAVIC
       type: string
     Usage:
       description: Indicates usage made of the location measurement.
       enum:
-      - UNSUCCESS
-      - SUCCESS_RESULTS_NOT_USED
-      - SUCCESS_RESULTS_USED_TO_VERIFY_LOCATION
-      - SUCCESS_RESULTS_USED_TO_GENERATE_LOCATION
-      - SUCCESS_METHOD_NOT_DETERMINED
+        - UNSUCCESS
+        - SUCCESS_RESULTS_NOT_USED
+        - SUCCESS_RESULTS_USED_TO_VERIFY_LOCATION
+        - SUCCESS_RESULTS_USED_TO_GENERATE_LOCATION
+        - SUCCESS_METHOD_NOT_DETERMINED
       type: string
     LcsPriority:
       description: Indicates priority of the LCS client.
       enum:
-      - HIGHEST_PRIORITY
-      - NORMAL_PRIORITY
+        - HIGHEST_PRIORITY
+        - NORMAL_PRIORITY
       type: string
     VelocityRequested:
       description: Indicates velocity requirement.
       enum:
-      - VELOCITY_IS_NOT_REQUESTED
-      - VELOCITY_IS_REQUESTED
+        - VELOCITY_IS_NOT_REQUESTED
+        - VELOCITY_IS_REQUESTED
       type: string
     AccuracyFulfilmentIndicator:
       description: Indicates fulfilment of requested accuracy.
       enum:
-      - REQUESTED_ACCURACY_FULFILLED
-      - REQUESTED_ACCURACY_NOT_FULFILLED
+        - REQUESTED_ACCURACY_FULFILLED
+        - REQUESTED_ACCURACY_NOT_FULFILLED
       type: string
     VerticalDirection:
       description: Indicates direction of vertical speed.
       enum:
-      - UPWARD
-      - DOWNWARD
+        - UPWARD
+        - DOWNWARD
       type: string
     LdrType:
       description: Indicates LDR types.
       enum:
-      - UE_AVAILABLE
-      - PERIODIC
-      - ENTERING_INTO_AREA
-      - LEAVING_FROM_AREA
-      - BEING_INSIDE_AREA
-      - MOTION
+        - UE_AVAILABLE
+        - PERIODIC
+        - ENTERING_INTO_AREA
+        - LEAVING_FROM_AREA
+        - BEING_INSIDE_AREA
+        - MOTION
       type: string
     ReportingAreaType:
       description: Indicates type of event reporting area.
       enum:
-      - EPS_TRACKING_AREA_IDENTITY
-      - E-UTRAN_CELL_GLOBAL_IDENTIFICATION
-      - 5GS_TRACKING_AREA_IDENTITY
-      - NR_CELL_GLOBAL_IDENTITY
+        - EPS_TRACKING_AREA_IDENTITY
+        - E-UTRAN_CELL_GLOBAL_IDENTIFICATION
+        - 5GS_TRACKING_AREA_IDENTITY
+        - NR_CELL_GLOBAL_IDENTITY
       type: string
     OccurrenceInfo:
       description: Specifies occurrence of event reporting.
       enum:
-      - ONE_TIME_EVENT
-      - MULTIPLE_TIME_EVENT
+        - ONE_TIME_EVENT
+        - MULTIPLE_TIME_EVENT
       type: string
     ReportingAccessType:
       description: Specifies access types of event reporting.
       enum:
-      - NR
-      - EUTRA_CONNECTED_TO_5GC
-      - NON_3GPP_CONNECTED_TO_5GC
-      - NR_LEO
-      - NR_MEO
-      - NR_GEO
-      - NR_OTHER_SAT
-      - EUTRA_CONNECTED_TO_EPC
+        - NR
+        - EUTRA_CONNECTED_TO_5GC
+        - NON_3GPP_CONNECTED_TO_5GC
+        - NR_LEO
+        - NR_MEO
+        - NR_GEO
+        - NR_OTHER_SAT
+        - EUTRA_CONNECTED_TO_EPC
       type: string
     EventClass:
       description: Specifies event classes.
       enum:
-      - SUPPLEMENTARY_SERVICES
+        - SUPPLEMENTARY_SERVICES
       type: string
     ReportedEventType:
       description: Specifies type of event reporting.
       enum:
-      - PERIODIC_EVENT
-      - ENTERING_AREA_EVENT
-      - LEAVING_AREA_EVENT
-      - BEING_INSIDE_AREA_EVENT
-      - MOTION_EVENT
-      - MAXIMUM_INTERVAL_EXPIRATION_EVENT
-      - LOCATION_CANCELLATION_EVENT
-      - INTERMEDIATE_EVENT
-      - DIRECT_REPORT_EVENT
-      - CUMULATIVE_EVENT_REPORT
+        - PERIODIC_EVENT
+        - ENTERING_AREA_EVENT
+        - LEAVING_AREA_EVENT
+        - BEING_INSIDE_AREA_EVENT
+        - MOTION_EVENT
+        - MAXIMUM_INTERVAL_EXPIRATION_EVENT
+        - LOCATION_CANCELLATION_EVENT
+        - INTERMEDIATE_EVENT
+        - DIRECT_REPORT_EVENT
+        - CUMULATIVE_EVENT_REPORT
       type: string
     TerminationCauseLmf:
       description: Specifies causes of event reporting termination.
       enum:
-      - TERMINATION_BY_UE
-      - TERMINATION_BY_NETWORK
-      - NORMAL_TERMINATION
+        - TERMINATION_BY_UE
+        - TERMINATION_BY_NETWORK
+        - NORMAL_TERMINATION
       type: string
     LcsQosClass:
       description: Specifies LCS QoS class.
       enum:
-      - BEST_EFFORT
-      - ASSURED
-      - MULTIPLE_QOS
+        - BEST_EFFORT
+        - ASSURED
+        - MULTIPLE_QOS
       type: string
     UeLocationServiceInd:
       description: Specifies location service types requested by UE.
       enum:
-      - LOCATION_ESTIMATE
-      - LOCATION_ASSISTANCE_DATA
+        - LOCATION_ESTIMATE
+        - LOCATION_ASSISTANCE_DATA
       type: string
     IndoorOutdoorInd:
       description: Specifies UE location indoor or outdoor.
       enum:
-      - INDOOR
-      - OUTDOOR
+        - INDOOR
+        - OUTDOOR
       type: string
     FixType:
       description: Specifies the positioning fix type.
       enum:
-      - CARRIER_PHASE_FLOAT
-      - CARRIER_PHASE_FIX
+        - CARRIER_PHASE_FLOAT
+        - CARRIER_PHASE_FIX
       type: string
     LosNlosMeasureInd:
       description: Specifies LOS measurement or NLOS measurement.
       enum:
-      - LOS
-      - NLOS
+        - LOS
+        - NLOS
       type: string
     UpConnectionStatus:
       description: UP Connection Status.
       enum:
-      - ESTABLISHED
-      - RELEASED
-      - MOVE
+        - ESTABLISHED
+        - RELEASED
+        - MOVE
       type: string
     RangingSlResult:
-      description: Specifies the type of result requested for ranging and sidelink
-        positioning.
+      description: Specifies the type of result requested for ranging and sidelink positioning.
       enum:
-      - ABSOLUTE_LOCATION
-      - RELATIVE_LOCATION
-      - RANGING_DIRECTION
-      - RANGING
-      - DIRECTION
-      - VELOCITY
-      - RELATIVE_VELOCITY
+        - ABSOLUTE_LOCATION
+        - RELATIVE_LOCATION
+        - RANGING_DIRECTION
+        - RANGING
+        - DIRECTION
+        - VELOCITY
+        - RELATIVE_VELOCITY
       type: string
     RelatedUEType:
-      description: Specifies the different roles of UE for ranging and sidelink positioning
-        service.
+      description: Specifies the different roles of UE for ranging and sidelink positioning service.
       enum:
-      - LOCATED_UE
-      - REFERENCE_UE
+        - LOCATED_UE
+        - REFERENCE_UE
       type: string
     LcsUpConnectionInd:
       description: LCS UP Connection Indication.
       enum:
-      - TERMINATION
-      - SETUP
+        - TERMINATION
+        - SETUP
       type: string
     UeUpPositioningCapabilities:
       description: User plane positioning capabilities supported by the UE.
       enum:
-      - LCS-UPP
-      - SUPL
+        - LCS-UPP
+        - SUPL
       type: string
     RedirectResponse:
       description: |
@@ -4874,8 +4836,7 @@ components:
         status:
           type: integer
         detail:
-          description: A human-readable explanation specific to this occurrence of
-            the problem.
+          description: A human-readable explanation specific to this occurrence of the problem.
           type: string
         instance:
           $ref: "#/components/schemas/Uri"
@@ -4916,7 +4877,7 @@ components:
             A human-readable reason, e.g. "must be a positive integer". In cases involving failed operations in a PATCH request, the reason string should identify the operation that failed using the operation's array index to assist in correlation of the invalid parameter with the failed operation, e.g." Replacement value invalid for attribute (failed operation index= 4)"
           type: string
       required:
-      - param
+        - param
       type: object
     SupportedFeatures:
       description: |
@@ -4927,8 +4888,7 @@ components:
       description: Fully Qualified Domain Name
       maxLength: 253
       minLength: 4
-      pattern: "^([0-9A-Za-z]([-0-9A-Za-z]{0,61}[0-9A-Za-z])?\\.)+[A-Za-z]{2,63}\\\
-        .?$"
+      pattern: "^([0-9A-Za-z]([-0-9A-Za-z]{0,61}[0-9A-Za-z])?\\.)+[A-Za-z]{2,63}\\.?$"
       type: string
     NfInstanceId:
       description: |
@@ -4963,8 +4923,7 @@ components:
       pattern: "^(msisdn-[0-9]{5,15}|extid-[^@]+@[^@]+|.+)$"
       type: string
     Ecgi:
-      description: "Contains the ECGI (E-UTRAN Cell Global Identity), as described\
-        \ in 3GPP 23.003"
+      description: "Contains the ECGI (E-UTRAN Cell Global Identity), as described in 3GPP 23.003"
       example:
         eutraCellId: null
         nid: null
@@ -4979,8 +4938,8 @@ components:
         nid:
           $ref: "#/components/schemas/Nid"
       required:
-      - eutraCellId
-      - plmnId
+        - eutraCellId
+        - plmnId
       type: object
     PlmnId:
       description: |
@@ -4994,8 +4953,8 @@ components:
         mnc:
           $ref: "#/components/schemas/Mnc"
       required:
-      - mcc
-      - mnc
+        - mcc
+        - mnc
       type: object
     Mcc:
       description: |
@@ -5018,8 +4977,7 @@ components:
       pattern: "^[A-Fa-f0-9]{11}$"
       type: string
     Ncgi:
-      description: "Contains the NCGI (NR Cell Global Identity), as described in 3GPP\
-        \ 23.003"
+      description: "Contains the NCGI (NR Cell Global Identity), as described in 3GPP 23.003"
       example:
         nid: null
         plmnId:
@@ -5034,8 +4992,8 @@ components:
         nid:
           $ref: "#/components/schemas/Nid"
       required:
-      - nrCellId
-      - plmnId
+        - nrCellId
+        - plmnId
       type: object
     NrCellId:
       description: |
@@ -5049,11 +5007,10 @@ components:
         locationAssistanceType:
           $ref: "#/components/schemas/Binary"
       required:
-      - locationAssistanceType
+        - locationAssistanceType
       type: object
     RefToBinaryData:
-      description: This parameter provides information about the referenced binary
-        body data.
+      description: This parameter provides information about the referenced binary body data.
       example:
         contentId: contentId
       properties:
@@ -5062,7 +5019,7 @@ components:
             This IE shall contain the value of the Content-ID header of the referenced binary body part.
           type: string
       required:
-      - contentId
+        - contentId
       type: object
     TnapId:
       description: Contain the TNAP Identifier see clause5.6.2 of 3GPP TS 23.501.
@@ -5105,7 +5062,7 @@ components:
         civicAddress:
           $ref: "#/components/schemas/Bytes"
       required:
-      - ssId
+        - ssId
       type: object
     DateTime:
       description: string with format 'date-time' as defined in OpenAPI.
@@ -5117,14 +5074,14 @@ components:
     LpHapType:
       description: Type of Low Power and/or High Accuracy Positioning
       enum:
-      - LOW_POW_HIGH_ACCU_POS
+        - LOW_POW_HIGH_ACCU_POS
       type: string
     ReportingInd:
       description: |
         Indicates whether the UE is allowed to generate and send the event report inside or outside the event report allowed(expected) area
       enum:
-      - INSIDE_REPORTING
-      - OUTSIDE_REPORTING
+        - INSIDE_REPORTING
+        - OUTSIDE_REPORTING
       type: string
     IntegrityRequirements:
       description: integrity requirements.
@@ -5163,7 +5120,7 @@ components:
         verticalProtectionLevel:
           $ref: "#/components/schemas/VerticalProtectionLevel"
       required:
-      - horizontalProtectionLevel
+        - horizontalProtectionLevel
       type: object
     HorizontalProtectionLevel:
       description: Contains the Horizontal Protection Level
@@ -5181,11 +5138,11 @@ components:
       example:
         fqdn: null
         ipv6Addrs:
-        - 2001:db8:85a3::8a2e:370:7334
-        - 2001:db8:85a3::8a2e:370:7334
+          - 2001:db8:85a3::8a2e:370:7334
+          - 2001:db8:85a3::8a2e:370:7334
         ipv4Addrs:
-        - 198.51.100.1
-        - 198.51.100.1
+          - 198.51.100.1
+          - 198.51.100.1
       nullable: true
       properties:
         ipv4Addrs:
@@ -5236,8 +5193,8 @@ components:
         nid:
           $ref: "#/components/schemas/Nid"
       required:
-      - plmnId
-      - tac
+        - plmnId
+        - tac
       type: object
     Tac:
       description: |
@@ -5245,8 +5202,7 @@ components:
       pattern: "(^[A-Fa-f0-9]{4}$)|(^[A-Fa-f0-9]{6}$)"
       type: string
     Guami:
-      description: "Globally Unique AMF Identifier constructed out of PLMN, Network\
-        \ and AMF identity."
+      description: "Globally Unique AMF Identifier constructed out of PLMN, Network and AMF identity."
       example:
         plmnId:
           mnc: null
@@ -5259,8 +5215,8 @@ components:
         amfId:
           $ref: "#/components/schemas/AmfId"
       required:
-      - amfId
-      - plmnId
+        - amfId
+        - plmnId
       type: object
     PlmnIdNid:
       description: |
@@ -5277,8 +5233,8 @@ components:
         nid:
           $ref: "#/components/schemas/Nid"
       required:
-      - mcc
-      - mnc
+        - mcc
+        - mnc
       type: object
     AmfId:
       description: |
@@ -5288,40 +5244,40 @@ components:
     AccessType:
       description: Indicates whether the access is  via 3GPP or via non-3GPP.
       enum:
-      - 3GPP_ACCESS
-      - NON_3GPP_ACCESS
+        - 3GPP_ACCESS
+        - NON_3GPP_ACCESS
       type: string
     CmState:
       description: Describes the connection management state of a UE
       enum:
-      - IDLE
-      - CONNECTED
+        - IDLE
+        - CONNECTED
       type: string
     AccessTokenErr:
       description: Error returned in the access token response message
       properties:
         error:
           enum:
-          - invalid_request
-          - invalid_client
-          - invalid_grant
-          - unauthorized_client
-          - unsupported_grant_type
-          - invalid_scope
+            - invalid_request
+            - invalid_client
+            - invalid_grant
+            - unauthorized_client
+            - unsupported_grant_type
+            - invalid_scope
           type: string
         error_description:
           type: string
         error_uri:
           type: string
       required:
-      - error
+        - error
       type: object
     AccessTokenReq:
       description: Contains information related to the access token request
       properties:
         grant_type:
           enum:
-          - client_credentials
+            - client_credentials
           type: string
         nfInstanceId:
           $ref: "#/components/schemas/NfInstanceId"
@@ -5376,9 +5332,9 @@ components:
         sourceNfInstanceId:
           $ref: "#/components/schemas/NfInstanceId"
       required:
-      - grant_type
-      - nfInstanceId
-      - scope
+        - grant_type
+        - nfInstanceId
+        - scope
       type: object
     NoProfileMatchInfo:
       description: Provides the reason for not finding NF matching the search criteria
@@ -5391,17 +5347,17 @@ components:
           minItems: 1
           type: array
       required:
-      - reason
+        - reason
       type: object
     NoProfileMatchReason:
       description: No Profile Match Reason
       enum:
-      - REQUESTER_PLMN_NOT_ALLOWED
-      - TARGET_NF_SUSPENDED
-      - TARGET_NF_UNDISCOVERABLE
-      - QUERY_PARAMS_COMBINATION_NO_MATCH
-      - TARGET_NF_TYPE_NOT_SUPPORTED
-      - UNSPECIFIED
+        - REQUESTER_PLMN_NOT_ALLOWED
+        - TARGET_NF_SUSPENDED
+        - TARGET_NF_UNDISCOVERABLE
+        - QUERY_PARAMS_COMBINATION_NO_MATCH
+        - TARGET_NF_TYPE_NOT_SUPPORTED
+        - UNSPECIFIED
       type: string
     QueryParamCombination:
       description: Contains a list of Query Parameters
@@ -5412,7 +5368,7 @@ components:
           minItems: 1
           type: array
       required:
-      - queryParams
+        - queryParams
       type: object
     QueryParameter:
       description: Contains the name and value of a query parameter
@@ -5422,8 +5378,8 @@ components:
         value:
           type: string
       required:
-      - name
-      - value
+        - name
+        - value
       type: object
     Binary:
       description: string with format 'binary' as defined in OpenAPI.
@@ -5444,70 +5400,70 @@ components:
     NFType:
       description: NF types known to NRF
       enum:
-      - NRF
-      - UDM
-      - AMF
-      - SMF
-      - AUSF
-      - NEF
-      - PCF
-      - SMSF
-      - NSSF
-      - UDR
-      - LMF
-      - GMLC
-      - 5G_EIR
-      - SEPP
-      - UPF
-      - N3IWF
-      - AF
-      - UDSF
-      - BSF
-      - CHF
-      - NWDAF
-      - PCSCF
-      - CBCF
-      - HSS
-      - UCMF
-      - SOR_AF
-      - SPAF
-      - MME
-      - SCSAS
-      - SCEF
-      - SCP
-      - NSSAAF
-      - ICSCF
-      - SCSCF
-      - DRA
-      - IMS_AS
-      - AANF
-      - 5G_DDNMF
-      - NSACF
-      - MFAF
-      - EASDF
-      - DCCF
-      - MB_SMF
-      - TSCTSF
-      - ADRF
-      - GBA_BSF
-      - CEF
-      - MB_UPF
-      - NSWOF
-      - PKMF
-      - MNPF
-      - SMS_GMSC
-      - SMS_IWMSC
-      - MBSF
-      - MBSTF
-      - PANF
-      - IP_SM_GW
-      - SMS_ROUTER
-      - DCSF
-      - MRF
-      - MRFP
-      - MF
-      - SLPKMF
-      - RH
+        - NRF
+        - UDM
+        - AMF
+        - SMF
+        - AUSF
+        - NEF
+        - PCF
+        - SMSF
+        - NSSF
+        - UDR
+        - LMF
+        - GMLC
+        - 5G_EIR
+        - SEPP
+        - UPF
+        - N3IWF
+        - AF
+        - UDSF
+        - BSF
+        - CHF
+        - NWDAF
+        - PCSCF
+        - CBCF
+        - HSS
+        - UCMF
+        - SOR_AF
+        - SPAF
+        - MME
+        - SCSAS
+        - SCEF
+        - SCP
+        - NSSAAF
+        - ICSCF
+        - SCSCF
+        - DRA
+        - IMS_AS
+        - AANF
+        - 5G_DDNMF
+        - NSACF
+        - MFAF
+        - EASDF
+        - DCCF
+        - MB_SMF
+        - TSCTSF
+        - ADRF
+        - GBA_BSF
+        - CEF
+        - MB_UPF
+        - NSWOF
+        - PKMF
+        - MNPF
+        - SMS_GMSC
+        - SMS_IWMSC
+        - MBSF
+        - MBSTF
+        - PANF
+        - IP_SM_GW
+        - SMS_ROUTER
+        - DCSF
+        - MRF
+        - MRFP
+        - MF
+        - SLPKMF
+        - RH
       type: string
     Snssai:
       description: |
@@ -5525,7 +5481,7 @@ components:
           pattern: "^[A-Fa-f0-9]{6}$"
           type: string
       required:
-      - sst
+        - sst
       type: object
     NfSetId:
       description: |

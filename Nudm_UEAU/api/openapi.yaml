@@ -1,38 +1,36 @@
 # Copyright (C) 2026 Intel Corporation
 # SPDX-License-Identifier: Apache-2.0
-
 openapi: 3.0.0
 info:
-  description: "UDM UE Authentication Service.  \n© 2023, 3GPP Organizational Partners\
-    \ (ARIB, ATIS, CCSA, ETSI, TSDSI, TTA, TTC).  \nAll rights reserved.\n"
+  description: "UDM UE Authentication Service.  \n© 2023, 3GPP Organizational Partners (ARIB, ATIS, CCSA, ETSI, TSDSI, TTA, TTC).  \nAll rights reserved.\n"
   title: Nudm_UEAU
   version: 1.3.0-alpha.4
 externalDocs:
   description: "3GPP TS 29.503 Unified Data Management Services, version 18.4.0"
   url: https://www.3gpp.org/ftp/Specs/archive/29_series/29.503/
 servers:
-- url: "{apiRoot}/nudm-ueau/v1"
-  variables:
-    apiRoot:
-      default: https://example.com
-      description: apiRoot as defined in clause 4.4 of 3GPP TS 29.501.
+  - url: "{apiRoot}/nudm-ueau/v1"
+    variables:
+      apiRoot:
+        default: https://example.com
+        description: apiRoot as defined in clause 4.4 of 3GPP TS 29.501.
 security:
-- oAuth2ClientCredentials:
-  - nudm-ueau
-- {}
+  - oAuth2ClientCredentials:
+      - nudm-ueau
+  - {}
 paths:
   /{supiOrSuci}/security-information/generate-auth-data:
     post:
       operationId: GenerateAuthData
       parameters:
-      - description: SUPI or SUCI of the user
-        explode: false
-        in: path
-        name: supiOrSuci
-        required: true
-        schema:
-          $ref: "#/components/schemas/SupiOrSuci"
-        style: simple
+        - description: SUPI or SUCI of the user
+          explode: false
+          in: path
+          name: supiOrSuci
+          required: true
+          schema:
+            $ref: "#/components/schemas/SupiOrSuci"
+          style: simple
       requestBody:
         content:
           application/json:
@@ -121,69 +119,67 @@ paths:
         default:
           description: Unexpected error
       security:
-      - {}
-      - oAuth2ClientCredentials:
-        - nudm-ueau
-      - oAuth2ClientCredentials:
-        - nudm-ueau
-        - nudm-ueau:security-information:generate-auth-data:invoke
+        - {}
+        - oAuth2ClientCredentials:
+            - nudm-ueau
+        - oAuth2ClientCredentials:
+            - nudm-ueau
+            - nudm-ueau:security-information:generate-auth-data:invoke
       summary: Generate authentication data for the UE
       tags:
-      - Generate Auth Data
+        - Generate Auth Data
   /{supiOrSuci}/security-information-rg:
     get:
       operationId: GetRgAuthData
       parameters:
-      - description: SUPI or SUCI of the user
-        explode: false
-        in: path
-        name: supiOrSuci
-        required: true
-        schema:
-          $ref: "#/components/schemas/SupiOrSuci"
-        style: simple
-      - description: Authenticated indication
-        explode: true
-        in: query
-        name: authenticated-ind
-        required: true
-        schema:
-          $ref: "#/components/schemas/AuthenticatedInd"
-        style: form
-      - description: Supported Features
-        explode: true
-        in: query
-        name: supported-features
-        required: false
-        schema:
-          $ref: "#/components/schemas/SupportedFeatures"
-        style: form
-      - content:
-          application/json:
-            schema:
-              $ref: "#/components/schemas/PlmnId"
-        description: serving PLMN ID
-        in: query
-        name: plmn-id
-        required: false
-      - description: "Validator for conditional requests, as described in RFC 9110,\
-          \ 3.2"
-        explode: false
-        in: header
-        name: If-None-Match
-        required: false
-        schema:
-          type: string
-        style: simple
-      - description: "Validator for conditional requests, as described in RFC 9110,\
-          \ 3.3"
-        explode: false
-        in: header
-        name: If-Modified-Since
-        required: false
-        schema:
-          type: string
-        style: simple
+        - description: SUPI or SUCI of the user
+          explode: false
+          in: path
+          name: supiOrSuci
+          required: true
+          schema:
+            $ref: "#/components/schemas/SupiOrSuci"
+          style: simple
+        - description: Authenticated indication
+          explode: true
+          in: query
+          name: authenticated-ind
+          required: true
+          schema:
+            $ref: "#/components/schemas/AuthenticatedInd"
+          style: form
+        - description: Supported Features
+          explode: true
+          in: query
+          name: supported-features
+          required: false
+          schema:
+            $ref: "#/components/schemas/SupportedFeatures"
+          style: form
+        - content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/PlmnId"
+          description: serving PLMN ID
+          in: query
+          name: plmn-id
+          required: false
+        - description: "Validator for conditional requests, as described in RFC 9110, 3.2"
+          explode: false
+          in: header
+          name: If-None-Match
+          required: false
+          schema:
+            type: string
+          style: simple
+        - description: "Validator for conditional requests, as described in RFC 9110, 3.3"
+          explode: false
+          in: header
+          name: If-Modified-Since
+          required: false
+          schema:
+            type: string
+          style: simple
       responses:
         "200":
           content:
@@ -244,15 +240,15 @@ paths:
         default:
           description: Unexpected error
       security:
-      - {}
-      - oAuth2ClientCredentials:
-        - nudm-ueau
-      - oAuth2ClientCredentials:
-        - nudm-ueau
-        - nudm-ueau:security-information-rg:read
+        - {}
+        - oAuth2ClientCredentials:
+            - nudm-ueau
+        - oAuth2ClientCredentials:
+            - nudm-ueau
+            - nudm-ueau:security-information-rg:read
       summary: Get authentication data for the FN-RG
       tags:
-      - Get Auth Data for FN-RG
+        - Get Auth Data for FN-RG
   /{supi}/auth-events:
     post:
       callbacks:
@@ -277,8 +273,7 @@ paths:
                   description: Temporary Redirect
                   headers:
                     Location:
-                      description: The URI pointing to the resource located on the
-                        redirect target
+                      description: The URI pointing to the resource located on the redirect target
                       required: true
                       schema:
                         type: string
@@ -295,8 +290,7 @@ paths:
                   description: Permanent Redirect
                   headers:
                     Location:
-                      description: The URI pointing to the resource located on the
-                        redirect target
+                      description: The URI pointing to the resource located on the redirect target
                       required: true
                       schema:
                         type: string
@@ -340,14 +334,14 @@ paths:
               x-callback-request: true
       operationId: ConfirmAuth
       parameters:
-      - description: SUPI of the user
-        explode: false
-        in: path
-        name: supi
-        required: true
-        schema:
-          $ref: "#/components/schemas/Supi"
-        style: simple
+        - description: SUPI of the user
+          explode: false
+          in: path
+          name: supi
+          required: true
+          schema:
+            $ref: "#/components/schemas/Supi"
+          style: simple
       requestBody:
         content:
           application/json:
@@ -363,8 +357,7 @@ paths:
           description: Expected response to a valid request
           headers:
             Location:
-              description: "Contains the URI of the newly created resource, according\
-                \ to the structure: {apiRoot}/nudm-ueau/v1/{supi}/auth-events/{authEventId}"
+              description: "Contains the URI of the newly created resource, according to the structure: {apiRoot}/nudm-ueau/v1/{supi}/auth-events/{authEventId}"
               explode: false
               required: true
               schema:
@@ -439,35 +432,35 @@ paths:
         default:
           description: Unexpected error
       security:
-      - {}
-      - oAuth2ClientCredentials:
-        - nudm-ueau
-      - oAuth2ClientCredentials:
-        - nudm-ueau
-        - nudm-ueau:auth-events:create
+        - {}
+        - oAuth2ClientCredentials:
+            - nudm-ueau
+        - oAuth2ClientCredentials:
+            - nudm-ueau
+            - nudm-ueau:auth-events:create
       summary: Create a new confirmation event
       tags:
-      - Confirm Auth
+        - Confirm Auth
   /{supi}/hss-security-information/{hssAuthType}/generate-av:
     post:
       operationId: GenerateAv
       parameters:
-      - description: SUPI of the user
-        explode: false
-        in: path
-        name: supi
-        required: true
-        schema:
-          $ref: "#/components/schemas/Supi"
-        style: simple
-      - description: Type of AV requested by HSS
-        explode: false
-        in: path
-        name: hssAuthType
-        required: true
-        schema:
-          $ref: "#/components/schemas/HssAuthTypeInUri"
-        style: simple
+        - description: SUPI of the user
+          explode: false
+          in: path
+          name: supi
+          required: true
+          schema:
+            $ref: "#/components/schemas/Supi"
+          style: simple
+        - description: Type of AV requested by HSS
+          explode: false
+          in: path
+          name: hssAuthType
+          required: true
+          schema:
+            $ref: "#/components/schemas/HssAuthTypeInUri"
+          style: simple
       requestBody:
         content:
           application/json:
@@ -556,35 +549,35 @@ paths:
         default:
           description: Unexpected error
       security:
-      - {}
-      - oAuth2ClientCredentials:
-        - nudm-ueau
-      - oAuth2ClientCredentials:
-        - nudm-ueau
-        - nudm-ueau:hss-security-information:generate-av:invoke
+        - {}
+        - oAuth2ClientCredentials:
+            - nudm-ueau
+        - oAuth2ClientCredentials:
+            - nudm-ueau
+            - nudm-ueau:hss-security-information:generate-av:invoke
       summary: Generate authentication data for the UE in EPS or IMS domain
       tags:
-      - Generate HSS Authentication Vectors
+        - Generate HSS Authentication Vectors
   /{supi}/auth-events/{authEventId}:
     put:
       operationId: DeleteAuth
       parameters:
-      - description: SUPI of the user
-        explode: false
-        in: path
-        name: supi
-        required: true
-        schema:
-          $ref: "#/components/schemas/Supi"
-        style: simple
-      - description: authEvent Id
-        explode: false
-        in: path
-        name: authEventId
-        required: true
-        schema:
-          type: string
-        style: simple
+        - description: SUPI of the user
+          explode: false
+          in: path
+          name: supi
+          required: true
+          schema:
+            $ref: "#/components/schemas/Supi"
+          style: simple
+        - description: authEvent Id
+          explode: false
+          in: path
+          name: authEventId
+          required: true
+          schema:
+            type: string
+          style: simple
       requestBody:
         content:
           application/json:
@@ -663,27 +656,27 @@ paths:
         default:
           description: Generic Error
       security:
-      - {}
-      - oAuth2ClientCredentials:
-        - nudm-ueau
-      - oAuth2ClientCredentials:
-        - nudm-ueau
-        - nudm-ueau:auth-event-id:modify
+        - {}
+        - oAuth2ClientCredentials:
+            - nudm-ueau
+        - oAuth2ClientCredentials:
+            - nudm-ueau
+            - nudm-ueau:auth-event-id:modify
       summary: Deletes the authentication result in the UDM
       tags:
-      - Delete Auth
+        - Delete Auth
   /{supi}/gba-security-information/generate-av:
     post:
       operationId: GenerateGbaAv
       parameters:
-      - description: SUPI of the user
-        explode: false
-        in: path
-        name: supi
-        required: true
-        schema:
-          $ref: "#/components/schemas/Supi"
-        style: simple
+        - description: SUPI of the user
+          explode: false
+          in: path
+          name: supi
+          required: true
+          schema:
+            $ref: "#/components/schemas/Supi"
+          style: simple
       requestBody:
         content:
           application/json:
@@ -772,27 +765,27 @@ paths:
         default:
           description: Unexpected error
       security:
-      - {}
-      - oAuth2ClientCredentials:
-        - nudm-ueau
-      - oAuth2ClientCredentials:
-        - nudm-ueau
-        - nudm-ueau:gba-security-information:generate-av:invoke
+        - {}
+        - oAuth2ClientCredentials:
+            - nudm-ueau
+        - oAuth2ClientCredentials:
+            - nudm-ueau
+            - nudm-ueau:gba-security-information:generate-av:invoke
       summary: Generate authentication data for the UE in GBA domain
       tags:
-      - Generate GBA Authentication Vectors
+        - Generate GBA Authentication Vectors
   /{supiOrSuci}/prose-security-information/generate-av:
     post:
       operationId: GenerateProseAV
       parameters:
-      - description: SUPI or SUCI of the user
-        explode: false
-        in: path
-        name: supiOrSuci
-        required: true
-        schema:
-          $ref: "#/components/schemas/SupiOrSuci"
-        style: simple
+        - description: SUPI or SUCI of the user
+          explode: false
+          in: path
+          name: supiOrSuci
+          required: true
+          schema:
+            $ref: "#/components/schemas/SupiOrSuci"
+          style: simple
       requestBody:
         content:
           application/json:
@@ -882,7 +875,7 @@ paths:
           description: Unexpected error
       summary: Generate authentication data for ProSe
       tags:
-      - Generate ProSe Authentication Vectors
+        - Generate ProSe Authentication Vectors
 components:
   responses:
     "400":
@@ -1013,8 +1006,8 @@ components:
         nswoInd: false
         ausfInstanceId: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
         cellCagInfo:
-        - null
-        - null
+          - null
+          - null
         n5gcInd: false
         aun3Ind: false
       properties:
@@ -1029,9 +1022,7 @@ components:
         resynchronizationInfo:
           $ref: "#/components/schemas/ResynchronizationInfo"
         ausfInstanceId:
-          description: "String uniquely identifying a NF instance. The format of the\
-            \ NF Instance ID shall be a  Universally Unique Identifier (UUID) version\
-            \ 4, as described in IETF RFC 4122. \n"
+          description: "String uniquely identifying a NF instance. The format of the NF Instance ID shall be a  Universally Unique Identifier (UUID) version 4, as described in IETF RFC 4122. \n"
           format: uuid
           type: string
         cellCagInfo:
@@ -1052,8 +1043,8 @@ components:
           default: false
           type: boolean
       required:
-      - ausfInstanceId
-      - servingNetworkName
+        - ausfInstanceId
+        - servingNetworkName
       type: object
     AuthenticationInfoResult:
       example:
@@ -1061,24 +1052,24 @@ components:
         supportedFeatures: supportedFeatures
         routingId: routingId
         pvsInfo:
-        - ipv4Addresses:
-          - 198.51.100.1
-          - 198.51.100.1
-          ipv6Addresses:
-          - 2001:db8:85a3::8a2e:370:7334
-          - 2001:db8:85a3::8a2e:370:7334
-          fqdnList:
-          - null
-          - null
-        - ipv4Addresses:
-          - 198.51.100.1
-          - 198.51.100.1
-          ipv6Addresses:
-          - 2001:db8:85a3::8a2e:370:7334
-          - 2001:db8:85a3::8a2e:370:7334
-          fqdnList:
-          - null
-          - null
+          - ipv4Addresses:
+              - 198.51.100.1
+              - 198.51.100.1
+            ipv6Addresses:
+              - 2001:db8:85a3::8a2e:370:7334
+              - 2001:db8:85a3::8a2e:370:7334
+            fqdnList:
+              - null
+              - null
+          - ipv4Addresses:
+              - 198.51.100.1
+              - 198.51.100.1
+            ipv6Addresses:
+              - 2001:db8:85a3::8a2e:370:7334
+              - 2001:db8:85a3::8a2e:370:7334
+            fqdnList:
+              - null
+              - null
         authenticationVector:
           rand: null
           xres: null
@@ -1101,20 +1092,7 @@ components:
         authenticationVector:
           $ref: "#/components/schemas/AuthenticationVector"
         supi:
-          description: "String identifying a Supi that shall contain either an IMSI,\
-            \ a network specific identifier,\na Global Cable Identifier (GCI) or a\
-            \ Global Line Identifier (GLI) as specified in clause \n2.2A of 3GPP TS\
-            \ 23.003. It shall be formatted as follows\n - for an IMSI \"imsi-<imsi>\"\
-            , where <imsi> shall be formatted according to clause 2.2\n   of 3GPP\
-            \ TS 23.003 that describes an IMSI.\n - for a network specific identifier\
-            \ \"nai-<nai>, where <nai> shall be formatted\n   according to clause\
-            \ 28.7.2 of 3GPP TS 23.003 that describes an NAI.\n - for a GCI \"gci-<gci>\"\
-            , where <gci> shall be formatted according to clause 28.15.2\n   of 3GPP\
-            \ TS 23.003.\n - for a GLI \"gli-<gli>\", where <gli> shall be formatted\
-            \ according to clause 28.16.2 of\n   3GPP TS 23.003.To enable that the\
-            \ value is used as part of an URI, the string shall\n   only contain characters\
-            \ allowed according to the \"lower-with-hyphen\" naming convention\n \
-            \  defined in 3GPP TS 29.501.\n"
+          description: "String identifying a Supi that shall contain either an IMSI, a network specific identifier,\na Global Cable Identifier (GCI) or a Global Line Identifier (GLI) as specified in clause \n2.2A of 3GPP TS 23.003. It shall be formatted as follows\n - for an IMSI \"imsi-<imsi>\", where <imsi> shall be formatted according to clause 2.2\n   of 3GPP TS 23.003 that describes an IMSI.\n - for a network specific identifier \"nai-<nai>, where <nai> shall be formatted\n   according to clause 28.7.2 of 3GPP TS 23.003 that describes an NAI.\n - for a GCI \"gci-<gci>\", where <gci> shall be formatted according to clause 28.15.2\n   of 3GPP TS 23.003.\n - for a GLI \"gli-<gli>\", where <gli> shall be formatted according to clause 28.16.2 of\n   3GPP TS 23.003.To enable that the value is used as part of an URI, the string shall\n   only contain characters allowed according to the \"lower-with-hyphen\" naming convention\n   defined in 3GPP TS 29.501.\n"
           pattern: "^(imsi-[0-9]{5,15}|nai-.+|gci-.+|gli-.+|.+)$"
           type: string
         akmaInd:
@@ -1135,7 +1113,7 @@ components:
           default: false
           type: boolean
       required:
-      - authType
+        - authType
       type: object
     AuthenticationVector:
       discriminator:
@@ -1144,8 +1122,8 @@ components:
           EAP_AKA_PRIME: "#/components/schemas/AvEapAkaPrime"
         propertyName: avType
       oneOf:
-      - $ref: "#/components/schemas/AvEapAkaPrime"
-      - $ref: "#/components/schemas/Av5GHeAka"
+        - $ref: "#/components/schemas/AvEapAkaPrime"
+        - $ref: "#/components/schemas/Av5GHeAka"
     AvEapAkaPrime:
       example:
         rand: null
@@ -1168,12 +1146,12 @@ components:
         ikPrime:
           $ref: "#/components/schemas/IkPrime"
       required:
-      - autn
-      - avType
-      - ckPrime
-      - ikPrime
-      - rand
-      - xres
+        - autn
+        - avType
+        - ckPrime
+        - ikPrime
+        - rand
+        - xres
       type: object
     Av5GHeAka:
       properties:
@@ -1188,11 +1166,11 @@ components:
         kausf:
           $ref: "#/components/schemas/Kausf"
       required:
-      - autn
-      - avType
-      - kausf
-      - rand
-      - xresStar
+        - autn
+        - avType
+        - kausf
+        - rand
+        - xresStar
       type: object
     ResynchronizationInfo:
       example:
@@ -1204,8 +1182,8 @@ components:
         auts:
           $ref: "#/components/schemas/Auts"
       required:
-      - auts
-      - rand
+        - auts
+        - rand
       type: object
     AuthEvent:
       example:
@@ -1214,8 +1192,8 @@ components:
         servingNetworkName: servingNetworkName
         udrRestartInd: false
         resetIds:
-        - resetIds
-        - resetIds
+          - resetIds
+          - resetIds
         success: true
         dataRestorationCallbackUri: dataRestorationCallbackUri
         nfSetId: nfSetId
@@ -1223,9 +1201,7 @@ components:
         authType: 5G_AKA
       properties:
         nfInstanceId:
-          description: "String uniquely identifying a NF instance. The format of the\
-            \ NF Instance ID shall be a  Universally Unique Identifier (UUID) version\
-            \ 4, as described in IETF RFC 4122. \n"
+          description: "String uniquely identifying a NF instance. The format of the NF Instance ID shall be a  Universally Unique Identifier (UUID) version 4, as described in IETF RFC 4122. \n"
           format: uuid
           type: string
         success:
@@ -1243,18 +1219,7 @@ components:
           default: false
           type: boolean
         nfSetId:
-          description: "NF Set Identifier (see clause 28.12 of 3GPP TS 23.003), formatted\
-            \ as the following string \"set<Set ID>.<nftype>set.5gc.mnc<MNC>.mcc<MCC>\"\
-            , or  \"set<SetID>.<NFType>set.5gc.nid<NID>.mnc<MNC>.mcc<MCC>\" with \
-            \ <MCC> encoded as defined in clause 5.4.2 (\"Mcc\" data type definition)\
-            \  <MNC> encoding the Mobile Network Code part of the PLMN, comprising\
-            \ 3 digits. \n  If there are only 2 significant digits in the MNC, one\
-            \ \"0\" digit shall be inserted \n  at the left side to fill the 3 digits\
-            \ coding of MNC.  Pattern: '^[0-9]{3}$'\n<NFType> encoded as a value defined\
-            \ in Table 6.1.6.3.3-1 of 3GPP TS 29.510 but \n  with lower case characters\
-            \ <Set ID> encoded as a string of characters consisting of \n  alphabetic\
-            \ characters (A-Z and a-z), digits (0-9) and/or the hyphen (-) and that\
-            \ \n  shall end with either an alphabetic character or a digit. \n"
+          description: "NF Set Identifier (see clause 28.12 of 3GPP TS 23.003), formatted as the following string \"set<Set ID>.<nftype>set.5gc.mnc<MNC>.mcc<MCC>\", or  \"set<SetID>.<NFType>set.5gc.nid<NID>.mnc<MNC>.mcc<MCC>\" with  <MCC> encoded as defined in clause 5.4.2 (\"Mcc\" data type definition)  <MNC> encoding the Mobile Network Code part of the PLMN, comprising 3 digits. \n  If there are only 2 significant digits in the MNC, one \"0\" digit shall be inserted \n  at the left side to fill the 3 digits coding of MNC.  Pattern: '^[0-9]{3}$'\n<NFType> encoded as a value defined in Table 6.1.6.3.3-1 of 3GPP TS 29.510 but \n  with lower case characters <Set ID> encoded as a string of characters consisting of \n  alphabetic characters (A-Z and a-z), digits (0-9) and/or the hyphen (-) and that \n  shall end with either an alphabetic character or a digit. \n"
           type: string
         resetIds:
           items:
@@ -1268,11 +1233,11 @@ components:
           default: false
           type: boolean
       required:
-      - authType
-      - nfInstanceId
-      - servingNetworkName
-      - success
-      - timeStamp
+        - authType
+        - nfInstanceId
+        - servingNetworkName
+        - success
+        - timeStamp
       type: object
     RgAuthCtxUdm:
       example:
@@ -1284,20 +1249,7 @@ components:
           default: false
           type: boolean
         supi:
-          description: "String identifying a Supi that shall contain either an IMSI,\
-            \ a network specific identifier,\na Global Cable Identifier (GCI) or a\
-            \ Global Line Identifier (GLI) as specified in clause \n2.2A of 3GPP TS\
-            \ 23.003. It shall be formatted as follows\n - for an IMSI \"imsi-<imsi>\"\
-            , where <imsi> shall be formatted according to clause 2.2\n   of 3GPP\
-            \ TS 23.003 that describes an IMSI.\n - for a network specific identifier\
-            \ \"nai-<nai>, where <nai> shall be formatted\n   according to clause\
-            \ 28.7.2 of 3GPP TS 23.003 that describes an NAI.\n - for a GCI \"gci-<gci>\"\
-            , where <gci> shall be formatted according to clause 28.15.2\n   of 3GPP\
-            \ TS 23.003.\n - for a GLI \"gli-<gli>\", where <gli> shall be formatted\
-            \ according to clause 28.16.2 of\n   3GPP TS 23.003.To enable that the\
-            \ value is used as part of an URI, the string shall\n   only contain characters\
-            \ allowed according to the \"lower-with-hyphen\" naming convention\n \
-            \  defined in 3GPP TS 29.501.\n"
+          description: "String identifying a Supi that shall contain either an IMSI, a network specific identifier,\na Global Cable Identifier (GCI) or a Global Line Identifier (GLI) as specified in clause \n2.2A of 3GPP TS 23.003. It shall be formatted as follows\n - for an IMSI \"imsi-<imsi>\", where <imsi> shall be formatted according to clause 2.2\n   of 3GPP TS 23.003 that describes an IMSI.\n - for a network specific identifier \"nai-<nai>, where <nai> shall be formatted\n   according to clause 28.7.2 of 3GPP TS 23.003 that describes an NAI.\n - for a GCI \"gci-<gci>\", where <gci> shall be formatted according to clause 28.15.2\n   of 3GPP TS 23.003.\n - for a GLI \"gli-<gli>\", where <gli> shall be formatted according to clause 28.16.2 of\n   3GPP TS 23.003.To enable that the value is used as part of an URI, the string shall\n   only contain characters allowed according to the \"lower-with-hyphen\" naming convention\n   defined in 3GPP TS 29.501.\n"
           pattern: "^(imsi-[0-9]{5,15}|nai-.+|gci-.+|gli-.+|.+)$"
           type: string
         supportedFeatures:
@@ -1306,7 +1258,7 @@ components:
           pattern: "^[A-Fa-f0-9]*$"
           type: string
       required:
-      - authInd
+        - authInd
       type: object
     HssAuthenticationInfoRequest:
       example:
@@ -1342,38 +1294,38 @@ components:
         anId:
           $ref: "#/components/schemas/AccessNetworkId"
       required:
-      - hssAuthType
-      - numOfRequestedVectors
+        - hssAuthType
+        - numOfRequestedVectors
       type: object
     HssAuthenticationInfoResult:
       example:
         supportedFeatures: supportedFeatures
         hssAuthenticationVectors:
-        - rand: null
-          xres: null
-          avType: EPS_AKA
-          autn: null
-          kasme: null
-        - rand: null
-          xres: null
-          avType: EPS_AKA
-          autn: null
-          kasme: null
-        - rand: null
-          xres: null
-          avType: EPS_AKA
-          autn: null
-          kasme: null
-        - rand: null
-          xres: null
-          avType: EPS_AKA
-          autn: null
-          kasme: null
-        - rand: null
-          xres: null
-          avType: EPS_AKA
-          autn: null
-          kasme: null
+          - rand: null
+            xres: null
+            avType: EPS_AKA
+            autn: null
+            kasme: null
+          - rand: null
+            xres: null
+            avType: EPS_AKA
+            autn: null
+            kasme: null
+          - rand: null
+            xres: null
+            avType: EPS_AKA
+            autn: null
+            kasme: null
+          - rand: null
+            xres: null
+            avType: EPS_AKA
+            autn: null
+            kasme: null
+          - rand: null
+            xres: null
+            avType: EPS_AKA
+            autn: null
+            kasme: null
       properties:
         supportedFeatures:
           description: |
@@ -1383,25 +1335,25 @@ components:
         hssAuthenticationVectors:
           $ref: "#/components/schemas/HssAuthenticationVectors"
       required:
-      - hssAuthenticationVectors
+        - hssAuthenticationVectors
       type: object
     HssAuthenticationVectors:
       oneOf:
-      - items:
-          $ref: "#/components/schemas/AvEpsAka"
-        maxItems: 5
-        minItems: 1
-        type: array
-      - items:
-          $ref: "#/components/schemas/AvImsGbaEapAka"
-        maxItems: 5
-        minItems: 1
-        type: array
-      - items:
-          $ref: "#/components/schemas/AvEapAkaPrime"
-        maxItems: 5
-        minItems: 1
-        type: array
+        - items:
+            $ref: "#/components/schemas/AvEpsAka"
+          maxItems: 5
+          minItems: 1
+          type: array
+        - items:
+            $ref: "#/components/schemas/AvImsGbaEapAka"
+          maxItems: 5
+          minItems: 1
+          type: array
+        - items:
+            $ref: "#/components/schemas/AvEapAkaPrime"
+          maxItems: 5
+          minItems: 1
+          type: array
     AvEpsAka:
       example:
         rand: null
@@ -1421,11 +1373,11 @@ components:
         kasme:
           $ref: "#/components/schemas/Kasme"
       required:
-      - autn
-      - avType
-      - kasme
-      - rand
-      - xres
+        - autn
+        - avType
+        - kasme
+        - rand
+        - xres
       type: object
     AvImsGbaEapAka:
       properties:
@@ -1442,12 +1394,12 @@ components:
         ik:
           $ref: "#/components/schemas/IntegrityKey"
       required:
-      - autn
-      - avType
-      - ck
-      - ik
-      - rand
-      - xres
+        - autn
+        - avType
+        - ck
+        - ik
+        - rand
+        - xres
       type: object
     GbaAuthenticationInfoRequest:
       example:
@@ -1467,7 +1419,7 @@ components:
           pattern: "^[A-Fa-f0-9]*$"
           type: string
       required:
-      - authType
+        - authType
       type: object
     GbaAuthenticationInfoResult:
       example:
@@ -1513,43 +1465,43 @@ components:
           pattern: "^[A-Fa-f0-9]*$"
           type: string
       required:
-      - relayServiceCode
-      - servingNetworkName
+        - relayServiceCode
+        - servingNetworkName
       type: object
     ProSeAuthenticationInfoResult:
       example:
         supportedFeatures: supportedFeatures
         proseAuthenticationVectors:
-        - rand: null
-          xres: null
-          avType: 5G_HE_AKA
-          autn: null
-          ckPrime: null
-          ikPrime: null
-        - rand: null
-          xres: null
-          avType: 5G_HE_AKA
-          autn: null
-          ckPrime: null
-          ikPrime: null
-        - rand: null
-          xres: null
-          avType: 5G_HE_AKA
-          autn: null
-          ckPrime: null
-          ikPrime: null
-        - rand: null
-          xres: null
-          avType: 5G_HE_AKA
-          autn: null
-          ckPrime: null
-          ikPrime: null
-        - rand: null
-          xres: null
-          avType: 5G_HE_AKA
-          autn: null
-          ckPrime: null
-          ikPrime: null
+          - rand: null
+            xres: null
+            avType: 5G_HE_AKA
+            autn: null
+            ckPrime: null
+            ikPrime: null
+          - rand: null
+            xres: null
+            avType: 5G_HE_AKA
+            autn: null
+            ckPrime: null
+            ikPrime: null
+          - rand: null
+            xres: null
+            avType: 5G_HE_AKA
+            autn: null
+            ckPrime: null
+            ikPrime: null
+          - rand: null
+            xres: null
+            avType: 5G_HE_AKA
+            autn: null
+            ckPrime: null
+            ikPrime: null
+          - rand: null
+            xres: null
+            avType: 5G_HE_AKA
+            autn: null
+            ckPrime: null
+            ikPrime: null
         authType: 5G_AKA
         supi: supi
       properties:
@@ -1562,20 +1514,7 @@ components:
           minItems: 1
           type: array
         supi:
-          description: "String identifying a Supi that shall contain either an IMSI,\
-            \ a network specific identifier,\na Global Cable Identifier (GCI) or a\
-            \ Global Line Identifier (GLI) as specified in clause \n2.2A of 3GPP TS\
-            \ 23.003. It shall be formatted as follows\n - for an IMSI \"imsi-<imsi>\"\
-            , where <imsi> shall be formatted according to clause 2.2\n   of 3GPP\
-            \ TS 23.003 that describes an IMSI.\n - for a network specific identifier\
-            \ \"nai-<nai>, where <nai> shall be formatted\n   according to clause\
-            \ 28.7.2 of 3GPP TS 23.003 that describes an NAI.\n - for a GCI \"gci-<gci>\"\
-            , where <gci> shall be formatted according to clause 28.15.2\n   of 3GPP\
-            \ TS 23.003.\n - for a GLI \"gli-<gli>\", where <gli> shall be formatted\
-            \ according to clause 28.16.2 of\n   3GPP TS 23.003.To enable that the\
-            \ value is used as part of an URI, the string shall\n   only contain characters\
-            \ allowed according to the \"lower-with-hyphen\" naming convention\n \
-            \  defined in 3GPP TS 29.501.\n"
+          description: "String identifying a Supi that shall contain either an IMSI, a network specific identifier,\na Global Cable Identifier (GCI) or a Global Line Identifier (GLI) as specified in clause \n2.2A of 3GPP TS 23.003. It shall be formatted as follows\n - for an IMSI \"imsi-<imsi>\", where <imsi> shall be formatted according to clause 2.2\n   of 3GPP TS 23.003 that describes an IMSI.\n - for a network specific identifier \"nai-<nai>, where <nai> shall be formatted\n   according to clause 28.7.2 of 3GPP TS 23.003 that describes an NAI.\n - for a GCI \"gci-<gci>\", where <gci> shall be formatted according to clause 28.15.2\n   of 3GPP TS 23.003.\n - for a GLI \"gli-<gli>\", where <gli> shall be formatted according to clause 28.16.2 of\n   3GPP TS 23.003.To enable that the value is used as part of an URI, the string shall\n   only contain characters allowed according to the \"lower-with-hyphen\" naming convention\n   defined in 3GPP TS 29.501.\n"
           pattern: "^(imsi-[0-9]{5,15}|nai-.+|gci-.+|gli-.+|.+)$"
           type: string
         supportedFeatures:
@@ -1584,7 +1523,7 @@ components:
           pattern: "^[A-Fa-f0-9]*$"
           type: string
       required:
-      - authType
+        - authType
       type: object
     ProSeAuthenticationVectors:
       items:
@@ -1639,72 +1578,72 @@ components:
     AuthType:
       description: Indicates the authentication method.
       enum:
-      - 5G_AKA
-      - EAP_AKA_PRIME
-      - EAP_TLS
-      - NONE
-      - EAP_TTLS
+        - 5G_AKA
+        - EAP_AKA_PRIME
+        - EAP_TLS
+        - NONE
+        - EAP_TTLS
       type: string
     AvType:
       description: Indicates the type of authentication vector.
       enum:
-      - 5G_HE_AKA
-      - EAP_AKA_PRIME
+        - 5G_HE_AKA
+        - EAP_AKA_PRIME
       type: string
     HssAuthType:
       description: Indicates the authentication method.
       enum:
-      - EPS_AKA
-      - EAP_AKA
-      - EAP_AKA_PRIME
-      - IMS_AKA
-      - GBA_AKA
-      - UMTS_AKA
+        - EPS_AKA
+        - EAP_AKA
+        - EAP_AKA_PRIME
+        - IMS_AKA
+        - GBA_AKA
+        - UMTS_AKA
       type: string
     HssAvType:
       description: Indicates a type of authentication vector.
       enum:
-      - EPS_AKA
-      - EAP_AKA
-      - IMS_AKA
-      - GBA_AKA
-      - UMTS_AKA
+        - EPS_AKA
+        - EAP_AKA
+        - IMS_AKA
+        - GBA_AKA
+        - UMTS_AKA
       type: string
     HssAuthTypeInUri:
       description: Indicates a type of authentication method.
       enum:
-      - eps-aka
-      - eap-aka
-      - eap-aka-prime
-      - ims-aka
-      - gba-aka
+        - eps-aka
+        - eap-aka
+        - eap-aka-prime
+        - ims-aka
+        - gba-aka
       type: string
     AccessNetworkId:
       description: |
         Indicates the contents of Access Network ID. Used in the derivation of authentication vectors in EAP-AKA.
       enum:
-      - HRPD
-      - WIMAX
-      - WLAN
-      - ETHERNET
+        - HRPD
+        - WIMAX
+        - WLAN
+        - ETHERNET
       type: string
     NodeType:
       description: |
         Indicates Indicates the requesting node type.
       enum:
-      - AUSF
-      - VLR
-      - SGSN
-      - S_CSCF
-      - BSF
-      - GAN_AAA_SERVER
-      - WLAN_AAA_SERVER
-      - MME
+        - AUSF
+        - VLR
+        - SGSN
+        - S_CSCF
+        - BSF
+        - GAN_AAA_SERVER
+        - WLAN_AAA_SERVER
+        - MME
       type: string
     GbaAuthType:
       description: Indicates the authentication method.
       enum:
-      - DIGEST_AKAV1_MD5
+        - DIGEST_AKAV1_MD5
       type: string
     SupiOrSuci:
       description: String identifying a SUPI or a SUCI.
@@ -1720,8 +1659,7 @@ components:
         status:
           type: integer
         detail:
-          description: A human-readable explanation specific to this occurrence of
-            the problem.
+          description: A human-readable explanation specific to this occurrence of the problem.
           type: string
         instance:
           $ref: "#/components/schemas/Uri"
@@ -1765,7 +1703,7 @@ components:
             A human-readable reason, e.g. "must be a positive integer". In cases involving failed  operations in a PATCH request, the reason string should identify the operation that  failed using the operation's array index to assist in correlation of the invalid  parameter with the failed operation, e.g." Replacement value invalid for attribute  (failed operation index= 4)"
           type: string
       required:
-      - param
+        - param
       type: object
     SupportedFeatures:
       description: |
@@ -1776,8 +1714,7 @@ components:
       description: Fully Qualified Domain Name
       maxLength: 253
       minLength: 4
-      pattern: "^([0-9A-Za-z]([-0-9A-Za-z]{0,61}[0-9A-Za-z])?\\.)+[A-Za-z]{2,63}\\\
-        .?$"
+      pattern: "^([0-9A-Za-z]([-0-9A-Za-z]{0,61}[0-9A-Za-z])?\\.)+[A-Za-z]{2,63}\\.?$"
       type: string
     PlmnId:
       description: |
@@ -1791,70 +1728,55 @@ components:
         mnc:
           $ref: "#/components/schemas/Mnc"
       required:
-      - mcc
-      - mnc
+        - mcc
+        - mnc
       type: object
     Mcc:
-      description: "Mobile Country Code part of the PLMN, comprising 3 digits, as\
-        \ defined in clause 9.3.3.5 of 3GPP TS 38.413. \n"
+      description: "Mobile Country Code part of the PLMN, comprising 3 digits, as defined in clause 9.3.3.5 of 3GPP TS 38.413. \n"
       pattern: "^\\d{3}$"
       type: string
     Mnc:
-      description: "Mobile Network Code part of the PLMN, comprising 2 or 3 digits,\
-        \ as defined in  clause 9.3.3.5 of 3GPP TS 38.413. \n"
+      description: "Mobile Network Code part of the PLMN, comprising 2 or 3 digits, as defined in  clause 9.3.3.5 of 3GPP TS 38.413. \n"
       pattern: "^\\d{2,3}$"
       type: string
     Supi:
-      description: "String identifying a Supi that shall contain either an IMSI, a\
-        \ network specific identifier,\na Global Cable Identifier (GCI) or a Global\
-        \ Line Identifier (GLI) as specified in clause \n2.2A of 3GPP TS 23.003. It\
-        \ shall be formatted as follows\n - for an IMSI \"imsi-<imsi>\", where <imsi>\
-        \ shall be formatted according to clause 2.2\n   of 3GPP TS 23.003 that describes\
-        \ an IMSI.\n - for a network specific identifier \"nai-<nai>, where <nai>\
-        \ shall be formatted\n   according to clause 28.7.2 of 3GPP TS 23.003 that\
-        \ describes an NAI.\n - for a GCI \"gci-<gci>\", where <gci> shall be formatted\
-        \ according to clause 28.15.2\n   of 3GPP TS 23.003.\n - for a GLI \"gli-<gli>\"\
-        , where <gli> shall be formatted according to clause 28.16.2 of\n   3GPP TS\
-        \ 23.003.To enable that the value is used as part of an URI, the string shall\n\
-        \   only contain characters allowed according to the \"lower-with-hyphen\"\
-        \ naming convention\n   defined in 3GPP TS 29.501.\n"
+      description: "String identifying a Supi that shall contain either an IMSI, a network specific identifier,\na Global Cable Identifier (GCI) or a Global Line Identifier (GLI) as specified in clause \n2.2A of 3GPP TS 23.003. It shall be formatted as follows\n - for an IMSI \"imsi-<imsi>\", where <imsi> shall be formatted according to clause 2.2\n   of 3GPP TS 23.003 that describes an IMSI.\n - for a network specific identifier \"nai-<nai>, where <nai> shall be formatted\n   according to clause 28.7.2 of 3GPP TS 23.003 that describes an NAI.\n - for a GCI \"gci-<gci>\", where <gci> shall be formatted according to clause 28.15.2\n   of 3GPP TS 23.003.\n - for a GLI \"gli-<gli>\", where <gli> shall be formatted according to clause 28.16.2 of\n   3GPP TS 23.003.To enable that the value is used as part of an URI, the string shall\n   only contain characters allowed according to the \"lower-with-hyphen\" naming convention\n   defined in 3GPP TS 29.501.\n"
       pattern: "^(imsi-[0-9]{5,15}|nai-.+|gci-.+|gli-.+|.+)$"
       type: string
     DataRestorationNotification:
-      description: Contains identities representing those UEs potentially affected
-        by a data-loss event at the UDR
+      description: Contains identities representing those UEs potentially affected by a data-loss event at the UDR
       example:
         recoveryTime: 2000-01-23T04:56:07.000+00:00
         resetIds:
-        - resetIds
-        - resetIds
+          - resetIds
+          - resetIds
         dnnList:
-        - null
-        - null
+          - null
+          - null
         lastReplicationTime: 2000-01-23T04:56:07.000+00:00
         plmnId:
           mnc: null
           mcc: null
         sNssaiList:
-        - sd: sd
-          sst: 20
-        - sd: sd
-          sst: 20
+          - sd: sd
+            sst: 20
+          - sd: sd
+            sst: 20
         udmGroupId: udmGroupId
         supiRanges:
-        - start: start
-          pattern: pattern
-          end: end
-        - start: start
-          pattern: pattern
-          end: end
+          - start: start
+            pattern: pattern
+            end: end
+          - start: start
+            pattern: pattern
+            end: end
         gpsiRanges:
-        - start: start
-          pattern: pattern
-          end: end
-        - start: start
-          pattern: pattern
-          end: end
+          - start: start
+            pattern: pattern
+            end: end
+          - start: start
+            pattern: pattern
+            end: end
       properties:
         lastReplicationTime:
           description: string with format 'date-time' as defined in OpenAPI.
@@ -1911,9 +1833,7 @@ components:
           $ref: "#/components/schemas/Uri"
       type: object
     NfInstanceId:
-      description: "String uniquely identifying a NF instance. The format of the NF\
-        \ Instance ID shall be a  Universally Unique Identifier (UUID) version 4,\
-        \ as described in IETF RFC 4122. \n"
+      description: "String uniquely identifying a NF instance. The format of the NF Instance ID shall be a  Universally Unique Identifier (UUID) version 4, as described in IETF RFC 4122. \n"
       format: uuid
       type: string
     CagId:
@@ -1922,18 +1842,17 @@ components:
       type: string
     ServerAddressingInfo:
       anyOf: []
-      description: Contains addressing information (IP addresses and/or FQDNs) of
-        a server.
+      description: Contains addressing information (IP addresses and/or FQDNs) of a server.
       example:
         ipv4Addresses:
-        - 198.51.100.1
-        - 198.51.100.1
+          - 198.51.100.1
+          - 198.51.100.1
         ipv6Addresses:
-        - 2001:db8:85a3::8a2e:370:7334
-        - 2001:db8:85a3::8a2e:370:7334
+          - 2001:db8:85a3::8a2e:370:7334
+          - 2001:db8:85a3::8a2e:370:7334
         fqdnList:
-        - null
-        - null
+          - null
+          - null
       nullable: true
       properties:
         ipv4Addresses:
@@ -1969,18 +1888,7 @@ components:
       format: date-time
       type: string
     NfSetId:
-      description: "NF Set Identifier (see clause 28.12 of 3GPP TS 23.003), formatted\
-        \ as the following string \"set<Set ID>.<nftype>set.5gc.mnc<MNC>.mcc<MCC>\"\
-        , or  \"set<SetID>.<NFType>set.5gc.nid<NID>.mnc<MNC>.mcc<MCC>\" with  <MCC>\
-        \ encoded as defined in clause 5.4.2 (\"Mcc\" data type definition)  <MNC>\
-        \ encoding the Mobile Network Code part of the PLMN, comprising 3 digits.\
-        \ \n  If there are only 2 significant digits in the MNC, one \"0\" digit shall\
-        \ be inserted \n  at the left side to fill the 3 digits coding of MNC.  Pattern:\
-        \ '^[0-9]{3}$'\n<NFType> encoded as a value defined in Table 6.1.6.3.3-1 of\
-        \ 3GPP TS 29.510 but \n  with lower case characters <Set ID> encoded as a\
-        \ string of characters consisting of \n  alphabetic characters (A-Z and a-z),\
-        \ digits (0-9) and/or the hyphen (-) and that \n  shall end with either an\
-        \ alphabetic character or a digit. \n"
+      description: "NF Set Identifier (see clause 28.12 of 3GPP TS 23.003), formatted as the following string \"set<Set ID>.<nftype>set.5gc.mnc<MNC>.mcc<MCC>\", or  \"set<SetID>.<NFType>set.5gc.nid<NID>.mnc<MNC>.mcc<MCC>\" with  <MCC> encoded as defined in clause 5.4.2 (\"Mcc\" data type definition)  <MNC> encoding the Mobile Network Code part of the PLMN, comprising 3 digits. \n  If there are only 2 significant digits in the MNC, one \"0\" digit shall be inserted \n  at the left side to fill the 3 digits coding of MNC.  Pattern: '^[0-9]{3}$'\n<NFType> encoded as a value defined in Table 6.1.6.3.3-1 of 3GPP TS 29.510 but \n  with lower case characters <Set ID> encoded as a string of characters consisting of \n  alphabetic characters (A-Z and a-z), digits (0-9) and/or the hyphen (-) and that \n  shall end with either an alphabetic character or a digit. \n"
       type: string
     ResynchronizationInfo_1:
       description: Contains RAND and AUTS
@@ -1993,8 +1901,8 @@ components:
         auts:
           $ref: "#/components/schemas/Auts"
       required:
-      - auts
-      - rand
+        - auts
+        - rand
       type: object
     threeGAkaAv:
       description: "Contains RAND, XRES, AUTN, CK, and IK"
@@ -2016,11 +1924,11 @@ components:
         ik:
           $ref: "#/components/schemas/IntegrityKey"
       required:
-      - autn
-      - ck
-      - ik
-      - rand
-      - xres
+        - autn
+        - ck
+        - ik
+        - rand
+        - xres
       type: object
     RelayServiceCode:
       description: |
@@ -2033,26 +1941,26 @@ components:
       properties:
         error:
           enum:
-          - invalid_request
-          - invalid_client
-          - invalid_grant
-          - unauthorized_client
-          - unsupported_grant_type
-          - invalid_scope
+            - invalid_request
+            - invalid_client
+            - invalid_grant
+            - unauthorized_client
+            - unsupported_grant_type
+            - invalid_scope
           type: string
         error_description:
           type: string
         error_uri:
           type: string
       required:
-      - error
+        - error
       type: object
     AccessTokenReq:
       description: Contains information related to the access token request
       properties:
         grant_type:
           enum:
-          - client_credentials
+            - client_credentials
           type: string
         nfInstanceId:
           $ref: "#/components/schemas/NfInstanceId"
@@ -2107,9 +2015,9 @@ components:
         sourceNfInstanceId:
           $ref: "#/components/schemas/NfInstanceId"
       required:
-      - grant_type
-      - nfInstanceId
-      - scope
+        - grant_type
+        - nfInstanceId
+        - scope
       type: object
     NoProfileMatchInfo:
       description: Provides the reason for not finding NF matching the search criteria
@@ -2122,17 +2030,17 @@ components:
           minItems: 1
           type: array
       required:
-      - reason
+        - reason
       type: object
     NoProfileMatchReason:
       description: No Profile Match Reason
       enum:
-      - REQUESTER_PLMN_NOT_ALLOWED
-      - TARGET_NF_SUSPENDED
-      - TARGET_NF_UNDISCOVERABLE
-      - QUERY_PARAMS_COMBINATION_NO_MATCH
-      - TARGET_NF_TYPE_NOT_SUPPORTED
-      - UNSPECIFIED
+        - REQUESTER_PLMN_NOT_ALLOWED
+        - TARGET_NF_SUSPENDED
+        - TARGET_NF_UNDISCOVERABLE
+        - QUERY_PARAMS_COMBINATION_NO_MATCH
+        - TARGET_NF_TYPE_NOT_SUPPORTED
+        - UNSPECIFIED
       type: string
     QueryParamCombination:
       description: Contains a list of Query Parameters
@@ -2143,7 +2051,7 @@ components:
           minItems: 1
           type: array
       required:
-      - queryParams
+        - queryParams
       type: object
     QueryParameter:
       description: Contains the name and value of a query parameter
@@ -2153,8 +2061,8 @@ components:
         value:
           type: string
       required:
-      - name
-      - value
+        - name
+        - value
       type: object
     SupiRange:
       description: |
@@ -2202,12 +2110,7 @@ components:
         sst: 20
       properties:
         sst:
-          description: "Unsigned integer, within the range 0 to 255, representing\
-            \ the Slice/Service Type.  It indicates the expected Network Slice behaviour\
-            \ in terms of features and services. Values 0 to 127 correspond to the\
-            \ standardized SST range. Values 128 to 255 correspond  to the Operator-specific\
-            \ range. See clause 28.4.2 of 3GPP TS 23.003. Standardized values are\
-            \ defined in clause 5.15.2.2 of 3GPP TS 23.501. \n"
+          description: "Unsigned integer, within the range 0 to 255, representing the Slice/Service Type.  It indicates the expected Network Slice behaviour in terms of features and services. Values 0 to 127 correspond to the standardized SST range. Values 128 to 255 correspond  to the Operator-specific range. See clause 28.4.2 of 3GPP TS 23.003. Standardized values are defined in clause 5.15.2.2 of 3GPP TS 23.501. \n"
           maximum: 255
           minimum: 0
           type: integer
@@ -2217,7 +2120,7 @@ components:
           pattern: "^[A-Fa-f0-9]{6}$"
           type: string
       required:
-      - sst
+        - sst
       type: object
     Dnn:
       description: |
@@ -2229,70 +2132,70 @@ components:
     NFType:
       description: NF types known to NRF
       enum:
-      - NRF
-      - UDM
-      - AMF
-      - SMF
-      - AUSF
-      - NEF
-      - PCF
-      - SMSF
-      - NSSF
-      - UDR
-      - LMF
-      - GMLC
-      - 5G_EIR
-      - SEPP
-      - UPF
-      - N3IWF
-      - AF
-      - UDSF
-      - BSF
-      - CHF
-      - NWDAF
-      - PCSCF
-      - CBCF
-      - HSS
-      - UCMF
-      - SOR_AF
-      - SPAF
-      - MME
-      - SCSAS
-      - SCEF
-      - SCP
-      - NSSAAF
-      - ICSCF
-      - SCSCF
-      - DRA
-      - IMS_AS
-      - AANF
-      - 5G_DDNMF
-      - NSACF
-      - MFAF
-      - EASDF
-      - DCCF
-      - MB_SMF
-      - TSCTSF
-      - ADRF
-      - GBA_BSF
-      - CEF
-      - MB_UPF
-      - NSWOF
-      - PKMF
-      - MNPF
-      - SMS_GMSC
-      - SMS_IWMSC
-      - MBSF
-      - MBSTF
-      - PANF
-      - IP_SM_GW
-      - SMS_ROUTER
-      - DCSF
-      - MRF
-      - MRFP
-      - MF
-      - SLPKMF
-      - RH
+        - NRF
+        - UDM
+        - AMF
+        - SMF
+        - AUSF
+        - NEF
+        - PCF
+        - SMSF
+        - NSSF
+        - UDR
+        - LMF
+        - GMLC
+        - 5G_EIR
+        - SEPP
+        - UPF
+        - N3IWF
+        - AF
+        - UDSF
+        - BSF
+        - CHF
+        - NWDAF
+        - PCSCF
+        - CBCF
+        - HSS
+        - UCMF
+        - SOR_AF
+        - SPAF
+        - MME
+        - SCSAS
+        - SCEF
+        - SCP
+        - NSSAAF
+        - ICSCF
+        - SCSCF
+        - DRA
+        - IMS_AS
+        - AANF
+        - 5G_DDNMF
+        - NSACF
+        - MFAF
+        - EASDF
+        - DCCF
+        - MB_SMF
+        - TSCTSF
+        - ADRF
+        - GBA_BSF
+        - CEF
+        - MB_UPF
+        - NSWOF
+        - PKMF
+        - MNPF
+        - SMS_GMSC
+        - SMS_IWMSC
+        - MBSF
+        - MBSTF
+        - PANF
+        - IP_SM_GW
+        - SMS_ROUTER
+        - DCSF
+        - MRF
+        - MRFP
+        - MF
+        - SLPKMF
+        - RH
       type: string
     PlmnIdNid:
       description: |
@@ -2305,29 +2208,15 @@ components:
         nid:
           $ref: "#/components/schemas/Nid"
       required:
-      - mcc
-      - mnc
+        - mcc
+        - mnc
       type: object
     Nid:
-      description: "This represents the Network Identifier, which together with a\
-        \ PLMN ID is used to identify an SNPN (see 3GPP TS 23.003 and 3GPP TS 23.501\
-        \ clause 5.30.2.1). \n"
+      description: "This represents the Network Identifier, which together with a PLMN ID is used to identify an SNPN (see 3GPP TS 23.003 and 3GPP TS 23.501 clause 5.30.2.1). \n"
       pattern: "^[A-Fa-f0-9]{11}$"
       type: string
     NfServiceSetId:
-      description: "NF Service Set Identifier (see clause 28.12 of 3GPP TS 23.003)\
-        \ formatted as the following  string \"set<Set ID>.sn<Service Name>.nfi<NF\
-        \ Instance ID>.5gc.mnc<MNC>.mcc<MCC>\", or  \"set<SetID>.sn<ServiceName>.nfi<NFInstanceID>.5gc.nid<NID>.mnc<MNC>.mcc<MCC>\"\
-        \ with  <MCC> encoded as defined in clause 5.4.2 (\"Mcc\" data type definition)\
-        \   <MNC> encoding the Mobile Network Code part of the PLMN, comprising 3\
-        \ digits. \n  If there are only 2 significant digits in the MNC, one \"0\"\
-        \ digit shall be inserted \n  at the left side to fill the 3 digits coding\
-        \ of MNC.  Pattern: '^[0-9]{3}$'\n<NID> encoded as defined in clause\_5.4.2\
-        \ (\"Nid\" data type definition)  <NFInstanceId> encoded as defined in clause\
-        \ 5.3.2  <ServiceName> encoded as defined in 3GPP TS 29.510  <Set ID> encoded\
-        \ as a string of characters consisting of alphabetic \n  characters (A-Z and\
-        \ a-z), digits (0-9) and/or the hyphen (-) and that shall end \n  with either\
-        \ an alphabetic character or a digit.\n"
+      description: "NF Service Set Identifier (see clause 28.12 of 3GPP TS 23.003) formatted as the following  string \"set<Set ID>.sn<Service Name>.nfi<NF Instance ID>.5gc.mnc<MNC>.mcc<MCC>\", or  \"set<SetID>.sn<ServiceName>.nfi<NFInstanceID>.5gc.nid<NID>.mnc<MNC>.mcc<MCC>\" with  <MCC> encoded as defined in clause 5.4.2 (\"Mcc\" data type definition)   <MNC> encoding the Mobile Network Code part of the PLMN, comprising 3 digits. \n  If there are only 2 significant digits in the MNC, one \"0\" digit shall be inserted \n  at the left side to fill the 3 digits coding of MNC.  Pattern: '^[0-9]{3}$'\n<NID> encoded as defined in clause 5.4.2 (\"Nid\" data type definition)  <NFInstanceId> encoded as defined in clause 5.3.2  <ServiceName> encoded as defined in 3GPP TS 29.510  <Set ID> encoded as a string of characters consisting of alphabetic \n  characters (A-Z and a-z), digits (0-9) and/or the hyphen (-) and that shall end \n  with either an alphabetic character or a digit.\n"
       type: string
   securitySchemes:
     oAuth2ClientCredentials:
@@ -2335,20 +2224,11 @@ components:
         clientCredentials:
           scopes:
             nudm-ueau: Access to the nudm-ueau API
-            nudm-ueau:security-information:generate-auth-data:invoke: Acess to invoke
-              the "generate-auth-data" custom operation on the "security-information"
-              resource
-            nudm-ueau:security-information-rg:read: Access to read the "security-information-rg"
-              resource
-            nudm-ueau:auth-events:create: Access to create a new child resource on
-              the "auth-events" collection resource
-            nudm-ueau:auth-event-id:modify: Access to modify (delete) an "auth-event-id"
-              individual resource
-            nudm-ueau:hss-security-information:generate-av:invoke: Acess to invoke
-              the "generate-av" custom operation on the "hss-security-information"
-              resource
-            nudm-ueau:gba-security-information:generate-av:invoke: Acess to invoke
-              the "generate-av" custom operation on the "gba-security-information"
-              resource
+            nudm-ueau:security-information:generate-auth-data:invoke: Acess to invoke the "generate-auth-data" custom operation on the "security-information" resource
+            nudm-ueau:security-information-rg:read: Access to read the "security-information-rg" resource
+            nudm-ueau:auth-events:create: Access to create a new child resource on the "auth-events" collection resource
+            nudm-ueau:auth-event-id:modify: Access to modify (delete) an "auth-event-id" individual resource
+            nudm-ueau:hss-security-information:generate-av:invoke: Acess to invoke the "generate-av" custom operation on the "hss-security-information" resource
+            nudm-ueau:gba-security-information:generate-av:invoke: Acess to invoke the "generate-av" custom operation on the "gba-security-information" resource
           tokenUrl: "{nrfApiRoot}/oauth2/token"
       type: oauth2
