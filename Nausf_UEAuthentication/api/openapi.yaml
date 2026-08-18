@@ -1,25 +1,23 @@
 # Copyright (C) 2026 Intel Corporation
 # SPDX-License-Identifier: Apache-2.0
-
 openapi: 3.0.0
 info:
-  description: "AUSF UE Authentication Service.  \n© 2023, 3GPP Organizational Partners\
-    \ (ARIB, ATIS, CCSA, ETSI, TSDSI, TTA, TTC).  \nAll rights reserved.\n"
+  description: "AUSF UE Authentication Service.  \n© 2023, 3GPP Organizational Partners (ARIB, ATIS, CCSA, ETSI, TSDSI, TTA, TTC).  \nAll rights reserved.\n"
   title: AUSF API
   version: 1.3.0-alpha.4
 externalDocs:
   description: 3GPP TS 29.509 V18.3.0; 5G System; 3GPP TS Authentication Server services.
   url: https://www.3gpp.org/ftp/Specs/archive/29_series/29.509
 servers:
-- url: "{apiRoot}/nausf-auth/v1"
-  variables:
-    apiRoot:
-      default: https://example.com
-      description: apiRoot as defined in clause 4.4 of 3GPP TS 29.501.
+  - url: "{apiRoot}/nausf-auth/v1"
+    variables:
+      apiRoot:
+        default: https://example.com
+        description: apiRoot as defined in clause 4.4 of 3GPP TS 29.501.
 security:
-- {}
-- oAuth2ClientCredentials:
-  - nausf-auth
+  - {}
+  - oAuth2ClientCredentials:
+      - nausf-auth
 paths:
   /ue-authentications:
     post:
@@ -38,8 +36,7 @@ paths:
           description: UEAuthenticationCtx
           headers:
             Location:
-              description: "Contains the URI of the newly created resource according\
-                \ to the structure: {apiRoot}/nausf-auth/<apiVersion>/ue-authentications/{authCtxId}"
+              description: "Contains the URI of the newly created resource according to the structure: {apiRoot}/nausf-auth/<apiVersion>/ue-authentications/{authCtxId}"
               explode: false
               required: true
               schema:
@@ -53,8 +50,7 @@ paths:
           description: Temporary Redirect
           headers:
             Location:
-              description: The URI pointing to the resource located on the redirect
-                target
+              description: The URI pointing to the resource located on the redirect target
               required: true
               schema:
                 type: string
@@ -71,8 +67,7 @@ paths:
           description: Permanent Redirect
           headers:
             Location:
-              description: The URI pointing to the resource located on the redirect
-                target
+              description: The URI pointing to the resource located on the redirect target
               required: true
               schema:
                 type: string
@@ -154,12 +149,12 @@ paths:
                 $ref: "#/components/schemas/ProblemDetails"
           description: Service Unavailable
       security:
-      - {}
-      - oAuth2ClientCredentials:
-        - nausf-auth
-      - oAuth2ClientCredentials:
-        - nausf-auth
-        - nausf-auth:ue-authentications
+        - {}
+        - oAuth2ClientCredentials:
+            - nausf-auth
+        - oAuth2ClientCredentials:
+            - nausf-auth
+            - nausf-auth:ue-authentications
   /ue-authentications/deregister:
     post:
       requestBody:
@@ -179,8 +174,7 @@ paths:
           description: Temporary Redirect
           headers:
             Location:
-              description: The URI pointing to the resource located on the redirect
-                target
+              description: The URI pointing to the resource located on the redirect target
               required: true
               schema:
                 type: string
@@ -197,8 +191,7 @@ paths:
           description: Permanent Redirect
           headers:
             Location:
-              description: The URI pointing to the resource located on the redirect
-                target
+              description: The URI pointing to the resource located on the redirect target
               required: true
               schema:
                 type: string
@@ -274,23 +267,23 @@ paths:
                 $ref: "#/components/schemas/ProblemDetails"
           description: Service Unavailable
       security:
-      - {}
-      - oAuth2ClientCredentials:
-        - nausf-auth
-      - oAuth2ClientCredentials:
-        - nausf-auth
-        - nausf-auth:ue-authentications
+        - {}
+        - oAuth2ClientCredentials:
+            - nausf-auth
+        - oAuth2ClientCredentials:
+            - nausf-auth
+            - nausf-auth:ue-authentications
   /ue-authentications/{authCtxId}/5g-aka-confirmation:
     delete:
       operationId: Delete5gAkaAuthenticationResult
       parameters:
-      - explode: false
-        in: path
-        name: authCtxId
-        required: true
-        schema:
-          type: string
-        style: simple
+        - explode: false
+          in: path
+          name: authCtxId
+          required: true
+          schema:
+            type: string
+          style: simple
       responses:
         "204":
           description: Expected response to a successful authentication result removal
@@ -302,8 +295,7 @@ paths:
           description: Temporary Redirect
           headers:
             Location:
-              description: The URI pointing to the resource located on the redirect
-                target
+              description: The URI pointing to the resource located on the redirect target
               required: true
               schema:
                 type: string
@@ -320,8 +312,7 @@ paths:
           description: Permanent Redirect
           headers:
             Location:
-              description: The URI pointing to the resource located on the redirect
-                target
+              description: The URI pointing to the resource located on the redirect target
               required: true
               schema:
                 type: string
@@ -381,24 +372,24 @@ paths:
         default:
           description: Generic Error
       security:
-      - {}
-      - oAuth2ClientCredentials:
-        - nausf-auth
-      - oAuth2ClientCredentials:
-        - nausf-auth
-        - nausf-auth:ue-authentications
+        - {}
+        - oAuth2ClientCredentials:
+            - nausf-auth
+        - oAuth2ClientCredentials:
+            - nausf-auth
+            - nausf-auth:ue-authentications
       summary: Deletes the authentication result in the UDM
       tags:
-      - Authentication Result Deletion
+        - Authentication Result Deletion
     put:
       parameters:
-      - explode: false
-        in: path
-        name: authCtxId
-        required: true
-        schema:
-          type: string
-        style: simple
+        - explode: false
+          in: path
+          name: authCtxId
+          required: true
+          schema:
+            type: string
+          style: simple
       requestBody:
         content:
           application/json:
@@ -419,8 +410,7 @@ paths:
           description: Temporary Redirect
           headers:
             Location:
-              description: The URI pointing to the resource located on the redirect
-                target
+              description: The URI pointing to the resource located on the redirect target
               required: true
               schema:
                 type: string
@@ -437,8 +427,7 @@ paths:
           description: Permanent Redirect
           headers:
             Location:
-              description: The URI pointing to the resource located on the redirect
-                target
+              description: The URI pointing to the resource located on the redirect target
               required: true
               schema:
                 type: string
@@ -514,23 +503,23 @@ paths:
                 $ref: "#/components/schemas/ProblemDetails"
           description: Service Unavailable
       security:
-      - {}
-      - oAuth2ClientCredentials:
-        - nausf-auth
-      - oAuth2ClientCredentials:
-        - nausf-auth
-        - nausf-auth:ue-authentications
+        - {}
+        - oAuth2ClientCredentials:
+            - nausf-auth
+        - oAuth2ClientCredentials:
+            - nausf-auth
+            - nausf-auth:ue-authentications
   /ue-authentications/{authCtxId}/eap-session:
     delete:
       operationId: DeleteEapAuthenticationResult
       parameters:
-      - explode: false
-        in: path
-        name: authCtxId
-        required: true
-        schema:
-          type: string
-        style: simple
+        - explode: false
+          in: path
+          name: authCtxId
+          required: true
+          schema:
+            type: string
+          style: simple
       responses:
         "204":
           description: Expected response to a successful authentication result removal
@@ -542,8 +531,7 @@ paths:
           description: Temporary Redirect
           headers:
             Location:
-              description: The URI pointing to the resource located on the redirect
-                target
+              description: The URI pointing to the resource located on the redirect target
               required: true
               schema:
                 type: string
@@ -560,8 +548,7 @@ paths:
           description: Permanent Redirect
           headers:
             Location:
-              description: The URI pointing to the resource located on the redirect
-                target
+              description: The URI pointing to the resource located on the redirect target
               required: true
               schema:
                 type: string
@@ -621,25 +608,25 @@ paths:
         default:
           description: Generic Error
       security:
-      - {}
-      - oAuth2ClientCredentials:
-        - nausf-auth
-      - oAuth2ClientCredentials:
-        - nausf-auth
-        - nausf-auth:ue-authentications
+        - {}
+        - oAuth2ClientCredentials:
+            - nausf-auth
+        - oAuth2ClientCredentials:
+            - nausf-auth
+            - nausf-auth:ue-authentications
       summary: Deletes the authentication result in the UDM
       tags:
-      - Authentication Result Deletion
+        - Authentication Result Deletion
     post:
       operationId: EapAuthMethod
       parameters:
-      - explode: false
-        in: path
-        name: authCtxId
-        required: true
-        schema:
-          type: string
-        style: simple
+        - explode: false
+          in: path
+          name: authCtxId
+          required: true
+          schema:
+            type: string
+          style: simple
       requestBody:
         content:
           application/json:
@@ -663,8 +650,7 @@ paths:
           description: Temporary Redirect
           headers:
             Location:
-              description: The URI pointing to the resource located on the redirect
-                target
+              description: The URI pointing to the resource located on the redirect target
               required: true
               schema:
                 type: string
@@ -681,8 +667,7 @@ paths:
           description: Permanent Redirect
           headers:
             Location:
-              description: The URI pointing to the resource located on the redirect
-                target
+              description: The URI pointing to the resource located on the redirect target
               required: true
               schema:
                 type: string
@@ -758,12 +743,12 @@ paths:
                 $ref: "#/components/schemas/ProblemDetails"
           description: Service Unavailable
       security:
-      - {}
-      - oAuth2ClientCredentials:
-        - nausf-auth
-      - oAuth2ClientCredentials:
-        - nausf-auth
-        - nausf-auth:ue-authentications
+        - {}
+        - oAuth2ClientCredentials:
+            - nausf-auth
+        - oAuth2ClientCredentials:
+            - nausf-auth
+            - nausf-auth:ue-authentications
   /rg-authentications:
     post:
       requestBody:
@@ -781,8 +766,7 @@ paths:
           description: RgAuthCtx
           headers:
             Location:
-              description: "Contains the URI of the newly created resource according\
-                \ to the structure: {apiRoot}/nausf-auth/<apiVersion>/rg-authentications/{authCtxId}"
+              description: "Contains the URI of the newly created resource according to the structure: {apiRoot}/nausf-auth/<apiVersion>/rg-authentications/{authCtxId}"
               explode: false
               required: true
               schema:
@@ -796,8 +780,7 @@ paths:
           description: Temporary Redirect
           headers:
             Location:
-              description: The URI pointing to the resource located on the redirect
-                target
+              description: The URI pointing to the resource located on the redirect target
               required: true
               schema:
                 type: string
@@ -814,8 +797,7 @@ paths:
           description: Permanent Redirect
           headers:
             Location:
-              description: The URI pointing to the resource located on the redirect
-                target
+              description: The URI pointing to the resource located on the redirect target
               required: true
               schema:
                 type: string
@@ -891,12 +873,12 @@ paths:
                 $ref: "#/components/schemas/ProblemDetails"
           description: Service Unavailable
       security:
-      - {}
-      - oAuth2ClientCredentials:
-        - nausf-auth
-      - oAuth2ClientCredentials:
-        - nausf-auth
-        - nausf-auth:rg-authentications
+        - {}
+        - oAuth2ClientCredentials:
+            - nausf-auth
+        - oAuth2ClientCredentials:
+            - nausf-auth
+            - nausf-auth:rg-authentications
   /prose-authentications:
     post:
       requestBody:
@@ -920,8 +902,7 @@ paths:
           description: ProSeAuthenticationCtx
           headers:
             Location:
-              description: "Contains the URI of the newly created resource according\
-                \ to the structure: {apiRoot}/nausf-auth/<apiVersion>/prose-authentications/{authCtxId}"
+              description: "Contains the URI of the newly created resource according to the structure: {apiRoot}/nausf-auth/<apiVersion>/prose-authentications/{authCtxId}"
               explode: false
               required: true
               schema:
@@ -935,8 +916,7 @@ paths:
           description: Temporary Redirect
           headers:
             Location:
-              description: The URI pointing to the resource located on the redirect
-                target
+              description: The URI pointing to the resource located on the redirect target
               required: true
               schema:
                 type: string
@@ -953,8 +933,7 @@ paths:
           description: Permanent Redirect
           headers:
             Location:
-              description: The URI pointing to the resource located on the redirect
-                target
+              description: The URI pointing to the resource located on the redirect target
               required: true
               schema:
                 type: string
@@ -1030,23 +1009,23 @@ paths:
                 $ref: "#/components/schemas/ProblemDetails"
           description: Service Unavailable
       security:
-      - {}
-      - oAuth2ClientCredentials:
-        - nausf-auth
-      - oAuth2ClientCredentials:
-        - nausf-auth
-        - nausf-auth:prose-authentications
+        - {}
+        - oAuth2ClientCredentials:
+            - nausf-auth
+        - oAuth2ClientCredentials:
+            - nausf-auth
+            - nausf-auth:prose-authentications
   /prose-authentications/{authCtxId}/prose-auth:
     delete:
       operationId: DeleteProSeAuthenticationResult
       parameters:
-      - explode: false
-        in: path
-        name: authCtxId
-        required: true
-        schema:
-          type: string
-        style: simple
+        - explode: false
+          in: path
+          name: authCtxId
+          required: true
+          schema:
+            type: string
+          style: simple
       responses:
         "204":
           description: Expected response to a successful authentication result removal
@@ -1058,8 +1037,7 @@ paths:
           description: Temporary Redirect
           headers:
             Location:
-              description: The URI pointing to the resource located on the redirect
-                target
+              description: The URI pointing to the resource located on the redirect target
               required: true
               schema:
                 type: string
@@ -1076,8 +1054,7 @@ paths:
           description: Permanent Redirect
           headers:
             Location:
-              description: The URI pointing to the resource located on the redirect
-                target
+              description: The URI pointing to the resource located on the redirect target
               required: true
               schema:
                 type: string
@@ -1137,25 +1114,25 @@ paths:
         default:
           description: Generic Error
       security:
-      - {}
-      - oAuth2ClientCredentials:
-        - nausf-auth
-      - oAuth2ClientCredentials:
-        - nausf-auth
-        - nausf-auth:prose-authentications
+        - {}
+        - oAuth2ClientCredentials:
+            - nausf-auth
+        - oAuth2ClientCredentials:
+            - nausf-auth
+            - nausf-auth:prose-authentications
       summary: Deletes the authentication result in the UDM
       tags:
-      - Authentication Result Deletion
+        - Authentication Result Deletion
     post:
       operationId: proseAuth
       parameters:
-      - explode: false
-        in: path
-        name: authCtxId
-        required: true
-        schema:
-          type: string
-        style: simple
+        - explode: false
+          in: path
+          name: authCtxId
+          required: true
+          schema:
+            type: string
+          style: simple
       requestBody:
         content:
           application/json:
@@ -1170,8 +1147,7 @@ paths:
             application/3gppHal+json:
               schema:
                 $ref: "#/components/schemas/EapAuthMethod_200_response"
-          description: Use to handle or close the EAP session for 5G ProSe Remote
-            UE or a 5G ProSe End UE
+          description: Use to handle or close the EAP session for 5G ProSe Remote UE or a 5G ProSe End UE
         "307":
           content:
             application/json:
@@ -1180,8 +1156,7 @@ paths:
           description: Temporary Redirect
           headers:
             Location:
-              description: The URI pointing to the resource located on the redirect
-                target
+              description: The URI pointing to the resource located on the redirect target
               required: true
               schema:
                 type: string
@@ -1198,8 +1173,7 @@ paths:
           description: Permanent Redirect
           headers:
             Location:
-              description: The URI pointing to the resource located on the redirect
-                target
+              description: The URI pointing to the resource located on the redirect target
               required: true
               schema:
                 type: string
@@ -1275,12 +1249,12 @@ paths:
                 $ref: "#/components/schemas/ProblemDetails"
           description: Service Unavailable
       security:
-      - {}
-      - oAuth2ClientCredentials:
-        - nausf-auth
-      - oAuth2ClientCredentials:
-        - nausf-auth
-        - nausf-auth:prose-authentications
+        - {}
+        - oAuth2ClientCredentials:
+            - nausf-auth
+        - oAuth2ClientCredentials:
+            - nausf-auth
+            - nausf-auth:prose-authentications
 components:
   responses:
     "307":
@@ -1387,8 +1361,7 @@ components:
       description: Generic Error
   schemas:
     AuthenticationInfo:
-      description: Contains the UE id (i.e. SUCI or SUPI) and the Serving Network
-        Name.
+      description: Contains the UE id (i.e. SUCI or SUPI) and the Serving Network Name.
       example:
         supportedFeatures: supportedFeatures
         resynchronizationInfo:
@@ -1406,8 +1379,8 @@ components:
           traceReportingConsumerUri: null
           traceDepth: MINIMUM
         cellCagInfo:
-        - null
-        - null
+          - null
+          - null
         n5gcInd: false
         aun3Ind: false
         disasterRoamingInd: false
@@ -1427,13 +1400,7 @@ components:
         resynchronizationInfo:
           $ref: "#/components/schemas/ResynchronizationInfo"
         pei:
-          description: "String representing a Permanent Equipment Identifier that\
-            \ may contain - an IMEI or IMEISV, as  specified in clause 6.2 of 3GPP\
-            \ TS 23.003; a MAC address for a 5G-RG or FN-RG via  wireline  access,\
-            \ with an indication that this address cannot be trusted for regulatory\
-            \ purpose if this  address cannot be used as an Equipment Identifier of\
-            \ the FN-RG, as specified in clause 4.7.7  of 3GPP TS23.316. Examples\
-            \ are imei-012345678901234 or imeisv-0123456789012345. \n"
+          description: "String representing a Permanent Equipment Identifier that may contain - an IMEI or IMEISV, as  specified in clause 6.2 of 3GPP TS 23.003; a MAC address for a 5G-RG or FN-RG via  wireline  access, with an indication that this address cannot be trusted for regulatory purpose if this  address cannot be used as an Equipment Identifier of the FN-RG, as specified in clause 4.7.7  of 3GPP TS23.316. Examples are imei-012345678901234 or imeisv-0123456789012345. \n"
           pattern: "^(imei-[0-9]{15}|imeisv-[0-9]{16}|mac((-[0-9a-fA-F]{2}){6})(-untrusted)?|eui((-[0-9a-fA-F]{2}){8})|.+)$"
           type: string
         traceData:
@@ -1470,14 +1437,11 @@ components:
           default: false
           type: boolean
       required:
-      - servingNetworkName
-      - supiOrSuci
+        - servingNetworkName
+        - supiOrSuci
       type: object
     UEAuthenticationCtx:
-      description: "Contains the information related to the resource generated to\
-        \ handle the UE authentication. It contains at least the UE id, Serving Network,\
-        \ the Authentication Method and related EAP information or related 5G-AKA\
-        \ information."
+      description: "Contains the information related to the resource generated to handle the UE authentication. It contains at least the UE id, Serving Network, the Authentication Method and related EAP information or related 5G-AKA information."
       properties:
         authType:
           $ref: "#/components/schemas/AuthType"
@@ -1492,9 +1456,9 @@ components:
           pattern: "^(5G:mnc[0-9]{3}[.]mcc[0-9]{3}[.]3gppnetwork[.]org(:[A-F0-9]{11})?)|5G:NSWO$"
           type: string
       required:
-      - 5gAuthData
-      - _links
-      - authType
+        - 5gAuthData
+        - _links
+        - authType
       type: object
     Av5gAka:
       description: Contains Authentication Vector for method 5G AKA.
@@ -1506,9 +1470,9 @@ components:
         autn:
           $ref: "#/components/schemas/Autn"
       required:
-      - autn
-      - hxresStar
-      - rand
+        - autn
+        - hxresStar
+        - rand
       type: object
     ConfirmationData:
       description: Contains the result of the authentication.
@@ -1527,30 +1491,30 @@ components:
           pattern: "^[A-Fa-f0-9]*$"
           type: string
       required:
-      - resStar
+        - resStar
       type: object
     ConfirmationDataResponse:
       description: Contains the result of the authentication
       example:
         pvsInfo:
-        - ipv4Addresses:
-          - 198.51.100.1
-          - 198.51.100.1
-          ipv6Addresses:
-          - 2001:db8:85a3::8a2e:370:7334
-          - 2001:db8:85a3::8a2e:370:7334
-          fqdnList:
-          - null
-          - null
-        - ipv4Addresses:
-          - 198.51.100.1
-          - 198.51.100.1
-          ipv6Addresses:
-          - 2001:db8:85a3::8a2e:370:7334
-          - 2001:db8:85a3::8a2e:370:7334
-          fqdnList:
-          - null
-          - null
+          - ipv4Addresses:
+              - 198.51.100.1
+              - 198.51.100.1
+            ipv6Addresses:
+              - 2001:db8:85a3::8a2e:370:7334
+              - 2001:db8:85a3::8a2e:370:7334
+            fqdnList:
+              - null
+              - null
+          - ipv4Addresses:
+              - 198.51.100.1
+              - 198.51.100.1
+            ipv6Addresses:
+              - 2001:db8:85a3::8a2e:370:7334
+              - 2001:db8:85a3::8a2e:370:7334
+            fqdnList:
+              - null
+              - null
         authResult: AUTHENTICATION_SUCCESS
         kseaf: kseaf
         supi: supi
@@ -1558,20 +1522,7 @@ components:
         authResult:
           $ref: "#/components/schemas/AuthResult"
         supi:
-          description: "String identifying a Supi that shall contain either an IMSI,\
-            \ a network specific identifier,\na Global Cable Identifier (GCI) or a\
-            \ Global Line Identifier (GLI) as specified in clause \n2.2A of 3GPP TS\
-            \ 23.003. It shall be formatted as follows\n - for an IMSI \"imsi-<imsi>\"\
-            , where <imsi> shall be formatted according to clause 2.2\n   of 3GPP\
-            \ TS 23.003 that describes an IMSI.\n - for a network specific identifier\
-            \ \"nai-<nai>, where <nai> shall be formatted\n   according to clause\
-            \ 28.7.2 of 3GPP TS 23.003 that describes an NAI.\n - for a GCI \"gci-<gci>\"\
-            , where <gci> shall be formatted according to clause 28.15.2\n   of 3GPP\
-            \ TS 23.003.\n - for a GLI \"gli-<gli>\", where <gli> shall be formatted\
-            \ according to clause 28.16.2 of\n   3GPP TS 23.003.To enable that the\
-            \ value is used as part of an URI, the string shall\n   only contain characters\
-            \ allowed according to the \"lower-with-hyphen\" naming convention\n \
-            \  defined in 3GPP TS 29.501.\n"
+          description: "String identifying a Supi that shall contain either an IMSI, a network specific identifier,\na Global Cable Identifier (GCI) or a Global Line Identifier (GLI) as specified in clause \n2.2A of 3GPP TS 23.003. It shall be formatted as follows\n - for an IMSI \"imsi-<imsi>\", where <imsi> shall be formatted according to clause 2.2\n   of 3GPP TS 23.003 that describes an IMSI.\n - for a network specific identifier \"nai-<nai>, where <nai> shall be formatted\n   according to clause 28.7.2 of 3GPP TS 23.003 that describes an NAI.\n - for a GCI \"gci-<gci>\", where <gci> shall be formatted according to clause 28.15.2\n   of 3GPP TS 23.003.\n - for a GLI \"gli-<gli>\", where <gli> shall be formatted according to clause 28.16.2 of\n   3GPP TS 23.003.To enable that the value is used as part of an URI, the string shall\n   only contain characters allowed according to the \"lower-with-hyphen\" naming convention\n   defined in 3GPP TS 29.501.\n"
           pattern: "^(imsi-[0-9]{5,15}|nai-.+|gci-.+|gli-.+|.+)$"
           type: string
         kseaf:
@@ -1584,7 +1535,7 @@ components:
           minItems: 1
           type: array
       required:
-      - authResult
+        - authResult
       type: object
     EapSession:
       description: Contains information related to the EAP session.
@@ -1594,27 +1545,27 @@ components:
         eapPayload: eapPayload
         _links:
           key:
-          - href: null
-          - href: null
+            - href: null
+            - href: null
         pvsInfo:
-        - ipv4Addresses:
-          - 198.51.100.1
-          - 198.51.100.1
-          ipv6Addresses:
-          - 2001:db8:85a3::8a2e:370:7334
-          - 2001:db8:85a3::8a2e:370:7334
-          fqdnList:
-          - null
-          - null
-        - ipv4Addresses:
-          - 198.51.100.1
-          - 198.51.100.1
-          ipv6Addresses:
-          - 2001:db8:85a3::8a2e:370:7334
-          - 2001:db8:85a3::8a2e:370:7334
-          fqdnList:
-          - null
-          - null
+          - ipv4Addresses:
+              - 198.51.100.1
+              - 198.51.100.1
+            ipv6Addresses:
+              - 2001:db8:85a3::8a2e:370:7334
+              - 2001:db8:85a3::8a2e:370:7334
+            fqdnList:
+              - null
+              - null
+          - ipv4Addresses:
+              - 198.51.100.1
+              - 198.51.100.1
+            ipv6Addresses:
+              - 2001:db8:85a3::8a2e:370:7334
+              - 2001:db8:85a3::8a2e:370:7334
+            fqdnList:
+              - null
+              - null
         authResult: AUTHENTICATION_SUCCESS
         kSeaf: kSeaf
         supi: supi
@@ -1636,20 +1587,7 @@ components:
         authResult:
           $ref: "#/components/schemas/AuthResult"
         supi:
-          description: "String identifying a Supi that shall contain either an IMSI,\
-            \ a network specific identifier,\na Global Cable Identifier (GCI) or a\
-            \ Global Line Identifier (GLI) as specified in clause \n2.2A of 3GPP TS\
-            \ 23.003. It shall be formatted as follows\n - for an IMSI \"imsi-<imsi>\"\
-            , where <imsi> shall be formatted according to clause 2.2\n   of 3GPP\
-            \ TS 23.003 that describes an IMSI.\n - for a network specific identifier\
-            \ \"nai-<nai>, where <nai> shall be formatted\n   according to clause\
-            \ 28.7.2 of 3GPP TS 23.003 that describes an NAI.\n - for a GCI \"gci-<gci>\"\
-            , where <gci> shall be formatted according to clause 28.15.2\n   of 3GPP\
-            \ TS 23.003.\n - for a GLI \"gli-<gli>\", where <gli> shall be formatted\
-            \ according to clause 28.16.2 of\n   3GPP TS 23.003.To enable that the\
-            \ value is used as part of an URI, the string shall\n   only contain characters\
-            \ allowed according to the \"lower-with-hyphen\" naming convention\n \
-            \  defined in 3GPP TS 29.501.\n"
+          description: "String identifying a Supi that shall contain either an IMSI, a network specific identifier,\na Global Cable Identifier (GCI) or a Global Line Identifier (GLI) as specified in clause \n2.2A of 3GPP TS 23.003. It shall be formatted as follows\n - for an IMSI \"imsi-<imsi>\", where <imsi> shall be formatted according to clause 2.2\n   of 3GPP TS 23.003 that describes an IMSI.\n - for a network specific identifier \"nai-<nai>, where <nai> shall be formatted\n   according to clause 28.7.2 of 3GPP TS 23.003 that describes an NAI.\n - for a GCI \"gci-<gci>\", where <gci> shall be formatted according to clause 28.15.2\n   of 3GPP TS 23.003.\n - for a GLI \"gli-<gli>\", where <gli> shall be formatted according to clause 28.16.2 of\n   3GPP TS 23.003.To enable that the value is used as part of an URI, the string shall\n   only contain characters allowed according to the \"lower-with-hyphen\" naming convention\n   defined in 3GPP TS 29.501.\n"
           pattern: "^(imsi-[0-9]{5,15}|nai-.+|gci-.+|gli-.+|.+)$"
           type: string
         supportedFeatures:
@@ -1667,7 +1605,7 @@ components:
           pattern: "[A-Fa-f0-9]{128}"
           type: string
       required:
-      - eapPayload
+        - eapPayload
       type: object
     DeregistrationInfo:
       description: Contains the UE id (i.e. SUPI).
@@ -1676,20 +1614,7 @@ components:
         supi: supi
       properties:
         supi:
-          description: "String identifying a Supi that shall contain either an IMSI,\
-            \ a network specific identifier,\na Global Cable Identifier (GCI) or a\
-            \ Global Line Identifier (GLI) as specified in clause \n2.2A of 3GPP TS\
-            \ 23.003. It shall be formatted as follows\n - for an IMSI \"imsi-<imsi>\"\
-            , where <imsi> shall be formatted according to clause 2.2\n   of 3GPP\
-            \ TS 23.003 that describes an IMSI.\n - for a network specific identifier\
-            \ \"nai-<nai>, where <nai> shall be formatted\n   according to clause\
-            \ 28.7.2 of 3GPP TS 23.003 that describes an NAI.\n - for a GCI \"gci-<gci>\"\
-            , where <gci> shall be formatted according to clause 28.15.2\n   of 3GPP\
-            \ TS 23.003.\n - for a GLI \"gli-<gli>\", where <gli> shall be formatted\
-            \ according to clause 28.16.2 of\n   3GPP TS 23.003.To enable that the\
-            \ value is used as part of an URI, the string shall\n   only contain characters\
-            \ allowed according to the \"lower-with-hyphen\" naming convention\n \
-            \  defined in 3GPP TS 29.501.\n"
+          description: "String identifying a Supi that shall contain either an IMSI, a network specific identifier,\na Global Cable Identifier (GCI) or a Global Line Identifier (GLI) as specified in clause \n2.2A of 3GPP TS 23.003. It shall be formatted as follows\n - for an IMSI \"imsi-<imsi>\", where <imsi> shall be formatted according to clause 2.2\n   of 3GPP TS 23.003 that describes an IMSI.\n - for a network specific identifier \"nai-<nai>, where <nai> shall be formatted\n   according to clause 28.7.2 of 3GPP TS 23.003 that describes an NAI.\n - for a GCI \"gci-<gci>\", where <gci> shall be formatted according to clause 28.15.2\n   of 3GPP TS 23.003.\n - for a GLI \"gli-<gli>\", where <gli> shall be formatted according to clause 28.16.2 of\n   3GPP TS 23.003.To enable that the value is used as part of an URI, the string shall\n   only contain characters allowed according to the \"lower-with-hyphen\" naming convention\n   defined in 3GPP TS 29.501.\n"
           pattern: "^(imsi-[0-9]{5,15}|nai-.+|gci-.+|gli-.+|.+)$"
           type: string
         supportedFeatures:
@@ -1698,7 +1623,7 @@ components:
           pattern: "^[A-Fa-f0-9]*$"
           type: string
       required:
-      - supi
+        - supi
       type: object
     RgAuthenticationInfo:
       description: Contains the UE id (i.e. SUCI) and the authenticated indication.
@@ -1720,8 +1645,8 @@ components:
           pattern: "^[A-Fa-f0-9]*$"
           type: string
       required:
-      - authenticatedInd
-      - suci
+        - authenticatedInd
+        - suci
       type: object
     RgAuthCtx:
       description: Contains the UE id (i.e. SUPI) and the authentication indication.
@@ -1733,34 +1658,21 @@ components:
         authResult:
           $ref: "#/components/schemas/AuthResult"
         supi:
-          description: "String identifying a Supi that shall contain either an IMSI,\
-            \ a network specific identifier,\na Global Cable Identifier (GCI) or a\
-            \ Global Line Identifier (GLI) as specified in clause \n2.2A of 3GPP TS\
-            \ 23.003. It shall be formatted as follows\n - for an IMSI \"imsi-<imsi>\"\
-            , where <imsi> shall be formatted according to clause 2.2\n   of 3GPP\
-            \ TS 23.003 that describes an IMSI.\n - for a network specific identifier\
-            \ \"nai-<nai>, where <nai> shall be formatted\n   according to clause\
-            \ 28.7.2 of 3GPP TS 23.003 that describes an NAI.\n - for a GCI \"gci-<gci>\"\
-            , where <gci> shall be formatted according to clause 28.15.2\n   of 3GPP\
-            \ TS 23.003.\n - for a GLI \"gli-<gli>\", where <gli> shall be formatted\
-            \ according to clause 28.16.2 of\n   3GPP TS 23.003.To enable that the\
-            \ value is used as part of an URI, the string shall\n   only contain characters\
-            \ allowed according to the \"lower-with-hyphen\" naming convention\n \
-            \  defined in 3GPP TS 29.501.\n"
+          description: "String identifying a Supi that shall contain either an IMSI, a network specific identifier,\na Global Cable Identifier (GCI) or a Global Line Identifier (GLI) as specified in clause \n2.2A of 3GPP TS 23.003. It shall be formatted as follows\n - for an IMSI \"imsi-<imsi>\", where <imsi> shall be formatted according to clause 2.2\n   of 3GPP TS 23.003 that describes an IMSI.\n - for a network specific identifier \"nai-<nai>, where <nai> shall be formatted\n   according to clause 28.7.2 of 3GPP TS 23.003 that describes an NAI.\n - for a GCI \"gci-<gci>\", where <gci> shall be formatted according to clause 28.15.2\n   of 3GPP TS 23.003.\n - for a GLI \"gli-<gli>\", where <gli> shall be formatted according to clause 28.16.2 of\n   3GPP TS 23.003.To enable that the value is used as part of an URI, the string shall\n   only contain characters allowed according to the \"lower-with-hyphen\" naming convention\n   defined in 3GPP TS 29.501.\n"
           pattern: "^(imsi-[0-9]{5,15}|nai-.+|gci-.+|gli-.+|.+)$"
           type: string
         authInd:
           default: false
           type: boolean
       required:
-      - authResult
+        - authResult
       type: object
     AuthResult:
       description: Indicates the result of the authentication.
       enum:
-      - AUTHENTICATION_SUCCESS
-      - AUTHENTICATION_FAILURE
-      - AUTHENTICATION_ONGOING
+        - AUTHENTICATION_SUCCESS
+        - AUTHENTICATION_FAILURE
+        - AUTHENTICATION_ONGOING
       type: string
     EapPayload:
       description: contains an EAP packet
@@ -1806,8 +1718,7 @@ components:
         "5gPrukId":
           description: |
             A string carrying the CP-PRUK ID of the 5G ProSe Remote UE or the 5G ProSe End UE. The CP-PRUK ID is a string in NAI format as specified in clause 28.7.11 of 3GPP TS 23.003.
-          pattern: "^rid[0-9]{1,4}\\.pid[0-9a-fA-F]+\\@prose-cp\\.5gc\\.mnc[0-9]{2,3}\\\
-            .mcc[0-9]{3}\\.3gppnetwork\\.org$"
+          pattern: "^rid[0-9]{1,4}\\.pid[0-9a-fA-F]+\\@prose-cp\\.5gc\\.mnc[0-9]{2,3}\\.mcc[0-9]{3}\\.3gppnetwork\\.org$"
           type: string
         relayServiceCode:
           description: |
@@ -1829,13 +1740,12 @@ components:
           pattern: "^[A-Fa-f0-9]*$"
           type: string
       required:
-      - nonce1
-      - relayServiceCode
-      - servingNetworkName
+        - nonce1
+        - relayServiceCode
+        - servingNetworkName
       type: object
     ProSeAuthenticationCtx:
-      description: Contains the information related to the resource generated to handle
-        the ProSe authentication.
+      description: Contains the information related to the resource generated to handle the ProSe authentication.
       properties:
         authType:
           $ref: "#/components/schemas/AuthType"
@@ -1849,13 +1759,12 @@ components:
         supportedFeatures:
           $ref: "#/components/schemas/SupportedFeatures"
       required:
-      - _links
-      - authType
-      - proSeAuthData
+        - _links
+        - authType
+        - proSeAuthData
       type: object
     ProSeEapSession:
-      description: Contains information related to the EAP session. If present the
-        5gPrukId IE shall carry the CP-PRUK ID.
+      description: Contains information related to the EAP session. If present the 5gPrukId IE shall carry the CP-PRUK ID.
       example:
         knrProSe: knrProSe
         supportedFeatures: supportedFeatures
@@ -1863,8 +1772,8 @@ components:
         eapPayload: eapPayload
         _links:
           key:
-          - href: null
-          - href: null
+            - href: null
+            - href: null
         nonce2: nonce2
         authResult: AUTHENTICATION_SUCCESS
       properties:
@@ -1897,11 +1806,10 @@ components:
         "5gPrukId":
           description: |
             A string carrying the CP-PRUK ID of the 5G ProSe Remote UE or the 5G ProSe End UE. The CP-PRUK ID is a string in NAI format as specified in clause 28.7.11 of 3GPP TS 23.003.
-          pattern: "^rid[0-9]{1,4}\\.pid[0-9a-fA-F]+\\@prose-cp\\.5gc\\.mnc[0-9]{2,3}\\\
-            .mcc[0-9]{3}\\.3gppnetwork\\.org$"
+          pattern: "^rid[0-9]{1,4}\\.pid[0-9a-fA-F]+\\@prose-cp\\.5gc\\.mnc[0-9]{2,3}\\.mcc[0-9]{3}\\.3gppnetwork\\.org$"
           type: string
       required:
-      - eapPayload
+        - eapPayload
       type: object
     ProSeAuthData:
       $ref: "#/components/schemas/EapPayload"
@@ -1969,8 +1877,7 @@ components:
         status:
           type: integer
         detail:
-          description: A human-readable explanation specific to this occurrence of
-            the problem.
+          description: A human-readable explanation specific to this occurrence of the problem.
           type: string
         instance:
           $ref: "#/components/schemas/Uri"
@@ -2011,7 +1918,7 @@ components:
             A human-readable reason, e.g. "must be a positive integer". In cases involving failed  operations in a PATCH request, the reason string should identify the operation that  failed using the operation's array index to assist in correlation of the invalid  parameter with the failed operation, e.g." Replacement value invalid for attribute  (failed operation index= 4)"
           type: string
       required:
-      - param
+        - param
       type: object
     SupportedFeatures:
       description: |
@@ -2022,17 +1929,16 @@ components:
       description: Fully Qualified Domain Name
       maxLength: 253
       minLength: 4
-      pattern: "^([0-9A-Za-z]([-0-9A-Za-z]{0,61}[0-9A-Za-z])?\\.)+[A-Za-z]{2,63}\\\
-        .?$"
+      pattern: "^([0-9A-Za-z]([-0-9A-Za-z]{0,61}[0-9A-Za-z])?\\.)+[A-Za-z]{2,63}\\.?$"
       type: string
     LinksValueSchema:
       description: A list of mutually exclusive alternatives of 1 or more links.
       oneOf:
-      - items:
-          $ref: "#/components/schemas/Link"
-        minItems: 1
-        type: array
-      - $ref: "#/components/schemas/Link"
+        - items:
+            $ref: "#/components/schemas/Link"
+          minItems: 1
+          type: array
+        - $ref: "#/components/schemas/Link"
     Link:
       description: It contains the URI of the linked resource.
       example:
@@ -2058,8 +1964,8 @@ components:
         auts:
           $ref: "#/components/schemas/Auts"
       required:
-      - auts
-      - rand
+        - auts
+        - rand
       type: object
     Rand:
       pattern: "^[A-Fa-f0-9]{32}$"
@@ -2068,13 +1974,7 @@ components:
       pattern: "^[A-Fa-f0-9]{28}$"
       type: string
     Pei:
-      description: "String representing a Permanent Equipment Identifier that may\
-        \ contain - an IMEI or IMEISV, as  specified in clause 6.2 of 3GPP TS 23.003;\
-        \ a MAC address for a 5G-RG or FN-RG via  wireline  access, with an indication\
-        \ that this address cannot be trusted for regulatory purpose if this  address\
-        \ cannot be used as an Equipment Identifier of the FN-RG, as specified in\
-        \ clause 4.7.7  of 3GPP TS23.316. Examples are imei-012345678901234 or imeisv-0123456789012345.\
-        \ \n"
+      description: "String representing a Permanent Equipment Identifier that may contain - an IMEI or IMEISV, as  specified in clause 6.2 of 3GPP TS 23.003; a MAC address for a 5G-RG or FN-RG via  wireline  access, with an indication that this address cannot be trusted for regulatory purpose if this  address cannot be used as an Equipment Identifier of the FN-RG, as specified in clause 4.7.7  of 3GPP TS23.316. Examples are imei-012345678901234 or imeisv-0123456789012345. \n"
       pattern: "^(imei-[0-9]{15}|imeisv-[0-9]{16}|mac((-[0-9a-fA-F]{2}){6})(-untrusted)?|eui((-[0-9a-fA-F]{2}){8})|.+)$"
       type: string
     TraceData:
@@ -2119,19 +2019,19 @@ components:
           pattern: "^[A-Fa-f0-9]+$"
           type: string
       required:
-      - eventList
-      - neTypeList
-      - traceDepth
-      - traceRef
+        - eventList
+        - neTypeList
+        - traceDepth
+        - traceRef
       type: object
     TraceDepth:
       enum:
-      - MINIMUM
-      - MEDIUM
-      - MAXIMUM
-      - MINIMUM_WO_VENDOR_EXTENSION
-      - MEDIUM_WO_VENDOR_EXTENSION
-      - MAXIMUM_WO_VENDOR_EXTENSION
+        - MINIMUM
+        - MEDIUM
+        - MAXIMUM
+        - MINIMUM_WO_VENDOR_EXTENSION
+        - MEDIUM_WO_VENDOR_EXTENSION
+        - MAXIMUM_WO_VENDOR_EXTENSION
       type: string
     Ipv4Addr:
       description: |
@@ -2155,45 +2055,32 @@ components:
     AuthType:
       description: Indicates the authentication method.
       enum:
-      - 5G_AKA
-      - EAP_AKA_PRIME
-      - EAP_TLS
-      - NONE
-      - EAP_TTLS
+        - 5G_AKA
+        - EAP_AKA_PRIME
+        - EAP_TLS
+        - NONE
+        - EAP_TTLS
       type: string
     Autn:
       pattern: "^[A-Fa-f0-9]{32}$"
       type: string
     Supi:
-      description: "String identifying a Supi that shall contain either an IMSI, a\
-        \ network specific identifier,\na Global Cable Identifier (GCI) or a Global\
-        \ Line Identifier (GLI) as specified in clause \n2.2A of 3GPP TS 23.003. It\
-        \ shall be formatted as follows\n - for an IMSI \"imsi-<imsi>\", where <imsi>\
-        \ shall be formatted according to clause 2.2\n   of 3GPP TS 23.003 that describes\
-        \ an IMSI.\n - for a network specific identifier \"nai-<nai>, where <nai>\
-        \ shall be formatted\n   according to clause 28.7.2 of 3GPP TS 23.003 that\
-        \ describes an NAI.\n - for a GCI \"gci-<gci>\", where <gci> shall be formatted\
-        \ according to clause 28.15.2\n   of 3GPP TS 23.003.\n - for a GLI \"gli-<gli>\"\
-        , where <gli> shall be formatted according to clause 28.16.2 of\n   3GPP TS\
-        \ 23.003.To enable that the value is used as part of an URI, the string shall\n\
-        \   only contain characters allowed according to the \"lower-with-hyphen\"\
-        \ naming convention\n   defined in 3GPP TS 29.501.\n"
+      description: "String identifying a Supi that shall contain either an IMSI, a network specific identifier,\na Global Cable Identifier (GCI) or a Global Line Identifier (GLI) as specified in clause \n2.2A of 3GPP TS 23.003. It shall be formatted as follows\n - for an IMSI \"imsi-<imsi>\", where <imsi> shall be formatted according to clause 2.2\n   of 3GPP TS 23.003 that describes an IMSI.\n - for a network specific identifier \"nai-<nai>, where <nai> shall be formatted\n   according to clause 28.7.2 of 3GPP TS 23.003 that describes an NAI.\n - for a GCI \"gci-<gci>\", where <gci> shall be formatted according to clause 28.15.2\n   of 3GPP TS 23.003.\n - for a GLI \"gli-<gli>\", where <gli> shall be formatted according to clause 28.16.2 of\n   3GPP TS 23.003.To enable that the value is used as part of an URI, the string shall\n   only contain characters allowed according to the \"lower-with-hyphen\" naming convention\n   defined in 3GPP TS 29.501.\n"
       pattern: "^(imsi-[0-9]{5,15}|nai-.+|gci-.+|gli-.+|.+)$"
       type: string
     ServerAddressingInfo:
       anyOf: []
-      description: Contains addressing information (IP addresses and/or FQDNs) of
-        a server.
+      description: Contains addressing information (IP addresses and/or FQDNs) of a server.
       example:
         ipv4Addresses:
-        - 198.51.100.1
-        - 198.51.100.1
+          - 198.51.100.1
+          - 198.51.100.1
         ipv6Addresses:
-        - 2001:db8:85a3::8a2e:370:7334
-        - 2001:db8:85a3::8a2e:370:7334
+          - 2001:db8:85a3::8a2e:370:7334
+          - 2001:db8:85a3::8a2e:370:7334
         fqdnList:
-        - null
-        - null
+          - null
+          - null
       nullable: true
       properties:
         ipv4Addresses:
@@ -2215,8 +2102,7 @@ components:
     fiveGPrukId:
       description: |
         A string carrying the CP-PRUK ID of the 5G ProSe Remote UE or the 5G ProSe End UE. The CP-PRUK ID is a string in NAI format as specified in clause 28.7.11 of 3GPP TS 23.003.
-      pattern: "^rid[0-9]{1,4}\\.pid[0-9a-fA-F]+\\@prose-cp\\.5gc\\.mnc[0-9]{2,3}\\\
-        .mcc[0-9]{3}\\.3gppnetwork\\.org$"
+      pattern: "^rid[0-9]{1,4}\\.pid[0-9a-fA-F]+\\@prose-cp\\.5gc\\.mnc[0-9]{2,3}\\.mcc[0-9]{3}\\.3gppnetwork\\.org$"
       type: string
     RelayServiceCode:
       description: |
@@ -2229,26 +2115,26 @@ components:
       properties:
         error:
           enum:
-          - invalid_request
-          - invalid_client
-          - invalid_grant
-          - unauthorized_client
-          - unsupported_grant_type
-          - invalid_scope
+            - invalid_request
+            - invalid_client
+            - invalid_grant
+            - unauthorized_client
+            - unsupported_grant_type
+            - invalid_scope
           type: string
         error_description:
           type: string
         error_uri:
           type: string
       required:
-      - error
+        - error
       type: object
     AccessTokenReq:
       description: Contains information related to the access token request
       properties:
         grant_type:
           enum:
-          - client_credentials
+            - client_credentials
           type: string
         nfInstanceId:
           $ref: "#/components/schemas/NfInstanceId"
@@ -2303,9 +2189,9 @@ components:
         sourceNfInstanceId:
           $ref: "#/components/schemas/NfInstanceId"
       required:
-      - grant_type
-      - nfInstanceId
-      - scope
+        - grant_type
+        - nfInstanceId
+        - scope
       type: object
     NoProfileMatchInfo:
       description: Provides the reason for not finding NF matching the search criteria
@@ -2318,17 +2204,17 @@ components:
           minItems: 1
           type: array
       required:
-      - reason
+        - reason
       type: object
     NoProfileMatchReason:
       description: No Profile Match Reason
       enum:
-      - REQUESTER_PLMN_NOT_ALLOWED
-      - TARGET_NF_SUSPENDED
-      - TARGET_NF_UNDISCOVERABLE
-      - QUERY_PARAMS_COMBINATION_NO_MATCH
-      - TARGET_NF_TYPE_NOT_SUPPORTED
-      - UNSPECIFIED
+        - REQUESTER_PLMN_NOT_ALLOWED
+        - TARGET_NF_SUSPENDED
+        - TARGET_NF_UNDISCOVERABLE
+        - QUERY_PARAMS_COMBINATION_NO_MATCH
+        - TARGET_NF_TYPE_NOT_SUPPORTED
+        - UNSPECIFIED
       type: string
     QueryParamCombination:
       description: Contains a list of Query Parameters
@@ -2339,7 +2225,7 @@ components:
           minItems: 1
           type: array
       required:
-      - queryParams
+        - queryParams
       type: object
     QueryParameter:
       description: Contains the name and value of a query parameter
@@ -2349,82 +2235,80 @@ components:
         value:
           type: string
       required:
-      - name
-      - value
+        - name
+        - value
       type: object
     NfInstanceId:
-      description: "String uniquely identifying a NF instance. The format of the NF\
-        \ Instance ID shall be a  Universally Unique Identifier (UUID) version 4,\
-        \ as described in IETF RFC 4122. \n"
+      description: "String uniquely identifying a NF instance. The format of the NF Instance ID shall be a  Universally Unique Identifier (UUID) version 4, as described in IETF RFC 4122. \n"
       format: uuid
       type: string
     NFType:
       description: NF types known to NRF
       enum:
-      - NRF
-      - UDM
-      - AMF
-      - SMF
-      - AUSF
-      - NEF
-      - PCF
-      - SMSF
-      - NSSF
-      - UDR
-      - LMF
-      - GMLC
-      - 5G_EIR
-      - SEPP
-      - UPF
-      - N3IWF
-      - AF
-      - UDSF
-      - BSF
-      - CHF
-      - NWDAF
-      - PCSCF
-      - CBCF
-      - HSS
-      - UCMF
-      - SOR_AF
-      - SPAF
-      - MME
-      - SCSAS
-      - SCEF
-      - SCP
-      - NSSAAF
-      - ICSCF
-      - SCSCF
-      - DRA
-      - IMS_AS
-      - AANF
-      - 5G_DDNMF
-      - NSACF
-      - MFAF
-      - EASDF
-      - DCCF
-      - MB_SMF
-      - TSCTSF
-      - ADRF
-      - GBA_BSF
-      - CEF
-      - MB_UPF
-      - NSWOF
-      - PKMF
-      - MNPF
-      - SMS_GMSC
-      - SMS_IWMSC
-      - MBSF
-      - MBSTF
-      - PANF
-      - IP_SM_GW
-      - SMS_ROUTER
-      - DCSF
-      - MRF
-      - MRFP
-      - MF
-      - SLPKMF
-      - RH
+        - NRF
+        - UDM
+        - AMF
+        - SMF
+        - AUSF
+        - NEF
+        - PCF
+        - SMSF
+        - NSSF
+        - UDR
+        - LMF
+        - GMLC
+        - 5G_EIR
+        - SEPP
+        - UPF
+        - N3IWF
+        - AF
+        - UDSF
+        - BSF
+        - CHF
+        - NWDAF
+        - PCSCF
+        - CBCF
+        - HSS
+        - UCMF
+        - SOR_AF
+        - SPAF
+        - MME
+        - SCSAS
+        - SCEF
+        - SCP
+        - NSSAAF
+        - ICSCF
+        - SCSCF
+        - DRA
+        - IMS_AS
+        - AANF
+        - 5G_DDNMF
+        - NSACF
+        - MFAF
+        - EASDF
+        - DCCF
+        - MB_SMF
+        - TSCTSF
+        - ADRF
+        - GBA_BSF
+        - CEF
+        - MB_UPF
+        - NSWOF
+        - PKMF
+        - MNPF
+        - SMS_GMSC
+        - SMS_IWMSC
+        - MBSF
+        - MBSTF
+        - PANF
+        - IP_SM_GW
+        - SMS_ROUTER
+        - DCSF
+        - MRF
+        - MRFP
+        - MF
+        - SLPKMF
+        - RH
       type: string
     PlmnId:
       description: |
@@ -2435,17 +2319,15 @@ components:
         mnc:
           $ref: "#/components/schemas/Mnc"
       required:
-      - mcc
-      - mnc
+        - mcc
+        - mnc
       type: object
     Mcc:
-      description: "Mobile Country Code part of the PLMN, comprising 3 digits, as\
-        \ defined in clause 9.3.3.5 of 3GPP TS 38.413. \n"
+      description: "Mobile Country Code part of the PLMN, comprising 3 digits, as defined in clause 9.3.3.5 of 3GPP TS 38.413. \n"
       pattern: "^\\d{3}$"
       type: string
     Mnc:
-      description: "Mobile Network Code part of the PLMN, comprising 2 or 3 digits,\
-        \ as defined in  clause 9.3.3.5 of 3GPP TS 38.413. \n"
+      description: "Mobile Network Code part of the PLMN, comprising 2 or 3 digits, as defined in  clause 9.3.3.5 of 3GPP TS 38.413. \n"
       pattern: "^\\d{2,3}$"
       type: string
     Snssai:
@@ -2453,12 +2335,7 @@ components:
         When Snssai needs to be converted to string (e.g. when used in maps as key), the string shall be composed of one to three digits "sst" optionally followed by "-" and 6 hexadecimal digits "sd".
       properties:
         sst:
-          description: "Unsigned integer, within the range 0 to 255, representing\
-            \ the Slice/Service Type.  It indicates the expected Network Slice behaviour\
-            \ in terms of features and services. Values 0 to 127 correspond to the\
-            \ standardized SST range. Values 128 to 255 correspond  to the Operator-specific\
-            \ range. See clause 28.4.2 of 3GPP TS 23.003. Standardized values are\
-            \ defined in clause 5.15.2.2 of 3GPP TS 23.501. \n"
+          description: "Unsigned integer, within the range 0 to 255, representing the Slice/Service Type.  It indicates the expected Network Slice behaviour in terms of features and services. Values 0 to 127 correspond to the standardized SST range. Values 128 to 255 correspond  to the Operator-specific range. See clause 28.4.2 of 3GPP TS 23.003. Standardized values are defined in clause 5.15.2.2 of 3GPP TS 23.501. \n"
           maximum: 255
           minimum: 0
           type: integer
@@ -2468,7 +2345,7 @@ components:
           pattern: "^[A-Fa-f0-9]{6}$"
           type: string
       required:
-      - sst
+        - sst
       type: object
     PlmnIdNid:
       description: |
@@ -2481,43 +2358,18 @@ components:
         nid:
           $ref: "#/components/schemas/Nid"
       required:
-      - mcc
-      - mnc
+        - mcc
+        - mnc
       type: object
     Nid:
-      description: "This represents the Network Identifier, which together with a\
-        \ PLMN ID is used to identify an SNPN (see 3GPP TS 23.003 and 3GPP TS 23.501\
-        \ clause 5.30.2.1). \n"
+      description: "This represents the Network Identifier, which together with a PLMN ID is used to identify an SNPN (see 3GPP TS 23.003 and 3GPP TS 23.501 clause 5.30.2.1). \n"
       pattern: "^[A-Fa-f0-9]{11}$"
       type: string
     NfSetId:
-      description: "NF Set Identifier (see clause 28.12 of 3GPP TS 23.003), formatted\
-        \ as the following string \"set<Set ID>.<nftype>set.5gc.mnc<MNC>.mcc<MCC>\"\
-        , or  \"set<SetID>.<NFType>set.5gc.nid<NID>.mnc<MNC>.mcc<MCC>\" with  <MCC>\
-        \ encoded as defined in clause 5.4.2 (\"Mcc\" data type definition)  <MNC>\
-        \ encoding the Mobile Network Code part of the PLMN, comprising 3 digits.\
-        \ \n  If there are only 2 significant digits in the MNC, one \"0\" digit shall\
-        \ be inserted \n  at the left side to fill the 3 digits coding of MNC.  Pattern:\
-        \ '^[0-9]{3}$'\n<NFType> encoded as a value defined in Table 6.1.6.3.3-1 of\
-        \ 3GPP TS 29.510 but \n  with lower case characters <Set ID> encoded as a\
-        \ string of characters consisting of \n  alphabetic characters (A-Z and a-z),\
-        \ digits (0-9) and/or the hyphen (-) and that \n  shall end with either an\
-        \ alphabetic character or a digit. \n"
+      description: "NF Set Identifier (see clause 28.12 of 3GPP TS 23.003), formatted as the following string \"set<Set ID>.<nftype>set.5gc.mnc<MNC>.mcc<MCC>\", or  \"set<SetID>.<NFType>set.5gc.nid<NID>.mnc<MNC>.mcc<MCC>\" with  <MCC> encoded as defined in clause 5.4.2 (\"Mcc\" data type definition)  <MNC> encoding the Mobile Network Code part of the PLMN, comprising 3 digits. \n  If there are only 2 significant digits in the MNC, one \"0\" digit shall be inserted \n  at the left side to fill the 3 digits coding of MNC.  Pattern: '^[0-9]{3}$'\n<NFType> encoded as a value defined in Table 6.1.6.3.3-1 of 3GPP TS 29.510 but \n  with lower case characters <Set ID> encoded as a string of characters consisting of \n  alphabetic characters (A-Z and a-z), digits (0-9) and/or the hyphen (-) and that \n  shall end with either an alphabetic character or a digit. \n"
       type: string
     NfServiceSetId:
-      description: "NF Service Set Identifier (see clause 28.12 of 3GPP TS 23.003)\
-        \ formatted as the following  string \"set<Set ID>.sn<Service Name>.nfi<NF\
-        \ Instance ID>.5gc.mnc<MNC>.mcc<MCC>\", or  \"set<SetID>.sn<ServiceName>.nfi<NFInstanceID>.5gc.nid<NID>.mnc<MNC>.mcc<MCC>\"\
-        \ with  <MCC> encoded as defined in clause 5.4.2 (\"Mcc\" data type definition)\
-        \   <MNC> encoding the Mobile Network Code part of the PLMN, comprising 3\
-        \ digits. \n  If there are only 2 significant digits in the MNC, one \"0\"\
-        \ digit shall be inserted \n  at the left side to fill the 3 digits coding\
-        \ of MNC.  Pattern: '^[0-9]{3}$'\n<NID> encoded as defined in clause\_5.4.2\
-        \ (\"Nid\" data type definition)  <NFInstanceId> encoded as defined in clause\
-        \ 5.3.2  <ServiceName> encoded as defined in 3GPP TS 29.510  <Set ID> encoded\
-        \ as a string of characters consisting of alphabetic \n  characters (A-Z and\
-        \ a-z), digits (0-9) and/or the hyphen (-) and that shall end \n  with either\
-        \ an alphabetic character or a digit.\n"
+      description: "NF Service Set Identifier (see clause 28.12 of 3GPP TS 23.003) formatted as the following  string \"set<Set ID>.sn<Service Name>.nfi<NF Instance ID>.5gc.mnc<MNC>.mcc<MCC>\", or  \"set<SetID>.sn<ServiceName>.nfi<NFInstanceID>.5gc.nid<NID>.mnc<MNC>.mcc<MCC>\" with  <MCC> encoded as defined in clause 5.4.2 (\"Mcc\" data type definition)   <MNC> encoding the Mobile Network Code part of the PLMN, comprising 3 digits. \n  If there are only 2 significant digits in the MNC, one \"0\" digit shall be inserted \n  at the left side to fill the 3 digits coding of MNC.  Pattern: '^[0-9]{3}$'\n<NID> encoded as defined in clause 5.4.2 (\"Nid\" data type definition)  <NFInstanceId> encoded as defined in clause 5.3.2  <ServiceName> encoded as defined in 3GPP TS 29.510  <Set ID> encoded as a string of characters consisting of alphabetic \n  characters (A-Z and a-z), digits (0-9) and/or the hyphen (-) and that shall end \n  with either an alphabetic character or a digit.\n"
       type: string
     EapAuthMethod_200_response:
       properties:
@@ -2526,18 +2378,17 @@ components:
         _links:
           additionalProperties:
             $ref: "#/components/schemas/LinksValueSchema"
-          description: "URI : /{eapSessionUri}, a map(list of key-value pairs) where\
-            \ member serves as key"
+          description: "URI : /{eapSessionUri}, a map(list of key-value pairs) where member serves as key"
           minProperties: 1
           type: object
       required:
-      - _links
-      - eapPayload
+        - _links
+        - eapPayload
       type: object
     UEAuthenticationCtx_5gAuthData:
       oneOf:
-      - $ref: "#/components/schemas/Av5gAka"
-      - $ref: "#/components/schemas/EapPayload"
+        - $ref: "#/components/schemas/Av5gAka"
+        - $ref: "#/components/schemas/EapPayload"
   securitySchemes:
     oAuth2ClientCredentials:
       flows:
