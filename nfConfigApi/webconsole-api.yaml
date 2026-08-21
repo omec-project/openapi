@@ -228,6 +228,10 @@ components:
           type: string
         maxBrDl:
           type: string
+        gbrUl:
+          type: string
+        gbrDl:
+          type: string
         arp:
           $ref: '#/components/schemas/Arp'
     Arp:

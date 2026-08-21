@@ -31,6 +31,8 @@ type PccQos struct {
 	FiveQi               int32   `json:"fiveQi" yaml:"fiveQi"`
 	MaxBrUl              *string `json:"maxBrUl,omitempty" yaml:"maxBrUl,omitempty"`
 	MaxBrDl              *string `json:"maxBrDl,omitempty" yaml:"maxBrDl,omitempty"`
+	GbrUl                *string `json:"gbrUl,omitempty" yaml:"gbrUl,omitempty"`
+	GbrDl                *string `json:"gbrDl,omitempty" yaml:"gbrDl,omitempty"`
 	Arp                  Arp     `json:"arp" yaml:"arp"`
 	AdditionalProperties map[string]any
 }
@@ -144,6 +146,70 @@ func (o *PccQos) SetMaxBrDl(v string) {
 	o.MaxBrDl = &v
 }
 
+// GetGbrUl returns the GbrUl field value if set, zero value otherwise.
+func (o *PccQos) GetGbrUl() string {
+	if o == nil || openapi.IsNil(o.GbrUl) {
+		var ret string
+		return ret
+	}
+	return *o.GbrUl
+}
+
+// GetGbrUlOk returns a tuple with the GbrUl field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *PccQos) GetGbrUlOk() (*string, bool) {
+	if o == nil || openapi.IsNil(o.GbrUl) {
+		return nil, false
+	}
+	return o.GbrUl, true
+}
+
+// HasGbrUl returns a boolean if a field has been set.
+func (o *PccQos) HasGbrUl() bool {
+	if o != nil && !openapi.IsNil(o.GbrUl) {
+		return true
+	}
+
+	return false
+}
+
+// SetGbrUl gets a reference to the given string and assigns it to the GbrUl field.
+func (o *PccQos) SetGbrUl(v string) {
+	o.GbrUl = &v
+}
+
+// GetGbrDl returns the GbrDl field value if set, zero value otherwise.
+func (o *PccQos) GetGbrDl() string {
+	if o == nil || openapi.IsNil(o.GbrDl) {
+		var ret string
+		return ret
+	}
+	return *o.GbrDl
+}
+
+// GetGbrDlOk returns a tuple with the GbrDl field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *PccQos) GetGbrDlOk() (*string, bool) {
+	if o == nil || openapi.IsNil(o.GbrDl) {
+		return nil, false
+	}
+	return o.GbrDl, true
+}
+
+// HasGbrDl returns a boolean if a field has been set.
+func (o *PccQos) HasGbrDl() bool {
+	if o != nil && !openapi.IsNil(o.GbrDl) {
+		return true
+	}
+
+	return false
+}
+
+// SetGbrDl gets a reference to the given string and assigns it to the GbrDl field.
+func (o *PccQos) SetGbrDl(v string) {
+	o.GbrDl = &v
+}
+
 // GetArp returns the Arp field value
 func (o *PccQos) GetArp() Arp {
 	if o == nil {
@@ -188,6 +254,12 @@ func (o PccQos) ToMap() (map[string]any, error) {
 	if !openapi.IsNil(o.MaxBrDl) {
 		toSerialize["maxBrDl"] = o.MaxBrDl
 	}
+	if !openapi.IsNil(o.GbrUl) {
+		toSerialize["gbrUl"] = o.GbrUl
+	}
+	if !openapi.IsNil(o.GbrDl) {
+		toSerialize["gbrDl"] = o.GbrDl
+	}
 	toSerialize["arp"] = o.Arp
 	return toSerialize, nil
 }
@@ -231,6 +303,8 @@ func (o *PccQos) UnmarshalJSON(data []byte) (err error) {
 		delete(additionalProperties, "fiveQi")
 		delete(additionalProperties, "maxBrUl")
 		delete(additionalProperties, "maxBrDl")
+		delete(additionalProperties, "gbrUl")
+		delete(additionalProperties, "gbrDl")
 		delete(additionalProperties, "arp")
 		o.AdditionalProperties = additionalProperties
 	}
