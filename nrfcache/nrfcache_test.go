@@ -24,6 +24,11 @@ import (
 	"github.com/omec-project/openapi/v2/models"
 )
 
+const (
+	testDnnInternet = "internet"
+	testAmfSetID    = "3f8"
+)
+
 type testContext struct {
 	nfProfilesDb           map[string]string
 	validityPeriod         int32
@@ -547,7 +552,7 @@ func setupTest(t *testing.T) (*testContext, func()) {
 func createTestParam() Nnrf_NFDiscovery.ApiSearchNFInstancesRequest {
 	param := Nnrf_NFDiscovery.ApiSearchNFInstancesRequest{}
 	param = param.ServiceNames([]models.ServiceName{models.SERVICENAME_NSMF_PDUSESSION})
-	param = param.Dnn("internet")
+	param = param.Dnn(testDnnInternet)
 	param = param.Snssais([]models.Snssai{{Sst: 1, Sd: openapi.PtrString("010203")}})
 	return param
 }
@@ -611,7 +616,7 @@ func TestCacheMissAndHits(t *testing.T) {
 	InitNrfCaching(evictionTimerVal*time.Second, testCtx.nrfDbCallback)
 
 	// Test case 1: Cache Miss for dnn - 'internet'
-	param1 := createSMFParam("internet", "010203")
+	param1 := createSMFParam(testDnnInternet, "010203")
 	result, err := SearchNFInstances(ctx, "testNrf", models.NFTYPE_SMF, models.NFTYPE_AMF, param1)
 	assertSearchResult(t, result, err, 1)
 	assertCallbackCount(t, testCtx.getCallbackCount(), 1)
@@ -628,7 +633,7 @@ func TestCacheMissAndHits(t *testing.T) {
 	assertCallbackCount(t, testCtx.getCallbackCount(), 2)
 
 	// Test case 4: Cache Miss for dnn 'internet' sd '0a0b0c'
-	param3 := createSMFParam("internet", "0a0b0c")
+	param3 := createSMFParam(testDnnInternet, "0a0b0c")
 	result, err = SearchNFInstances(ctx, "testNrf", models.NFTYPE_SMF, models.NFTYPE_AMF, param3)
 	assertSearchResult(t, result, err, 1)
 	assertCallbackCount(t, testCtx.getCallbackCount(), 3)
@@ -656,7 +661,7 @@ func TestCacheMissOnTTlExpiry(t *testing.T) {
 	time.Sleep(3 * time.Second)
 
 	// After TTL expiry, this should be a cache miss
-	param := createSMFParam("internet", "0a0b0c")
+	param := createSMFParam(testDnnInternet, "0a0b0c")
 	result, err = SearchNFInstances(ctx, "testNrf", models.NFTYPE_SMF, models.NFTYPE_AMF, param)
 	assertSearchResult(t, result, err, 1)
 	assertCallbackCount(t, testCtx.getCallbackCount(), 2)
@@ -719,7 +724,7 @@ func TestCacheEviction(t *testing.T) {
 	}{
 		{
 			name:           "short_ttl_entry",
-			dnn:            "internet",
+			dnn:            testDnnInternet,
 			sd:             "010203",
 			validityPeriod: 1,
 			description:    "Entry with 1 second TTL (will expire first)",
@@ -733,7 +738,7 @@ func TestCacheEviction(t *testing.T) {
 		},
 		{
 			name:           "long_ttl_entry",
-			dnn:            "internet",
+			dnn:            testDnnInternet,
 			sd:             "0a0b0c",
 			validityPeriod: 30,
 			description:    "Entry with 30 second TTL (will survive)",
@@ -761,7 +766,7 @@ func TestCacheEviction(t *testing.T) {
 
 		// Test that short TTL entry was evicted (should cause new callback)
 		testCtx.setValidityPeriod(60) // Reset to reasonable TTL
-		shortTTLParam := createSMFParam("internet", "010203")
+		shortTTLParam := createSMFParam(testDnnInternet, "010203")
 		result, err := SearchNFInstances(ctx, "testNrf", models.NFTYPE_SMF, models.NFTYPE_AMF, shortTTLParam)
 		assertSearchResult(t, result, err, 1)
 
@@ -781,7 +786,7 @@ func TestCacheConcurrency(t *testing.T) {
 	InitNrfCaching(evictionTimerVal*time.Second, testCtx.nrfDbCallback)
 
 	numGoroutines := 100
-	param := createSMFParam("internet", "010203")
+	param := createSMFParam(testDnnInternet, "010203")
 	expectedCallCount := testCtx.getCallbackCount() + 1
 
 	t.Run("concurrent_cache_access", func(t *testing.T) {
@@ -1119,7 +1124,7 @@ func TestAmfProfileMatching(t *testing.T) {
 	amfProfile.SetPlmnList([]models.PlmnId{{Mcc: "208", Mnc: "93"}})
 	amfProfile.SetAmfInfo(models.AmfInfo{
 		AmfRegionId: "ca",
-		AmfSetId:    "3f8",
+		AmfSetId:    testAmfSetID,
 	})
 
 	testCases := []struct {
@@ -1342,7 +1347,7 @@ func TestAmfTaiFilter(t *testing.T) {
 		NfStatus:     models.NFSTATUS_REGISTERED,
 		AmfInfo: &models.AmfInfo{
 			AmfRegionId: "ca",
-			AmfSetId:    "3f8",
+			AmfSetId:    testAmfSetID,
 			TaiList:     []models.Tai{matchingTai},
 		},
 	}
@@ -1362,7 +1367,7 @@ func TestAmfTaiFilter(t *testing.T) {
 		NfInstanceId: "AMF-no-tai",
 		NfType:       models.NFTYPE_AMF,
 		NfStatus:     models.NFSTATUS_REGISTERED,
-		AmfInfo:      &models.AmfInfo{AmfRegionId: "ca", AmfSetId: "3f8"},
+		AmfInfo:      &models.AmfInfo{AmfRegionId: "ca", AmfSetId: testAmfSetID},
 	}
 	if match, err := MatchAmfProfile(&unrestricted, paramMatch); err != nil || !match {
 		t.Errorf("AMF with absent taiList must match any TAI query: match=%v err=%v", match, err)
@@ -1388,7 +1393,7 @@ func TestAmfTaiFilterSnpn(t *testing.T) {
 		NfStatus:     models.NFSTATUS_REGISTERED,
 		AmfInfo: &models.AmfInfo{
 			AmfRegionId: "ca",
-			AmfSetId:    "3f8",
+			AmfSetId:    testAmfSetID,
 			TaiList:     []models.Tai{snpnTai1},
 		},
 	}
@@ -1423,7 +1428,7 @@ func TestSmfDnnScopedToMatchedSnssai(t *testing.T) {
 				{
 					SNssai: snssaiA,
 					DnnSmfInfoList: []models.DnnSmfInfoItem{
-						{Dnn: "internet"},
+						{Dnn: testDnnInternet},
 					},
 				},
 				{
@@ -1439,7 +1444,7 @@ func TestSmfDnnScopedToMatchedSnssai(t *testing.T) {
 	// snssai-A + dnn "internet" must match (same entry)
 	paramMatch := Nnrf_NFDiscovery.ApiSearchNFInstancesRequest{}.
 		Snssais([]models.Snssai{snssaiA}).
-		Dnn("internet")
+		Dnn(testDnnInternet)
 	if match, err := MatchSmfProfile(&profile, paramMatch); err != nil || !match {
 		t.Errorf("expected match for snssai-A/internet: match=%v err=%v", match, err)
 	}
