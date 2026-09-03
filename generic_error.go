@@ -75,22 +75,58 @@ func ErrorModel[T any](err error) (T, bool) {
 
 // format error message using title and detail when model implements rfc7807
 func FormatErrorMessage(status string, v any) string {
-	str := ""
-	metaValue := reflect.ValueOf(v).Elem()
+	title := problemDetailsString(v, "Title")
+	detail := problemDetailsString(v, "Detail")
 
-	if metaValue.Kind() == reflect.Struct {
-		field := metaValue.FieldByName("Title")
-		if field != (reflect.Value{}) {
-			str = fmt.Sprintf("%s", field.Interface())
-		}
+	var str string
 
-		field = metaValue.FieldByName("Detail")
-		if field != (reflect.Value{}) {
-			str = fmt.Sprintf("%s (%s)", str, field.Interface())
-		}
+	switch {
+	case title != "" && detail != "":
+		str = title + " (" + detail + ")"
+	case title != "":
+		str = title
+	default:
+		str = detail
 	}
 
-	return strings.TrimSpace(fmt.Sprintf("%s %s", status, str))
+	return strings.TrimSpace(status + " " + str)
+}
+
+// problemDetailsString reads one RFC 7807 string member from a problem-details model, following a
+// single level of pointer indirection.
+//
+// The generated models declare title and detail as *string with omitempty, so the member has three
+// states that all have to read as "nothing to say": the type has no such field, the field is
+// present but nil, or it holds the empty string. Formatting the *string itself renders the address
+// - "%!s(*string=0x14000123456)" for a populated field and "%!s(*string=<nil>)" for an unset one -
+// which replaces the very text this function exists to surface, in the error a caller logs.
+func problemDetailsString(v any, name string) string {
+	value := reflect.ValueOf(v)
+	if value.Kind() == reflect.Pointer {
+		if value.IsNil() {
+			return ""
+		}
+		value = value.Elem()
+	}
+	if value.Kind() != reflect.Struct {
+		return ""
+	}
+
+	field := value.FieldByName(name)
+	if !field.IsValid() {
+		return ""
+	}
+	if field.Kind() == reflect.Pointer {
+		if field.IsNil() {
+			return ""
+		}
+		field = field.Elem()
+	}
+	if field.Kind() != reflect.String {
+		return ""
+	}
+
+	return field.String()
 }
 
 // Prevent trying to import "fmt"
