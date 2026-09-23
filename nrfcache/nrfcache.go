@@ -25,7 +25,7 @@ const (
 	defaultNfProfileTTl = time.Minute
 )
 
-type NfProfileItem struct {
+type nfProfileItem struct {
 	nfProfile  *models.NFProfileDiscovery
 	expiryTime time.Time
 	ttl        time.Duration
@@ -33,17 +33,17 @@ type NfProfileItem struct {
 }
 
 // isExpired - returns true if the expiry time has passed.
-func (item *NfProfileItem) isExpired() bool {
+func (item *nfProfileItem) isExpired() bool {
 	return item.expiryTime.Before(time.Now())
 }
 
 // updateExpiryTime - sets new expiry time based on the current time
-func (item *NfProfileItem) updateExpiryTime() {
+func (item *nfProfileItem) updateExpiryTime() {
 	item.expiryTime = time.Now().Add(item.ttl)
 }
 
-func newNfProfileItem(profile *models.NFProfileDiscovery, ttl time.Duration) *NfProfileItem {
-	item := &NfProfileItem{
+func newNfProfileItem(profile *models.NFProfileDiscovery, ttl time.Duration) *nfProfileItem {
+	item := &nfProfileItem{
 		nfProfile: profile,
 		ttl:       ttl,
 	}
@@ -51,41 +51,41 @@ func newNfProfileItem(profile *models.NFProfileDiscovery, ttl time.Duration) *Nf
 	return item
 }
 
-// NfProfilePriorityQ : Priority Queue to store the profile. Queue is ordered by expiry time
-type NfProfilePriorityQ []*NfProfileItem
+// nfProfilePriorityQ : Priority Queue to store the profile. Queue is ordered by expiry time
+type nfProfilePriorityQ []*nfProfileItem
 
 // Len - Number of entries in the priority queue
-func (npq NfProfilePriorityQ) Len() int {
+func (npq nfProfilePriorityQ) Len() int {
 	return len(npq)
 }
 
 // Less - Comparator for the sort interface used by the heap.
 // entries will be sorted by increasing order of expiry time
-func (npq NfProfilePriorityQ) Less(i, j int) bool {
+func (npq nfProfilePriorityQ) Less(i, j int) bool {
 	return npq[i].expiryTime.Before(npq[j].expiryTime)
 }
 
 // Swap - implemented for the sort interface used by the heap pkg.
 // swaps the element at i and j.
-func (npq NfProfilePriorityQ) Swap(i, j int) {
+func (npq nfProfilePriorityQ) Swap(i, j int) {
 	npq[i], npq[j] = npq[j], npq[i]
 	npq[i].index = i
 	npq[j].index = j
 }
 
 // at - returns the element at index i
-func (npq NfProfilePriorityQ) at(index int) *NfProfileItem {
+func (npq nfProfilePriorityQ) at(index int) *nfProfileItem {
 	return npq[index]
 }
 
 // push - adds an entry to the priority queue. Invokes heap api to
 // push the entry to the correct location in the queue
-func (npq *NfProfilePriorityQ) push(item *NfProfileItem) {
+func (npq *nfProfilePriorityQ) push(item *nfProfileItem) {
 	heap.Push(npq, item)
 }
 
 // update - update fields of existing entry. Invokes heap.Fix to re-establish the ordering.
-func (npq *NfProfilePriorityQ) update(item *NfProfileItem, value *models.NFProfileDiscovery, ttl time.Duration) {
+func (npq *nfProfilePriorityQ) update(item *nfProfileItem, value *models.NFProfileDiscovery, ttl time.Duration) {
 	item.nfProfile = value
 	item.ttl = ttl
 	item.updateExpiryTime()
@@ -93,20 +93,20 @@ func (npq *NfProfilePriorityQ) update(item *NfProfileItem, value *models.NFProfi
 }
 
 // remove -removes an entry at given index.
-func (npq *NfProfilePriorityQ) remove(item *NfProfileItem) {
+func (npq *nfProfilePriorityQ) remove(item *nfProfileItem) {
 	heap.Remove(npq, item.index)
 }
 
 // Push - implemented for heap interface. appends an element to the priority queue
-func (npq *NfProfilePriorityQ) Push(item any) {
+func (npq *nfProfilePriorityQ) Push(item any) {
 	n := len(*npq)
-	entry := item.(*NfProfileItem)
+	entry := item.(*nfProfileItem)
 	entry.index = n
 	*npq = append(*npq, entry)
 }
 
 // Pop - implemented for heap interface. Removes the entry with expiry time
-func (npq *NfProfilePriorityQ) Pop() any {
+func (npq *nfProfilePriorityQ) Pop() any {
 	old := *npq
 	n := len(old)
 	item := old[n-1]
@@ -117,19 +117,19 @@ func (npq *NfProfilePriorityQ) Pop() any {
 }
 
 // newNfProfilePriorityQ - New priority queue for storing NF Profiles.
-func newNfProfilePriorityQ() *NfProfilePriorityQ {
-	q := &NfProfilePriorityQ{}
+func newNfProfilePriorityQ() *nfProfilePriorityQ {
+	q := &nfProfilePriorityQ{}
 	heap.Init(q)
 	return q
 }
 
-// NrfCache : cache of nf profiles
-type NrfCache struct {
-	cache               map[string]*NfProfileItem // map[nf-instance-id] =*NfProfile
-	priorityQ           *NfProfilePriorityQ       // sorted by expiry time
+// nrfCache : cache of nf profiles
+type nrfCache struct {
+	cache               map[string]*nfProfileItem // map[nf-instance-id] =*NfProfile
+	priorityQ           *nfProfilePriorityQ       // sorted by expiry time
 	evictionTicker      *time.Ticker
 	done                chan struct{}
-	nrfDiscoveryQueryCb NrfDiscoveryQueryCb // nrf query callback
+	nrfDiscoveryQueryCb nrfDiscoveryQueryFn // nrf query callback
 	evictionInterval    time.Duration       // timer interval in which the cache is checked for eviction of expired entries
 	mutex               sync.RWMutex
 	discoveryMutex      sync.Mutex
@@ -138,7 +138,7 @@ type NrfCache struct {
 // handleLookup - Checks if the cache has nf cache entry corresponding to the parameters specified.
 // If entry does not exist, perform nrf discovery query. To avoid concurrency issues,
 // nrf discovery query is mutex protected.
-func (c *NrfCache) handleLookup(ctx context.Context, nrfUri string, targetNfType, requestNfType models.NFType, param Nnrf_NFDiscovery.ApiSearchNFInstancesRequest) (models.SearchResult, error) {
+func (c *nrfCache) handleLookup(ctx context.Context, nrfUri string, targetNfType, requestNfType models.NFType, param Nnrf_NFDiscovery.ApiSearchNFInstancesRequest) (models.SearchResult, error) {
 	// Check context cancellation
 	select {
 	case <-ctx.Done():
@@ -194,7 +194,7 @@ func (c *NrfCache) handleLookup(ctx context.Context, nrfUri string, targetNfType
 }
 
 // set - Adds nf profile entry to the map and the priority queue
-func (c *NrfCache) set(nfProfile *models.NFProfileDiscovery, ttl time.Duration) {
+func (c *nrfCache) set(nfProfile *models.NFProfileDiscovery, ttl time.Duration) {
 	if ttl == 0 {
 		ttl = defaultNfProfileTTl
 	}
@@ -216,7 +216,7 @@ func (c *NrfCache) set(nfProfile *models.NFProfileDiscovery, ttl time.Duration) 
 }
 
 // get - checks if nf profile corresponding to the search opts exist in the cache.
-func (c *NrfCache) get(opts Nnrf_NFDiscovery.ApiSearchNFInstancesRequest) []models.NFProfileDiscovery {
+func (c *nrfCache) get(opts Nnrf_NFDiscovery.ApiSearchNFInstancesRequest) []models.NFProfileDiscovery {
 	var nfProfiles []models.NFProfileDiscovery
 
 	if len(c.cache) == 0 {
@@ -257,25 +257,25 @@ func (c *NrfCache) get(opts Nnrf_NFDiscovery.ApiSearchNFInstancesRequest) []mode
 }
 
 // removeByNfInstanceId - removes nf profile with nfInstanceId from the cache and queue
-func (c *NrfCache) removeByNfInstanceId(nfInstanceId string) bool {
+func (c *nrfCache) removeByNfInstanceId(nfInstanceId string) bool {
 	c.mutex.Lock()
 	defer c.mutex.Unlock()
 
-	NfProfileItem, rc := c.cache[nfInstanceId]
+	item, rc := c.cache[nfInstanceId]
 	if rc {
-		c.remove(NfProfileItem)
+		c.remove(item)
 	}
 	return rc
 }
 
 // remove -
-func (c *NrfCache) remove(item *NfProfileItem) {
+func (c *nrfCache) remove(item *nfProfileItem) {
 	c.priorityQ.remove(item)
 	delete(c.cache, item.nfProfile.GetNfInstanceId())
 }
 
 // cleanupExpiredItems - removes the profiles with expired TTLs
-func (c *NrfCache) cleanupExpiredItems() {
+func (c *nrfCache) cleanupExpiredItems() {
 	logger.NrfcacheLog.Infoln("nrf cache: cleanup expired items")
 	for c.priorityQ.Len() > 0 {
 		item := c.priorityQ.at(0)
@@ -289,17 +289,17 @@ func (c *NrfCache) cleanupExpiredItems() {
 }
 
 // purge - release the cache and its resources.
-func (c *NrfCache) purge() {
+func (c *nrfCache) purge() {
 	c.mutex.Lock()
 	defer c.mutex.Unlock()
 
 	close(c.done)
 	c.priorityQ = newNfProfilePriorityQ()
-	c.cache = make(map[string]*NfProfileItem)
+	c.cache = make(map[string]*nfProfileItem)
 	c.evictionTicker.Stop()
 }
 
-func (c *NrfCache) startExpiryProcessing() {
+func (c *nrfCache) startExpiryProcessing() {
 	for {
 		select {
 		case <-c.evictionTicker.C:
@@ -318,13 +318,13 @@ func (c *NrfCache) startExpiryProcessing() {
 	}
 }
 
-func NewNrfCache(duration time.Duration, dbqueryCb NrfDiscoveryQueryCb) *NrfCache {
+func newNrfCache(duration time.Duration, dbqueryCb nrfDiscoveryQueryFn) *nrfCache {
 	if dbqueryCb == nil {
 		panic("NrfDiscoveryQueryCb cannot be nil")
 	}
 
-	cache := &NrfCache{
-		cache:               make(map[string]*NfProfileItem),
+	cache := &nrfCache{
+		cache:               make(map[string]*nfProfileItem),
 		priorityQ:           newNfProfilePriorityQ(),
 		evictionInterval:    duration,
 		nrfDiscoveryQueryCb: dbqueryCb,
@@ -337,50 +337,27 @@ func NewNrfCache(duration time.Duration, dbqueryCb NrfDiscoveryQueryCb) *NrfCach
 	return cache
 }
 
-// Add proper cleanup
-func (c *NrfCache) Close() error {
-	c.mutex.Lock()
-	defer c.mutex.Unlock()
-
-	select {
-	case <-c.done:
-		return nil // Already closed
-	default:
-		close(c.done)
-	}
-
-	if c.evictionTicker != nil {
-		c.evictionTicker.Stop()
-	}
-
-	// Clear cache
-	c.cache = make(map[string]*NfProfileItem)
-	c.priorityQ = newNfProfilePriorityQ()
-
-	return nil
-}
-
-type NrfMasterCache struct {
-	nrfDiscoveryQueryCb NrfDiscoveryQueryCb
-	nfTypeToCacheMap    map[models.NFType]*NrfCache
+type nrfMasterCache struct {
+	nrfDiscoveryQueryCb nrfDiscoveryQueryFn
+	nfTypeToCacheMap    map[models.NFType]*nrfCache
 	evictionInterval    time.Duration
 	mutex               sync.Mutex
 }
 
-func (c *NrfMasterCache) GetNrfCacheInstance(targetNfType models.NFType) *NrfCache {
+func (c *nrfMasterCache) getNrfCacheInstance(targetNfType models.NFType) *nrfCache {
 	c.mutex.Lock()
 	defer c.mutex.Unlock()
 
 	cache, exists := c.nfTypeToCacheMap[targetNfType]
 	if !exists {
 		logger.NrfcacheLog.Infof("creating cache for nftype %v", targetNfType)
-		cache = NewNrfCache(c.evictionInterval, c.nrfDiscoveryQueryCb)
+		cache = newNrfCache(c.evictionInterval, c.nrfDiscoveryQueryCb)
 		c.nfTypeToCacheMap[targetNfType] = cache
 	}
 	return cache
 }
 
-func (c *NrfMasterCache) clearNrfMasterCache() {
+func (c *nrfMasterCache) clearNrfMasterCache() {
 	c.mutex.Lock()
 	defer c.mutex.Unlock()
 
@@ -390,26 +367,26 @@ func (c *NrfMasterCache) clearNrfMasterCache() {
 	}
 }
 
-func (c *NrfMasterCache) removeNfProfile(nfInstanceId string) bool {
+func (c *nrfMasterCache) removeNfProfile(nfInstanceId string) bool {
 	c.mutex.Lock()
 	defer c.mutex.Unlock()
 
 	var ok bool
-	for _, nrfCache := range c.nfTypeToCacheMap {
-		if ok = nrfCache.removeByNfInstanceId(nfInstanceId); ok {
+	for _, cache := range c.nfTypeToCacheMap {
+		if ok = cache.removeByNfInstanceId(nfInstanceId); ok {
 			break
 		}
 	}
 	return ok
 }
 
-var masterCache *NrfMasterCache
+var masterCache *nrfMasterCache
 
-type NrfDiscoveryQueryCb func(ctx context.Context, nrfUri string, targetNfType, requestNfType models.NFType, param Nnrf_NFDiscovery.ApiSearchNFInstancesRequest) (*models.SearchResult, error)
+type nrfDiscoveryQueryFn func(ctx context.Context, nrfUri string, targetNfType, requestNfType models.NFType, param Nnrf_NFDiscovery.ApiSearchNFInstancesRequest) (*models.SearchResult, error)
 
-func InitNrfCaching(interval time.Duration, cb NrfDiscoveryQueryCb) {
-	m := &NrfMasterCache{
-		nfTypeToCacheMap:    make(map[models.NFType]*NrfCache),
+func InitNrfCaching(interval time.Duration, cb nrfDiscoveryQueryFn) {
+	m := &nrfMasterCache{
+		nfTypeToCacheMap:    make(map[models.NFType]*nrfCache),
 		evictionInterval:    interval,
 		nrfDiscoveryQueryCb: cb,
 	}
@@ -453,7 +430,7 @@ func SearchNFInstances(ctx context.Context, nrfUri string, targetNfType, request
 		return nil, fmt.Errorf("masterCache is not initialized")
 	}
 
-	c := masterCache.GetNrfCacheInstance(targetNfType)
+	c := masterCache.getNrfCacheInstance(targetNfType)
 	if c == nil {
 		logger.NrfcacheLog.Errorf("failed to find/create cache for nfType: %v", targetNfType)
 		return nil, fmt.Errorf("unable to find/create cache for NF type: %v", targetNfType)

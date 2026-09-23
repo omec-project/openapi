@@ -34,21 +34,32 @@ var (
 	regexpCacheCount atomic.Int64
 )
 
-type MatchFilter func(profile *models.NFProfileDiscovery, opts Nnrf_NFDiscovery.ApiSearchNFInstancesRequest) (bool, error)
-
-type MatchFilters map[models.NFType]MatchFilter
-
-var matchFilters = MatchFilters{
-	models.NFTYPE_SMF:  MatchSmfProfile,
-	models.NFTYPE_AUSF: MatchAusfProfile,
-	models.NFTYPE_PCF:  MatchPcfProfile,
-	models.NFTYPE_NSSF: MatchNssfProfile,
-	models.NFTYPE_UDM:  MatchUdmProfile,
-	models.NFTYPE_UDR:  MatchUdrProfile,
-	models.NFTYPE_AMF:  MatchAmfProfile,
+// allNFServices returns all NF services from a profile, merging the
+// deprecated nfServices array with its TS 29.510 Rel-16 replacement,
+// nfServiceList, so callers do not need to check both fields.
+func allNFServices(profile *models.NFProfileDiscovery) []models.NFService {
+	services := append([]models.NFService{}, profile.GetNfServices()...)
+	for _, service := range profile.GetNfServiceList() {
+		services = append(services, service)
+	}
+	return services
 }
 
-func MatchSmfProfile(profile *models.NFProfileDiscovery, opts Nnrf_NFDiscovery.ApiSearchNFInstancesRequest) (bool, error) {
+type matchFilterFunc func(profile *models.NFProfileDiscovery, opts Nnrf_NFDiscovery.ApiSearchNFInstancesRequest) (bool, error)
+
+type matchFilterMap map[models.NFType]matchFilterFunc
+
+var matchFilters = matchFilterMap{
+	models.NFTYPE_SMF:  matchSmfProfile,
+	models.NFTYPE_AUSF: matchAusfProfile,
+	models.NFTYPE_PCF:  matchPcfProfile,
+	models.NFTYPE_NSSF: matchNssfProfile,
+	models.NFTYPE_UDM:  matchUdmProfile,
+	models.NFTYPE_UDR:  matchUdrProfile,
+	models.NFTYPE_AMF:  matchAmfProfile,
+}
+
+func matchSmfProfile(profile *models.NFProfileDiscovery, opts Nnrf_NFDiscovery.ApiSearchNFInstancesRequest) (bool, error) {
 	if profile == nil {
 		return false, fmt.Errorf("profile cannot be nil")
 	}
@@ -56,7 +67,7 @@ func MatchSmfProfile(profile *models.NFProfileDiscovery, opts Nnrf_NFDiscovery.A
 	if serviceNames != nil && len(*serviceNames) > 0 {
 		found := false
 		for _, requiredService := range *serviceNames {
-			for _, nfService := range profile.GetNfServices() {
+			for _, nfService := range allNFServices(profile) {
 				if nfService.GetServiceName() == requiredService {
 					found = true
 					break
@@ -222,7 +233,7 @@ func extractSupiNumber(supi string) string {
 	return supi
 }
 
-func MatchAusfProfile(profile *models.NFProfileDiscovery, opts Nnrf_NFDiscovery.ApiSearchNFInstancesRequest) (bool, error) {
+func matchAusfProfile(profile *models.NFProfileDiscovery, opts Nnrf_NFDiscovery.ApiSearchNFInstancesRequest) (bool, error) {
 	if profile == nil {
 		return false, fmt.Errorf("profile cannot be nil")
 	}
@@ -248,7 +259,7 @@ func MatchAusfProfile(profile *models.NFProfileDiscovery, opts Nnrf_NFDiscovery.
 	return true, nil
 }
 
-func MatchNssfProfile(profile *models.NFProfileDiscovery, opts Nnrf_NFDiscovery.ApiSearchNFInstancesRequest) (bool, error) {
+func matchNssfProfile(profile *models.NFProfileDiscovery, opts Nnrf_NFDiscovery.ApiSearchNFInstancesRequest) (bool, error) {
 	if profile == nil {
 		return false, fmt.Errorf("profile cannot be nil")
 	}
@@ -256,7 +267,7 @@ func MatchNssfProfile(profile *models.NFProfileDiscovery, opts Nnrf_NFDiscovery.
 	return true, nil
 }
 
-func MatchAmfProfile(profile *models.NFProfileDiscovery, opts Nnrf_NFDiscovery.ApiSearchNFInstancesRequest) (bool, error) {
+func matchAmfProfile(profile *models.NFProfileDiscovery, opts Nnrf_NFDiscovery.ApiSearchNFInstancesRequest) (bool, error) {
 	if profile == nil {
 		return false, fmt.Errorf("profile cannot be nil")
 	}
@@ -336,7 +347,7 @@ func taiInList(tai models.Tai, list []models.Tai) bool {
 	return false
 }
 
-func MatchPcfProfile(profile *models.NFProfileDiscovery, opts Nnrf_NFDiscovery.ApiSearchNFInstancesRequest) (bool, error) {
+func matchPcfProfile(profile *models.NFProfileDiscovery, opts Nnrf_NFDiscovery.ApiSearchNFInstancesRequest) (bool, error) {
 	if profile == nil {
 		return false, fmt.Errorf("profile cannot be nil")
 	}
@@ -364,7 +375,7 @@ func MatchPcfProfile(profile *models.NFProfileDiscovery, opts Nnrf_NFDiscovery.A
 	return true, nil
 }
 
-func MatchUdmProfile(profile *models.NFProfileDiscovery, opts Nnrf_NFDiscovery.ApiSearchNFInstancesRequest) (bool, error) {
+func matchUdmProfile(profile *models.NFProfileDiscovery, opts Nnrf_NFDiscovery.ApiSearchNFInstancesRequest) (bool, error) {
 	if profile == nil {
 		return false, fmt.Errorf("profile cannot be nil")
 	}
@@ -387,13 +398,13 @@ func MatchUdmProfile(profile *models.NFProfileDiscovery, opts Nnrf_NFDiscovery.A
 	return true, nil
 }
 
-// MatchUdrProfile selects UDR profiles for a SUPI-filtered discovery.
+// matchUdrProfile selects UDR profiles for a SUPI-filtered discovery.
 //
 // Without an entry in matchFilters a UDR profile is dropped unconditionally,
 // so a cached UDR lookup returns nothing and every UDM/PCF data access falls
 // through to a live NRF query. Rationale: UDR is resolved on every subscriber
 // data access, which makes it the most frequently discovered NF in the core.
-func MatchUdrProfile(profile *models.NFProfileDiscovery, opts Nnrf_NFDiscovery.ApiSearchNFInstancesRequest) (bool, error) {
+func matchUdrProfile(profile *models.NFProfileDiscovery, opts Nnrf_NFDiscovery.ApiSearchNFInstancesRequest) (bool, error) {
 	if profile == nil {
 		return false, fmt.Errorf("profile cannot be nil")
 	}
