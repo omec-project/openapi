@@ -1457,3 +1457,31 @@ func TestSmfDnnScopedToMatchedSnssai(t *testing.T) {
 		t.Errorf("expected no match for snssai-A/ims cross-SNSSAI: match=%v err=%v", match, err)
 	}
 }
+
+// TestSmfMatchNfServiceList guards allNFServices' handling of nfServiceList,
+// the TS 29.510 Rel-16 replacement for the deprecated nfServices array. A
+// profile populated only via nfServiceList must still be selectable by
+// service-name filtering, and a service name absent from it must not match.
+func TestSmfMatchNfServiceList(t *testing.T) {
+	profile := models.NewNFProfileDiscovery("SMF-nfservicelist-only", models.NFTYPE_SMF, models.NFSTATUS_REGISTERED)
+	profile.SetNfServiceList(map[string]models.NFService{
+		"nsmf-pdusession-1": {
+			ServiceInstanceId: "nsmf-pdusession-1",
+			ServiceName:       models.SERVICENAME_NSMF_PDUSESSION,
+			Scheme:            models.URISCHEME_HTTPS,
+			NfServiceStatus:   models.NFSERVICESTATUS_REGISTERED,
+		},
+	})
+
+	paramMatch := Nnrf_NFDiscovery.ApiSearchNFInstancesRequest{}.
+		ServiceNames([]models.ServiceName{models.SERVICENAME_NSMF_PDUSESSION})
+	if match, err := matchSmfProfile(profile, paramMatch); err != nil || !match {
+		t.Errorf("expected match for service name present only in nfServiceList: match=%v err=%v", match, err)
+	}
+
+	paramMiss := Nnrf_NFDiscovery.ApiSearchNFInstancesRequest{}.
+		ServiceNames([]models.ServiceName{models.SERVICENAME_NSMF_EVENT_EXPOSURE})
+	if match, err := matchSmfProfile(profile, paramMiss); err != nil || match {
+		t.Errorf("expected no match for service name absent from nfServiceList: match=%v err=%v", match, err)
+	}
+}

@@ -384,7 +384,7 @@ var masterCache *nrfMasterCache
 
 type nrfDiscoveryQueryFn func(ctx context.Context, nrfUri string, targetNfType, requestNfType models.NFType, param Nnrf_NFDiscovery.ApiSearchNFInstancesRequest) (*models.SearchResult, error)
 
-func InitNrfCaching(interval time.Duration, cb nrfDiscoveryQueryFn) {
+func InitNrfCaching(interval time.Duration, cb func(ctx context.Context, nrfUri string, targetNfType, requestNfType models.NFType, param Nnrf_NFDiscovery.ApiSearchNFInstancesRequest) (*models.SearchResult, error)) {
 	m := &nrfMasterCache{
 		nfTypeToCacheMap:    make(map[models.NFType]*nrfCache),
 		evictionInterval:    interval,
