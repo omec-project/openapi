@@ -901,7 +901,7 @@ func TestAusfMatchFilters(t *testing.T) {
 			// Count how many should actually match
 			expectedMatches := 0
 			for _, instance := range result.NfInstances {
-				match, err := MatchAusfProfile(&instance, param)
+				match, err := matchAusfProfile(&instance, param)
 				if err != nil {
 					// Handle the error appropriately - could log, fail test, or skip
 					t.Errorf("MatchAusfProfile failed: %v", err)
@@ -970,7 +970,7 @@ func TestAmfMatchFilters(t *testing.T) {
 				// Test the matching logic separately
 				matchCount := 0
 				for _, instance := range result.NfInstances {
-					if match, err := MatchAmfProfile(&instance, param); err == nil && match {
+					if match, err := matchAmfProfile(&instance, param); err == nil && match {
 						matchCount++
 					}
 				}
@@ -1029,8 +1029,8 @@ func TestAusfMatchFiltersIsolated(t *testing.T) {
 			// Test matching against each profile
 			param := createAusfParam(tc.supi)
 
-			match1, err1 := MatchAusfProfile(&ausf1Profile, param)
-			match2, err2 := MatchAusfProfile(&ausf2Profile, param)
+			match1, err1 := matchAusfProfile(&ausf1Profile, param)
+			match2, err2 := matchAusfProfile(&ausf2Profile, param)
 
 			if err1 != nil || err2 != nil {
 				t.Fatalf("Matching failed: %v, %v", err1, err2)
@@ -1146,7 +1146,7 @@ func TestAmfProfileMatching(t *testing.T) {
 
 	for _, tc := range testCases {
 		t.Run(tc.name, func(t *testing.T) {
-			match, err := MatchAmfProfile(amfProfile, tc.param)
+			match, err := matchAmfProfile(amfProfile, tc.param)
 			if err != nil {
 				t.Fatalf("MatchAmfProfile failed: %v", err)
 			}
@@ -1168,12 +1168,12 @@ func TestMatchProfileWithoutSupiRangesIsUnrestricted(t *testing.T) {
 
 	testCases := []struct {
 		profile models.NFProfileDiscovery
-		matcher MatchFilter
+		matcher matchFilterFunc
 		name    string
 	}{
 		{
 			name:    "udm_info_without_supi_ranges",
-			matcher: MatchUdmProfile,
+			matcher: matchUdmProfile,
 			profile: models.NFProfileDiscovery{
 				NfInstanceId: "UDM-no-ranges",
 				NfType:       models.NFTYPE_UDM,
@@ -1182,7 +1182,7 @@ func TestMatchProfileWithoutSupiRangesIsUnrestricted(t *testing.T) {
 		},
 		{
 			name:    "udm_info_absent",
-			matcher: MatchUdmProfile,
+			matcher: matchUdmProfile,
 			profile: models.NFProfileDiscovery{
 				NfInstanceId: "UDM-no-info",
 				NfType:       models.NFTYPE_UDM,
@@ -1190,7 +1190,7 @@ func TestMatchProfileWithoutSupiRangesIsUnrestricted(t *testing.T) {
 		},
 		{
 			name:    "pcf_info_without_supi_ranges",
-			matcher: MatchPcfProfile,
+			matcher: matchPcfProfile,
 			profile: models.NFProfileDiscovery{
 				NfInstanceId: "PCF-no-ranges",
 				NfType:       models.NFTYPE_PCF,
@@ -1199,7 +1199,7 @@ func TestMatchProfileWithoutSupiRangesIsUnrestricted(t *testing.T) {
 		},
 		{
 			name:    "pcf_info_absent",
-			matcher: MatchPcfProfile,
+			matcher: matchPcfProfile,
 			profile: models.NFProfileDiscovery{
 				NfInstanceId: "PCF-no-info",
 				NfType:       models.NFTYPE_PCF,
@@ -1207,7 +1207,7 @@ func TestMatchProfileWithoutSupiRangesIsUnrestricted(t *testing.T) {
 		},
 		{
 			name:    "ausf_info_without_supi_ranges",
-			matcher: MatchAusfProfile,
+			matcher: matchAusfProfile,
 			profile: models.NFProfileDiscovery{
 				NfInstanceId: "AUSF-no-ranges",
 				NfType:       models.NFTYPE_AUSF,
@@ -1216,7 +1216,7 @@ func TestMatchProfileWithoutSupiRangesIsUnrestricted(t *testing.T) {
 		},
 		{
 			name:    "ausf_info_absent",
-			matcher: MatchAusfProfile,
+			matcher: matchAusfProfile,
 			profile: models.NFProfileDiscovery{
 				NfInstanceId: "AUSF-no-info",
 				NfType:       models.NFTYPE_AUSF,
@@ -1224,7 +1224,7 @@ func TestMatchProfileWithoutSupiRangesIsUnrestricted(t *testing.T) {
 		},
 		{
 			name:    "udr_info_without_supi_ranges",
-			matcher: MatchUdrProfile,
+			matcher: matchUdrProfile,
 			profile: models.NFProfileDiscovery{
 				NfInstanceId: "UDR-no-ranges",
 				NfType:       models.NFTYPE_UDR,
@@ -1233,7 +1233,7 @@ func TestMatchProfileWithoutSupiRangesIsUnrestricted(t *testing.T) {
 		},
 		{
 			name:    "udr_info_absent",
-			matcher: MatchUdrProfile,
+			matcher: matchUdrProfile,
 			profile: models.NFProfileDiscovery{
 				NfInstanceId: "UDR-no-info",
 				NfType:       models.NFTYPE_UDR,
@@ -1270,7 +1270,7 @@ func TestMatchProfileWithSupiRangesStillFiltersOut(t *testing.T) {
 	udmInfo.SetSupiRanges(ranges)
 	profile := models.NewNFProfileDiscovery("UDM-ranged", models.NFTYPE_UDM, models.NFSTATUS_REGISTERED)
 	profile.SetUdmInfo(*udmInfo)
-	match, err := MatchUdmProfile(profile, param)
+	match, err := matchUdmProfile(profile, param)
 	if err != nil {
 		t.Fatalf("MatchUdmProfile returned error: %v", err)
 	}
@@ -1297,7 +1297,7 @@ func TestUdrProfileIsSelectableFromCache(t *testing.T) {
 	profile.SetUdrInfo(*udrInfo)
 
 	inRange := Nnrf_NFDiscovery.ApiSearchNFInstancesRequest{}.Supi("imsi-208930100007550")
-	match, err := MatchUdrProfile(profile, inRange)
+	match, err := matchUdrProfile(profile, inRange)
 	if err != nil {
 		t.Fatalf("MatchUdrProfile returned error: %v", err)
 	}
@@ -1306,7 +1306,7 @@ func TestUdrProfileIsSelectableFromCache(t *testing.T) {
 	}
 
 	outOfRange := Nnrf_NFDiscovery.ApiSearchNFInstancesRequest{}.Supi("imsi-208930100009999")
-	match, err = MatchUdrProfile(profile, outOfRange)
+	match, err = matchUdrProfile(profile, outOfRange)
 	if err != nil {
 		t.Fatalf("MatchUdrProfile returned error: %v", err)
 	}
@@ -1325,7 +1325,7 @@ func TestAmfMatchesProfileWithoutPlmnList(t *testing.T) {
 		NfStatus:     models.NFSTATUS_REGISTERED,
 	}
 	param := createAmfParamWithPlmns([]models.PlmnId{{Mcc: "208", Mnc: "93"}})
-	match, err := MatchAmfProfile(&profile, param)
+	match, err := matchAmfProfile(&profile, param)
 	if err != nil {
 		t.Fatalf("MatchAmfProfile returned error: %v", err)
 	}
@@ -1353,12 +1353,12 @@ func TestAmfTaiFilter(t *testing.T) {
 	}
 
 	paramMatch := Nnrf_NFDiscovery.ApiSearchNFInstancesRequest{}.Tai(matchingTai)
-	if match, err := MatchAmfProfile(&profile, paramMatch); err != nil || !match {
+	if match, err := matchAmfProfile(&profile, paramMatch); err != nil || !match {
 		t.Errorf("expected TAI match: match=%v err=%v", match, err)
 	}
 
 	paramMiss := Nnrf_NFDiscovery.ApiSearchNFInstancesRequest{}.Tai(otherTai)
-	if match, err := MatchAmfProfile(&profile, paramMiss); err != nil || match {
+	if match, err := matchAmfProfile(&profile, paramMiss); err != nil || match {
 		t.Errorf("expected TAI miss: match=%v err=%v", match, err)
 	}
 
@@ -1369,7 +1369,7 @@ func TestAmfTaiFilter(t *testing.T) {
 		NfStatus:     models.NFSTATUS_REGISTERED,
 		AmfInfo:      &models.AmfInfo{AmfRegionId: "ca", AmfSetId: testAmfSetID},
 	}
-	if match, err := MatchAmfProfile(&unrestricted, paramMatch); err != nil || !match {
+	if match, err := matchAmfProfile(&unrestricted, paramMatch); err != nil || !match {
 		t.Errorf("AMF with absent taiList must match any TAI query: match=%v err=%v", match, err)
 	}
 }
@@ -1399,15 +1399,15 @@ func TestAmfTaiFilterSnpn(t *testing.T) {
 	}
 
 	// Same NID: must match.
-	if match, err := MatchAmfProfile(&profile, Nnrf_NFDiscovery.ApiSearchNFInstancesRequest{}.Tai(snpnTai1)); err != nil || !match {
+	if match, err := matchAmfProfile(&profile, Nnrf_NFDiscovery.ApiSearchNFInstancesRequest{}.Tai(snpnTai1)); err != nil || !match {
 		t.Errorf("expected match for same NID: match=%v err=%v", match, err)
 	}
 	// Different NID, same PLMN+TAC: must not match (cross-SNPN false positive).
-	if match, err := MatchAmfProfile(&profile, Nnrf_NFDiscovery.ApiSearchNFInstancesRequest{}.Tai(snpnTai2)); err != nil || match {
+	if match, err := matchAmfProfile(&profile, Nnrf_NFDiscovery.ApiSearchNFInstancesRequest{}.Tai(snpnTai2)); err != nil || match {
 		t.Errorf("expected no match for different NID: match=%v err=%v", match, err)
 	}
 	// Query without NID against SNPN profile TAI: must not match.
-	if match, err := MatchAmfProfile(&profile, Nnrf_NFDiscovery.ApiSearchNFInstancesRequest{}.Tai(plmnTai)); err != nil || match {
+	if match, err := matchAmfProfile(&profile, Nnrf_NFDiscovery.ApiSearchNFInstancesRequest{}.Tai(plmnTai)); err != nil || match {
 		t.Errorf("expected no match for PLMN query vs SNPN profile: match=%v err=%v", match, err)
 	}
 }
@@ -1445,7 +1445,7 @@ func TestSmfDnnScopedToMatchedSnssai(t *testing.T) {
 	paramMatch := Nnrf_NFDiscovery.ApiSearchNFInstancesRequest{}.
 		Snssais([]models.Snssai{snssaiA}).
 		Dnn(testDnnInternet)
-	if match, err := MatchSmfProfile(&profile, paramMatch); err != nil || !match {
+	if match, err := matchSmfProfile(&profile, paramMatch); err != nil || !match {
 		t.Errorf("expected match for snssai-A/internet: match=%v err=%v", match, err)
 	}
 
@@ -1453,7 +1453,35 @@ func TestSmfDnnScopedToMatchedSnssai(t *testing.T) {
 	paramCross := Nnrf_NFDiscovery.ApiSearchNFInstancesRequest{}.
 		Snssais([]models.Snssai{snssaiA}).
 		Dnn("ims")
-	if match, err := MatchSmfProfile(&profile, paramCross); err != nil || match {
+	if match, err := matchSmfProfile(&profile, paramCross); err != nil || match {
 		t.Errorf("expected no match for snssai-A/ims cross-SNSSAI: match=%v err=%v", match, err)
+	}
+}
+
+// TestSmfMatchNfServiceList guards allNFServices' handling of nfServiceList,
+// the TS 29.510 Rel-16 replacement for the deprecated nfServices array. A
+// profile populated only via nfServiceList must still be selectable by
+// service-name filtering, and a service name absent from it must not match.
+func TestSmfMatchNfServiceList(t *testing.T) {
+	profile := models.NewNFProfileDiscovery("SMF-nfservicelist-only", models.NFTYPE_SMF, models.NFSTATUS_REGISTERED)
+	profile.SetNfServiceList(map[string]models.NFService{
+		"nsmf-pdusession-1": {
+			ServiceInstanceId: "nsmf-pdusession-1",
+			ServiceName:       models.SERVICENAME_NSMF_PDUSESSION,
+			Scheme:            models.URISCHEME_HTTPS,
+			NfServiceStatus:   models.NFSERVICESTATUS_REGISTERED,
+		},
+	})
+
+	paramMatch := Nnrf_NFDiscovery.ApiSearchNFInstancesRequest{}.
+		ServiceNames([]models.ServiceName{models.SERVICENAME_NSMF_PDUSESSION})
+	if match, err := matchSmfProfile(profile, paramMatch); err != nil || !match {
+		t.Errorf("expected match for service name present only in nfServiceList: match=%v err=%v", match, err)
+	}
+
+	paramMiss := Nnrf_NFDiscovery.ApiSearchNFInstancesRequest{}.
+		ServiceNames([]models.ServiceName{models.SERVICENAME_NSMF_EVENT_EXPOSURE})
+	if match, err := matchSmfProfile(profile, paramMiss); err != nil || match {
+		t.Errorf("expected no match for service name absent from nfServiceList: match=%v err=%v", match, err)
 	}
 }
