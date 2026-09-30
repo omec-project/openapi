@@ -2,7 +2,10 @@
 # SPDX-License-Identifier: Apache-2.0
 openapi: 3.0.0
 info:
-  description: "NSSF Network Slice Selection Service.  \n© 2024, 3GPP Organizational Partners (ARIB, ATIS, CCSA, ETSI, TSDSI, TTA, TTC).  \nAll rights reserved.\n"
+  description: |
+    NSSF Network Slice Selection Service.
+    © 2024, 3GPP Organizational Partners (ARIB, ATIS, CCSA, ETSI, TSDSI, TTA, TTC).
+    All rights reserved.
   title: NSSF NS Selection
   version: 2.3.0-alpha.3
 externalDocs:
@@ -286,218 +289,218 @@ components:
     AuthorizedNetworkSliceInfo:
       description: Contains the authorized network slice information
       example:
+        allowedNssaiList:
+          - allowedSnssaiList:
+              - allowedSnssai:
+                  sst: 20
+                  sd: sd
+                nsiInformationList:
+                  - nrfId: null
+                    nsiId: null
+                    nrfNfMgtUri: null
+                    nrfAccessTokenUri: null
+                    nrfOauth2Required:
+                      key: true
+                  - nrfId: null
+                    nsiId: null
+                    nrfNfMgtUri: null
+                    nrfAccessTokenUri: null
+                    nrfOauth2Required:
+                      key: true
+                mappedHomeSnssai:
+                  sst: 20
+                  sd: sd
+              - allowedSnssai:
+                  sst: 20
+                  sd: sd
+                nsiInformationList:
+                  - nrfId: null
+                    nsiId: null
+                    nrfNfMgtUri: null
+                    nrfAccessTokenUri: null
+                    nrfOauth2Required:
+                      key: true
+                  - nrfId: null
+                    nsiId: null
+                    nrfNfMgtUri: null
+                    nrfAccessTokenUri: null
+                    nrfOauth2Required:
+                      key: true
+                mappedHomeSnssai:
+                  sst: 20
+                  sd: sd
+            accessType: 3GPP_ACCESS
+          - allowedSnssaiList:
+              - allowedSnssai:
+                  sst: 20
+                  sd: sd
+                nsiInformationList:
+                  - nrfId: null
+                    nsiId: null
+                    nrfNfMgtUri: null
+                    nrfAccessTokenUri: null
+                    nrfOauth2Required:
+                      key: true
+                  - nrfId: null
+                    nsiId: null
+                    nrfNfMgtUri: null
+                    nrfAccessTokenUri: null
+                    nrfOauth2Required:
+                      key: true
+                mappedHomeSnssai:
+                  sst: 20
+                  sd: sd
+              - allowedSnssai:
+                  sst: 20
+                  sd: sd
+                nsiInformationList:
+                  - nrfId: null
+                    nsiId: null
+                    nrfNfMgtUri: null
+                    nrfAccessTokenUri: null
+                    nrfOauth2Required:
+                      key: true
+                  - nrfId: null
+                    nsiId: null
+                    nrfNfMgtUri: null
+                    nrfAccessTokenUri: null
+                    nrfOauth2Required:
+                      key: true
+                mappedHomeSnssai:
+                  sst: 20
+                  sd: sd
+            accessType: 3GPP_ACCESS
         configuredNssai:
-          - mappedHomeSnssai:
-              sd: sd
+          - configuredSnssai:
               sst: 20
-            configuredSnssai:
               sd: sd
+            mappedHomeSnssai:
               sst: 20
-          - mappedHomeSnssai:
               sd: sd
+          - configuredSnssai:
               sst: 20
-            configuredSnssai:
               sd: sd
+            mappedHomeSnssai:
               sst: 20
-        supportedFeatures: supportedFeatures
+              sd: sd
+        targetAmfSet: targetAmfSet
         candidateAmfList:
           - null
           - null
-        nrfAmfSet: nrfAmfSet
         rejectedNssaiInPlmn:
-          - sd: sd
-            sst: 20
-          - sd: sd
-            sst: 20
+          - sst: 20
+            sd: sd
+          - sst: 20
+            sd: sd
+        rejectedNssaiInTa:
+          - sst: 20
+            sd: sd
+          - sst: 20
+            sd: sd
         nsiInformation:
+          nrfId: null
+          nsiId: null
           nrfNfMgtUri: null
+          nrfAccessTokenUri: null
           nrfOauth2Required:
             key: true
-          nrfAccessTokenUri: null
-          nsiId: null
-          nrfId: null
-        nrfAmfSetAccessTokenUri: nrfAmfSetAccessTokenUri
+        supportedFeatures: supportedFeatures
+        nrfAmfSet: nrfAmfSet
         nrfAmfSetNfMgtUri: nrfAmfSetNfMgtUri
-        rejectedNssaiInTa:
-          - sd: sd
-            sst: 20
-          - sd: sd
-            sst: 20
-        targetNssai:
-          - sd: sd
-            sst: 20
-          - sd: sd
-            sst: 20
-        allowedNssaiList:
-          - accessType: 3GPP_ACCESS
-            allowedSnssaiList:
-              - mappedHomeSnssai:
-                  sd: sd
-                  sst: 20
-                allowedSnssai:
-                  sd: sd
-                  sst: 20
-                nsiInformationList:
-                  - nrfNfMgtUri: null
-                    nrfOauth2Required:
-                      key: true
-                    nrfAccessTokenUri: null
-                    nsiId: null
-                    nrfId: null
-                  - nrfNfMgtUri: null
-                    nrfOauth2Required:
-                      key: true
-                    nrfAccessTokenUri: null
-                    nsiId: null
-                    nrfId: null
-              - mappedHomeSnssai:
-                  sd: sd
-                  sst: 20
-                allowedSnssai:
-                  sd: sd
-                  sst: 20
-                nsiInformationList:
-                  - nrfNfMgtUri: null
-                    nrfOauth2Required:
-                      key: true
-                    nrfAccessTokenUri: null
-                    nsiId: null
-                    nrfId: null
-                  - nrfNfMgtUri: null
-                    nrfOauth2Required:
-                      key: true
-                    nrfAccessTokenUri: null
-                    nsiId: null
-                    nrfId: null
-          - accessType: 3GPP_ACCESS
-            allowedSnssaiList:
-              - mappedHomeSnssai:
-                  sd: sd
-                  sst: 20
-                allowedSnssai:
-                  sd: sd
-                  sst: 20
-                nsiInformationList:
-                  - nrfNfMgtUri: null
-                    nrfOauth2Required:
-                      key: true
-                    nrfAccessTokenUri: null
-                    nsiId: null
-                    nrfId: null
-                  - nrfNfMgtUri: null
-                    nrfOauth2Required:
-                      key: true
-                    nrfAccessTokenUri: null
-                    nsiId: null
-                    nrfId: null
-              - mappedHomeSnssai:
-                  sd: sd
-                  sst: 20
-                allowedSnssai:
-                  sd: sd
-                  sst: 20
-                nsiInformationList:
-                  - nrfNfMgtUri: null
-                    nrfOauth2Required:
-                      key: true
-                    nrfAccessTokenUri: null
-                    nsiId: null
-                    nrfId: null
-                  - nrfNfMgtUri: null
-                    nrfOauth2Required:
-                      key: true
-                    nrfAccessTokenUri: null
-                    nsiId: null
-                    nrfId: null
+        nrfAmfSetAccessTokenUri: nrfAmfSetAccessTokenUri
         nrfOauth2Required:
           key: true
-        nsagInfos:
-          - taiRangeList:
-              - nid: null
-                tacRangeList:
-                  - start: start
-                    pattern: pattern
-                    end: end
-                  - start: start
-                    pattern: pattern
-                    end: end
-                plmnId:
-                  mnc: null
-                  mcc: null
-              - nid: null
-                tacRangeList:
-                  - start: start
-                    pattern: pattern
-                    end: end
-                  - start: start
-                    pattern: pattern
-                    end: end
-                plmnId:
-                  mnc: null
-                  mcc: null
-            snssaiList:
-              - sd: sd
-                sst: 20
-              - sd: sd
-                sst: 20
-            nsagIds:
-              - null
-              - null
-            taiList:
-              - tac: null
-                nid: null
-                plmnId:
-                  mnc: null
-                  mcc: null
-              - tac: null
-                nid: null
-                plmnId:
-                  mnc: null
-                  mcc: null
-          - taiRangeList:
-              - nid: null
-                tacRangeList:
-                  - start: start
-                    pattern: pattern
-                    end: end
-                  - start: start
-                    pattern: pattern
-                    end: end
-                plmnId:
-                  mnc: null
-                  mcc: null
-              - nid: null
-                tacRangeList:
-                  - start: start
-                    pattern: pattern
-                    end: end
-                  - start: start
-                    pattern: pattern
-                    end: end
-                plmnId:
-                  mnc: null
-                  mcc: null
-            snssaiList:
-              - sd: sd
-                sst: 20
-              - sd: sd
-                sst: 20
-            nsagIds:
-              - null
-              - null
-            taiList:
-              - tac: null
-                nid: null
-                plmnId:
-                  mnc: null
-                  mcc: null
-              - tac: null
-                nid: null
-                plmnId:
-                  mnc: null
-                  mcc: null
         targetAmfServiceSet: targetAmfServiceSet
-        targetAmfSet: targetAmfSet
+        targetNssai:
+          - sst: 20
+            sd: sd
+          - sst: 20
+            sd: sd
+        nsagInfos:
+          - nsagIds:
+              - null
+              - null
+            snssaiList:
+              - sst: 20
+                sd: sd
+              - sst: 20
+                sd: sd
+            taiList:
+              - plmnId:
+                  mcc: null
+                  mnc: null
+                tac: null
+                nid: null
+              - plmnId:
+                  mcc: null
+                  mnc: null
+                tac: null
+                nid: null
+            taiRangeList:
+              - plmnId:
+                  mcc: null
+                  mnc: null
+                tacRangeList:
+                  - start: start
+                    end: end
+                    pattern: pattern
+                  - start: start
+                    end: end
+                    pattern: pattern
+                nid: null
+              - plmnId:
+                  mcc: null
+                  mnc: null
+                tacRangeList:
+                  - start: start
+                    end: end
+                    pattern: pattern
+                  - start: start
+                    end: end
+                    pattern: pattern
+                nid: null
+          - nsagIds:
+              - null
+              - null
+            snssaiList:
+              - sst: 20
+                sd: sd
+              - sst: 20
+                sd: sd
+            taiList:
+              - plmnId:
+                  mcc: null
+                  mnc: null
+                tac: null
+                nid: null
+              - plmnId:
+                  mcc: null
+                  mnc: null
+                tac: null
+                nid: null
+            taiRangeList:
+              - plmnId:
+                  mcc: null
+                  mnc: null
+                tacRangeList:
+                  - start: start
+                    end: end
+                    pattern: pattern
+                  - start: start
+                    end: end
+                    pattern: pattern
+                nid: null
+              - plmnId:
+                  mcc: null
+                  mnc: null
+                tacRangeList:
+                  - start: start
+                    end: end
+                    pattern: pattern
+                  - start: start
+                    end: end
+                    pattern: pattern
+                nid: null
       properties:
         allowedNssaiList:
           items:
@@ -531,7 +534,7 @@ components:
           $ref: "#/components/schemas/NsiInformation"
         supportedFeatures:
           description: |
-            A string used to indicate the features supported by an API that is used as defined in clause  6.6 in 3GPP TS 29.500. The string shall contain a bitmask indicating supported features in  hexadecimal representation Each character in the string shall take a value of "0" to "9",  "a" to "f" or "A" to "F" and shall represent the support of 4 features as described in  table 5.2.2-3. The most significant character representing the highest-numbered features shall  appear first in the string, and the character representing features 1 to 4 shall appear last  in the string. The list of features and their numbering (starting with 1) are defined  separately for each API. If the string contains a lower number of characters than there are  defined features for an API, all features that would be represented by characters that are not  present in the string are not supported.
+            A string used to indicate the features supported by an API that is used as defined in clause 6.6 in 3GPP TS 29.500. The string shall contain a bitmask indicating supported features in hexadecimal representation Each character in the string shall take a value of "0" to "9", "a" to "f" or "A" to "F" and shall represent the support of 4 features as described in table 5.2.2-3. The most significant character representing the highest-numbered features shall  appear first in the string, and the character representing features 1 to 4 shall appear last  in the string. The list of features and their numbering (starting with 1) are defined  separately for each API. If the string contains a lower number of characters than there are  defined features for an API, all features that would be represented by characters that are not  present in the string are not supported.
           pattern: "^[A-Fa-f0-9]*$"
           type: string
         nrfAmfSet:
@@ -551,7 +554,13 @@ components:
           minProperties: 1
           type: object
         targetAmfServiceSet:
-          description: "NF Service Set Identifier (see clause 28.12 of 3GPP TS 23.003) formatted as the following  string \"set<Set ID>.sn<Service Name>.nfi<NF Instance ID>.5gc.mnc<MNC>.mcc<MCC>\", or  \"set<SetID>.sn<ServiceName>.nfi<NFInstanceID>.5gc.nid<NID>.mnc<MNC>.mcc<MCC>\" with  <MCC> encoded as defined in clause 5.4.2 (\"Mcc\" data type definition)   <MNC> encoding the Mobile Network Code part of the PLMN, comprising 3 digits. \n  If there are only 2 significant digits in the MNC, one \"0\" digit shall be inserted \n  at the left side to fill the 3 digits coding of MNC.  Pattern: '^[0-9]{3}$'\n<NID> encoded as defined in clause 5.4.2 (\"Nid\" data type definition)  <NFInstanceId> encoded as defined in clause 5.3.2  <ServiceName> encoded as defined in 3GPP TS 29.510  <Set ID> encoded as a string of characters consisting of alphabetic \n  characters (A-Z and a-z), digits (0-9) and/or the hyphen (-) and that shall end \n  with either an alphabetic character or a digit.\n"
+          description: |
+            NF Service Set Identifier (see clause 28.12 of 3GPP TS 23.003) formatted as the following string "set<Set ID>.sn<Service Name>.nfi<NF Instance ID>.5gc.mnc<MNC>.mcc<MCC>", or "set<SetID>.sn<ServiceName>.nfi<NFInstanceID>.5gc.nid<NID>.mnc<MNC>.mcc<MCC>" with <MCC> encoded as defined in clause 5.4.2 ("Mcc" data type definition) <MNC> encoding the Mobile Network Code part of the PLMN, comprising 3 digits.
+              If there are only 2 significant digits in the MNC, one "0" digit shall be inserted
+              at the left side to fill the 3 digits coding of MNC.  Pattern: '^[0-9]{3}$'
+            <NID> encoded as defined in clause 5.4.2 ("Nid" data type definition) <NFInstanceId> encoded as defined in clause 5.3.2 <ServiceName> encoded as defined in 3GPP TS 29.510 <Set ID> encoded as a string of characters consisting of alphabetic
+              characters (A-Z and a-z), digits (0-9) and/or the hyphen (-) and that shall end
+              with either an alphabetic character or a digit.
           type: string
         targetNssai:
           items:
@@ -583,25 +592,25 @@ components:
       description: |
         Contains the authorized S-NSSAI and optional mapped home S-NSSAI and network slice instance information
       example:
-        mappedHomeSnssai:
-          sd: sd
-          sst: 20
         allowedSnssai:
-          sd: sd
           sst: 20
+          sd: sd
         nsiInformationList:
-          - nrfNfMgtUri: null
+          - nrfId: null
+            nsiId: null
+            nrfNfMgtUri: null
+            nrfAccessTokenUri: null
             nrfOauth2Required:
               key: true
-            nrfAccessTokenUri: null
+          - nrfId: null
             nsiId: null
-            nrfId: null
-          - nrfNfMgtUri: null
+            nrfNfMgtUri: null
+            nrfAccessTokenUri: null
             nrfOauth2Required:
               key: true
-            nrfAccessTokenUri: null
-            nsiId: null
-            nrfId: null
+        mappedHomeSnssai:
+          sst: 20
+          sd: sd
       properties:
         allowedSnssai:
           $ref: "#/components/schemas/Snssai"
@@ -619,46 +628,46 @@ components:
       description: |
         Contains an array of allowed S-NSSAI that constitute the allowed NSSAI information for the authorized network slice information
       example:
-        accessType: 3GPP_ACCESS
         allowedSnssaiList:
-          - mappedHomeSnssai:
-              sd: sd
+          - allowedSnssai:
               sst: 20
-            allowedSnssai:
               sd: sd
-              sst: 20
             nsiInformationList:
-              - nrfNfMgtUri: null
+              - nrfId: null
+                nsiId: null
+                nrfNfMgtUri: null
+                nrfAccessTokenUri: null
                 nrfOauth2Required:
                   key: true
-                nrfAccessTokenUri: null
+              - nrfId: null
                 nsiId: null
-                nrfId: null
-              - nrfNfMgtUri: null
+                nrfNfMgtUri: null
+                nrfAccessTokenUri: null
                 nrfOauth2Required:
                   key: true
-                nrfAccessTokenUri: null
-                nsiId: null
-                nrfId: null
-          - mappedHomeSnssai:
-              sd: sd
+            mappedHomeSnssai:
               sst: 20
-            allowedSnssai:
               sd: sd
+          - allowedSnssai:
               sst: 20
+              sd: sd
             nsiInformationList:
-              - nrfNfMgtUri: null
+              - nrfId: null
+                nsiId: null
+                nrfNfMgtUri: null
+                nrfAccessTokenUri: null
                 nrfOauth2Required:
                   key: true
-                nrfAccessTokenUri: null
+              - nrfId: null
                 nsiId: null
-                nrfId: null
-              - nrfNfMgtUri: null
+                nrfNfMgtUri: null
+                nrfAccessTokenUri: null
                 nrfOauth2Required:
                   key: true
-                nrfAccessTokenUri: null
-                nsiId: null
-                nrfId: null
+            mappedHomeSnssai:
+              sst: 20
+              sd: sd
+        accessType: 3GPP_ACCESS
       properties:
         allowedSnssaiList:
           items:
@@ -675,12 +684,12 @@ components:
       description: |
         Contains the API URIs of NRF services to be used to discover NFs/services, subscribe to NF status changes and/or request access tokens within the selected Network Slice instance and optional the Identifier of the selected Network Slice instance
       example:
+        nrfId: null
+        nsiId: null
         nrfNfMgtUri: null
+        nrfAccessTokenUri: null
         nrfOauth2Required:
           key: true
-        nrfAccessTokenUri: null
-        nsiId: null
-        nrfId: null
       properties:
         nrfId:
           $ref: "#/components/schemas/Uri"
@@ -809,12 +818,12 @@ components:
       description: |
         Contains the configured S-NSSAI(s) authorized by the NSSF in the serving PLMN and optional mapped home S-NSSAI
       example:
-        mappedHomeSnssai:
-          sd: sd
-          sst: 20
         configuredSnssai:
-          sd: sd
           sst: 20
+          sd: sd
+        mappedHomeSnssai:
+          sst: 20
+          sd: sd
       properties:
         configuredSnssai:
           $ref: "#/components/schemas/Snssai"
@@ -827,48 +836,48 @@ components:
       description: |
         Contains the association of NSAGs and S-NSSAI(s) along with the TA(s) within which the association is valid.
       example:
-        taiRangeList:
-          - nid: null
-            tacRangeList:
-              - start: start
-                pattern: pattern
-                end: end
-              - start: start
-                pattern: pattern
-                end: end
-            plmnId:
-              mnc: null
-              mcc: null
-          - nid: null
-            tacRangeList:
-              - start: start
-                pattern: pattern
-                end: end
-              - start: start
-                pattern: pattern
-                end: end
-            plmnId:
-              mnc: null
-              mcc: null
-        snssaiList:
-          - sd: sd
-            sst: 20
-          - sd: sd
-            sst: 20
         nsagIds:
           - null
           - null
+        snssaiList:
+          - sst: 20
+            sd: sd
+          - sst: 20
+            sd: sd
         taiList:
-          - tac: null
-            nid: null
-            plmnId:
-              mnc: null
+          - plmnId:
               mcc: null
-          - tac: null
-            nid: null
-            plmnId:
               mnc: null
+            tac: null
+            nid: null
+          - plmnId:
               mcc: null
+              mnc: null
+            tac: null
+            nid: null
+        taiRangeList:
+          - plmnId:
+              mcc: null
+              mnc: null
+            tacRangeList:
+              - start: start
+                end: end
+                pattern: pattern
+              - start: start
+                end: end
+                pattern: pattern
+            nid: null
+          - plmnId:
+              mcc: null
+              mnc: null
+            tacRangeList:
+              - start: start
+                end: end
+                pattern: pattern
+              - start: start
+                end: end
+                pattern: pattern
+            nid: null
       properties:
         nsagIds:
           items:
@@ -973,15 +982,16 @@ components:
         - RH
       type: string
     NfInstanceId:
-      description: "String uniquely identifying a NF instance. The format of the NF Instance ID shall be a  Universally Unique Identifier (UUID) version 4, as described in IETF RFC 4122. \n"
+      description: |
+        String uniquely identifying a NF instance. The format of the NF Instance ID shall be a Universally Unique Identifier (UUID) version 4, as described in IETF RFC 4122.
       format: uuid
       type: string
     PlmnId:
       description: |
-        When PlmnId needs to be converted to string (e.g. when used in maps as key), the string  shall be composed of three digits "mcc" followed by "-" and two or three digits "mnc".
+        When PlmnId needs to be converted to string (e.g. when used in maps as key), the string shall be composed of three digits "mcc" followed by "-" and two or three digits "mnc".
       example:
-        mnc: null
         mcc: null
+        mnc: null
       properties:
         mcc:
           $ref: "#/components/schemas/Mcc"
@@ -992,21 +1002,23 @@ components:
         - mnc
       type: object
     Mcc:
-      description: "Mobile Country Code part of the PLMN, comprising 3 digits, as defined in clause 9.3.3.5 of 3GPP TS 38.413. \n"
+      description: |
+        Mobile Country Code part of the PLMN, comprising 3 digits, as defined in clause 9.3.3.5 of 3GPP TS 38.413.
       pattern: "^\\d{3}$"
       type: string
     Mnc:
-      description: "Mobile Network Code part of the PLMN, comprising 2 or 3 digits, as defined in  clause 9.3.3.5 of 3GPP TS 38.413. \n"
+      description: |
+        Mobile Network Code part of the PLMN, comprising 2 or 3 digits, as defined in clause 9.3.3.5 of 3GPP TS 38.413.
       pattern: "^\\d{2,3}$"
       type: string
     Tai:
       description: Contains the tracking area identity as described in 3GPP 23.003
       example:
+        plmnId:
+          mcc: null
+          mnc: null
         tac: null
         nid: null
-        plmnId:
-          mnc: null
-          mcc: null
       properties:
         plmnId:
           $ref: "#/components/schemas/PlmnId"
@@ -1019,25 +1031,27 @@ components:
         - tac
       type: object
     Tac:
-      description: "2 or 3-octet string identifying a tracking area code as specified in clause 9.3.3.10  of 3GPP TS 38.413, in hexadecimal representation. Each character in the string shall  take a value of \"0\" to \"9\", \"a\" to \"f\" or \"A\" to \"F\" and shall represent 4 bits. The most significant character representing the 4 most significant bits of the TAC shall  appear first in the string, and the character representing the 4 least significant bit  of the TAC shall appear last in the string. \n"
+      description: |
+        2 or 3-octet string identifying a tracking area code as specified in clause 9.3.3.10 of 3GPP TS 38.413, in hexadecimal representation. Each character in the string shall take a value of "0" to "9", "a" to "f" or "A" to "F" and shall represent 4 bits. The most significant character representing the 4 most significant bits of the TAC shall appear first in the string, and the character representing the 4 least significant bit of the TAC shall appear last in the string.
       pattern: "(^[A-Fa-f0-9]{4}$)|(^[A-Fa-f0-9]{6}$)"
       type: string
     Nid:
-      description: "This represents the Network Identifier, which together with a PLMN ID is used to identify an SNPN (see 3GPP TS 23.003 and 3GPP TS 23.501 clause 5.30.2.1). \n"
+      description: |
+        This represents the Network Identifier, which together with a PLMN ID is used to identify an SNPN (see 3GPP TS 23.003 and 3GPP TS 23.501 clause 5.30.2.1).
       pattern: "^[A-Fa-f0-9]{11}$"
       type: string
     SupportedFeatures:
       description: |
-        A string used to indicate the features supported by an API that is used as defined in clause  6.6 in 3GPP TS 29.500. The string shall contain a bitmask indicating supported features in  hexadecimal representation Each character in the string shall take a value of "0" to "9",  "a" to "f" or "A" to "F" and shall represent the support of 4 features as described in  table 5.2.2-3. The most significant character representing the highest-numbered features shall  appear first in the string, and the character representing features 1 to 4 shall appear last  in the string. The list of features and their numbering (starting with 1) are defined  separately for each API. If the string contains a lower number of characters than there are  defined features for an API, all features that would be represented by characters that are not  present in the string are not supported.
+        A string used to indicate the features supported by an API that is used as defined in clause 6.6 in 3GPP TS 29.500. The string shall contain a bitmask indicating supported features in hexadecimal representation Each character in the string shall take a value of "0" to "9", "a" to "f" or "A" to "F" and shall represent the support of 4 features as described in table 5.2.2-3. The most significant character representing the highest-numbered features shall  appear first in the string, and the character representing features 1 to 4 shall appear last  in the string. The list of features and their numbering (starting with 1) are defined  separately for each API. If the string contains a lower number of characters than there are  defined features for an API, all features that would be represented by characters that are not  present in the string are not supported.
       pattern: "^[A-Fa-f0-9]*$"
       type: string
     RedirectResponse:
       description: |
-        The response shall include a Location header field containing a different URI  (pointing to a different URI of an other service instance), or the same URI if a request  is redirected to the same target resource via a different SCP.
+        The response shall include a Location header field containing a different URI (pointing to a different URI of an other service instance), or the same URI if a request is redirected to the same target resource via a different SCP.
       example:
-        targetSepp: null
         cause: cause
         targetScp: null
+        targetSepp: null
       properties:
         cause:
           type: string
@@ -1065,7 +1079,7 @@ components:
           $ref: "#/components/schemas/Uri"
         cause:
           description: |
-            A machine-readable application error cause specific to this occurrence of the problem.  This IE should be present and provide application-related error information, if available.
+            A machine-readable application error cause specific to this occurrence of the problem. This IE should be present and provide application-related error information, if available.
           type: string
         invalidParams:
           items:
@@ -1093,11 +1107,11 @@ components:
       properties:
         param:
           description: |
-            If the invalid parameter is an attribute in a JSON body, this IE shall contain the  attribute's name and shall be encoded as a JSON Pointer. If the invalid parameter is  an HTTP header, this IE shall be formatted as the concatenation of the string "header "  plus the name of such header. If the invalid parameter is a query parameter, this IE  shall be formatted as the concatenation of the string "query " plus the name of such  query parameter. If the invalid parameter is a variable part in the path of a resource  URI, this IE shall contain the name of the variable, including the symbols "{" and "}"  used in OpenAPI specification as the notation to represent variable path segments.
+            If the invalid parameter is an attribute in a JSON body, this IE shall contain the attribute's name and shall be encoded as a JSON Pointer. If the invalid parameter is an HTTP header, this IE shall be formatted as the concatenation of the string "header " plus the name of such header. If the invalid parameter is a query parameter, this IE shall be formatted as the concatenation of the string "query " plus the name of such query parameter. If the invalid parameter is a variable part in the path of a resource URI, this IE shall contain the name of the variable, including the symbols "{" and "}" used in OpenAPI specification as the notation to represent variable path segments.
           type: string
         reason:
           description: |
-            A human-readable reason, e.g. "must be a positive integer". In cases involving failed  operations in a PATCH request, the reason string should identify the operation that  failed using the operation's array index to assist in correlation of the invalid  parameter with the failed operation, e.g." Replacement value invalid for attribute  (failed operation index= 4)"
+            A human-readable reason, e.g. "must be a positive integer". In cases involving failed operations in a PATCH request, the reason string should identify the operation that failed using the operation's array index to assist in correlation of the invalid parameter with the failed operation, e.g." Replacement value invalid for attribute (failed operation index= 4)"
           type: string
       required:
         - param
@@ -1112,28 +1126,35 @@ components:
       description: |
         When Snssai needs to be converted to string (e.g. when used in maps as key), the string shall be composed of one to three digits "sst" optionally followed by "-" and 6 hexadecimal digits "sd".
       example:
-        sd: sd
         sst: 20
+        sd: sd
       properties:
         sst:
-          description: "Unsigned integer, within the range 0 to 255, representing the Slice/Service Type.  It indicates the expected Network Slice behaviour in terms of features and services. Values 0 to 127 correspond to the standardized SST range. Values 128 to 255 correspond  to the Operator-specific range. See clause 28.4.2 of 3GPP TS 23.003. Standardized values are defined in clause 5.15.2.2 of 3GPP TS 23.501. \n"
+          description: |
+            Unsigned integer, within the range 0 to 255, representing the Slice/Service Type. It indicates the expected Network Slice behaviour in terms of features and services. Values 0 to 127 correspond to the standardized SST range. Values 128 to 255 correspond to the Operator-specific range. See clause 28.4.2 of 3GPP TS 23.003. Standardized values are defined in clause 5.15.2.2 of 3GPP TS 23.501.
           maximum: 255
           minimum: 0
           type: integer
         sd:
           description: |
-            3-octet string, representing the Slice Differentiator, in hexadecimal representation. Each character in the string shall take a value of "0" to "9", "a" to "f" or "A" to "F" and shall represent 4 bits. The most significant character representing the 4 most significant bits of the SD shall appear first in the string, and the character representing the 4 least significant bit of the SD shall appear last in the string. This is an optional parameter that complements the Slice/Service type(s) to allow to  differentiate amongst multiple Network Slices of the same Slice/Service type. This IE shall be absent if no SD value is associated with the SST.
+            3-octet string, representing the Slice Differentiator, in hexadecimal representation. Each character in the string shall take a value of "0" to "9", "a" to "f" or "A" to "F" and shall represent 4 bits. The most significant character representing the 4 most significant bits of the SD shall appear first in the string, and the character representing the 4 least significant bit of the SD shall appear last in the string. This is an optional parameter that complements the Slice/Service type(s) to allow to differentiate amongst multiple Network Slices of the same Slice/Service type. This IE shall be absent if no SD value is associated with the SST.
           pattern: "^[A-Fa-f0-9]{6}$"
           type: string
       required:
         - sst
       type: object
     NfServiceSetId:
-      description: "NF Service Set Identifier (see clause 28.12 of 3GPP TS 23.003) formatted as the following  string \"set<Set ID>.sn<Service Name>.nfi<NF Instance ID>.5gc.mnc<MNC>.mcc<MCC>\", or  \"set<SetID>.sn<ServiceName>.nfi<NFInstanceID>.5gc.nid<NID>.mnc<MNC>.mcc<MCC>\" with  <MCC> encoded as defined in clause 5.4.2 (\"Mcc\" data type definition)   <MNC> encoding the Mobile Network Code part of the PLMN, comprising 3 digits. \n  If there are only 2 significant digits in the MNC, one \"0\" digit shall be inserted \n  at the left side to fill the 3 digits coding of MNC.  Pattern: '^[0-9]{3}$'\n<NID> encoded as defined in clause 5.4.2 (\"Nid\" data type definition)  <NFInstanceId> encoded as defined in clause 5.3.2  <ServiceName> encoded as defined in 3GPP TS 29.510  <Set ID> encoded as a string of characters consisting of alphabetic \n  characters (A-Z and a-z), digits (0-9) and/or the hyphen (-) and that shall end \n  with either an alphabetic character or a digit.\n"
+      description: |
+        NF Service Set Identifier (see clause 28.12 of 3GPP TS 23.003) formatted as the following string "set<Set ID>.sn<Service Name>.nfi<NF Instance ID>.5gc.mnc<MNC>.mcc<MCC>", or "set<SetID>.sn<ServiceName>.nfi<NFInstanceID>.5gc.nid<NID>.mnc<MNC>.mcc<MCC>" with <MCC> encoded as defined in clause 5.4.2 ("Mcc" data type definition) <MNC> encoding the Mobile Network Code part of the PLMN, comprising 3 digits.
+          If there are only 2 significant digits in the MNC, one "0" digit shall be inserted
+          at the left side to fill the 3 digits coding of MNC.  Pattern: '^[0-9]{3}$'
+        <NID> encoded as defined in clause 5.4.2 ("Nid" data type definition) <NFInstanceId> encoded as defined in clause 5.3.2 <ServiceName> encoded as defined in 3GPP TS 29.510 <Set ID> encoded as a string of characters consisting of alphabetic
+          characters (A-Z and a-z), digits (0-9) and/or the hyphen (-) and that shall end
+          with either an alphabetic character or a digit.
       type: string
     NsSrg:
       description: |
-        String providing a Network Slice Simultaneous Registration Group. See clause 5.15.12 of  3GPP TS 23.501
+        String providing a Network Slice Simultaneous Registration Group. See clause 5.15.12 of 3GPP TS 23.501
       type: string
     AccessType:
       description: Indicates whether the access is  via 3GPP or via non-3GPP.
@@ -1148,17 +1169,17 @@ components:
     TaiRange:
       description: Range of TAIs (Tracking Area Identities)
       example:
-        nid: null
+        plmnId:
+          mcc: null
+          mnc: null
         tacRangeList:
           - start: start
-            pattern: pattern
             end: end
+            pattern: pattern
           - start: start
-            pattern: pattern
             end: end
-        plmnId:
-          mnc: null
-          mcc: null
+            pattern: pattern
+        nid: null
       properties:
         plmnId:
           $ref: "#/components/schemas/PlmnId"
@@ -1177,8 +1198,8 @@ components:
       description: Range of TACs (Tracking Area Codes)
       example:
         start: start
-        pattern: pattern
         end: end
+        pattern: pattern
       nullable: true
       oneOf: []
       properties:
@@ -1334,7 +1355,14 @@ components:
         - mnc
       type: object
     NfSetId:
-      description: "NF Set Identifier (see clause 28.12 of 3GPP TS 23.003), formatted as the following string \"set<Set ID>.<nftype>set.5gc.mnc<MNC>.mcc<MCC>\", or  \"set<SetID>.<NFType>set.5gc.nid<NID>.mnc<MNC>.mcc<MCC>\" with  <MCC> encoded as defined in clause 5.4.2 (\"Mcc\" data type definition)  <MNC> encoding the Mobile Network Code part of the PLMN, comprising 3 digits. \n  If there are only 2 significant digits in the MNC, one \"0\" digit shall be inserted \n  at the left side to fill the 3 digits coding of MNC.  Pattern: '^[0-9]{3}$'\n<NFType> encoded as a value defined in Table 6.1.6.3.3-1 of 3GPP TS 29.510 but \n  with lower case characters <Set ID> encoded as a string of characters consisting of \n  alphabetic characters (A-Z and a-z), digits (0-9) and/or the hyphen (-) and that \n  shall end with either an alphabetic character or a digit. \n"
+      description: |
+        NF Set Identifier (see clause 28.12 of 3GPP TS 23.003), formatted as the following string "set<Set ID>.<nftype>set.5gc.mnc<MNC>.mcc<MCC>", or "set<SetID>.<NFType>set.5gc.nid<NID>.mnc<MNC>.mcc<MCC>" with <MCC> encoded as defined in clause 5.4.2 ("Mcc" data type definition) <MNC> encoding the Mobile Network Code part of the PLMN, comprising 3 digits.
+          If there are only 2 significant digits in the MNC, one "0" digit shall be inserted
+          at the left side to fill the 3 digits coding of MNC.  Pattern: '^[0-9]{3}$'
+        <NFType> encoded as a value defined in Table 6.1.6.3.3-1 of 3GPP TS 29.510 but
+          with lower case characters <Set ID> encoded as a string of characters consisting of
+          alphabetic characters (A-Z and a-z), digits (0-9) and/or the hyphen (-) and that
+          shall end with either an alphabetic character or a digit.
       type: string
   securitySchemes:
     oAuth2ClientCredentials:

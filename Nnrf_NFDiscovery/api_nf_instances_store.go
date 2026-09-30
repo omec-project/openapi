@@ -524,7 +524,7 @@ func (r ApiSearchNFInstancesRequest) PreferredLocality(preferredLocality string)
 	return r
 }
 
-// preferred target NF location A map (list of key-value pairs) where the key of the map represents the relative priority, for the requester, of each locality description among the list of locality descriptions in this query parameter, encoded as \&quot;1\&quot; (highest priority\&quot;), \&quot;2\&quot;, \&quot;3\&quot;, …,  \&quot;n\&quot; (lowest priority)
+// preferred target NF location A map (list of key-value pairs) where the key of the map represents the relative priority, for the requester, of each locality description among the list of locality descriptions in this query parameter, encoded as \&quot;1\&quot; (highest priority\&quot;), \&quot;2\&quot;, \&quot;3\&quot;, …, \&quot;n\&quot; (lowest priority)
 func (r ApiSearchNFInstancesRequest) ExtPreferredLocality(extPreferredLocality map[string][]models.LocalityDescription) ApiSearchNFInstancesRequest {
 	r.extPreferredLocality = &extPreferredLocality
 	return r
