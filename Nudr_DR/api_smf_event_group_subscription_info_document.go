@@ -33,7 +33,7 @@ import (
 type SMFEventGroupSubscriptionInfoDocumentAPI interface {
 
 	/*
-		CreateSmfGroupSubscriptions Create SMF Subscription Info for a group of UEs or any YE
+		CreateSmfGroupSubscriptions Create SMF Subscription Info for a group of UEs or any UE
 
 			@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
 			@param ueGroupId
@@ -68,7 +68,7 @@ func (r ApiCreateSmfGroupSubscriptionsRequest) Execute() (*models.SmfSubscriptio
 }
 
 /*
-CreateSmfGroupSubscriptions Create SMF Subscription Info for a group of UEs or any YE
+CreateSmfGroupSubscriptions Create SMF Subscription Info for a group of UEs or any UE
 
 	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
 	@param ueGroupId

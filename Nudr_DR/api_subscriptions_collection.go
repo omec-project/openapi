@@ -31,57 +31,57 @@ import (
 type SubscriptionsCollectionAPI interface {
 
 	/*
-		CreateIndividualSubcription subscribe to data restoration notifications
+		CreateIndividualSubscription subscribe to data restoration notifications
 
 			@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
-			@return ApiCreateIndividualSubcriptionRequest
+			@return ApiCreateIndividualSubscriptionRequest
 	*/
-	CreateIndividualSubcription(ctx context.Context) ApiCreateIndividualSubcriptionRequest
+	CreateIndividualSubscription(ctx context.Context) ApiCreateIndividualSubscriptionRequest
 
-	// CreateIndividualSubcriptionExecute executes the request
-	CreateIndividualSubcriptionExecute(r ApiCreateIndividualSubcriptionRequest) (*http.Response, error)
+	// CreateIndividualSubscriptionExecute executes the request
+	CreateIndividualSubscriptionExecute(r ApiCreateIndividualSubscriptionRequest) (*http.Response, error)
 }
 
 // SubscriptionsCollectionAPIService SubscriptionsCollectionAPI service
 type SubscriptionsCollectionAPIService service
 
-type ApiCreateIndividualSubcriptionRequest struct {
+type ApiCreateIndividualSubscriptionRequest struct {
 	ctx        context.Context
 	ApiService SubscriptionsCollectionAPI
 	body       *any
 }
 
-func (r ApiCreateIndividualSubcriptionRequest) Body(body any) ApiCreateIndividualSubcriptionRequest {
+func (r ApiCreateIndividualSubscriptionRequest) Body(body any) ApiCreateIndividualSubscriptionRequest {
 	r.body = &body
 	return r
 }
 
-func (r ApiCreateIndividualSubcriptionRequest) Execute() (*http.Response, error) {
-	return r.ApiService.CreateIndividualSubcriptionExecute(r)
+func (r ApiCreateIndividualSubscriptionRequest) Execute() (*http.Response, error) {
+	return r.ApiService.CreateIndividualSubscriptionExecute(r)
 }
 
 /*
-CreateIndividualSubcription subscribe to data restoration notifications
+CreateIndividualSubscription subscribe to data restoration notifications
 
 	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
-	@return ApiCreateIndividualSubcriptionRequest
+	@return ApiCreateIndividualSubscriptionRequest
 */
-func (a *SubscriptionsCollectionAPIService) CreateIndividualSubcription(ctx context.Context) ApiCreateIndividualSubcriptionRequest {
-	return ApiCreateIndividualSubcriptionRequest{
+func (a *SubscriptionsCollectionAPIService) CreateIndividualSubscription(ctx context.Context) ApiCreateIndividualSubscriptionRequest {
+	return ApiCreateIndividualSubscriptionRequest{
 		ApiService: a,
 		ctx:        ctx,
 	}
 }
 
 // Execute executes the request
-func (a *SubscriptionsCollectionAPIService) CreateIndividualSubcriptionExecute(r ApiCreateIndividualSubcriptionRequest) (*http.Response, error) {
+func (a *SubscriptionsCollectionAPIService) CreateIndividualSubscriptionExecute(r ApiCreateIndividualSubscriptionRequest) (*http.Response, error) {
 	var (
 		localVarHTTPMethod = http.MethodPost
 		localVarPostBody   any
 		formFiles          []formFile
 	)
 
-	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "SubscriptionsCollectionAPIService.CreateIndividualSubcription")
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "SubscriptionsCollectionAPIService.CreateIndividualSubscription")
 	if err != nil {
 		return nil, &openapi.GenericOpenAPIError{RawError: err.Error()}
 	}
