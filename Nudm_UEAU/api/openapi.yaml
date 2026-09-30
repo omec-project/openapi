@@ -2,7 +2,10 @@
 # SPDX-License-Identifier: Apache-2.0
 openapi: 3.0.0
 info:
-  description: "UDM UE Authentication Service.  \n© 2023, 3GPP Organizational Partners (ARIB, ATIS, CCSA, ETSI, TSDSI, TTA, TTC).  \nAll rights reserved.\n"
+  description: |
+    UDM UE Authentication Service.
+    © 2023, 3GPP Organizational Partners (ARIB, ATIS, CCSA, ETSI, TSDSI, TTA, TTC).
+    All rights reserved.
   title: Nudm_UEAU
   version: 1.3.0-alpha.4
 externalDocs:
@@ -997,23 +1000,23 @@ components:
   schemas:
     AuthenticationInfoRequest:
       example:
-        disasterRoamingInd: false
         supportedFeatures: supportedFeatures
         servingNetworkName: servingNetworkName
         resynchronizationInfo:
           rand: null
           auts: null
-        nswoInd: false
         ausfInstanceId: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
         cellCagInfo:
           - null
           - null
         n5gcInd: false
+        nswoInd: false
+        disasterRoamingInd: false
         aun3Ind: false
       properties:
         supportedFeatures:
           description: |
-            A string used to indicate the features supported by an API that is used as defined in clause  6.6 in 3GPP TS 29.500. The string shall contain a bitmask indicating supported features in  hexadecimal representation Each character in the string shall take a value of "0" to "9",  "a" to "f" or "A" to "F" and shall represent the support of 4 features as described in  table 5.2.2-3. The most significant character representing the highest-numbered features shall  appear first in the string, and the character representing features 1 to 4 shall appear last  in the string. The list of features and their numbering (starting with 1) are defined  separately for each API. If the string contains a lower number of characters than there are  defined features for an API, all features that would be represented by characters that are not  present in the string are not supported.
+            A string used to indicate the features supported by an API that is used as defined in clause 6.6 in 3GPP TS 29.500. The string shall contain a bitmask indicating supported features in hexadecimal representation Each character in the string shall take a value of "0" to "9", "a" to "f" or "A" to "F" and shall represent the support of 4 features as described in table 5.2.2-3. The most significant character representing the highest-numbered features shall  appear first in the string, and the character representing features 1 to 4 shall appear last  in the string. The list of features and their numbering (starting with 1) are defined  separately for each API. If the string contains a lower number of characters than there are  defined features for an API, all features that would be represented by characters that are not  present in the string are not supported.
           pattern: "^[A-Fa-f0-9]*$"
           type: string
         servingNetworkName:
@@ -1022,7 +1025,8 @@ components:
         resynchronizationInfo:
           $ref: "#/components/schemas/ResynchronizationInfo"
         ausfInstanceId:
-          description: "String uniquely identifying a NF instance. The format of the NF Instance ID shall be a  Universally Unique Identifier (UUID) version 4, as described in IETF RFC 4122. \n"
+          description: |
+            String uniquely identifying a NF instance. The format of the NF Instance ID shall be a Universally Unique Identifier (UUID) version 4, as described in IETF RFC 4122.
           format: uuid
           type: string
         cellCagInfo:
@@ -1048,8 +1052,18 @@ components:
       type: object
     AuthenticationInfoResult:
       example:
-        akmaInd: false
+        authType: 5G_AKA
         supportedFeatures: supportedFeatures
+        authenticationVector:
+          avType: 5G_HE_AKA
+          rand: null
+          xres: null
+          autn: null
+          ckPrime: null
+          ikPrime: null
+        supi: supi
+        akmaInd: false
+        authAaa: false
         routingId: routingId
         pvsInfo:
           - ipv4Addresses:
@@ -1070,29 +1084,32 @@ components:
             fqdnList:
               - null
               - null
-        authenticationVector:
-          rand: null
-          xres: null
-          avType: 5G_HE_AKA
-          autn: null
-          ckPrime: null
-          ikPrime: null
-        authType: 5G_AKA
         mskInd: false
-        supi: supi
-        authAaa: false
       properties:
         authType:
           $ref: "#/components/schemas/AuthType"
         supportedFeatures:
           description: |
-            A string used to indicate the features supported by an API that is used as defined in clause  6.6 in 3GPP TS 29.500. The string shall contain a bitmask indicating supported features in  hexadecimal representation Each character in the string shall take a value of "0" to "9",  "a" to "f" or "A" to "F" and shall represent the support of 4 features as described in  table 5.2.2-3. The most significant character representing the highest-numbered features shall  appear first in the string, and the character representing features 1 to 4 shall appear last  in the string. The list of features and their numbering (starting with 1) are defined  separately for each API. If the string contains a lower number of characters than there are  defined features for an API, all features that would be represented by characters that are not  present in the string are not supported.
+            A string used to indicate the features supported by an API that is used as defined in clause 6.6 in 3GPP TS 29.500. The string shall contain a bitmask indicating supported features in hexadecimal representation Each character in the string shall take a value of "0" to "9", "a" to "f" or "A" to "F" and shall represent the support of 4 features as described in table 5.2.2-3. The most significant character representing the highest-numbered features shall  appear first in the string, and the character representing features 1 to 4 shall appear last  in the string. The list of features and their numbering (starting with 1) are defined  separately for each API. If the string contains a lower number of characters than there are  defined features for an API, all features that would be represented by characters that are not  present in the string are not supported.
           pattern: "^[A-Fa-f0-9]*$"
           type: string
         authenticationVector:
           $ref: "#/components/schemas/AuthenticationVector"
         supi:
-          description: "String identifying a Supi that shall contain either an IMSI, a network specific identifier,\na Global Cable Identifier (GCI) or a Global Line Identifier (GLI) as specified in clause \n2.2A of 3GPP TS 23.003. It shall be formatted as follows\n - for an IMSI \"imsi-<imsi>\", where <imsi> shall be formatted according to clause 2.2\n   of 3GPP TS 23.003 that describes an IMSI.\n - for a network specific identifier \"nai-<nai>, where <nai> shall be formatted\n   according to clause 28.7.2 of 3GPP TS 23.003 that describes an NAI.\n - for a GCI \"gci-<gci>\", where <gci> shall be formatted according to clause 28.15.2\n   of 3GPP TS 23.003.\n - for a GLI \"gli-<gli>\", where <gli> shall be formatted according to clause 28.16.2 of\n   3GPP TS 23.003.To enable that the value is used as part of an URI, the string shall\n   only contain characters allowed according to the \"lower-with-hyphen\" naming convention\n   defined in 3GPP TS 29.501.\n"
+          description: |
+            String identifying a Supi that shall contain either an IMSI, a network specific identifier,
+            a Global Cable Identifier (GCI) or a Global Line Identifier (GLI) as specified in clause
+            2.2A of 3GPP TS 23.003. It shall be formatted as follows
+             - for an IMSI "imsi-<imsi>", where <imsi> shall be formatted according to clause 2.2
+               of 3GPP TS 23.003 that describes an IMSI.
+             - for a network specific identifier "nai-<nai>, where <nai> shall be formatted
+               according to clause 28.7.2 of 3GPP TS 23.003 that describes an NAI.
+             - for a GCI "gci-<gci>", where <gci> shall be formatted according to clause 28.15.2
+               of 3GPP TS 23.003.
+             - for a GLI "gli-<gli>", where <gli> shall be formatted according to clause 28.16.2 of
+               3GPP TS 23.003.To enable that the value is used as part of an URI, the string shall
+               only contain characters allowed according to the "lower-with-hyphen" naming convention
+               defined in 3GPP TS 29.501.
           pattern: "^(imsi-[0-9]{5,15}|nai-.+|gci-.+|gli-.+|.+)$"
           type: string
         akmaInd:
@@ -1126,9 +1143,9 @@ components:
         - $ref: "#/components/schemas/Av5GHeAka"
     AvEapAkaPrime:
       example:
+        avType: 5G_HE_AKA
         rand: null
         xres: null
-        avType: 5G_HE_AKA
         autn: null
         ckPrime: null
         ikPrime: null
@@ -1187,21 +1204,22 @@ components:
       type: object
     AuthEvent:
       example:
-        timeStamp: 2000-01-23T04:56:07.000+00:00
         nfInstanceId: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
+        success: true
+        timeStamp: 2000-01-23T04:56:07.000+00:00
+        authType: 5G_AKA
         servingNetworkName: servingNetworkName
-        udrRestartInd: false
+        authRemovalInd: false
+        nfSetId: nfSetId
         resetIds:
           - resetIds
           - resetIds
-        success: true
         dataRestorationCallbackUri: dataRestorationCallbackUri
-        nfSetId: nfSetId
-        authRemovalInd: false
-        authType: 5G_AKA
+        udrRestartInd: false
       properties:
         nfInstanceId:
-          description: "String uniquely identifying a NF instance. The format of the NF Instance ID shall be a  Universally Unique Identifier (UUID) version 4, as described in IETF RFC 4122. \n"
+          description: |
+            String uniquely identifying a NF instance. The format of the NF Instance ID shall be a Universally Unique Identifier (UUID) version 4, as described in IETF RFC 4122.
           format: uuid
           type: string
         success:
@@ -1219,7 +1237,14 @@ components:
           default: false
           type: boolean
         nfSetId:
-          description: "NF Set Identifier (see clause 28.12 of 3GPP TS 23.003), formatted as the following string \"set<Set ID>.<nftype>set.5gc.mnc<MNC>.mcc<MCC>\", or  \"set<SetID>.<NFType>set.5gc.nid<NID>.mnc<MNC>.mcc<MCC>\" with  <MCC> encoded as defined in clause 5.4.2 (\"Mcc\" data type definition)  <MNC> encoding the Mobile Network Code part of the PLMN, comprising 3 digits. \n  If there are only 2 significant digits in the MNC, one \"0\" digit shall be inserted \n  at the left side to fill the 3 digits coding of MNC.  Pattern: '^[0-9]{3}$'\n<NFType> encoded as a value defined in Table 6.1.6.3.3-1 of 3GPP TS 29.510 but \n  with lower case characters <Set ID> encoded as a string of characters consisting of \n  alphabetic characters (A-Z and a-z), digits (0-9) and/or the hyphen (-) and that \n  shall end with either an alphabetic character or a digit. \n"
+          description: |
+            NF Set Identifier (see clause 28.12 of 3GPP TS 23.003), formatted as the following string "set<Set ID>.<nftype>set.5gc.mnc<MNC>.mcc<MCC>", or "set<SetID>.<NFType>set.5gc.nid<NID>.mnc<MNC>.mcc<MCC>" with <MCC> encoded as defined in clause 5.4.2 ("Mcc" data type definition) <MNC> encoding the Mobile Network Code part of the PLMN, comprising 3 digits.
+              If there are only 2 significant digits in the MNC, one "0" digit shall be inserted
+              at the left side to fill the 3 digits coding of MNC.  Pattern: '^[0-9]{3}$'
+            <NFType> encoded as a value defined in Table 6.1.6.3.3-1 of 3GPP TS 29.510 but
+              with lower case characters <Set ID> encoded as a string of characters consisting of
+              alphabetic characters (A-Z and a-z), digits (0-9) and/or the hyphen (-) and that
+              shall end with either an alphabetic character or a digit.
           type: string
         resetIds:
           items:
@@ -1242,19 +1267,32 @@ components:
     RgAuthCtxUdm:
       example:
         authInd: false
-        supportedFeatures: supportedFeatures
         supi: supi
+        supportedFeatures: supportedFeatures
       properties:
         authInd:
           default: false
           type: boolean
         supi:
-          description: "String identifying a Supi that shall contain either an IMSI, a network specific identifier,\na Global Cable Identifier (GCI) or a Global Line Identifier (GLI) as specified in clause \n2.2A of 3GPP TS 23.003. It shall be formatted as follows\n - for an IMSI \"imsi-<imsi>\", where <imsi> shall be formatted according to clause 2.2\n   of 3GPP TS 23.003 that describes an IMSI.\n - for a network specific identifier \"nai-<nai>, where <nai> shall be formatted\n   according to clause 28.7.2 of 3GPP TS 23.003 that describes an NAI.\n - for a GCI \"gci-<gci>\", where <gci> shall be formatted according to clause 28.15.2\n   of 3GPP TS 23.003.\n - for a GLI \"gli-<gli>\", where <gli> shall be formatted according to clause 28.16.2 of\n   3GPP TS 23.003.To enable that the value is used as part of an URI, the string shall\n   only contain characters allowed according to the \"lower-with-hyphen\" naming convention\n   defined in 3GPP TS 29.501.\n"
+          description: |
+            String identifying a Supi that shall contain either an IMSI, a network specific identifier,
+            a Global Cable Identifier (GCI) or a Global Line Identifier (GLI) as specified in clause
+            2.2A of 3GPP TS 23.003. It shall be formatted as follows
+             - for an IMSI "imsi-<imsi>", where <imsi> shall be formatted according to clause 2.2
+               of 3GPP TS 23.003 that describes an IMSI.
+             - for a network specific identifier "nai-<nai>, where <nai> shall be formatted
+               according to clause 28.7.2 of 3GPP TS 23.003 that describes an NAI.
+             - for a GCI "gci-<gci>", where <gci> shall be formatted according to clause 28.15.2
+               of 3GPP TS 23.003.
+             - for a GLI "gli-<gli>", where <gli> shall be formatted according to clause 28.16.2 of
+               3GPP TS 23.003.To enable that the value is used as part of an URI, the string shall
+               only contain characters allowed according to the "lower-with-hyphen" naming convention
+               defined in 3GPP TS 29.501.
           pattern: "^(imsi-[0-9]{5,15}|nai-.+|gci-.+|gli-.+|.+)$"
           type: string
         supportedFeatures:
           description: |
-            A string used to indicate the features supported by an API that is used as defined in clause  6.6 in 3GPP TS 29.500. The string shall contain a bitmask indicating supported features in  hexadecimal representation Each character in the string shall take a value of "0" to "9",  "a" to "f" or "A" to "F" and shall represent the support of 4 features as described in  table 5.2.2-3. The most significant character representing the highest-numbered features shall  appear first in the string, and the character representing features 1 to 4 shall appear last  in the string. The list of features and their numbering (starting with 1) are defined  separately for each API. If the string contains a lower number of characters than there are  defined features for an API, all features that would be represented by characters that are not  present in the string are not supported.
+            A string used to indicate the features supported by an API that is used as defined in clause 6.6 in 3GPP TS 29.500. The string shall contain a bitmask indicating supported features in hexadecimal representation Each character in the string shall take a value of "0" to "9", "a" to "f" or "A" to "F" and shall represent the support of 4 features as described in table 5.2.2-3. The most significant character representing the highest-numbered features shall  appear first in the string, and the character representing features 1 to 4 shall appear last  in the string. The list of features and their numbering (starting with 1) are defined  separately for each API. If the string contains a lower number of characters than there are  defined features for an API, all features that would be represented by characters that are not  present in the string are not supported.
           pattern: "^[A-Fa-f0-9]*$"
           type: string
       required:
@@ -1263,20 +1301,20 @@ components:
     HssAuthenticationInfoRequest:
       example:
         supportedFeatures: supportedFeatures
-        numOfRequestedVectors: 1
-        anId: HRPD
         hssAuthType: EPS_AKA
+        numOfRequestedVectors: 1
+        requestingNodeType: AUSF
+        servingNetworkId:
+          mcc: null
+          mnc: null
         resynchronizationInfo:
           rand: null
           auts: null
-        servingNetworkId:
-          mnc: null
-          mcc: null
-        requestingNodeType: AUSF
+        anId: HRPD
       properties:
         supportedFeatures:
           description: |
-            A string used to indicate the features supported by an API that is used as defined in clause  6.6 in 3GPP TS 29.500. The string shall contain a bitmask indicating supported features in  hexadecimal representation Each character in the string shall take a value of "0" to "9",  "a" to "f" or "A" to "F" and shall represent the support of 4 features as described in  table 5.2.2-3. The most significant character representing the highest-numbered features shall  appear first in the string, and the character representing features 1 to 4 shall appear last  in the string. The list of features and their numbering (starting with 1) are defined  separately for each API. If the string contains a lower number of characters than there are  defined features for an API, all features that would be represented by characters that are not  present in the string are not supported.
+            A string used to indicate the features supported by an API that is used as defined in clause 6.6 in 3GPP TS 29.500. The string shall contain a bitmask indicating supported features in hexadecimal representation Each character in the string shall take a value of "0" to "9", "a" to "f" or "A" to "F" and shall represent the support of 4 features as described in table 5.2.2-3. The most significant character representing the highest-numbered features shall  appear first in the string, and the character representing features 1 to 4 shall appear last  in the string. The list of features and their numbering (starting with 1) are defined  separately for each API. If the string contains a lower number of characters than there are  defined features for an API, all features that would be represented by characters that are not  present in the string are not supported.
           pattern: "^[A-Fa-f0-9]*$"
           type: string
         hssAuthType:
@@ -1301,35 +1339,35 @@ components:
       example:
         supportedFeatures: supportedFeatures
         hssAuthenticationVectors:
-          - rand: null
+          - avType: EPS_AKA
+            rand: null
             xres: null
-            avType: EPS_AKA
             autn: null
             kasme: null
-          - rand: null
+          - avType: EPS_AKA
+            rand: null
             xres: null
-            avType: EPS_AKA
             autn: null
             kasme: null
-          - rand: null
+          - avType: EPS_AKA
+            rand: null
             xres: null
-            avType: EPS_AKA
             autn: null
             kasme: null
-          - rand: null
+          - avType: EPS_AKA
+            rand: null
             xres: null
-            avType: EPS_AKA
             autn: null
             kasme: null
-          - rand: null
+          - avType: EPS_AKA
+            rand: null
             xres: null
-            avType: EPS_AKA
             autn: null
             kasme: null
       properties:
         supportedFeatures:
           description: |
-            A string used to indicate the features supported by an API that is used as defined in clause  6.6 in 3GPP TS 29.500. The string shall contain a bitmask indicating supported features in  hexadecimal representation Each character in the string shall take a value of "0" to "9",  "a" to "f" or "A" to "F" and shall represent the support of 4 features as described in  table 5.2.2-3. The most significant character representing the highest-numbered features shall  appear first in the string, and the character representing features 1 to 4 shall appear last  in the string. The list of features and their numbering (starting with 1) are defined  separately for each API. If the string contains a lower number of characters than there are  defined features for an API, all features that would be represented by characters that are not  present in the string are not supported.
+            A string used to indicate the features supported by an API that is used as defined in clause 6.6 in 3GPP TS 29.500. The string shall contain a bitmask indicating supported features in hexadecimal representation Each character in the string shall take a value of "0" to "9", "a" to "f" or "A" to "F" and shall represent the support of 4 features as described in table 5.2.2-3. The most significant character representing the highest-numbered features shall  appear first in the string, and the character representing features 1 to 4 shall appear last  in the string. The list of features and their numbering (starting with 1) are defined  separately for each API. If the string contains a lower number of characters than there are  defined features for an API, all features that would be represented by characters that are not  present in the string are not supported.
           pattern: "^[A-Fa-f0-9]*$"
           type: string
         hssAuthenticationVectors:
@@ -1356,9 +1394,9 @@ components:
           type: array
     AvEpsAka:
       example:
+        avType: EPS_AKA
         rand: null
         xres: null
-        avType: EPS_AKA
         autn: null
         kasme: null
       properties:
@@ -1403,11 +1441,11 @@ components:
       type: object
     GbaAuthenticationInfoRequest:
       example:
-        supportedFeatures: supportedFeatures
+        authType: DIGEST_AKAV1_MD5
         resynchronizationInfo:
           rand: null
           auts: null
-        authType: DIGEST_AKAV1_MD5
+        supportedFeatures: supportedFeatures
       properties:
         authType:
           $ref: "#/components/schemas/GbaAuthType"
@@ -1415,7 +1453,7 @@ components:
           $ref: "#/components/schemas/ResynchronizationInfo_1"
         supportedFeatures:
           description: |
-            A string used to indicate the features supported by an API that is used as defined in clause  6.6 in 3GPP TS 29.500. The string shall contain a bitmask indicating supported features in  hexadecimal representation Each character in the string shall take a value of "0" to "9",  "a" to "f" or "A" to "F" and shall represent the support of 4 features as described in  table 5.2.2-3. The most significant character representing the highest-numbered features shall  appear first in the string, and the character representing features 1 to 4 shall appear last  in the string. The list of features and their numbering (starting with 1) are defined  separately for each API. If the string contains a lower number of characters than there are  defined features for an API, all features that would be represented by characters that are not  present in the string are not supported.
+            A string used to indicate the features supported by an API that is used as defined in clause 6.6 in 3GPP TS 29.500. The string shall contain a bitmask indicating supported features in hexadecimal representation Each character in the string shall take a value of "0" to "9", "a" to "f" or "A" to "F" and shall represent the support of 4 features as described in table 5.2.2-3. The most significant character representing the highest-numbered features shall  appear first in the string, and the character representing features 1 to 4 shall appear last  in the string. The list of features and their numbering (starting with 1) are defined  separately for each API. If the string contains a lower number of characters than there are  defined features for an API, all features that would be represented by characters that are not  present in the string are not supported.
           pattern: "^[A-Fa-f0-9]*$"
           type: string
       required:
@@ -1423,30 +1461,30 @@ components:
       type: object
     GbaAuthenticationInfoResult:
       example:
-        supportedFeatures: supportedFeatures
         "3gAkaAv":
           rand: null
           xres: null
-          ik: null
           autn: null
           ck: null
+          ik: null
+        supportedFeatures: supportedFeatures
       properties:
         "3gAkaAv":
           $ref: "#/components/schemas/threeGAkaAv"
         supportedFeatures:
           description: |
-            A string used to indicate the features supported by an API that is used as defined in clause  6.6 in 3GPP TS 29.500. The string shall contain a bitmask indicating supported features in  hexadecimal representation Each character in the string shall take a value of "0" to "9",  "a" to "f" or "A" to "F" and shall represent the support of 4 features as described in  table 5.2.2-3. The most significant character representing the highest-numbered features shall  appear first in the string, and the character representing features 1 to 4 shall appear last  in the string. The list of features and their numbering (starting with 1) are defined  separately for each API. If the string contains a lower number of characters than there are  defined features for an API, all features that would be represented by characters that are not  present in the string are not supported.
+            A string used to indicate the features supported by an API that is used as defined in clause 6.6 in 3GPP TS 29.500. The string shall contain a bitmask indicating supported features in hexadecimal representation Each character in the string shall take a value of "0" to "9", "a" to "f" or "A" to "F" and shall represent the support of 4 features as described in table 5.2.2-3. The most significant character representing the highest-numbered features shall  appear first in the string, and the character representing features 1 to 4 shall appear last  in the string. The list of features and their numbering (starting with 1) are defined  separately for each API. If the string contains a lower number of characters than there are  defined features for an API, all features that would be represented by characters that are not  present in the string are not supported.
           pattern: "^[A-Fa-f0-9]*$"
           type: string
       type: object
     ProSeAuthenticationInfoRequest:
       example:
         servingNetworkName: servingNetworkName
-        supportedFeatures: supportedFeatures
         relayServiceCode: 1343566
         resynchronizationInfo:
           rand: null
           auts: null
+        supportedFeatures: supportedFeatures
       properties:
         servingNetworkName:
           pattern: "^(5G:mnc[0-9]{3}[.]mcc[0-9]{3}[.]3gppnetwork[.]org(:[A-F0-9]{11})?)|5G:NSWO$"
@@ -1461,7 +1499,7 @@ components:
           $ref: "#/components/schemas/ResynchronizationInfo"
         supportedFeatures:
           description: |
-            A string used to indicate the features supported by an API that is used as defined in clause  6.6 in 3GPP TS 29.500. The string shall contain a bitmask indicating supported features in  hexadecimal representation Each character in the string shall take a value of "0" to "9",  "a" to "f" or "A" to "F" and shall represent the support of 4 features as described in  table 5.2.2-3. The most significant character representing the highest-numbered features shall  appear first in the string, and the character representing features 1 to 4 shall appear last  in the string. The list of features and their numbering (starting with 1) are defined  separately for each API. If the string contains a lower number of characters than there are  defined features for an API, all features that would be represented by characters that are not  present in the string are not supported.
+            A string used to indicate the features supported by an API that is used as defined in clause 6.6 in 3GPP TS 29.500. The string shall contain a bitmask indicating supported features in hexadecimal representation Each character in the string shall take a value of "0" to "9", "a" to "f" or "A" to "F" and shall represent the support of 4 features as described in table 5.2.2-3. The most significant character representing the highest-numbered features shall  appear first in the string, and the character representing features 1 to 4 shall appear last  in the string. The list of features and their numbering (starting with 1) are defined  separately for each API. If the string contains a lower number of characters than there are  defined features for an API, all features that would be represented by characters that are not  present in the string are not supported.
           pattern: "^[A-Fa-f0-9]*$"
           type: string
       required:
@@ -1470,40 +1508,40 @@ components:
       type: object
     ProSeAuthenticationInfoResult:
       example:
-        supportedFeatures: supportedFeatures
-        proseAuthenticationVectors:
-          - rand: null
-            xres: null
-            avType: 5G_HE_AKA
-            autn: null
-            ckPrime: null
-            ikPrime: null
-          - rand: null
-            xres: null
-            avType: 5G_HE_AKA
-            autn: null
-            ckPrime: null
-            ikPrime: null
-          - rand: null
-            xres: null
-            avType: 5G_HE_AKA
-            autn: null
-            ckPrime: null
-            ikPrime: null
-          - rand: null
-            xres: null
-            avType: 5G_HE_AKA
-            autn: null
-            ckPrime: null
-            ikPrime: null
-          - rand: null
-            xres: null
-            avType: 5G_HE_AKA
-            autn: null
-            ckPrime: null
-            ikPrime: null
         authType: 5G_AKA
+        proseAuthenticationVectors:
+          - avType: 5G_HE_AKA
+            rand: null
+            xres: null
+            autn: null
+            ckPrime: null
+            ikPrime: null
+          - avType: 5G_HE_AKA
+            rand: null
+            xres: null
+            autn: null
+            ckPrime: null
+            ikPrime: null
+          - avType: 5G_HE_AKA
+            rand: null
+            xres: null
+            autn: null
+            ckPrime: null
+            ikPrime: null
+          - avType: 5G_HE_AKA
+            rand: null
+            xres: null
+            autn: null
+            ckPrime: null
+            ikPrime: null
+          - avType: 5G_HE_AKA
+            rand: null
+            xres: null
+            autn: null
+            ckPrime: null
+            ikPrime: null
         supi: supi
+        supportedFeatures: supportedFeatures
       properties:
         authType:
           $ref: "#/components/schemas/AuthType"
@@ -1514,12 +1552,25 @@ components:
           minItems: 1
           type: array
         supi:
-          description: "String identifying a Supi that shall contain either an IMSI, a network specific identifier,\na Global Cable Identifier (GCI) or a Global Line Identifier (GLI) as specified in clause \n2.2A of 3GPP TS 23.003. It shall be formatted as follows\n - for an IMSI \"imsi-<imsi>\", where <imsi> shall be formatted according to clause 2.2\n   of 3GPP TS 23.003 that describes an IMSI.\n - for a network specific identifier \"nai-<nai>, where <nai> shall be formatted\n   according to clause 28.7.2 of 3GPP TS 23.003 that describes an NAI.\n - for a GCI \"gci-<gci>\", where <gci> shall be formatted according to clause 28.15.2\n   of 3GPP TS 23.003.\n - for a GLI \"gli-<gli>\", where <gli> shall be formatted according to clause 28.16.2 of\n   3GPP TS 23.003.To enable that the value is used as part of an URI, the string shall\n   only contain characters allowed according to the \"lower-with-hyphen\" naming convention\n   defined in 3GPP TS 29.501.\n"
+          description: |
+            String identifying a Supi that shall contain either an IMSI, a network specific identifier,
+            a Global Cable Identifier (GCI) or a Global Line Identifier (GLI) as specified in clause
+            2.2A of 3GPP TS 23.003. It shall be formatted as follows
+             - for an IMSI "imsi-<imsi>", where <imsi> shall be formatted according to clause 2.2
+               of 3GPP TS 23.003 that describes an IMSI.
+             - for a network specific identifier "nai-<nai>, where <nai> shall be formatted
+               according to clause 28.7.2 of 3GPP TS 23.003 that describes an NAI.
+             - for a GCI "gci-<gci>", where <gci> shall be formatted according to clause 28.15.2
+               of 3GPP TS 23.003.
+             - for a GLI "gli-<gli>", where <gli> shall be formatted according to clause 28.16.2 of
+               3GPP TS 23.003.To enable that the value is used as part of an URI, the string shall
+               only contain characters allowed according to the "lower-with-hyphen" naming convention
+               defined in 3GPP TS 29.501.
           pattern: "^(imsi-[0-9]{5,15}|nai-.+|gci-.+|gli-.+|.+)$"
           type: string
         supportedFeatures:
           description: |
-            A string used to indicate the features supported by an API that is used as defined in clause  6.6 in 3GPP TS 29.500. The string shall contain a bitmask indicating supported features in  hexadecimal representation Each character in the string shall take a value of "0" to "9",  "a" to "f" or "A" to "F" and shall represent the support of 4 features as described in  table 5.2.2-3. The most significant character representing the highest-numbered features shall  appear first in the string, and the character representing features 1 to 4 shall appear last  in the string. The list of features and their numbering (starting with 1) are defined  separately for each API. If the string contains a lower number of characters than there are  defined features for an API, all features that would be represented by characters that are not  present in the string are not supported.
+            A string used to indicate the features supported by an API that is used as defined in clause 6.6 in 3GPP TS 29.500. The string shall contain a bitmask indicating supported features in hexadecimal representation Each character in the string shall take a value of "0" to "9", "a" to "f" or "A" to "F" and shall represent the support of 4 features as described in table 5.2.2-3. The most significant character representing the highest-numbered features shall  appear first in the string, and the character representing features 1 to 4 shall appear last  in the string. The list of features and their numbering (starting with 1) are defined  separately for each API. If the string contains a lower number of characters than there are  defined features for an API, all features that would be represented by characters that are not  present in the string are not supported.
           pattern: "^[A-Fa-f0-9]*$"
           type: string
       required:
@@ -1665,7 +1716,7 @@ components:
           $ref: "#/components/schemas/Uri"
         cause:
           description: |
-            A machine-readable application error cause specific to this occurrence of the problem.  This IE should be present and provide application-related error information, if available.
+            A machine-readable application error cause specific to this occurrence of the problem. This IE should be present and provide application-related error information, if available.
           type: string
         invalidParams:
           items:
@@ -1696,18 +1747,18 @@ components:
       properties:
         param:
           description: |
-            If the invalid parameter is an attribute in a JSON body, this IE shall contain the  attribute's name and shall be encoded as a JSON Pointer. If the invalid parameter is  an HTTP header, this IE shall be formatted as the concatenation of the string "header "  plus the name of such header. If the invalid parameter is a query parameter, this IE  shall be formatted as the concatenation of the string "query " plus the name of such  query parameter. If the invalid parameter is a variable part in the path of a resource  URI, this IE shall contain the name of the variable, including the symbols "{" and "}"  used in OpenAPI specification as the notation to represent variable path segments.
+            If the invalid parameter is an attribute in a JSON body, this IE shall contain the attribute's name and shall be encoded as a JSON Pointer. If the invalid parameter is an HTTP header, this IE shall be formatted as the concatenation of the string "header " plus the name of such header. If the invalid parameter is a query parameter, this IE shall be formatted as the concatenation of the string "query " plus the name of such query parameter. If the invalid parameter is a variable part in the path of a resource URI, this IE shall contain the name of the variable, including the symbols "{" and "}" used in OpenAPI specification as the notation to represent variable path segments.
           type: string
         reason:
           description: |
-            A human-readable reason, e.g. "must be a positive integer". In cases involving failed  operations in a PATCH request, the reason string should identify the operation that  failed using the operation's array index to assist in correlation of the invalid  parameter with the failed operation, e.g." Replacement value invalid for attribute  (failed operation index= 4)"
+            A human-readable reason, e.g. "must be a positive integer". In cases involving failed operations in a PATCH request, the reason string should identify the operation that failed using the operation's array index to assist in correlation of the invalid parameter with the failed operation, e.g." Replacement value invalid for attribute (failed operation index= 4)"
           type: string
       required:
         - param
       type: object
     SupportedFeatures:
       description: |
-        A string used to indicate the features supported by an API that is used as defined in clause  6.6 in 3GPP TS 29.500. The string shall contain a bitmask indicating supported features in  hexadecimal representation Each character in the string shall take a value of "0" to "9",  "a" to "f" or "A" to "F" and shall represent the support of 4 features as described in  table 5.2.2-3. The most significant character representing the highest-numbered features shall  appear first in the string, and the character representing features 1 to 4 shall appear last  in the string. The list of features and their numbering (starting with 1) are defined  separately for each API. If the string contains a lower number of characters than there are  defined features for an API, all features that would be represented by characters that are not  present in the string are not supported.
+        A string used to indicate the features supported by an API that is used as defined in clause 6.6 in 3GPP TS 29.500. The string shall contain a bitmask indicating supported features in hexadecimal representation Each character in the string shall take a value of "0" to "9", "a" to "f" or "A" to "F" and shall represent the support of 4 features as described in table 5.2.2-3. The most significant character representing the highest-numbered features shall  appear first in the string, and the character representing features 1 to 4 shall appear last  in the string. The list of features and their numbering (starting with 1) are defined  separately for each API. If the string contains a lower number of characters than there are  defined features for an API, all features that would be represented by characters that are not  present in the string are not supported.
       pattern: "^[A-Fa-f0-9]*$"
       type: string
     Fqdn:
@@ -1718,10 +1769,10 @@ components:
       type: string
     PlmnId:
       description: |
-        When PlmnId needs to be converted to string (e.g. when used in maps as key), the string  shall be composed of three digits "mcc" followed by "-" and two or three digits "mnc".
+        When PlmnId needs to be converted to string (e.g. when used in maps as key), the string shall be composed of three digits "mcc" followed by "-" and two or three digits "mnc".
       example:
-        mnc: null
         mcc: null
+        mnc: null
       properties:
         mcc:
           $ref: "#/components/schemas/Mcc"
@@ -1732,51 +1783,66 @@ components:
         - mnc
       type: object
     Mcc:
-      description: "Mobile Country Code part of the PLMN, comprising 3 digits, as defined in clause 9.3.3.5 of 3GPP TS 38.413. \n"
+      description: |
+        Mobile Country Code part of the PLMN, comprising 3 digits, as defined in clause 9.3.3.5 of 3GPP TS 38.413.
       pattern: "^\\d{3}$"
       type: string
     Mnc:
-      description: "Mobile Network Code part of the PLMN, comprising 2 or 3 digits, as defined in  clause 9.3.3.5 of 3GPP TS 38.413. \n"
+      description: |
+        Mobile Network Code part of the PLMN, comprising 2 or 3 digits, as defined in clause 9.3.3.5 of 3GPP TS 38.413.
       pattern: "^\\d{2,3}$"
       type: string
     Supi:
-      description: "String identifying a Supi that shall contain either an IMSI, a network specific identifier,\na Global Cable Identifier (GCI) or a Global Line Identifier (GLI) as specified in clause \n2.2A of 3GPP TS 23.003. It shall be formatted as follows\n - for an IMSI \"imsi-<imsi>\", where <imsi> shall be formatted according to clause 2.2\n   of 3GPP TS 23.003 that describes an IMSI.\n - for a network specific identifier \"nai-<nai>, where <nai> shall be formatted\n   according to clause 28.7.2 of 3GPP TS 23.003 that describes an NAI.\n - for a GCI \"gci-<gci>\", where <gci> shall be formatted according to clause 28.15.2\n   of 3GPP TS 23.003.\n - for a GLI \"gli-<gli>\", where <gli> shall be formatted according to clause 28.16.2 of\n   3GPP TS 23.003.To enable that the value is used as part of an URI, the string shall\n   only contain characters allowed according to the \"lower-with-hyphen\" naming convention\n   defined in 3GPP TS 29.501.\n"
+      description: |
+        String identifying a Supi that shall contain either an IMSI, a network specific identifier,
+        a Global Cable Identifier (GCI) or a Global Line Identifier (GLI) as specified in clause
+        2.2A of 3GPP TS 23.003. It shall be formatted as follows
+         - for an IMSI "imsi-<imsi>", where <imsi> shall be formatted according to clause 2.2
+           of 3GPP TS 23.003 that describes an IMSI.
+         - for a network specific identifier "nai-<nai>, where <nai> shall be formatted
+           according to clause 28.7.2 of 3GPP TS 23.003 that describes an NAI.
+         - for a GCI "gci-<gci>", where <gci> shall be formatted according to clause 28.15.2
+           of 3GPP TS 23.003.
+         - for a GLI "gli-<gli>", where <gli> shall be formatted according to clause 28.16.2 of
+           3GPP TS 23.003.To enable that the value is used as part of an URI, the string shall
+           only contain characters allowed according to the "lower-with-hyphen" naming convention
+           defined in 3GPP TS 29.501.
       pattern: "^(imsi-[0-9]{5,15}|nai-.+|gci-.+|gli-.+|.+)$"
       type: string
     DataRestorationNotification:
       description: Contains identities representing those UEs potentially affected by a data-loss event at the UDR
       example:
+        lastReplicationTime: 2000-01-23T04:56:07.000+00:00
         recoveryTime: 2000-01-23T04:56:07.000+00:00
+        plmnId:
+          mcc: null
+          mnc: null
+        supiRanges:
+          - start: start
+            end: end
+            pattern: pattern
+          - start: start
+            end: end
+            pattern: pattern
+        gpsiRanges:
+          - start: start
+            end: end
+            pattern: pattern
+          - start: start
+            end: end
+            pattern: pattern
         resetIds:
           - resetIds
           - resetIds
+        sNssaiList:
+          - sst: 20
+            sd: sd
+          - sst: 20
+            sd: sd
         dnnList:
           - null
           - null
-        lastReplicationTime: 2000-01-23T04:56:07.000+00:00
-        plmnId:
-          mnc: null
-          mcc: null
-        sNssaiList:
-          - sd: sd
-            sst: 20
-          - sd: sd
-            sst: 20
         udmGroupId: udmGroupId
-        supiRanges:
-          - start: start
-            pattern: pattern
-            end: end
-          - start: start
-            pattern: pattern
-            end: end
-        gpsiRanges:
-          - start: start
-            pattern: pattern
-            end: end
-          - start: start
-            pattern: pattern
-            end: end
       properties:
         lastReplicationTime:
           description: string with format 'date-time' as defined in OpenAPI.
@@ -1819,11 +1885,11 @@ components:
       type: object
     RedirectResponse:
       description: |
-        The response shall include a Location header field containing a different URI  (pointing to a different URI of an other service instance), or the same URI if a request  is redirected to the same target resource via a different SCP.
+        The response shall include a Location header field containing a different URI (pointing to a different URI of an other service instance), or the same URI if a request is redirected to the same target resource via a different SCP.
       example:
-        targetSepp: null
         cause: cause
         targetScp: null
+        targetSepp: null
       properties:
         cause:
           type: string
@@ -1833,7 +1899,8 @@ components:
           $ref: "#/components/schemas/Uri"
       type: object
     NfInstanceId:
-      description: "String uniquely identifying a NF instance. The format of the NF Instance ID shall be a  Universally Unique Identifier (UUID) version 4, as described in IETF RFC 4122. \n"
+      description: |
+        String uniquely identifying a NF instance. The format of the NF Instance ID shall be a Universally Unique Identifier (UUID) version 4, as described in IETF RFC 4122.
       format: uuid
       type: string
     CagId:
@@ -1888,7 +1955,14 @@ components:
       format: date-time
       type: string
     NfSetId:
-      description: "NF Set Identifier (see clause 28.12 of 3GPP TS 23.003), formatted as the following string \"set<Set ID>.<nftype>set.5gc.mnc<MNC>.mcc<MCC>\", or  \"set<SetID>.<NFType>set.5gc.nid<NID>.mnc<MNC>.mcc<MCC>\" with  <MCC> encoded as defined in clause 5.4.2 (\"Mcc\" data type definition)  <MNC> encoding the Mobile Network Code part of the PLMN, comprising 3 digits. \n  If there are only 2 significant digits in the MNC, one \"0\" digit shall be inserted \n  at the left side to fill the 3 digits coding of MNC.  Pattern: '^[0-9]{3}$'\n<NFType> encoded as a value defined in Table 6.1.6.3.3-1 of 3GPP TS 29.510 but \n  with lower case characters <Set ID> encoded as a string of characters consisting of \n  alphabetic characters (A-Z and a-z), digits (0-9) and/or the hyphen (-) and that \n  shall end with either an alphabetic character or a digit. \n"
+      description: |
+        NF Set Identifier (see clause 28.12 of 3GPP TS 23.003), formatted as the following string "set<Set ID>.<nftype>set.5gc.mnc<MNC>.mcc<MCC>", or "set<SetID>.<NFType>set.5gc.nid<NID>.mnc<MNC>.mcc<MCC>" with <MCC> encoded as defined in clause 5.4.2 ("Mcc" data type definition) <MNC> encoding the Mobile Network Code part of the PLMN, comprising 3 digits.
+          If there are only 2 significant digits in the MNC, one "0" digit shall be inserted
+          at the left side to fill the 3 digits coding of MNC.  Pattern: '^[0-9]{3}$'
+        <NFType> encoded as a value defined in Table 6.1.6.3.3-1 of 3GPP TS 29.510 but
+          with lower case characters <Set ID> encoded as a string of characters consisting of
+          alphabetic characters (A-Z and a-z), digits (0-9) and/or the hyphen (-) and that
+          shall end with either an alphabetic character or a digit.
       type: string
     ResynchronizationInfo_1:
       description: Contains RAND and AUTS
@@ -1909,9 +1983,9 @@ components:
       example:
         rand: null
         xres: null
-        ik: null
         autn: null
         ck: null
+        ik: null
       properties:
         rand:
           $ref: "#/components/schemas/Rand"
@@ -2069,8 +2143,8 @@ components:
         A range of SUPIs (subscriber identities), either based on a numeric range, or based on regular-expression matching
       example:
         start: start
-        pattern: pattern
         end: end
+        pattern: pattern
       nullable: true
       oneOf: []
       properties:
@@ -2088,8 +2162,8 @@ components:
         A range of GPSIs (subscriber identities), either based on a numeric range, or based on regular-expression matching
       example:
         start: start
-        pattern: pattern
         end: end
+        pattern: pattern
       nullable: true
       oneOf: []
       properties:
@@ -2106,17 +2180,18 @@ components:
       description: |
         When Snssai needs to be converted to string (e.g. when used in maps as key), the string shall be composed of one to three digits "sst" optionally followed by "-" and 6 hexadecimal digits "sd".
       example:
-        sd: sd
         sst: 20
+        sd: sd
       properties:
         sst:
-          description: "Unsigned integer, within the range 0 to 255, representing the Slice/Service Type.  It indicates the expected Network Slice behaviour in terms of features and services. Values 0 to 127 correspond to the standardized SST range. Values 128 to 255 correspond  to the Operator-specific range. See clause 28.4.2 of 3GPP TS 23.003. Standardized values are defined in clause 5.15.2.2 of 3GPP TS 23.501. \n"
+          description: |
+            Unsigned integer, within the range 0 to 255, representing the Slice/Service Type. It indicates the expected Network Slice behaviour in terms of features and services. Values 0 to 127 correspond to the standardized SST range. Values 128 to 255 correspond to the Operator-specific range. See clause 28.4.2 of 3GPP TS 23.003. Standardized values are defined in clause 5.15.2.2 of 3GPP TS 23.501.
           maximum: 255
           minimum: 0
           type: integer
         sd:
           description: |
-            3-octet string, representing the Slice Differentiator, in hexadecimal representation. Each character in the string shall take a value of "0" to "9", "a" to "f" or "A" to "F" and shall represent 4 bits. The most significant character representing the 4 most significant bits of the SD shall appear first in the string, and the character representing the 4 least significant bit of the SD shall appear last in the string. This is an optional parameter that complements the Slice/Service type(s) to allow to  differentiate amongst multiple Network Slices of the same Slice/Service type. This IE shall be absent if no SD value is associated with the SST.
+            3-octet string, representing the Slice Differentiator, in hexadecimal representation. Each character in the string shall take a value of "0" to "9", "a" to "f" or "A" to "F" and shall represent 4 bits. The most significant character representing the 4 most significant bits of the SD shall appear first in the string, and the character representing the 4 least significant bit of the SD shall appear last in the string. This is an optional parameter that complements the Slice/Service type(s) to allow to differentiate amongst multiple Network Slices of the same Slice/Service type. This IE shall be absent if no SD value is associated with the SST.
           pattern: "^[A-Fa-f0-9]{6}$"
           type: string
       required:
@@ -2124,7 +2199,7 @@ components:
       type: object
     Dnn:
       description: |
-        String representing a Data Network as defined in clause 9A of 3GPP TS 23.003;  it shall contain either a DNN Network Identifier, or a full DNN with both the Network  Identifier and Operator Identifier, as specified in 3GPP TS 23.003 clause 9.1.1 and 9.1.2. It shall be coded as string in which the labels are separated by dots  (e.g. "Label1.Label2.Label3").
+        String representing a Data Network as defined in clause 9A of 3GPP TS 23.003; it shall contain either a DNN Network Identifier, or a full DNN with both the Network Identifier and Operator Identifier, as specified in 3GPP TS 23.003 clause 9.1.1 and 9.1.2. It shall be coded as string in which the labels are separated by dots (e.g. "Label1.Label2.Label3").
       type: string
     NfGroupId:
       description: Identifier of a group of NFs.
@@ -2212,11 +2287,18 @@ components:
         - mnc
       type: object
     Nid:
-      description: "This represents the Network Identifier, which together with a PLMN ID is used to identify an SNPN (see 3GPP TS 23.003 and 3GPP TS 23.501 clause 5.30.2.1). \n"
+      description: |
+        This represents the Network Identifier, which together with a PLMN ID is used to identify an SNPN (see 3GPP TS 23.003 and 3GPP TS 23.501 clause 5.30.2.1).
       pattern: "^[A-Fa-f0-9]{11}$"
       type: string
     NfServiceSetId:
-      description: "NF Service Set Identifier (see clause 28.12 of 3GPP TS 23.003) formatted as the following  string \"set<Set ID>.sn<Service Name>.nfi<NF Instance ID>.5gc.mnc<MNC>.mcc<MCC>\", or  \"set<SetID>.sn<ServiceName>.nfi<NFInstanceID>.5gc.nid<NID>.mnc<MNC>.mcc<MCC>\" with  <MCC> encoded as defined in clause 5.4.2 (\"Mcc\" data type definition)   <MNC> encoding the Mobile Network Code part of the PLMN, comprising 3 digits. \n  If there are only 2 significant digits in the MNC, one \"0\" digit shall be inserted \n  at the left side to fill the 3 digits coding of MNC.  Pattern: '^[0-9]{3}$'\n<NID> encoded as defined in clause 5.4.2 (\"Nid\" data type definition)  <NFInstanceId> encoded as defined in clause 5.3.2  <ServiceName> encoded as defined in 3GPP TS 29.510  <Set ID> encoded as a string of characters consisting of alphabetic \n  characters (A-Z and a-z), digits (0-9) and/or the hyphen (-) and that shall end \n  with either an alphabetic character or a digit.\n"
+      description: |
+        NF Service Set Identifier (see clause 28.12 of 3GPP TS 23.003) formatted as the following string "set<Set ID>.sn<Service Name>.nfi<NF Instance ID>.5gc.mnc<MNC>.mcc<MCC>", or "set<SetID>.sn<ServiceName>.nfi<NFInstanceID>.5gc.nid<NID>.mnc<MNC>.mcc<MCC>" with <MCC> encoded as defined in clause 5.4.2 ("Mcc" data type definition) <MNC> encoding the Mobile Network Code part of the PLMN, comprising 3 digits.
+          If there are only 2 significant digits in the MNC, one "0" digit shall be inserted
+          at the left side to fill the 3 digits coding of MNC.  Pattern: '^[0-9]{3}$'
+        <NID> encoded as defined in clause 5.4.2 ("Nid" data type definition) <NFInstanceId> encoded as defined in clause 5.3.2 <ServiceName> encoded as defined in 3GPP TS 29.510 <Set ID> encoded as a string of characters consisting of alphabetic
+          characters (A-Z and a-z), digits (0-9) and/or the hyphen (-) and that shall end
+          with either an alphabetic character or a digit.
       type: string
   securitySchemes:
     oAuth2ClientCredentials:
