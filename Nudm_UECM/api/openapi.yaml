@@ -2,7 +2,10 @@
 # SPDX-License-Identifier: Apache-2.0
 openapi: 3.0.0
 info:
-  description: "Nudm Context Management Service.  \n© 2024, 3GPP Organizational Partners (ARIB, ATIS, CCSA, ETSI, TSDSI, TTA, TTC).  \nAll rights reserved.\n"
+  description: |
+    Nudm Context Management Service.
+    © 2024, 3GPP Organizational Partners (ARIB, ATIS, CCSA, ETSI, TSDSI, TTA, TTC).
+    All rights reserved.
   title: Nudm_UECM
   version: 1.3.0-alpha.6
 externalDocs:
@@ -215,7 +218,7 @@ paths:
           description: Service Unavailable
         default:
           description: Unexpected error
-      summary: Retreive addressing information for SMS delivery
+      summary: Retrieve addressing information for SMS delivery
       tags:
         - SendRoutingInfoSM (Custom Operation)
   /{ueId}/registrations/amf-3gpp-access:
@@ -5314,96 +5317,97 @@ components:
       description: |
         This datatype contains the set of information relevant to the AMF where the UE has registered via 3GPP access.
       example:
-        registrationTime: null
-        supportedFeatures: null
-        urrpIndicator: true
-        noEeSubscriptionInd: true
-        lastSynchronizationTime: null
-        vgmlcAddress:
-          vgmlcAddressIpv6: 2001:db8:85a3::8a2e:370:7334
-          vgmlcFqdn: null
-          vgmlcAddressIpv4: 198.51.100.1
-        ueReachableInd: REACHABLE
-        adminDeregSubWithdrawn: true
-        udrRestartInd: false
-        pei: null
-        amfEeSubscriptionId: null
-        drFlag: null
         amfInstanceId: null
-        initialRegistrationInd: true
-        epsInterworkingInfo:
-          registrationTime: null
-          epsIwkPgws:
-            key:
-              smfInstanceId: null
-              plmnId:
-                mnc: null
-                mcc: null
-              pgwFqdn: null
+        supportedFeatures: null
+        purgeFlag: null
+        pei: null
         imsVoPs: HOMOGENEOUS_SUPPORT
         deregCallbackUri: null
-        purgeFlag: null
-        ueSrvccCapability: true
-        contextInfo:
-          requestHeaders:
-            - requestHeaders
-            - requestHeaders
-          origHeaders:
-            - origHeaders
-            - origHeaders
-        dataRestorationCallbackUri: null
-        ratType: NR
-        emergencyRegistrationInd: true
         amfServiceNameDereg: nnrf-nfm
+        pcscfRestorationCallbackUri: null
         amfServiceNamePcscfRest: null
-        sorSnpnSiSupported: false
+        initialRegistrationInd: true
+        emergencyRegistrationInd: true
         guami:
           plmnId:
+            mcc: null
             mnc: null
             nid: null
-            mcc: null
           amfId: null
-        supi: null
-        reRegistrationRequired: true
-        disasterRoamingInd: false
-        resetIds:
-          - resetIds
-          - resetIds
-        pcscfRestorationCallbackUri: null
         backupAmfInfo:
           - backupAmf: null
             guamiList:
               - plmnId:
+                  mcc: null
                   mnc: null
                   nid: null
-                  mcc: null
                 amfId: null
               - plmnId:
+                  mcc: null
                   mnc: null
                   nid: null
-                  mcc: null
                 amfId: null
           - backupAmf: null
             guamiList:
               - plmnId:
+                  mcc: null
                   mnc: null
                   nid: null
-                  mcc: null
                 amfId: null
               - plmnId:
+                  mcc: null
                   mnc: null
                   nid: null
-                  mcc: null
                 amfId: null
+        drFlag: null
+        ratType: NR
+        urrpIndicator: true
+        amfEeSubscriptionId: null
+        epsInterworkingInfo:
+          epsIwkPgws:
+            key:
+              pgwFqdn: null
+              smfInstanceId: null
+              plmnId:
+                mcc: null
+                mnc: null
+          registrationTime: null
+        ueSrvccCapability: true
+        registrationTime: null
+        vgmlcAddress:
+          vgmlcAddressIpv4: 198.51.100.1
+          vgmlcAddressIpv6: 2001:db8:85a3::8a2e:370:7334
+          vgmlcFqdn: null
+        contextInfo:
+          origHeaders:
+            - origHeaders
+            - origHeaders
+          requestHeaders:
+            - requestHeaders
+            - requestHeaders
+        noEeSubscriptionInd: true
+        supi: null
+        ueReachableInd: REACHABLE
+        reRegistrationRequired: true
+        adminDeregSubWithdrawn: true
+        dataRestorationCallbackUri: null
+        resetIds:
+          - resetIds
+          - resetIds
+        disasterRoamingInd: false
         ueMINTCapability: true
+        sorSnpnSiSupported: false
+        udrRestartInd: false
+        lastSynchronizationTime: null
       properties:
         amfInstanceId:
-          description: "String uniquely identifying a NF instance. The format of the NF Instance ID shall be a  Universally Unique Identifier (UUID) version 4, as described in IETF RFC 4122. \n"
+          description: |
+            String uniquely identifying a NF instance. The format of the NF Instance ID shall be a Universally Unique Identifier (UUID) version 4, as described in IETF RFC 4122.
           format: uuid
           type: string
         supportedFeatures:
           description: |
-            A string used to indicate the features supported by an API that is used as defined in clause  6.6 in 3GPP TS 29.500. The string shall contain a bitmask indicating supported features in  hexadecimal representation Each character in the string shall take a value of "0" to "9",  "a" to "f" or "A" to "F" and shall represent the support of 4 features as described in  table 5.2.2-3. The most significant character representing the highest-numbered features shall  appear first in the string, and the character representing features 1 to 4 shall appear last  in the string. The list of features and their numbering (starting with 1) are defined  separately for each API. If the string contains a lower number of characters than there are  defined features for an API, all features that would be represented by characters that are not  present in the string are not supported.
+            A string used to indicate the features supported by an API that is used as defined in clause 6.6 in 3GPP TS 29.500. The string shall contain a bitmask indicating supported features in hexadecimal representation Each character in the string shall take a value of "0" to "9", "a" to "f" or "A" to "F" and shall represent the support of 4 features as described in table 5.2.2-3. The most significant character representing the highest-numbered features shall  appear first in the string, and the character representing features 1 to 4 shall appear last  in the string. The list of features and their numbering (starting with 1) are defined  separately for each API. If the string contains a lower number of characters than there are  defined features for an API, all features that would be represented by characters that are not  present in the string are not supported.
           pattern: "^[A-Fa-f0-9]*$"
           type: string
         purgeFlag:
@@ -5411,7 +5415,8 @@ components:
             This flag indicates whether an AMF is deregistered. This attribute may be included in notifications sent by the UDR to the UDM if purgeFlag is also set to true in the same notification.
           type: boolean
         pei:
-          description: "String representing a Permanent Equipment Identifier that may contain - an IMEI or IMEISV, as  specified in clause 6.2 of 3GPP TS 23.003; a MAC address for a 5G-RG or FN-RG via  wireline  access, with an indication that this address cannot be trusted for regulatory purpose if this  address cannot be used as an Equipment Identifier of the FN-RG, as specified in clause 4.7.7  of 3GPP TS23.316. Examples are imei-012345678901234 or imeisv-0123456789012345. \n"
+          description: |
+            String representing a Permanent Equipment Identifier that may contain - an IMEI or IMEISV, as  specified in clause 6.2 of 3GPP TS 23.003; a MAC address for a 5G-RG or FN-RG via wireline  access, with an indication that this address cannot be trusted for regulatory purpose if this  address cannot be used as an Equipment Identifier of the FN-RG, as specified in clause 4.7.7  of 3GPP TS23.316. Examples are imei-012345678901234 or imeisv-0123456789012345.
           pattern: "^(imei-[0-9]{15}|imeisv-[0-9]{16}|mac((-[0-9a-fA-F]{2}){6})(-untrusted)?|eui((-[0-9a-fA-F]{2}){8})|.+)$"
           type: string
         imsVoPs:
@@ -5463,7 +5468,20 @@ components:
         noEeSubscriptionInd:
           type: boolean
         supi:
-          description: "String identifying a Supi that shall contain either an IMSI, a network specific identifier,\na Global Cable Identifier (GCI) or a Global Line Identifier (GLI) as specified in clause \n2.2A of 3GPP TS 23.003. It shall be formatted as follows\n - for an IMSI \"imsi-<imsi>\", where <imsi> shall be formatted according to clause 2.2\n   of 3GPP TS 23.003 that describes an IMSI.\n - for a network specific identifier \"nai-<nai>, where <nai> shall be formatted\n   according to clause 28.7.2 of 3GPP TS 23.003 that describes an NAI.\n - for a GCI \"gci-<gci>\", where <gci> shall be formatted according to clause 28.15.2\n   of 3GPP TS 23.003.\n - for a GLI \"gli-<gli>\", where <gli> shall be formatted according to clause 28.16.2 of\n   3GPP TS 23.003.To enable that the value is used as part of an URI, the string shall\n   only contain characters allowed according to the \"lower-with-hyphen\" naming convention\n   defined in 3GPP TS 29.501.\n"
+          description: |
+            String identifying a Supi that shall contain either an IMSI, a network specific identifier,
+            a Global Cable Identifier (GCI) or a Global Line Identifier (GLI) as specified in clause
+            2.2A of 3GPP TS 23.003. It shall be formatted as follows
+             - for an IMSI "imsi-<imsi>", where <imsi> shall be formatted according to clause 2.2
+               of 3GPP TS 23.003 that describes an IMSI.
+             - for a network specific identifier "nai-<nai>, where <nai> shall be formatted
+               according to clause 28.7.2 of 3GPP TS 23.003 that describes an NAI.
+             - for a GCI "gci-<gci>", where <gci> shall be formatted according to clause 28.15.2
+               of 3GPP TS 23.003.
+             - for a GLI "gli-<gli>", where <gli> shall be formatted according to clause 28.16.2 of
+               3GPP TS 23.003.To enable that the value is used as part of an URI, the string shall
+               only contain characters allowed according to the "lower-with-hyphen" naming convention
+               defined in 3GPP TS 29.501.
           pattern: "^(imsi-[0-9]{5,15}|nai-.+|gci-.+|gli-.+|.+)$"
           type: string
         ueReachableInd:
@@ -5503,7 +5521,7 @@ components:
       type: object
     Amf3GppAccessRegistrationModification:
       description: |
-        This datatype contains the set of attributes obtained from type  Amf3GppAccessRegistration by deleting attributes that are not subject to modification by HTTP PATCH method.
+        This datatype contains the set of attributes obtained from type Amf3GppAccessRegistration by deleting attributes that are not subject to modification by HTTP PATCH method.
       properties:
         guami:
           $ref: "#/components/schemas/Guami"
@@ -5512,7 +5530,8 @@ components:
             This flag indicates whether an AMF is deregistered. This attribute may be included in notifications sent by the UDR to the UDM if purgeFlag is also set to true in the same notification.
           type: boolean
         pei:
-          description: "String representing a Permanent Equipment Identifier that may contain - an IMEI or IMEISV, as  specified in clause 6.2 of 3GPP TS 23.003; a MAC address for a 5G-RG or FN-RG via  wireline  access, with an indication that this address cannot be trusted for regulatory purpose if this  address cannot be used as an Equipment Identifier of the FN-RG, as specified in clause 4.7.7  of 3GPP TS23.316. Examples are imei-012345678901234 or imeisv-0123456789012345. \n"
+          description: |
+            String representing a Permanent Equipment Identifier that may contain - an IMEI or IMEISV, as  specified in clause 6.2 of 3GPP TS 23.003; a MAC address for a 5G-RG or FN-RG via wireline  access, with an indication that this address cannot be trusted for regulatory purpose if this  address cannot be used as an Equipment Identifier of the FN-RG, as specified in clause 4.7.7  of 3GPP TS23.316. Examples are imei-012345678901234 or imeisv-0123456789012345.
           pattern: "^(imei-[0-9]{15}|imeisv-[0-9]{16}|mac((-[0-9a-fA-F]{2}){6})(-untrusted)?|eui((-[0-9a-fA-F]{2}){8})|.+)$"
           type: string
         imsVoPs:
@@ -5535,14 +5554,14 @@ components:
       description: |
         This information element contains the associations between APN/DNN and PGW-C+SMF selected by the AMF for EPS interworking.
       example:
-        registrationTime: null
         epsIwkPgws:
           key:
+            pgwFqdn: null
             smfInstanceId: null
             plmnId:
-              mnc: null
               mcc: null
-            pgwFqdn: null
+              mnc: null
+        registrationTime: null
       properties:
         epsIwkPgws:
           additionalProperties:
@@ -5555,11 +5574,11 @@ components:
     EpsIwkPgw:
       description: "This datatype signifies the PGW FQDN, SMF instance ID and the PLMNId location."
       example:
+        pgwFqdn: null
         smfInstanceId: null
         plmnId:
-          mnc: null
           mcc: null
-        pgwFqdn: null
+          mnc: null
       properties:
         pgwFqdn:
           $ref: "#/components/schemas/Fqdn"
@@ -5575,81 +5594,82 @@ components:
       description: |
         Represents the complete set of information relevant to the AMF when the UE has registered via non 3GPP access.
       example:
-        registrationTime: null
-        supportedFeatures: null
-        urrpIndicator: true
-        noEeSubscriptionInd: true
-        lastSynchronizationTime: null
-        vgmlcAddress:
-          vgmlcAddressIpv6: 2001:db8:85a3::8a2e:370:7334
-          vgmlcFqdn: null
-          vgmlcAddressIpv4: 198.51.100.1
-        adminDeregSubWithdrawn: true
-        udrRestartInd: false
-        pei: null
-        amfEeSubscriptionId: null
         amfInstanceId: null
+        supportedFeatures: null
+        purgeFlag: null
+        pei: null
         imsVoPs: null
         deregCallbackUri: null
-        purgeFlag: null
-        contextInfo:
-          requestHeaders:
-            - requestHeaders
-            - requestHeaders
-          origHeaders:
-            - origHeaders
-            - origHeaders
-        dataRestorationCallbackUri: null
-        ratType: null
         amfServiceNameDereg: null
+        pcscfRestorationCallbackUri: null
         amfServiceNamePcscfRest: null
-        sorSnpnSiSupported: false
         guami:
           plmnId:
+            mcc: null
             mnc: null
             nid: null
-            mcc: null
           amfId: null
-        supi: null
-        reRegistrationRequired: true
-        disasterRoamingInd: false
-        resetIds:
-          - resetIds
-          - resetIds
-        pcscfRestorationCallbackUri: null
         backupAmfInfo:
           - backupAmf: null
             guamiList:
               - plmnId:
+                  mcc: null
                   mnc: null
                   nid: null
-                  mcc: null
                 amfId: null
               - plmnId:
+                  mcc: null
                   mnc: null
                   nid: null
-                  mcc: null
                 amfId: null
           - backupAmf: null
             guamiList:
               - plmnId:
+                  mcc: null
                   mnc: null
                   nid: null
-                  mcc: null
                 amfId: null
               - plmnId:
+                  mcc: null
                   mnc: null
                   nid: null
-                  mcc: null
                 amfId: null
+        ratType: null
+        urrpIndicator: true
+        amfEeSubscriptionId: null
+        registrationTime: null
+        vgmlcAddress:
+          vgmlcAddressIpv4: 198.51.100.1
+          vgmlcAddressIpv6: 2001:db8:85a3::8a2e:370:7334
+          vgmlcFqdn: null
+        contextInfo:
+          origHeaders:
+            - origHeaders
+            - origHeaders
+          requestHeaders:
+            - requestHeaders
+            - requestHeaders
+        noEeSubscriptionInd: true
+        supi: null
+        reRegistrationRequired: true
+        adminDeregSubWithdrawn: true
+        dataRestorationCallbackUri: null
+        resetIds:
+          - resetIds
+          - resetIds
+        disasterRoamingInd: false
+        sorSnpnSiSupported: false
+        udrRestartInd: false
+        lastSynchronizationTime: null
       properties:
         amfInstanceId:
-          description: "String uniquely identifying a NF instance. The format of the NF Instance ID shall be a  Universally Unique Identifier (UUID) version 4, as described in IETF RFC 4122. \n"
+          description: |
+            String uniquely identifying a NF instance. The format of the NF Instance ID shall be a Universally Unique Identifier (UUID) version 4, as described in IETF RFC 4122.
           format: uuid
           type: string
         supportedFeatures:
           description: |
-            A string used to indicate the features supported by an API that is used as defined in clause  6.6 in 3GPP TS 29.500. The string shall contain a bitmask indicating supported features in  hexadecimal representation Each character in the string shall take a value of "0" to "9",  "a" to "f" or "A" to "F" and shall represent the support of 4 features as described in  table 5.2.2-3. The most significant character representing the highest-numbered features shall  appear first in the string, and the character representing features 1 to 4 shall appear last  in the string. The list of features and their numbering (starting with 1) are defined  separately for each API. If the string contains a lower number of characters than there are  defined features for an API, all features that would be represented by characters that are not  present in the string are not supported.
+            A string used to indicate the features supported by an API that is used as defined in clause 6.6 in 3GPP TS 29.500. The string shall contain a bitmask indicating supported features in hexadecimal representation Each character in the string shall take a value of "0" to "9", "a" to "f" or "A" to "F" and shall represent the support of 4 features as described in table 5.2.2-3. The most significant character representing the highest-numbered features shall  appear first in the string, and the character representing features 1 to 4 shall appear last  in the string. The list of features and their numbering (starting with 1) are defined  separately for each API. If the string contains a lower number of characters than there are  defined features for an API, all features that would be represented by characters that are not  present in the string are not supported.
           pattern: "^[A-Fa-f0-9]*$"
           type: string
         purgeFlag:
@@ -5657,7 +5677,8 @@ components:
             This flag indicates whether an AMF is deregistered. This attribute may be included in notifications sent by the UDR to the UDM if purgeFlag is also set to true in the same notification.
           type: boolean
         pei:
-          description: "String representing a Permanent Equipment Identifier that may contain - an IMEI or IMEISV, as  specified in clause 6.2 of 3GPP TS 23.003; a MAC address for a 5G-RG or FN-RG via  wireline  access, with an indication that this address cannot be trusted for regulatory purpose if this  address cannot be used as an Equipment Identifier of the FN-RG, as specified in clause 4.7.7  of 3GPP TS23.316. Examples are imei-012345678901234 or imeisv-0123456789012345. \n"
+          description: |
+            String representing a Permanent Equipment Identifier that may contain - an IMEI or IMEISV, as  specified in clause 6.2 of 3GPP TS 23.003; a MAC address for a 5G-RG or FN-RG via wireline  access, with an indication that this address cannot be trusted for regulatory purpose if this  address cannot be used as an Equipment Identifier of the FN-RG, as specified in clause 4.7.7  of 3GPP TS23.316. Examples are imei-012345678901234 or imeisv-0123456789012345.
           pattern: "^(imei-[0-9]{15}|imeisv-[0-9]{16}|mac((-[0-9a-fA-F]{2}){6})(-untrusted)?|eui((-[0-9a-fA-F]{2}){8})|.+)$"
           type: string
         imsVoPs:
@@ -5697,7 +5718,20 @@ components:
         noEeSubscriptionInd:
           type: boolean
         supi:
-          description: "String identifying a Supi that shall contain either an IMSI, a network specific identifier,\na Global Cable Identifier (GCI) or a Global Line Identifier (GLI) as specified in clause \n2.2A of 3GPP TS 23.003. It shall be formatted as follows\n - for an IMSI \"imsi-<imsi>\", where <imsi> shall be formatted according to clause 2.2\n   of 3GPP TS 23.003 that describes an IMSI.\n - for a network specific identifier \"nai-<nai>, where <nai> shall be formatted\n   according to clause 28.7.2 of 3GPP TS 23.003 that describes an NAI.\n - for a GCI \"gci-<gci>\", where <gci> shall be formatted according to clause 28.15.2\n   of 3GPP TS 23.003.\n - for a GLI \"gli-<gli>\", where <gli> shall be formatted according to clause 28.16.2 of\n   3GPP TS 23.003.To enable that the value is used as part of an URI, the string shall\n   only contain characters allowed according to the \"lower-with-hyphen\" naming convention\n   defined in 3GPP TS 29.501.\n"
+          description: |
+            String identifying a Supi that shall contain either an IMSI, a network specific identifier,
+            a Global Cable Identifier (GCI) or a Global Line Identifier (GLI) as specified in clause
+            2.2A of 3GPP TS 23.003. It shall be formatted as follows
+             - for an IMSI "imsi-<imsi>", where <imsi> shall be formatted according to clause 2.2
+               of 3GPP TS 23.003 that describes an IMSI.
+             - for a network specific identifier "nai-<nai>, where <nai> shall be formatted
+               according to clause 28.7.2 of 3GPP TS 23.003 that describes an NAI.
+             - for a GCI "gci-<gci>", where <gci> shall be formatted according to clause 28.15.2
+               of 3GPP TS 23.003.
+             - for a GLI "gli-<gli>", where <gli> shall be formatted according to clause 28.16.2 of
+               3GPP TS 23.003.To enable that the value is used as part of an URI, the string shall
+               only contain characters allowed according to the "lower-with-hyphen" naming convention
+               defined in 3GPP TS 29.501.
           pattern: "^(imsi-[0-9]{5,15}|nai-.+|gci-.+|gli-.+|.+)$"
           type: string
         reRegistrationRequired:
@@ -5743,7 +5777,8 @@ components:
             This flag indicates whether an AMF is deregistered. This attribute may be included in notifications sent by the UDR to the UDM if purgeFlag is also set to true in the same notification.
           type: boolean
         pei:
-          description: "String representing a Permanent Equipment Identifier that may contain - an IMEI or IMEISV, as  specified in clause 6.2 of 3GPP TS 23.003; a MAC address for a 5G-RG or FN-RG via  wireline  access, with an indication that this address cannot be trusted for regulatory purpose if this  address cannot be used as an Equipment Identifier of the FN-RG, as specified in clause 4.7.7  of 3GPP TS23.316. Examples are imei-012345678901234 or imeisv-0123456789012345. \n"
+          description: |
+            String representing a Permanent Equipment Identifier that may contain - an IMEI or IMEISV, as  specified in clause 6.2 of 3GPP TS 23.003; a MAC address for a 5G-RG or FN-RG via wireline  access, with an indication that this address cannot be trusted for regulatory purpose if this  address cannot be used as an Equipment Identifier of the FN-RG, as specified in clause 4.7.7  of 3GPP TS23.316. Examples are imei-012345678901234 or imeisv-0123456789012345.
           pattern: "^(imei-[0-9]{15}|imeisv-[0-9]{16}|mac((-[0-9a-fA-F]{2}){6})(-untrusted)?|eui((-[0-9a-fA-F]{2}){8})|.+)$"
           type: string
         imsVoPs:
@@ -5757,63 +5792,72 @@ components:
       type: object
     SmfRegistration:
       description: |
-        This datatype contains a complete set of mandatory information relevant to an SMF  serving the UE.
+        This datatype contains a complete set of mandatory information relevant to an SMF serving the UE.
       example:
-        registrationTime: null
-        supportedFeatures: null
         smfInstanceId: null
         smfSetId: null
-        lastSynchronizationTime: null
-        pgwIpAddr:
-          ipv6Addr: 2001:db8:85a3::8a2e:370:7334
-          ipv4Addr: 198.51.100.1
-          ipv6Prefix: 2001:db8:abcd:12::0/64
-        udrRestartInd: false
-        singleNssai:
-          sd: sd
-          sst: 20
-        pcfId: null
-        emergencyServices: true
+        supportedFeatures: null
         pduSessionId: null
+        singleNssai:
+          sst: 20
+          sd: sd
+        dnn: null
+        emergencyServices: true
+        pcscfRestorationCallbackUri: null
         plmnId:
-          mnc: null
           mcc: null
-        registrationReason: SMF_CONTEXT_TRANSFERRED
+          mnc: null
+        pgwFqdn: null
+        pgwIpAddr:
+          ipv4Addr: 198.51.100.1
+          ipv6Addr: 2001:db8:85a3::8a2e:370:7334
+          ipv6Prefix: 2001:db8:abcd:12::0/64
+        epdgInd: false
         deregCallbackUri: null
-        wildcardInd: true
+        registrationReason: SMF_CONTEXT_TRANSFERRED
+        registrationTime: null
         contextInfo:
-          requestHeaders:
-            - requestHeaders
-            - requestHeaders
           origHeaders:
             - origHeaders
             - origHeaders
-        dnn: null
+          requestHeaders:
+            - requestHeaders
+            - requestHeaders
+        pcfId: null
         dataRestorationCallbackUri: null
-        pduSessionReActivationRequired: false
-        udmStaleCheckCallbackUri: null
-        epdgInd: false
         resetIds:
           - resetIds
           - resetIds
+        udrRestartInd: false
+        lastSynchronizationTime: null
+        pduSessionReActivationRequired: false
         staleCheckCallbackUri: null
-        pcscfRestorationCallbackUri: null
-        pgwFqdn: null
+        udmStaleCheckCallbackUri: null
+        wildcardInd: true
       properties:
         smfInstanceId:
-          description: "String uniquely identifying a NF instance. The format of the NF Instance ID shall be a  Universally Unique Identifier (UUID) version 4, as described in IETF RFC 4122. \n"
+          description: |
+            String uniquely identifying a NF instance. The format of the NF Instance ID shall be a Universally Unique Identifier (UUID) version 4, as described in IETF RFC 4122.
           format: uuid
           type: string
         smfSetId:
-          description: "NF Set Identifier (see clause 28.12 of 3GPP TS 23.003), formatted as the following string \"set<Set ID>.<nftype>set.5gc.mnc<MNC>.mcc<MCC>\", or  \"set<SetID>.<NFType>set.5gc.nid<NID>.mnc<MNC>.mcc<MCC>\" with  <MCC> encoded as defined in clause 5.4.2 (\"Mcc\" data type definition)  <MNC> encoding the Mobile Network Code part of the PLMN, comprising 3 digits. \n  If there are only 2 significant digits in the MNC, one \"0\" digit shall be inserted \n  at the left side to fill the 3 digits coding of MNC.  Pattern: '^[0-9]{3}$'\n<NFType> encoded as a value defined in Table 6.1.6.3.3-1 of 3GPP TS 29.510 but \n  with lower case characters <Set ID> encoded as a string of characters consisting of \n  alphabetic characters (A-Z and a-z), digits (0-9) and/or the hyphen (-) and that \n  shall end with either an alphabetic character or a digit. \n"
+          description: |
+            NF Set Identifier (see clause 28.12 of 3GPP TS 23.003), formatted as the following string "set<Set ID>.<nftype>set.5gc.mnc<MNC>.mcc<MCC>", or "set<SetID>.<NFType>set.5gc.nid<NID>.mnc<MNC>.mcc<MCC>" with <MCC> encoded as defined in clause 5.4.2 ("Mcc" data type definition) <MNC> encoding the Mobile Network Code part of the PLMN, comprising 3 digits.
+              If there are only 2 significant digits in the MNC, one "0" digit shall be inserted
+              at the left side to fill the 3 digits coding of MNC.  Pattern: '^[0-9]{3}$'
+            <NFType> encoded as a value defined in Table 6.1.6.3.3-1 of 3GPP TS 29.510 but
+              with lower case characters <Set ID> encoded as a string of characters consisting of
+              alphabetic characters (A-Z and a-z), digits (0-9) and/or the hyphen (-) and that
+              shall end with either an alphabetic character or a digit.
           type: string
         supportedFeatures:
           description: |
-            A string used to indicate the features supported by an API that is used as defined in clause  6.6 in 3GPP TS 29.500. The string shall contain a bitmask indicating supported features in  hexadecimal representation Each character in the string shall take a value of "0" to "9",  "a" to "f" or "A" to "F" and shall represent the support of 4 features as described in  table 5.2.2-3. The most significant character representing the highest-numbered features shall  appear first in the string, and the character representing features 1 to 4 shall appear last  in the string. The list of features and their numbering (starting with 1) are defined  separately for each API. If the string contains a lower number of characters than there are  defined features for an API, all features that would be represented by characters that are not  present in the string are not supported.
+            A string used to indicate the features supported by an API that is used as defined in clause 6.6 in 3GPP TS 29.500. The string shall contain a bitmask indicating supported features in hexadecimal representation Each character in the string shall take a value of "0" to "9", "a" to "f" or "A" to "F" and shall represent the support of 4 features as described in table 5.2.2-3. The most significant character representing the highest-numbered features shall  appear first in the string, and the character representing features 1 to 4 shall appear last  in the string. The list of features and their numbering (starting with 1) are defined  separately for each API. If the string contains a lower number of characters than there are  defined features for an API, all features that would be represented by characters that are not  present in the string are not supported.
           pattern: "^[A-Fa-f0-9]*$"
           type: string
         pduSessionId:
-          description: "Unsigned integer identifying a PDU session, within the range 0 to 255, as specified in  clause 11.2.3.1b, bits 1 to 8, of 3GPP TS 24.007. If the PDU Session ID is allocated by the  Core Network for UEs not supporting N1 mode, reserved range 64 to 95 is used. PDU Session ID  within the reserved range is only visible in the Core Network. \n"
+          description: |
+            Unsigned integer identifying a PDU session, within the range 0 to 255, as specified in clause 11.2.3.1b, bits 1 to 8, of 3GPP TS 24.007. If the PDU Session ID is allocated by the Core Network for UEs not supporting N1 mode, reserved range 64 to 95 is used. PDU Session ID within the reserved range is only visible in the Core Network.
           maximum: 255
           minimum: 0
           type: integer
@@ -5821,7 +5865,7 @@ components:
           $ref: "#/components/schemas/Snssai"
         dnn:
           description: |
-            String representing a Data Network as defined in clause 9A of 3GPP TS 23.003;  it shall contain either a DNN Network Identifier, or a full DNN with both the Network  Identifier and Operator Identifier, as specified in 3GPP TS 23.003 clause 9.1.1 and 9.1.2. It shall be coded as string in which the labels are separated by dots  (e.g. "Label1.Label2.Label3").
+            String representing a Data Network as defined in clause 9A of 3GPP TS 23.003; it shall contain either a DNN Network Identifier, or a full DNN with both the Network Identifier and Operator Identifier, as specified in 3GPP TS 23.003 clause 9.1.1 and 9.1.2. It shall be coded as string in which the labels are separated by dots (e.g. "Label1.Label2.Label3").
           type: string
         emergencyServices:
           type: boolean
@@ -5853,7 +5897,8 @@ components:
         contextInfo:
           $ref: "#/components/schemas/ContextInfo"
         pcfId:
-          description: "String uniquely identifying a NF instance. The format of the NF Instance ID shall be a  Universally Unique Identifier (UUID) version 4, as described in IETF RFC 4122. \n"
+          description: |
+            String uniquely identifying a NF instance. The format of the NF Instance ID shall be a Universally Unique Identifier (UUID) version 4, as described in IETF RFC 4122.
           format: uuid
           type: string
         dataRestorationCallbackUri:
@@ -5904,43 +5949,51 @@ components:
       description: |
         This datatype contains SMSF registration for 3GPP access that is created or updated with the received information.
       example:
-        registrationTime: null
-        ueMemoryAvailableInd: true
-        supportedFeatures: null
-        contextInfo:
-          requestHeaders:
-            - requestHeaders
-            - requestHeaders
-          origHeaders:
-            - origHeaders
-            - origHeaders
-        dataRestorationCallbackUri: null
-        smsfSbiSupInd: false
+        smsfInstanceId: null
         smsfSetId: null
+        supportedFeatures: null
+        plmnId:
+          mcc: null
+          mnc: null
+        smsfMAPAddress: null
         smsfDiameterAddress:
           name: null
           realm: null
-        lastSynchronizationTime: null
-        smsfInstanceId: null
-        udrRestartInd: false
+        registrationTime: null
+        contextInfo:
+          origHeaders:
+            - origHeaders
+            - origHeaders
+          requestHeaders:
+            - requestHeaders
+            - requestHeaders
+        dataRestorationCallbackUri: null
         resetIds:
           - resetIds
           - resetIds
-        smsfMAPAddress: null
-        plmnId:
-          mnc: null
-          mcc: null
+        smsfSbiSupInd: false
+        udrRestartInd: false
+        lastSynchronizationTime: null
+        ueMemoryAvailableInd: true
       properties:
         smsfInstanceId:
-          description: "String uniquely identifying a NF instance. The format of the NF Instance ID shall be a  Universally Unique Identifier (UUID) version 4, as described in IETF RFC 4122. \n"
+          description: |
+            String uniquely identifying a NF instance. The format of the NF Instance ID shall be a Universally Unique Identifier (UUID) version 4, as described in IETF RFC 4122.
           format: uuid
           type: string
         smsfSetId:
-          description: "NF Set Identifier (see clause 28.12 of 3GPP TS 23.003), formatted as the following string \"set<Set ID>.<nftype>set.5gc.mnc<MNC>.mcc<MCC>\", or  \"set<SetID>.<NFType>set.5gc.nid<NID>.mnc<MNC>.mcc<MCC>\" with  <MCC> encoded as defined in clause 5.4.2 (\"Mcc\" data type definition)  <MNC> encoding the Mobile Network Code part of the PLMN, comprising 3 digits. \n  If there are only 2 significant digits in the MNC, one \"0\" digit shall be inserted \n  at the left side to fill the 3 digits coding of MNC.  Pattern: '^[0-9]{3}$'\n<NFType> encoded as a value defined in Table 6.1.6.3.3-1 of 3GPP TS 29.510 but \n  with lower case characters <Set ID> encoded as a string of characters consisting of \n  alphabetic characters (A-Z and a-z), digits (0-9) and/or the hyphen (-) and that \n  shall end with either an alphabetic character or a digit. \n"
+          description: |
+            NF Set Identifier (see clause 28.12 of 3GPP TS 23.003), formatted as the following string "set<Set ID>.<nftype>set.5gc.mnc<MNC>.mcc<MCC>", or "set<SetID>.<NFType>set.5gc.nid<NID>.mnc<MNC>.mcc<MCC>" with <MCC> encoded as defined in clause 5.4.2 ("Mcc" data type definition) <MNC> encoding the Mobile Network Code part of the PLMN, comprising 3 digits.
+              If there are only 2 significant digits in the MNC, one "0" digit shall be inserted
+              at the left side to fill the 3 digits coding of MNC.  Pattern: '^[0-9]{3}$'
+            <NFType> encoded as a value defined in Table 6.1.6.3.3-1 of 3GPP TS 29.510 but
+              with lower case characters <Set ID> encoded as a string of characters consisting of
+              alphabetic characters (A-Z and a-z), digits (0-9) and/or the hyphen (-) and that
+              shall end with either an alphabetic character or a digit.
           type: string
         supportedFeatures:
           description: |
-            A string used to indicate the features supported by an API that is used as defined in clause  6.6 in 3GPP TS 29.500. The string shall contain a bitmask indicating supported features in  hexadecimal representation Each character in the string shall take a value of "0" to "9",  "a" to "f" or "A" to "F" and shall represent the support of 4 features as described in  table 5.2.2-3. The most significant character representing the highest-numbered features shall  appear first in the string, and the character representing features 1 to 4 shall appear last  in the string. The list of features and their numbering (starting with 1) are defined  separately for each API. If the string contains a lower number of characters than there are  defined features for an API, all features that would be represented by characters that are not  present in the string are not supported.
+            A string used to indicate the features supported by an API that is used as defined in clause 6.6 in 3GPP TS 29.500. The string shall contain a bitmask indicating supported features in hexadecimal representation Each character in the string shall take a value of "0" to "9", "a" to "f" or "A" to "F" and shall represent the support of 4 features as described in table 5.2.2-3. The most significant character representing the highest-numbered features shall  appear first in the string, and the character representing features 1 to 4 shall appear last  in the string. The list of features and their numbering (starting with 1) are defined  separately for each API. If the string contains a lower number of characters than there are  defined features for an API, all features that would be represented by characters that are not  present in the string are not supported.
           pattern: "^[A-Fa-f0-9]*$"
           type: string
         plmnId:
@@ -5986,22 +6039,24 @@ components:
       description: |
         This datatype is supported by the POST HTTP method, and it includes the deregistration data.
       example:
-        accessType: 3GPP_ACCESS
-        newSmfInstanceId: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
-        pduSessionId: 20
         deregReason: UE_INITIAL_REGISTRATION
+        accessType: 3GPP_ACCESS
+        pduSessionId: 20
+        newSmfInstanceId: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
       properties:
         deregReason:
           $ref: "#/components/schemas/DeregistrationReason"
         accessType:
           $ref: "#/components/schemas/AccessType"
         pduSessionId:
-          description: "Unsigned integer identifying a PDU session, within the range 0 to 255, as specified in  clause 11.2.3.1b, bits 1 to 8, of 3GPP TS 24.007. If the PDU Session ID is allocated by the  Core Network for UEs not supporting N1 mode, reserved range 64 to 95 is used. PDU Session ID  within the reserved range is only visible in the Core Network. \n"
+          description: |
+            Unsigned integer identifying a PDU session, within the range 0 to 255, as specified in clause 11.2.3.1b, bits 1 to 8, of 3GPP TS 24.007. If the PDU Session ID is allocated by the Core Network for UEs not supporting N1 mode, reserved range 64 to 95 is used. PDU Session ID within the reserved range is only visible in the Core Network.
           maximum: 255
           minimum: 0
           type: integer
         newSmfInstanceId:
-          description: "String uniquely identifying a NF instance. The format of the NF Instance ID shall be a  Universally Unique Identifier (UUID) version 4, as described in IETF RFC 4122. \n"
+          description: |
+            String uniquely identifying a NF instance. The format of the NF Instance ID shall be a Universally Unique Identifier (UUID) version 4, as described in IETF RFC 4122.
           format: uuid
           type: string
       required:
@@ -6011,18 +6066,31 @@ components:
       description: |
         This datatype contains the SUPI optionally addresses the failed P-CSCF. It is supported by the POST HTTP method.
       example:
+        supi: supi
         failedPcscf:
-          fqdn: null
-          ipv6Addrs:
-            - 2001:db8:85a3::8a2e:370:7334
-            - 2001:db8:85a3::8a2e:370:7334
           ipv4Addrs:
             - 198.51.100.1
             - 198.51.100.1
-        supi: supi
+          ipv6Addrs:
+            - 2001:db8:85a3::8a2e:370:7334
+            - 2001:db8:85a3::8a2e:370:7334
+          fqdn: null
       properties:
         supi:
-          description: "String identifying a Supi that shall contain either an IMSI, a network specific identifier,\na Global Cable Identifier (GCI) or a Global Line Identifier (GLI) as specified in clause \n2.2A of 3GPP TS 23.003. It shall be formatted as follows\n - for an IMSI \"imsi-<imsi>\", where <imsi> shall be formatted according to clause 2.2\n   of 3GPP TS 23.003 that describes an IMSI.\n - for a network specific identifier \"nai-<nai>, where <nai> shall be formatted\n   according to clause 28.7.2 of 3GPP TS 23.003 that describes an NAI.\n - for a GCI \"gci-<gci>\", where <gci> shall be formatted according to clause 28.15.2\n   of 3GPP TS 23.003.\n - for a GLI \"gli-<gli>\", where <gli> shall be formatted according to clause 28.16.2 of\n   3GPP TS 23.003.To enable that the value is used as part of an URI, the string shall\n   only contain characters allowed according to the \"lower-with-hyphen\" naming convention\n   defined in 3GPP TS 29.501.\n"
+          description: |
+            String identifying a Supi that shall contain either an IMSI, a network specific identifier,
+            a Global Cable Identifier (GCI) or a Global Line Identifier (GLI) as specified in clause
+            2.2A of 3GPP TS 23.003. It shall be formatted as follows
+             - for an IMSI "imsi-<imsi>", where <imsi> shall be formatted according to clause 2.2
+               of 3GPP TS 23.003 that describes an IMSI.
+             - for a network specific identifier "nai-<nai>, where <nai> shall be formatted
+               according to clause 28.7.2 of 3GPP TS 23.003 that describes an NAI.
+             - for a GCI "gci-<gci>", where <gci> shall be formatted according to clause 28.15.2
+               of 3GPP TS 23.003.
+             - for a GLI "gli-<gli>", where <gli> shall be formatted according to clause 28.16.2 of
+               3GPP TS 23.003.To enable that the value is used as part of an URI, the string shall
+               only contain characters allowed according to the "lower-with-hyphen" naming convention
+               defined in 3GPP TS 29.501.
           pattern: "^(imsi-[0-9]{5,15}|nai-.+|gci-.+|gli-.+|.+)$"
           type: string
         failedPcscf:
@@ -6047,20 +6115,33 @@ components:
       type: object
     TriggerRequest:
       description: |
-        This data type identifies if the NF service consumer requires to trigger P-CSCF  restoration.
+        This data type identifies if the NF service consumer requires to trigger P-CSCF restoration.
       example:
+        supi: supi
         failedPcscf:
-          fqdn: null
-          ipv6Addrs:
-            - 2001:db8:85a3::8a2e:370:7334
-            - 2001:db8:85a3::8a2e:370:7334
           ipv4Addrs:
             - 198.51.100.1
             - 198.51.100.1
-        supi: supi
+          ipv6Addrs:
+            - 2001:db8:85a3::8a2e:370:7334
+            - 2001:db8:85a3::8a2e:370:7334
+          fqdn: null
       properties:
         supi:
-          description: "String identifying a Supi that shall contain either an IMSI, a network specific identifier,\na Global Cable Identifier (GCI) or a Global Line Identifier (GLI) as specified in clause \n2.2A of 3GPP TS 23.003. It shall be formatted as follows\n - for an IMSI \"imsi-<imsi>\", where <imsi> shall be formatted according to clause 2.2\n   of 3GPP TS 23.003 that describes an IMSI.\n - for a network specific identifier \"nai-<nai>, where <nai> shall be formatted\n   according to clause 28.7.2 of 3GPP TS 23.003 that describes an NAI.\n - for a GCI \"gci-<gci>\", where <gci> shall be formatted according to clause 28.15.2\n   of 3GPP TS 23.003.\n - for a GLI \"gli-<gli>\", where <gli> shall be formatted according to clause 28.16.2 of\n   3GPP TS 23.003.To enable that the value is used as part of an URI, the string shall\n   only contain characters allowed according to the \"lower-with-hyphen\" naming convention\n   defined in 3GPP TS 29.501.\n"
+          description: |
+            String identifying a Supi that shall contain either an IMSI, a network specific identifier,
+            a Global Cable Identifier (GCI) or a Global Line Identifier (GLI) as specified in clause
+            2.2A of 3GPP TS 23.003. It shall be formatted as follows
+             - for an IMSI "imsi-<imsi>", where <imsi> shall be formatted according to clause 2.2
+               of 3GPP TS 23.003 that describes an IMSI.
+             - for a network specific identifier "nai-<nai>, where <nai> shall be formatted
+               according to clause 28.7.2 of 3GPP TS 23.003 that describes an NAI.
+             - for a GCI "gci-<gci>", where <gci> shall be formatted according to clause 28.15.2
+               of 3GPP TS 23.003.
+             - for a GLI "gli-<gli>", where <gli> shall be formatted according to clause 28.16.2 of
+               3GPP TS 23.003.To enable that the value is used as part of an URI, the string shall
+               only contain characters allowed according to the "lower-with-hyphen" naming convention
+               defined in 3GPP TS 29.501.
           pattern: "^(imsi-[0-9]{5,15}|nai-.+|gci-.+|gli-.+|.+)$"
           type: string
         failedPcscf:
@@ -6072,86 +6153,86 @@ components:
       description: This data type provides information about the SMF registration information.
       example:
         smfRegistrationList:
-          - registrationTime: null
-            supportedFeatures: null
-            smfInstanceId: null
+          - smfInstanceId: null
             smfSetId: null
-            lastSynchronizationTime: null
-            pgwIpAddr:
-              ipv6Addr: 2001:db8:85a3::8a2e:370:7334
-              ipv4Addr: 198.51.100.1
-              ipv6Prefix: 2001:db8:abcd:12::0/64
-            udrRestartInd: false
-            singleNssai:
-              sd: sd
-              sst: 20
-            pcfId: null
-            emergencyServices: true
+            supportedFeatures: null
             pduSessionId: null
+            singleNssai:
+              sst: 20
+              sd: sd
+            dnn: null
+            emergencyServices: true
+            pcscfRestorationCallbackUri: null
             plmnId:
-              mnc: null
               mcc: null
-            registrationReason: SMF_CONTEXT_TRANSFERRED
+              mnc: null
+            pgwFqdn: null
+            pgwIpAddr:
+              ipv4Addr: 198.51.100.1
+              ipv6Addr: 2001:db8:85a3::8a2e:370:7334
+              ipv6Prefix: 2001:db8:abcd:12::0/64
+            epdgInd: false
             deregCallbackUri: null
-            wildcardInd: true
+            registrationReason: SMF_CONTEXT_TRANSFERRED
+            registrationTime: null
             contextInfo:
-              requestHeaders:
-                - requestHeaders
-                - requestHeaders
               origHeaders:
                 - origHeaders
                 - origHeaders
-            dnn: null
-            dataRestorationCallbackUri: null
-            pduSessionReActivationRequired: false
-            udmStaleCheckCallbackUri: null
-            epdgInd: false
-            resetIds:
-              - resetIds
-              - resetIds
-            staleCheckCallbackUri: null
-            pcscfRestorationCallbackUri: null
-            pgwFqdn: null
-          - registrationTime: null
-            supportedFeatures: null
-            smfInstanceId: null
-            smfSetId: null
-            lastSynchronizationTime: null
-            pgwIpAddr:
-              ipv6Addr: 2001:db8:85a3::8a2e:370:7334
-              ipv4Addr: 198.51.100.1
-              ipv6Prefix: 2001:db8:abcd:12::0/64
-            udrRestartInd: false
-            singleNssai:
-              sd: sd
-              sst: 20
-            pcfId: null
-            emergencyServices: true
-            pduSessionId: null
-            plmnId:
-              mnc: null
-              mcc: null
-            registrationReason: SMF_CONTEXT_TRANSFERRED
-            deregCallbackUri: null
-            wildcardInd: true
-            contextInfo:
               requestHeaders:
                 - requestHeaders
                 - requestHeaders
-              origHeaders:
-                - origHeaders
-                - origHeaders
-            dnn: null
+            pcfId: null
             dataRestorationCallbackUri: null
-            pduSessionReActivationRequired: false
-            udmStaleCheckCallbackUri: null
-            epdgInd: false
             resetIds:
               - resetIds
               - resetIds
+            udrRestartInd: false
+            lastSynchronizationTime: null
+            pduSessionReActivationRequired: false
             staleCheckCallbackUri: null
+            udmStaleCheckCallbackUri: null
+            wildcardInd: true
+          - smfInstanceId: null
+            smfSetId: null
+            supportedFeatures: null
+            pduSessionId: null
+            singleNssai:
+              sst: 20
+              sd: sd
+            dnn: null
+            emergencyServices: true
             pcscfRestorationCallbackUri: null
+            plmnId:
+              mcc: null
+              mnc: null
             pgwFqdn: null
+            pgwIpAddr:
+              ipv4Addr: 198.51.100.1
+              ipv6Addr: 2001:db8:85a3::8a2e:370:7334
+              ipv6Prefix: 2001:db8:abcd:12::0/64
+            epdgInd: false
+            deregCallbackUri: null
+            registrationReason: SMF_CONTEXT_TRANSFERRED
+            registrationTime: null
+            contextInfo:
+              origHeaders:
+                - origHeaders
+                - origHeaders
+              requestHeaders:
+                - requestHeaders
+                - requestHeaders
+            pcfId: null
+            dataRestorationCallbackUri: null
+            resetIds:
+              - resetIds
+              - resetIds
+            udrRestartInd: false
+            lastSynchronizationTime: null
+            pduSessionReActivationRequired: false
+            staleCheckCallbackUri: null
+            udmStaleCheckCallbackUri: null
+            wildcardInd: true
       properties:
         smfRegistrationList:
           items:
@@ -6165,19 +6246,19 @@ components:
       anyOf: []
       description: This data type contains the IP-SW-GW routing information.
       example:
-        unriIndicator: false
-        nfInstanceId: null
-        resetIds:
-          - resetIds
-          - resetIds
-        ipSmGwSbiSupInd: false
+        ipSmGwMapAddress: null
         ipSmGwDiameterAddress:
           name: null
           realm: null
         ipsmgwIpv4: 198.51.100.1
-        ipSmGwMapAddress: null
         ipsmgwIpv6: 2001:db8:85a3::8a2e:370:7334
         ipsmgwFqdn: null
+        nfInstanceId: null
+        unriIndicator: false
+        resetIds:
+          - resetIds
+          - resetIds
+        ipSmGwSbiSupInd: false
       nullable: true
       properties:
         ipSmGwMapAddress:
@@ -6206,7 +6287,8 @@ components:
           pattern: "^([0-9A-Za-z]([-0-9A-Za-z]{0,61}[0-9A-Za-z])?\\.)+[A-Za-z]{2,63}\\.?$"
           type: string
         nfInstanceId:
-          description: "String uniquely identifying a NF instance. The format of the NF Instance ID shall be a  Universally Unique Identifier (UUID) version 4, as described in IETF RFC 4122. \n"
+          description: |
+            String uniquely identifying a NF instance. The format of the NF Instance ID shall be a Universally Unique Identifier (UUID) version 4, as described in IETF RFC 4122.
           format: uuid
           type: string
         unriIndicator:
@@ -6234,51 +6316,65 @@ components:
     LocationInfoUdm:
       description: This data type contains the UE's location information in 5GC.
       example:
-        supportedFeatures: supportedFeatures
-        registrationLocationInfoList:
-          - amfInstanceId: null
-            accessTypeList:
-              - 3GPP_ACCESS
-              - 3GPP_ACCESS
-            plmnId:
-              mnc: null
-              mcc: null
-            guami:
-              plmnId:
-                mnc: null
-                nid: null
-                mcc: null
-              amfId: null
-            vgmlcAddress:
-              vgmlcAddressIpv6: 2001:db8:85a3::8a2e:370:7334
-              vgmlcFqdn: null
-              vgmlcAddressIpv4: 198.51.100.1
-          - amfInstanceId: null
-            accessTypeList:
-              - 3GPP_ACCESS
-              - 3GPP_ACCESS
-            plmnId:
-              mnc: null
-              mcc: null
-            guami:
-              plmnId:
-                mnc: null
-                nid: null
-                mcc: null
-              amfId: null
-            vgmlcAddress:
-              vgmlcAddressIpv6: 2001:db8:85a3::8a2e:370:7334
-              vgmlcFqdn: null
-              vgmlcAddressIpv4: 198.51.100.1
         supi: supi
         gpsi: gpsi
+        registrationLocationInfoList:
+          - amfInstanceId: null
+            guami:
+              plmnId:
+                mcc: null
+                mnc: null
+                nid: null
+              amfId: null
+            plmnId:
+              mcc: null
+              mnc: null
+            vgmlcAddress:
+              vgmlcAddressIpv4: 198.51.100.1
+              vgmlcAddressIpv6: 2001:db8:85a3::8a2e:370:7334
+              vgmlcFqdn: null
+            accessTypeList:
+              - 3GPP_ACCESS
+              - 3GPP_ACCESS
+          - amfInstanceId: null
+            guami:
+              plmnId:
+                mcc: null
+                mnc: null
+                nid: null
+              amfId: null
+            plmnId:
+              mcc: null
+              mnc: null
+            vgmlcAddress:
+              vgmlcAddressIpv4: 198.51.100.1
+              vgmlcAddressIpv6: 2001:db8:85a3::8a2e:370:7334
+              vgmlcFqdn: null
+            accessTypeList:
+              - 3GPP_ACCESS
+              - 3GPP_ACCESS
+        supportedFeatures: supportedFeatures
       properties:
         supi:
-          description: "String identifying a Supi that shall contain either an IMSI, a network specific identifier,\na Global Cable Identifier (GCI) or a Global Line Identifier (GLI) as specified in clause \n2.2A of 3GPP TS 23.003. It shall be formatted as follows\n - for an IMSI \"imsi-<imsi>\", where <imsi> shall be formatted according to clause 2.2\n   of 3GPP TS 23.003 that describes an IMSI.\n - for a network specific identifier \"nai-<nai>, where <nai> shall be formatted\n   according to clause 28.7.2 of 3GPP TS 23.003 that describes an NAI.\n - for a GCI \"gci-<gci>\", where <gci> shall be formatted according to clause 28.15.2\n   of 3GPP TS 23.003.\n - for a GLI \"gli-<gli>\", where <gli> shall be formatted according to clause 28.16.2 of\n   3GPP TS 23.003.To enable that the value is used as part of an URI, the string shall\n   only contain characters allowed according to the \"lower-with-hyphen\" naming convention\n   defined in 3GPP TS 29.501.\n"
+          description: |
+            String identifying a Supi that shall contain either an IMSI, a network specific identifier,
+            a Global Cable Identifier (GCI) or a Global Line Identifier (GLI) as specified in clause
+            2.2A of 3GPP TS 23.003. It shall be formatted as follows
+             - for an IMSI "imsi-<imsi>", where <imsi> shall be formatted according to clause 2.2
+               of 3GPP TS 23.003 that describes an IMSI.
+             - for a network specific identifier "nai-<nai>, where <nai> shall be formatted
+               according to clause 28.7.2 of 3GPP TS 23.003 that describes an NAI.
+             - for a GCI "gci-<gci>", where <gci> shall be formatted according to clause 28.15.2
+               of 3GPP TS 23.003.
+             - for a GLI "gli-<gli>", where <gli> shall be formatted according to clause 28.16.2 of
+               3GPP TS 23.003.To enable that the value is used as part of an URI, the string shall
+               only contain characters allowed according to the "lower-with-hyphen" naming convention
+               defined in 3GPP TS 29.501.
           pattern: "^(imsi-[0-9]{5,15}|nai-.+|gci-.+|gli-.+|.+)$"
           type: string
         gpsi:
-          description: "String identifying a Gpsi shall contain either an External Id or an MSISDN.  It shall be formatted as follows -External Identifier= \"extid-'extid', where 'extid'  shall be formatted according to clause 19.7.2 of 3GPP TS 23.003 that describes an  External Identifier. \n"
+          description: |
+            String identifying a Gpsi shall contain either an External Id or an MSISDN. It shall be formatted as follows -External Identifier= "extid-'extid', where 'extid' shall be formatted according to clause 19.7.2 of 3GPP TS 23.003 that describes an External Identifier.
           pattern: "^(msisdn-[0-9]{5,15}|extid-[^@]+@[^@]+|.+)$"
           type: string
         registrationLocationInfoList:
@@ -6289,7 +6385,7 @@ components:
           type: array
         supportedFeatures:
           description: |
-            A string used to indicate the features supported by an API that is used as defined in clause  6.6 in 3GPP TS 29.500. The string shall contain a bitmask indicating supported features in  hexadecimal representation Each character in the string shall take a value of "0" to "9",  "a" to "f" or "A" to "F" and shall represent the support of 4 features as described in  table 5.2.2-3. The most significant character representing the highest-numbered features shall  appear first in the string, and the character representing features 1 to 4 shall appear last  in the string. The list of features and their numbering (starting with 1) are defined  separately for each API. If the string contains a lower number of characters than there are  defined features for an API, all features that would be represented by characters that are not  present in the string are not supported.
+            A string used to indicate the features supported by an API that is used as defined in clause 6.6 in 3GPP TS 29.500. The string shall contain a bitmask indicating supported features in hexadecimal representation Each character in the string shall take a value of "0" to "9", "a" to "f" or "A" to "F" and shall represent the support of 4 features as described in table 5.2.2-3. The most significant character representing the highest-numbered features shall  appear first in the string, and the character representing features 1 to 4 shall appear last  in the string. The list of features and their numbering (starting with 1) are defined  separately for each API. If the string contains a lower number of characters than there are  defined features for an API, all features that would be represented by characters that are not  present in the string are not supported.
           pattern: "^[A-Fa-f0-9]*$"
           type: string
       required:
@@ -6300,22 +6396,22 @@ components:
         This data type contains the information about serving AMF, optional VGMLC and access type related information used by (H)GMLC.
       example:
         amfInstanceId: null
+        guami:
+          plmnId:
+            mcc: null
+            mnc: null
+            nid: null
+          amfId: null
+        plmnId:
+          mcc: null
+          mnc: null
+        vgmlcAddress:
+          vgmlcAddressIpv4: 198.51.100.1
+          vgmlcAddressIpv6: 2001:db8:85a3::8a2e:370:7334
+          vgmlcFqdn: null
         accessTypeList:
           - 3GPP_ACCESS
           - 3GPP_ACCESS
-        plmnId:
-          mnc: null
-          mcc: null
-        guami:
-          plmnId:
-            mnc: null
-            nid: null
-            mcc: null
-          amfId: null
-        vgmlcAddress:
-          vgmlcAddressIpv6: 2001:db8:85a3::8a2e:370:7334
-          vgmlcFqdn: null
-          vgmlcAddressIpv4: 198.51.100.1
       properties:
         amfInstanceId:
           $ref: "#/components/schemas/NfInstanceId"
@@ -6337,11 +6433,11 @@ components:
       type: object
     VgmlcAddress:
       description: |
-        This data type contains the address(es) of VGMLC.  Depending on the names of Vgmlcaddress, it could indicate either VGMLC IPv4 or IPv6 address.
+        This data type contains the address(es) of VGMLC. Depending on the names of Vgmlcaddress, it could indicate either VGMLC IPv4 or IPv6 address.
       example:
+        vgmlcAddressIpv4: 198.51.100.1
         vgmlcAddressIpv6: 2001:db8:85a3::8a2e:370:7334
         vgmlcFqdn: null
-        vgmlcAddressIpv4: 198.51.100.1
       properties:
         vgmlcAddressIpv4:
           $ref: "#/components/schemas/Ipv4Addr"
@@ -6356,7 +6452,8 @@ components:
         pei: pei
       properties:
         pei:
-          description: "String representing a Permanent Equipment Identifier that may contain - an IMEI or IMEISV, as  specified in clause 6.2 of 3GPP TS 23.003; a MAC address for a 5G-RG or FN-RG via  wireline  access, with an indication that this address cannot be trusted for regulatory purpose if this  address cannot be used as an Equipment Identifier of the FN-RG, as specified in clause 4.7.7  of 3GPP TS23.316. Examples are imei-012345678901234 or imeisv-0123456789012345. \n"
+          description: |
+            String representing a Permanent Equipment Identifier that may contain - an IMEI or IMEISV, as  specified in clause 6.2 of 3GPP TS 23.003; a MAC address for a 5G-RG or FN-RG via wireline  access, with an indication that this address cannot be trusted for regulatory purpose if this  address cannot be used as an Equipment Identifier of the FN-RG, as specified in clause 4.7.7  of 3GPP TS23.316. Examples are imei-012345678901234 or imeisv-0123456789012345.
           pattern: "^(imei-[0-9]{15}|imeisv-[0-9]{16}|mac((-[0-9a-fA-F]{2}){6})(-untrusted)?|eui((-[0-9a-fA-F]{2}){8})|.+)$"
           type: string
       required:
@@ -6373,343 +6470,343 @@ components:
       description: |
         This data type contains all the attributes related to 3GPP access and non-access registration.
       example:
-        smsf3Gpp:
-          registrationTime: null
-          ueMemoryAvailableInd: true
-          supportedFeatures: null
-          contextInfo:
-            requestHeaders:
-              - requestHeaders
-              - requestHeaders
-            origHeaders:
-              - origHeaders
-              - origHeaders
-          dataRestorationCallbackUri: null
-          smsfSbiSupInd: false
-          smsfSetId: null
-          smsfDiameterAddress:
-            name: null
-            realm: null
-          lastSynchronizationTime: null
-          smsfInstanceId: null
-          udrRestartInd: false
-          resetIds:
-            - resetIds
-            - resetIds
-          smsfMAPAddress: null
-          plmnId:
-            mnc: null
-            mcc: null
-        amfNon3Gpp:
-          registrationTime: null
-          supportedFeatures: null
-          urrpIndicator: true
-          noEeSubscriptionInd: true
-          lastSynchronizationTime: null
-          vgmlcAddress:
-            vgmlcAddressIpv6: 2001:db8:85a3::8a2e:370:7334
-            vgmlcFqdn: null
-            vgmlcAddressIpv4: 198.51.100.1
-          adminDeregSubWithdrawn: true
-          udrRestartInd: false
-          pei: null
-          amfEeSubscriptionId: null
-          amfInstanceId: null
-          imsVoPs: null
-          deregCallbackUri: null
-          purgeFlag: null
-          contextInfo:
-            requestHeaders:
-              - requestHeaders
-              - requestHeaders
-            origHeaders:
-              - origHeaders
-              - origHeaders
-          dataRestorationCallbackUri: null
-          ratType: null
-          amfServiceNameDereg: null
-          amfServiceNamePcscfRest: null
-          sorSnpnSiSupported: false
-          guami:
-            plmnId:
-              mnc: null
-              nid: null
-              mcc: null
-            amfId: null
-          supi: null
-          reRegistrationRequired: true
-          disasterRoamingInd: false
-          resetIds:
-            - resetIds
-            - resetIds
-          pcscfRestorationCallbackUri: null
-          backupAmfInfo:
-            - backupAmf: null
-              guamiList:
-                - plmnId:
-                    mnc: null
-                    nid: null
-                    mcc: null
-                  amfId: null
-                - plmnId:
-                    mnc: null
-                    nid: null
-                    mcc: null
-                  amfId: null
-            - backupAmf: null
-              guamiList:
-                - plmnId:
-                    mnc: null
-                    nid: null
-                    mcc: null
-                  amfId: null
-                - plmnId:
-                    mnc: null
-                    nid: null
-                    mcc: null
-                  amfId: null
-        smfRegistration:
-          smfRegistrationList:
-            - registrationTime: null
-              supportedFeatures: null
-              smfInstanceId: null
-              smfSetId: null
-              lastSynchronizationTime: null
-              pgwIpAddr:
-                ipv6Addr: 2001:db8:85a3::8a2e:370:7334
-                ipv4Addr: 198.51.100.1
-                ipv6Prefix: 2001:db8:abcd:12::0/64
-              udrRestartInd: false
-              singleNssai:
-                sd: sd
-                sst: 20
-              pcfId: null
-              emergencyServices: true
-              pduSessionId: null
-              plmnId:
-                mnc: null
-                mcc: null
-              registrationReason: SMF_CONTEXT_TRANSFERRED
-              deregCallbackUri: null
-              wildcardInd: true
-              contextInfo:
-                requestHeaders:
-                  - requestHeaders
-                  - requestHeaders
-                origHeaders:
-                  - origHeaders
-                  - origHeaders
-              dnn: null
-              dataRestorationCallbackUri: null
-              pduSessionReActivationRequired: false
-              udmStaleCheckCallbackUri: null
-              epdgInd: false
-              resetIds:
-                - resetIds
-                - resetIds
-              staleCheckCallbackUri: null
-              pcscfRestorationCallbackUri: null
-              pgwFqdn: null
-            - registrationTime: null
-              supportedFeatures: null
-              smfInstanceId: null
-              smfSetId: null
-              lastSynchronizationTime: null
-              pgwIpAddr:
-                ipv6Addr: 2001:db8:85a3::8a2e:370:7334
-                ipv4Addr: 198.51.100.1
-                ipv6Prefix: 2001:db8:abcd:12::0/64
-              udrRestartInd: false
-              singleNssai:
-                sd: sd
-                sst: 20
-              pcfId: null
-              emergencyServices: true
-              pduSessionId: null
-              plmnId:
-                mnc: null
-                mcc: null
-              registrationReason: SMF_CONTEXT_TRANSFERRED
-              deregCallbackUri: null
-              wildcardInd: true
-              contextInfo:
-                requestHeaders:
-                  - requestHeaders
-                  - requestHeaders
-                origHeaders:
-                  - origHeaders
-                  - origHeaders
-              dnn: null
-              dataRestorationCallbackUri: null
-              pduSessionReActivationRequired: false
-              udmStaleCheckCallbackUri: null
-              epdgInd: false
-              resetIds:
-                - resetIds
-                - resetIds
-              staleCheckCallbackUri: null
-              pcscfRestorationCallbackUri: null
-              pgwFqdn: null
-        nwdafRegistration:
-          nwdafRegistrationList:
-            - registrationTime: null
-              nwdafSetId: null
-              nwdafInstanceId: null
-              supportedFeatures: null
-              contextInfo:
-                requestHeaders:
-                  - requestHeaders
-                  - requestHeaders
-                origHeaders:
-                  - origHeaders
-                  - origHeaders
-              resetIds:
-                - resetIds
-                - resetIds
-              analyticsIds:
-                - LOAD_LEVEL_INFORMATION
-                - LOAD_LEVEL_INFORMATION
-            - registrationTime: null
-              nwdafSetId: null
-              nwdafInstanceId: null
-              supportedFeatures: null
-              contextInfo:
-                requestHeaders:
-                  - requestHeaders
-                  - requestHeaders
-                origHeaders:
-                  - origHeaders
-                  - origHeaders
-              resetIds:
-                - resetIds
-                - resetIds
-              analyticsIds:
-                - LOAD_LEVEL_INFORMATION
-                - LOAD_LEVEL_INFORMATION
-        smsfNon3Gpp:
-          registrationTime: null
-          ueMemoryAvailableInd: true
-          supportedFeatures: null
-          contextInfo:
-            requestHeaders:
-              - requestHeaders
-              - requestHeaders
-            origHeaders:
-              - origHeaders
-              - origHeaders
-          dataRestorationCallbackUri: null
-          smsfSbiSupInd: false
-          smsfSetId: null
-          smsfDiameterAddress:
-            name: null
-            realm: null
-          lastSynchronizationTime: null
-          smsfInstanceId: null
-          udrRestartInd: false
-          resetIds:
-            - resetIds
-            - resetIds
-          smsfMAPAddress: null
-          plmnId:
-            mnc: null
-            mcc: null
         amf3Gpp:
-          registrationTime: null
-          supportedFeatures: null
-          urrpIndicator: true
-          noEeSubscriptionInd: true
-          lastSynchronizationTime: null
-          vgmlcAddress:
-            vgmlcAddressIpv6: 2001:db8:85a3::8a2e:370:7334
-            vgmlcFqdn: null
-            vgmlcAddressIpv4: 198.51.100.1
-          ueReachableInd: REACHABLE
-          adminDeregSubWithdrawn: true
-          udrRestartInd: false
-          pei: null
-          amfEeSubscriptionId: null
-          drFlag: null
           amfInstanceId: null
-          initialRegistrationInd: true
-          epsInterworkingInfo:
-            registrationTime: null
-            epsIwkPgws:
-              key:
-                smfInstanceId: null
-                plmnId:
-                  mnc: null
-                  mcc: null
-                pgwFqdn: null
+          supportedFeatures: null
+          purgeFlag: null
+          pei: null
           imsVoPs: HOMOGENEOUS_SUPPORT
           deregCallbackUri: null
-          purgeFlag: null
-          ueSrvccCapability: true
-          contextInfo:
-            requestHeaders:
-              - requestHeaders
-              - requestHeaders
-            origHeaders:
-              - origHeaders
-              - origHeaders
-          dataRestorationCallbackUri: null
-          ratType: NR
-          emergencyRegistrationInd: true
           amfServiceNameDereg: nnrf-nfm
+          pcscfRestorationCallbackUri: null
           amfServiceNamePcscfRest: null
-          sorSnpnSiSupported: false
+          initialRegistrationInd: true
+          emergencyRegistrationInd: true
           guami:
             plmnId:
+              mcc: null
               mnc: null
               nid: null
-              mcc: null
             amfId: null
-          supi: null
-          reRegistrationRequired: true
-          disasterRoamingInd: false
-          resetIds:
-            - resetIds
-            - resetIds
-          pcscfRestorationCallbackUri: null
           backupAmfInfo:
             - backupAmf: null
               guamiList:
                 - plmnId:
+                    mcc: null
                     mnc: null
                     nid: null
-                    mcc: null
                   amfId: null
                 - plmnId:
+                    mcc: null
                     mnc: null
                     nid: null
-                    mcc: null
                   amfId: null
             - backupAmf: null
               guamiList:
                 - plmnId:
+                    mcc: null
                     mnc: null
                     nid: null
-                    mcc: null
                   amfId: null
                 - plmnId:
+                    mcc: null
                     mnc: null
                     nid: null
-                    mcc: null
                   amfId: null
-          ueMINTCapability: true
-        ipSmGw:
-          unriIndicator: false
-          nfInstanceId: null
+          drFlag: null
+          ratType: NR
+          urrpIndicator: true
+          amfEeSubscriptionId: null
+          epsInterworkingInfo:
+            epsIwkPgws:
+              key:
+                pgwFqdn: null
+                smfInstanceId: null
+                plmnId:
+                  mcc: null
+                  mnc: null
+            registrationTime: null
+          ueSrvccCapability: true
+          registrationTime: null
+          vgmlcAddress:
+            vgmlcAddressIpv4: 198.51.100.1
+            vgmlcAddressIpv6: 2001:db8:85a3::8a2e:370:7334
+            vgmlcFqdn: null
+          contextInfo:
+            origHeaders:
+              - origHeaders
+              - origHeaders
+            requestHeaders:
+              - requestHeaders
+              - requestHeaders
+          noEeSubscriptionInd: true
+          supi: null
+          ueReachableInd: REACHABLE
+          reRegistrationRequired: true
+          adminDeregSubWithdrawn: true
+          dataRestorationCallbackUri: null
           resetIds:
             - resetIds
             - resetIds
-          ipSmGwSbiSupInd: false
+          disasterRoamingInd: false
+          ueMINTCapability: true
+          sorSnpnSiSupported: false
+          udrRestartInd: false
+          lastSynchronizationTime: null
+        amfNon3Gpp:
+          amfInstanceId: null
+          supportedFeatures: null
+          purgeFlag: null
+          pei: null
+          imsVoPs: null
+          deregCallbackUri: null
+          amfServiceNameDereg: null
+          pcscfRestorationCallbackUri: null
+          amfServiceNamePcscfRest: null
+          guami:
+            plmnId:
+              mcc: null
+              mnc: null
+              nid: null
+            amfId: null
+          backupAmfInfo:
+            - backupAmf: null
+              guamiList:
+                - plmnId:
+                    mcc: null
+                    mnc: null
+                    nid: null
+                  amfId: null
+                - plmnId:
+                    mcc: null
+                    mnc: null
+                    nid: null
+                  amfId: null
+            - backupAmf: null
+              guamiList:
+                - plmnId:
+                    mcc: null
+                    mnc: null
+                    nid: null
+                  amfId: null
+                - plmnId:
+                    mcc: null
+                    mnc: null
+                    nid: null
+                  amfId: null
+          ratType: null
+          urrpIndicator: true
+          amfEeSubscriptionId: null
+          registrationTime: null
+          vgmlcAddress:
+            vgmlcAddressIpv4: 198.51.100.1
+            vgmlcAddressIpv6: 2001:db8:85a3::8a2e:370:7334
+            vgmlcFqdn: null
+          contextInfo:
+            origHeaders:
+              - origHeaders
+              - origHeaders
+            requestHeaders:
+              - requestHeaders
+              - requestHeaders
+          noEeSubscriptionInd: true
+          supi: null
+          reRegistrationRequired: true
+          adminDeregSubWithdrawn: true
+          dataRestorationCallbackUri: null
+          resetIds:
+            - resetIds
+            - resetIds
+          disasterRoamingInd: false
+          sorSnpnSiSupported: false
+          udrRestartInd: false
+          lastSynchronizationTime: null
+        smfRegistration:
+          smfRegistrationList:
+            - smfInstanceId: null
+              smfSetId: null
+              supportedFeatures: null
+              pduSessionId: null
+              singleNssai:
+                sst: 20
+                sd: sd
+              dnn: null
+              emergencyServices: true
+              pcscfRestorationCallbackUri: null
+              plmnId:
+                mcc: null
+                mnc: null
+              pgwFqdn: null
+              pgwIpAddr:
+                ipv4Addr: 198.51.100.1
+                ipv6Addr: 2001:db8:85a3::8a2e:370:7334
+                ipv6Prefix: 2001:db8:abcd:12::0/64
+              epdgInd: false
+              deregCallbackUri: null
+              registrationReason: SMF_CONTEXT_TRANSFERRED
+              registrationTime: null
+              contextInfo:
+                origHeaders:
+                  - origHeaders
+                  - origHeaders
+                requestHeaders:
+                  - requestHeaders
+                  - requestHeaders
+              pcfId: null
+              dataRestorationCallbackUri: null
+              resetIds:
+                - resetIds
+                - resetIds
+              udrRestartInd: false
+              lastSynchronizationTime: null
+              pduSessionReActivationRequired: false
+              staleCheckCallbackUri: null
+              udmStaleCheckCallbackUri: null
+              wildcardInd: true
+            - smfInstanceId: null
+              smfSetId: null
+              supportedFeatures: null
+              pduSessionId: null
+              singleNssai:
+                sst: 20
+                sd: sd
+              dnn: null
+              emergencyServices: true
+              pcscfRestorationCallbackUri: null
+              plmnId:
+                mcc: null
+                mnc: null
+              pgwFqdn: null
+              pgwIpAddr:
+                ipv4Addr: 198.51.100.1
+                ipv6Addr: 2001:db8:85a3::8a2e:370:7334
+                ipv6Prefix: 2001:db8:abcd:12::0/64
+              epdgInd: false
+              deregCallbackUri: null
+              registrationReason: SMF_CONTEXT_TRANSFERRED
+              registrationTime: null
+              contextInfo:
+                origHeaders:
+                  - origHeaders
+                  - origHeaders
+                requestHeaders:
+                  - requestHeaders
+                  - requestHeaders
+              pcfId: null
+              dataRestorationCallbackUri: null
+              resetIds:
+                - resetIds
+                - resetIds
+              udrRestartInd: false
+              lastSynchronizationTime: null
+              pduSessionReActivationRequired: false
+              staleCheckCallbackUri: null
+              udmStaleCheckCallbackUri: null
+              wildcardInd: true
+        smsf3Gpp:
+          smsfInstanceId: null
+          smsfSetId: null
+          supportedFeatures: null
+          plmnId:
+            mcc: null
+            mnc: null
+          smsfMAPAddress: null
+          smsfDiameterAddress:
+            name: null
+            realm: null
+          registrationTime: null
+          contextInfo:
+            origHeaders:
+              - origHeaders
+              - origHeaders
+            requestHeaders:
+              - requestHeaders
+              - requestHeaders
+          dataRestorationCallbackUri: null
+          resetIds:
+            - resetIds
+            - resetIds
+          smsfSbiSupInd: false
+          udrRestartInd: false
+          lastSynchronizationTime: null
+          ueMemoryAvailableInd: true
+        smsfNon3Gpp:
+          smsfInstanceId: null
+          smsfSetId: null
+          supportedFeatures: null
+          plmnId:
+            mcc: null
+            mnc: null
+          smsfMAPAddress: null
+          smsfDiameterAddress:
+            name: null
+            realm: null
+          registrationTime: null
+          contextInfo:
+            origHeaders:
+              - origHeaders
+              - origHeaders
+            requestHeaders:
+              - requestHeaders
+              - requestHeaders
+          dataRestorationCallbackUri: null
+          resetIds:
+            - resetIds
+            - resetIds
+          smsfSbiSupInd: false
+          udrRestartInd: false
+          lastSynchronizationTime: null
+          ueMemoryAvailableInd: true
+        ipSmGw:
+          ipSmGwMapAddress: null
           ipSmGwDiameterAddress:
             name: null
             realm: null
           ipsmgwIpv4: 198.51.100.1
-          ipSmGwMapAddress: null
           ipsmgwIpv6: 2001:db8:85a3::8a2e:370:7334
           ipsmgwFqdn: null
+          nfInstanceId: null
+          unriIndicator: false
+          resetIds:
+            - resetIds
+            - resetIds
+          ipSmGwSbiSupInd: false
+        nwdafRegistration:
+          nwdafRegistrationList:
+            - nwdafInstanceId: null
+              analyticsIds:
+                - LOAD_LEVEL_INFORMATION
+                - LOAD_LEVEL_INFORMATION
+              nwdafSetId: null
+              registrationTime: null
+              contextInfo:
+                origHeaders:
+                  - origHeaders
+                  - origHeaders
+                requestHeaders:
+                  - requestHeaders
+                  - requestHeaders
+              supportedFeatures: null
+              resetIds:
+                - resetIds
+                - resetIds
+            - nwdafInstanceId: null
+              analyticsIds:
+                - LOAD_LEVEL_INFORMATION
+                - LOAD_LEVEL_INFORMATION
+              nwdafSetId: null
+              registrationTime: null
+              contextInfo:
+                origHeaders:
+                  - origHeaders
+                  - origHeaders
+                requestHeaders:
+                  - requestHeaders
+                  - requestHeaders
+              supportedFeatures: null
+              resetIds:
+                - resetIds
+                - resetIds
       properties:
         amf3Gpp:
           $ref: "#/components/schemas/Amf3GppAccessRegistration"
@@ -6729,26 +6826,27 @@ components:
     NwdafRegistration:
       description: The complete set of information relevant to an NWDAF serving the UE
       example:
-        registrationTime: null
-        nwdafSetId: null
         nwdafInstanceId: null
-        supportedFeatures: null
-        contextInfo:
-          requestHeaders:
-            - requestHeaders
-            - requestHeaders
-          origHeaders:
-            - origHeaders
-            - origHeaders
-        resetIds:
-          - resetIds
-          - resetIds
         analyticsIds:
           - LOAD_LEVEL_INFORMATION
           - LOAD_LEVEL_INFORMATION
+        nwdafSetId: null
+        registrationTime: null
+        contextInfo:
+          origHeaders:
+            - origHeaders
+            - origHeaders
+          requestHeaders:
+            - requestHeaders
+            - requestHeaders
+        supportedFeatures: null
+        resetIds:
+          - resetIds
+          - resetIds
       properties:
         nwdafInstanceId:
-          description: "String uniquely identifying a NF instance. The format of the NF Instance ID shall be a  Universally Unique Identifier (UUID) version 4, as described in IETF RFC 4122. \n"
+          description: |
+            String uniquely identifying a NF instance. The format of the NF Instance ID shall be a Universally Unique Identifier (UUID) version 4, as described in IETF RFC 4122.
           format: uuid
           type: string
         analyticsIds:
@@ -6757,7 +6855,14 @@ components:
           minItems: 1
           type: array
         nwdafSetId:
-          description: "NF Set Identifier (see clause 28.12 of 3GPP TS 23.003), formatted as the following string \"set<Set ID>.<nftype>set.5gc.mnc<MNC>.mcc<MCC>\", or  \"set<SetID>.<NFType>set.5gc.nid<NID>.mnc<MNC>.mcc<MCC>\" with  <MCC> encoded as defined in clause 5.4.2 (\"Mcc\" data type definition)  <MNC> encoding the Mobile Network Code part of the PLMN, comprising 3 digits. \n  If there are only 2 significant digits in the MNC, one \"0\" digit shall be inserted \n  at the left side to fill the 3 digits coding of MNC.  Pattern: '^[0-9]{3}$'\n<NFType> encoded as a value defined in Table 6.1.6.3.3-1 of 3GPP TS 29.510 but \n  with lower case characters <Set ID> encoded as a string of characters consisting of \n  alphabetic characters (A-Z and a-z), digits (0-9) and/or the hyphen (-) and that \n  shall end with either an alphabetic character or a digit. \n"
+          description: |
+            NF Set Identifier (see clause 28.12 of 3GPP TS 23.003), formatted as the following string "set<Set ID>.<nftype>set.5gc.mnc<MNC>.mcc<MCC>", or "set<SetID>.<NFType>set.5gc.nid<NID>.mnc<MNC>.mcc<MCC>" with <MCC> encoded as defined in clause 5.4.2 ("Mcc" data type definition) <MNC> encoding the Mobile Network Code part of the PLMN, comprising 3 digits.
+              If there are only 2 significant digits in the MNC, one "0" digit shall be inserted
+              at the left side to fill the 3 digits coding of MNC.  Pattern: '^[0-9]{3}$'
+            <NFType> encoded as a value defined in Table 6.1.6.3.3-1 of 3GPP TS 29.510 but
+              with lower case characters <Set ID> encoded as a string of characters consisting of
+              alphabetic characters (A-Z and a-z), digits (0-9) and/or the hyphen (-) and that
+              shall end with either an alphabetic character or a digit.
           type: string
         registrationTime:
           description: string with format 'date-time' as defined in OpenAPI.
@@ -6767,7 +6872,7 @@ components:
           $ref: "#/components/schemas/ContextInfo"
         supportedFeatures:
           description: |
-            A string used to indicate the features supported by an API that is used as defined in clause  6.6 in 3GPP TS 29.500. The string shall contain a bitmask indicating supported features in  hexadecimal representation Each character in the string shall take a value of "0" to "9",  "a" to "f" or "A" to "F" and shall represent the support of 4 features as described in  table 5.2.2-3. The most significant character representing the highest-numbered features shall  appear first in the string, and the character representing features 1 to 4 shall appear last  in the string. The list of features and their numbering (starting with 1) are defined  separately for each API. If the string contains a lower number of characters than there are  defined features for an API, all features that would be represented by characters that are not  present in the string are not supported.
+            A string used to indicate the features supported by an API that is used as defined in clause 6.6 in 3GPP TS 29.500. The string shall contain a bitmask indicating supported features in hexadecimal representation Each character in the string shall take a value of "0" to "9", "a" to "f" or "A" to "F" and shall represent the support of 4 features as described in table 5.2.2-3. The most significant character representing the highest-numbered features shall  appear first in the string, and the character representing features 1 to 4 shall appear last  in the string. The list of features and their numbering (starting with 1) are defined  separately for each API. If the string contains a lower number of characters than there are  defined features for an API, all features that would be represented by characters that are not  present in the string are not supported.
           pattern: "^[A-Fa-f0-9]*$"
           type: string
         resetIds:
@@ -6783,11 +6888,19 @@ components:
       description: Contains attributes of NwdafRegistration that can be modified using PATCH
       properties:
         nwdafInstanceId:
-          description: "String uniquely identifying a NF instance. The format of the NF Instance ID shall be a  Universally Unique Identifier (UUID) version 4, as described in IETF RFC 4122. \n"
+          description: |
+            String uniquely identifying a NF instance. The format of the NF Instance ID shall be a Universally Unique Identifier (UUID) version 4, as described in IETF RFC 4122.
           format: uuid
           type: string
         nwdafSetId:
-          description: "NF Set Identifier (see clause 28.12 of 3GPP TS 23.003), formatted as the following string \"set<Set ID>.<nftype>set.5gc.mnc<MNC>.mcc<MCC>\", or  \"set<SetID>.<NFType>set.5gc.nid<NID>.mnc<MNC>.mcc<MCC>\" with  <MCC> encoded as defined in clause 5.4.2 (\"Mcc\" data type definition)  <MNC> encoding the Mobile Network Code part of the PLMN, comprising 3 digits. \n  If there are only 2 significant digits in the MNC, one \"0\" digit shall be inserted \n  at the left side to fill the 3 digits coding of MNC.  Pattern: '^[0-9]{3}$'\n<NFType> encoded as a value defined in Table 6.1.6.3.3-1 of 3GPP TS 29.510 but \n  with lower case characters <Set ID> encoded as a string of characters consisting of \n  alphabetic characters (A-Z and a-z), digits (0-9) and/or the hyphen (-) and that \n  shall end with either an alphabetic character or a digit. \n"
+          description: |
+            NF Set Identifier (see clause 28.12 of 3GPP TS 23.003), formatted as the following string "set<Set ID>.<nftype>set.5gc.mnc<MNC>.mcc<MCC>", or "set<SetID>.<NFType>set.5gc.nid<NID>.mnc<MNC>.mcc<MCC>" with <MCC> encoded as defined in clause 5.4.2 ("Mcc" data type definition) <MNC> encoding the Mobile Network Code part of the PLMN, comprising 3 digits.
+              If there are only 2 significant digits in the MNC, one "0" digit shall be inserted
+              at the left side to fill the 3 digits coding of MNC.  Pattern: '^[0-9]{3}$'
+            <NFType> encoded as a value defined in Table 6.1.6.3.3-1 of 3GPP TS 29.510 but
+              with lower case characters <Set ID> encoded as a string of characters consisting of
+              alphabetic characters (A-Z and a-z), digits (0-9) and/or the hyphen (-) and that
+              shall end with either an alphabetic character or a digit.
           type: string
         analyticsIds:
           items:
@@ -6795,7 +6908,7 @@ components:
           type: array
         supportedFeatures:
           description: |
-            A string used to indicate the features supported by an API that is used as defined in clause  6.6 in 3GPP TS 29.500. The string shall contain a bitmask indicating supported features in  hexadecimal representation Each character in the string shall take a value of "0" to "9",  "a" to "f" or "A" to "F" and shall represent the support of 4 features as described in  table 5.2.2-3. The most significant character representing the highest-numbered features shall  appear first in the string, and the character representing features 1 to 4 shall appear last  in the string. The list of features and their numbering (starting with 1) are defined  separately for each API. If the string contains a lower number of characters than there are  defined features for an API, all features that would be represented by characters that are not  present in the string are not supported.
+            A string used to indicate the features supported by an API that is used as defined in clause 6.6 in 3GPP TS 29.500. The string shall contain a bitmask indicating supported features in hexadecimal representation Each character in the string shall take a value of "0" to "9", "a" to "f" or "A" to "F" and shall represent the support of 4 features as described in table 5.2.2-3. The most significant character representing the highest-numbered features shall  appear first in the string, and the character representing features 1 to 4 shall appear last  in the string. The list of features and their numbering (starting with 1) are defined  separately for each API. If the string contains a lower number of characters than there are  defined features for an API, all features that would be represented by characters that are not  present in the string are not supported.
           pattern: "^[A-Fa-f0-9]*$"
           type: string
       required:
@@ -6805,11 +6918,19 @@ components:
       description: Contains attributes of SmfRegistration that can be modified using PATCH
       properties:
         smfInstanceId:
-          description: "String uniquely identifying a NF instance. The format of the NF Instance ID shall be a  Universally Unique Identifier (UUID) version 4, as described in IETF RFC 4122. \n"
+          description: |
+            String uniquely identifying a NF instance. The format of the NF Instance ID shall be a Universally Unique Identifier (UUID) version 4, as described in IETF RFC 4122.
           format: uuid
           type: string
         smfSetId:
-          description: "NF Set Identifier (see clause 28.12 of 3GPP TS 23.003), formatted as the following string \"set<Set ID>.<nftype>set.5gc.mnc<MNC>.mcc<MCC>\", or  \"set<SetID>.<NFType>set.5gc.nid<NID>.mnc<MNC>.mcc<MCC>\" with  <MCC> encoded as defined in clause 5.4.2 (\"Mcc\" data type definition)  <MNC> encoding the Mobile Network Code part of the PLMN, comprising 3 digits. \n  If there are only 2 significant digits in the MNC, one \"0\" digit shall be inserted \n  at the left side to fill the 3 digits coding of MNC.  Pattern: '^[0-9]{3}$'\n<NFType> encoded as a value defined in Table 6.1.6.3.3-1 of 3GPP TS 29.510 but \n  with lower case characters <Set ID> encoded as a string of characters consisting of \n  alphabetic characters (A-Z and a-z), digits (0-9) and/or the hyphen (-) and that \n  shall end with either an alphabetic character or a digit. \n"
+          description: |
+            NF Set Identifier (see clause 28.12 of 3GPP TS 23.003), formatted as the following string "set<Set ID>.<nftype>set.5gc.mnc<MNC>.mcc<MCC>", or "set<SetID>.<NFType>set.5gc.nid<NID>.mnc<MNC>.mcc<MCC>" with <MCC> encoded as defined in clause 5.4.2 ("Mcc" data type definition) <MNC> encoding the Mobile Network Code part of the PLMN, comprising 3 digits.
+              If there are only 2 significant digits in the MNC, one "0" digit shall be inserted
+              at the left side to fill the 3 digits coding of MNC.  Pattern: '^[0-9]{3}$'
+            <NFType> encoded as a value defined in Table 6.1.6.3.3-1 of 3GPP TS 29.510 but
+              with lower case characters <Set ID> encoded as a string of characters consisting of
+              alphabetic characters (A-Z and a-z), digits (0-9) and/or the hyphen (-) and that
+              shall end with either an alphabetic character or a digit.
           type: string
         pgwFqdn:
           $ref: "#/components/schemas/FqdnRm"
@@ -6819,37 +6940,37 @@ components:
     DataRestorationNotification:
       description: Contains identities representing those UEs potentially affected by a data-loss event at the UDR
       example:
+        lastReplicationTime: 2000-01-23T04:56:07.000+00:00
         recoveryTime: 2000-01-23T04:56:07.000+00:00
+        plmnId:
+          mcc: null
+          mnc: null
+        supiRanges:
+          - start: start
+            end: end
+            pattern: pattern
+          - start: start
+            end: end
+            pattern: pattern
+        gpsiRanges:
+          - start: start
+            end: end
+            pattern: pattern
+          - start: start
+            end: end
+            pattern: pattern
         resetIds:
           - resetIds
           - resetIds
+        sNssaiList:
+          - sst: 20
+            sd: sd
+          - sst: 20
+            sd: sd
         dnnList:
           - null
           - null
-        lastReplicationTime: 2000-01-23T04:56:07.000+00:00
-        plmnId:
-          mnc: null
-          mcc: null
-        sNssaiList:
-          - sd: sd
-            sst: 20
-          - sd: sd
-            sst: 20
         udmGroupId: udmGroupId
-        supiRanges:
-          - start: start
-            pattern: pattern
-            end: end
-          - start: start
-            pattern: pattern
-            end: end
-        gpsiRanges:
-          - start: start
-            pattern: pattern
-            end: end
-          - start: start
-            pattern: pattern
-            end: end
       properties:
         lastReplicationTime:
           description: string with format 'date-time' as defined in OpenAPI.
@@ -6895,8 +7016,8 @@ components:
       example:
         roaming: true
         servingPlmn:
-          mnc: null
           mcc: null
+          mnc: null
       properties:
         roaming:
           type: boolean
@@ -6909,13 +7030,13 @@ components:
       anyOf: []
       description: Contains the addressing information (IP addresses and/or FQDN) of the P-CSCF
       example:
-        fqdn: null
-        ipv6Addrs:
-          - 2001:db8:85a3::8a2e:370:7334
-          - 2001:db8:85a3::8a2e:370:7334
         ipv4Addrs:
           - 198.51.100.1
           - 198.51.100.1
+        ipv6Addrs:
+          - 2001:db8:85a3::8a2e:370:7334
+          - 2001:db8:85a3::8a2e:370:7334
+        fqdn: null
       nullable: true
       properties:
         ipv4Addrs:
@@ -6935,40 +7056,40 @@ components:
       description: List of NwdafRegistration
       example:
         nwdafRegistrationList:
-          - registrationTime: null
-            nwdafSetId: null
-            nwdafInstanceId: null
-            supportedFeatures: null
-            contextInfo:
-              requestHeaders:
-                - requestHeaders
-                - requestHeaders
-              origHeaders:
-                - origHeaders
-                - origHeaders
-            resetIds:
-              - resetIds
-              - resetIds
+          - nwdafInstanceId: null
             analyticsIds:
               - LOAD_LEVEL_INFORMATION
               - LOAD_LEVEL_INFORMATION
-          - registrationTime: null
             nwdafSetId: null
-            nwdafInstanceId: null
-            supportedFeatures: null
+            registrationTime: null
             contextInfo:
-              requestHeaders:
-                - requestHeaders
-                - requestHeaders
               origHeaders:
                 - origHeaders
                 - origHeaders
+              requestHeaders:
+                - requestHeaders
+                - requestHeaders
+            supportedFeatures: null
             resetIds:
               - resetIds
               - resetIds
+          - nwdafInstanceId: null
             analyticsIds:
               - LOAD_LEVEL_INFORMATION
               - LOAD_LEVEL_INFORMATION
+            nwdafSetId: null
+            registrationTime: null
+            contextInfo:
+              origHeaders:
+                - origHeaders
+                - origHeaders
+              requestHeaders:
+                - requestHeaders
+                - requestHeaders
+            supportedFeatures: null
+            resetIds:
+              - resetIds
+              - resetIds
       properties:
         nwdafRegistrationList:
           items:
@@ -6981,9 +7102,9 @@ components:
     RoutingInfoSmRequest:
       description: Request body of the send-routing-info-sm custom operation
       example:
-        supportedFeatures: supportedFeatures
         ipSmGwInd: false
         correlationId: correlationId
+        supportedFeatures: supportedFeatures
       properties:
         ipSmGwInd:
           default: false
@@ -6992,98 +7113,111 @@ components:
           type: string
         supportedFeatures:
           description: |
-            A string used to indicate the features supported by an API that is used as defined in clause  6.6 in 3GPP TS 29.500. The string shall contain a bitmask indicating supported features in  hexadecimal representation Each character in the string shall take a value of "0" to "9",  "a" to "f" or "A" to "F" and shall represent the support of 4 features as described in  table 5.2.2-3. The most significant character representing the highest-numbered features shall  appear first in the string, and the character representing features 1 to 4 shall appear last  in the string. The list of features and their numbering (starting with 1) are defined  separately for each API. If the string contains a lower number of characters than there are  defined features for an API, all features that would be represented by characters that are not  present in the string are not supported.
+            A string used to indicate the features supported by an API that is used as defined in clause 6.6 in 3GPP TS 29.500. The string shall contain a bitmask indicating supported features in hexadecimal representation Each character in the string shall take a value of "0" to "9", "a" to "f" or "A" to "F" and shall represent the support of 4 features as described in table 5.2.2-3. The most significant character representing the highest-numbered features shall  appear first in the string, and the character representing features 1 to 4 shall appear last  in the string. The list of features and their numbering (starting with 1) are defined  separately for each API. If the string contains a lower number of characters than there are  defined features for an API, all features that would be represented by characters that are not  present in the string are not supported.
           pattern: "^[A-Fa-f0-9]*$"
           type: string
       type: object
     RoutingInfoSmResponse:
       description: Addressing information of available nodes for SMS delivery
       example:
-        smsf3Gpp:
-          registrationTime: null
-          ueMemoryAvailableInd: true
-          supportedFeatures: null
-          contextInfo:
-            requestHeaders:
-              - requestHeaders
-              - requestHeaders
-            origHeaders:
-              - origHeaders
-              - origHeaders
-          dataRestorationCallbackUri: null
-          smsfSbiSupInd: false
-          smsfSetId: null
-          smsfDiameterAddress:
-            name: null
-            realm: null
-          lastSynchronizationTime: null
-          smsfInstanceId: null
-          udrRestartInd: false
-          resetIds:
-            - resetIds
-            - resetIds
-          smsfMAPAddress: null
-          plmnId:
-            mnc: null
-            mcc: null
-        smsfNon3Gpp:
-          registrationTime: null
-          ueMemoryAvailableInd: true
-          supportedFeatures: null
-          contextInfo:
-            requestHeaders:
-              - requestHeaders
-              - requestHeaders
-            origHeaders:
-              - origHeaders
-              - origHeaders
-          dataRestorationCallbackUri: null
-          smsfSbiSupInd: false
-          smsfSetId: null
-          smsfDiameterAddress:
-            name: null
-            realm: null
-          lastSynchronizationTime: null
-          smsfInstanceId: null
-          udrRestartInd: false
-          resetIds:
-            - resetIds
-            - resetIds
-          smsfMAPAddress: null
-          plmnId:
-            mnc: null
-            mcc: null
-        smsRouter:
-          routerFqdn: null
-          nfInstanceId: null
-          routerIpv4: 198.51.100.1
-          diameterAddress:
-            name: null
-            realm: null
-          mapAddress: null
-          routerIpv6: 2001:db8:85a3::8a2e:370:7334
         supi: supi
+        smsf3Gpp:
+          smsfInstanceId: null
+          smsfSetId: null
+          supportedFeatures: null
+          plmnId:
+            mcc: null
+            mnc: null
+          smsfMAPAddress: null
+          smsfDiameterAddress:
+            name: null
+            realm: null
+          registrationTime: null
+          contextInfo:
+            origHeaders:
+              - origHeaders
+              - origHeaders
+            requestHeaders:
+              - requestHeaders
+              - requestHeaders
+          dataRestorationCallbackUri: null
+          resetIds:
+            - resetIds
+            - resetIds
+          smsfSbiSupInd: false
+          udrRestartInd: false
+          lastSynchronizationTime: null
+          ueMemoryAvailableInd: true
+        smsfNon3Gpp:
+          smsfInstanceId: null
+          smsfSetId: null
+          supportedFeatures: null
+          plmnId:
+            mcc: null
+            mnc: null
+          smsfMAPAddress: null
+          smsfDiameterAddress:
+            name: null
+            realm: null
+          registrationTime: null
+          contextInfo:
+            origHeaders:
+              - origHeaders
+              - origHeaders
+            requestHeaders:
+              - requestHeaders
+              - requestHeaders
+          dataRestorationCallbackUri: null
+          resetIds:
+            - resetIds
+            - resetIds
+          smsfSbiSupInd: false
+          udrRestartInd: false
+          lastSynchronizationTime: null
+          ueMemoryAvailableInd: true
         ipSmGw:
-          ipSmGwGuidance:
-            recommDeliveryTime: 373
-            minDeliveryTime: 75
           ipSmGwRegistration:
-            unriIndicator: false
-            nfInstanceId: null
-            resetIds:
-              - resetIds
-              - resetIds
-            ipSmGwSbiSupInd: false
+            ipSmGwMapAddress: null
             ipSmGwDiameterAddress:
               name: null
               realm: null
             ipsmgwIpv4: 198.51.100.1
-            ipSmGwMapAddress: null
             ipsmgwIpv6: 2001:db8:85a3::8a2e:370:7334
             ipsmgwFqdn: null
+            nfInstanceId: null
+            unriIndicator: false
+            resetIds:
+              - resetIds
+              - resetIds
+            ipSmGwSbiSupInd: false
+          ipSmGwGuidance:
+            minDeliveryTime: 75
+            recommDeliveryTime: 373
+        smsRouter:
+          nfInstanceId: null
+          diameterAddress:
+            name: null
+            realm: null
+          mapAddress: null
+          routerIpv4: 198.51.100.1
+          routerIpv6: 2001:db8:85a3::8a2e:370:7334
+          routerFqdn: null
       properties:
         supi:
-          description: "String identifying a Supi that shall contain either an IMSI, a network specific identifier,\na Global Cable Identifier (GCI) or a Global Line Identifier (GLI) as specified in clause \n2.2A of 3GPP TS 23.003. It shall be formatted as follows\n - for an IMSI \"imsi-<imsi>\", where <imsi> shall be formatted according to clause 2.2\n   of 3GPP TS 23.003 that describes an IMSI.\n - for a network specific identifier \"nai-<nai>, where <nai> shall be formatted\n   according to clause 28.7.2 of 3GPP TS 23.003 that describes an NAI.\n - for a GCI \"gci-<gci>\", where <gci> shall be formatted according to clause 28.15.2\n   of 3GPP TS 23.003.\n - for a GLI \"gli-<gli>\", where <gli> shall be formatted according to clause 28.16.2 of\n   3GPP TS 23.003.To enable that the value is used as part of an URI, the string shall\n   only contain characters allowed according to the \"lower-with-hyphen\" naming convention\n   defined in 3GPP TS 29.501.\n"
+          description: |
+            String identifying a Supi that shall contain either an IMSI, a network specific identifier,
+            a Global Cable Identifier (GCI) or a Global Line Identifier (GLI) as specified in clause
+            2.2A of 3GPP TS 23.003. It shall be formatted as follows
+             - for an IMSI "imsi-<imsi>", where <imsi> shall be formatted according to clause 2.2
+               of 3GPP TS 23.003 that describes an IMSI.
+             - for a network specific identifier "nai-<nai>, where <nai> shall be formatted
+               according to clause 28.7.2 of 3GPP TS 23.003 that describes an NAI.
+             - for a GCI "gci-<gci>", where <gci> shall be formatted according to clause 28.15.2
+               of 3GPP TS 23.003.
+             - for a GLI "gli-<gli>", where <gli> shall be formatted according to clause 28.16.2 of
+               3GPP TS 23.003.To enable that the value is used as part of an URI, the string shall
+               only contain characters allowed according to the "lower-with-hyphen" naming convention
+               defined in 3GPP TS 29.501.
           pattern: "^(imsi-[0-9]{5,15}|nai-.+|gci-.+|gli-.+|.+)$"
           type: string
         smsf3Gpp:
@@ -7098,23 +7232,23 @@ components:
     IpSmGwInfo:
       description: Contains the IP-SM-GW Information
       example:
-        ipSmGwGuidance:
-          recommDeliveryTime: 373
-          minDeliveryTime: 75
         ipSmGwRegistration:
-          unriIndicator: false
-          nfInstanceId: null
-          resetIds:
-            - resetIds
-            - resetIds
-          ipSmGwSbiSupInd: false
+          ipSmGwMapAddress: null
           ipSmGwDiameterAddress:
             name: null
             realm: null
           ipsmgwIpv4: 198.51.100.1
-          ipSmGwMapAddress: null
           ipsmgwIpv6: 2001:db8:85a3::8a2e:370:7334
           ipsmgwFqdn: null
+          nfInstanceId: null
+          unriIndicator: false
+          resetIds:
+            - resetIds
+            - resetIds
+          ipSmGwSbiSupInd: false
+        ipSmGwGuidance:
+          minDeliveryTime: 75
+          recommDeliveryTime: 373
       properties:
         ipSmGwRegistration:
           $ref: "#/components/schemas/IpSmGwRegistration"
@@ -7125,8 +7259,8 @@ components:
       description: |
         Contains guidance information (e.g. minimum and recommended delivery times) of the IP-SM-GW
       example:
-        recommDeliveryTime: 373
         minDeliveryTime: 75
+        recommDeliveryTime: 373
       properties:
         minDeliveryTime:
           maximum: 600
@@ -7143,14 +7277,14 @@ components:
     SmsRouterInfo:
       description: Addressing information of the SMS Router configured at the UDM
       example:
-        routerFqdn: null
         nfInstanceId: null
-        routerIpv4: 198.51.100.1
         diameterAddress:
           name: null
           realm: null
         mapAddress: null
+        routerIpv4: 198.51.100.1
         routerIpv6: 2001:db8:85a3::8a2e:370:7334
+        routerFqdn: null
       properties:
         nfInstanceId:
           $ref: "#/components/schemas/NfInstanceId"
@@ -7169,11 +7303,19 @@ components:
       description: Contains attributes of SmsfRegistration that can be modified using PATCH
       properties:
         smsfInstanceId:
-          description: "String uniquely identifying a NF instance. The format of the NF Instance ID shall be a  Universally Unique Identifier (UUID) version 4, as described in IETF RFC 4122. \n"
+          description: |
+            String uniquely identifying a NF instance. The format of the NF Instance ID shall be a Universally Unique Identifier (UUID) version 4, as described in IETF RFC 4122.
           format: uuid
           type: string
         smsfSetId:
-          description: "NF Set Identifier (see clause 28.12 of 3GPP TS 23.003), formatted as the following string \"set<Set ID>.<nftype>set.5gc.mnc<MNC>.mcc<MCC>\", or  \"set<SetID>.<NFType>set.5gc.nid<NID>.mnc<MNC>.mcc<MCC>\" with  <MCC> encoded as defined in clause 5.4.2 (\"Mcc\" data type definition)  <MNC> encoding the Mobile Network Code part of the PLMN, comprising 3 digits. \n  If there are only 2 significant digits in the MNC, one \"0\" digit shall be inserted \n  at the left side to fill the 3 digits coding of MNC.  Pattern: '^[0-9]{3}$'\n<NFType> encoded as a value defined in Table 6.1.6.3.3-1 of 3GPP TS 29.510 but \n  with lower case characters <Set ID> encoded as a string of characters consisting of \n  alphabetic characters (A-Z and a-z), digits (0-9) and/or the hyphen (-) and that \n  shall end with either an alphabetic character or a digit. \n"
+          description: |
+            NF Set Identifier (see clause 28.12 of 3GPP TS 23.003), formatted as the following string "set<Set ID>.<nftype>set.5gc.mnc<MNC>.mcc<MCC>", or "set<SetID>.<NFType>set.5gc.nid<NID>.mnc<MNC>.mcc<MCC>" with <MCC> encoded as defined in clause 5.4.2 ("Mcc" data type definition) <MNC> encoding the Mobile Network Code part of the PLMN, comprising 3 digits.
+              If there are only 2 significant digits in the MNC, one "0" digit shall be inserted
+              at the left side to fill the 3 digits coding of MNC.  Pattern: '^[0-9]{3}$'
+            <NFType> encoded as a value defined in Table 6.1.6.3.3-1 of 3GPP TS 29.510 but
+              with lower case characters <Set ID> encoded as a string of characters consisting of
+              alphabetic characters (A-Z and a-z), digits (0-9) and/or the hyphen (-) and that
+              shall end with either an alphabetic character or a digit.
           type: string
         ueMemoryAvailableInd:
           type: boolean
@@ -7186,7 +7328,20 @@ components:
         supi: supi
       properties:
         supi:
-          description: "String identifying a Supi that shall contain either an IMSI, a network specific identifier,\na Global Cable Identifier (GCI) or a Global Line Identifier (GLI) as specified in clause \n2.2A of 3GPP TS 23.003. It shall be formatted as follows\n - for an IMSI \"imsi-<imsi>\", where <imsi> shall be formatted according to clause 2.2\n   of 3GPP TS 23.003 that describes an IMSI.\n - for a network specific identifier \"nai-<nai>, where <nai> shall be formatted\n   according to clause 28.7.2 of 3GPP TS 23.003 that describes an NAI.\n - for a GCI \"gci-<gci>\", where <gci> shall be formatted according to clause 28.15.2\n   of 3GPP TS 23.003.\n - for a GLI \"gli-<gli>\", where <gli> shall be formatted according to clause 28.16.2 of\n   3GPP TS 23.003.To enable that the value is used as part of an URI, the string shall\n   only contain characters allowed according to the \"lower-with-hyphen\" naming convention\n   defined in 3GPP TS 29.501.\n"
+          description: |
+            String identifying a Supi that shall contain either an IMSI, a network specific identifier,
+            a Global Cable Identifier (GCI) or a Global Line Identifier (GLI) as specified in clause
+            2.2A of 3GPP TS 23.003. It shall be formatted as follows
+             - for an IMSI "imsi-<imsi>", where <imsi> shall be formatted according to clause 2.2
+               of 3GPP TS 23.003 that describes an IMSI.
+             - for a network specific identifier "nai-<nai>, where <nai> shall be formatted
+               according to clause 28.7.2 of 3GPP TS 23.003 that describes an NAI.
+             - for a GCI "gci-<gci>", where <gci> shall be formatted according to clause 28.15.2
+               of 3GPP TS 23.003.
+             - for a GLI "gli-<gli>", where <gli> shall be formatted according to clause 28.16.2 of
+               3GPP TS 23.003.To enable that the value is used as part of an URI, the string shall
+               only contain characters allowed according to the "lower-with-hyphen" naming convention
+               defined in 3GPP TS 29.501.
           pattern: "^(imsi-[0-9]{5,15}|nai-.+|gci-.+|gli-.+|.+)$"
           type: string
       required:
@@ -7197,7 +7352,20 @@ components:
         supi: supi
       properties:
         supi:
-          description: "String identifying a Supi that shall contain either an IMSI, a network specific identifier,\na Global Cable Identifier (GCI) or a Global Line Identifier (GLI) as specified in clause \n2.2A of 3GPP TS 23.003. It shall be formatted as follows\n - for an IMSI \"imsi-<imsi>\", where <imsi> shall be formatted according to clause 2.2\n   of 3GPP TS 23.003 that describes an IMSI.\n - for a network specific identifier \"nai-<nai>, where <nai> shall be formatted\n   according to clause 28.7.2 of 3GPP TS 23.003 that describes an NAI.\n - for a GCI \"gci-<gci>\", where <gci> shall be formatted according to clause 28.15.2\n   of 3GPP TS 23.003.\n - for a GLI \"gli-<gli>\", where <gli> shall be formatted according to clause 28.16.2 of\n   3GPP TS 23.003.To enable that the value is used as part of an URI, the string shall\n   only contain characters allowed according to the \"lower-with-hyphen\" naming convention\n   defined in 3GPP TS 29.501.\n"
+          description: |
+            String identifying a Supi that shall contain either an IMSI, a network specific identifier,
+            a Global Cable Identifier (GCI) or a Global Line Identifier (GLI) as specified in clause
+            2.2A of 3GPP TS 23.003. It shall be formatted as follows
+             - for an IMSI "imsi-<imsi>", where <imsi> shall be formatted according to clause 2.2
+               of 3GPP TS 23.003 that describes an IMSI.
+             - for a network specific identifier "nai-<nai>, where <nai> shall be formatted
+               according to clause 28.7.2 of 3GPP TS 23.003 that describes an NAI.
+             - for a GCI "gci-<gci>", where <gci> shall be formatted according to clause 28.15.2
+               of 3GPP TS 23.003.
+             - for a GLI "gli-<gli>", where <gli> shall be formatted according to clause 28.16.2 of
+               3GPP TS 23.003.To enable that the value is used as part of an URI, the string shall
+               only contain characters allowed according to the "lower-with-hyphen" naming convention
+               defined in 3GPP TS 29.501.
           pattern: "^(imsi-[0-9]{5,15}|nai-.+|gci-.+|gli-.+|.+)$"
           type: string
       type: object
@@ -7276,24 +7444,25 @@ components:
       type: string
     SupportedFeatures:
       description: |
-        A string used to indicate the features supported by an API that is used as defined in clause  6.6 in 3GPP TS 29.500. The string shall contain a bitmask indicating supported features in  hexadecimal representation Each character in the string shall take a value of "0" to "9",  "a" to "f" or "A" to "F" and shall represent the support of 4 features as described in  table 5.2.2-3. The most significant character representing the highest-numbered features shall  appear first in the string, and the character representing features 1 to 4 shall appear last  in the string. The list of features and their numbering (starting with 1) are defined  separately for each API. If the string contains a lower number of characters than there are  defined features for an API, all features that would be represented by characters that are not  present in the string are not supported.
+        A string used to indicate the features supported by an API that is used as defined in clause 6.6 in 3GPP TS 29.500. The string shall contain a bitmask indicating supported features in hexadecimal representation Each character in the string shall take a value of "0" to "9", "a" to "f" or "A" to "F" and shall represent the support of 4 features as described in table 5.2.2-3. The most significant character representing the highest-numbered features shall  appear first in the string, and the character representing features 1 to 4 shall appear last  in the string. The list of features and their numbering (starting with 1) are defined  separately for each API. If the string contains a lower number of characters than there are  defined features for an API, all features that would be represented by characters that are not  present in the string are not supported.
       pattern: "^[A-Fa-f0-9]*$"
       type: string
     Snssai:
       description: |
         When Snssai needs to be converted to string (e.g. when used in maps as key), the string shall be composed of one to three digits "sst" optionally followed by "-" and 6 hexadecimal digits "sd".
       example:
-        sd: sd
         sst: 20
+        sd: sd
       properties:
         sst:
-          description: "Unsigned integer, within the range 0 to 255, representing the Slice/Service Type.  It indicates the expected Network Slice behaviour in terms of features and services. Values 0 to 127 correspond to the standardized SST range. Values 128 to 255 correspond  to the Operator-specific range. See clause 28.4.2 of 3GPP TS 23.003. Standardized values are defined in clause 5.15.2.2 of 3GPP TS 23.501. \n"
+          description: |
+            Unsigned integer, within the range 0 to 255, representing the Slice/Service Type. It indicates the expected Network Slice behaviour in terms of features and services. Values 0 to 127 correspond to the standardized SST range. Values 128 to 255 correspond to the Operator-specific range. See clause 28.4.2 of 3GPP TS 23.003. Standardized values are defined in clause 5.15.2.2 of 3GPP TS 23.501.
           maximum: 255
           minimum: 0
           type: integer
         sd:
           description: |
-            3-octet string, representing the Slice Differentiator, in hexadecimal representation. Each character in the string shall take a value of "0" to "9", "a" to "f" or "A" to "F" and shall represent 4 bits. The most significant character representing the 4 most significant bits of the SD shall appear first in the string, and the character representing the 4 least significant bit of the SD shall appear last in the string. This is an optional parameter that complements the Slice/Service type(s) to allow to  differentiate amongst multiple Network Slices of the same Slice/Service type. This IE shall be absent if no SD value is associated with the SST.
+            3-octet string, representing the Slice Differentiator, in hexadecimal representation. Each character in the string shall take a value of "0" to "9", "a" to "f" or "A" to "F" and shall represent 4 bits. The most significant character representing the 4 most significant bits of the SD shall appear first in the string, and the character representing the 4 least significant bit of the SD shall appear last in the string. This is an optional parameter that complements the Slice/Service type(s) to allow to differentiate amongst multiple Network Slices of the same Slice/Service type. This IE shall be absent if no SD value is associated with the SST.
           pattern: "^[A-Fa-f0-9]{6}$"
           type: string
       required:
@@ -7301,7 +7470,7 @@ components:
       type: object
     Dnn:
       description: |
-        String representing a Data Network as defined in clause 9A of 3GPP TS 23.003;  it shall contain either a DNN Network Identifier, or a full DNN with both the Network  Identifier and Operator Identifier, as specified in 3GPP TS 23.003 clause 9.1.1 and 9.1.2. It shall be coded as string in which the labels are separated by dots  (e.g. "Label1.Label2.Label3").
+        String representing a Data Network as defined in clause 9A of 3GPP TS 23.003; it shall contain either a DNN Network Identifier, or a full DNN with both the Network Identifier and Operator Identifier, as specified in 3GPP TS 23.003 clause 9.1.1 and 9.1.2. It shall be coded as string in which the labels are separated by dots (e.g. "Label1.Label2.Label3").
       type: string
     ProblemDetails:
       description: Provides additional information in an error response.
@@ -7319,7 +7488,7 @@ components:
           $ref: "#/components/schemas/Uri"
         cause:
           description: |
-            A machine-readable application error cause specific to this occurrence of the problem.  This IE should be present and provide application-related error information, if available.
+            A machine-readable application error cause specific to this occurrence of the problem. This IE should be present and provide application-related error information, if available.
           type: string
         invalidParams:
           items:
@@ -7350,11 +7519,11 @@ components:
       properties:
         param:
           description: |
-            If the invalid parameter is an attribute in a JSON body, this IE shall contain the  attribute's name and shall be encoded as a JSON Pointer. If the invalid parameter is  an HTTP header, this IE shall be formatted as the concatenation of the string "header "  plus the name of such header. If the invalid parameter is a query parameter, this IE  shall be formatted as the concatenation of the string "query " plus the name of such  query parameter. If the invalid parameter is a variable part in the path of a resource  URI, this IE shall contain the name of the variable, including the symbols "{" and "}"  used in OpenAPI specification as the notation to represent variable path segments.
+            If the invalid parameter is an attribute in a JSON body, this IE shall contain the attribute's name and shall be encoded as a JSON Pointer. If the invalid parameter is an HTTP header, this IE shall be formatted as the concatenation of the string "header " plus the name of such header. If the invalid parameter is a query parameter, this IE shall be formatted as the concatenation of the string "query " plus the name of such query parameter. If the invalid parameter is a variable part in the path of a resource URI, this IE shall contain the name of the variable, including the symbols "{" and "}" used in OpenAPI specification as the notation to represent variable path segments.
           type: string
         reason:
           description: |
-            A human-readable reason, e.g. "must be a positive integer". In cases involving failed  operations in a PATCH request, the reason string should identify the operation that  failed using the operation's array index to assist in correlation of the invalid  parameter with the failed operation, e.g." Replacement value invalid for attribute  (failed operation index= 4)"
+            A human-readable reason, e.g. "must be a positive integer". In cases involving failed operations in a PATCH request, the reason string should identify the operation that failed using the operation's array index to assist in correlation of the invalid parameter with the failed operation, e.g." Replacement value invalid for attribute (failed operation index= 4)"
           type: string
       required:
         - param
@@ -7366,16 +7535,29 @@ components:
       pattern: "^([0-9A-Za-z]([-0-9A-Za-z]{0,61}[0-9A-Za-z])?\\.)+[A-Za-z]{2,63}\\.?$"
       type: string
     Supi:
-      description: "String identifying a Supi that shall contain either an IMSI, a network specific identifier,\na Global Cable Identifier (GCI) or a Global Line Identifier (GLI) as specified in clause \n2.2A of 3GPP TS 23.003. It shall be formatted as follows\n - for an IMSI \"imsi-<imsi>\", where <imsi> shall be formatted according to clause 2.2\n   of 3GPP TS 23.003 that describes an IMSI.\n - for a network specific identifier \"nai-<nai>, where <nai> shall be formatted\n   according to clause 28.7.2 of 3GPP TS 23.003 that describes an NAI.\n - for a GCI \"gci-<gci>\", where <gci> shall be formatted according to clause 28.15.2\n   of 3GPP TS 23.003.\n - for a GLI \"gli-<gli>\", where <gli> shall be formatted according to clause 28.16.2 of\n   3GPP TS 23.003.To enable that the value is used as part of an URI, the string shall\n   only contain characters allowed according to the \"lower-with-hyphen\" naming convention\n   defined in 3GPP TS 29.501.\n"
+      description: |
+        String identifying a Supi that shall contain either an IMSI, a network specific identifier,
+        a Global Cable Identifier (GCI) or a Global Line Identifier (GLI) as specified in clause
+        2.2A of 3GPP TS 23.003. It shall be formatted as follows
+         - for an IMSI "imsi-<imsi>", where <imsi> shall be formatted according to clause 2.2
+           of 3GPP TS 23.003 that describes an IMSI.
+         - for a network specific identifier "nai-<nai>, where <nai> shall be formatted
+           according to clause 28.7.2 of 3GPP TS 23.003 that describes an NAI.
+         - for a GCI "gci-<gci>", where <gci> shall be formatted according to clause 28.15.2
+           of 3GPP TS 23.003.
+         - for a GLI "gli-<gli>", where <gli> shall be formatted according to clause 28.16.2 of
+           3GPP TS 23.003.To enable that the value is used as part of an URI, the string shall
+           only contain characters allowed according to the "lower-with-hyphen" naming convention
+           defined in 3GPP TS 29.501.
       pattern: "^(imsi-[0-9]{5,15}|nai-.+|gci-.+|gli-.+|.+)$"
       type: string
     RedirectResponse:
       description: |
-        The response shall include a Location header field containing a different URI  (pointing to a different URI of an other service instance), or the same URI if a request  is redirected to the same target resource via a different SCP.
+        The response shall include a Location header field containing a different URI (pointing to a different URI of an other service instance), or the same URI if a request is redirected to the same target resource via a different SCP.
       example:
-        targetSepp: null
         cause: cause
         targetScp: null
+        targetSepp: null
       properties:
         cause:
           type: string
@@ -7395,7 +7577,7 @@ components:
       properties:
         report:
           description: |
-            The execution report contains an array of report items. Each report item indicates one  failed modification.
+            The execution report contains an array of report items. Each report item indicates one failed modification.
           items:
             $ref: "#/components/schemas/ReportItem"
           minItems: 1
@@ -7411,33 +7593,72 @@ components:
       properties:
         path:
           description: |
-            Contains a JSON pointer value (as defined in IETF RFC 6901) that references a  location of a resource to which the modification is subject.
+            Contains a JSON pointer value (as defined in IETF RFC 6901) that references a location of a resource to which the modification is subject.
           type: string
         reason:
           description: |
-            A human-readable reason providing details on the reported modification failure.  The reason string should identify the operation that failed using the operation's  array index to assist in correlation of the invalid parameter with the failed  operation, e.g. "Replacement value invalid for attribute (failed operation index= 4)".
+            A human-readable reason providing details on the reported modification failure. The reason string should identify the operation that failed using the operation's array index to assist in correlation of the invalid parameter with the failed operation, e.g. "Replacement value invalid for attribute (failed operation index= 4)".
           type: string
       required:
         - path
       type: object
     PduSessionId:
-      description: "Unsigned integer identifying a PDU session, within the range 0 to 255, as specified in  clause 11.2.3.1b, bits 1 to 8, of 3GPP TS 24.007. If the PDU Session ID is allocated by the  Core Network for UEs not supporting N1 mode, reserved range 64 to 95 is used. PDU Session ID  within the reserved range is only visible in the Core Network. \n"
+      description: |
+        Unsigned integer identifying a PDU session, within the range 0 to 255, as specified in clause 11.2.3.1b, bits 1 to 8, of 3GPP TS 24.007. If the PDU Session ID is allocated by the Core Network for UEs not supporting N1 mode, reserved range 64 to 95 is used. PDU Session ID within the reserved range is only visible in the Core Network.
       maximum: 255
       minimum: 0
       type: integer
     NfSetId:
-      description: "NF Set Identifier (see clause 28.12 of 3GPP TS 23.003), formatted as the following string \"set<Set ID>.<nftype>set.5gc.mnc<MNC>.mcc<MCC>\", or  \"set<SetID>.<NFType>set.5gc.nid<NID>.mnc<MNC>.mcc<MCC>\" with  <MCC> encoded as defined in clause 5.4.2 (\"Mcc\" data type definition)  <MNC> encoding the Mobile Network Code part of the PLMN, comprising 3 digits. \n  If there are only 2 significant digits in the MNC, one \"0\" digit shall be inserted \n  at the left side to fill the 3 digits coding of MNC.  Pattern: '^[0-9]{3}$'\n<NFType> encoded as a value defined in Table 6.1.6.3.3-1 of 3GPP TS 29.510 but \n  with lower case characters <Set ID> encoded as a string of characters consisting of \n  alphabetic characters (A-Z and a-z), digits (0-9) and/or the hyphen (-) and that \n  shall end with either an alphabetic character or a digit. \n"
+      description: |
+        NF Set Identifier (see clause 28.12 of 3GPP TS 23.003), formatted as the following string "set<Set ID>.<nftype>set.5gc.mnc<MNC>.mcc<MCC>", or "set<SetID>.<NFType>set.5gc.nid<NID>.mnc<MNC>.mcc<MCC>" with <MCC> encoded as defined in clause 5.4.2 ("Mcc" data type definition) <MNC> encoding the Mobile Network Code part of the PLMN, comprising 3 digits.
+          If there are only 2 significant digits in the MNC, one "0" digit shall be inserted
+          at the left side to fill the 3 digits coding of MNC.  Pattern: '^[0-9]{3}$'
+        <NFType> encoded as a value defined in Table 6.1.6.3.3-1 of 3GPP TS 29.510 but
+          with lower case characters <Set ID> encoded as a string of characters consisting of
+          alphabetic characters (A-Z and a-z), digits (0-9) and/or the hyphen (-) and that
+          shall end with either an alphabetic character or a digit.
       type: string
     NfInstanceId:
-      description: "String uniquely identifying a NF instance. The format of the NF Instance ID shall be a  Universally Unique Identifier (UUID) version 4, as described in IETF RFC 4122. \n"
+      description: |
+        String uniquely identifying a NF instance. The format of the NF Instance ID shall be a Universally Unique Identifier (UUID) version 4, as described in IETF RFC 4122.
       format: uuid
       type: string
     Gpsi:
-      description: "String identifying a Gpsi shall contain either an External Id or an MSISDN.  It shall be formatted as follows -External Identifier= \"extid-'extid', where 'extid'  shall be formatted according to clause 19.7.2 of 3GPP TS 23.003 that describes an  External Identifier. \n"
+      description: |
+        String identifying a Gpsi shall contain either an External Id or an MSISDN. It shall be formatted as follows -External Identifier= "extid-'extid', where 'extid' shall be formatted according to clause 19.7.2 of 3GPP TS 23.003 that describes an External Identifier.
       pattern: "^(msisdn-[0-9]{5,15}|extid-[^@]+@[^@]+|.+)$"
       type: string
     EventId:
-      description: "Represents the analytics type.  \nPossible values are:\n- LOAD_LEVEL_INFORMATION: Represent the analytics of load level information of corresponding\n  network slice.\n- NETWORK_PERFORMANCE: Represent the analytics of network performance information.\n- NF_LOAD: Indicates that the event subscribed is NF Load.\n- SERVICE_EXPERIENCE: Represent the analytics of service experience information of the\n  specific applications.\n- UE_MOBILITY: Represent the analytics of UE mobility.\n- UE_COMMUNICATION: Represent the analytics of UE communication.\n- QOS_SUSTAINABILITY: Represent the analytics of QoS sustainability information in the\n  certain area.\n- ABNORMAL_BEHAVIOUR: Indicates that the event subscribed is abnormal behaviour information.\n- USER_DATA_CONGESTION: Represent the analytics of the user data congestion in the certain\n  area.\n- NSI_LOAD_LEVEL: Represent the analytics of Network Slice and the optionally associated\n  Network Slice Instance.\n- SM_CONGESTION: Represent the analytics of Session Management congestion control experience\n  information for specific DNN and/or S-NSSAI.\n- DISPERSION: Represents the analytics of dispersion.\n- RED_TRANS_EXP: Represents the analytics of Redundant Transmission Experience.\n- WLAN_PERFORMANCE: Represents the analytics of WLAN performance.\n- DN_PERFORMANCE: Represents the analytics of DN performance.\n- PFD_DETERMINATION: Represents the analytics of PFD Determination information for known application identifier(s).\n- PDU_SESSION_TRAFFIC: Represents the analytics of PDU Session traffic.\n- E2E_DATA_VOL_TRANS_TIME: Represents the analytics of E2E data volume transfer time.\n- MOVEMENT_BEHAVIOUR: Represents the analytics of the Movement Behaviour information.\n- LOC_ACCURACY: Represents the analytics of location accuracy.\n- RELATIVE_PROXIMITY: Represents the analytics of Relative Proximity information.\n"
+      description: |
+        Represents the analytics type.
+        Possible values are:
+        - LOAD_LEVEL_INFORMATION: Represent the analytics of load level information of corresponding
+          network slice.
+        - NETWORK_PERFORMANCE: Represent the analytics of network performance information.
+        - NF_LOAD: Indicates that the event subscribed is NF Load.
+        - SERVICE_EXPERIENCE: Represent the analytics of service experience information of the
+          specific applications.
+        - UE_MOBILITY: Represent the analytics of UE mobility.
+        - UE_COMMUNICATION: Represent the analytics of UE communication.
+        - QOS_SUSTAINABILITY: Represent the analytics of QoS sustainability information in the
+          certain area.
+        - ABNORMAL_BEHAVIOUR: Indicates that the event subscribed is abnormal behaviour information.
+        - USER_DATA_CONGESTION: Represent the analytics of the user data congestion in the certain
+          area.
+        - NSI_LOAD_LEVEL: Represent the analytics of Network Slice and the optionally associated
+          Network Slice Instance.
+        - SM_CONGESTION: Represent the analytics of Session Management congestion control experience
+          information for specific DNN and/or S-NSSAI.
+        - DISPERSION: Represents the analytics of dispersion.
+        - RED_TRANS_EXP: Represents the analytics of Redundant Transmission Experience.
+        - WLAN_PERFORMANCE: Represents the analytics of WLAN performance.
+        - DN_PERFORMANCE: Represents the analytics of DN performance.
+        - PFD_DETERMINATION: Represents the analytics of PFD Determination information for known application identifier(s).
+        - PDU_SESSION_TRAFFIC: Represents the analytics of PDU Session traffic.
+        - E2E_DATA_VOL_TRANS_TIME: Represents the analytics of E2E data volume transfer time.
+        - MOVEMENT_BEHAVIOUR: Represents the analytics of the Movement Behaviour information.
+        - LOC_ACCURACY: Represents the analytics of location accuracy.
+        - RELATIVE_PROXIMITY: Represents the analytics of Relative Proximity information.
       enum:
         - LOAD_LEVEL_INFORMATION
         - NETWORK_PERFORMANCE
@@ -7462,7 +7683,8 @@ components:
         - RELATIVE_PROXIMITY
       type: string
     Pei:
-      description: "String representing a Permanent Equipment Identifier that may contain - an IMEI or IMEISV, as  specified in clause 6.2 of 3GPP TS 23.003; a MAC address for a 5G-RG or FN-RG via  wireline  access, with an indication that this address cannot be trusted for regulatory purpose if this  address cannot be used as an Equipment Identifier of the FN-RG, as specified in clause 4.7.7  of 3GPP TS23.316. Examples are imei-012345678901234 or imeisv-0123456789012345. \n"
+      description: |
+        String representing a Permanent Equipment Identifier that may contain - an IMEI or IMEISV, as  specified in clause 6.2 of 3GPP TS 23.003; a MAC address for a 5G-RG or FN-RG via wireline  access, with an indication that this address cannot be trusted for regulatory purpose if this  address cannot be used as an Equipment Identifier of the FN-RG, as specified in clause 4.7.7  of 3GPP TS23.316. Examples are imei-012345678901234 or imeisv-0123456789012345.
       pattern: "^(imei-[0-9]{15}|imeisv-[0-9]{16}|mac((-[0-9a-fA-F]{2}){6})(-untrusted)?|eui((-[0-9a-fA-F]{2}){8})|.+)$"
       type: string
     ServiceName:
@@ -7615,9 +7837,9 @@ components:
       description: "Globally Unique AMF Identifier constructed out of PLMN, Network and AMF identity."
       example:
         plmnId:
+          mcc: null
           mnc: null
           nid: null
-          mcc: null
         amfId: null
       properties:
         plmnId:
@@ -7632,9 +7854,9 @@ components:
       description: |
         Contains the serving core network operator PLMN ID and, for an SNPN, the NID that together with the PLMN ID identifies the SNPN.
       example:
+        mcc: null
         mnc: null
         nid: null
-        mcc: null
       properties:
         mcc:
           $ref: "#/components/schemas/Mcc"
@@ -7647,19 +7869,23 @@ components:
         - mnc
       type: object
     Mcc:
-      description: "Mobile Country Code part of the PLMN, comprising 3 digits, as defined in clause 9.3.3.5 of 3GPP TS 38.413. \n"
+      description: |
+        Mobile Country Code part of the PLMN, comprising 3 digits, as defined in clause 9.3.3.5 of 3GPP TS 38.413.
       pattern: "^\\d{3}$"
       type: string
     Mnc:
-      description: "Mobile Network Code part of the PLMN, comprising 2 or 3 digits, as defined in  clause 9.3.3.5 of 3GPP TS 38.413. \n"
+      description: |
+        Mobile Network Code part of the PLMN, comprising 2 or 3 digits, as defined in clause 9.3.3.5 of 3GPP TS 38.413.
       pattern: "^\\d{2,3}$"
       type: string
     Nid:
-      description: "This represents the Network Identifier, which together with a PLMN ID is used to identify an SNPN (see 3GPP TS 23.003 and 3GPP TS 23.501 clause 5.30.2.1). \n"
+      description: |
+        This represents the Network Identifier, which together with a PLMN ID is used to identify an SNPN (see 3GPP TS 23.003 and 3GPP TS 23.501 clause 5.30.2.1).
       pattern: "^[A-Fa-f0-9]{11}$"
       type: string
     AmfId:
-      description: "String identifying the AMF ID composed of AMF Region ID (8 bits), AMF Set ID (10 bits) and AMF  Pointer (6 bits) as specified in clause 2.10.1 of 3GPP TS 23.003. It is encoded as a string of  6 hexadecimal characters (i.e., 24 bits). \n"
+      description: |
+        String identifying the AMF ID composed of AMF Region ID (8 bits), AMF Set ID (10 bits) and AMF  Pointer (6 bits) as specified in clause 2.10.1 of 3GPP TS 23.003. It is encoded as a string of  6 hexadecimal characters (i.e., 24 bits).
       pattern: "^[A-Fa-f0-9]{6}$"
       type: string
     BackupAmfInfo:
@@ -7668,14 +7894,14 @@ components:
         backupAmf: null
         guamiList:
           - plmnId:
+              mcc: null
               mnc: null
               nid: null
-              mcc: null
             amfId: null
           - plmnId:
+              mcc: null
               mnc: null
               nid: null
-              mcc: null
             amfId: null
       properties:
         backupAmf:
@@ -7735,12 +7961,12 @@ components:
       type: string
     ContextInfo:
       example:
-        requestHeaders:
-          - requestHeaders
-          - requestHeaders
         origHeaders:
           - origHeaders
           - origHeaders
+        requestHeaders:
+          - requestHeaders
+          - requestHeaders
       properties:
         origHeaders:
           items:
@@ -7755,10 +7981,10 @@ components:
       type: object
     PlmnId:
       description: |
-        When PlmnId needs to be converted to string (e.g. when used in maps as key), the string  shall be composed of three digits "mcc" followed by "-" and two or three digits "mnc".
+        When PlmnId needs to be converted to string (e.g. when used in maps as key), the string shall be composed of three digits "mcc" followed by "-" and two or three digits "mnc".
       example:
-        mnc: null
         mcc: null
+        mnc: null
       properties:
         mcc:
           $ref: "#/components/schemas/Mcc"
@@ -7771,8 +7997,8 @@ components:
     IpAddress:
       description: IP Address
       example:
-        ipv6Addr: 2001:db8:85a3::8a2e:370:7334
         ipv4Addr: 198.51.100.1
+        ipv6Addr: 2001:db8:85a3::8a2e:370:7334
         ipv6Prefix: 2001:db8:abcd:12::0/64
       nullable: true
       oneOf: []
@@ -7807,6 +8033,7 @@ components:
     FqdnRm:
       allOf:
         - $ref: "#/components/schemas/Fqdn"
+      description: "Fully Qualified Domain Name, but it also allows the null value"
       nullable: true
     NullValue:
       description: JSON's null value.
@@ -7818,8 +8045,8 @@ components:
         A range of SUPIs (subscriber identities), either based on a numeric range, or based on regular-expression matching
       example:
         start: start
-        pattern: pattern
         end: end
+        pattern: pattern
       nullable: true
       oneOf: []
       properties:
@@ -7837,8 +8064,8 @@ components:
         A range of GPSIs (subscriber identities), either based on a numeric range, or based on regular-expression matching
       example:
         start: start
-        pattern: pattern
         end: end
+        pattern: pattern
       nullable: true
       oneOf: []
       properties:
@@ -8057,7 +8284,13 @@ components:
         - RH
       type: string
     NfServiceSetId:
-      description: "NF Service Set Identifier (see clause 28.12 of 3GPP TS 23.003) formatted as the following  string \"set<Set ID>.sn<Service Name>.nfi<NF Instance ID>.5gc.mnc<MNC>.mcc<MCC>\", or  \"set<SetID>.sn<ServiceName>.nfi<NFInstanceID>.5gc.nid<NID>.mnc<MNC>.mcc<MCC>\" with  <MCC> encoded as defined in clause 5.4.2 (\"Mcc\" data type definition)   <MNC> encoding the Mobile Network Code part of the PLMN, comprising 3 digits. \n  If there are only 2 significant digits in the MNC, one \"0\" digit shall be inserted \n  at the left side to fill the 3 digits coding of MNC.  Pattern: '^[0-9]{3}$'\n<NID> encoded as defined in clause 5.4.2 (\"Nid\" data type definition)  <NFInstanceId> encoded as defined in clause 5.3.2  <ServiceName> encoded as defined in 3GPP TS 29.510  <Set ID> encoded as a string of characters consisting of alphabetic \n  characters (A-Z and a-z), digits (0-9) and/or the hyphen (-) and that shall end \n  with either an alphabetic character or a digit.\n"
+      description: |
+        NF Service Set Identifier (see clause 28.12 of 3GPP TS 23.003) formatted as the following string "set<Set ID>.sn<Service Name>.nfi<NF Instance ID>.5gc.mnc<MNC>.mcc<MCC>", or "set<SetID>.sn<ServiceName>.nfi<NFInstanceID>.5gc.nid<NID>.mnc<MNC>.mcc<MCC>" with <MCC> encoded as defined in clause 5.4.2 ("Mcc" data type definition) <MNC> encoding the Mobile Network Code part of the PLMN, comprising 3 digits.
+          If there are only 2 significant digits in the MNC, one "0" digit shall be inserted
+          at the left side to fill the 3 digits coding of MNC.  Pattern: '^[0-9]{3}$'
+        <NID> encoded as defined in clause 5.4.2 ("Nid" data type definition) <NFInstanceId> encoded as defined in clause 5.3.2 <ServiceName> encoded as defined in 3GPP TS 29.510 <Set ID> encoded as a string of characters consisting of alphabetic
+          characters (A-Z and a-z), digits (0-9) and/or the hyphen (-) and that shall end
+          with either an alphabetic character or a digit.
       type: string
     UpdateNwdafRegistration_200_response:
       oneOf:

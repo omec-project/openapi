@@ -30,19 +30,19 @@ var _ openapi.MappedNullable = &SmContext{}
 
 // SmContext Complete SM Context
 type SmContext struct {
-	// Unsigned integer identifying a PDU session, within the range 0 to 255, as specified in  clause 11.2.3.1b, bits 1 to 8, of 3GPP TS 24.007. If the PDU Session ID is allocated by the  Core Network for UEs not supporting N1 mode, reserved range 64 to 95 is used. PDU Session ID  within the reserved range is only visible in the Core Network.
+	// Unsigned integer identifying a PDU session, within the range 0 to 255, as specified in clause 11.2.3.1b, bits 1 to 8, of 3GPP TS 24.007. If the PDU Session ID is allocated by the Core Network for UEs not supporting N1 mode, reserved range 64 to 95 is used. PDU Session ID within the reserved range is only visible in the Core Network.
 	PduSessionId int32 `json:"pduSessionId" yaml:"pduSessionId"`
-	// String representing a Data Network as defined in clause 9A of 3GPP TS 23.003;  it shall contain either a DNN Network Identifier, or a full DNN with both the Network  Identifier and Operator Identifier, as specified in 3GPP TS 23.003 clause 9.1.1 and 9.1.2. It shall be coded as string in which the labels are separated by dots  (e.g. \"Label1.Label2.Label3\").
+	// String representing a Data Network as defined in clause 9A of 3GPP TS 23.003; it shall contain either a DNN Network Identifier, or a full DNN with both the Network Identifier and Operator Identifier, as specified in 3GPP TS 23.003 clause 9.1.1 and 9.1.2. It shall be coded as string in which the labels are separated by dots (e.g. \"Label1.Label2.Label3\").
 	Dnn string `json:"dnn" yaml:"dnn"`
-	// String representing a Data Network as defined in clause 9A of 3GPP TS 23.003;  it shall contain either a DNN Network Identifier, or a full DNN with both the Network  Identifier and Operator Identifier, as specified in 3GPP TS 23.003 clause 9.1.1 and 9.1.2. It shall be coded as string in which the labels are separated by dots  (e.g. \"Label1.Label2.Label3\").
+	// String representing a Data Network as defined in clause 9A of 3GPP TS 23.003; it shall contain either a DNN Network Identifier, or a full DNN with both the Network Identifier and Operator Identifier, as specified in 3GPP TS 23.003 clause 9.1.1 and 9.1.2. It shall be coded as string in which the labels are separated by dots (e.g. \"Label1.Label2.Label3\").
 	SelectedDnn    *string        `json:"selectedDnn,omitempty" yaml:"selectedDnn,omitempty"`
 	SNssai         Snssai         `json:"sNssai" yaml:"sNssai"`
 	AltSnssai      *Snssai        `json:"altSnssai,omitempty" yaml:"altSnssai,omitempty"`
 	HplmnSnssai    *Snssai        `json:"hplmnSnssai,omitempty" yaml:"hplmnSnssai,omitempty"`
 	AltHplmnSnssai *Snssai        `json:"altHplmnSnssai,omitempty" yaml:"altHplmnSnssai,omitempty"`
 	PduSessionType PduSessionType `json:"pduSessionType" yaml:"pduSessionType"`
-	// String identifying a Gpsi shall contain either an External Id or an MSISDN.  It shall be formatted as follows -External Identifier= \"extid-'extid', where 'extid'  shall be formatted according to clause 19.7.2 of 3GPP TS 23.003 that describes an  External Identifier.
-	Gpsi *string `json:"gpsi,omitempty" yaml:"gpsi,omitempty" validate:"regexp=^(msisdn-[0-9]{5,15}|extid-[^@]+@[^@]+|.+)$"`
+	// String identifying a Gpsi shall contain either an External Id or an MSISDN. It shall be formatted as follows -External Identifier= \"extid-'extid', where 'extid' shall be formatted according to clause 19.7.2 of 3GPP TS 23.003 that describes an External Identifier.
+	Gpsi *string `json:"gpsi,omitempty" yaml:"gpsi,omitempty" validate:"regexp=^(msisdn-[0-9]{5\\,15}|extid-[^@]+@[^@]+|.+)$"`
 	// String providing an URI formatted according to RFC 3986.
 	HSmfUri *string `json:"hSmfUri,omitempty" yaml:"hSmfUri,omitempty"`
 	// String providing an URI formatted according to RFC 3986.
@@ -53,11 +53,11 @@ type SmContext struct {
 	InterPlmnApiRoot *string `json:"interPlmnApiRoot,omitempty" yaml:"interPlmnApiRoot,omitempty"`
 	// String providing an URI formatted according to RFC 3986.
 	IntraPlmnApiRoot *string `json:"intraPlmnApiRoot,omitempty" yaml:"intraPlmnApiRoot,omitempty"`
-	// String uniquely identifying a NF instance. The format of the NF Instance ID shall be a  Universally Unique Identifier (UUID) version 4, as described in IETF RFC 4122.
+	// String uniquely identifying a NF instance. The format of the NF Instance ID shall be a Universally Unique Identifier (UUID) version 4, as described in IETF RFC 4122.
 	PcfId *string `json:"pcfId,omitempty" yaml:"pcfId,omitempty"`
 	// Identifier of a group of NFs.
 	PcfGroupId *string `json:"pcfGroupId,omitempty" yaml:"pcfGroupId,omitempty"`
-	// NF Set Identifier (see clause 28.12 of 3GPP TS 23.003), formatted as the following string \"set<Set ID>.<nftype>set.5gc.mnc<MNC>.mcc<MCC>\", or  \"set<SetID>.<NFType>set.5gc.nid<NID>.mnc<MNC>.mcc<MCC>\" with  <MCC> encoded as defined in clause 5.4.2 (\"Mcc\" data type definition)  <MNC> encoding the Mobile Network Code part of the PLMN, comprising 3 digits.    If there are only 2 significant digits in the MNC, one \"0\" digit shall be inserted    at the left side to fill the 3 digits coding of MNC.  Pattern: '^[0-9]{3}$' <NFType> encoded as a value defined in Table 6.1.6.3.3-1 of 3GPP TS 29.510 but    with lower case characters <Set ID> encoded as a string of characters consisting of    alphabetic characters (A-Z and a-z), digits (0-9) and/or the hyphen (-) and that    shall end with either an alphabetic character or a digit.
+	// NF Set Identifier (see clause 28.12 of 3GPP TS 23.003), formatted as the following string \"set<Set ID>.<nftype>set.5gc.mnc<MNC>.mcc<MCC>\", or \"set<SetID>.<NFType>set.5gc.nid<NID>.mnc<MNC>.mcc<MCC>\" with <MCC> encoded as defined in clause 5.4.2 (\"Mcc\" data type definition) <MNC> encoding the Mobile Network Code part of the PLMN, comprising 3 digits.   If there are only 2 significant digits in the MNC, one \"0\" digit shall be inserted   at the left side to fill the 3 digits coding of MNC.  Pattern: '^[0-9]{3}$' <NFType> encoded as a value defined in Table 6.1.6.3.3-1 of 3GPP TS 29.510 but   with lower case characters <Set ID> encoded as a string of characters consisting of   alphabetic characters (A-Z and a-z), digits (0-9) and/or the hyphen (-) and that   shall end with either an alphabetic character or a digit.
 	PcfSetId *string           `json:"pcfSetId,omitempty" yaml:"pcfSetId,omitempty"`
 	SelMode  *DnnSelectionMode `json:"selMode,omitempty" yaml:"selMode,omitempty"`
 	// Identifier of a group of NFs.
@@ -66,20 +66,20 @@ type SmContext struct {
 	HNwPubKeyId      *int32             `json:"hNwPubKeyId,omitempty" yaml:"hNwPubKeyId,omitempty"`
 	SessionAmbr      Ambr               `json:"sessionAmbr" yaml:"sessionAmbr"`
 	QosFlowsList     []QosFlowSetupItem `json:"qosFlowsList" yaml:"qosFlowsList"`
-	// String uniquely identifying a NF instance. The format of the NF Instance ID shall be a  Universally Unique Identifier (UUID) version 4, as described in IETF RFC 4122.
+	// String uniquely identifying a NF instance. The format of the NF Instance ID shall be a Universally Unique Identifier (UUID) version 4, as described in IETF RFC 4122.
 	HSmfInstanceId *string `json:"hSmfInstanceId,omitempty" yaml:"hSmfInstanceId,omitempty"`
-	// String uniquely identifying a NF instance. The format of the NF Instance ID shall be a  Universally Unique Identifier (UUID) version 4, as described in IETF RFC 4122.
+	// String uniquely identifying a NF instance. The format of the NF Instance ID shall be a Universally Unique Identifier (UUID) version 4, as described in IETF RFC 4122.
 	SmfInstanceId *string `json:"smfInstanceId,omitempty" yaml:"smfInstanceId,omitempty"`
-	// NF Set Identifier (see clause 28.12 of 3GPP TS 23.003), formatted as the following string \"set<Set ID>.<nftype>set.5gc.mnc<MNC>.mcc<MCC>\", or  \"set<SetID>.<NFType>set.5gc.nid<NID>.mnc<MNC>.mcc<MCC>\" with  <MCC> encoded as defined in clause 5.4.2 (\"Mcc\" data type definition)  <MNC> encoding the Mobile Network Code part of the PLMN, comprising 3 digits.    If there are only 2 significant digits in the MNC, one \"0\" digit shall be inserted    at the left side to fill the 3 digits coding of MNC.  Pattern: '^[0-9]{3}$' <NFType> encoded as a value defined in Table 6.1.6.3.3-1 of 3GPP TS 29.510 but    with lower case characters <Set ID> encoded as a string of characters consisting of    alphabetic characters (A-Z and a-z), digits (0-9) and/or the hyphen (-) and that    shall end with either an alphabetic character or a digit.
+	// NF Set Identifier (see clause 28.12 of 3GPP TS 23.003), formatted as the following string \"set<Set ID>.<nftype>set.5gc.mnc<MNC>.mcc<MCC>\", or \"set<SetID>.<NFType>set.5gc.nid<NID>.mnc<MNC>.mcc<MCC>\" with <MCC> encoded as defined in clause 5.4.2 (\"Mcc\" data type definition) <MNC> encoding the Mobile Network Code part of the PLMN, comprising 3 digits.   If there are only 2 significant digits in the MNC, one \"0\" digit shall be inserted   at the left side to fill the 3 digits coding of MNC.  Pattern: '^[0-9]{3}$' <NFType> encoded as a value defined in Table 6.1.6.3.3-1 of 3GPP TS 29.510 but   with lower case characters <Set ID> encoded as a string of characters consisting of   alphabetic characters (A-Z and a-z), digits (0-9) and/or the hyphen (-) and that   shall end with either an alphabetic character or a digit.
 	PduSessionSmfSetId *string `json:"pduSessionSmfSetId,omitempty" yaml:"pduSessionSmfSetId,omitempty"`
-	// NF Service Set Identifier (see clause 28.12 of 3GPP TS 23.003) formatted as the following  string \"set<Set ID>.sn<Service Name>.nfi<NF Instance ID>.5gc.mnc<MNC>.mcc<MCC>\", or  \"set<SetID>.sn<ServiceName>.nfi<NFInstanceID>.5gc.nid<NID>.mnc<MNC>.mcc<MCC>\" with  <MCC> encoded as defined in clause 5.4.2 (\"Mcc\" data type definition)   <MNC> encoding the Mobile Network Code part of the PLMN, comprising 3 digits.    If there are only 2 significant digits in the MNC, one \"0\" digit shall be inserted    at the left side to fill the 3 digits coding of MNC.  Pattern: '^[0-9]{3}$' <NID> encoded as defined in clause 5.4.2 (\"Nid\" data type definition)  <NFInstanceId> encoded as defined in clause 5.3.2  <ServiceName> encoded as defined in 3GPP TS 29.510  <Set ID> encoded as a string of characters consisting of alphabetic    characters (A-Z and a-z), digits (0-9) and/or the hyphen (-) and that shall end    with either an alphabetic character or a digit.
+	// NF Service Set Identifier (see clause 28.12 of 3GPP TS 23.003) formatted as the following string \"set<Set ID>.sn<Service Name>.nfi<NF Instance ID>.5gc.mnc<MNC>.mcc<MCC>\", or \"set<SetID>.sn<ServiceName>.nfi<NFInstanceID>.5gc.nid<NID>.mnc<MNC>.mcc<MCC>\" with <MCC> encoded as defined in clause 5.4.2 (\"Mcc\" data type definition) <MNC> encoding the Mobile Network Code part of the PLMN, comprising 3 digits.   If there are only 2 significant digits in the MNC, one \"0\" digit shall be inserted   at the left side to fill the 3 digits coding of MNC.  Pattern: '^[0-9]{3}$' <NID> encoded as defined in clause 5.4.2 (\"Nid\" data type definition) <NFInstanceId> encoded as defined in clause 5.3.2 <ServiceName> encoded as defined in 3GPP TS 29.510 <Set ID> encoded as a string of characters consisting of alphabetic   characters (A-Z and a-z), digits (0-9) and/or the hyphen (-) and that shall end   with either an alphabetic character or a digit.
 	PduSessionSmfServiceSetId *string          `json:"pduSessionSmfServiceSetId,omitempty" yaml:"pduSessionSmfServiceSetId,omitempty"`
 	PduSessionSmfBinding      *SbiBindingLevel `json:"pduSessionSmfBinding,omitempty" yaml:"pduSessionSmfBinding,omitempty"`
 	EnablePauseCharging       *bool            `json:"enablePauseCharging,omitempty" yaml:"enablePauseCharging,omitempty"`
 	// String identifying a IPv4 address formatted in the 'dotted decimal' notation as defined in RFC 1166.
-	UeIpv4Address *string `json:"ueIpv4Address,omitempty" yaml:"ueIpv4Address,omitempty" validate:"regexp=^(([0-9]|[1-9][0-9]|1[0-9][0-9]|2[0-4][0-9]|25[0-5])\\\\.){3}([0-9]|[1-9][0-9]|1[0-9][0-9]|2[0-4][0-9]|25[0-5])$"`
+	UeIpv4Address *string `json:"ueIpv4Address,omitempty" yaml:"ueIpv4Address,omitempty" validate:"regexp=^(([0-9]|[1-9][0-9]|1[0-9][0-9]|2[0-4][0-9]|25[0-5])\\.){3}([0-9]|[1-9][0-9]|1[0-9][0-9]|2[0-4][0-9]|25[0-5])$"`
 	// String identifying an IPv6 address prefix formatted according to clause 4 of RFC 5952. IPv6Prefix data type may contain an individual /128 IPv6 address.
-	UeIpv6Prefix                    *string                        `json:"ueIpv6Prefix,omitempty" yaml:"ueIpv6Prefix,omitempty" validate:"regexp=^(((:|(0?|([1-9a-f][0-9a-f]{0,3}))):)((0?|([1-9a-f][0-9a-f]{0,3})):){0,6}(:|(0?|([1-9a-f][0-9a-f]{0,3})))(\\/(([0-9])|([0-9]{2})|(1[0-1][0-9])|(12[0-8])))|((([^:]+:){7}([^:]+))|((([^:]+:)*[^:]+)?::(([^:]+:)*[^:]+)?))(\\/.+))$"`
+	UeIpv6Prefix                    *string                        `json:"ueIpv6Prefix,omitempty" yaml:"ueIpv6Prefix,omitempty" validate:"regexp=^(((:|(0?|([1-9a-f][0-9a-f]{0\\,3}))):)((0?|([1-9a-f][0-9a-f]{0\\,3})):){0\\,6}(:|(0?|([1-9a-f][0-9a-f]{0\\,3})))(/(([0-9])|([0-9]{2})|(1[0-1][0-9])|(12[0-8])))|((([^:]+:){7}([^:]+))|((([^:]+:)*[^:]+)?::(([^:]+:)*[^:]+)?))(/.+))$"`
 	EpsPdnCnxInfo                   *EpsPdnCnxInfo                 `json:"epsPdnCnxInfo,omitempty" yaml:"epsPdnCnxInfo,omitempty"`
 	EpsBearerInfo                   []EpsBearerInfo                `json:"epsBearerInfo,omitempty" yaml:"epsBearerInfo,omitempty"`
 	MaxIntegrityProtectedDataRate   *MaxIntegrityProtectedDataRate `json:"maxIntegrityProtectedDataRate,omitempty" yaml:"maxIntegrityProtectedDataRate,omitempty"`
@@ -92,9 +92,9 @@ type SmContext struct {
 	RecoveryTime  *time.Time  `json:"recoveryTime,omitempty" yaml:"recoveryTime,omitempty"`
 	ForwardingInd *bool       `json:"forwardingInd,omitempty" yaml:"forwardingInd,omitempty"`
 	PsaTunnelInfo *TunnelInfo `json:"psaTunnelInfo,omitempty" yaml:"psaTunnelInfo,omitempty"`
-	ChargingId    *string     `json:"chargingId,omitempty" yaml:"chargingId,omitempty" validate:"regexp=^(0|([1-9]{1}[0-9]{0,9}))$"`
+	ChargingId    *string     `json:"chargingId,omitempty" yaml:"chargingId,omitempty" validate:"regexp=^(0|([1-9]{1}[0-9]{0\\,9}))$"`
 	// String based Charging ID
-	SmfChargingId          *string                 `json:"smfChargingId,omitempty" yaml:"smfChargingId,omitempty" validate:"regexp=^(0|([1-9]{1}[0-9]{0,9}))\\\\.smf-([0-9a-f]{8}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{12})$"`
+	SmfChargingId          *string                 `json:"smfChargingId,omitempty" yaml:"smfChargingId,omitempty" validate:"regexp=^(0|([1-9]{1}[0-9]{0\\,9}))\\.smf-([0-9a-f]{8}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{12})$"`
 	ChargingInfo           *ChargingInformation    `json:"chargingInfo,omitempty" yaml:"chargingInfo,omitempty"`
 	RoamingChargingProfile *RoamingChargingProfile `json:"roamingChargingProfile,omitempty" yaml:"roamingChargingProfile,omitempty"`
 	NefExtBufSupportInd    *bool                   `json:"nefExtBufSupportInd,omitempty" yaml:"nefExtBufSupportInd,omitempty"`

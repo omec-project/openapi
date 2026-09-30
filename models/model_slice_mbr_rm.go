@@ -27,12 +27,12 @@ import (
 // checks if the SliceMbrRm type satisfies the MappedNullable interface at compile time
 var _ openapi.MappedNullable = &SliceMbrRm{}
 
-// SliceMbrRm struct for SliceMbrRm
+// SliceMbrRm SliceMbr with nullable: true
 type SliceMbrRm struct {
 	// String representing a bit rate; the prefixes follow the standard symbols from The International System of Units, and represent x1000 multipliers, with the exception that prefix \"K\" is used to represent the standard symbol \"k\".
-	Uplink string `json:"uplink" yaml:"uplink" validate:"regexp=^\\\\d+(\\\\.\\\\d+)? (bps|Kbps|Mbps|Gbps|Tbps)$"`
+	Uplink string `json:"uplink" yaml:"uplink" validate:"regexp=^\\d+(\\.\\d+)? (bps|Kbps|Mbps|Gbps|Tbps)$"`
 	// String representing a bit rate; the prefixes follow the standard symbols from The International System of Units, and represent x1000 multipliers, with the exception that prefix \"K\" is used to represent the standard symbol \"k\".
-	Downlink string `json:"downlink" yaml:"downlink" validate:"regexp=^\\\\d+(\\\\.\\\\d+)? (bps|Kbps|Mbps|Gbps|Tbps)$"`
+	Downlink string `json:"downlink" yaml:"downlink" validate:"regexp=^\\d+(\\.\\d+)? (bps|Kbps|Mbps|Gbps|Tbps)$"`
 }
 
 // NewSliceMbrRm instantiates a new SliceMbrRm object

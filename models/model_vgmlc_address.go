@@ -27,14 +27,14 @@ import (
 // checks if the VgmlcAddress type satisfies the MappedNullable interface at compile time
 var _ openapi.MappedNullable = &VgmlcAddress{}
 
-// VgmlcAddress This data type contains the address(es) of VGMLC.  Depending on the names of Vgmlcaddress, it could indicate either VGMLC IPv4 or IPv6 address.
+// VgmlcAddress This data type contains the address(es) of VGMLC. Depending on the names of Vgmlcaddress, it could indicate either VGMLC IPv4 or IPv6 address.
 type VgmlcAddress struct {
 	// String identifying a IPv4 address formatted in the 'dotted decimal' notation as defined in RFC 1166.
-	VgmlcAddressIpv4 *string `json:"vgmlcAddressIpv4,omitempty" yaml:"vgmlcAddressIpv4,omitempty" validate:"regexp=^(([0-9]|[1-9][0-9]|1[0-9][0-9]|2[0-4][0-9]|25[0-5])\\\\.){3}([0-9]|[1-9][0-9]|1[0-9][0-9]|2[0-4][0-9]|25[0-5])$"`
+	VgmlcAddressIpv4 *string `json:"vgmlcAddressIpv4,omitempty" yaml:"vgmlcAddressIpv4,omitempty" validate:"regexp=^(([0-9]|[1-9][0-9]|1[0-9][0-9]|2[0-4][0-9]|25[0-5])\\.){3}([0-9]|[1-9][0-9]|1[0-9][0-9]|2[0-4][0-9]|25[0-5])$"`
 	// String identifying an IPv6 address formatted according to clause 4 of RFC5952. The mixed IPv4 IPv6 notation according to clause 5 of RFC5952 shall not be used.
-	VgmlcAddressIpv6 *string `json:"vgmlcAddressIpv6,omitempty" yaml:"vgmlcAddressIpv6,omitempty" validate:"regexp=^(((:|(0?|([1-9a-f][0-9a-f]{0,3}))):)((0?|([1-9a-f][0-9a-f]{0,3})):){0,6}(:|(0?|([1-9a-f][0-9a-f]{0,3}))))|((([^:]+:){7}([^:]+))|((([^:]+:)*[^:]+)?::(([^:]+:)*[^:]+)?)))$"`
+	VgmlcAddressIpv6 *string `json:"vgmlcAddressIpv6,omitempty" yaml:"vgmlcAddressIpv6,omitempty" validate:"regexp=^(((:|(0?|([1-9a-f][0-9a-f]{0\\,3}))):)((0?|([1-9a-f][0-9a-f]{0\\,3})):){0\\,6}(:|(0?|([1-9a-f][0-9a-f]{0\\,3}))))|((([^:]+:){7}([^:]+))|((([^:]+:)*[^:]+)?::(([^:]+:)*[^:]+)?)))$"`
 	// Fully Qualified Domain Name
-	VgmlcFqdn *string `json:"vgmlcFqdn,omitempty" yaml:"vgmlcFqdn,omitempty" validate:"regexp=^([0-9A-Za-z]([-0-9A-Za-z]{0,61}[0-9A-Za-z])?\\\\.)+[A-Za-z]{2,63}\\\\.?$"`
+	VgmlcFqdn *string `json:"vgmlcFqdn,omitempty" yaml:"vgmlcFqdn,omitempty" validate:"regexp=^([0-9A-Za-z]([-0-9A-Za-z]{0\\,61}[0-9A-Za-z])?\\.)+[A-Za-z]{2\\,63}\\.?$"`
 }
 
 // NewVgmlcAddress instantiates a new VgmlcAddress object

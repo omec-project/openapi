@@ -27,7 +27,7 @@ import (
 // checks if the GeoLocation type satisfies the MappedNullable interface at compile time
 var _ openapi.MappedNullable = &GeoLocation{}
 
-// GeoLocation struct for GeoLocation
+// GeoLocation Represents a horizontal and optionally vertical location using either geographic or local coordinates.
 type GeoLocation struct {
 }
 

@@ -30,7 +30,7 @@ var _ openapi.MappedNullable = &PcfAddressingInfo{}
 // PcfAddressingInfo Contains PCF address information.
 type PcfAddressingInfo struct {
 	// Fully Qualified Domain Name
-	PcfFqdn *string `json:"pcfFqdn,omitempty" yaml:"pcfFqdn,omitempty" validate:"regexp=^([0-9A-Za-z]([-0-9A-Za-z]{0,61}[0-9A-Za-z])?\\\\.)+[A-Za-z]{2,63}\\\\.?$"`
+	PcfFqdn *string `json:"pcfFqdn,omitempty" yaml:"pcfFqdn,omitempty" validate:"regexp=^([0-9A-Za-z]([-0-9A-Za-z]{0\\,61}[0-9A-Za-z])?\\.)+[A-Za-z]{2\\,63}\\.?$"`
 	// IP end points of the PCF hosting the Npcf_PolicyAuthorization service.
 	PcfIpEndPoints []IpEndPoint `json:"pcfIpEndPoints,omitempty" yaml:"pcfIpEndPoints,omitempty"`
 	// contains the binding indications of the PCF.

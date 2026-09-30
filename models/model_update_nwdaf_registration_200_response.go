@@ -22,7 +22,6 @@ import (
 	"encoding/json"
 
 	"github.com/omec-project/openapi/v2"
-	"gopkg.in/validator.v2"
 )
 
 // UpdateNwdafRegistration200Response - struct for UpdateNwdafRegistration200Response
@@ -56,7 +55,7 @@ func (dst *UpdateNwdafRegistration200Response) UnmarshalJSON(data []byte) error 
 		if string(jsonNwdafRegistration) == "{}" { // empty struct
 			dst.NwdafRegistration = nil
 		} else {
-			if err = validator.Validate(dst.NwdafRegistration); err != nil {
+			if err = openapi.Validate(dst.NwdafRegistration); err != nil {
 				dst.NwdafRegistration = nil
 			} else {
 				match++
@@ -73,7 +72,7 @@ func (dst *UpdateNwdafRegistration200Response) UnmarshalJSON(data []byte) error 
 		if string(jsonPatchResult) == "{}" { // empty struct
 			dst.PatchResult = nil
 		} else {
-			if err = validator.Validate(dst.PatchResult); err != nil {
+			if err = openapi.Validate(dst.PatchResult); err != nil {
 				dst.PatchResult = nil
 			} else {
 				match++

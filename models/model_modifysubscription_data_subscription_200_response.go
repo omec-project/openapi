@@ -22,7 +22,6 @@ import (
 	"encoding/json"
 
 	"github.com/omec-project/openapi/v2"
-	"gopkg.in/validator.v2"
 )
 
 // ModifysubscriptionDataSubscription200Response - struct for ModifysubscriptionDataSubscription200Response
@@ -56,7 +55,7 @@ func (dst *ModifysubscriptionDataSubscription200Response) UnmarshalJSON(data []b
 		if string(jsonPatchResult) == "{}" { // empty struct
 			dst.PatchResult = nil
 		} else {
-			if err = validator.Validate(dst.PatchResult); err != nil {
+			if err = openapi.Validate(dst.PatchResult); err != nil {
 				dst.PatchResult = nil
 			} else {
 				match++
@@ -73,7 +72,7 @@ func (dst *ModifysubscriptionDataSubscription200Response) UnmarshalJSON(data []b
 		if string(jsonSubscriptionDataSubscriptions) == "{}" { // empty struct
 			dst.SubscriptionDataSubscriptions = nil
 		} else {
-			if err = validator.Validate(dst.SubscriptionDataSubscriptions); err != nil {
+			if err = openapi.Validate(dst.SubscriptionDataSubscriptions); err != nil {
 				dst.SubscriptionDataSubscriptions = nil
 			} else {
 				match++

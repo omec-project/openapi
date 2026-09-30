@@ -33,23 +33,23 @@ import (
 type ProSeServiceSubscriptionDataAPI interface {
 
 	/*
-		QueryPorseData Retrieves the subscribed ProSe service Data of a UE
+		QueryProseData Retrieves the subscribed ProSe service Data of a UE
 
 			@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
 			@param ueId UE id
-			@return ApiQueryPorseDataRequest
+			@return ApiQueryProseDataRequest
 	*/
-	QueryPorseData(ctx context.Context, ueId string) ApiQueryPorseDataRequest
+	QueryProseData(ctx context.Context, ueId string) ApiQueryProseDataRequest
 
-	// QueryPorseDataExecute executes the request
+	// QueryProseDataExecute executes the request
 	//   @return ProseSubscriptionData
-	QueryPorseDataExecute(r ApiQueryPorseDataRequest) (*models.ProseSubscriptionData, *http.Response, error)
+	QueryProseDataExecute(r ApiQueryProseDataRequest) (*models.ProseSubscriptionData, *http.Response, error)
 }
 
 // ProSeServiceSubscriptionDataAPIService ProSeServiceSubscriptionDataAPI service
 type ProSeServiceSubscriptionDataAPIService service
 
-type ApiQueryPorseDataRequest struct {
+type ApiQueryProseDataRequest struct {
 	ctx               context.Context
 	ApiService        ProSeServiceSubscriptionDataAPI
 	ueId              string
@@ -59,36 +59,36 @@ type ApiQueryPorseDataRequest struct {
 }
 
 // Supported Features
-func (r ApiQueryPorseDataRequest) SupportedFeatures(supportedFeatures string) ApiQueryPorseDataRequest {
+func (r ApiQueryProseDataRequest) SupportedFeatures(supportedFeatures string) ApiQueryProseDataRequest {
 	r.supportedFeatures = &supportedFeatures
 	return r
 }
 
 // Validator for conditional requests, as described in RFC 9110, 13.1.2
-func (r ApiQueryPorseDataRequest) IfNoneMatch(ifNoneMatch string) ApiQueryPorseDataRequest {
+func (r ApiQueryProseDataRequest) IfNoneMatch(ifNoneMatch string) ApiQueryProseDataRequest {
 	r.ifNoneMatch = &ifNoneMatch
 	return r
 }
 
 // Validator for conditional requests, as described in RFC 9110, 13.1.3
-func (r ApiQueryPorseDataRequest) IfModifiedSince(ifModifiedSince string) ApiQueryPorseDataRequest {
+func (r ApiQueryProseDataRequest) IfModifiedSince(ifModifiedSince string) ApiQueryProseDataRequest {
 	r.ifModifiedSince = &ifModifiedSince
 	return r
 }
 
-func (r ApiQueryPorseDataRequest) Execute() (*models.ProseSubscriptionData, *http.Response, error) {
-	return r.ApiService.QueryPorseDataExecute(r)
+func (r ApiQueryProseDataRequest) Execute() (*models.ProseSubscriptionData, *http.Response, error) {
+	return r.ApiService.QueryProseDataExecute(r)
 }
 
 /*
-QueryPorseData Retrieves the subscribed ProSe service Data of a UE
+QueryProseData Retrieves the subscribed ProSe service Data of a UE
 
 	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
 	@param ueId UE id
-	@return ApiQueryPorseDataRequest
+	@return ApiQueryProseDataRequest
 */
-func (a *ProSeServiceSubscriptionDataAPIService) QueryPorseData(ctx context.Context, ueId string) ApiQueryPorseDataRequest {
-	return ApiQueryPorseDataRequest{
+func (a *ProSeServiceSubscriptionDataAPIService) QueryProseData(ctx context.Context, ueId string) ApiQueryProseDataRequest {
+	return ApiQueryProseDataRequest{
 		ApiService: a,
 		ctx:        ctx,
 		ueId:       ueId,
@@ -98,7 +98,7 @@ func (a *ProSeServiceSubscriptionDataAPIService) QueryPorseData(ctx context.Cont
 // Execute executes the request
 //
 //	@return ProseSubscriptionData
-func (a *ProSeServiceSubscriptionDataAPIService) QueryPorseDataExecute(r ApiQueryPorseDataRequest) (*models.ProseSubscriptionData, *http.Response, error) {
+func (a *ProSeServiceSubscriptionDataAPIService) QueryProseDataExecute(r ApiQueryProseDataRequest) (*models.ProseSubscriptionData, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodGet
 		localVarPostBody    any
@@ -106,7 +106,7 @@ func (a *ProSeServiceSubscriptionDataAPIService) QueryPorseDataExecute(r ApiQuer
 		localVarReturnValue *models.ProseSubscriptionData
 	)
 
-	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "ProSeServiceSubscriptionDataAPIService.QueryPorseData")
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "ProSeServiceSubscriptionDataAPIService.QueryProseData")
 	if err != nil {
 		return localVarReturnValue, nil, &openapi.GenericOpenAPIError{RawError: err.Error()}
 	}

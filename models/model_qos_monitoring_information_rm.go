@@ -33,9 +33,9 @@ type QosMonitoringInformationRm struct {
 	RepThreshUl *int32 `json:"repThreshUl,omitempty" yaml:"repThreshUl,omitempty"`
 	RepThreshRp *int32 `json:"repThreshRp,omitempty" yaml:"repThreshRp,omitempty"`
 	// This data type is defined in the same way as the 'BitRate' data type, but with the OpenAPI 'nullable: true' property.
-	RepThreshDatRateUl openapi.NullableString `json:"repThreshDatRateUl" yaml:"repThreshDatRateUl,omitempty" validate:"regexp=^\\\\d+(\\\\.\\\\d+)? (bps|Kbps|Mbps|Gbps|Tbps)$"`
+	RepThreshDatRateUl openapi.NullableString `json:"repThreshDatRateUl" yaml:"repThreshDatRateUl,omitempty" validate:"regexp=^\\d+(\\.\\d+)? (bps|Kbps|Mbps|Gbps|Tbps)$"`
 	// This data type is defined in the same way as the 'BitRate' data type, but with the OpenAPI 'nullable: true' property.
-	RepThreshDatRateDl openapi.NullableString `json:"repThreshDatRateDl" yaml:"repThreshDatRateDl,omitempty" validate:"regexp=^\\\\d+(\\\\.\\\\d+)? (bps|Kbps|Mbps|Gbps|Tbps)$"`
+	RepThreshDatRateDl openapi.NullableString `json:"repThreshDatRateDl" yaml:"repThreshDatRateDl,omitempty" validate:"regexp=^\\d+(\\.\\d+)? (bps|Kbps|Mbps|Gbps|Tbps)$"`
 	// Unsigned Integer, i.e. only value 0 and integers above 0 are permissible with the OpenAPI 'nullable: true' property.
 	ConThreshDl openapi.NullableInt32 `json:"conThreshDl" yaml:"conThreshDl,omitempty"`
 	// Unsigned Integer, i.e. only value 0 and integers above 0 are permissible with the OpenAPI 'nullable: true' property.

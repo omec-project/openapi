@@ -30,13 +30,13 @@ var _ openapi.MappedNullable = &IpMulticastAddressInfo{}
 // IpMulticastAddressInfo Contains the IP multicast addressing information.
 type IpMulticastAddressInfo struct {
 	// String identifying a IPv4 address formatted in the 'dotted decimal' notation as defined in RFC 1166.
-	SrcIpv4Addr *string `json:"srcIpv4Addr,omitempty" yaml:"srcIpv4Addr,omitempty" validate:"regexp=^(([0-9]|[1-9][0-9]|1[0-9][0-9]|2[0-4][0-9]|25[0-5])\\\\.){3}([0-9]|[1-9][0-9]|1[0-9][0-9]|2[0-4][0-9]|25[0-5])$"`
+	SrcIpv4Addr *string `json:"srcIpv4Addr,omitempty" yaml:"srcIpv4Addr,omitempty" validate:"regexp=^(([0-9]|[1-9][0-9]|1[0-9][0-9]|2[0-4][0-9]|25[0-5])\\.){3}([0-9]|[1-9][0-9]|1[0-9][0-9]|2[0-4][0-9]|25[0-5])$"`
 	// String identifying a IPv4 address formatted in the 'dotted decimal' notation as defined in RFC 1166.
-	Ipv4MulAddr *string `json:"ipv4MulAddr,omitempty" yaml:"ipv4MulAddr,omitempty" validate:"regexp=^(([0-9]|[1-9][0-9]|1[0-9][0-9]|2[0-4][0-9]|25[0-5])\\\\.){3}([0-9]|[1-9][0-9]|1[0-9][0-9]|2[0-4][0-9]|25[0-5])$"`
+	Ipv4MulAddr *string `json:"ipv4MulAddr,omitempty" yaml:"ipv4MulAddr,omitempty" validate:"regexp=^(([0-9]|[1-9][0-9]|1[0-9][0-9]|2[0-4][0-9]|25[0-5])\\.){3}([0-9]|[1-9][0-9]|1[0-9][0-9]|2[0-4][0-9]|25[0-5])$"`
 	// String identifying an IPv6 address formatted according to clause 4 of RFC5952. The mixed IPv4 IPv6 notation according to clause 5 of RFC5952 shall not be used.
-	SrcIpv6Addr *string `json:"srcIpv6Addr,omitempty" yaml:"srcIpv6Addr,omitempty" validate:"regexp=^(((:|(0?|([1-9a-f][0-9a-f]{0,3}))):)((0?|([1-9a-f][0-9a-f]{0,3})):){0,6}(:|(0?|([1-9a-f][0-9a-f]{0,3}))))|((([^:]+:){7}([^:]+))|((([^:]+:)*[^:]+)?::(([^:]+:)*[^:]+)?)))$"`
+	SrcIpv6Addr *string `json:"srcIpv6Addr,omitempty" yaml:"srcIpv6Addr,omitempty" validate:"regexp=^(((:|(0?|([1-9a-f][0-9a-f]{0\\,3}))):)((0?|([1-9a-f][0-9a-f]{0\\,3})):){0\\,6}(:|(0?|([1-9a-f][0-9a-f]{0\\,3}))))|((([^:]+:){7}([^:]+))|((([^:]+:)*[^:]+)?::(([^:]+:)*[^:]+)?)))$"`
 	// String identifying an IPv6 address formatted according to clause 4 of RFC5952. The mixed IPv4 IPv6 notation according to clause 5 of RFC5952 shall not be used.
-	Ipv6MulAddr *string `json:"ipv6MulAddr,omitempty" yaml:"ipv6MulAddr,omitempty" validate:"regexp=^(((:|(0?|([1-9a-f][0-9a-f]{0,3}))):)((0?|([1-9a-f][0-9a-f]{0,3})):){0,6}(:|(0?|([1-9a-f][0-9a-f]{0,3}))))|((([^:]+:){7}([^:]+))|((([^:]+:)*[^:]+)?::(([^:]+:)*[^:]+)?)))$"`
+	Ipv6MulAddr *string `json:"ipv6MulAddr,omitempty" yaml:"ipv6MulAddr,omitempty" validate:"regexp=^(((:|(0?|([1-9a-f][0-9a-f]{0\\,3}))):)((0?|([1-9a-f][0-9a-f]{0\\,3})):){0\\,6}(:|(0?|([1-9a-f][0-9a-f]{0\\,3}))))|((([^:]+:){7}([^:]+))|((([^:]+:)*[^:]+)?::(([^:]+:)*[^:]+)?)))$"`
 }
 
 // NewIpMulticastAddressInfo instantiates a new IpMulticastAddressInfo object

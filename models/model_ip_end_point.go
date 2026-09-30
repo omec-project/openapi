@@ -30,9 +30,9 @@ var _ openapi.MappedNullable = &IpEndPoint{}
 // IpEndPoint IP addressing information of a given NFService; it consists on, e.g. IP address, TCP port, transport protocol...
 type IpEndPoint struct {
 	// String identifying a IPv4 address formatted in the 'dotted decimal' notation as defined in RFC 1166.
-	Ipv4Address *string `json:"ipv4Address,omitempty" yaml:"ipv4Address,omitempty" validate:"regexp=^(([0-9]|[1-9][0-9]|1[0-9][0-9]|2[0-4][0-9]|25[0-5])\\\\.){3}([0-9]|[1-9][0-9]|1[0-9][0-9]|2[0-4][0-9]|25[0-5])$"`
+	Ipv4Address *string `json:"ipv4Address,omitempty" yaml:"ipv4Address,omitempty" validate:"regexp=^(([0-9]|[1-9][0-9]|1[0-9][0-9]|2[0-4][0-9]|25[0-5])\\.){3}([0-9]|[1-9][0-9]|1[0-9][0-9]|2[0-4][0-9]|25[0-5])$"`
 	// String identifying an IPv6 address formatted according to clause 4 of RFC5952. The mixed IPv4 IPv6 notation according to clause 5 of RFC5952 shall not be used.
-	Ipv6Address *string            `json:"ipv6Address,omitempty" yaml:"ipv6Address,omitempty" validate:"regexp=^(((:|(0?|([1-9a-f][0-9a-f]{0,3}))):)((0?|([1-9a-f][0-9a-f]{0,3})):){0,6}(:|(0?|([1-9a-f][0-9a-f]{0,3}))))|((([^:]+:){7}([^:]+))|((([^:]+:)*[^:]+)?::(([^:]+:)*[^:]+)?)))$"`
+	Ipv6Address *string            `json:"ipv6Address,omitempty" yaml:"ipv6Address,omitempty" validate:"regexp=^(((:|(0?|([1-9a-f][0-9a-f]{0\\,3}))):)((0?|([1-9a-f][0-9a-f]{0\\,3})):){0\\,6}(:|(0?|([1-9a-f][0-9a-f]{0\\,3}))))|((([^:]+:){7}([^:]+))|((([^:]+:)*[^:]+)?::(([^:]+:)*[^:]+)?)))$"`
 	Transport   *TransportProtocol `json:"transport,omitempty" yaml:"transport,omitempty"`
 	Port        *int32             `json:"port,omitempty" yaml:"port,omitempty"`
 }

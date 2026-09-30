@@ -37,7 +37,7 @@ type CreatedEeSubscription struct {
 	Var5gOnlyInd *bool              `json:"5gOnlyInd,omitempty" yaml:"5gOnlyInd,omitempty"`
 	// A map (list of key-value pairs where referenceId converted from integer to string serves as key; see clause 6.4.6.3.2) of FailedMonitoringConfiguration
 	FailedMonitoringConfigs *map[string]FailedMonitoringConfiguration `json:"failedMonitoringConfigs,omitempty" yaml:"failedMonitoringConfigs,omitempty"`
-	// A map (list of key-value pairs where referenceId converted from integer to string serves as key; see clause 6.4.6.3.2) of FailedMonitoringConfiguration, the key value \"ALL\" may  be used to identify a map entry which contains the failed cause of the EE subscription  was not successful in EPC domain.
+	// A map (list of key-value pairs where referenceId converted from integer to string serves as key; see clause 6.4.6.3.2) of FailedMonitoringConfiguration, the key value \"ALL\" may be used to identify a map entry which contains the failed cause of the EE subscription was not successful in EPC domain.
 	FailedMoniConfigsEPC          *map[string]FailedMonitoringConfiguration `json:"failedMoniConfigsEPC,omitempty" yaml:"failedMoniConfigsEPC,omitempty"`
 	ResetIds                      []string                                  `json:"resetIds,omitempty" yaml:"resetIds,omitempty"`
 	CurrentStatusNotAvailableList []EventTypeUdm                            `json:"currentStatusNotAvailableList,omitempty" yaml:"currentStatusNotAvailableList,omitempty"`

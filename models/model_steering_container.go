@@ -22,7 +22,6 @@ import (
 	"encoding/json"
 
 	"github.com/omec-project/openapi/v2"
-	"gopkg.in/validator.v2"
 )
 
 // SteeringContainer - struct for SteeringContainer
@@ -56,7 +55,7 @@ func (dst *SteeringContainer) UnmarshalJSON(data []byte) error {
 		if string(jsonArrayOfSteeringInfo) == "{}" { // empty struct
 			dst.ArrayOfSteeringInfo = nil
 		} else {
-			if err = validator.Validate(dst.ArrayOfSteeringInfo); err != nil {
+			if err = openapi.Validate(dst.ArrayOfSteeringInfo); err != nil {
 				dst.ArrayOfSteeringInfo = nil
 			} else {
 				match++
@@ -73,7 +72,7 @@ func (dst *SteeringContainer) UnmarshalJSON(data []byte) error {
 		if string(jsonString) == "{}" { // empty struct
 			dst.String = nil
 		} else {
-			if err = validator.Validate(dst.String); err != nil {
+			if err = openapi.Validate(dst.String); err != nil {
 				dst.String = nil
 			} else {
 				match++

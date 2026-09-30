@@ -34,7 +34,7 @@ type UrspRuleRequest struct {
 	RelatPrecedence *int32 `json:"relatPrecedence,omitempty" yaml:"relatPrecedence,omitempty"`
 	// Each element identifies one or more PLMN IDs where AF guidance for VPLMN-specific URSP rule applies.
 	VisitedNetDescs []NetworkDescription `json:"visitedNetDescs,omitempty" yaml:"visitedNetDescs,omitempty"`
-	// Sets of parameters that may be used to guide the Route Selection Descriptors of the  URSP.
+	// Sets of parameters that may be used to guide the Route Selection Descriptors of the URSP.
 	RouteSelParamSets []RouteSelectionParameterSet `json:"routeSelParamSets,omitempty" yaml:"routeSelParamSets,omitempty"`
 }
 

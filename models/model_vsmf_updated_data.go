@@ -37,7 +37,7 @@ type VsmfUpdatedData struct {
 	N1SmInfoFromUe                 *RefToBinaryData `json:"n1SmInfoFromUe,omitempty" yaml:"n1SmInfoFromUe,omitempty"`
 	UnknownN1SmInfo                *RefToBinaryData `json:"unknownN1SmInfo,omitempty" yaml:"unknownN1SmInfo,omitempty"`
 	UeLocation                     *UserLocation    `json:"ueLocation,omitempty" yaml:"ueLocation,omitempty"`
-	// String with format \"time-numoffset\" optionally appended by \"daylightSavingTime\", where  - \"time-numoffset\" shall represent the time zone adjusted for daylight saving time and be    encoded as time-numoffset as defined in clause 5.6 of IETF RFC 3339;  - \"daylightSavingTime\" shall represent the adjustment that has been made and shall be    encoded as \"+1\" or \"+2\" for a +1 or +2 hours adjustment.   The example is for 8 hours behind UTC, +1 hour adjustment for Daylight Saving Time.
+	// String with format \"time-numoffset\" optionally appended by \"daylightSavingTime\", where - \"time-numoffset\" shall represent the time zone adjusted for daylight saving time and be    encoded as time-numoffset as defined in clause 5.6 of IETF RFC 3339; - \"daylightSavingTime\" shall represent the adjustment that has been made and shall be    encoded as \"+1\" or \"+2\" for a +1 or +2 hours adjustment.  The example is for 8 hours behind UTC, +1 hour adjustment for Daylight Saving Time.
 	UeTimeZone                     *string                          `json:"ueTimeZone,omitempty" yaml:"ueTimeZone,omitempty"`
 	AddUeLocation                  *UserLocation                    `json:"addUeLocation,omitempty" yaml:"addUeLocation,omitempty"`
 	AssignedEbiList                []EbiArpMapping                  `json:"assignedEbiList,omitempty" yaml:"assignedEbiList,omitempty"`

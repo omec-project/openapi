@@ -25,7 +25,7 @@ import (
 	"github.com/omec-project/openapi/v2"
 )
 
-// RangingSlPosAllowed Indicates the Ranging/SL positioning services that can be authorised to  use in the given PLMN for the UE.
+// RangingSlPosAllowed Indicates the Ranging/SL positioning services that can be authorised to use in the given PLMN for the UE.
 type RangingSlPosAllowed string
 
 // List of RangingSlPosAllowed

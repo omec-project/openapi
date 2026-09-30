@@ -29,7 +29,7 @@ var _ openapi.MappedNullable = &SharedDataUdm{}
 
 // SharedDataUdm struct for SharedDataUdm
 type SharedDataUdm struct {
-	SharedDataId         string                             `json:"sharedDataId" yaml:"sharedDataId" validate:"regexp=^[0-9]{5,6}-.+$"`
+	SharedDataId         string                             `json:"sharedDataId" yaml:"sharedDataId" validate:"regexp=^[0-9]{5\\,6}-.+$"`
 	SharedAmData         *AccessAndMobilitySubscriptionData `json:"sharedAmData,omitempty" yaml:"sharedAmData,omitempty"`
 	SharedSmsSubsData    *SmsSubscriptionData               `json:"sharedSmsSubsData,omitempty" yaml:"sharedSmsSubsData,omitempty"`
 	SharedSmsMngSubsData *SmsManagementSubscriptionData     `json:"sharedSmsMngSubsData,omitempty" yaml:"sharedSmsMngSubsData,omitempty"`

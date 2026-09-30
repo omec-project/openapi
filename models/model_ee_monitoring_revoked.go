@@ -31,8 +31,8 @@ var _ openapi.MappedNullable = &EeMonitoringRevoked{}
 type EeMonitoringRevoked struct {
 	// A map (list of key-value pairs where ReferenceId serves as key) of MonitoringEvents
 	RevokedMonitoringEventList map[string]MonitoringEvent `json:"revokedMonitoringEventList" yaml:"revokedMonitoringEventList"`
-	// String identifying a Gpsi shall contain either an External Id or an MSISDN.  It shall be formatted as follows -External Identifier= \"extid-'extid', where 'extid'  shall be formatted according to clause 19.7.2 of 3GPP TS 23.003 that describes an  External Identifier.
-	RemovedGpsi     *string  `json:"removedGpsi,omitempty" yaml:"removedGpsi,omitempty" validate:"regexp=^(msisdn-[0-9]{5,15}|extid-[^@]+@[^@]+|.+)$"`
+	// String identifying a Gpsi shall contain either an External Id or an MSISDN. It shall be formatted as follows -External Identifier= \"extid-'extid', where 'extid' shall be formatted according to clause 19.7.2 of 3GPP TS 23.003 that describes an External Identifier.
+	RemovedGpsi     *string  `json:"removedGpsi,omitempty" yaml:"removedGpsi,omitempty" validate:"regexp=^(msisdn-[0-9]{5\\,15}|extid-[^@]+@[^@]+|.+)$"`
 	ExcludeGpsiList []string `json:"excludeGpsiList,omitempty" yaml:"excludeGpsiList,omitempty"`
 }
 

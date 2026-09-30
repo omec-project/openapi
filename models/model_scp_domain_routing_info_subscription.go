@@ -34,7 +34,7 @@ type ScpDomainRoutingInfoSubscription struct {
 	CallbackUri string `json:"callbackUri" yaml:"callbackUri"`
 	// string with format 'date-time' as defined in OpenAPI.
 	ValidityTime *time.Time `json:"validityTime,omitempty" yaml:"validityTime,omitempty"`
-	// String uniquely identifying a NF instance. The format of the NF Instance ID shall be a  Universally Unique Identifier (UUID) version 4, as described in IETF RFC 4122.
+	// String uniquely identifying a NF instance. The format of the NF Instance ID shall be a Universally Unique Identifier (UUID) version 4, as described in IETF RFC 4122.
 	ReqInstanceId *string `json:"reqInstanceId,omitempty" yaml:"reqInstanceId,omitempty"`
 	LocalInd      *bool   `json:"localInd,omitempty" yaml:"localInd,omitempty"`
 }

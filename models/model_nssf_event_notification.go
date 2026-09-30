@@ -32,7 +32,7 @@ var _ openapi.MappedNullable = &NssfEventNotification{}
 type NssfEventNotification struct {
 	SubscriptionId                  string                            `json:"subscriptionId" yaml:"subscriptionId"`
 	AuthorizedNssaiAvailabilityData []AuthorizedNssaiAvailabilityData `json:"authorizedNssaiAvailabilityData,omitempty" yaml:"authorizedNssaiAvailabilityData,omitempty"`
-	// Indicate the impacted S-NSSAIs, the current status for each reported S-NSSAI, and  if available the alternative S-NSSAI per impacted S-NSSAI for the S-NSSAIs that are  reported as being not available.
+	// Indicate the impacted S-NSSAIs, the current status for each reported S-NSSAI, and if available the alternative S-NSSAI per impacted S-NSSAI for the S-NSSAIs that are reported as being not available.
 	AltNssai           []SnssaiReplaceInfo `json:"altNssai,omitempty" yaml:"altNssai,omitempty"`
 	UnavailableNsiList []string            `json:"unavailableNsiList,omitempty" yaml:"unavailableNsiList,omitempty"`
 	// A map(list of key-value pairs where single Nssai serves as key) of the current validity time

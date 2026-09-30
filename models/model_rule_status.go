@@ -25,7 +25,7 @@ import (
 	"github.com/omec-project/openapi/v2"
 )
 
-// RuleStatus Indicates the status of PCC or session rule.   Possible values are - ACTIVE: Indicates that the PCC rule(s) are successfully installed (for those provisioned  from PCF) or activated (for those pre-defined in SMF), or the session rule(s) are  successfully installed  - INACTIVE: Indicates that the PCC rule(s) are removed (for those provisioned from PCF) or  inactive (for those pre-defined in SMF) or the session rule(s) are removed.
+// RuleStatus Indicates the status of PCC or session rule. Possible values are - ACTIVE: Indicates that the PCC rule(s) are successfully installed (for those provisioned from PCF) or activated (for those pre-defined in SMF), or the session rule(s) are successfully installed - INACTIVE: Indicates that the PCC rule(s) are removed (for those provisioned from PCF) or inactive (for those pre-defined in SMF) or the session rule(s) are removed.
 type RuleStatus string
 
 // List of RuleStatus

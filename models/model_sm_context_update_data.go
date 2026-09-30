@@ -29,9 +29,9 @@ var _ openapi.MappedNullable = &SmContextUpdateData{}
 
 // SmContextUpdateData Data within Update SM Context Request
 type SmContextUpdateData struct {
-	// String representing a Permanent Equipment Identifier that may contain - an IMEI or IMEISV, as  specified in clause 6.2 of 3GPP TS 23.003; a MAC address for a 5G-RG or FN-RG via  wireline  access, with an indication that this address cannot be trusted for regulatory purpose if this  address cannot be used as an Equipment Identifier of the FN-RG, as specified in clause 4.7.7  of 3GPP TS23.316. Examples are imei-012345678901234 or imeisv-0123456789012345.
+	// String representing a Permanent Equipment Identifier that may contain - an IMEI or IMEISV, as  specified in clause 6.2 of 3GPP TS 23.003; a MAC address for a 5G-RG or FN-RG via wireline  access, with an indication that this address cannot be trusted for regulatory purpose if this  address cannot be used as an Equipment Identifier of the FN-RG, as specified in clause 4.7.7  of 3GPP TS23.316. Examples are imei-012345678901234 or imeisv-0123456789012345.
 	Pei *string `json:"pei,omitempty" yaml:"pei,omitempty" validate:"regexp=^(imei-[0-9]{15}|imeisv-[0-9]{16}|mac((-[0-9a-fA-F]{2}){6})(-untrusted)?|eui((-[0-9a-fA-F]{2}){8})|.+)$"`
-	// String uniquely identifying a NF instance. The format of the NF Instance ID shall be a  Universally Unique Identifier (UUID) version 4, as described in IETF RFC 4122.
+	// String uniquely identifying a NF instance. The format of the NF Instance ID shall be a Universally Unique Identifier (UUID) version 4, as described in IETF RFC 4122.
 	ServingNfId        *string         `json:"servingNfId,omitempty" yaml:"servingNfId,omitempty"`
 	Guami              *Guami          `json:"guami,omitempty" yaml:"guami,omitempty"`
 	ServingNetwork     *PlmnIdNid      `json:"servingNetwork,omitempty" yaml:"servingNetwork,omitempty"`
@@ -43,7 +43,7 @@ type SmContextUpdateData struct {
 	RatType            *RatType        `json:"ratType,omitempty" yaml:"ratType,omitempty"`
 	PresenceInLadn     *PresenceState  `json:"presenceInLadn,omitempty" yaml:"presenceInLadn,omitempty"`
 	UeLocation         *UserLocation   `json:"ueLocation,omitempty" yaml:"ueLocation,omitempty"`
-	// String with format \"time-numoffset\" optionally appended by \"daylightSavingTime\", where  - \"time-numoffset\" shall represent the time zone adjusted for daylight saving time and be    encoded as time-numoffset as defined in clause 5.6 of IETF RFC 3339;  - \"daylightSavingTime\" shall represent the adjustment that has been made and shall be    encoded as \"+1\" or \"+2\" for a +1 or +2 hours adjustment.   The example is for 8 hours behind UTC, +1 hour adjustment for Daylight Saving Time.
+	// String with format \"time-numoffset\" optionally appended by \"daylightSavingTime\", where - \"time-numoffset\" shall represent the time zone adjusted for daylight saving time and be    encoded as time-numoffset as defined in clause 5.6 of IETF RFC 3339; - \"daylightSavingTime\" shall represent the adjustment that has been made and shall be    encoded as \"+1\" or \"+2\" for a +1 or +2 hours adjustment.  The example is for 8 hours behind UTC, +1 hour adjustment for Daylight Saving Time.
 	UeTimeZone         *string          `json:"ueTimeZone,omitempty" yaml:"ueTimeZone,omitempty"`
 	AddUeLocation      *UserLocation    `json:"addUeLocation,omitempty" yaml:"addUeLocation,omitempty"`
 	UpCnxState         *UpCnxState      `json:"upCnxState,omitempty" yaml:"upCnxState,omitempty"`
@@ -54,7 +54,7 @@ type SmContextUpdateData struct {
 	N2SmInfo           *RefToBinaryData `json:"n2SmInfo,omitempty" yaml:"n2SmInfo,omitempty"`
 	N2SmInfoType       *N2SmInfoType    `json:"n2SmInfoType,omitempty" yaml:"n2SmInfoType,omitempty"`
 	TargetId           *NgRanTargetId   `json:"targetId,omitempty" yaml:"targetId,omitempty"`
-	// String uniquely identifying a NF instance. The format of the NF Instance ID shall be a  Universally Unique Identifier (UUID) version 4, as described in IETF RFC 4122.
+	// String uniquely identifying a NF instance. The format of the NF Instance ID shall be a Universally Unique Identifier (UUID) version 4, as described in IETF RFC 4122.
 	TargetServingNfId *string `json:"targetServingNfId,omitempty" yaml:"targetServingNfId,omitempty"`
 	// String providing an URI formatted according to RFC 3986.
 	SmContextStatusUri    *string                            `json:"smContextStatusUri,omitempty" yaml:"smContextStatusUri,omitempty"`
@@ -83,7 +83,7 @@ type SmContextUpdateData struct {
 	MaRequestInd              *bool                      `json:"maRequestInd,omitempty" yaml:"maRequestInd,omitempty"`
 	N3gPathSwitchExecutionInd *bool                      `json:"n3gPathSwitchExecutionInd,omitempty" yaml:"n3gPathSwitchExecutionInd,omitempty"`
 	ExemptionInd              *ExemptionInd              `json:"exemptionInd,omitempty" yaml:"exemptionInd,omitempty"`
-	// A string used to indicate the features supported by an API that is used as defined in clause  6.6 in 3GPP TS 29.500. The string shall contain a bitmask indicating supported features in  hexadecimal representation Each character in the string shall take a value of \"0\" to \"9\",  \"a\" to \"f\" or \"A\" to \"F\" and shall represent the support of 4 features as described in  table 5.2.2-3. The most significant character representing the highest-numbered features shall  appear first in the string, and the character representing features 1 to 4 shall appear last  in the string. The list of features and their numbering (starting with 1) are defined  separately for each API. If the string contains a lower number of characters than there are  defined features for an API, all features that would be represented by characters that are not  present in the string are not supported.
+	// A string used to indicate the features supported by an API that is used as defined in clause 6.6 in 3GPP TS 29.500. The string shall contain a bitmask indicating supported features in hexadecimal representation Each character in the string shall take a value of \"0\" to \"9\", \"a\" to \"f\" or \"A\" to \"F\" and shall represent the support of 4 features as described in table 5.2.2-3. The most significant character representing the highest-numbered features shall  appear first in the string, and the character representing features 1 to 4 shall appear last  in the string. The list of features and their numbering (starting with 1) are defined  separately for each API. If the string contains a lower number of characters than there are  defined features for an API, all features that would be represented by characters that are not  present in the string are not supported.
 	SupportedFeatures     *string           `json:"supportedFeatures,omitempty" yaml:"supportedFeatures,omitempty" validate:"regexp=^[A-Fa-f0-9]*$"`
 	MoExpDataCounter      *MoExpDataCounter `json:"moExpDataCounter,omitempty" yaml:"moExpDataCounter,omitempty"`
 	ExtendedNasSmTimerInd *bool             `json:"extendedNasSmTimerInd,omitempty" yaml:"extendedNasSmTimerInd,omitempty"`

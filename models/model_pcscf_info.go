@@ -32,11 +32,11 @@ type PcscfInfo struct {
 	AccessType []AccessType `json:"accessType,omitempty" yaml:"accessType,omitempty"`
 	DnnList    []string     `json:"dnnList,omitempty" yaml:"dnnList,omitempty"`
 	// Fully Qualified Domain Name
-	GmFqdn          *string  `json:"gmFqdn,omitempty" yaml:"gmFqdn,omitempty" validate:"regexp=^([0-9A-Za-z]([-0-9A-Za-z]{0,61}[0-9A-Za-z])?\\\\.)+[A-Za-z]{2,63}\\\\.?$"`
+	GmFqdn          *string  `json:"gmFqdn,omitempty" yaml:"gmFqdn,omitempty" validate:"regexp=^([0-9A-Za-z]([-0-9A-Za-z]{0\\,61}[0-9A-Za-z])?\\.)+[A-Za-z]{2\\,63}\\.?$"`
 	GmIpv4Addresses []string `json:"gmIpv4Addresses,omitempty" yaml:"gmIpv4Addresses,omitempty"`
 	GmIpv6Addresses []string `json:"gmIpv6Addresses,omitempty" yaml:"gmIpv6Addresses,omitempty"`
 	// Fully Qualified Domain Name
-	MwFqdn                  *string            `json:"mwFqdn,omitempty" yaml:"mwFqdn,omitempty" validate:"regexp=^([0-9A-Za-z]([-0-9A-Za-z]{0,61}[0-9A-Za-z])?\\\\.)+[A-Za-z]{2,63}\\\\.?$"`
+	MwFqdn                  *string            `json:"mwFqdn,omitempty" yaml:"mwFqdn,omitempty" validate:"regexp=^([0-9A-Za-z]([-0-9A-Za-z]{0\\,61}[0-9A-Za-z])?\\.)+[A-Za-z]{2\\,63}\\.?$"`
 	MwIpv4Addresses         []string           `json:"mwIpv4Addresses,omitempty" yaml:"mwIpv4Addresses,omitempty"`
 	MwIpv6Addresses         []string           `json:"mwIpv6Addresses,omitempty" yaml:"mwIpv6Addresses,omitempty"`
 	ServedIpv4AddressRanges []Ipv4AddressRange `json:"servedIpv4AddressRanges,omitempty" yaml:"servedIpv4AddressRanges,omitempty"`

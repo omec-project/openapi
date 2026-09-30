@@ -29,7 +29,7 @@ var _ openapi.MappedNullable = &AccessAndMobilitySubscriptionData{}
 
 // AccessAndMobilitySubscriptionData struct for AccessAndMobilitySubscriptionData
 type AccessAndMobilitySubscriptionData struct {
-	// A string used to indicate the features supported by an API that is used as defined in clause  6.6 in 3GPP TS 29.500. The string shall contain a bitmask indicating supported features in  hexadecimal representation Each character in the string shall take a value of \"0\" to \"9\",  \"a\" to \"f\" or \"A\" to \"F\" and shall represent the support of 4 features as described in  table 5.2.2-3. The most significant character representing the highest-numbered features shall  appear first in the string, and the character representing features 1 to 4 shall appear last  in the string. The list of features and their numbering (starting with 1) are defined  separately for each API. If the string contains a lower number of characters than there are  defined features for an API, all features that would be represented by characters that are not  present in the string are not supported.
+	// A string used to indicate the features supported by an API that is used as defined in clause 6.6 in 3GPP TS 29.500. The string shall contain a bitmask indicating supported features in hexadecimal representation Each character in the string shall take a value of \"0\" to \"9\", \"a\" to \"f\" or \"A\" to \"F\" and shall represent the support of 4 features as described in table 5.2.2-3. The most significant character representing the highest-numbered features shall  appear first in the string, and the character representing features 1 to 4 shall appear last  in the string. The list of features and their numbering (starting with 1) are defined  separately for each API. If the string contains a lower number of characters than there are  defined features for an API, all features that would be represented by characters that are not  present in the string are not supported.
 	SupportedFeatures *string  `json:"supportedFeatures,omitempty" yaml:"supportedFeatures,omitempty" validate:"regexp=^[A-Fa-f0-9]*$"`
 	Gpsis             []string `json:"gpsis,omitempty" yaml:"gpsis,omitempty"`
 	// Identifier of a group of NFs.
@@ -44,7 +44,7 @@ type AccessAndMobilitySubscriptionData struct {
 	ServiceAreaRestriction      *ServiceAreaRestriction `json:"serviceAreaRestriction,omitempty" yaml:"serviceAreaRestriction,omitempty"`
 	CoreNetworkTypeRestrictions []CoreNetworkType       `json:"coreNetworkTypeRestrictions,omitempty" yaml:"coreNetworkTypeRestrictions,omitempty"`
 	AccessTypeRestrictions      []AccessType            `json:"accessTypeRestrictions,omitempty" yaml:"accessTypeRestrictions,omitempty"`
-	// Unsigned integer representing the 'Subscriber Profile ID for RAT/Frequency Priority'  as specified in 3GPP TS 36.413 with the OpenAPI 'nullable: true' property.
+	// Unsigned integer representing the 'Subscriber Profile ID for RAT/Frequency Priority' as specified in 3GPP TS 36.413 with the OpenAPI 'nullable: true' property.
 	RfspIndex openapi.NullableInt32 `json:"rfspIndex" yaml:"rfspIndex,omitempty"`
 	// indicating a time in seconds with OpenAPI defined 'nullable: true' property.
 	SubsRegTimer openapi.NullableInt32 `json:"subsRegTimer" yaml:"subsRegTimer,omitempty"`
@@ -58,7 +58,7 @@ type AccessAndMobilitySubscriptionData struct {
 	SorafRetrieval         *bool                                                     `json:"sorafRetrieval,omitempty" yaml:"sorafRetrieval,omitempty"`
 	SorUpdateIndicatorList []SorUpdateIndicator                                      `json:"sorUpdateIndicatorList,omitempty" yaml:"sorUpdateIndicatorList,omitempty"`
 	UpuInfo                *UpuInfo                                                  `json:"upuInfo,omitempty" yaml:"upuInfo,omitempty"`
-	RoutingIndicator       *string                                                   `json:"routingIndicator,omitempty" yaml:"routingIndicator,omitempty" validate:"regexp=^[0-9]{1,4}$"`
+	RoutingIndicator       *string                                                   `json:"routingIndicator,omitempty" yaml:"routingIndicator,omitempty" validate:"regexp=^[0-9]{1\\,4}$"`
 	MicoAllowed            *bool                                                     `json:"micoAllowed,omitempty" yaml:"micoAllowed,omitempty"`
 	SharedAmDataIds        []string                                                  `json:"sharedAmDataIds,omitempty" yaml:"sharedAmDataIds,omitempty"`
 	OdbPacketServices      NullableOdbPacketServices                                 `json:"odbPacketServices" yaml:"odbPacketServices,omitempty"`
@@ -70,12 +70,12 @@ type AccessAndMobilitySubscriptionData struct {
 	AdjacentPlmnMdtUserConsents *map[string]MdtUserConsent `json:"adjacentPlmnMdtUserConsents,omitempty" yaml:"adjacentPlmnMdtUserConsents,omitempty"`
 	MdtConfiguration            *MdtConfiguration          `json:"mdtConfiguration,omitempty" yaml:"mdtConfiguration,omitempty"`
 	TraceData                   NullableTraceData          `json:"traceData" yaml:"traceData,omitempty"`
-	SharedTraceDataId           *string                    `json:"sharedTraceDataId,omitempty" yaml:"sharedTraceDataId,omitempty" validate:"regexp=^[0-9]{5,6}-.+$"`
+	SharedTraceDataId           *string                    `json:"sharedTraceDataId,omitempty" yaml:"sharedTraceDataId,omitempty" validate:"regexp=^[0-9]{5\\,6}-.+$"`
 	CagData                     *CagData                   `json:"cagData,omitempty" yaml:"cagData,omitempty"`
 	// String representing the STN-SR as defined in clause 18.6 of 3GPP TS 23.003.
 	StnSr *string `json:"stnSr,omitempty" yaml:"stnSr,omitempty"`
 	// String representing the C-MSISDN as defined in clause 18.7 of 3GPP TS 23.003.
-	CMsisdn               *string `json:"cMsisdn,omitempty" yaml:"cMsisdn,omitempty" validate:"regexp=^[0-9]{5,15}$"`
+	CMsisdn               *string `json:"cMsisdn,omitempty" yaml:"cMsisdn,omitempty" validate:"regexp=^[0-9]{5\\,15}$"`
 	NbIoTUePriority       *int32  `json:"nbIoTUePriority,omitempty" yaml:"nbIoTUePriority,omitempty"`
 	NssaiInclusionAllowed *bool   `json:"nssaiInclusionAllowed,omitempty" yaml:"nssaiInclusionAllowed,omitempty"`
 	// string with format 'bytes' as defined in OpenAPI

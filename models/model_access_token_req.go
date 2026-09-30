@@ -41,7 +41,7 @@ type AccessTokenReq struct {
 	RequesterPlmnList   []PlmnId `json:"requesterPlmnList,omitempty" yaml:"requesterPlmnList,omitempty"`
 	RequesterSnssaiList []Snssai `json:"requesterSnssaiList,omitempty" yaml:"requesterSnssaiList,omitempty"`
 	// Fully Qualified Domain Name
-	RequesterFqdn     *string     `json:"requesterFqdn,omitempty" yaml:"requesterFqdn,omitempty" validate:"regexp=^([0-9A-Za-z]([-0-9A-Za-z]{0,61}[0-9A-Za-z])?\\\\.)+[A-Za-z]{2,63}\\\\.?$"`
+	RequesterFqdn     *string     `json:"requesterFqdn,omitempty" yaml:"requesterFqdn,omitempty" validate:"regexp=^([0-9A-Za-z]([-0-9A-Za-z]{0\\,61}[0-9A-Za-z])?\\.)+[A-Za-z]{2\\,63}\\.?$"`
 	RequesterSnpnList []PlmnIdNid `json:"requesterSnpnList,omitempty" yaml:"requesterSnpnList,omitempty"`
 	TargetPlmn        *PlmnId     `json:"targetPlmn,omitempty" yaml:"targetPlmn,omitempty"`
 	TargetSnpn        *PlmnIdNid  `json:"targetSnpn,omitempty" yaml:"targetSnpn,omitempty"`

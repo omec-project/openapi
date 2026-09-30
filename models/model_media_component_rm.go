@@ -27,7 +27,7 @@ import (
 // checks if the MediaComponentRm type satisfies the MappedNullable interface at compile time
 var _ openapi.MappedNullable = &MediaComponentRm{}
 
-// MediaComponentRm This data type is defined in the same way as the MediaComponent data type, but with the  OpenAPI nullable property set to true.
+// MediaComponentRm This data type is defined in the same way as the MediaComponent data type, but with the OpenAPI nullable property set to true.
 type MediaComponentRm struct {
 	// Contains an AF application identifier.
 	AfAppId      *string                        `json:"afAppId,omitempty" yaml:"afAppId,omitempty"`
@@ -48,37 +48,37 @@ type MediaComponentRm struct {
 	FlusId     openapi.NullableString  `json:"flusId" yaml:"flusId,omitempty"`
 	FStatus    *FlowStatus             `json:"fStatus,omitempty" yaml:"fStatus,omitempty"`
 	// This data type is defined in the same way as the 'BitRate' data type, but with the OpenAPI 'nullable: true' property.
-	MarBwDl openapi.NullableString `json:"marBwDl" yaml:"marBwDl,omitempty" validate:"regexp=^\\\\d+(\\\\.\\\\d+)? (bps|Kbps|Mbps|Gbps|Tbps)$"`
+	MarBwDl openapi.NullableString `json:"marBwDl" yaml:"marBwDl,omitempty" validate:"regexp=^\\d+(\\.\\d+)? (bps|Kbps|Mbps|Gbps|Tbps)$"`
 	// This data type is defined in the same way as the 'BitRate' data type, but with the OpenAPI 'nullable: true' property.
-	MarBwUl openapi.NullableString `json:"marBwUl" yaml:"marBwUl,omitempty" validate:"regexp=^\\\\d+(\\\\.\\\\d+)? (bps|Kbps|Mbps|Gbps|Tbps)$"`
+	MarBwUl openapi.NullableString `json:"marBwUl" yaml:"marBwUl,omitempty" validate:"regexp=^\\d+(\\.\\d+)? (bps|Kbps|Mbps|Gbps|Tbps)$"`
 	// This data type is defined in the same way as the 'PacketLossRate' data type, but with the OpenAPI 'nullable: true' property.
 	MaxPacketLossRateDl openapi.NullableInt32 `json:"maxPacketLossRateDl" yaml:"maxPacketLossRateDl,omitempty"`
 	// This data type is defined in the same way as the 'PacketLossRate' data type, but with the OpenAPI 'nullable: true' property.
 	MaxPacketLossRateUl openapi.NullableInt32 `json:"maxPacketLossRateUl" yaml:"maxPacketLossRateUl,omitempty"`
 	// This data type is defined in the same way as the 'BitRate' data type, but with the OpenAPI 'nullable: true' property.
-	MaxSuppBwDl openapi.NullableString `json:"maxSuppBwDl" yaml:"maxSuppBwDl,omitempty" validate:"regexp=^\\\\d+(\\\\.\\\\d+)? (bps|Kbps|Mbps|Gbps|Tbps)$"`
+	MaxSuppBwDl openapi.NullableString `json:"maxSuppBwDl" yaml:"maxSuppBwDl,omitempty" validate:"regexp=^\\d+(\\.\\d+)? (bps|Kbps|Mbps|Gbps|Tbps)$"`
 	// This data type is defined in the same way as the 'BitRate' data type, but with the OpenAPI 'nullable: true' property.
-	MaxSuppBwUl openapi.NullableString `json:"maxSuppBwUl" yaml:"maxSuppBwUl,omitempty" validate:"regexp=^\\\\d+(\\\\.\\\\d+)? (bps|Kbps|Mbps|Gbps|Tbps)$"`
+	MaxSuppBwUl openapi.NullableString `json:"maxSuppBwUl" yaml:"maxSuppBwUl,omitempty" validate:"regexp=^\\d+(\\.\\d+)? (bps|Kbps|Mbps|Gbps|Tbps)$"`
 	MedCompN    int32                  `json:"medCompN" yaml:"medCompN"`
 	// Contains the requested bitrate and filters for the set of service data flows identified by their common flow identifier. The key of the map is the fNum attribute.
 	MedSubComps *map[string]MediaSubComponentRm `json:"medSubComps,omitempty" yaml:"medSubComps,omitempty"`
 	MedType     *MediaType                      `json:"medType,omitempty" yaml:"medType,omitempty"`
 	// This data type is defined in the same way as the 'BitRate' data type, but with the OpenAPI 'nullable: true' property.
-	MinDesBwDl openapi.NullableString `json:"minDesBwDl" yaml:"minDesBwDl,omitempty" validate:"regexp=^\\\\d+(\\\\.\\\\d+)? (bps|Kbps|Mbps|Gbps|Tbps)$"`
+	MinDesBwDl openapi.NullableString `json:"minDesBwDl" yaml:"minDesBwDl,omitempty" validate:"regexp=^\\d+(\\.\\d+)? (bps|Kbps|Mbps|Gbps|Tbps)$"`
 	// This data type is defined in the same way as the 'BitRate' data type, but with the OpenAPI 'nullable: true' property.
-	MinDesBwUl openapi.NullableString `json:"minDesBwUl" yaml:"minDesBwUl,omitempty" validate:"regexp=^\\\\d+(\\\\.\\\\d+)? (bps|Kbps|Mbps|Gbps|Tbps)$"`
+	MinDesBwUl openapi.NullableString `json:"minDesBwUl" yaml:"minDesBwUl,omitempty" validate:"regexp=^\\d+(\\.\\d+)? (bps|Kbps|Mbps|Gbps|Tbps)$"`
 	// This data type is defined in the same way as the 'BitRate' data type, but with the OpenAPI 'nullable: true' property.
-	MirBwDl openapi.NullableString `json:"mirBwDl" yaml:"mirBwDl,omitempty" validate:"regexp=^\\\\d+(\\\\.\\\\d+)? (bps|Kbps|Mbps|Gbps|Tbps)$"`
+	MirBwDl openapi.NullableString `json:"mirBwDl" yaml:"mirBwDl,omitempty" validate:"regexp=^\\d+(\\.\\d+)? (bps|Kbps|Mbps|Gbps|Tbps)$"`
 	// This data type is defined in the same way as the 'BitRate' data type, but with the OpenAPI 'nullable: true' property.
-	MirBwUl        openapi.NullableString     `json:"mirBwUl" yaml:"mirBwUl,omitempty" validate:"regexp=^\\\\d+(\\\\.\\\\d+)? (bps|Kbps|Mbps|Gbps|Tbps)$"`
+	MirBwUl        openapi.NullableString     `json:"mirBwUl" yaml:"mirBwUl,omitempty" validate:"regexp=^\\d+(\\.\\d+)? (bps|Kbps|Mbps|Gbps|Tbps)$"`
 	PreemptCap     *PreemptionCapabilityRm    `json:"preemptCap,omitempty" yaml:"preemptCap,omitempty"`
 	PreemptVuln    *PreemptionVulnerabilityRm `json:"preemptVuln,omitempty" yaml:"preemptVuln,omitempty"`
 	PrioSharingInd *PrioritySharingIndicator  `json:"prioSharingInd,omitempty" yaml:"prioSharingInd,omitempty"`
 	ResPrio        *ReservPriority            `json:"resPrio,omitempty" yaml:"resPrio,omitempty"`
 	// This data type is defined in the same way as the 'BitRate' data type, but with the OpenAPI 'nullable: true' property.
-	RrBw openapi.NullableString `json:"rrBw" yaml:"rrBw,omitempty" validate:"regexp=^\\\\d+(\\\\.\\\\d+)? (bps|Kbps|Mbps|Gbps|Tbps)$"`
+	RrBw openapi.NullableString `json:"rrBw" yaml:"rrBw,omitempty" validate:"regexp=^\\d+(\\.\\d+)? (bps|Kbps|Mbps|Gbps|Tbps)$"`
 	// This data type is defined in the same way as the 'BitRate' data type, but with the OpenAPI 'nullable: true' property.
-	RsBw openapi.NullableString `json:"rsBw" yaml:"rsBw,omitempty" validate:"regexp=^\\\\d+(\\\\.\\\\d+)? (bps|Kbps|Mbps|Gbps|Tbps)$"`
+	RsBw openapi.NullableString `json:"rsBw" yaml:"rsBw,omitempty" validate:"regexp=^\\d+(\\.\\d+)? (bps|Kbps|Mbps|Gbps|Tbps)$"`
 	// Integer where the allowed values correspond to the value range of an unsigned 32-bit integer with the OpenAPI 'nullable: true' property.
 	SharingKeyDl openapi.NullableInt32 `json:"sharingKeyDl" yaml:"sharingKeyDl,omitempty"`
 	// Integer where the allowed values correspond to the value range of an unsigned 32-bit integer with the OpenAPI 'nullable: true' property.

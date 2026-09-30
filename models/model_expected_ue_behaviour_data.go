@@ -43,8 +43,8 @@ type ExpectedUeBehaviourData struct {
 	BatteryIndication *BatteryIndication `json:"batteryIndication,omitempty" yaml:"batteryIndication,omitempty"`
 	// string with format 'date-time' as defined in OpenAPI.
 	ValidityTime    *time.Time `json:"validityTime,omitempty" yaml:"validityTime,omitempty"`
-	ConfidenceLevel *string    `json:"confidenceLevel,omitempty" yaml:"confidenceLevel,omitempty" validate:"regexp=^[0]\\\\.[0-9]{2}$|^1\\\\.00$"`
-	AccuracyLevel   *string    `json:"accuracyLevel,omitempty" yaml:"accuracyLevel,omitempty" validate:"regexp=^[0]\\\\.[0-9]{2}$|^1\\\\.00$"`
+	ConfidenceLevel *string    `json:"confidenceLevel,omitempty" yaml:"confidenceLevel,omitempty" validate:"regexp=^[0]\\.[0-9]{2}$|^1\\.00$"`
+	AccuracyLevel   *string    `json:"accuracyLevel,omitempty" yaml:"accuracyLevel,omitempty" validate:"regexp=^[0]\\.[0-9]{2}$|^1\\.00$"`
 }
 
 // NewExpectedUeBehaviourData instantiates a new ExpectedUeBehaviourData object

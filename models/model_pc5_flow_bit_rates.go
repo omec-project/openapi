@@ -30,9 +30,9 @@ var _ openapi.MappedNullable = &Pc5FlowBitRates{}
 // Pc5FlowBitRates it shall represent the PC5 Flow Bit Rates
 type Pc5FlowBitRates struct {
 	// String representing a bit rate; the prefixes follow the standard symbols from The International System of Units, and represent x1000 multipliers, with the exception that prefix \"K\" is used to represent the standard symbol \"k\".
-	GuaFbr *string `json:"guaFbr,omitempty" yaml:"guaFbr,omitempty" validate:"regexp=^\\\\d+(\\\\.\\\\d+)? (bps|Kbps|Mbps|Gbps|Tbps)$"`
+	GuaFbr *string `json:"guaFbr,omitempty" yaml:"guaFbr,omitempty" validate:"regexp=^\\d+(\\.\\d+)? (bps|Kbps|Mbps|Gbps|Tbps)$"`
 	// String representing a bit rate; the prefixes follow the standard symbols from The International System of Units, and represent x1000 multipliers, with the exception that prefix \"K\" is used to represent the standard symbol \"k\".
-	MaxFbr *string `json:"maxFbr,omitempty" yaml:"maxFbr,omitempty" validate:"regexp=^\\\\d+(\\\\.\\\\d+)? (bps|Kbps|Mbps|Gbps|Tbps)$"`
+	MaxFbr *string `json:"maxFbr,omitempty" yaml:"maxFbr,omitempty" validate:"regexp=^\\d+(\\.\\d+)? (bps|Kbps|Mbps|Gbps|Tbps)$"`
 }
 
 // NewPc5FlowBitRates instantiates a new Pc5FlowBitRates object

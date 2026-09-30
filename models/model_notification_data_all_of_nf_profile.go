@@ -43,9 +43,9 @@ type NotificationDataAllOfNfProfile struct {
 	PerPlmnSnssaiList     []PlmnSnssai           `json:"perPlmnSnssaiList,omitempty" yaml:"perPlmnSnssaiList,omitempty"`
 	NsiList               []string               `json:"nsiList,omitempty" yaml:"nsiList,omitempty"`
 	// Fully Qualified Domain Name
-	Fqdn *string `json:"fqdn,omitempty" yaml:"fqdn,omitempty" validate:"regexp=^([0-9A-Za-z]([-0-9A-Za-z]{0,61}[0-9A-Za-z])?\\\\.)+[A-Za-z]{2,63}\\\\.?$"`
+	Fqdn *string `json:"fqdn,omitempty" yaml:"fqdn,omitempty" validate:"regexp=^([0-9A-Za-z]([-0-9A-Za-z]{0\\,61}[0-9A-Za-z])?\\.)+[A-Za-z]{2\\,63}\\.?$"`
 	// Fully Qualified Domain Name
-	InterPlmnFqdn    *string     `json:"interPlmnFqdn,omitempty" yaml:"interPlmnFqdn,omitempty" validate:"regexp=^([0-9A-Za-z]([-0-9A-Za-z]{0,61}[0-9A-Za-z])?\\\\.)+[A-Za-z]{2,63}\\\\.?$"`
+	InterPlmnFqdn    *string     `json:"interPlmnFqdn,omitempty" yaml:"interPlmnFqdn,omitempty" validate:"regexp=^([0-9A-Za-z]([-0-9A-Za-z]{0\\,61}[0-9A-Za-z])?\\.)+[A-Za-z]{2\\,63}\\.?$"`
 	Ipv4Addresses    []string    `json:"ipv4Addresses,omitempty" yaml:"ipv4Addresses,omitempty"`
 	Ipv6Addresses    []string    `json:"ipv6Addresses,omitempty" yaml:"ipv6Addresses,omitempty"`
 	AllowedPlmns     []PlmnId    `json:"allowedPlmns,omitempty" yaml:"allowedPlmns,omitempty"`

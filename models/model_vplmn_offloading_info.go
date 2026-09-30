@@ -30,7 +30,7 @@ var _ openapi.MappedNullable = &VplmnOffloadingInfo{}
 // VplmnOffloadingInfo VPLMN Specific Offloading Information
 type VplmnOffloadingInfo struct {
 	// Offload identifier uniquely identifying a VPLMN offloading policy information instance
-	OffloadIdentifier *string                   `json:"offloadIdentifier,omitempty" yaml:"offloadIdentifier,omitempty" validate:"regexp=^[0-9]{3}-[0-9]{2,3}-[A-Fa-f0-9]{8}(-v[0-9]{1,2}){0,1}$"`
+	OffloadIdentifier *string                   `json:"offloadIdentifier,omitempty" yaml:"offloadIdentifier,omitempty" validate:"regexp=^[0-9]{3}-[0-9]{2\\,3}-[A-Fa-f0-9]{8}(-v[0-9]{1\\,2}){0\\,1}$"`
 	VplmnId           *PlmnId                   `json:"vplmnId,omitempty" yaml:"vplmnId,omitempty"`
 	AllowedTraffic    *bool                     `json:"allowedTraffic,omitempty" yaml:"allowedTraffic,omitempty"`
 	Ipv4AddressRanges []Ipv4AddressRange        `json:"ipv4AddressRanges,omitempty" yaml:"ipv4AddressRanges,omitempty"`
@@ -40,7 +40,7 @@ type VplmnOffloadingInfo struct {
 	FqdnList          []string                  `json:"fqdnList,omitempty" yaml:"fqdnList,omitempty"`
 	FqdnPatterns      []FqdnPatternMatchingRule `json:"fqdnPatterns,omitempty" yaml:"fqdnPatterns,omitempty"`
 	// String representing a bit rate; the prefixes follow the standard symbols from The International System of Units, and represent x1000 multipliers, with the exception that prefix \"K\" is used to represent the standard symbol \"k\".
-	SessionDIAmbr *string `json:"sessionDIAmbr,omitempty" yaml:"sessionDIAmbr,omitempty" validate:"regexp=^\\\\d+(\\\\.\\\\d+)? (bps|Kbps|Mbps|Gbps|Tbps)$"`
+	SessionDIAmbr *string `json:"sessionDIAmbr,omitempty" yaml:"sessionDIAmbr,omitempty" validate:"regexp=^\\d+(\\.\\d+)? (bps|Kbps|Mbps|Gbps|Tbps)$"`
 }
 
 // NewVplmnOffloadingInfo instantiates a new VplmnOffloadingInfo object

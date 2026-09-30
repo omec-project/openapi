@@ -29,7 +29,7 @@ var _ openapi.MappedNullable = &CombGciAndHfcNIds{}
 
 // CombGciAndHfcNIds struct for CombGciAndHfcNIds
 type CombGciAndHfcNIds struct {
-	// Global Cable Identifier uniquely identifying the connection between the 5G-CRG or FN-CRG to the 5GS. See clause 28.15.4 of 3GPP TS 23.003. This shall be encoded as a string per clause 28.15.4 of 3GPP TS 23.003, and compliant with the syntax specified  in clause 2.2  of IETF RFC 7542 for the username part of a NAI. The GCI value is specified in CableLabs WR-TR-5WWC-ARCH.
+	// Global Cable Identifier uniquely identifying the connection between the 5G-CRG or FN-CRG to the 5GS. See clause 28.15.4 of 3GPP TS 23.003. This shall be encoded as a string per clause 28.15.4 of 3GPP TS 23.003, and compliant with the syntax specified  in clause 2.2 of IETF RFC 7542 for the username part of a NAI. The GCI value is specified in CableLabs WR-TR-5WWC-ARCH.
 	GlobalCableId *string `json:"globalCableId,omitempty" yaml:"globalCableId,omitempty"`
 	// This IE represents the identifier of the HFC node Id as specified in CableLabs WR-TR-5WWC-ARCH. It is provisioned by the wireline operator as part of wireline operations and may contain up to six characters.
 	HfcNId *string `json:"hfcNId,omitempty" yaml:"hfcNId,omitempty"`

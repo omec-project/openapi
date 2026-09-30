@@ -48,37 +48,37 @@ type MediaComponent struct {
 	FlusId     *string     `json:"flusId,omitempty" yaml:"flusId,omitempty"`
 	FStatus    *FlowStatus `json:"fStatus,omitempty" yaml:"fStatus,omitempty"`
 	// String representing a bit rate; the prefixes follow the standard symbols from The International System of Units, and represent x1000 multipliers, with the exception that prefix \"K\" is used to represent the standard symbol \"k\".
-	MarBwDl *string `json:"marBwDl,omitempty" yaml:"marBwDl,omitempty" validate:"regexp=^\\\\d+(\\\\.\\\\d+)? (bps|Kbps|Mbps|Gbps|Tbps)$"`
+	MarBwDl *string `json:"marBwDl,omitempty" yaml:"marBwDl,omitempty" validate:"regexp=^\\d+(\\.\\d+)? (bps|Kbps|Mbps|Gbps|Tbps)$"`
 	// String representing a bit rate; the prefixes follow the standard symbols from The International System of Units, and represent x1000 multipliers, with the exception that prefix \"K\" is used to represent the standard symbol \"k\".
-	MarBwUl *string `json:"marBwUl,omitempty" yaml:"marBwUl,omitempty" validate:"regexp=^\\\\d+(\\\\.\\\\d+)? (bps|Kbps|Mbps|Gbps|Tbps)$"`
+	MarBwUl *string `json:"marBwUl,omitempty" yaml:"marBwUl,omitempty" validate:"regexp=^\\d+(\\.\\d+)? (bps|Kbps|Mbps|Gbps|Tbps)$"`
 	// This data type is defined in the same way as the 'PacketLossRate' data type, but with the OpenAPI 'nullable: true' property.
 	MaxPacketLossRateDl openapi.NullableInt32 `json:"maxPacketLossRateDl" yaml:"maxPacketLossRateDl,omitempty"`
 	// This data type is defined in the same way as the 'PacketLossRate' data type, but with the OpenAPI 'nullable: true' property.
 	MaxPacketLossRateUl openapi.NullableInt32 `json:"maxPacketLossRateUl" yaml:"maxPacketLossRateUl,omitempty"`
 	// String representing a bit rate; the prefixes follow the standard symbols from The International System of Units, and represent x1000 multipliers, with the exception that prefix \"K\" is used to represent the standard symbol \"k\".
-	MaxSuppBwDl *string `json:"maxSuppBwDl,omitempty" yaml:"maxSuppBwDl,omitempty" validate:"regexp=^\\\\d+(\\\\.\\\\d+)? (bps|Kbps|Mbps|Gbps|Tbps)$"`
+	MaxSuppBwDl *string `json:"maxSuppBwDl,omitempty" yaml:"maxSuppBwDl,omitempty" validate:"regexp=^\\d+(\\.\\d+)? (bps|Kbps|Mbps|Gbps|Tbps)$"`
 	// String representing a bit rate; the prefixes follow the standard symbols from The International System of Units, and represent x1000 multipliers, with the exception that prefix \"K\" is used to represent the standard symbol \"k\".
-	MaxSuppBwUl *string `json:"maxSuppBwUl,omitempty" yaml:"maxSuppBwUl,omitempty" validate:"regexp=^\\\\d+(\\\\.\\\\d+)? (bps|Kbps|Mbps|Gbps|Tbps)$"`
+	MaxSuppBwUl *string `json:"maxSuppBwUl,omitempty" yaml:"maxSuppBwUl,omitempty" validate:"regexp=^\\d+(\\.\\d+)? (bps|Kbps|Mbps|Gbps|Tbps)$"`
 	MedCompN    int32   `json:"medCompN" yaml:"medCompN"`
 	// Contains the requested bitrate and filters for the set of service data flows identified by their common flow identifier. The key of the map is the fNum attribute.
 	MedSubComps *map[string]MediaSubComponent `json:"medSubComps,omitempty" yaml:"medSubComps,omitempty"`
 	MedType     *MediaType                    `json:"medType,omitempty" yaml:"medType,omitempty"`
 	// String representing a bit rate; the prefixes follow the standard symbols from The International System of Units, and represent x1000 multipliers, with the exception that prefix \"K\" is used to represent the standard symbol \"k\".
-	MinDesBwDl *string `json:"minDesBwDl,omitempty" yaml:"minDesBwDl,omitempty" validate:"regexp=^\\\\d+(\\\\.\\\\d+)? (bps|Kbps|Mbps|Gbps|Tbps)$"`
+	MinDesBwDl *string `json:"minDesBwDl,omitempty" yaml:"minDesBwDl,omitempty" validate:"regexp=^\\d+(\\.\\d+)? (bps|Kbps|Mbps|Gbps|Tbps)$"`
 	// String representing a bit rate; the prefixes follow the standard symbols from The International System of Units, and represent x1000 multipliers, with the exception that prefix \"K\" is used to represent the standard symbol \"k\".
-	MinDesBwUl *string `json:"minDesBwUl,omitempty" yaml:"minDesBwUl,omitempty" validate:"regexp=^\\\\d+(\\\\.\\\\d+)? (bps|Kbps|Mbps|Gbps|Tbps)$"`
+	MinDesBwUl *string `json:"minDesBwUl,omitempty" yaml:"minDesBwUl,omitempty" validate:"regexp=^\\d+(\\.\\d+)? (bps|Kbps|Mbps|Gbps|Tbps)$"`
 	// String representing a bit rate; the prefixes follow the standard symbols from The International System of Units, and represent x1000 multipliers, with the exception that prefix \"K\" is used to represent the standard symbol \"k\".
-	MirBwDl *string `json:"mirBwDl,omitempty" yaml:"mirBwDl,omitempty" validate:"regexp=^\\\\d+(\\\\.\\\\d+)? (bps|Kbps|Mbps|Gbps|Tbps)$"`
+	MirBwDl *string `json:"mirBwDl,omitempty" yaml:"mirBwDl,omitempty" validate:"regexp=^\\d+(\\.\\d+)? (bps|Kbps|Mbps|Gbps|Tbps)$"`
 	// String representing a bit rate; the prefixes follow the standard symbols from The International System of Units, and represent x1000 multipliers, with the exception that prefix \"K\" is used to represent the standard symbol \"k\".
-	MirBwUl        *string                   `json:"mirBwUl,omitempty" yaml:"mirBwUl,omitempty" validate:"regexp=^\\\\d+(\\\\.\\\\d+)? (bps|Kbps|Mbps|Gbps|Tbps)$"`
+	MirBwUl        *string                   `json:"mirBwUl,omitempty" yaml:"mirBwUl,omitempty" validate:"regexp=^\\d+(\\.\\d+)? (bps|Kbps|Mbps|Gbps|Tbps)$"`
 	PreemptCap     *PreemptionCapability     `json:"preemptCap,omitempty" yaml:"preemptCap,omitempty"`
 	PreemptVuln    *PreemptionVulnerability  `json:"preemptVuln,omitempty" yaml:"preemptVuln,omitempty"`
 	PrioSharingInd *PrioritySharingIndicator `json:"prioSharingInd,omitempty" yaml:"prioSharingInd,omitempty"`
 	ResPrio        *ReservPriority           `json:"resPrio,omitempty" yaml:"resPrio,omitempty"`
 	// String representing a bit rate; the prefixes follow the standard symbols from The International System of Units, and represent x1000 multipliers, with the exception that prefix \"K\" is used to represent the standard symbol \"k\".
-	RrBw *string `json:"rrBw,omitempty" yaml:"rrBw,omitempty" validate:"regexp=^\\\\d+(\\\\.\\\\d+)? (bps|Kbps|Mbps|Gbps|Tbps)$"`
+	RrBw *string `json:"rrBw,omitempty" yaml:"rrBw,omitempty" validate:"regexp=^\\d+(\\.\\d+)? (bps|Kbps|Mbps|Gbps|Tbps)$"`
 	// String representing a bit rate; the prefixes follow the standard symbols from The International System of Units, and represent x1000 multipliers, with the exception that prefix \"K\" is used to represent the standard symbol \"k\".
-	RsBw *string `json:"rsBw,omitempty" yaml:"rsBw,omitempty" validate:"regexp=^\\\\d+(\\\\.\\\\d+)? (bps|Kbps|Mbps|Gbps|Tbps)$"`
+	RsBw *string `json:"rsBw,omitempty" yaml:"rsBw,omitempty" validate:"regexp=^\\d+(\\.\\d+)? (bps|Kbps|Mbps|Gbps|Tbps)$"`
 	// Integer where the allowed values correspond to the value range of an unsigned 32-bit integer.
 	SharingKeyDl *int32 `json:"sharingKeyDl,omitempty" yaml:"sharingKeyDl,omitempty"`
 	// Integer where the allowed values correspond to the value range of an unsigned 32-bit integer.

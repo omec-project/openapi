@@ -33,9 +33,9 @@ type SessionRule struct {
 	AuthDefQos   *AuthorizedDefaultQos `json:"authDefQos,omitempty" yaml:"authDefQos,omitempty"`
 	// Univocally identifies the session rule within a PDU session.
 	SessRuleId string `json:"sessRuleId" yaml:"sessRuleId"`
-	// A reference to UsageMonitoringData policy decision type. It is the umId described in  clause 5.6.2.12.
+	// A reference to UsageMonitoringData policy decision type. It is the umId described in clause 5.6.2.12.
 	RefUmData openapi.NullableString `json:"refUmData" yaml:"refUmData,omitempty"`
-	// A reference to UsageMonitoringData policy decision type to apply for Non-3GPP access. It  is the umId described in clause 5.6.2.12.
+	// A reference to UsageMonitoringData policy decision type to apply for Non-3GPP access. It is the umId described in clause 5.6.2.12.
 	RefUmN3gData openapi.NullableString `json:"refUmN3gData" yaml:"refUmN3gData,omitempty"`
 	// A reference to the condition data. It is the condId described in clause 5.6.2.9.
 	RefCondData openapi.NullableString `json:"refCondData" yaml:"refCondData,omitempty"`

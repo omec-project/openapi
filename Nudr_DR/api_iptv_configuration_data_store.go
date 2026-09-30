@@ -32,22 +32,22 @@ import (
 type IPTVConfigurationDataStoreAPI interface {
 
 	/*
-		ReadIPTVCongifurationData Retrieve IPTV configuration Data
+		ReadIPTVConfigurationData Retrieve IPTV configuration Data
 
 			@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
-			@return ApiReadIPTVCongifurationDataRequest
+			@return ApiReadIPTVConfigurationDataRequest
 	*/
-	ReadIPTVCongifurationData(ctx context.Context) ApiReadIPTVCongifurationDataRequest
+	ReadIPTVConfigurationData(ctx context.Context) ApiReadIPTVConfigurationDataRequest
 
-	// ReadIPTVCongifurationDataExecute executes the request
+	// ReadIPTVConfigurationDataExecute executes the request
 	//   @return []IptvConfigData
-	ReadIPTVCongifurationDataExecute(r ApiReadIPTVCongifurationDataRequest) ([]models.IptvConfigData, *http.Response, error)
+	ReadIPTVConfigurationDataExecute(r ApiReadIPTVConfigurationDataRequest) ([]models.IptvConfigData, *http.Response, error)
 }
 
 // IPTVConfigurationDataStoreAPIService IPTVConfigurationDataStoreAPI service
 type IPTVConfigurationDataStoreAPIService service
 
-type ApiReadIPTVCongifurationDataRequest struct {
+type ApiReadIPTVConfigurationDataRequest struct {
 	ctx           context.Context
 	ApiService    IPTVConfigurationDataStoreAPI
 	configIds     *[]string
@@ -58,47 +58,47 @@ type ApiReadIPTVCongifurationDataRequest struct {
 }
 
 // Each element identifies a configuration.
-func (r ApiReadIPTVCongifurationDataRequest) ConfigIds(configIds []string) ApiReadIPTVCongifurationDataRequest {
+func (r ApiReadIPTVConfigurationDataRequest) ConfigIds(configIds []string) ApiReadIPTVConfigurationDataRequest {
 	r.configIds = &configIds
 	return r
 }
 
 // Each element identifies a DNN.
-func (r ApiReadIPTVCongifurationDataRequest) Dnns(dnns []string) ApiReadIPTVCongifurationDataRequest {
+func (r ApiReadIPTVConfigurationDataRequest) Dnns(dnns []string) ApiReadIPTVConfigurationDataRequest {
 	r.dnns = &dnns
 	return r
 }
 
 // Each element identifies a slice.
-func (r ApiReadIPTVCongifurationDataRequest) Snssais(snssais []models.Snssai) ApiReadIPTVCongifurationDataRequest {
+func (r ApiReadIPTVConfigurationDataRequest) Snssais(snssais []models.Snssai) ApiReadIPTVConfigurationDataRequest {
 	r.snssais = &snssais
 	return r
 }
 
 // Each element identifies the user.
-func (r ApiReadIPTVCongifurationDataRequest) Supis(supis []string) ApiReadIPTVCongifurationDataRequest {
+func (r ApiReadIPTVConfigurationDataRequest) Supis(supis []string) ApiReadIPTVConfigurationDataRequest {
 	r.supis = &supis
 	return r
 }
 
 // Each element identifies a group of users.
-func (r ApiReadIPTVCongifurationDataRequest) InterGroupIds(interGroupIds []string) ApiReadIPTVCongifurationDataRequest {
+func (r ApiReadIPTVConfigurationDataRequest) InterGroupIds(interGroupIds []string) ApiReadIPTVConfigurationDataRequest {
 	r.interGroupIds = &interGroupIds
 	return r
 }
 
-func (r ApiReadIPTVCongifurationDataRequest) Execute() ([]models.IptvConfigData, *http.Response, error) {
-	return r.ApiService.ReadIPTVCongifurationDataExecute(r)
+func (r ApiReadIPTVConfigurationDataRequest) Execute() ([]models.IptvConfigData, *http.Response, error) {
+	return r.ApiService.ReadIPTVConfigurationDataExecute(r)
 }
 
 /*
-ReadIPTVCongifurationData Retrieve IPTV configuration Data
+ReadIPTVConfigurationData Retrieve IPTV configuration Data
 
 	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
-	@return ApiReadIPTVCongifurationDataRequest
+	@return ApiReadIPTVConfigurationDataRequest
 */
-func (a *IPTVConfigurationDataStoreAPIService) ReadIPTVCongifurationData(ctx context.Context) ApiReadIPTVCongifurationDataRequest {
-	return ApiReadIPTVCongifurationDataRequest{
+func (a *IPTVConfigurationDataStoreAPIService) ReadIPTVConfigurationData(ctx context.Context) ApiReadIPTVConfigurationDataRequest {
+	return ApiReadIPTVConfigurationDataRequest{
 		ApiService: a,
 		ctx:        ctx,
 	}
@@ -107,7 +107,7 @@ func (a *IPTVConfigurationDataStoreAPIService) ReadIPTVCongifurationData(ctx con
 // Execute executes the request
 //
 //	@return []IptvConfigData
-func (a *IPTVConfigurationDataStoreAPIService) ReadIPTVCongifurationDataExecute(r ApiReadIPTVCongifurationDataRequest) ([]models.IptvConfigData, *http.Response, error) {
+func (a *IPTVConfigurationDataStoreAPIService) ReadIPTVConfigurationDataExecute(r ApiReadIPTVConfigurationDataRequest) ([]models.IptvConfigData, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodGet
 		localVarPostBody    any
@@ -115,7 +115,7 @@ func (a *IPTVConfigurationDataStoreAPIService) ReadIPTVCongifurationDataExecute(
 		localVarReturnValue []models.IptvConfigData
 	)
 
-	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "IPTVConfigurationDataStoreAPIService.ReadIPTVCongifurationData")
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "IPTVConfigurationDataStoreAPIService.ReadIPTVConfigurationData")
 	if err != nil {
 		return localVarReturnValue, nil, &openapi.GenericOpenAPIError{RawError: err.Error()}
 	}

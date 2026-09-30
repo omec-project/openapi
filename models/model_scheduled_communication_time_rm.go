@@ -27,7 +27,7 @@ import (
 // checks if the ScheduledCommunicationTimeRm type satisfies the MappedNullable interface at compile time
 var _ openapi.MappedNullable = &ScheduledCommunicationTimeRm{}
 
-// ScheduledCommunicationTimeRm struct for ScheduledCommunicationTimeRm
+// ScheduledCommunicationTimeRm This data type is defined in the same way as the 'ScheduledCommunicationTime' data type, but with the OpenAPI 'nullable: true' property.
 type ScheduledCommunicationTimeRm struct {
 	// Identifies the day(s) of the week. If absent, it indicates every day of the week.
 	DaysOfWeek []int32 `json:"daysOfWeek,omitempty" yaml:"daysOfWeek,omitempty"`

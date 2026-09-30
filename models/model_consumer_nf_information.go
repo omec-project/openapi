@@ -22,10 +22,9 @@ import (
 	"encoding/json"
 
 	"github.com/omec-project/openapi/v2"
-	"gopkg.in/validator.v2"
 )
 
-// ConsumerNfInformation - struct for ConsumerNfInformation
+// ConsumerNfInformation - Represents the analytics consumer NF Information.
 type ConsumerNfInformation struct {
 	Any *any
 }
@@ -53,7 +52,7 @@ func (dst *ConsumerNfInformation) UnmarshalJSON(data []byte) error {
 		if string(jsonAny) == "{}" { // empty struct
 			dst.Any = nil
 		} else {
-			if err = validator.Validate(dst.Any); err != nil {
+			if err = openapi.Validate(dst.Any); err != nil {
 				dst.Any = nil
 			} else {
 				match++

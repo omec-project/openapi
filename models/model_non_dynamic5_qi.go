@@ -29,7 +29,7 @@ var _ openapi.MappedNullable = &NonDynamic5Qi{}
 
 // NonDynamic5Qi It indicates the QoS Characteristics for a standardized or pre-configured 5QI for downlink and uplink.
 type NonDynamic5Qi struct {
-	// Unsigned integer indicating the 5QI Priority Level (see clauses 5.7.3.3 and 5.7.4 of 3GPP TS 23.501, within the range 1 to 127.Values are ordered in decreasing order of priority,  i.e. with 1 as the highest priority and 127 as the lowest priority.
+	// Unsigned integer indicating the 5QI Priority Level (see clauses 5.7.3.3 and 5.7.4 of 3GPP TS 23.501, within the range 1 to 127.Values are ordered in decreasing order of priority, i.e. with 1 as the highest priority and 127 as the lowest priority.
 	PriorityLevel *int32 `json:"priorityLevel,omitempty" yaml:"priorityLevel,omitempty"`
 	// Unsigned integer indicating Averaging Window (see clause 5.7.3.6 and 5.7.4 of 3GPP TS 23.501), expressed in milliseconds.
 	AverWindow *int32 `json:"averWindow,omitempty" yaml:"averWindow,omitempty"`

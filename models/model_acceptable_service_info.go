@@ -32,9 +32,9 @@ type AcceptableServiceInfo struct {
 	// Indicates the maximum bandwidth that shall be authorized by the PCF for each media component of the map. The key of the map is the media component number.
 	AccBwMedComps *map[string]MediaComponent `json:"accBwMedComps,omitempty" yaml:"accBwMedComps,omitempty"`
 	// String representing a bit rate; the prefixes follow the standard symbols from The International System of Units, and represent x1000 multipliers, with the exception that prefix \"K\" is used to represent the standard symbol \"k\".
-	MarBwUl *string `json:"marBwUl,omitempty" yaml:"marBwUl,omitempty" validate:"regexp=^\\\\d+(\\\\.\\\\d+)? (bps|Kbps|Mbps|Gbps|Tbps)$"`
+	MarBwUl *string `json:"marBwUl,omitempty" yaml:"marBwUl,omitempty" validate:"regexp=^\\d+(\\.\\d+)? (bps|Kbps|Mbps|Gbps|Tbps)$"`
 	// String representing a bit rate; the prefixes follow the standard symbols from The International System of Units, and represent x1000 multipliers, with the exception that prefix \"K\" is used to represent the standard symbol \"k\".
-	MarBwDl *string `json:"marBwDl,omitempty" yaml:"marBwDl,omitempty" validate:"regexp=^\\\\d+(\\\\.\\\\d+)? (bps|Kbps|Mbps|Gbps|Tbps)$"`
+	MarBwDl *string `json:"marBwDl,omitempty" yaml:"marBwDl,omitempty" validate:"regexp=^\\d+(\\.\\d+)? (bps|Kbps|Mbps|Gbps|Tbps)$"`
 }
 
 // NewAcceptableServiceInfo instantiates a new AcceptableServiceInfo object

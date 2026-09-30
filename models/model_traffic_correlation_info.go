@@ -33,9 +33,9 @@ type TrafficCorrelationInfo struct {
 	// Identification of a set of UEs accessing the application identified by the Application Identifier or traffic filtering information.
 	TfcCorrId *string `json:"tfcCorrId,omitempty" yaml:"tfcCorrId,omitempty"`
 	// String identifying a IPv4 address formatted in the 'dotted decimal' notation as defined in RFC 1166 with the OpenAPI defined 'nullable: true' property.
-	ComEasIpv4Addr openapi.NullableString `json:"comEasIpv4Addr" yaml:"comEasIpv4Addr,omitempty" validate:"regexp=^(([0-9]|[1-9][0-9]|1[0-9][0-9]|2[0-4][0-9]|25[0-5])\\\\.){3}([0-9]|[1-9][0-9]|1[0-9][0-9]|2[0-4][0-9]|25[0-5])$"`
+	ComEasIpv4Addr openapi.NullableString `json:"comEasIpv4Addr" yaml:"comEasIpv4Addr,omitempty" validate:"regexp=^(([0-9]|[1-9][0-9]|1[0-9][0-9]|2[0-4][0-9]|25[0-5])\\.){3}([0-9]|[1-9][0-9]|1[0-9][0-9]|2[0-4][0-9]|25[0-5])$"`
 	// String identifying an IPv6 address formatted according to clause 4 of RFC5952 with the OpenAPI 'nullable: true' property. The mixed IPv4 IPv6 notation according to clause 5 of RFC5952 shall not be used.
-	ComEasIpv6Addr openapi.NullableString    `json:"comEasIpv6Addr" yaml:"comEasIpv6Addr,omitempty" validate:"regexp=^(((:|(0?|([1-9a-f][0-9a-f]{0,3}))):)((0?|([1-9a-f][0-9a-f]{0,3})):){0,6}(:|(0?|([1-9a-f][0-9a-f]{0,3}))))|((([^:]+:){7}([^:]+))|((([^:]+:)*[^:]+)?::(([^:]+:)*[^:]+)?)))$"`
+	ComEasIpv6Addr openapi.NullableString    `json:"comEasIpv6Addr" yaml:"comEasIpv6Addr,omitempty" validate:"regexp=^(((:|(0?|([1-9a-f][0-9a-f]{0\\,3}))):)((0?|([1-9a-f][0-9a-f]{0\\,3})):){0\\,6}(:|(0?|([1-9a-f][0-9a-f]{0\\,3}))))|((([^:]+:){7}([^:]+))|((([^:]+:)*[^:]+)?::(([^:]+:)*[^:]+)?)))$"`
 	FqdnRange      []FqdnPatternMatchingRule `json:"fqdnRange,omitempty" yaml:"fqdnRange,omitempty"`
 	// String providing an URI formatted according to RFC 3986 with the OpenAPI 'nullable: true' property.
 	NotifUri openapi.NullableString `json:"notifUri" yaml:"notifUri,omitempty"`

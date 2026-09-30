@@ -27,7 +27,7 @@ import (
 // checks if the TrafficControlData type satisfies the MappedNullable interface at compile time
 var _ openapi.MappedNullable = &TrafficControlData{}
 
-// TrafficControlData Contains parameters determining how flows associated with a PCC Rule are treated (e.g.  blocked, redirected, etc).
+// TrafficControlData Contains parameters determining how flows associated with a PCC Rule are treated (e.g. blocked, redirected, etc).
 type TrafficControlData struct {
 	// Univocally identifies the traffic control policy data within a PDU session.
 	TcId            string                 `json:"tcId" yaml:"tcId"`
@@ -51,7 +51,7 @@ type TrafficControlData struct {
 	EasIpReplaceInfos []EasIpReplacementInfo         `json:"easIpReplaceInfos,omitempty" yaml:"easIpReplaceInfos,omitempty"`
 	TraffCorreInd     *bool                          `json:"traffCorreInd,omitempty" yaml:"traffCorreInd,omitempty"`
 	TfcCorreInfo      NullableTrafficCorrelationInfo `json:"tfcCorreInfo" yaml:"tfcCorreInfo,omitempty"`
-	// Indicates whether simultaneous connectivity should be temporarily maintained for the  source and target PSA.
+	// Indicates whether simultaneous connectivity should be temporarily maintained for the source and target PSA.
 	SimConnInd *bool `json:"simConnInd,omitempty" yaml:"simConnInd,omitempty"`
 	// indicating a time in seconds.
 	SimConnTerm    *int32                  `json:"simConnTerm,omitempty" yaml:"simConnTerm,omitempty"`

@@ -30,9 +30,9 @@ var _ openapi.MappedNullable = &NetworkNodeDiameterAddress{}
 // NetworkNodeDiameterAddress This data type is a part of smsfDiameterAddress and it should be present whenever smsf supports Diameter protocol.
 type NetworkNodeDiameterAddress struct {
 	// Fully Qualified Domain Name
-	Name string `json:"name" yaml:"name" validate:"regexp=^([0-9A-Za-z]([-0-9A-Za-z]{0,61}[0-9A-Za-z])?\\\\.)+[A-Za-z]{2,63}\\\\.?$"`
+	Name string `json:"name" yaml:"name" validate:"regexp=^([0-9A-Za-z]([-0-9A-Za-z]{0\\,61}[0-9A-Za-z])?\\.)+[A-Za-z]{2\\,63}\\.?$"`
 	// Fully Qualified Domain Name
-	Realm string `json:"realm" yaml:"realm" validate:"regexp=^([0-9A-Za-z]([-0-9A-Za-z]{0,61}[0-9A-Za-z])?\\\\.)+[A-Za-z]{2,63}\\\\.?$"`
+	Realm string `json:"realm" yaml:"realm" validate:"regexp=^([0-9A-Za-z]([-0-9A-Za-z]{0\\,61}[0-9A-Za-z])?\\.)+[A-Za-z]{2\\,63}\\.?$"`
 }
 
 // NewNetworkNodeDiameterAddress instantiates a new NetworkNodeDiameterAddress object

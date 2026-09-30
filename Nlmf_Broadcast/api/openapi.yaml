@@ -387,21 +387,21 @@ components:
       description: Information within Ciphering Key Data Notification request.
       example:
         cipheringData:
-          - ltePosSibTypes: null
-            nrPosSibTypes: null
-            cipheringSetID: null
-            validityDuration: null
-            validityStartTime: null
-            c0: null
+          - cipheringSetID: null
             cipheringKey: null
+            c0: null
+            ltePosSibTypes: null
+            nrPosSibTypes: null
+            validityStartTime: null
+            validityDuration: null
             taiList: null
-          - ltePosSibTypes: null
-            nrPosSibTypes: null
-            cipheringSetID: null
-            validityDuration: null
-            validityStartTime: null
-            c0: null
+          - cipheringSetID: null
             cipheringKey: null
+            c0: null
+            ltePosSibTypes: null
+            nrPosSibTypes: null
+            validityStartTime: null
+            validityDuration: null
             taiList: null
         supportedFeatures: supportedFeatures
       properties:
@@ -422,10 +422,10 @@ components:
       description: Information within Ciphering Key Data Notification Response.
       example:
         cipheringDataReport:
-          - storageOutcome: STORAGE_SUCCESSFUL
-            cipheringSetID: null
-          - storageOutcome: STORAGE_SUCCESSFUL
-            cipheringSetID: null
+          - cipheringSetID: null
+            storageOutcome: STORAGE_SUCCESSFUL
+          - cipheringSetID: null
+            storageOutcome: STORAGE_SUCCESSFUL
       properties:
         cipheringDataReport:
           items:
@@ -436,13 +436,13 @@ components:
     CipheringDataSet:
       description: Represents a Ciphering Data Set.
       example:
+        cipheringSetID: null
+        cipheringKey: null
+        c0: null
         ltePosSibTypes: null
         nrPosSibTypes: null
-        cipheringSetID: null
-        validityDuration: null
         validityStartTime: null
-        c0: null
-        cipheringKey: null
+        validityDuration: null
         taiList: null
       properties:
         cipheringSetID:
@@ -471,8 +471,8 @@ components:
     CipheringSetReport:
       description: Represents a report of Ciphering Data Set storage.
       example:
-        storageOutcome: STORAGE_SUCCESSFUL
         cipheringSetID: null
+        storageOutcome: STORAGE_SUCCESSFUL
       properties:
         cipheringSetID:
           $ref: "#/components/schemas/CipheringSetID"
@@ -528,11 +528,13 @@ components:
       minimum: 1
       type: integer
     StorageOutcome:
+      description: Indicates the result of Ciphering Data Set storage.
       enum:
         - STORAGE_SUCCESSFUL
         - STORAGE_FAILED
       type: string
     DataAvailability:
+      description: Indicates availability of ciphering key data at an LMF.
       enum:
         - CIPHERING_KEY_DATA_AVAILABLE
         - CIPHERING_KEY_DATA_NOT_AVAILABLE
@@ -541,9 +543,9 @@ components:
       description: |
         The response shall include a Location header field containing a different URI (pointing to a different URI of an other service instance), or the same URI if a request is redirected to the same target resource via a different SCP.
       example:
-        targetSepp: null
         cause: cause
         targetScp: null
+        targetSepp: null
       properties:
         cause:
           type: string

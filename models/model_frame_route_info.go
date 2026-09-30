@@ -30,9 +30,9 @@ var _ openapi.MappedNullable = &FrameRouteInfo{}
 // FrameRouteInfo struct for FrameRouteInfo
 type FrameRouteInfo struct {
 	// \"String identifying a IPv4 address mask formatted in the 'dotted decimal' notation as defined in RFC 1166.\"
-	Ipv4Mask *string `json:"ipv4Mask,omitempty" yaml:"ipv4Mask,omitempty" validate:"regexp=^(([0-9]|[1-9][0-9]|1[0-9][0-9]|2[0-4][0-9]|25[0-5])\\\\.){3}([0-9]|[1-9][0-9]|1[0-9][0-9]|2[0-4][0-9]|25[0-5])(\\/([0-9]|[1-2][0-9]|3[0-2]))$"`
+	Ipv4Mask *string `json:"ipv4Mask,omitempty" yaml:"ipv4Mask,omitempty" validate:"regexp=^(([0-9]|[1-9][0-9]|1[0-9][0-9]|2[0-4][0-9]|25[0-5])\\.){3}([0-9]|[1-9][0-9]|1[0-9][0-9]|2[0-4][0-9]|25[0-5])(/([0-9]|[1-2][0-9]|3[0-2]))$"`
 	// String identifying an IPv6 address prefix formatted according to clause 4 of RFC 5952. IPv6Prefix data type may contain an individual /128 IPv6 address.
-	Ipv6Prefix *string `json:"ipv6Prefix,omitempty" yaml:"ipv6Prefix,omitempty" validate:"regexp=^(((:|(0?|([1-9a-f][0-9a-f]{0,3}))):)((0?|([1-9a-f][0-9a-f]{0,3})):){0,6}(:|(0?|([1-9a-f][0-9a-f]{0,3})))(\\/(([0-9])|([0-9]{2})|(1[0-1][0-9])|(12[0-8])))|((([^:]+:){7}([^:]+))|((([^:]+:)*[^:]+)?::(([^:]+:)*[^:]+)?))(\\/.+))$"`
+	Ipv6Prefix *string `json:"ipv6Prefix,omitempty" yaml:"ipv6Prefix,omitempty" validate:"regexp=^(((:|(0?|([1-9a-f][0-9a-f]{0\\,3}))):)((0?|([1-9a-f][0-9a-f]{0\\,3})):){0\\,6}(:|(0?|([1-9a-f][0-9a-f]{0\\,3})))(/(([0-9])|([0-9]{2})|(1[0-1][0-9])|(12[0-8])))|((([^:]+:){7}([^:]+))|((([^:]+:)*[^:]+)?::(([^:]+:)*[^:]+)?))(/.+))$"`
 }
 
 // NewFrameRouteInfo instantiates a new FrameRouteInfo object

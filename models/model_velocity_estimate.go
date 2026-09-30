@@ -22,7 +22,6 @@ import (
 	"encoding/json"
 
 	"github.com/omec-project/openapi/v2"
-	"gopkg.in/validator.v2"
 )
 
 // VelocityEstimate - Velocity estimate.
@@ -72,7 +71,7 @@ func (dst *VelocityEstimate) UnmarshalJSON(data []byte) error {
 		if string(jsonHorizontalVelocity) == "{}" { // empty struct
 			dst.HorizontalVelocity = nil
 		} else {
-			if err = validator.Validate(dst.HorizontalVelocity); err != nil {
+			if err = openapi.Validate(dst.HorizontalVelocity); err != nil {
 				dst.HorizontalVelocity = nil
 			} else {
 				match++
@@ -89,7 +88,7 @@ func (dst *VelocityEstimate) UnmarshalJSON(data []byte) error {
 		if string(jsonHorizontalVelocityWithUncertainty) == "{}" { // empty struct
 			dst.HorizontalVelocityWithUncertainty = nil
 		} else {
-			if err = validator.Validate(dst.HorizontalVelocityWithUncertainty); err != nil {
+			if err = openapi.Validate(dst.HorizontalVelocityWithUncertainty); err != nil {
 				dst.HorizontalVelocityWithUncertainty = nil
 			} else {
 				match++
@@ -106,7 +105,7 @@ func (dst *VelocityEstimate) UnmarshalJSON(data []byte) error {
 		if string(jsonHorizontalWithVerticalVelocity) == "{}" { // empty struct
 			dst.HorizontalWithVerticalVelocity = nil
 		} else {
-			if err = validator.Validate(dst.HorizontalWithVerticalVelocity); err != nil {
+			if err = openapi.Validate(dst.HorizontalWithVerticalVelocity); err != nil {
 				dst.HorizontalWithVerticalVelocity = nil
 			} else {
 				match++
@@ -123,7 +122,7 @@ func (dst *VelocityEstimate) UnmarshalJSON(data []byte) error {
 		if string(jsonHorizontalWithVerticalVelocityAndUncertainty) == "{}" { // empty struct
 			dst.HorizontalWithVerticalVelocityAndUncertainty = nil
 		} else {
-			if err = validator.Validate(dst.HorizontalWithVerticalVelocityAndUncertainty); err != nil {
+			if err = openapi.Validate(dst.HorizontalWithVerticalVelocityAndUncertainty); err != nil {
 				dst.HorizontalWithVerticalVelocityAndUncertainty = nil
 			} else {
 				match++

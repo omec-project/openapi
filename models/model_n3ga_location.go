@@ -33,9 +33,9 @@ type N3gaLocation struct {
 	// This IE shall contain the N3IWF identifier received over NGAP and shall be encoded as a string of hexadecimal characters. Each character in the string shall take a value of \"0\" to \"9\", \"a\" to \"f\" or \"A\" to \"F\" and shall represent 4 bits. The most significant character representing the 4 most significant bits of the N3IWF ID shall appear first in the string, and the character representing the 4 least significant bit of the N3IWF ID shall appear last in the string.
 	N3IwfId *string `json:"n3IwfId,omitempty" yaml:"n3IwfId,omitempty" validate:"regexp=^[A-Fa-f0-9]+$"`
 	// String identifying a IPv4 address formatted in the 'dotted decimal' notation as defined in RFC 1166.
-	UeIpv4Addr *string `json:"ueIpv4Addr,omitempty" yaml:"ueIpv4Addr,omitempty" validate:"regexp=^(([0-9]|[1-9][0-9]|1[0-9][0-9]|2[0-4][0-9]|25[0-5])\\\\.){3}([0-9]|[1-9][0-9]|1[0-9][0-9]|2[0-4][0-9]|25[0-5])$"`
+	UeIpv4Addr *string `json:"ueIpv4Addr,omitempty" yaml:"ueIpv4Addr,omitempty" validate:"regexp=^(([0-9]|[1-9][0-9]|1[0-9][0-9]|2[0-4][0-9]|25[0-5])\\.){3}([0-9]|[1-9][0-9]|1[0-9][0-9]|2[0-4][0-9]|25[0-5])$"`
 	// String identifying an IPv6 address formatted according to clause 4 of RFC5952. The mixed IPv4 IPv6 notation according to clause 5 of RFC5952 shall not be used.
-	UeIpv6Addr *string `json:"ueIpv6Addr,omitempty" yaml:"ueIpv6Addr,omitempty" validate:"regexp=^(((:|(0?|([1-9a-f][0-9a-f]{0,3}))):)((0?|([1-9a-f][0-9a-f]{0,3})):){0,6}(:|(0?|([1-9a-f][0-9a-f]{0,3}))))|((([^:]+:){7}([^:]+))|((([^:]+:)*[^:]+)?::(([^:]+:)*[^:]+)?)))$"`
+	UeIpv6Addr *string `json:"ueIpv6Addr,omitempty" yaml:"ueIpv6Addr,omitempty" validate:"regexp=^(((:|(0?|([1-9a-f][0-9a-f]{0\\,3}))):)((0?|([1-9a-f][0-9a-f]{0\\,3})):){0\\,6}(:|(0?|([1-9a-f][0-9a-f]{0\\,3}))))|((([^:]+:){7}([^:]+))|((([^:]+:)*[^:]+)?::(([^:]+:)*[^:]+)?)))$"`
 	// Unsigned Integer, i.e. only value 0 and integers above 0 are permissible.
 	PortNumber *int32             `json:"portNumber,omitempty" yaml:"portNumber,omitempty"`
 	Protocol   *TransportProtocol `json:"protocol,omitempty" yaml:"protocol,omitempty"`

@@ -27,7 +27,7 @@ import (
 // checks if the PduSetQosParaRm type satisfies the MappedNullable interface at compile time
 var _ openapi.MappedNullable = &PduSetQosParaRm{}
 
-// PduSetQosParaRm struct for PduSetQosParaRm
+// PduSetQosParaRm PduSetQosPara with nullable: true
 type PduSetQosParaRm struct {
 	// Unsigned integer indicating Packet Delay Budget (see clauses 5.7.3.4 and 5.7.4 of 3GPP TS 23.501 [8])), expressed in 0.01 milliseconds.
 	PduSetDelayBudget *int32 `json:"pduSetDelayBudget,omitempty" yaml:"pduSetDelayBudget,omitempty"`

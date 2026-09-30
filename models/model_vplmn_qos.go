@@ -34,14 +34,14 @@ type VplmnQos struct {
 	Arp         *Arp   `json:"arp,omitempty" yaml:"arp,omitempty"`
 	SessionAmbr *Ambr  `json:"sessionAmbr,omitempty" yaml:"sessionAmbr,omitempty"`
 	// String representing a bit rate; the prefixes follow the standard symbols from The International System of Units, and represent x1000 multipliers, with the exception that prefix \"K\" is used to represent the standard symbol \"k\".
-	MaxFbrDl *string `json:"maxFbrDl,omitempty" yaml:"maxFbrDl,omitempty" validate:"regexp=^\\\\d+(\\\\.\\\\d+)? (bps|Kbps|Mbps|Gbps|Tbps)$"`
+	MaxFbrDl *string `json:"maxFbrDl,omitempty" yaml:"maxFbrDl,omitempty" validate:"regexp=^\\d+(\\.\\d+)? (bps|Kbps|Mbps|Gbps|Tbps)$"`
 	// String representing a bit rate; the prefixes follow the standard symbols from The International System of Units, and represent x1000 multipliers, with the exception that prefix \"K\" is used to represent the standard symbol \"k\".
-	MaxFbrUl *string `json:"maxFbrUl,omitempty" yaml:"maxFbrUl,omitempty" validate:"regexp=^\\\\d+(\\\\.\\\\d+)? (bps|Kbps|Mbps|Gbps|Tbps)$"`
+	MaxFbrUl *string `json:"maxFbrUl,omitempty" yaml:"maxFbrUl,omitempty" validate:"regexp=^\\d+(\\.\\d+)? (bps|Kbps|Mbps|Gbps|Tbps)$"`
 	// String representing a bit rate; the prefixes follow the standard symbols from The International System of Units, and represent x1000 multipliers, with the exception that prefix \"K\" is used to represent the standard symbol \"k\".
-	GuaFbrDl *string `json:"guaFbrDl,omitempty" yaml:"guaFbrDl,omitempty" validate:"regexp=^\\\\d+(\\\\.\\\\d+)? (bps|Kbps|Mbps|Gbps|Tbps)$"`
+	GuaFbrDl *string `json:"guaFbrDl,omitempty" yaml:"guaFbrDl,omitempty" validate:"regexp=^\\d+(\\.\\d+)? (bps|Kbps|Mbps|Gbps|Tbps)$"`
 	// String representing a bit rate; the prefixes follow the standard symbols from The International System of Units, and represent x1000 multipliers, with the exception that prefix \"K\" is used to represent the standard symbol \"k\".
-	GuaFbrUl *string `json:"guaFbrUl,omitempty" yaml:"guaFbrUl,omitempty" validate:"regexp=^\\\\d+(\\\\.\\\\d+)? (bps|Kbps|Mbps|Gbps|Tbps)$"`
-	// Unsigned integer indicating the 5QI Priority Level (see clauses 5.7.3.3 and 5.7.4 of 3GPP TS 23.501, within the range 1 to 127.Values are ordered in decreasing order of priority,  i.e. with 1 as the highest priority and 127 as the lowest priority.
+	GuaFbrUl *string `json:"guaFbrUl,omitempty" yaml:"guaFbrUl,omitempty" validate:"regexp=^\\d+(\\.\\d+)? (bps|Kbps|Mbps|Gbps|Tbps)$"`
+	// Unsigned integer indicating the 5QI Priority Level (see clauses 5.7.3.3 and 5.7.4 of 3GPP TS 23.501, within the range 1 to 127.Values are ordered in decreasing order of priority, i.e. with 1 as the highest priority and 127 as the lowest priority.
 	Var5qiPL *int32 `json:"5qiPL,omitempty" yaml:"5qiPL,omitempty"`
 }
 

@@ -39,7 +39,7 @@ type UePolicySetPatch struct {
 	VpsUrspInd *bool `json:"vpsUrspInd,omitempty" yaml:"vpsUrspInd,omitempty"`
 	// Indication of UE supporting URSP enforcement report.
 	UrspEnfInd *bool `json:"urspEnfInd,omitempty" yaml:"urspEnfInd,omitempty"`
-	// String representing a Permanent Equipment Identifier that may contain - an IMEI or IMEISV, as  specified in clause 6.2 of 3GPP TS 23.003; a MAC address for a 5G-RG or FN-RG via  wireline  access, with an indication that this address cannot be trusted for regulatory purpose if this  address cannot be used as an Equipment Identifier of the FN-RG, as specified in clause 4.7.7  of 3GPP TS23.316. Examples are imei-012345678901234 or imeisv-0123456789012345.
+	// String representing a Permanent Equipment Identifier that may contain - an IMEI or IMEISV, as  specified in clause 6.2 of 3GPP TS 23.003; a MAC address for a 5G-RG or FN-RG via wireline  access, with an indication that this address cannot be trusted for regulatory purpose if this  address cannot be used as an Equipment Identifier of the FN-RG, as specified in clause 4.7.7  of 3GPP TS23.316. Examples are imei-012345678901234 or imeisv-0123456789012345.
 	Pei   *string  `json:"pei,omitempty" yaml:"pei,omitempty" validate:"regexp=^(imei-[0-9]{15}|imeisv-[0-9]{16}|mac((-[0-9a-fA-F]{2}){6})(-untrusted)?|eui((-[0-9a-fA-F]{2}){8})|.+)$"`
 	OsIds []string `json:"osIds,omitempty" yaml:"osIds,omitempty"`
 }

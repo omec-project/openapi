@@ -32,9 +32,9 @@ type N4Information struct {
 	N4MessageType    N4MessageType    `json:"n4MessageType" yaml:"n4MessageType"`
 	N4MessagePayload RefToBinaryData  `json:"n4MessagePayload" yaml:"n4MessagePayload"`
 	N4DnaiInfo       *DnaiInformation `json:"n4DnaiInfo,omitempty" yaml:"n4DnaiInfo,omitempty"`
-	// String uniquely identifying a NF instance. The format of the NF Instance ID shall be a  Universally Unique Identifier (UUID) version 4, as described in IETF RFC 4122.
+	// String uniquely identifying a NF instance. The format of the NF Instance ID shall be a Universally Unique Identifier (UUID) version 4, as described in IETF RFC 4122.
 	PsaUpfId *string `json:"psaUpfId,omitempty" yaml:"psaUpfId,omitempty"`
-	// String uniquely identifying a NF instance. The format of the NF Instance ID shall be a  Universally Unique Identifier (UUID) version 4, as described in IETF RFC 4122.
+	// String uniquely identifying a NF instance. The format of the NF Instance ID shall be a Universally Unique Identifier (UUID) version 4, as described in IETF RFC 4122.
 	UlClBpId      *string `json:"ulClBpId,omitempty" yaml:"ulClBpId,omitempty"`
 	N9UlPdrIdList []int32 `json:"n9UlPdrIdList,omitempty" yaml:"n9UlPdrIdList,omitempty"`
 }

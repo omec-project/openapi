@@ -27,7 +27,7 @@ import (
 // checks if the SmPolicyControl type satisfies the MappedNullable interface at compile time
 var _ openapi.MappedNullable = &SmPolicyControl{}
 
-// SmPolicyControl Contains the parameters used to request the SM policies and the SM policies authorized by  the PCF.
+// SmPolicyControl Contains the parameters used to request the SM policies and the SM policies authorized by the PCF.
 type SmPolicyControl struct {
 	Context SmPolicyContextData `json:"context" yaml:"context"`
 	Policy  SmPolicyDecision    `json:"policy" yaml:"policy"`

@@ -29,10 +29,10 @@ var _ openapi.MappedNullable = &MappingInfo{}
 
 // MappingInfo Contains the mapping information between the Application Layer ID and the GPSI.
 type MappingInfo struct {
-	// String identifying an UE with application layer ID. The format of the application  layer ID parameter is same as the Application layer ID defined in clause 11.3.4 of  3GPP TS 24.554.
+	// String identifying an UE with application layer ID. The format of the application layer ID parameter is same as the Application layer ID defined in clause 11.3.4 of 3GPP TS 24.554.
 	AppLayerId string `json:"appLayerId" yaml:"appLayerId"`
-	// String identifying a Gpsi shall contain either an External Id or an MSISDN.  It shall be formatted as follows -External Identifier= \"extid-'extid', where 'extid'  shall be formatted according to clause 19.7.2 of 3GPP TS 23.003 that describes an  External Identifier.
-	Gpsi string `json:"gpsi" yaml:"gpsi" validate:"regexp=^(msisdn-[0-9]{5,15}|extid-[^@]+@[^@]+|.+)$"`
+	// String identifying a Gpsi shall contain either an External Id or an MSISDN. It shall be formatted as follows -External Identifier= \"extid-'extid', where 'extid' shall be formatted according to clause 19.7.2 of 3GPP TS 23.003 that describes an External Identifier.
+	Gpsi string `json:"gpsi" yaml:"gpsi" validate:"regexp=^(msisdn-[0-9]{5\\,15}|extid-[^@]+@[^@]+|.+)$"`
 }
 
 // NewMappingInfo instantiates a new MappingInfo object
