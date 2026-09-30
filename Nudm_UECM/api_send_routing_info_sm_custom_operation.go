@@ -33,7 +33,7 @@ import (
 type SendRoutingInfoSMCustomOperationAPI interface {
 
 	/*
-		SendRoutingInfoSm Retreive addressing information for SMS delivery
+		SendRoutingInfoSm Retrieve addressing information for SMS delivery
 
 			@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
 			@param ueId Identifier of the UE
@@ -66,7 +66,7 @@ func (r ApiSendRoutingInfoSmRequest) Execute() (*models.RoutingInfoSmResponse, *
 }
 
 /*
-SendRoutingInfoSm Retreive addressing information for SMS delivery
+SendRoutingInfoSm Retrieve addressing information for SMS delivery
 
 	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
 	@param ueId Identifier of the UE
