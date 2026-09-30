@@ -58,7 +58,7 @@ type AuthenticationSoRDocumentAPI interface {
 	QueryAuthSoRExecute(r ApiQueryAuthSoRRequest) (*models.SorData, *http.Response, error)
 
 	/*
-		UpdateAuthenticationSoR Updates the ME support of SOR CMCI ME support of SOR-SNPN-SI  and ME support of SOR-SNPN-SI-LS information of a UE
+		UpdateAuthenticationSoR Updates the ME support of SOR CMCI ME support of SOR-SNPN-SI and ME support of SOR-SNPN-SI-LS information of a UE
 
 			@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
 			@param ueId
@@ -528,7 +528,7 @@ func (r ApiUpdateAuthenticationSoRRequest) Execute() (*models.PatchResult, *http
 }
 
 /*
-UpdateAuthenticationSoR Updates the ME support of SOR CMCI ME support of SOR-SNPN-SI  and ME support of SOR-SNPN-SI-LS information of a UE
+UpdateAuthenticationSoR Updates the ME support of SOR CMCI ME support of SOR-SNPN-SI and ME support of SOR-SNPN-SI-LS information of a UE
 
 	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
 	@param ueId

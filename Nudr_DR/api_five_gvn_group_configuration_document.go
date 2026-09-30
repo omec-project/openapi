@@ -33,7 +33,7 @@ import (
 type FiveGVnGroupConfigurationDocumentAPI interface {
 
 	/*
-		Create5GVnGroup Create an individual 5G VN Grouop
+		Create5GVnGroup Create an individual 5G VN Group
 
 			@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
 			@param externalGroupId
@@ -66,7 +66,7 @@ func (r ApiCreate5GVnGroupRequest) Execute() (*models.FiveGVnGroupConfiguration,
 }
 
 /*
-Create5GVnGroup Create an individual 5G VN Grouop
+Create5GVnGroup Create an individual 5G VN Group
 
 	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
 	@param externalGroupId
