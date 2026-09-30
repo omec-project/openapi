@@ -1336,365 +1336,365 @@ components:
     InputData:
       description: Information within Determine Location Request.
       example:
-        twapId:
-          bssId: bssId
-          civicAddress: null
-          ssId: ssId
-        motionEventInfo:
-          samplingInterval: null
-          reportingLocationReq: true
-          reportingDuration: null
-          minimumInterval: null
-          linearDistance: null
-          occurrenceInfo: null
-          maximumInterval: null
-        ueUpPosCaps:
-          - LCS-UPP
-          - LCS-UPP
-        tnapId:
-          bssId: bssId
-          civicAddress: null
-          ssId: ssId
-        maxRespTime: 6
-        supportedGADShapes:
-          - POINT
-          - POINT
-        ueLcsCap:
-          lppSupport: true
-          ciotOptimisation: false
-        lcsServiceType: 10
-        ueLocationServiceInd: LOCATION_ESTIMATE
-        pei: pei
-        mappedQoSEps:
-          hAccuracy: null
-          vAccuracy: null
-        reliableLocReq: false
-        ueConnectivityStates:
-          accessType: 3GPP_ACCESS
-          connectivitystate: IDLE
-        scheduledLocTime: 2000-01-23T04:56:07.000+00:00
-        mbsrInfo:
-          ncgi:
-            nid: null
-            plmnId:
-              mnc: null
-              mcc: null
-            nrCellId: null
-          ecgi:
-            eutraCellId: null
-            nid: null
-            plmnId:
-              mnc: null
-              mcc: null
-        priority: HIGHEST_PRIORITY
-        rangingSlCapability: rangingSlCapability
-        ecgi:
-          eutraCellId: null
-          nid: null
-          plmnId:
-            mnc: null
-            mcc: null
-        periodicEventInfo:
-          reportingInterval: null
-          reportingAmount: null
-          reportingInfiniteInd: true
-          reportingIntervalMs: null
-        lpHapType: LOW_POW_HIGH_ACCU_POS
-        ldrReference: ldrReference
-        lppMessageExt:
-          - contentId: contentId
-          - contentId: contentId
-        evtRptAllowedAreas:
-          - ncgi:
-              nid: null
-              plmnId:
-                mnc: null
-                mcc: null
-              nrCellId: null
-            areaType: EPS_TRACKING_AREA_IDENTITY
-            tai:
-              tac: null
-              nid: null
-              plmnId:
-                mnc: null
-                mcc: null
-            ecgi:
-              eutraCellId: null
-              nid: null
-              plmnId:
-                mnc: null
-                mcc: null
-          - ncgi:
-              nid: null
-              plmnId:
-                mnc: null
-                mcc: null
-              nrCellId: null
-            areaType: EPS_TRACKING_AREA_IDENTITY
-            tai:
-              tac: null
-              nid: null
-              plmnId:
-                mnc: null
-                mcc: null
-            ecgi:
-              eutraCellId: null
-              nid: null
-              plmnId:
-                mnc: null
-                mcc: null
-          - ncgi:
-              nid: null
-              plmnId:
-                mnc: null
-                mcc: null
-              nrCellId: null
-            areaType: EPS_TRACKING_AREA_IDENTITY
-            tai:
-              tac: null
-              nid: null
-              plmnId:
-                mnc: null
-                mcc: null
-            ecgi:
-              eutraCellId: null
-              nid: null
-              plmnId:
-                mnc: null
-                mcc: null
-          - ncgi:
-              nid: null
-              plmnId:
-                mnc: null
-                mcc: null
-              nrCellId: null
-            areaType: EPS_TRACKING_AREA_IDENTITY
-            tai:
-              tac: null
-              nid: null
-              plmnId:
-                mnc: null
-                mcc: null
-            ecgi:
-              eutraCellId: null
-              nid: null
-              plmnId:
-                mnc: null
-                mcc: null
-          - ncgi:
-              nid: null
-              plmnId:
-                mnc: null
-                mcc: null
-              nrCellId: null
-            areaType: EPS_TRACKING_AREA_IDENTITY
-            tai:
-              tac: null
-              nid: null
-              plmnId:
-                mnc: null
-                mcc: null
-            ecgi:
-              eutraCellId: null
-              nid: null
-              plmnId:
-                mnc: null
-                mcc: null
-        supportedFeatures: supportedFeatures
-        ueCountryDetInd: true
-        relatedUEs:
-          - relatedUEType: LOCATED_UE
-            applicationlayerId: null
-          - relatedUEType: LOCATED_UE
-            applicationlayerId: null
-        hgmlcCallBackURI: hgmlcCallBackURI
-        areaEventInfo:
-          samplingInterval: null
-          reportingLocationReq: true
-          reportingDuration: null
-          minimumInterval: null
-          areaDefinition:
-            - ncgi:
-                nid: null
-                plmnId:
-                  mnc: null
-                  mcc: null
-                nrCellId: null
-              areaType: EPS_TRACKING_AREA_IDENTITY
-              tai:
-                tac: null
-                nid: null
-                plmnId:
-                  mnc: null
-                  mcc: null
-              ecgi:
-                eutraCellId: null
-                nid: null
-                plmnId:
-                  mnc: null
-                  mcc: null
-            - ncgi:
-                nid: null
-                plmnId:
-                  mnc: null
-                  mcc: null
-                nrCellId: null
-              areaType: EPS_TRACKING_AREA_IDENTITY
-              tai:
-                tac: null
-                nid: null
-                plmnId:
-                  mnc: null
-                  mcc: null
-              ecgi:
-                eutraCellId: null
-                nid: null
-                plmnId:
-                  mnc: null
-                  mcc: null
-            - ncgi:
-                nid: null
-                plmnId:
-                  mnc: null
-                  mcc: null
-                nrCellId: null
-              areaType: EPS_TRACKING_AREA_IDENTITY
-              tai:
-                tac: null
-                nid: null
-                plmnId:
-                  mnc: null
-                  mcc: null
-              ecgi:
-                eutraCellId: null
-                nid: null
-                plmnId:
-                  mnc: null
-                  mcc: null
-            - ncgi:
-                nid: null
-                plmnId:
-                  mnc: null
-                  mcc: null
-                nrCellId: null
-              areaType: EPS_TRACKING_AREA_IDENTITY
-              tai:
-                tac: null
-                nid: null
-                plmnId:
-                  mnc: null
-                  mcc: null
-              ecgi:
-                eutraCellId: null
-                nid: null
-                plmnId:
-                  mnc: null
-                  mcc: null
-            - ncgi:
-                nid: null
-                plmnId:
-                  mnc: null
-                  mcc: null
-                nrCellId: null
-              areaType: EPS_TRACKING_AREA_IDENTITY
-              tai:
-                tac: null
-                nid: null
-                plmnId:
-                  mnc: null
-                  mcc: null
-              ecgi:
-                eutraCellId: null
-                nid: null
-                plmnId:
-                  mnc: null
-                  mcc: null
-          occurrenceInfo: ONE_TIME_EVENT
-          maximumInterval: null
-        coordinateID: 5
-        reportingAccessTypes:
-          - NR
-          - NR
-        gpsi: gpsi
-        vgmlcAddress: vgmlcAddress
-        velocityRequested: VELOCITY_IS_NOT_REQUESTED
-        upCumEvtRptCriteria:
-          evtRptCountCriteria: 5
-          evtRptTimeCriteria: 1
-        lirGmlcCallBackUri: lirGmlcCallBackUri
-        upLocRepAddrAf:
-          fqdn: null
-          ipv6Addrs:
-            - 2001:db8:85a3::8a2e:370:7334
-            - 2001:db8:85a3::8a2e:370:7334
-          ipv4Addrs:
-            - 198.51.100.1
-            - 198.51.100.1
-        ldrType: UE_AVAILABLE
-        uePositioningCap: uePositioningCap
-        ueUnawareInd: true
-        requestedRangingSlResult:
-          - ABSOLUTE_LOCATION
-          - ABSOLUTE_LOCATION
-        ncgi:
-          nid: null
-          plmnId:
-            mnc: null
-            mcc: null
-          nrCellId: null
-        ncgiOnSecondNode:
-          nid: null
-          plmnId:
-            mnc: null
-            mcc: null
-          nrCellId: null
-        lppMessage:
-          contentId: contentId
         externalClientType: EMERGENCY_SERVICES
+        correlationID: correlationID
+        amfId: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
         locationQoS:
-          responseTime: LOW_DELAY
-          verticalRequested: true
           hAccuracy: null
           vAccuracy: null
+          verticalRequested: true
+          responseTime: LOW_DELAY
           minorLocQoses:
             - hAccuracy: null
               vAccuracy: null
             - hAccuracy: null
               vAccuracy: null
           lcsQosClass: BEST_EFFORT
+        supportedGADShapes:
+          - POINT
+          - POINT
         supi: supi
-        intermediateLocationInd: false
+        pei: pei
+        gpsi: gpsi
+        requestedRangingSlResult:
+          - ABSOLUTE_LOCATION
+          - ABSOLUTE_LOCATION
+        relatedUEs:
+          - applicationlayerId: null
+            relatedUEType: LOCATED_UE
+          - applicationlayerId: null
+            relatedUEType: LOCATED_UE
+        ecgi:
+          plmnId:
+            mcc: null
+            mnc: null
+          eutraCellId: null
+          nid: null
+        ecgiOnSecondNode:
+          plmnId:
+            mcc: null
+            mnc: null
+          eutraCellId: null
+          nid: null
+        ncgi:
+          plmnId:
+            mcc: null
+            mnc: null
+          nrCellId: null
+          nid: null
+        ncgiOnSecondNode:
+          plmnId:
+            mcc: null
+            mnc: null
+          nrCellId: null
+          nid: null
+        priority: HIGHEST_PRIORITY
+        velocityRequested: VELOCITY_IS_NOT_REQUESTED
+        ueLcsCap:
+          lppSupport: true
+          ciotOptimisation: false
+        lcsServiceType: 10
+        ldrType: UE_AVAILABLE
+        hgmlcCallBackURI: hgmlcCallBackURI
+        lirGmlcCallBackUri: lirGmlcCallBackUri
+        vgmlcAddress: vgmlcAddress
+        ldrReference: ldrReference
+        lirReference: lirReference
+        periodicEventInfo:
+          reportingAmount: null
+          reportingInterval: null
+          reportingInfiniteInd: true
+          reportingIntervalMs: null
+        areaEventInfo:
+          areaDefinition:
+            - areaType: EPS_TRACKING_AREA_IDENTITY
+              tai:
+                plmnId:
+                  mcc: null
+                  mnc: null
+                tac: null
+                nid: null
+              ecgi:
+                plmnId:
+                  mcc: null
+                  mnc: null
+                eutraCellId: null
+                nid: null
+              ncgi:
+                plmnId:
+                  mcc: null
+                  mnc: null
+                nrCellId: null
+                nid: null
+            - areaType: EPS_TRACKING_AREA_IDENTITY
+              tai:
+                plmnId:
+                  mcc: null
+                  mnc: null
+                tac: null
+                nid: null
+              ecgi:
+                plmnId:
+                  mcc: null
+                  mnc: null
+                eutraCellId: null
+                nid: null
+              ncgi:
+                plmnId:
+                  mcc: null
+                  mnc: null
+                nrCellId: null
+                nid: null
+            - areaType: EPS_TRACKING_AREA_IDENTITY
+              tai:
+                plmnId:
+                  mcc: null
+                  mnc: null
+                tac: null
+                nid: null
+              ecgi:
+                plmnId:
+                  mcc: null
+                  mnc: null
+                eutraCellId: null
+                nid: null
+              ncgi:
+                plmnId:
+                  mcc: null
+                  mnc: null
+                nrCellId: null
+                nid: null
+            - areaType: EPS_TRACKING_AREA_IDENTITY
+              tai:
+                plmnId:
+                  mcc: null
+                  mnc: null
+                tac: null
+                nid: null
+              ecgi:
+                plmnId:
+                  mcc: null
+                  mnc: null
+                eutraCellId: null
+                nid: null
+              ncgi:
+                plmnId:
+                  mcc: null
+                  mnc: null
+                nrCellId: null
+                nid: null
+            - areaType: EPS_TRACKING_AREA_IDENTITY
+              tai:
+                plmnId:
+                  mcc: null
+                  mnc: null
+                tac: null
+                nid: null
+              ecgi:
+                plmnId:
+                  mcc: null
+                  mnc: null
+                eutraCellId: null
+                nid: null
+              ncgi:
+                plmnId:
+                  mcc: null
+                  mnc: null
+                nrCellId: null
+                nid: null
+          occurrenceInfo: ONE_TIME_EVENT
+          minimumInterval: null
+          maximumInterval: null
+          samplingInterval: null
+          reportingDuration: null
+          reportingLocationReq: true
+        motionEventInfo:
+          linearDistance: null
+          occurrenceInfo: null
+          minimumInterval: null
+          maximumInterval: null
+          samplingInterval: null
+          reportingDuration: null
+          reportingLocationReq: true
+        reportingAccessTypes:
+          - NR
+          - NR
+        ueConnectivityStates:
+          accessType: 3GPP_ACCESS
+          connectivitystate: IDLE
+        ueLocationServiceInd: LOCATION_ESTIMATE
         moAssistanceDataTypes:
           locationAssistanceType: null
-        lirReference: lirReference
+        lppMessage:
+          contentId: contentId
+        lppMessageExt:
+          - contentId: contentId
+          - contentId: contentId
+        supportedFeatures: supportedFeatures
+        uePositioningCap: uePositioningCap
+        tnapId:
+          ssId: ssId
+          bssId: bssId
+          civicAddress: null
+        twapId:
+          ssId: ssId
+          bssId: bssId
+          civicAddress: null
+        ueCountryDetInd: true
+        scheduledLocTime: 2000-01-23T04:56:07.000+00:00
+        reliableLocReq: false
+        evtRptAllowedAreas:
+          - areaType: EPS_TRACKING_AREA_IDENTITY
+            tai:
+              plmnId:
+                mcc: null
+                mnc: null
+              tac: null
+              nid: null
+            ecgi:
+              plmnId:
+                mcc: null
+                mnc: null
+              eutraCellId: null
+              nid: null
+            ncgi:
+              plmnId:
+                mcc: null
+                mnc: null
+              nrCellId: null
+              nid: null
+          - areaType: EPS_TRACKING_AREA_IDENTITY
+            tai:
+              plmnId:
+                mcc: null
+                mnc: null
+              tac: null
+              nid: null
+            ecgi:
+              plmnId:
+                mcc: null
+                mnc: null
+              eutraCellId: null
+              nid: null
+            ncgi:
+              plmnId:
+                mcc: null
+                mnc: null
+              nrCellId: null
+              nid: null
+          - areaType: EPS_TRACKING_AREA_IDENTITY
+            tai:
+              plmnId:
+                mcc: null
+                mnc: null
+              tac: null
+              nid: null
+            ecgi:
+              plmnId:
+                mcc: null
+                mnc: null
+              eutraCellId: null
+              nid: null
+            ncgi:
+              plmnId:
+                mcc: null
+                mnc: null
+              nrCellId: null
+              nid: null
+          - areaType: EPS_TRACKING_AREA_IDENTITY
+            tai:
+              plmnId:
+                mcc: null
+                mnc: null
+              tac: null
+              nid: null
+            ecgi:
+              plmnId:
+                mcc: null
+                mnc: null
+              eutraCellId: null
+              nid: null
+            ncgi:
+              plmnId:
+                mcc: null
+                mnc: null
+              nrCellId: null
+              nid: null
+          - areaType: EPS_TRACKING_AREA_IDENTITY
+            tai:
+              plmnId:
+                mcc: null
+                mnc: null
+              tac: null
+              nid: null
+            ecgi:
+              plmnId:
+                mcc: null
+                mnc: null
+              eutraCellId: null
+              nid: null
+            ncgi:
+              plmnId:
+                mcc: null
+                mnc: null
+              nrCellId: null
+              nid: null
+        ueUnawareInd: true
+        intermediateLocationInd: false
+        maxRespTime: 6
+        lpHapType: LOW_POW_HIGH_ACCU_POS
+        ueUpPosCaps:
+          - LCS-UPP
+          - LCS-UPP
         reportingInd: ""
-        correlationID: correlationID
-        amfId: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
+        mbsrInfo:
+          ncgi:
+            plmnId:
+              mcc: null
+              mnc: null
+            nrCellId: null
+            nid: null
+          ecgi:
+            plmnId:
+              mcc: null
+              mnc: null
+            eutraCellId: null
+            nid: null
         integrityRequirements:
           timeToAlert: null
           targetIntegrityRisk: null
           alertLimit:
             horizontalProtectionLevel: null
             verticalProtectionLevel: null
+        upLocRepAddrAf:
+          ipv4Addrs:
+            - 198.51.100.1
+            - 198.51.100.1
+          ipv6Addrs:
+            - 2001:db8:85a3::8a2e:370:7334
+            - 2001:db8:85a3::8a2e:370:7334
+          fqdn: null
+        upCumEvtRptCriteria:
+          evtRptTimeCriteria: 1
+          evtRptCountCriteria: 5
+        mappedQoSEps:
+          hAccuracy: null
+          vAccuracy: null
         additionalUeInfo:
           ncgi:
-            nid: null
             plmnId:
-              mnc: null
               mcc: null
+              mnc: null
             nrCellId: null
+            nid: null
           ecgi:
+            plmnId:
+              mcc: null
+              mnc: null
             eutraCellId: null
             nid: null
-            plmnId:
-              mnc: null
-              mcc: null
-        ecgiOnSecondNode:
-          eutraCellId: null
-          nid: null
-          plmnId:
-            mnc: null
-            mcc: null
+        coordinateID: 5
+        rangingSlCapability: rangingSlCapability
       not:
         required:
           - ecgi
@@ -1893,366 +1893,77 @@ components:
         - $ref: "#/components/schemas/AddLocationDatas"
       description: Extended Location Data for UEs
       example:
-        altitude: null
-        supportedFeatures: null
-        achievedQos:
-          hAccuracy: null
-          vAccuracy: null
-        gnssPositioningDataList:
-          - mode: null
-            gnss: GPS
-            usage: null
-          - mode: null
-            gnss: GPS
-            usage: null
-        servingLMFIdentification: null
-        relatedApplicationlayerId: null
         locationEstimate:
           shape: POINT
           point:
             lon: -151.1701851434036
             lat: 18.494211295267263
+        accuracyFulfilmentIndicator: REQUESTED_ACCURACY_FULFILLED
+        ageOfLocationEstimate: null
         timestampOfLocationEstimate: null
-        addLocationDatas:
-          - altitude: null
-            supportedFeatures: null
-            achievedQos:
-              hAccuracy: null
-              vAccuracy: null
-            gnssPositioningDataList:
-              - mode: null
-                gnss: GPS
-                usage: null
-              - mode: null
-                gnss: GPS
-                usage: null
-            servingLMFIdentification: null
-            relatedApplicationlayerId: null
-            locationEstimate: null
-            timestampOfLocationEstimate: null
-            directReportInd: false
-            "2dRelativeLocation":
-              semiMinor: null
-              orientationAngle: null
-              semiMajor: null
-            losNlosMeasureInd: null
-            haGnssMetrics:
-              hdopi: 144
-              fixType: CARRIER_PHASE_FLOAT
-              nrOfUsedSatellites: 38
-              pdopi: 59
-              age: 69
-            uePositioningCap: null
-            ncgi:
-              nid: null
-              plmnId:
-                mnc: null
-                mcc: null
-              nrCellId: null
-            "3dRelativeLocation":
-              semiMinor: null
-              verticalUncertainty: null
-              orientationAngle: null
-              semiMajor: null
-            rangingSlCapability: null
-            ecgi:
-              eutraCellId: null
-              nid: null
-              plmnId:
-                mnc: null
-                mcc: null
-            localLocationEstimate: null
-            barometricPressure: null
-            positioningDataList:
-              - mode: UE_BASED
-                method: CELLID
-                usage: UNSUCCESS
-                methodCode: 18
-              - mode: UE_BASED
-                method: CELLID
-                usage: UNSUCCESS
-                methodCode: 18
-            ueAreaInd:
-              country: country
-              internationalAreaInd: false
-            acceptedPeriodicEventInfo:
-              reportingInterval: null
-              reportingAmount: null
-              reportingInfiniteInd: true
-              reportingIntervalMs: null
-            indoorOutdoorInd: null
-            accuracyFulfilmentIndicator: null
-            civicAddress:
-              POBOX: POBOX
-              usageRules: usageRules
-              country: country
-              PRD: PRD
-              PLC: PLC
-              HNO: HNO
-              PRM: PRM
-              HNS: HNS
-              FLR: FLR
-              A1: A1
-              A2: A2
-              A3: A3
-              A4: A4
-              STS: STS
-              A5: A5
-              A6: A6
-              RDSEC: RDSEC
-              providedBy: providedBy
-              LOC: LOC
-              UNIT: UNIT
-              SEAT: SEAT
-              POD: POD
-              RDBR: RDBR
-              method: method
-              LMK: LMK
-              POM: POM
-              ADDCODE: ADDCODE
-              RD: RD
-              PC: PC
-              PCN: PCN
-              NAM: NAM
-              BLD: BLD
-              ROOM: ROOM
-              RDSUBBR: RDSUBBR
-            relativeVelocity: null
-            ageOfLocationEstimate: null
-            distanceDirection:
-              azimuthDirection: null
-              distance: 9.301444243932576
-              elevationDirection: null
-            velocityEstimate: null
-          - altitude: null
-            supportedFeatures: null
-            achievedQos:
-              hAccuracy: null
-              vAccuracy: null
-            gnssPositioningDataList:
-              - mode: null
-                gnss: GPS
-                usage: null
-              - mode: null
-                gnss: GPS
-                usage: null
-            servingLMFIdentification: null
-            relatedApplicationlayerId: null
-            locationEstimate: null
-            timestampOfLocationEstimate: null
-            directReportInd: false
-            "2dRelativeLocation":
-              semiMinor: null
-              orientationAngle: null
-              semiMajor: null
-            losNlosMeasureInd: null
-            haGnssMetrics:
-              hdopi: 144
-              fixType: CARRIER_PHASE_FLOAT
-              nrOfUsedSatellites: 38
-              pdopi: 59
-              age: 69
-            uePositioningCap: null
-            ncgi:
-              nid: null
-              plmnId:
-                mnc: null
-                mcc: null
-              nrCellId: null
-            "3dRelativeLocation":
-              semiMinor: null
-              verticalUncertainty: null
-              orientationAngle: null
-              semiMajor: null
-            rangingSlCapability: null
-            ecgi:
-              eutraCellId: null
-              nid: null
-              plmnId:
-                mnc: null
-                mcc: null
-            localLocationEstimate: null
-            barometricPressure: null
-            positioningDataList:
-              - mode: UE_BASED
-                method: CELLID
-                usage: UNSUCCESS
-                methodCode: 18
-              - mode: UE_BASED
-                method: CELLID
-                usage: UNSUCCESS
-                methodCode: 18
-            ueAreaInd:
-              country: country
-              internationalAreaInd: false
-            acceptedPeriodicEventInfo:
-              reportingInterval: null
-              reportingAmount: null
-              reportingInfiniteInd: true
-              reportingIntervalMs: null
-            indoorOutdoorInd: null
-            accuracyFulfilmentIndicator: null
-            civicAddress:
-              POBOX: POBOX
-              usageRules: usageRules
-              country: country
-              PRD: PRD
-              PLC: PLC
-              HNO: HNO
-              PRM: PRM
-              HNS: HNS
-              FLR: FLR
-              A1: A1
-              A2: A2
-              A3: A3
-              A4: A4
-              STS: STS
-              A5: A5
-              A6: A6
-              RDSEC: RDSEC
-              providedBy: providedBy
-              LOC: LOC
-              UNIT: UNIT
-              SEAT: SEAT
-              POD: POD
-              RDBR: RDBR
-              method: method
-              LMK: LMK
-              POM: POM
-              ADDCODE: ADDCODE
-              RD: RD
-              PC: PC
-              PCN: PCN
-              NAM: NAM
-              BLD: BLD
-              ROOM: ROOM
-              RDSUBBR: RDSUBBR
-            relativeVelocity: null
-            ageOfLocationEstimate: null
-            distanceDirection:
-              azimuthDirection: null
-              distance: 9.301444243932576
-              elevationDirection: null
-            velocityEstimate: null
-        directReportInd: false
-        "2dRelativeLocation":
-          semiMinor: null
-          orientationAngle: null
-          semiMajor: null
-        losNlosMeasureInd: LOS
-        haGnssMetrics:
-          hdopi: 144
-          fixType: CARRIER_PHASE_FLOAT
-          nrOfUsedSatellites: 38
-          pdopi: 59
-          age: 69
-        uePositioningCap: null
-        ncgi:
-          nid: null
-          plmnId:
-            mnc: null
-            mcc: null
-          nrCellId: null
-        "3dRelativeLocation":
-          semiMinor: null
-          verticalUncertainty: null
-          orientationAngle: null
-          semiMajor: null
-        rangingSlCapability: null
-        ecgi:
-          eutraCellId: null
-          nid: null
-          plmnId:
-            mnc: null
-            mcc: null
+        velocityEstimate:
+          hSpeed: null
+          bearing: null
+        civicAddress:
+          country: country
+          A1: A1
+          A2: A2
+          A3: A3
+          A4: A4
+          A5: A5
+          A6: A6
+          PRD: PRD
+          POD: POD
+          STS: STS
+          HNO: HNO
+          HNS: HNS
+          LMK: LMK
+          LOC: LOC
+          NAM: NAM
+          PC: PC
+          BLD: BLD
+          UNIT: UNIT
+          FLR: FLR
+          ROOM: ROOM
+          PLC: PLC
+          PCN: PCN
+          POBOX: POBOX
+          ADDCODE: ADDCODE
+          SEAT: SEAT
+          RD: RD
+          RDSEC: RDSEC
+          RDBR: RDBR
+          RDSUBBR: RDSUBBR
+          PRM: PRM
+          POM: POM
+          usageRules: usageRules
+          method: method
+          providedBy: providedBy
         localLocationEstimate:
+          shape: null
           localOrigin:
             coordinateId: coordinateId
             point:
               lon: -151.1701851434036
               lat: 18.494211295267263
-          shape: null
-          confidence: null
           point:
             x: null
             "y": null
             z: null
           uncertaintyEllipse:
+            semiMajor: null
             semiMinor: null
             orientationMajor: null
-            semiMajor: null
-        barometricPressure: null
+          confidence: null
         positioningDataList:
-          - mode: UE_BASED
-            method: CELLID
+          - method: CELLID
+            mode: UE_BASED
             usage: UNSUCCESS
             methodCode: 18
-          - mode: UE_BASED
-            method: CELLID
+          - method: CELLID
+            mode: UE_BASED
             usage: UNSUCCESS
             methodCode: 18
-        ueAreaInd:
-          country: country
-          internationalAreaInd: false
-        acceptedPeriodicEventInfo:
-          reportingInterval: null
-          reportingAmount: null
-          reportingInfiniteInd: true
-          reportingIntervalMs: null
-        indoorOutdoorInd: INDOOR
-        accuracyFulfilmentIndicator: REQUESTED_ACCURACY_FULFILLED
-        civicAddress:
-          POBOX: POBOX
-          usageRules: usageRules
-          country: country
-          PRD: PRD
-          PLC: PLC
-          HNO: HNO
-          PRM: PRM
-          HNS: HNS
-          FLR: FLR
-          A1: A1
-          A2: A2
-          A3: A3
-          A4: A4
-          STS: STS
-          A5: A5
-          A6: A6
-          RDSEC: RDSEC
-          providedBy: providedBy
-          LOC: LOC
-          UNIT: UNIT
-          SEAT: SEAT
-          POD: POD
-          RDBR: RDBR
-          method: method
-          LMK: LMK
-          POM: POM
-          ADDCODE: ADDCODE
-          RD: RD
-          PC: PC
-          PCN: PCN
-          NAM: NAM
-          BLD: BLD
-          ROOM: ROOM
-          RDSUBBR: RDSUBBR
-        relativeVelocity: null
-        ageOfLocationEstimate: null
-        distanceDirection:
-          azimuthDirection: null
-          distance: 9.301444243932576
-          elevationDirection: null
-        velocityEstimate:
-          hSpeed: null
-          bearing: null
-    LocationData:
-      description: Information within Determine Location Response.
-      example:
-        altitude: null
-        supportedFeatures: null
-        achievedQos:
-          hAccuracy: null
-          vAccuracy: null
         gnssPositioningDataList:
           - mode: null
             gnss: GPS
@@ -2260,104 +1971,393 @@ components:
           - mode: null
             gnss: GPS
             usage: null
-        servingLMFIdentification: null
-        relatedApplicationlayerId: null
-        locationEstimate: null
-        timestampOfLocationEstimate: null
-        directReportInd: false
-        "2dRelativeLocation":
-          semiMinor: null
-          orientationAngle: null
-          semiMajor: null
-        losNlosMeasureInd: null
-        haGnssMetrics:
-          hdopi: 144
-          fixType: CARRIER_PHASE_FLOAT
-          nrOfUsedSatellites: 38
-          pdopi: 59
-          age: 69
-        uePositioningCap: null
-        ncgi:
-          nid: null
-          plmnId:
-            mnc: null
-            mcc: null
-          nrCellId: null
-        "3dRelativeLocation":
-          semiMinor: null
-          verticalUncertainty: null
-          orientationAngle: null
-          semiMajor: null
-        rangingSlCapability: null
         ecgi:
+          plmnId:
+            mcc: null
+            mnc: null
           eutraCellId: null
           nid: null
+        ncgi:
           plmnId:
-            mnc: null
             mcc: null
-        localLocationEstimate: null
+            mnc: null
+          nrCellId: null
+          nid: null
+        altitude: null
         barometricPressure: null
-        positioningDataList:
-          - mode: UE_BASED
-            method: CELLID
-            usage: UNSUCCESS
-            methodCode: 18
-          - mode: UE_BASED
-            method: CELLID
-            usage: UNSUCCESS
-            methodCode: 18
+        servingLMFIdentification: null
+        uePositioningCap: null
         ueAreaInd:
           country: country
           internationalAreaInd: false
+        supportedFeatures: null
+        achievedQos:
+          hAccuracy: null
+          vAccuracy: null
+        directReportInd: false
+        indoorOutdoorInd: INDOOR
         acceptedPeriodicEventInfo:
-          reportingInterval: null
           reportingAmount: null
+          reportingInterval: null
           reportingInfiniteInd: true
           reportingIntervalMs: null
-        indoorOutdoorInd: null
+        haGnssMetrics:
+          nrOfUsedSatellites: 38
+          hdopi: 144
+          pdopi: 59
+          age: 69
+          fixType: CARRIER_PHASE_FLOAT
+        losNlosMeasureInd: LOS
+        relatedApplicationlayerId: null
+        distanceDirection:
+          distance: 9.301444243932576
+          azimuthDirection: null
+          elevationDirection: null
+        "2dRelativeLocation":
+          semiMinor: null
+          semiMajor: null
+          orientationAngle: null
+        "3dRelativeLocation":
+          semiMinor: null
+          semiMajor: null
+          verticalUncertainty: null
+          orientationAngle: null
+        relativeVelocity: null
+        rangingSlCapability: null
+        addLocationDatas:
+          - locationEstimate: null
+            accuracyFulfilmentIndicator: null
+            ageOfLocationEstimate: null
+            timestampOfLocationEstimate: null
+            velocityEstimate: null
+            civicAddress:
+              country: country
+              A1: A1
+              A2: A2
+              A3: A3
+              A4: A4
+              A5: A5
+              A6: A6
+              PRD: PRD
+              POD: POD
+              STS: STS
+              HNO: HNO
+              HNS: HNS
+              LMK: LMK
+              LOC: LOC
+              NAM: NAM
+              PC: PC
+              BLD: BLD
+              UNIT: UNIT
+              FLR: FLR
+              ROOM: ROOM
+              PLC: PLC
+              PCN: PCN
+              POBOX: POBOX
+              ADDCODE: ADDCODE
+              SEAT: SEAT
+              RD: RD
+              RDSEC: RDSEC
+              RDBR: RDBR
+              RDSUBBR: RDSUBBR
+              PRM: PRM
+              POM: POM
+              usageRules: usageRules
+              method: method
+              providedBy: providedBy
+            localLocationEstimate: null
+            positioningDataList:
+              - method: CELLID
+                mode: UE_BASED
+                usage: UNSUCCESS
+                methodCode: 18
+              - method: CELLID
+                mode: UE_BASED
+                usage: UNSUCCESS
+                methodCode: 18
+            gnssPositioningDataList:
+              - mode: null
+                gnss: GPS
+                usage: null
+              - mode: null
+                gnss: GPS
+                usage: null
+            ecgi:
+              plmnId:
+                mcc: null
+                mnc: null
+              eutraCellId: null
+              nid: null
+            ncgi:
+              plmnId:
+                mcc: null
+                mnc: null
+              nrCellId: null
+              nid: null
+            altitude: null
+            barometricPressure: null
+            servingLMFIdentification: null
+            uePositioningCap: null
+            ueAreaInd:
+              country: country
+              internationalAreaInd: false
+            supportedFeatures: null
+            achievedQos:
+              hAccuracy: null
+              vAccuracy: null
+            directReportInd: false
+            indoorOutdoorInd: null
+            acceptedPeriodicEventInfo:
+              reportingAmount: null
+              reportingInterval: null
+              reportingInfiniteInd: true
+              reportingIntervalMs: null
+            haGnssMetrics:
+              nrOfUsedSatellites: 38
+              hdopi: 144
+              pdopi: 59
+              age: 69
+              fixType: CARRIER_PHASE_FLOAT
+            losNlosMeasureInd: null
+            relatedApplicationlayerId: null
+            distanceDirection:
+              distance: 9.301444243932576
+              azimuthDirection: null
+              elevationDirection: null
+            "2dRelativeLocation":
+              semiMinor: null
+              semiMajor: null
+              orientationAngle: null
+            "3dRelativeLocation":
+              semiMinor: null
+              semiMajor: null
+              verticalUncertainty: null
+              orientationAngle: null
+            relativeVelocity: null
+            rangingSlCapability: null
+          - locationEstimate: null
+            accuracyFulfilmentIndicator: null
+            ageOfLocationEstimate: null
+            timestampOfLocationEstimate: null
+            velocityEstimate: null
+            civicAddress:
+              country: country
+              A1: A1
+              A2: A2
+              A3: A3
+              A4: A4
+              A5: A5
+              A6: A6
+              PRD: PRD
+              POD: POD
+              STS: STS
+              HNO: HNO
+              HNS: HNS
+              LMK: LMK
+              LOC: LOC
+              NAM: NAM
+              PC: PC
+              BLD: BLD
+              UNIT: UNIT
+              FLR: FLR
+              ROOM: ROOM
+              PLC: PLC
+              PCN: PCN
+              POBOX: POBOX
+              ADDCODE: ADDCODE
+              SEAT: SEAT
+              RD: RD
+              RDSEC: RDSEC
+              RDBR: RDBR
+              RDSUBBR: RDSUBBR
+              PRM: PRM
+              POM: POM
+              usageRules: usageRules
+              method: method
+              providedBy: providedBy
+            localLocationEstimate: null
+            positioningDataList:
+              - method: CELLID
+                mode: UE_BASED
+                usage: UNSUCCESS
+                methodCode: 18
+              - method: CELLID
+                mode: UE_BASED
+                usage: UNSUCCESS
+                methodCode: 18
+            gnssPositioningDataList:
+              - mode: null
+                gnss: GPS
+                usage: null
+              - mode: null
+                gnss: GPS
+                usage: null
+            ecgi:
+              plmnId:
+                mcc: null
+                mnc: null
+              eutraCellId: null
+              nid: null
+            ncgi:
+              plmnId:
+                mcc: null
+                mnc: null
+              nrCellId: null
+              nid: null
+            altitude: null
+            barometricPressure: null
+            servingLMFIdentification: null
+            uePositioningCap: null
+            ueAreaInd:
+              country: country
+              internationalAreaInd: false
+            supportedFeatures: null
+            achievedQos:
+              hAccuracy: null
+              vAccuracy: null
+            directReportInd: false
+            indoorOutdoorInd: null
+            acceptedPeriodicEventInfo:
+              reportingAmount: null
+              reportingInterval: null
+              reportingInfiniteInd: true
+              reportingIntervalMs: null
+            haGnssMetrics:
+              nrOfUsedSatellites: 38
+              hdopi: 144
+              pdopi: 59
+              age: 69
+              fixType: CARRIER_PHASE_FLOAT
+            losNlosMeasureInd: null
+            relatedApplicationlayerId: null
+            distanceDirection:
+              distance: 9.301444243932576
+              azimuthDirection: null
+              elevationDirection: null
+            "2dRelativeLocation":
+              semiMinor: null
+              semiMajor: null
+              orientationAngle: null
+            "3dRelativeLocation":
+              semiMinor: null
+              semiMajor: null
+              verticalUncertainty: null
+              orientationAngle: null
+            relativeVelocity: null
+            rangingSlCapability: null
+    LocationData:
+      description: Information within Determine Location Response.
+      example:
+        locationEstimate: null
         accuracyFulfilmentIndicator: null
+        ageOfLocationEstimate: null
+        timestampOfLocationEstimate: null
+        velocityEstimate: null
         civicAddress:
-          POBOX: POBOX
-          usageRules: usageRules
           country: country
-          PRD: PRD
-          PLC: PLC
-          HNO: HNO
-          PRM: PRM
-          HNS: HNS
-          FLR: FLR
           A1: A1
           A2: A2
           A3: A3
           A4: A4
-          STS: STS
           A5: A5
           A6: A6
-          RDSEC: RDSEC
-          providedBy: providedBy
-          LOC: LOC
-          UNIT: UNIT
-          SEAT: SEAT
+          PRD: PRD
           POD: POD
-          RDBR: RDBR
-          method: method
+          STS: STS
+          HNO: HNO
+          HNS: HNS
           LMK: LMK
-          POM: POM
-          ADDCODE: ADDCODE
-          RD: RD
-          PC: PC
-          PCN: PCN
+          LOC: LOC
           NAM: NAM
+          PC: PC
           BLD: BLD
+          UNIT: UNIT
+          FLR: FLR
           ROOM: ROOM
+          PLC: PLC
+          PCN: PCN
+          POBOX: POBOX
+          ADDCODE: ADDCODE
+          SEAT: SEAT
+          RD: RD
+          RDSEC: RDSEC
+          RDBR: RDBR
           RDSUBBR: RDSUBBR
-        relativeVelocity: null
-        ageOfLocationEstimate: null
+          PRM: PRM
+          POM: POM
+          usageRules: usageRules
+          method: method
+          providedBy: providedBy
+        localLocationEstimate: null
+        positioningDataList:
+          - method: CELLID
+            mode: UE_BASED
+            usage: UNSUCCESS
+            methodCode: 18
+          - method: CELLID
+            mode: UE_BASED
+            usage: UNSUCCESS
+            methodCode: 18
+        gnssPositioningDataList:
+          - mode: null
+            gnss: GPS
+            usage: null
+          - mode: null
+            gnss: GPS
+            usage: null
+        ecgi:
+          plmnId:
+            mcc: null
+            mnc: null
+          eutraCellId: null
+          nid: null
+        ncgi:
+          plmnId:
+            mcc: null
+            mnc: null
+          nrCellId: null
+          nid: null
+        altitude: null
+        barometricPressure: null
+        servingLMFIdentification: null
+        uePositioningCap: null
+        ueAreaInd:
+          country: country
+          internationalAreaInd: false
+        supportedFeatures: null
+        achievedQos:
+          hAccuracy: null
+          vAccuracy: null
+        directReportInd: false
+        indoorOutdoorInd: null
+        acceptedPeriodicEventInfo:
+          reportingAmount: null
+          reportingInterval: null
+          reportingInfiniteInd: true
+          reportingIntervalMs: null
+        haGnssMetrics:
+          nrOfUsedSatellites: 38
+          hdopi: 144
+          pdopi: 59
+          age: 69
+          fixType: CARRIER_PHASE_FLOAT
+        losNlosMeasureInd: null
+        relatedApplicationlayerId: null
         distanceDirection:
-          azimuthDirection: null
           distance: 9.301444243932576
+          azimuthDirection: null
           elevationDirection: null
-        velocityEstimate: null
+        "2dRelativeLocation":
+          semiMinor: null
+          semiMajor: null
+          orientationAngle: null
+        "3dRelativeLocation":
+          semiMinor: null
+          semiMajor: null
+          verticalUncertainty: null
+          orientationAngle: null
+        relativeVelocity: null
+        rangingSlCapability: null
       properties:
         locationEstimate:
           $ref: "#/components/schemas/GeographicArea"
@@ -2616,21 +2616,21 @@ components:
           type: object
       description: Local 2D point with uncertainty ellipse
       example:
+        shape: null
         localOrigin:
           coordinateId: coordinateId
           point:
             lon: -151.1701851434036
             lat: 18.494211295267263
-        shape: null
-        confidence: null
         point:
           x: null
           "y": null
           z: null
         uncertaintyEllipse:
+          semiMajor: null
           semiMinor: null
           orientationMajor: null
-          semiMajor: null
+        confidence: null
     Local3dPointUncertaintyEllipsoid:
       allOf:
         - $ref: "#/components/schemas/GADShape"
@@ -2673,9 +2673,9 @@ components:
     UncertaintyEllipse:
       description: Ellipse with uncertainty.
       example:
+        semiMajor: null
         semiMinor: null
         orientationMajor: null
-        semiMajor: null
       properties:
         semiMajor:
           $ref: "#/components/schemas/Uncertainty"
@@ -2715,10 +2715,10 @@ components:
     LocationQoS:
       description: QoS of Location request.
       example:
-        responseTime: LOW_DELAY
-        verticalRequested: true
         hAccuracy: null
         vAccuracy: null
+        verticalRequested: true
+        responseTime: LOW_DELAY
         minorLocQoses:
           - hAccuracy: null
             vAccuracy: null
@@ -2746,8 +2746,8 @@ components:
     PositioningMethodAndUsage:
       description: Indicates the usage of a positioning method.
       example:
-        mode: UE_BASED
         method: CELLID
+        mode: UE_BASED
         usage: UNSUCCESS
         methodCode: 18
       properties:
@@ -2787,40 +2787,40 @@ components:
     CivicAddress:
       description: Indicates a Civic address.
       example:
-        POBOX: POBOX
-        usageRules: usageRules
         country: country
-        PRD: PRD
-        PLC: PLC
-        HNO: HNO
-        PRM: PRM
-        HNS: HNS
-        FLR: FLR
         A1: A1
         A2: A2
         A3: A3
         A4: A4
-        STS: STS
         A5: A5
         A6: A6
-        RDSEC: RDSEC
-        providedBy: providedBy
-        LOC: LOC
-        UNIT: UNIT
-        SEAT: SEAT
+        PRD: PRD
         POD: POD
-        RDBR: RDBR
-        method: method
+        STS: STS
+        HNO: HNO
+        HNS: HNS
         LMK: LMK
-        POM: POM
-        ADDCODE: ADDCODE
-        RD: RD
-        PC: PC
-        PCN: PCN
+        LOC: LOC
         NAM: NAM
+        PC: PC
         BLD: BLD
+        UNIT: UNIT
+        FLR: FLR
         ROOM: ROOM
+        PLC: PLC
+        PCN: PCN
+        POBOX: POBOX
+        ADDCODE: ADDCODE
+        SEAT: SEAT
+        RD: RD
+        RDSEC: RDSEC
+        RDBR: RDBR
         RDSUBBR: RDSUBBR
+        PRM: PRM
+        POM: POM
+        usageRules: usageRules
+        method: method
+        providedBy: providedBy
       properties:
         country:
           type: string
@@ -2982,8 +2982,8 @@ components:
     PeriodicEventInfo:
       description: Indicates the information of periodic event reporting.
       example:
-        reportingInterval: null
         reportingAmount: null
+        reportingInterval: null
         reportingInfiniteInd: true
         reportingIntervalMs: null
       properties:
@@ -3002,108 +3002,108 @@ components:
     AreaEventInfo:
       description: Indicates the information of area based event reporting.
       example:
-        samplingInterval: null
-        reportingLocationReq: true
-        reportingDuration: null
-        minimumInterval: null
         areaDefinition:
-          - ncgi:
-              nid: null
-              plmnId:
-                mnc: null
-                mcc: null
-              nrCellId: null
-            areaType: EPS_TRACKING_AREA_IDENTITY
+          - areaType: EPS_TRACKING_AREA_IDENTITY
             tai:
+              plmnId:
+                mcc: null
+                mnc: null
               tac: null
               nid: null
-              plmnId:
-                mnc: null
-                mcc: null
             ecgi:
+              plmnId:
+                mcc: null
+                mnc: null
               eutraCellId: null
               nid: null
+            ncgi:
               plmnId:
-                mnc: null
                 mcc: null
-          - ncgi:
-              nid: null
-              plmnId:
                 mnc: null
-                mcc: null
               nrCellId: null
-            areaType: EPS_TRACKING_AREA_IDENTITY
+              nid: null
+          - areaType: EPS_TRACKING_AREA_IDENTITY
             tai:
+              plmnId:
+                mcc: null
+                mnc: null
               tac: null
               nid: null
-              plmnId:
-                mnc: null
-                mcc: null
             ecgi:
+              plmnId:
+                mcc: null
+                mnc: null
               eutraCellId: null
               nid: null
+            ncgi:
               plmnId:
-                mnc: null
                 mcc: null
-          - ncgi:
-              nid: null
-              plmnId:
                 mnc: null
-                mcc: null
               nrCellId: null
-            areaType: EPS_TRACKING_AREA_IDENTITY
+              nid: null
+          - areaType: EPS_TRACKING_AREA_IDENTITY
             tai:
+              plmnId:
+                mcc: null
+                mnc: null
               tac: null
               nid: null
-              plmnId:
-                mnc: null
-                mcc: null
             ecgi:
+              plmnId:
+                mcc: null
+                mnc: null
               eutraCellId: null
               nid: null
+            ncgi:
               plmnId:
-                mnc: null
                 mcc: null
-          - ncgi:
-              nid: null
-              plmnId:
                 mnc: null
-                mcc: null
               nrCellId: null
-            areaType: EPS_TRACKING_AREA_IDENTITY
+              nid: null
+          - areaType: EPS_TRACKING_AREA_IDENTITY
             tai:
+              plmnId:
+                mcc: null
+                mnc: null
               tac: null
               nid: null
-              plmnId:
-                mnc: null
-                mcc: null
             ecgi:
+              plmnId:
+                mcc: null
+                mnc: null
               eutraCellId: null
               nid: null
+            ncgi:
               plmnId:
-                mnc: null
                 mcc: null
-          - ncgi:
-              nid: null
-              plmnId:
                 mnc: null
-                mcc: null
               nrCellId: null
-            areaType: EPS_TRACKING_AREA_IDENTITY
+              nid: null
+          - areaType: EPS_TRACKING_AREA_IDENTITY
             tai:
+              plmnId:
+                mcc: null
+                mnc: null
               tac: null
               nid: null
-              plmnId:
-                mnc: null
-                mcc: null
             ecgi:
+              plmnId:
+                mcc: null
+                mnc: null
               eutraCellId: null
               nid: null
+            ncgi:
               plmnId:
-                mnc: null
                 mcc: null
+                mnc: null
+              nrCellId: null
+              nid: null
         occurrenceInfo: ONE_TIME_EVENT
+        minimumInterval: null
         maximumInterval: null
+        samplingInterval: null
+        reportingDuration: null
+        reportingLocationReq: true
       properties:
         areaDefinition:
           items:
@@ -3130,25 +3130,25 @@ components:
     ReportingArea:
       description: Indicates an area for event reporting.
       example:
-        ncgi:
-          nid: null
-          plmnId:
-            mnc: null
-            mcc: null
-          nrCellId: null
         areaType: EPS_TRACKING_AREA_IDENTITY
         tai:
+          plmnId:
+            mcc: null
+            mnc: null
           tac: null
           nid: null
-          plmnId:
-            mnc: null
-            mcc: null
         ecgi:
+          plmnId:
+            mcc: null
+            mnc: null
           eutraCellId: null
           nid: null
+        ncgi:
           plmnId:
-            mnc: null
             mcc: null
+            mnc: null
+          nrCellId: null
+          nid: null
       properties:
         areaType:
           $ref: "#/components/schemas/ReportingAreaType"
@@ -3164,13 +3164,13 @@ components:
     MotionEventInfo:
       description: Indicates the information of motion based event reporting.
       example:
-        samplingInterval: null
-        reportingLocationReq: true
-        reportingDuration: null
-        minimumInterval: null
         linearDistance: null
         occurrenceInfo: null
+        minimumInterval: null
         maximumInterval: null
+        samplingInterval: null
+        reportingDuration: null
+        reportingLocationReq: true
       properties:
         linearDistance:
           $ref: "#/components/schemas/LinearDistance"
@@ -3193,9 +3193,9 @@ components:
     CancelLocData:
       description: Information within Cancel Location Request.
       example:
-        supportedFeatures: supportedFeatures
         hgmlcCallBackURI: hgmlcCallBackURI
         ldrReference: ldrReference
+        supportedFeatures: supportedFeatures
       properties:
         hgmlcCallBackURI:
           description: String providing an URI formatted according to RFC 3986.
@@ -3217,189 +3217,189 @@ components:
     LocContextData:
       description: Information within Transfer Location Context Request.
       example:
-        ldrType: UE_AVAILABLE
-        uePositioningCap: uePositioningCap
-        supportedFeatures: supportedFeatures
-        ncgi:
-          nid: null
-          plmnId:
-            mnc: null
-            mcc: null
-          nrCellId: null
-        motionEventInfo:
-          samplingInterval: null
-          reportingLocationReq: true
-          reportingDuration: null
-          minimumInterval: null
-          linearDistance: null
-          occurrenceInfo: null
-          maximumInterval: null
-        scheduledLocTime: 2000-01-23T04:56:07.000+00:00
-        hgmlcCallBackURI: hgmlcCallBackURI
-        areaEventInfo:
-          samplingInterval: null
-          reportingLocationReq: true
-          reportingDuration: null
-          minimumInterval: null
-          areaDefinition:
-            - ncgi:
-                nid: null
-                plmnId:
-                  mnc: null
-                  mcc: null
-                nrCellId: null
-              areaType: EPS_TRACKING_AREA_IDENTITY
-              tai:
-                tac: null
-                nid: null
-                plmnId:
-                  mnc: null
-                  mcc: null
-              ecgi:
-                eutraCellId: null
-                nid: null
-                plmnId:
-                  mnc: null
-                  mcc: null
-            - ncgi:
-                nid: null
-                plmnId:
-                  mnc: null
-                  mcc: null
-                nrCellId: null
-              areaType: EPS_TRACKING_AREA_IDENTITY
-              tai:
-                tac: null
-                nid: null
-                plmnId:
-                  mnc: null
-                  mcc: null
-              ecgi:
-                eutraCellId: null
-                nid: null
-                plmnId:
-                  mnc: null
-                  mcc: null
-            - ncgi:
-                nid: null
-                plmnId:
-                  mnc: null
-                  mcc: null
-                nrCellId: null
-              areaType: EPS_TRACKING_AREA_IDENTITY
-              tai:
-                tac: null
-                nid: null
-                plmnId:
-                  mnc: null
-                  mcc: null
-              ecgi:
-                eutraCellId: null
-                nid: null
-                plmnId:
-                  mnc: null
-                  mcc: null
-            - ncgi:
-                nid: null
-                plmnId:
-                  mnc: null
-                  mcc: null
-                nrCellId: null
-              areaType: EPS_TRACKING_AREA_IDENTITY
-              tai:
-                tac: null
-                nid: null
-                plmnId:
-                  mnc: null
-                  mcc: null
-              ecgi:
-                eutraCellId: null
-                nid: null
-                plmnId:
-                  mnc: null
-                  mcc: null
-            - ncgi:
-                nid: null
-                plmnId:
-                  mnc: null
-                  mcc: null
-                nrCellId: null
-              areaType: EPS_TRACKING_AREA_IDENTITY
-              tai:
-                tac: null
-                nid: null
-                plmnId:
-                  mnc: null
-                  mcc: null
-              ecgi:
-                eutraCellId: null
-                nid: null
-                plmnId:
-                  mnc: null
-                  mcc: null
-          occurrenceInfo: ONE_TIME_EVENT
-          maximumInterval: null
-        ueLocationInfo:
-          locationEstimate:
-            shape: POINT
-            point:
-              lon: -151.1701851434036
-              lat: 18.494211295267263
-          timestampOfLocationEstimate: null
-          ageOfVelocityEstimate: null
-          timestampOfVelocityEstimate: null
-          ageOfLocationEstimate: null
-          velocityEstimate:
-            hSpeed: null
-            bearing: null
-        eventReportingStatus:
-          eventReportCounter: null
-          eventReportDuration: null
+        amfId: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
         locationQoS:
-          responseTime: LOW_DELAY
-          verticalRequested: true
           hAccuracy: null
           vAccuracy: null
+          verticalRequested: true
+          responseTime: LOW_DELAY
           minorLocQoses:
             - hAccuracy: null
               vAccuracy: null
             - hAccuracy: null
               vAccuracy: null
           lcsQosClass: BEST_EFFORT
-        supi: supi
-        guami:
-          plmnId:
-            mnc: null
-            nid: null
-            mcc: null
-          amfId: null
         supportedGADShapes:
           - POINT
           - POINT
+        supi: supi
         gpsi: gpsi
-        ecgi:
-          eutraCellId: null
-          nid: null
-          plmnId:
-            mnc: null
-            mcc: null
+        ldrType: UE_AVAILABLE
+        hgmlcCallBackURI: hgmlcCallBackURI
+        ldrReference: ldrReference
+        periodicEventInfo:
+          reportingAmount: null
+          reportingInterval: null
+          reportingInfiniteInd: true
+          reportingIntervalMs: null
+        areaEventInfo:
+          areaDefinition:
+            - areaType: EPS_TRACKING_AREA_IDENTITY
+              tai:
+                plmnId:
+                  mcc: null
+                  mnc: null
+                tac: null
+                nid: null
+              ecgi:
+                plmnId:
+                  mcc: null
+                  mnc: null
+                eutraCellId: null
+                nid: null
+              ncgi:
+                plmnId:
+                  mcc: null
+                  mnc: null
+                nrCellId: null
+                nid: null
+            - areaType: EPS_TRACKING_AREA_IDENTITY
+              tai:
+                plmnId:
+                  mcc: null
+                  mnc: null
+                tac: null
+                nid: null
+              ecgi:
+                plmnId:
+                  mcc: null
+                  mnc: null
+                eutraCellId: null
+                nid: null
+              ncgi:
+                plmnId:
+                  mcc: null
+                  mnc: null
+                nrCellId: null
+                nid: null
+            - areaType: EPS_TRACKING_AREA_IDENTITY
+              tai:
+                plmnId:
+                  mcc: null
+                  mnc: null
+                tac: null
+                nid: null
+              ecgi:
+                plmnId:
+                  mcc: null
+                  mnc: null
+                eutraCellId: null
+                nid: null
+              ncgi:
+                plmnId:
+                  mcc: null
+                  mnc: null
+                nrCellId: null
+                nid: null
+            - areaType: EPS_TRACKING_AREA_IDENTITY
+              tai:
+                plmnId:
+                  mcc: null
+                  mnc: null
+                tac: null
+                nid: null
+              ecgi:
+                plmnId:
+                  mcc: null
+                  mnc: null
+                eutraCellId: null
+                nid: null
+              ncgi:
+                plmnId:
+                  mcc: null
+                  mnc: null
+                nrCellId: null
+                nid: null
+            - areaType: EPS_TRACKING_AREA_IDENTITY
+              tai:
+                plmnId:
+                  mcc: null
+                  mnc: null
+                tac: null
+                nid: null
+              ecgi:
+                plmnId:
+                  mcc: null
+                  mnc: null
+                eutraCellId: null
+                nid: null
+              ncgi:
+                plmnId:
+                  mcc: null
+                  mnc: null
+                nrCellId: null
+                nid: null
+          occurrenceInfo: ONE_TIME_EVENT
+          minimumInterval: null
+          maximumInterval: null
+          samplingInterval: null
+          reportingDuration: null
+          reportingLocationReq: true
+        motionEventInfo:
+          linearDistance: null
+          occurrenceInfo: null
+          minimumInterval: null
+          maximumInterval: null
+          samplingInterval: null
+          reportingDuration: null
+          reportingLocationReq: true
         eventReportMessage:
           eventClass: SUPPLEMENTARY_SERVICES
           eventContent:
             contentId: contentId
-        periodicEventInfo:
-          reportingInterval: null
-          reportingAmount: null
-          reportingInfiniteInd: true
-          reportingIntervalMs: null
-        upCumEvtRptCriteria:
-          evtRptCountCriteria: 5
-          evtRptTimeCriteria: 1
+        eventReportingStatus:
+          eventReportCounter: null
+          eventReportDuration: null
+        ueLocationInfo:
+          locationEstimate:
+            shape: POINT
+            point:
+              lon: -151.1701851434036
+              lat: 18.494211295267263
+          ageOfLocationEstimate: null
+          timestampOfLocationEstimate: null
+          velocityEstimate:
+            hSpeed: null
+            bearing: null
+          ageOfVelocityEstimate: null
+          timestampOfVelocityEstimate: null
         cIoT5GSOptimisation: false
-        ldrReference: ldrReference
+        ecgi:
+          plmnId:
+            mcc: null
+            mnc: null
+          eutraCellId: null
+          nid: null
+        ncgi:
+          plmnId:
+            mcc: null
+            mnc: null
+          nrCellId: null
+          nid: null
+        guami:
+          plmnId:
+            mcc: null
+            mnc: null
+            nid: null
+          amfId: null
+        supportedFeatures: supportedFeatures
+        uePositioningCap: uePositioningCap
+        scheduledLocTime: 2000-01-23T04:56:07.000+00:00
         indoorOutdoorInd: INDOOR
         losNlosMeasureInd: LOS
-        amfId: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
+        upCumEvtRptCriteria:
+          evtRptTimeCriteria: 1
+          evtRptCountCriteria: 5
       properties:
         amfId:
           description: |
@@ -3526,13 +3526,13 @@ components:
           point:
             lon: -151.1701851434036
             lat: 18.494211295267263
-        timestampOfLocationEstimate: null
-        ageOfVelocityEstimate: null
-        timestampOfVelocityEstimate: null
         ageOfLocationEstimate: null
+        timestampOfLocationEstimate: null
         velocityEstimate:
           hSpeed: null
           bearing: null
+        ageOfVelocityEstimate: null
+        timestampOfVelocityEstimate: null
       properties:
         locationEstimate:
           $ref: "#/components/schemas/GeographicArea"
@@ -3553,316 +3553,79 @@ components:
         - $ref: "#/components/schemas/AddEventNotifyDatas"
       description: Extended Event Notify Data for UEs
       example:
-        altitude: null
-        supportedFeatures: null
-        achievedQos:
-          hAccuracy: null
-          vAccuracy: null
-        hgmlcCallBackURI: null
-        gnssPositioningDataList:
-          - mode: null
-            gnss: GPS
-            usage: null
-          - mode: null
-            gnss: GPS
-            usage: null
-        relatedApplicationlayerId: null
         reportedEventType: PERIODIC_EVENT
+        supi: null
         gpsi: null
+        hgmlcCallBackURI: null
+        ldrReference: null
+        lirReference: null
         locationEstimate:
           shape: POINT
           point:
             lon: -151.1701851434036
             lat: 18.494211295267263
+        ageOfLocationEstimate: null
         timestampOfLocationEstimate: null
-        "2dRelativeLocation":
-          semiMinor: null
-          orientationAngle: null
-          semiMajor: null
-        losNlosMeasureInd: LOS
-        upLocRepStatAf: 0
-        haGnssMetrics:
-          hdopi: 144
-          fixType: CARRIER_PHASE_FLOAT
-          nrOfUsedSatellites: 38
-          pdopi: 59
-          age: 69
-        servingLMFidentification: null
-        "3dRelativeLocation":
-          semiMinor: null
-          verticalUncertainty: null
-          orientationAngle: null
-          semiMajor: null
-        addEventNotifyDatas:
-          - altitude: null
-            supportedFeatures: null
-            achievedQos:
-              hAccuracy: null
-              vAccuracy: null
-            hgmlcCallBackURI: null
-            gnssPositioningDataList:
-              - mode: null
-                gnss: GPS
-                usage: null
-              - mode: null
-                gnss: GPS
-                usage: null
-            relatedApplicationlayerId: null
-            reportedEventType: null
-            gpsi: null
-            locationEstimate: null
-            timestampOfLocationEstimate: null
-            "2dRelativeLocation":
-              semiMinor: null
-              orientationAngle: null
-              semiMajor: null
-            losNlosMeasureInd: null
-            upLocRepStatAf: 6
-            haGnssMetrics:
-              hdopi: 144
-              fixType: CARRIER_PHASE_FLOAT
-              nrOfUsedSatellites: 38
-              pdopi: 59
-              age: 69
-            servingLMFidentification: null
-            "3dRelativeLocation":
-              semiMinor: null
-              verticalUncertainty: null
-              orientationAngle: null
-              semiMajor: null
-            supi: null
-            localLocationEstimate: null
-            positioningDataList:
-              - mode: UE_BASED
-                method: CELLID
-                usage: UNSUCCESS
-                methodCode: 18
-              - mode: UE_BASED
-                method: CELLID
-                usage: UNSUCCESS
-                methodCode: 18
-            terminationCause: null
-            lirReference: null
-            ldrReference: null
-            indoorOutdoorInd: null
-            civicAddress:
-              POBOX: POBOX
-              usageRules: usageRules
-              country: country
-              PRD: PRD
-              PLC: PLC
-              HNO: HNO
-              PRM: PRM
-              HNS: HNS
-              FLR: FLR
-              A1: A1
-              A2: A2
-              A3: A3
-              A4: A4
-              STS: STS
-              A5: A5
-              A6: A6
-              RDSEC: RDSEC
-              providedBy: providedBy
-              LOC: LOC
-              UNIT: UNIT
-              SEAT: SEAT
-              POD: POD
-              RDBR: RDBR
-              method: method
-              LMK: LMK
-              POM: POM
-              ADDCODE: ADDCODE
-              RD: RD
-              PC: PC
-              PCN: PCN
-              NAM: NAM
-              BLD: BLD
-              ROOM: ROOM
-              RDSUBBR: RDSUBBR
-            relativeVelocity: null
-            ageOfLocationEstimate: null
-            distanceDirection:
-              azimuthDirection: null
-              distance: 9.301444243932576
-              elevationDirection: null
-            velocityEstimate: null
-          - altitude: null
-            supportedFeatures: null
-            achievedQos:
-              hAccuracy: null
-              vAccuracy: null
-            hgmlcCallBackURI: null
-            gnssPositioningDataList:
-              - mode: null
-                gnss: GPS
-                usage: null
-              - mode: null
-                gnss: GPS
-                usage: null
-            relatedApplicationlayerId: null
-            reportedEventType: null
-            gpsi: null
-            locationEstimate: null
-            timestampOfLocationEstimate: null
-            "2dRelativeLocation":
-              semiMinor: null
-              orientationAngle: null
-              semiMajor: null
-            losNlosMeasureInd: null
-            upLocRepStatAf: 6
-            haGnssMetrics:
-              hdopi: 144
-              fixType: CARRIER_PHASE_FLOAT
-              nrOfUsedSatellites: 38
-              pdopi: 59
-              age: 69
-            servingLMFidentification: null
-            "3dRelativeLocation":
-              semiMinor: null
-              verticalUncertainty: null
-              orientationAngle: null
-              semiMajor: null
-            supi: null
-            localLocationEstimate: null
-            positioningDataList:
-              - mode: UE_BASED
-                method: CELLID
-                usage: UNSUCCESS
-                methodCode: 18
-              - mode: UE_BASED
-                method: CELLID
-                usage: UNSUCCESS
-                methodCode: 18
-            terminationCause: null
-            lirReference: null
-            ldrReference: null
-            indoorOutdoorInd: null
-            civicAddress:
-              POBOX: POBOX
-              usageRules: usageRules
-              country: country
-              PRD: PRD
-              PLC: PLC
-              HNO: HNO
-              PRM: PRM
-              HNS: HNS
-              FLR: FLR
-              A1: A1
-              A2: A2
-              A3: A3
-              A4: A4
-              STS: STS
-              A5: A5
-              A6: A6
-              RDSEC: RDSEC
-              providedBy: providedBy
-              LOC: LOC
-              UNIT: UNIT
-              SEAT: SEAT
-              POD: POD
-              RDBR: RDBR
-              method: method
-              LMK: LMK
-              POM: POM
-              ADDCODE: ADDCODE
-              RD: RD
-              PC: PC
-              PCN: PCN
-              NAM: NAM
-              BLD: BLD
-              ROOM: ROOM
-              RDSUBBR: RDSUBBR
-            relativeVelocity: null
-            ageOfLocationEstimate: null
-            distanceDirection:
-              azimuthDirection: null
-              distance: 9.301444243932576
-              elevationDirection: null
-            velocityEstimate: null
-        supi: null
+        civicAddress:
+          country: country
+          A1: A1
+          A2: A2
+          A3: A3
+          A4: A4
+          A5: A5
+          A6: A6
+          PRD: PRD
+          POD: POD
+          STS: STS
+          HNO: HNO
+          HNS: HNS
+          LMK: LMK
+          LOC: LOC
+          NAM: NAM
+          PC: PC
+          BLD: BLD
+          UNIT: UNIT
+          FLR: FLR
+          ROOM: ROOM
+          PLC: PLC
+          PCN: PCN
+          POBOX: POBOX
+          ADDCODE: ADDCODE
+          SEAT: SEAT
+          RD: RD
+          RDSEC: RDSEC
+          RDBR: RDBR
+          RDSUBBR: RDSUBBR
+          PRM: PRM
+          POM: POM
+          usageRules: usageRules
+          method: method
+          providedBy: providedBy
         localLocationEstimate:
+          shape: null
           localOrigin:
             coordinateId: coordinateId
             point:
               lon: -151.1701851434036
               lat: 18.494211295267263
-          shape: null
-          confidence: null
           point:
             x: null
             "y": null
             z: null
           uncertaintyEllipse:
+            semiMajor: null
             semiMinor: null
             orientationMajor: null
-            semiMajor: null
+          confidence: null
         positioningDataList:
-          - mode: UE_BASED
-            method: CELLID
+          - method: CELLID
+            mode: UE_BASED
             usage: UNSUCCESS
             methodCode: 18
-          - mode: UE_BASED
-            method: CELLID
+          - method: CELLID
+            mode: UE_BASED
             usage: UNSUCCESS
             methodCode: 18
-        terminationCause: TERMINATION_BY_UE
-        lirReference: null
-        ldrReference: null
-        indoorOutdoorInd: INDOOR
-        civicAddress:
-          POBOX: POBOX
-          usageRules: usageRules
-          country: country
-          PRD: PRD
-          PLC: PLC
-          HNO: HNO
-          PRM: PRM
-          HNS: HNS
-          FLR: FLR
-          A1: A1
-          A2: A2
-          A3: A3
-          A4: A4
-          STS: STS
-          A5: A5
-          A6: A6
-          RDSEC: RDSEC
-          providedBy: providedBy
-          LOC: LOC
-          UNIT: UNIT
-          SEAT: SEAT
-          POD: POD
-          RDBR: RDBR
-          method: method
-          LMK: LMK
-          POM: POM
-          ADDCODE: ADDCODE
-          RD: RD
-          PC: PC
-          PCN: PCN
-          NAM: NAM
-          BLD: BLD
-          ROOM: ROOM
-          RDSUBBR: RDSUBBR
-        relativeVelocity: null
-        ageOfLocationEstimate: null
-        distanceDirection:
-          azimuthDirection: null
-          distance: 9.301444243932576
-          elevationDirection: null
-        velocityEstimate:
-          hSpeed: null
-          bearing: null
-    EventNotifyData:
-      description: Information within Event Notify Request.
-      example:
-        altitude: null
-        supportedFeatures: null
-        achievedQos:
-          hAccuracy: null
-          vAccuracy: null
-        hgmlcCallBackURI: null
         gnssPositioningDataList:
           - mode: null
             gnss: GPS
@@ -3870,86 +3633,323 @@ components:
           - mode: null
             gnss: GPS
             usage: null
-        relatedApplicationlayerId: null
-        reportedEventType: null
-        gpsi: null
-        locationEstimate: null
-        timestampOfLocationEstimate: null
-        "2dRelativeLocation":
-          semiMinor: null
-          orientationAngle: null
-          semiMajor: null
-        losNlosMeasureInd: null
-        upLocRepStatAf: 6
+        servingLMFidentification: null
+        terminationCause: TERMINATION_BY_UE
+        velocityEstimate:
+          hSpeed: null
+          bearing: null
+        altitude: null
+        achievedQos:
+          hAccuracy: null
+          vAccuracy: null
+        supportedFeatures: null
+        indoorOutdoorInd: INDOOR
         haGnssMetrics:
-          hdopi: 144
-          fixType: CARRIER_PHASE_FLOAT
           nrOfUsedSatellites: 38
+          hdopi: 144
           pdopi: 59
           age: 69
-        servingLMFidentification: null
+          fixType: CARRIER_PHASE_FLOAT
+        losNlosMeasureInd: LOS
+        upLocRepStatAf: 0
+        relatedApplicationlayerId: null
+        distanceDirection:
+          distance: 9.301444243932576
+          azimuthDirection: null
+          elevationDirection: null
+        "2dRelativeLocation":
+          semiMinor: null
+          semiMajor: null
+          orientationAngle: null
         "3dRelativeLocation":
           semiMinor: null
+          semiMajor: null
           verticalUncertainty: null
           orientationAngle: null
-          semiMajor: null
+        relativeVelocity: null
+        addEventNotifyDatas:
+          - reportedEventType: null
+            supi: null
+            gpsi: null
+            hgmlcCallBackURI: null
+            ldrReference: null
+            lirReference: null
+            locationEstimate: null
+            ageOfLocationEstimate: null
+            timestampOfLocationEstimate: null
+            civicAddress:
+              country: country
+              A1: A1
+              A2: A2
+              A3: A3
+              A4: A4
+              A5: A5
+              A6: A6
+              PRD: PRD
+              POD: POD
+              STS: STS
+              HNO: HNO
+              HNS: HNS
+              LMK: LMK
+              LOC: LOC
+              NAM: NAM
+              PC: PC
+              BLD: BLD
+              UNIT: UNIT
+              FLR: FLR
+              ROOM: ROOM
+              PLC: PLC
+              PCN: PCN
+              POBOX: POBOX
+              ADDCODE: ADDCODE
+              SEAT: SEAT
+              RD: RD
+              RDSEC: RDSEC
+              RDBR: RDBR
+              RDSUBBR: RDSUBBR
+              PRM: PRM
+              POM: POM
+              usageRules: usageRules
+              method: method
+              providedBy: providedBy
+            localLocationEstimate: null
+            positioningDataList:
+              - method: CELLID
+                mode: UE_BASED
+                usage: UNSUCCESS
+                methodCode: 18
+              - method: CELLID
+                mode: UE_BASED
+                usage: UNSUCCESS
+                methodCode: 18
+            gnssPositioningDataList:
+              - mode: null
+                gnss: GPS
+                usage: null
+              - mode: null
+                gnss: GPS
+                usage: null
+            servingLMFidentification: null
+            terminationCause: null
+            velocityEstimate: null
+            altitude: null
+            achievedQos:
+              hAccuracy: null
+              vAccuracy: null
+            supportedFeatures: null
+            indoorOutdoorInd: null
+            haGnssMetrics:
+              nrOfUsedSatellites: 38
+              hdopi: 144
+              pdopi: 59
+              age: 69
+              fixType: CARRIER_PHASE_FLOAT
+            losNlosMeasureInd: null
+            upLocRepStatAf: 6
+            relatedApplicationlayerId: null
+            distanceDirection:
+              distance: 9.301444243932576
+              azimuthDirection: null
+              elevationDirection: null
+            "2dRelativeLocation":
+              semiMinor: null
+              semiMajor: null
+              orientationAngle: null
+            "3dRelativeLocation":
+              semiMinor: null
+              semiMajor: null
+              verticalUncertainty: null
+              orientationAngle: null
+            relativeVelocity: null
+          - reportedEventType: null
+            supi: null
+            gpsi: null
+            hgmlcCallBackURI: null
+            ldrReference: null
+            lirReference: null
+            locationEstimate: null
+            ageOfLocationEstimate: null
+            timestampOfLocationEstimate: null
+            civicAddress:
+              country: country
+              A1: A1
+              A2: A2
+              A3: A3
+              A4: A4
+              A5: A5
+              A6: A6
+              PRD: PRD
+              POD: POD
+              STS: STS
+              HNO: HNO
+              HNS: HNS
+              LMK: LMK
+              LOC: LOC
+              NAM: NAM
+              PC: PC
+              BLD: BLD
+              UNIT: UNIT
+              FLR: FLR
+              ROOM: ROOM
+              PLC: PLC
+              PCN: PCN
+              POBOX: POBOX
+              ADDCODE: ADDCODE
+              SEAT: SEAT
+              RD: RD
+              RDSEC: RDSEC
+              RDBR: RDBR
+              RDSUBBR: RDSUBBR
+              PRM: PRM
+              POM: POM
+              usageRules: usageRules
+              method: method
+              providedBy: providedBy
+            localLocationEstimate: null
+            positioningDataList:
+              - method: CELLID
+                mode: UE_BASED
+                usage: UNSUCCESS
+                methodCode: 18
+              - method: CELLID
+                mode: UE_BASED
+                usage: UNSUCCESS
+                methodCode: 18
+            gnssPositioningDataList:
+              - mode: null
+                gnss: GPS
+                usage: null
+              - mode: null
+                gnss: GPS
+                usage: null
+            servingLMFidentification: null
+            terminationCause: null
+            velocityEstimate: null
+            altitude: null
+            achievedQos:
+              hAccuracy: null
+              vAccuracy: null
+            supportedFeatures: null
+            indoorOutdoorInd: null
+            haGnssMetrics:
+              nrOfUsedSatellites: 38
+              hdopi: 144
+              pdopi: 59
+              age: 69
+              fixType: CARRIER_PHASE_FLOAT
+            losNlosMeasureInd: null
+            upLocRepStatAf: 6
+            relatedApplicationlayerId: null
+            distanceDirection:
+              distance: 9.301444243932576
+              azimuthDirection: null
+              elevationDirection: null
+            "2dRelativeLocation":
+              semiMinor: null
+              semiMajor: null
+              orientationAngle: null
+            "3dRelativeLocation":
+              semiMinor: null
+              semiMajor: null
+              verticalUncertainty: null
+              orientationAngle: null
+            relativeVelocity: null
+    EventNotifyData:
+      description: Information within Event Notify Request.
+      example:
+        reportedEventType: null
         supi: null
-        localLocationEstimate: null
-        positioningDataList:
-          - mode: UE_BASED
-            method: CELLID
-            usage: UNSUCCESS
-            methodCode: 18
-          - mode: UE_BASED
-            method: CELLID
-            usage: UNSUCCESS
-            methodCode: 18
-        terminationCause: null
-        lirReference: null
+        gpsi: null
+        hgmlcCallBackURI: null
         ldrReference: null
-        indoorOutdoorInd: null
+        lirReference: null
+        locationEstimate: null
+        ageOfLocationEstimate: null
+        timestampOfLocationEstimate: null
         civicAddress:
-          POBOX: POBOX
-          usageRules: usageRules
           country: country
-          PRD: PRD
-          PLC: PLC
-          HNO: HNO
-          PRM: PRM
-          HNS: HNS
-          FLR: FLR
           A1: A1
           A2: A2
           A3: A3
           A4: A4
-          STS: STS
           A5: A5
           A6: A6
-          RDSEC: RDSEC
-          providedBy: providedBy
-          LOC: LOC
-          UNIT: UNIT
-          SEAT: SEAT
+          PRD: PRD
           POD: POD
-          RDBR: RDBR
-          method: method
+          STS: STS
+          HNO: HNO
+          HNS: HNS
           LMK: LMK
-          POM: POM
-          ADDCODE: ADDCODE
-          RD: RD
-          PC: PC
-          PCN: PCN
+          LOC: LOC
           NAM: NAM
+          PC: PC
           BLD: BLD
+          UNIT: UNIT
+          FLR: FLR
           ROOM: ROOM
+          PLC: PLC
+          PCN: PCN
+          POBOX: POBOX
+          ADDCODE: ADDCODE
+          SEAT: SEAT
+          RD: RD
+          RDSEC: RDSEC
+          RDBR: RDBR
           RDSUBBR: RDSUBBR
-        relativeVelocity: null
-        ageOfLocationEstimate: null
-        distanceDirection:
-          azimuthDirection: null
-          distance: 9.301444243932576
-          elevationDirection: null
+          PRM: PRM
+          POM: POM
+          usageRules: usageRules
+          method: method
+          providedBy: providedBy
+        localLocationEstimate: null
+        positioningDataList:
+          - method: CELLID
+            mode: UE_BASED
+            usage: UNSUCCESS
+            methodCode: 18
+          - method: CELLID
+            mode: UE_BASED
+            usage: UNSUCCESS
+            methodCode: 18
+        gnssPositioningDataList:
+          - mode: null
+            gnss: GPS
+            usage: null
+          - mode: null
+            gnss: GPS
+            usage: null
+        servingLMFidentification: null
+        terminationCause: null
         velocityEstimate: null
+        altitude: null
+        achievedQos:
+          hAccuracy: null
+          vAccuracy: null
+        supportedFeatures: null
+        indoorOutdoorInd: null
+        haGnssMetrics:
+          nrOfUsedSatellites: 38
+          hdopi: 144
+          pdopi: 59
+          age: 69
+          fixType: CARRIER_PHASE_FLOAT
+        losNlosMeasureInd: null
+        upLocRepStatAf: 6
+        relatedApplicationlayerId: null
+        distanceDirection:
+          distance: 9.301444243932576
+          azimuthDirection: null
+          elevationDirection: null
+        "2dRelativeLocation":
+          semiMinor: null
+          semiMajor: null
+          orientationAngle: null
+        "3dRelativeLocation":
+          semiMinor: null
+          semiMajor: null
+          verticalUncertainty: null
+          orientationAngle: null
+        relativeVelocity: null
       properties:
         reportedEventType:
           $ref: "#/components/schemas/ReportedEventType"
@@ -4045,17 +4045,17 @@ components:
       description: MBSR Information
       example:
         ncgi:
-          nid: null
           plmnId:
-            mnc: null
             mcc: null
+            mnc: null
           nrCellId: null
+          nid: null
         ecgi:
+          plmnId:
+            mcc: null
+            mnc: null
           eutraCellId: null
           nid: null
-          plmnId:
-            mnc: null
-            mcc: null
       properties:
         ncgi:
           $ref: "#/components/schemas/Ncgi"
@@ -4065,27 +4065,27 @@ components:
     LocMeasurementReq:
       description: Location Measurement Request.
       example:
-        timestampOfPreCalcuLocEstimate: 2000-01-23T04:56:07.000+00:00
         ncgi:
-          nid: null
           plmnId:
-            mnc: null
             mcc: null
+            mnc: null
           nrCellId: null
-        timeWindows:
-          - null
-          - null
+          nid: null
+        ecgi:
+          plmnId:
+            mcc: null
+            mnc: null
+          eutraCellId: null
+          nid: null
         preCalcuLocEstimate:
           shape: POINT
           point:
             lon: -151.1701851434036
             lat: 18.494211295267263
-        ecgi:
-          eutraCellId: null
-          nid: null
-          plmnId:
-            mnc: null
-            mcc: null
+        timestampOfPreCalcuLocEstimate: 2000-01-23T04:56:07.000+00:00
+        timeWindows:
+          - null
+          - null
       properties:
         ncgi:
           $ref: "#/components/schemas/Ncgi"
@@ -4106,34 +4106,34 @@ components:
     LocMeasurementResp:
       description: Location Measurement Response.
       example:
+        locMeasurements:
+          rstd: 0
         locationEstimate:
           shape: POINT
           point:
             lon: -151.1701851434036
             lat: 18.494211295267263
+        ageOfLocationEstimate: 19750
         timestampOfLocationEstimate: 2000-01-23T04:56:07.000+00:00
+        velocityEstimate:
+          hSpeed: null
+          bearing: null
         localLocationEstimate:
+          shape: null
           localOrigin:
             coordinateId: coordinateId
             point:
               lon: -151.1701851434036
               lat: 18.494211295267263
-          shape: null
-          confidence: null
           point:
             x: null
             "y": null
             z: null
           uncertaintyEllipse:
+            semiMajor: null
             semiMinor: null
             orientationMajor: null
-            semiMajor: null
-        ageOfLocationEstimate: 19750
-        locMeasurements:
-          rstd: 0
-        velocityEstimate:
-          hSpeed: null
-          bearing: null
+          confidence: null
       properties:
         locMeasurements:
           $ref: "#/components/schemas/LocMeasurements"
@@ -4167,11 +4167,11 @@ components:
     HighAccuracyGnssMetrics:
       description: High Accuracy GNSS Positioning Metrics.
       example:
-        hdopi: 144
-        fixType: CARRIER_PHASE_FLOAT
         nrOfUsedSatellites: 38
+        hdopi: 144
         pdopi: 59
         age: 69
+        fixType: CARRIER_PHASE_FLOAT
       properties:
         nrOfUsedSatellites:
           maximum: 64
@@ -4195,9 +4195,9 @@ components:
     UpNotifyData:
       description: UP Subscription
       example:
+        notifCorrelationId: notifCorrelationId
         upConnectionStatus: ESTABLISHED
         targetLMFId: targetLMFId
-        notifCorrelationId: notifCorrelationId
       properties:
         notifCorrelationId:
           description: LCS Correlation ID.
@@ -4217,8 +4217,8 @@ components:
       description: UP Subscription
       example:
         upNotifyCallBackUri: upNotifyCallBackUri
-        supi: supi
         notifCorrelationId: notifCorrelationId
+        supi: supi
         gpsi: gpsi
       properties:
         upNotifyCallBackUri:
@@ -4259,8 +4259,8 @@ components:
     RelatedUE:
       description: Related UE Information
       example:
-        relatedUEType: LOCATED_UE
         applicationlayerId: null
+        relatedUEType: LOCATED_UE
       properties:
         applicationlayerId:
           $ref: "#/components/schemas/ApplicationlayerId"
@@ -4273,13 +4273,13 @@ components:
     UpConfig:
       description: UP Config
       example:
-        amfReallocationInd: false
         upNotifyCallBackUri: upNotifyCallBackUri
-        lcsUpConnectionInd: TERMINATION
-        supi: supi
-        targetLMFId: targetLMFId
         notifCorrelationId: notifCorrelationId
+        supi: supi
         gpsi: gpsi
+        amfReallocationInd: false
+        lcsUpConnectionInd: TERMINATION
+        targetLMFId: targetLMFId
       properties:
         upNotifyCallBackUri:
           description: String providing an URI formatted according to RFC 3986.
@@ -4326,8 +4326,8 @@ components:
     RangeDirection:
       description: Represents a distance and direction from a point A to a point B.
       example:
-        azimuthDirection: null
         distance: 9.301444243932576
+        azimuthDirection: null
         elevationDirection: null
       properties:
         distance:
@@ -4341,8 +4341,8 @@ components:
       description: Represents a relative 2D location with uncertainty ellipse.
       example:
         semiMinor: null
-        orientationAngle: null
         semiMajor: null
+        orientationAngle: null
       properties:
         semiMinor:
           $ref: "#/components/schemas/Uncertainty"
@@ -4355,9 +4355,9 @@ components:
       description: Represents a relative 3D location with uncertainty ellipsoid.
       example:
         semiMinor: null
+        semiMajor: null
         verticalUncertainty: null
         orientationAngle: null
-        semiMajor: null
       properties:
         semiMinor:
           $ref: "#/components/schemas/Uncertainty"
@@ -4401,17 +4401,17 @@ components:
       description: MBSR UE Information
       example:
         ncgi:
-          nid: null
           plmnId:
-            mnc: null
             mcc: null
+            mnc: null
           nrCellId: null
+          nid: null
         ecgi:
+          plmnId:
+            mcc: null
+            mnc: null
           eutraCellId: null
           nid: null
-          plmnId:
-            mnc: null
-            mcc: null
       properties:
         ncgi:
           $ref: "#/components/schemas/Ncgi"
@@ -4812,9 +4812,9 @@ components:
       description: |
         The response shall include a Location header field containing a different URI (pointing to a different URI of an other service instance), or the same URI if a request is redirected to the same target resource via a different SCP.
       example:
-        targetSepp: null
         cause: cause
         targetScp: null
+        targetSepp: null
       properties:
         cause:
           type: string
@@ -4925,11 +4925,11 @@ components:
     Ecgi:
       description: "Contains the ECGI (E-UTRAN Cell Global Identity), as described in 3GPP 23.003"
       example:
+        plmnId:
+          mcc: null
+          mnc: null
         eutraCellId: null
         nid: null
-        plmnId:
-          mnc: null
-          mcc: null
       properties:
         plmnId:
           $ref: "#/components/schemas/PlmnId"
@@ -4945,8 +4945,8 @@ components:
       description: |
         When PlmnId needs to be converted to string (e.g. when used in maps as key), the string shall be composed of three digits "mcc" followed by "-" and two or three digits "mnc".
       example:
-        mnc: null
         mcc: null
+        mnc: null
       properties:
         mcc:
           $ref: "#/components/schemas/Mcc"
@@ -4979,11 +4979,11 @@ components:
     Ncgi:
       description: "Contains the NCGI (NR Cell Global Identity), as described in 3GPP 23.003"
       example:
-        nid: null
         plmnId:
-          mnc: null
           mcc: null
+          mnc: null
         nrCellId: null
+        nid: null
       properties:
         plmnId:
           $ref: "#/components/schemas/PlmnId"
@@ -5024,9 +5024,9 @@ components:
     TnapId:
       description: Contain the TNAP Identifier see clause5.6.2 of 3GPP TS 23.501.
       example:
+        ssId: ssId
         bssId: bssId
         civicAddress: null
-        ssId: ssId
       properties:
         ssId:
           description: |
@@ -5047,9 +5047,9 @@ components:
       description: |
         Contain the TWAP Identifier as defined in clause 4.2.8.5.3 of 3GPP TS 23.501 or the WLAN location information as defined in clause 4.5.7.2.8 of 3GPP TS 23.402.
       example:
+        ssId: ssId
         bssId: bssId
         civicAddress: null
-        ssId: ssId
       properties:
         ssId:
           description: |
@@ -5136,13 +5136,13 @@ components:
       anyOf: []
       description: Represents the user plane addressing information.
       example:
-        fqdn: null
-        ipv6Addrs:
-          - 2001:db8:85a3::8a2e:370:7334
-          - 2001:db8:85a3::8a2e:370:7334
         ipv4Addrs:
           - 198.51.100.1
           - 198.51.100.1
+        ipv6Addrs:
+          - 2001:db8:85a3::8a2e:370:7334
+          - 2001:db8:85a3::8a2e:370:7334
+        fqdn: null
       nullable: true
       properties:
         ipv4Addrs:
@@ -5161,8 +5161,8 @@ components:
     UpCumEvtRptCriteria:
       description: Criteria for sending cumulative events reports over control plane
       example:
-        evtRptCountCriteria: 5
         evtRptTimeCriteria: 1
+        evtRptCountCriteria: 5
       properties:
         evtRptTimeCriteria:
           type: integer
@@ -5180,11 +5180,11 @@ components:
     Tai:
       description: Contains the tracking area identity as described in 3GPP 23.003
       example:
+        plmnId:
+          mcc: null
+          mnc: null
         tac: null
         nid: null
-        plmnId:
-          mnc: null
-          mcc: null
       properties:
         plmnId:
           $ref: "#/components/schemas/PlmnId"
@@ -5205,9 +5205,9 @@ components:
       description: "Globally Unique AMF Identifier constructed out of PLMN, Network and AMF identity."
       example:
         plmnId:
+          mcc: null
           mnc: null
           nid: null
-          mcc: null
         amfId: null
       properties:
         plmnId:
@@ -5222,9 +5222,9 @@ components:
       description: |
         Contains the serving core network operator PLMN ID and, for an SNPN, the NID that together with the PLMN ID identifies the SNPN.
       example:
+        mcc: null
         mnc: null
         nid: null
-        mcc: null
       properties:
         mcc:
           $ref: "#/components/schemas/Mcc"
