@@ -31,7 +31,7 @@ var _ openapi.MappedNullable = &SnssaiReplacementSubscribeInfo{}
 type SnssaiReplacementSubscribeInfo struct {
 	SnssaiToSubscribe []Snssai `json:"snssaiToSubscribe" yaml:"snssaiToSubscribe"`
 	NfType            NFType   `json:"nfType" yaml:"nfType"`
-	// String uniquely identifying a NF instance. The format of the NF Instance ID shall be a  Universally Unique Identifier (UUID) version 4, as described in IETF RFC 4122.
+	// String uniquely identifying a NF instance. The format of the NF Instance ID shall be a Universally Unique Identifier (UUID) version 4, as described in IETF RFC 4122.
 	NfId   string  `json:"nfId" yaml:"nfId"`
 	PlmnId *PlmnId `json:"plmnId,omitempty" yaml:"plmnId,omitempty"`
 }

@@ -33,9 +33,9 @@ type AmfEventSubscriptionAddInfo struct {
 	SubscribingNfType *NFType  `json:"subscribingNfType,omitempty" yaml:"subscribingNfType,omitempty"`
 	EventSyncInd      *bool    `json:"eventSyncInd,omitempty" yaml:"eventSyncInd,omitempty"`
 	NfConsumerInfo    []string `json:"nfConsumerInfo,omitempty" yaml:"nfConsumerInfo,omitempty"`
-	// Map of subscribed Area of Interest (AoI) Event State in the old AMF. The JSON pointer to an AmfEventArea element in the areaList IE (or a PresenceInfo element in  presenceInfoList IE) of the AmfEvent data type shall be the key of the map.
+	// Map of subscribed Area of Interest (AoI) Event State in the old AMF. The JSON pointer to an AmfEventArea element in the areaList IE (or a PresenceInfo element in presenceInfoList IE) of the AmfEvent data type shall be the key of the map.
 	AoiStateList *map[string]AreaOfInterestEventState `json:"aoiStateList,omitempty" yaml:"aoiStateList,omitempty"`
-	// JWS Compact Serialized representation of JWS signed JSON object (AccessTokenClaims  defined in 3GPP TS 29.510)
+	// JWS Compact Serialized representation of JWS signed JSON object (AccessTokenClaims defined in 3GPP TS 29.510)
 	AccessToken *string `json:"accessToken,omitempty" yaml:"accessToken,omitempty"`
 }
 

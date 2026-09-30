@@ -30,7 +30,7 @@ var _ openapi.MappedNullable = &AmfUpdateEventSubscriptionItem{}
 // AmfUpdateEventSubscriptionItem Document describing the modification(s) to an AMF Event Subscription
 type AmfUpdateEventSubscriptionItem struct {
 	Op                     string          `json:"op" yaml:"op"`
-	Path                   string          `json:"path" yaml:"path" validate:"regexp=^\\/eventList\\/-|(\\/eventList\\/0|\\/eventList\\/[1-9][0-9]*){1}(\\/presenceInfoList\\/0|\\/presenceInfoList\\/[1-9][0-9]* |\\/notifyForSupiList|\\/notifyForGroupList|\\/notifyForSnssaiDnnList)?|\\/excludeSupiList|\\/excludeGpsiList|\\/includeSupiList|\\/includeGpsiList$"`
+	Path                   string          `json:"path" yaml:"path" validate:"regexp=^/eventList/-|(/eventList/0|/eventList/[1-9][0-9]*){1}(/presenceInfoList/0|/presenceInfoList/[1-9][0-9]* |/notifyForSupiList|/notifyForGroupList|/notifyForSnssaiDnnList)?|/excludeSupiList|/excludeGpsiList|/includeSupiList|/includeGpsiList$"`
 	Value                  *AmfEvent       `json:"value,omitempty" yaml:"value,omitempty"`
 	PresenceInfo           *PresenceInfo   `json:"presenceInfo,omitempty" yaml:"presenceInfo,omitempty"`
 	ExcludeSupiList        []string        `json:"excludeSupiList,omitempty" yaml:"excludeSupiList,omitempty"`

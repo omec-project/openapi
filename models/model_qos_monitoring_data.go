@@ -53,14 +53,14 @@ type QosMonitoringData struct {
 	// String providing an URI formatted according to RFC 3986 with the OpenAPI 'nullable: true' property.
 	NotifyUri     openapi.NullableString `json:"notifyUri" yaml:"notifyUri,omitempty"`
 	NotifyCorreId openapi.NullableString `json:"notifyCorreId" yaml:"notifyCorreId,omitempty"`
-	// Indicates that the direct event notification sent by UPF to the Local NEF or AF is  requested if it is included and set to true.
+	// Indicates that the direct event notification sent by UPF to the Local NEF or AF is requested if it is included and set to true.
 	DirectNotifInd *bool `json:"directNotifInd,omitempty" yaml:"directNotifInd,omitempty"`
 	// This data type is defined in the same way as the 'AverWindow' data type, but with the OpenAPI 'nullable: true' property.
 	AvrgWndw openapi.NullableInt32 `json:"avrgWndw" yaml:"avrgWndw,omitempty"`
 	// This data type is defined in the same way as the 'BitRate' data type, but with the OpenAPI 'nullable: true' property.
-	RepThreshDatRateUl openapi.NullableString `json:"repThreshDatRateUl" yaml:"repThreshDatRateUl,omitempty" validate:"regexp=^\\\\d+(\\\\.\\\\d+)? (bps|Kbps|Mbps|Gbps|Tbps)$"`
+	RepThreshDatRateUl openapi.NullableString `json:"repThreshDatRateUl" yaml:"repThreshDatRateUl,omitempty" validate:"regexp=^\\d+(\\.\\d+)? (bps|Kbps|Mbps|Gbps|Tbps)$"`
 	// This data type is defined in the same way as the 'BitRate' data type, but with the OpenAPI 'nullable: true' property.
-	RepThreshDatRateDl openapi.NullableString `json:"repThreshDatRateDl" yaml:"repThreshDatRateDl,omitempty" validate:"regexp=^\\\\d+(\\\\.\\\\d+)? (bps|Kbps|Mbps|Gbps|Tbps)$"`
+	RepThreshDatRateDl openapi.NullableString `json:"repThreshDatRateDl" yaml:"repThreshDatRateDl,omitempty" validate:"regexp=^\\d+(\\.\\d+)? (bps|Kbps|Mbps|Gbps|Tbps)$"`
 	// String providing an application identifier.
 	DataCollAppId *string `json:"dataCollAppId,omitempty" yaml:"dataCollAppId,omitempty"`
 }

@@ -45,7 +45,7 @@ type ProblemDetails struct {
 	AccessTokenError   *AccessTokenErr `json:"accessTokenError,omitempty" yaml:"accessTokenError,omitempty"`
 	AccessTokenRequest *AccessTokenReq `json:"accessTokenRequest,omitempty" yaml:"accessTokenRequest,omitempty"`
 	// Fully Qualified Domain Name
-	NrfId                *string             `json:"nrfId,omitempty" yaml:"nrfId,omitempty" validate:"regexp=^([0-9A-Za-z]([-0-9A-Za-z]{0,61}[0-9A-Za-z])?\\\\.)+[A-Za-z]{2,63}\\\\.?$"`
+	NrfId                *string             `json:"nrfId,omitempty" yaml:"nrfId,omitempty" validate:"regexp=^([0-9A-Za-z]([-0-9A-Za-z]{0\\,61}[0-9A-Za-z])?\\.)+[A-Za-z]{2\\,63}\\.?$"`
 	SupportedApiVersions []string            `json:"supportedApiVersions,omitempty" yaml:"supportedApiVersions,omitempty"`
 	NoProfileMatchInfo   *NoProfileMatchInfo `json:"noProfileMatchInfo,omitempty" yaml:"noProfileMatchInfo,omitempty"`
 }

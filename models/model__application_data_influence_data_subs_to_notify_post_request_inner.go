@@ -22,7 +22,6 @@ import (
 	"encoding/json"
 
 	"github.com/omec-project/openapi/v2"
-	"gopkg.in/validator.v2"
 )
 
 // ApplicationDataInfluenceDataSubsToNotifyPostRequestInner - struct for ApplicationDataInfluenceDataSubsToNotifyPostRequestInner
@@ -56,7 +55,7 @@ func (dst *ApplicationDataInfluenceDataSubsToNotifyPostRequestInner) UnmarshalJS
 		if string(jsonTrafficInfluData) == "{}" { // empty struct
 			dst.TrafficInfluData = nil
 		} else {
-			if err = validator.Validate(dst.TrafficInfluData); err != nil {
+			if err = openapi.Validate(dst.TrafficInfluData); err != nil {
 				dst.TrafficInfluData = nil
 			} else {
 				match++
@@ -73,7 +72,7 @@ func (dst *ApplicationDataInfluenceDataSubsToNotifyPostRequestInner) UnmarshalJS
 		if string(jsonTrafficInfluDataNotif) == "{}" { // empty struct
 			dst.TrafficInfluDataNotif = nil
 		} else {
-			if err = validator.Validate(dst.TrafficInfluDataNotif); err != nil {
+			if err = openapi.Validate(dst.TrafficInfluDataNotif); err != nil {
 				dst.TrafficInfluDataNotif = nil
 			} else {
 				match++

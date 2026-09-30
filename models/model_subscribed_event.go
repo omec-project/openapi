@@ -25,7 +25,7 @@ import (
 	"github.com/omec-project/openapi/v2"
 )
 
-// SubscribedEvent Represents the type of UP path management events for which the AF requests to be notified.   Possible values are: - UP_PATH_CHANGE: The AF requests to be notified when the UP path changes for   the PDU session.
+// SubscribedEvent Represents the type of UP path management events for which the AF requests to be notified. Possible values are: - UP_PATH_CHANGE: The AF requests to be notified when the UP path changes for   the PDU session.
 type SubscribedEvent string
 
 // List of SubscribedEvent

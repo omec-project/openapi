@@ -30,8 +30,8 @@ var _ openapi.MappedNullable = &AerialUeSubscriptionInfo{}
 // AerialUeSubscriptionInfo Contains the Aerial UE Subscription Information, it at least contains the Aerial UE Indication.
 type AerialUeSubscriptionInfo struct {
 	AerialUeInd AerialUeIndication `json:"aerialUeInd" yaml:"aerialUeInd"`
-	// String identifying a Gpsi shall contain either an External Id or an MSISDN.  It shall be formatted as follows -External Identifier= \"extid-'extid', where 'extid'  shall be formatted according to clause 19.7.2 of 3GPP TS 23.003 that describes an  External Identifier.
-	Var3gppUavId *string `json:"3gppUavId,omitempty" yaml:"3gppUavId,omitempty" validate:"regexp=^(msisdn-[0-9]{5,15}|extid-[^@]+@[^@]+|.+)$"`
+	// String identifying a Gpsi shall contain either an External Id or an MSISDN. It shall be formatted as follows -External Identifier= \"extid-'extid', where 'extid' shall be formatted according to clause 19.7.2 of 3GPP TS 23.003 that describes an External Identifier.
+	Var3gppUavId *string `json:"3gppUavId,omitempty" yaml:"3gppUavId,omitempty" validate:"regexp=^(msisdn-[0-9]{5\\,15}|extid-[^@]+@[^@]+|.+)$"`
 }
 
 // NewAerialUeSubscriptionInfo instantiates a new AerialUeSubscriptionInfo object

@@ -30,7 +30,7 @@ var _ openapi.MappedNullable = &BackupAmfInfo{}
 // BackupAmfInfo Provides details of the Backup AMF.
 type BackupAmfInfo struct {
 	// Fully Qualified Domain Name
-	BackupAmf string `json:"backupAmf" yaml:"backupAmf" validate:"regexp=^([0-9A-Za-z]([-0-9A-Za-z]{0,61}[0-9A-Za-z])?\\\\.)+[A-Za-z]{2,63}\\\\.?$"`
+	BackupAmf string `json:"backupAmf" yaml:"backupAmf" validate:"regexp=^([0-9A-Za-z]([-0-9A-Za-z]{0\\,61}[0-9A-Za-z])?\\.)+[A-Za-z]{2\\,63}\\.?$"`
 	// If present, this IE shall contain the list of GUAMI(s) (supported by the AMF) for which the backupAmf IE applies.
 	GuamiList []Guami `json:"guamiList,omitempty" yaml:"guamiList,omitempty"`
 }

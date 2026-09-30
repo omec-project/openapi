@@ -40,14 +40,14 @@ type EeSubscription struct {
 	ContextInfo       *ContextInfo `json:"contextInfo,omitempty" yaml:"contextInfo,omitempty"`
 	EpcAppliedInd     *bool        `json:"epcAppliedInd,omitempty" yaml:"epcAppliedInd,omitempty"`
 	// Fully Qualified Domain Name
-	ScefDiamHost *string `json:"scefDiamHost,omitempty" yaml:"scefDiamHost,omitempty" validate:"regexp=^([0-9A-Za-z]([-0-9A-Za-z]{0,61}[0-9A-Za-z])?\\\\.)+[A-Za-z]{2,63}\\\\.?$"`
+	ScefDiamHost *string `json:"scefDiamHost,omitempty" yaml:"scefDiamHost,omitempty" validate:"regexp=^([0-9A-Za-z]([-0-9A-Za-z]{0\\,61}[0-9A-Za-z])?\\.)+[A-Za-z]{2\\,63}\\.?$"`
 	// Fully Qualified Domain Name
-	ScefDiamRealm       *string `json:"scefDiamRealm,omitempty" yaml:"scefDiamRealm,omitempty" validate:"regexp=^([0-9A-Za-z]([-0-9A-Za-z]{0,61}[0-9A-Za-z])?\\\\.)+[A-Za-z]{2,63}\\\\.?$"`
+	ScefDiamRealm       *string `json:"scefDiamRealm,omitempty" yaml:"scefDiamRealm,omitempty" validate:"regexp=^([0-9A-Za-z]([-0-9A-Za-z]{0\\,61}[0-9A-Za-z])?\\.)+[A-Za-z]{2\\,63}\\.?$"`
 	NotifyCorrelationId *string `json:"notifyCorrelationId,omitempty" yaml:"notifyCorrelationId,omitempty"`
 	// String providing an URI formatted according to RFC 3986.
 	SecondCallbackRef *string `json:"secondCallbackRef,omitempty" yaml:"secondCallbackRef,omitempty"`
 	// String identifying a Gpsi shall contain either an External Id or an MSISDN. It shall be formatted as follows -External Identifier= \"extid-'extid', where 'extid' shall be formatted according to clause 19.7.2 of 3GPP TS 23.003 that describes an External Identifier.
-	Gpsi            *string  `json:"gpsi,omitempty" yaml:"gpsi,omitempty" validate:"regexp=^(msisdn-[0-9]{5,15}|extid-[^@]+@[^@]+|.+)$"`
+	Gpsi            *string  `json:"gpsi,omitempty" yaml:"gpsi,omitempty" validate:"regexp=^(msisdn-[0-9]{5\\,15}|extid-[^@]+@[^@]+|.+)$"`
 	ExcludeGpsiList []string `json:"excludeGpsiList,omitempty" yaml:"excludeGpsiList,omitempty"`
 	IncludeGpsiList []string `json:"includeGpsiList,omitempty" yaml:"includeGpsiList,omitempty"`
 	// String providing an URI formatted according to RFC 3986.

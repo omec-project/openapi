@@ -33,7 +33,7 @@ type UpuData struct {
 	SecPacket        *string  `json:"secPacket,omitempty" yaml:"secPacket,omitempty"`
 	DefaultConfNssai []Snssai `json:"defaultConfNssai,omitempty" yaml:"defaultConfNssai,omitempty"`
 	// Represents a routing indicator.
-	RoutingId *string `json:"routingId,omitempty" yaml:"routingId,omitempty" validate:"regexp=^[0-9]{1,4}$"`
+	RoutingId *string `json:"routingId,omitempty" yaml:"routingId,omitempty" validate:"regexp=^[0-9]{1\\,4}$"`
 	Drei      *bool   `json:"drei,omitempty" yaml:"drei,omitempty"`
 	Aol       *bool   `json:"aol,omitempty" yaml:"aol,omitempty"`
 }

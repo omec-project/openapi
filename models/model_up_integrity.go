@@ -25,7 +25,7 @@ import (
 	"github.com/omec-project/openapi/v2"
 )
 
-// UpIntegrity indicates whether UP integrity protection is required, preferred or not needed for all the traffic on the PDU Session. It shall comply with the provisions defined in  table 5.4.3.4-1.
+// UpIntegrity indicates whether UP integrity protection is required, preferred or not needed for all the traffic on the PDU Session. It shall comply with the provisions defined in table 5.4.3.4-1.
 type UpIntegrity string
 
 // List of UpIntegrity

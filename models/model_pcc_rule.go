@@ -48,23 +48,23 @@ type PccRule struct {
 	AppReloc *bool `json:"appReloc,omitempty" yaml:"appReloc,omitempty"`
 	// Indicates the EAS rediscovery is required.
 	EasRedisInd *bool `json:"easRedisInd,omitempty" yaml:"easRedisInd,omitempty"`
-	// A reference to the QosData policy decision type. It is the qosId described in  clause 5.6.2.8.
+	// A reference to the QosData policy decision type. It is the qosId described in clause 5.6.2.8.
 	RefQosData []string `json:"refQosData,omitempty" yaml:"refQosData,omitempty"`
-	// A Reference to the QosData policy decision type for the Alternative QoS parameter sets  of the service data flow.
+	// A Reference to the QosData policy decision type for the Alternative QoS parameter sets of the service data flow.
 	RefAltQosParams []string `json:"refAltQosParams,omitempty" yaml:"refAltQosParams,omitempty"`
-	// A reference to the TrafficControlData policy decision type. It is the tcId described in  clause 5.6.2.10.
+	// A reference to the TrafficControlData policy decision type. It is the tcId described in clause 5.6.2.10.
 	RefTcData []string `json:"refTcData,omitempty" yaml:"refTcData,omitempty"`
-	// A reference to the ChargingData policy decision type. It is the chgId described in  clause 5.6.2.11.
+	// A reference to the ChargingData policy decision type. It is the chgId described in clause 5.6.2.11.
 	RefChgData []string `json:"refChgData,omitempty" yaml:"refChgData,omitempty"`
 	// A reference to the ChargingData policy decision type only applicable to Non-3GPP access if \"ATSSS\" feature is supported. It is the chgId described in clause 5.6.2.11.
 	RefChgN3gData []string `json:"refChgN3gData,omitempty" yaml:"refChgN3gData,omitempty"`
-	// A reference to UsageMonitoringData policy decision type. It is the umId described in  clause 5.6.2.12.
+	// A reference to UsageMonitoringData policy decision type. It is the umId described in clause 5.6.2.12.
 	RefUmData []string `json:"refUmData,omitempty" yaml:"refUmData,omitempty"`
 	// A reference to UsageMonitoringData policy decision type only applicable to Non-3GPP access if \"ATSSS\" feature is supported. It is the umId described in clause 5.6.2.12.
 	RefUmN3gData []string `json:"refUmN3gData,omitempty" yaml:"refUmN3gData,omitempty"`
 	// A reference to the condition data. It is the condId described in clause 5.6.2.9.
 	RefCondData openapi.NullableString `json:"refCondData" yaml:"refCondData,omitempty"`
-	// A reference to the QosMonitoringData policy decision type. It is the qmId described in  clause 5.6.2.40.
+	// A reference to the QosMonitoringData policy decision type. It is the qmId described in clause 5.6.2.40.
 	RefQosMon     []string                    `json:"refQosMon,omitempty" yaml:"refQosMon,omitempty"`
 	AddrPreserInd openapi.NullableBool        `json:"addrPreserInd" yaml:"addrPreserInd,omitempty"`
 	TscaiInputDl  NullableTscaiInputContainer `json:"tscaiInputDl" yaml:"tscaiInputDl,omitempty"`
@@ -78,7 +78,7 @@ type PccRule struct {
 	DisUeNotif       openapi.NullableBool                      `json:"disUeNotif" yaml:"disUeNotif,omitempty"`
 	// Unsigned Integer, i.e. only value 0 and integers above 0 are permissible.
 	PackFiltAllPrec *int32 `json:"packFiltAllPrec,omitempty" yaml:"packFiltAllPrec,omitempty"`
-	// Identifies a list of Network Function Service Consumer supported per service. The key  used in this map for each entry is the ServiceName value as defined in 3GPP TS 29.510[29].
+	// Identifies a list of Network Function Service Consumer supported per service. The key used in this map for each entry is the ServiceName value as defined in 3GPP TS 29.510[29].
 	NscSuppFeats  *map[string]string `json:"nscSuppFeats,omitempty" yaml:"nscSuppFeats,omitempty"`
 	CallInfo      NullableCallInfo   `json:"callInfo" yaml:"callInfo,omitempty"`
 	TraffParaData *TrafficParaData   `json:"traffParaData,omitempty" yaml:"traffParaData,omitempty"`

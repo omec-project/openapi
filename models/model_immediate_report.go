@@ -22,7 +22,6 @@ import (
 	"encoding/json"
 
 	"github.com/omec-project/openapi/v2"
-	"gopkg.in/validator.v2"
 )
 
 // ImmediateReport - struct for ImmediateReport
@@ -56,7 +55,7 @@ func (dst *ImmediateReport) UnmarshalJSON(data []byte) error {
 		if string(jsonSubscriptionDataSets) == "{}" { // empty struct
 			dst.SubscriptionDataSets = nil
 		} else {
-			if err = validator.Validate(dst.SubscriptionDataSets); err != nil {
+			if err = openapi.Validate(dst.SubscriptionDataSets); err != nil {
 				dst.SubscriptionDataSets = nil
 			} else {
 				match++
@@ -73,7 +72,7 @@ func (dst *ImmediateReport) UnmarshalJSON(data []byte) error {
 		if string(jsonArrayOfSharedDataUdm) == "{}" { // empty struct
 			dst.ArrayOfSharedDataUdm = nil
 		} else {
-			if err = validator.Validate(dst.ArrayOfSharedDataUdm); err != nil {
+			if err = openapi.Validate(dst.ArrayOfSharedDataUdm); err != nil {
 				dst.ArrayOfSharedDataUdm = nil
 			} else {
 				match++

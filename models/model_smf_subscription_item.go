@@ -29,7 +29,7 @@ var _ openapi.MappedNullable = &SmfSubscriptionItem{}
 
 // SmfSubscriptionItem Contains info about a single SMF event subscription
 type SmfSubscriptionItem struct {
-	// String uniquely identifying a NF instance. The format of the NF Instance ID shall be a  Universally Unique Identifier (UUID) version 4, as described in IETF RFC 4122.
+	// String uniquely identifying a NF instance. The format of the NF Instance ID shall be a Universally Unique Identifier (UUID) version 4, as described in IETF RFC 4122.
 	SmfInstanceId string `json:"smfInstanceId" yaml:"smfInstanceId"`
 	// String providing an URI formatted according to RFC 3986.
 	SubscriptionId string       `json:"subscriptionId" yaml:"subscriptionId"`

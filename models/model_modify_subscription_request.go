@@ -22,7 +22,6 @@ import (
 	"encoding/json"
 
 	"github.com/omec-project/openapi/v2"
-	"gopkg.in/validator.v2"
 )
 
 // ModifySubscriptionRequest - struct for ModifySubscriptionRequest
@@ -56,7 +55,7 @@ func (dst *ModifySubscriptionRequest) UnmarshalJSON(data []byte) error {
 		if string(jsonArrayOfAmfUpdateEventOptionItem) == "{}" { // empty struct
 			dst.ArrayOfAmfUpdateEventOptionItem = nil
 		} else {
-			if err = validator.Validate(dst.ArrayOfAmfUpdateEventOptionItem); err != nil {
+			if err = openapi.Validate(dst.ArrayOfAmfUpdateEventOptionItem); err != nil {
 				dst.ArrayOfAmfUpdateEventOptionItem = nil
 			} else {
 				match++
@@ -73,7 +72,7 @@ func (dst *ModifySubscriptionRequest) UnmarshalJSON(data []byte) error {
 		if string(jsonArrayOfAmfUpdateEventSubscriptionItem) == "{}" { // empty struct
 			dst.ArrayOfAmfUpdateEventSubscriptionItem = nil
 		} else {
-			if err = validator.Validate(dst.ArrayOfAmfUpdateEventSubscriptionItem); err != nil {
+			if err = openapi.Validate(dst.ArrayOfAmfUpdateEventSubscriptionItem); err != nil {
 				dst.ArrayOfAmfUpdateEventSubscriptionItem = nil
 			} else {
 				match++

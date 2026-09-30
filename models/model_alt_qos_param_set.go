@@ -30,9 +30,9 @@ var _ openapi.MappedNullable = &AltQosParamSet{}
 // AltQosParamSet Contains the alternative QoS requirements expressed as the list of individual QoS parameter sets.
 type AltQosParamSet struct {
 	// String representing a bit rate; the prefixes follow the standard symbols from The International System of Units, and represent x1000 multipliers, with the exception that prefix \"K\" is used to represent the standard symbol \"k\".
-	GfbrDl *string `json:"gfbrDl,omitempty" yaml:"gfbrDl,omitempty" validate:"regexp=^\\\\d+(\\\\.\\\\d+)? (bps|Kbps|Mbps|Gbps|Tbps)$"`
+	GfbrDl *string `json:"gfbrDl,omitempty" yaml:"gfbrDl,omitempty" validate:"regexp=^\\d+(\\.\\d+)? (bps|Kbps|Mbps|Gbps|Tbps)$"`
 	// String representing a bit rate; the prefixes follow the standard symbols from The International System of Units, and represent x1000 multipliers, with the exception that prefix \"K\" is used to represent the standard symbol \"k\".
-	GfbrUl *string `json:"gfbrUl,omitempty" yaml:"gfbrUl,omitempty" validate:"regexp=^\\\\d+(\\\\.\\\\d+)? (bps|Kbps|Mbps|Gbps|Tbps)$"`
+	GfbrUl *string `json:"gfbrUl,omitempty" yaml:"gfbrUl,omitempty" validate:"regexp=^\\d+(\\.\\d+)? (bps|Kbps|Mbps|Gbps|Tbps)$"`
 	// Unsigned integer indicating Packet Delay Budget (see clauses 5.7.3.4 and 5.7.4 of 3GPP TS 23.501), expressed in milliseconds.
 	Pdb *int32 `json:"pdb,omitempty" yaml:"pdb,omitempty"`
 	// String representing Packet Error Rate (see clause 5.7.3.5 and 5.7.4 of 3GPP TS 23.501, expressed as a \"scalar x 10-k\" where the scalar and the exponent k are each encoded as one decimal digit.

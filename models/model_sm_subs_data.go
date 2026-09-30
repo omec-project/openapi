@@ -22,7 +22,6 @@ import (
 	"encoding/json"
 
 	"github.com/omec-project/openapi/v2"
-	"gopkg.in/validator.v2"
 )
 
 // SmSubsData - struct for SmSubsData
@@ -56,7 +55,7 @@ func (dst *SmSubsData) UnmarshalJSON(data []byte) error {
 		if string(jsonExtendedSmSubsData) == "{}" { // empty struct
 			dst.ExtendedSmSubsData = nil
 		} else {
-			if err = validator.Validate(dst.ExtendedSmSubsData); err != nil {
+			if err = openapi.Validate(dst.ExtendedSmSubsData); err != nil {
 				dst.ExtendedSmSubsData = nil
 			} else {
 				match++
@@ -73,7 +72,7 @@ func (dst *SmSubsData) UnmarshalJSON(data []byte) error {
 		if string(jsonArrayOfSessionManagementSubscriptionData) == "{}" { // empty struct
 			dst.ArrayOfSessionManagementSubscriptionData = nil
 		} else {
-			if err = validator.Validate(dst.ArrayOfSessionManagementSubscriptionData); err != nil {
+			if err = openapi.Validate(dst.ArrayOfSessionManagementSubscriptionData); err != nil {
 				dst.ArrayOfSessionManagementSubscriptionData = nil
 			} else {
 				match++

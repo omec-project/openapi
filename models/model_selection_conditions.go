@@ -22,7 +22,6 @@ import (
 	"encoding/json"
 
 	"github.com/omec-project/openapi/v2"
-	"gopkg.in/validator.v2"
 )
 
 // SelectionConditions - It contains the set of conditions that shall be evaluated to determine whether a consumer shall select a given producer. The producer shall only be selected if the evaluation of the conditions is <true>. The set of conditions can be represented by a single ConditionItem or by a ConditionGroup, where the latter contains a (recursive) list of conditions joined by the \"and\" or \"or\" logical relationships.
@@ -56,7 +55,7 @@ func (dst *SelectionConditions) UnmarshalJSON(data []byte) error {
 		if string(jsonConditionGroup) == "{}" { // empty struct
 			dst.ConditionGroup = nil
 		} else {
-			if err = validator.Validate(dst.ConditionGroup); err != nil {
+			if err = openapi.Validate(dst.ConditionGroup); err != nil {
 				dst.ConditionGroup = nil
 			} else {
 				match++
@@ -73,7 +72,7 @@ func (dst *SelectionConditions) UnmarshalJSON(data []byte) error {
 		if string(jsonConditionItem) == "{}" { // empty struct
 			dst.ConditionItem = nil
 		} else {
-			if err = validator.Validate(dst.ConditionItem); err != nil {
+			if err = openapi.Validate(dst.ConditionItem); err != nil {
 				dst.ConditionItem = nil
 			} else {
 				match++

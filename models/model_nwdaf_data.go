@@ -29,7 +29,7 @@ var _ openapi.MappedNullable = &NwdafData{}
 
 // NwdafData Indicates the list of Analytic ID(s) per NWDAF instance ID used for the PDU Session consumed by the SMF.
 type NwdafData struct {
-	// String uniquely identifying a NF instance. The format of the NF Instance ID shall be a  Universally Unique Identifier (UUID) version 4, as described in IETF RFC 4122.
+	// String uniquely identifying a NF instance. The format of the NF Instance ID shall be a Universally Unique Identifier (UUID) version 4, as described in IETF RFC 4122.
 	NwdafInstanceId string       `json:"nwdafInstanceId" yaml:"nwdafInstanceId"`
 	NwdafEvents     []NwdafEvent `json:"nwdafEvents,omitempty" yaml:"nwdafEvents,omitempty"`
 }

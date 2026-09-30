@@ -31,7 +31,7 @@ var _ openapi.MappedNullable = &Pc5QoSPara{}
 type Pc5QoSPara struct {
 	Pc5QosFlowList []Pc5QosFlowItem `json:"pc5QosFlowList" yaml:"pc5QosFlowList"`
 	// String representing a bit rate; the prefixes follow the standard symbols from The International System of Units, and represent x1000 multipliers, with the exception that prefix \"K\" is used to represent the standard symbol \"k\".
-	Pc5LinkAmbr *string `json:"pc5LinkAmbr,omitempty" yaml:"pc5LinkAmbr,omitempty" validate:"regexp=^\\\\d+(\\\\.\\\\d+)? (bps|Kbps|Mbps|Gbps|Tbps)$"`
+	Pc5LinkAmbr *string `json:"pc5LinkAmbr,omitempty" yaml:"pc5LinkAmbr,omitempty" validate:"regexp=^\\d+(\\.\\d+)? (bps|Kbps|Mbps|Gbps|Tbps)$"`
 }
 
 // NewPc5QoSPara instantiates a new Pc5QoSPara object

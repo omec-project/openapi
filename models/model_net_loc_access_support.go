@@ -25,7 +25,7 @@ import (
 	"github.com/omec-project/openapi/v2"
 )
 
-// NetLocAccessSupport Indicates the access network support of the report of the requested access network information.   Possible values are - ANR_NOT_SUPPORTED: Indicates that the access network does not support the report of access network information. - TZR_NOT_SUPPORTED: Indicates that the access network does not support the report of UE time zone. - LOC_NOT_SUPPORTED: Indicates that the access network does not support the report of UE Location (or PLMN Id).
+// NetLocAccessSupport Indicates the access network support of the report of the requested access network information. Possible values are - ANR_NOT_SUPPORTED: Indicates that the access network does not support the report of access network information. - TZR_NOT_SUPPORTED: Indicates that the access network does not support the report of UE time zone. - LOC_NOT_SUPPORTED: Indicates that the access network does not support the report of UE Location (or PLMN Id).
 type NetLocAccessSupport string
 
 // List of NetLocAccessSupport

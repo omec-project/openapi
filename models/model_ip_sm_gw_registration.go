@@ -38,7 +38,7 @@ type IpSmGwRegistration struct {
 	IpsmgwIpv6 *string
 	// Fully Qualified Domain Name
 	IpsmgwFqdn *string
-	// String uniquely identifying a NF instance. The format of the NF Instance ID shall be a  Universally Unique Identifier (UUID) version 4, as described in IETF RFC 4122.
+	// String uniquely identifying a NF instance. The format of the NF Instance ID shall be a Universally Unique Identifier (UUID) version 4, as described in IETF RFC 4122.
 	NfInstanceId    *string
 	UnriIndicator   *bool
 	ResetIds        []string

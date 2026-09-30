@@ -35,13 +35,13 @@ type ThresholdLevel struct {
 	NfMemoryUsage  *int32 `json:"nfMemoryUsage,omitempty" yaml:"nfMemoryUsage,omitempty"`
 	NfStorageUsage *int32 `json:"nfStorageUsage,omitempty" yaml:"nfStorageUsage,omitempty"`
 	// String representing a bit rate; the prefixes follow the standard symbols from The International System of Units, and represent x1000 multipliers, with the exception that prefix \"K\" is used to represent the standard symbol \"k\".
-	AvgTrafficRate *string `json:"avgTrafficRate,omitempty" yaml:"avgTrafficRate,omitempty" validate:"regexp=^\\\\d+(\\\\.\\\\d+)? (bps|Kbps|Mbps|Gbps|Tbps)$"`
+	AvgTrafficRate *string `json:"avgTrafficRate,omitempty" yaml:"avgTrafficRate,omitempty" validate:"regexp=^\\d+(\\.\\d+)? (bps|Kbps|Mbps|Gbps|Tbps)$"`
 	// String representing a bit rate; the prefixes follow the standard symbols from The International System of Units, and represent x1000 multipliers, with the exception that prefix \"K\" is used to represent the standard symbol \"k\".
-	MaxTrafficRate *string `json:"maxTrafficRate,omitempty" yaml:"maxTrafficRate,omitempty" validate:"regexp=^\\\\d+(\\\\.\\\\d+)? (bps|Kbps|Mbps|Gbps|Tbps)$"`
+	MaxTrafficRate *string `json:"maxTrafficRate,omitempty" yaml:"maxTrafficRate,omitempty" validate:"regexp=^\\d+(\\.\\d+)? (bps|Kbps|Mbps|Gbps|Tbps)$"`
 	// String representing a bit rate; the prefixes follow the standard symbols from The International System of Units, and represent x1000 multipliers, with the exception that prefix \"K\" is used to represent the standard symbol \"k\".
-	MinTrafficRate *string `json:"minTrafficRate,omitempty" yaml:"minTrafficRate,omitempty" validate:"regexp=^\\\\d+(\\\\.\\\\d+)? (bps|Kbps|Mbps|Gbps|Tbps)$"`
+	MinTrafficRate *string `json:"minTrafficRate,omitempty" yaml:"minTrafficRate,omitempty" validate:"regexp=^\\d+(\\.\\d+)? (bps|Kbps|Mbps|Gbps|Tbps)$"`
 	// String representing a bit rate; the prefixes follow the standard symbols from The International System of Units, and represent x1000 multipliers, with the exception that prefix \"K\" is used to represent the standard symbol \"k\".
-	AggTrafficRate *string `json:"aggTrafficRate,omitempty" yaml:"aggTrafficRate,omitempty" validate:"regexp=^\\\\d+(\\\\.\\\\d+)? (bps|Kbps|Mbps|Gbps|Tbps)$"`
+	AggTrafficRate *string `json:"aggTrafficRate,omitempty" yaml:"aggTrafficRate,omitempty" validate:"regexp=^\\d+(\\.\\d+)? (bps|Kbps|Mbps|Gbps|Tbps)$"`
 	// string with format 'float' as defined in OpenAPI.
 	VarTrafficRate *float32 `json:"varTrafficRate,omitempty" yaml:"varTrafficRate,omitempty"`
 	// Unsigned integer indicating Packet Delay Budget (see clauses 5.7.3.4 and 5.7.4 of 3GPP TS 23.501), expressed in milliseconds.

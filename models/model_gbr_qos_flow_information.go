@@ -30,13 +30,13 @@ var _ openapi.MappedNullable = &GbrQosFlowInformation{}
 // GbrQosFlowInformation GBR QoS flow information
 type GbrQosFlowInformation struct {
 	// String representing a bit rate; the prefixes follow the standard symbols from The International System of Units, and represent x1000 multipliers, with the exception that prefix \"K\" is used to represent the standard symbol \"k\".
-	MaxFbrDl string `json:"maxFbrDl" yaml:"maxFbrDl" validate:"regexp=^\\\\d+(\\\\.\\\\d+)? (bps|Kbps|Mbps|Gbps|Tbps)$"`
+	MaxFbrDl string `json:"maxFbrDl" yaml:"maxFbrDl" validate:"regexp=^\\d+(\\.\\d+)? (bps|Kbps|Mbps|Gbps|Tbps)$"`
 	// String representing a bit rate; the prefixes follow the standard symbols from The International System of Units, and represent x1000 multipliers, with the exception that prefix \"K\" is used to represent the standard symbol \"k\".
-	MaxFbrUl string `json:"maxFbrUl" yaml:"maxFbrUl" validate:"regexp=^\\\\d+(\\\\.\\\\d+)? (bps|Kbps|Mbps|Gbps|Tbps)$"`
+	MaxFbrUl string `json:"maxFbrUl" yaml:"maxFbrUl" validate:"regexp=^\\d+(\\.\\d+)? (bps|Kbps|Mbps|Gbps|Tbps)$"`
 	// String representing a bit rate; the prefixes follow the standard symbols from The International System of Units, and represent x1000 multipliers, with the exception that prefix \"K\" is used to represent the standard symbol \"k\".
-	GuaFbrDl string `json:"guaFbrDl" yaml:"guaFbrDl" validate:"regexp=^\\\\d+(\\\\.\\\\d+)? (bps|Kbps|Mbps|Gbps|Tbps)$"`
+	GuaFbrDl string `json:"guaFbrDl" yaml:"guaFbrDl" validate:"regexp=^\\d+(\\.\\d+)? (bps|Kbps|Mbps|Gbps|Tbps)$"`
 	// String representing a bit rate; the prefixes follow the standard symbols from The International System of Units, and represent x1000 multipliers, with the exception that prefix \"K\" is used to represent the standard symbol \"k\".
-	GuaFbrUl     string               `json:"guaFbrUl" yaml:"guaFbrUl" validate:"regexp=^\\\\d+(\\\\.\\\\d+)? (bps|Kbps|Mbps|Gbps|Tbps)$"`
+	GuaFbrUl     string               `json:"guaFbrUl" yaml:"guaFbrUl" validate:"regexp=^\\d+(\\.\\d+)? (bps|Kbps|Mbps|Gbps|Tbps)$"`
 	NotifControl *NotificationControl `json:"notifControl,omitempty" yaml:"notifControl,omitempty"`
 	// Unsigned integer indicating Packet Loss Rate (see clauses 5.7.2.8 and 5.7.4 of 3GPP TS 23.501), expressed in tenth of percent.
 	MaxPacketLossRateDl *int32 `json:"maxPacketLossRateDl,omitempty" yaml:"maxPacketLossRateDl,omitempty"`

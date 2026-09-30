@@ -35,7 +35,7 @@ type TrafficInfluenceData struct {
 	AppId *string `json:"appId,omitempty" yaml:"appId,omitempty"`
 	// Unsigned Integer, i.e. only value 0 and integers above 0 are permissible.
 	Precedence *int32 `json:"precedence,omitempty" yaml:"precedence,omitempty"`
-	// A reference to the TrafficControlData policy decision type. It is the tcId described  in clause 5.6.2.10 of 3GPP TS 29.512 [30].
+	// A reference to the TrafficControlData policy decision type. It is the tcId described in clause 5.6.2.10 of 3GPP TS 29.512 [30].
 	RefTcData []string `json:"refTcData,omitempty" yaml:"refTcData,omitempty"`
 }
 

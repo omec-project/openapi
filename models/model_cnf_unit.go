@@ -27,7 +27,7 @@ import (
 // checks if the CnfUnit type satisfies the MappedNullable interface at compile time
 var _ openapi.MappedNullable = &CnfUnit{}
 
-// CnfUnit During the processing of cnfUnits attribute, all the members in the array shall be  interpreted as logically concatenated with logical \"AND\".
+// CnfUnit During the processing of cnfUnits attribute, all the members in the array shall be interpreted as logically concatenated with logical \"AND\".
 type CnfUnit struct {
 	CnfUnit []Atom `json:"cnfUnit" yaml:"cnfUnit"`
 }

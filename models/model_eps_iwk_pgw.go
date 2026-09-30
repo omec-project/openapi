@@ -30,8 +30,8 @@ var _ openapi.MappedNullable = &EpsIwkPgw{}
 // EpsIwkPgw This datatype signifies the PGW FQDN, SMF instance ID and the PLMNId location.
 type EpsIwkPgw struct {
 	// Fully Qualified Domain Name
-	PgwFqdn string `json:"pgwFqdn" yaml:"pgwFqdn" validate:"regexp=^([0-9A-Za-z]([-0-9A-Za-z]{0,61}[0-9A-Za-z])?\\\\.)+[A-Za-z]{2,63}\\\\.?$"`
-	// String uniquely identifying a NF instance. The format of the NF Instance ID shall be a  Universally Unique Identifier (UUID) version 4, as described in IETF RFC 4122.
+	PgwFqdn string `json:"pgwFqdn" yaml:"pgwFqdn" validate:"regexp=^([0-9A-Za-z]([-0-9A-Za-z]{0\\,61}[0-9A-Za-z])?\\.)+[A-Za-z]{2\\,63}\\.?$"`
+	// String uniquely identifying a NF instance. The format of the NF Instance ID shall be a Universally Unique Identifier (UUID) version 4, as described in IETF RFC 4122.
 	SmfInstanceId string  `json:"smfInstanceId" yaml:"smfInstanceId"`
 	PlmnId        *PlmnId `json:"plmnId,omitempty" yaml:"plmnId,omitempty"`
 }

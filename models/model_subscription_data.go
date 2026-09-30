@@ -35,7 +35,7 @@ type SubscriptionData struct {
 	ReqNfInstanceId *string     `json:"reqNfInstanceId,omitempty" yaml:"reqNfInstanceId,omitempty"`
 	SharedDataIds   []string    `json:"sharedDataIds,omitempty" yaml:"sharedDataIds,omitempty"`
 	SubscrCond      *SubscrCond `json:"subscrCond,omitempty" yaml:"subscrCond,omitempty"`
-	SubscriptionId  *string     `json:"subscriptionId,omitempty" yaml:"subscriptionId,omitempty" validate:"regexp=^([0-9]{5,6}-(x3Lf57A:nid=[A-Fa-f0-9]{11}:)?)?[^-]+$"`
+	SubscriptionId  *string     `json:"subscriptionId,omitempty" yaml:"subscriptionId,omitempty" validate:"regexp=^([0-9]{5\\,6}-(x3Lf57A:nid=[A-Fa-f0-9]{11}:)?)?[^-]+$"`
 	// string with format 'date-time' as defined in OpenAPI.
 	ValidityTime   *time.Time              `json:"validityTime,omitempty" yaml:"validityTime,omitempty"`
 	ReqNotifEvents []NotificationEventType `json:"reqNotifEvents,omitempty" yaml:"reqNotifEvents,omitempty"`
@@ -45,7 +45,7 @@ type SubscriptionData struct {
 	NotifCondition *NotifCondition `json:"notifCondition,omitempty" yaml:"notifCondition,omitempty"`
 	ReqNfType      *NFType         `json:"reqNfType,omitempty" yaml:"reqNfType,omitempty"`
 	// Fully Qualified Domain Name
-	ReqNfFqdn         *string      `json:"reqNfFqdn,omitempty" yaml:"reqNfFqdn,omitempty" validate:"regexp=^([0-9A-Za-z]([-0-9A-Za-z]{0,61}[0-9A-Za-z])?\\\\.)+[A-Za-z]{2,63}\\\\.?$"`
+	ReqNfFqdn         *string      `json:"reqNfFqdn,omitempty" yaml:"reqNfFqdn,omitempty" validate:"regexp=^([0-9A-Za-z]([-0-9A-Za-z]{0\\,61}[0-9A-Za-z])?\\.)+[A-Za-z]{2\\,63}\\.?$"`
 	ReqSnssais        []Snssai     `json:"reqSnssais,omitempty" yaml:"reqSnssais,omitempty"`
 	ReqPerPlmnSnssais []PlmnSnssai `json:"reqPerPlmnSnssais,omitempty" yaml:"reqPerPlmnSnssais,omitempty"`
 	ReqPlmnList       []PlmnId     `json:"reqPlmnList,omitempty" yaml:"reqPlmnList,omitempty"`
@@ -59,7 +59,7 @@ type SubscriptionData struct {
 	HnrfUri              *string `json:"hnrfUri,omitempty" yaml:"hnrfUri,omitempty"`
 	OnboardingCapability *bool   `json:"onboardingCapability,omitempty" yaml:"onboardingCapability,omitempty"`
 	// Fully Qualified Domain Name
-	TargetHni         *string `json:"targetHni,omitempty" yaml:"targetHni,omitempty" validate:"regexp=^([0-9A-Za-z]([-0-9A-Za-z]{0,61}[0-9A-Za-z])?\\\\.)+[A-Za-z]{2,63}\\\\.?$"`
+	TargetHni         *string `json:"targetHni,omitempty" yaml:"targetHni,omitempty" validate:"regexp=^([0-9A-Za-z]([-0-9A-Za-z]{0\\,61}[0-9A-Za-z])?\\.)+[A-Za-z]{2\\,63}\\.?$"`
 	PreferredLocality *string `json:"preferredLocality,omitempty" yaml:"preferredLocality,omitempty"`
 	// A map (list of key-value pairs) where the key of the map represents the relative priority, for the requester, of each locality description among the list of locality descriptions in this query parameter, encoded as \"1\" (highest priority\"), \"2\", \"3\", …, \"n\" (lowest priority)
 	ExtPreferredLocality        *map[string][]LocalityDescription `json:"extPreferredLocality,omitempty" yaml:"extPreferredLocality,omitempty"`

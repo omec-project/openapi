@@ -22,7 +22,6 @@ import (
 	"encoding/json"
 
 	"github.com/omec-project/openapi/v2"
-	"gopkg.in/validator.v2"
 )
 
 // UEAuthenticationCtx5gAuthData - struct for UEAuthenticationCtx5gAuthData
@@ -56,7 +55,7 @@ func (dst *UEAuthenticationCtx5gAuthData) UnmarshalJSON(data []byte) error {
 		if string(jsonAv5gAka) == "{}" { // empty struct
 			dst.Av5gAka = nil
 		} else {
-			if err = validator.Validate(dst.Av5gAka); err != nil {
+			if err = openapi.Validate(dst.Av5gAka); err != nil {
 				dst.Av5gAka = nil
 			} else {
 				match++
@@ -73,7 +72,7 @@ func (dst *UEAuthenticationCtx5gAuthData) UnmarshalJSON(data []byte) error {
 		if string(jsonString) == "{}" { // empty struct
 			dst.String = nil
 		} else {
-			if err = validator.Validate(dst.String); err != nil {
+			if err = openapi.Validate(dst.String); err != nil {
 				dst.String = nil
 			} else {
 				match++

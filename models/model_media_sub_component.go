@@ -37,9 +37,9 @@ type MediaSubComponent struct {
 	AddInfoFlowDescs []AddFlowDescriptionInfo `json:"addInfoFlowDescs,omitempty" yaml:"addInfoFlowDescs,omitempty"`
 	FStatus          *FlowStatus              `json:"fStatus,omitempty" yaml:"fStatus,omitempty"`
 	// String representing a bit rate; the prefixes follow the standard symbols from The International System of Units, and represent x1000 multipliers, with the exception that prefix \"K\" is used to represent the standard symbol \"k\".
-	MarBwDl *string `json:"marBwDl,omitempty" yaml:"marBwDl,omitempty" validate:"regexp=^\\\\d+(\\\\.\\\\d+)? (bps|Kbps|Mbps|Gbps|Tbps)$"`
+	MarBwDl *string `json:"marBwDl,omitempty" yaml:"marBwDl,omitempty" validate:"regexp=^\\d+(\\.\\d+)? (bps|Kbps|Mbps|Gbps|Tbps)$"`
 	// String representing a bit rate; the prefixes follow the standard symbols from The International System of Units, and represent x1000 multipliers, with the exception that prefix \"K\" is used to represent the standard symbol \"k\".
-	MarBwUl *string `json:"marBwUl,omitempty" yaml:"marBwUl,omitempty" validate:"regexp=^\\\\d+(\\\\.\\\\d+)? (bps|Kbps|Mbps|Gbps|Tbps)$"`
+	MarBwUl *string `json:"marBwUl,omitempty" yaml:"marBwUl,omitempty" validate:"regexp=^\\d+(\\.\\d+)? (bps|Kbps|Mbps|Gbps|Tbps)$"`
 	// 2-octet string, where each octet is encoded in hexadecimal representation. The first octet contains the IPv4 Type-of-Service or the IPv6 Traffic-Class field and the second octet contains the ToS/Traffic Class mask field.
 	TosTrCl   *string             `json:"tosTrCl,omitempty" yaml:"tosTrCl,omitempty"`
 	FlowUsage *FlowUsage          `json:"flowUsage,omitempty" yaml:"flowUsage,omitempty"`

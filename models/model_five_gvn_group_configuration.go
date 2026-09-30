@@ -35,10 +35,10 @@ type FiveGVnGroupConfiguration struct {
 	ReferenceId  *int32  `json:"referenceId,omitempty" yaml:"referenceId,omitempty"`
 	AfInstanceId *string `json:"afInstanceId,omitempty" yaml:"afInstanceId,omitempty"`
 	// String identifying a group of devices network internal globally unique ID which identifies a set of IMSIs, as specified in clause 19.9 of 3GPP TS 23.003.
-	InternalGroupIdentifier *string `json:"internalGroupIdentifier,omitempty" yaml:"internalGroupIdentifier,omitempty" validate:"regexp=^[A-Fa-f0-9]{8}-[0-9]{3}-[0-9]{2,3}-([A-Fa-f0-9][A-Fa-f0-9]){1,10}$"`
+	InternalGroupIdentifier *string `json:"internalGroupIdentifier,omitempty" yaml:"internalGroupIdentifier,omitempty" validate:"regexp=^[A-Fa-f0-9]{8}-[0-9]{3}-[0-9]{2\\,3}-([A-Fa-f0-9][A-Fa-f0-9]){1\\,10}$"`
 	// String uniquely identifying MTC provider information.
 	MtcProviderInformation *string `json:"mtcProviderInformation,omitempty" yaml:"mtcProviderInformation,omitempty"`
-	// Contains the list of 5G VN Group members, each member is identified by GPSI. A map (list of key-value pairs where Gpsi serves as key) of GpsiInfo.  The value in each entries of the map shall be an empty JSON object.
+	// Contains the list of 5G VN Group members, each member is identified by GPSI. A map (list of key-value pairs where Gpsi serves as key) of GpsiInfo. The value in each entries of the map shall be an empty JSON object.
 	MembersData map[string]map[string]any `json:"membersData,omitempty" yaml:"membersData,omitempty"`
 }
 

@@ -29,7 +29,7 @@ var _ openapi.MappedNullable = &PatchResult{}
 
 // PatchResult The execution report result on failed modification.
 type PatchResult struct {
-	// The execution report contains an array of report items. Each report item indicates one  failed modification.
+	// The execution report contains an array of report items. Each report item indicates one failed modification.
 	Report []ReportItem `json:"report" yaml:"report"`
 }
 

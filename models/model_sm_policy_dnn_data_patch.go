@@ -29,10 +29,10 @@ var _ openapi.MappedNullable = &SmPolicyDnnDataPatch{}
 
 // SmPolicyDnnDataPatch Contains the SM policy data for a given DNN (and S-NSSAI).
 type SmPolicyDnnDataPatch struct {
-	// String representing a Data Network as defined in clause 9A of 3GPP TS 23.003;  it shall contain either a DNN Network Identifier, or a full DNN with both the Network  Identifier and Operator Identifier, as specified in 3GPP TS 23.003 clause 9.1.1 and 9.1.2. It shall be coded as string in which the labels are separated by dots  (e.g. \"Label1.Label2.Label3\").
+	// String representing a Data Network as defined in clause 9A of 3GPP TS 23.003; it shall contain either a DNN Network Identifier, or a full DNN with both the Network Identifier and Operator Identifier, as specified in 3GPP TS 23.003 clause 9.1.1 and 9.1.2. It shall be coded as string in which the labels are separated by dots (e.g. \"Label1.Label2.Label3\").
 	Dnn string `json:"dnn" yaml:"dnn"`
 	// Contains updated transfer policies of background data transfer. Any string value can be used as a key of the map.
-	BdtRefIds map[string]string `json:"bdtRefIds,omitempty" yaml:"bdtRefIds,omitempty"`
+	BdtRefIds map[string]*string `json:"bdtRefIds,omitempty" yaml:"bdtRefIds,omitempty"`
 }
 
 // NewSmPolicyDnnDataPatch instantiates a new SmPolicyDnnDataPatch object
@@ -78,9 +78,9 @@ func (o *SmPolicyDnnDataPatch) SetDnn(v string) {
 }
 
 // GetBdtRefIds returns the BdtRefIds field value if set, zero value otherwise (both if not set or set to explicit null).
-func (o *SmPolicyDnnDataPatch) GetBdtRefIds() map[string]string {
+func (o *SmPolicyDnnDataPatch) GetBdtRefIds() map[string]*string {
 	if o == nil {
-		var ret map[string]string
+		var ret map[string]*string
 		return ret
 	}
 	return o.BdtRefIds
@@ -89,7 +89,7 @@ func (o *SmPolicyDnnDataPatch) GetBdtRefIds() map[string]string {
 // GetBdtRefIdsOk returns a tuple with the BdtRefIds field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 // NOTE: If the value is an explicit nil, `nil, true` will be returned
-func (o *SmPolicyDnnDataPatch) GetBdtRefIdsOk() (*map[string]string, bool) {
+func (o *SmPolicyDnnDataPatch) GetBdtRefIdsOk() (*map[string]*string, bool) {
 	if o == nil || openapi.IsNil(o.BdtRefIds) {
 		return nil, false
 	}
@@ -105,8 +105,8 @@ func (o *SmPolicyDnnDataPatch) HasBdtRefIds() bool {
 	return false
 }
 
-// SetBdtRefIds gets a reference to the given map[string]string and assigns it to the BdtRefIds field.
-func (o *SmPolicyDnnDataPatch) SetBdtRefIds(v map[string]string) {
+// SetBdtRefIds gets a reference to the given map[string]*string and assigns it to the BdtRefIds field.
+func (o *SmPolicyDnnDataPatch) SetBdtRefIds(v map[string]*string) {
 	o.BdtRefIds = v
 }
 

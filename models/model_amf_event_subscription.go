@@ -39,15 +39,15 @@ type AmfEventSubscription struct {
 	SubsChangeNotifyUri           *string `json:"subsChangeNotifyUri,omitempty" yaml:"subsChangeNotifyUri,omitempty"`
 	SubsChangeNotifyCorrelationId *string `json:"subsChangeNotifyCorrelationId,omitempty" yaml:"subsChangeNotifyCorrelationId,omitempty"`
 	// String identifying a Supi that shall contain either an IMSI, a network specific identifier, a Global Cable Identifier (GCI) or a Global Line Identifier (GLI) as specified in clause 2.2A of 3GPP TS 23.003. It shall be formatted as follows  - for an IMSI \"imsi-<imsi>\", where <imsi> shall be formatted according to clause 2.2    of 3GPP TS 23.003 that describes an IMSI.  - for a network specific identifier \"nai-<nai>, where <nai> shall be formatted    according to clause 28.7.2 of 3GPP TS 23.003 that describes an NAI.  - for a GCI \"gci-<gci>\", where <gci> shall be formatted according to clause 28.15.2    of 3GPP TS 23.003.  - for a GLI \"gli-<gli>\", where <gli> shall be formatted according to clause 28.16.2 of    3GPP TS 23.003.To enable that the value is used as part of an URI, the string shall    only contain characters allowed according to the \"lower-with-hyphen\" naming convention    defined in 3GPP TS 29.501.
-	Supi *string `json:"supi,omitempty" yaml:"supi,omitempty" validate:"regexp=^(imsi-[0-9]{5,15}|nai-.+|gci-.+|gli-.+|.+)$"`
+	Supi *string `json:"supi,omitempty" yaml:"supi,omitempty" validate:"regexp=^(imsi-[0-9]{5\\,15}|nai-.+|gci-.+|gli-.+|.+)$"`
 	// String identifying a group of devices network internal globally unique ID which identifies a set of IMSIs, as specified in clause 19.9 of 3GPP TS 23.003.
-	GroupId         *string  `json:"groupId,omitempty" yaml:"groupId,omitempty" validate:"regexp=^[A-Fa-f0-9]{8}-[0-9]{3}-[0-9]{2,3}-([A-Fa-f0-9][A-Fa-f0-9]){1,10}$"`
+	GroupId         *string  `json:"groupId,omitempty" yaml:"groupId,omitempty" validate:"regexp=^[A-Fa-f0-9]{8}-[0-9]{3}-[0-9]{2\\,3}-([A-Fa-f0-9][A-Fa-f0-9]){1\\,10}$"`
 	ExcludeSupiList []string `json:"excludeSupiList,omitempty" yaml:"excludeSupiList,omitempty"`
 	ExcludeGpsiList []string `json:"excludeGpsiList,omitempty" yaml:"excludeGpsiList,omitempty"`
 	IncludeSupiList []string `json:"includeSupiList,omitempty" yaml:"includeSupiList,omitempty"`
 	IncludeGpsiList []string `json:"includeGpsiList,omitempty" yaml:"includeGpsiList,omitempty"`
 	// String identifying a Gpsi shall contain either an External Id or an MSISDN. It shall be formatted as follows -External Identifier= \"extid-'extid', where 'extid' shall be formatted according to clause 19.7.2 of 3GPP TS 23.003 that describes an External Identifier.
-	Gpsi *string `json:"gpsi,omitempty" yaml:"gpsi,omitempty" validate:"regexp=^(msisdn-[0-9]{5,15}|extid-[^@]+@[^@]+|.+)$"`
+	Gpsi *string `json:"gpsi,omitempty" yaml:"gpsi,omitempty" validate:"regexp=^(msisdn-[0-9]{5\\,15}|extid-[^@]+@[^@]+|.+)$"`
 	// String representing a Permanent Equipment Identifier that may contain - an IMEI or IMEISV, as  specified in clause 6.2 of 3GPP TS 23.003; a MAC address for a 5G-RG or FN-RG via wireline  access, with an indication that this address cannot be trusted for regulatory purpose if this  address cannot be used as an Equipment Identifier of the FN-RG, as specified in clause 4.7.7  of 3GPP TS23.316. Examples are imei-012345678901234 or imeisv-0123456789012345.
 	Pei           *string       `json:"pei,omitempty" yaml:"pei,omitempty" validate:"regexp=^(imei-[0-9]{15}|imeisv-[0-9]{16}|mac((-[0-9a-fA-F]{2}){6})(-untrusted)?|eui((-[0-9a-fA-F]{2}){8})|.+)$"`
 	AnyUE         *bool         `json:"anyUE,omitempty" yaml:"anyUE,omitempty"`

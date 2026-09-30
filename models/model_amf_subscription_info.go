@@ -29,7 +29,7 @@ var _ openapi.MappedNullable = &AmfSubscriptionInfo{}
 
 // AmfSubscriptionInfo Information the UDR stores and retrieves related to active subscriptions at the AMF(s).
 type AmfSubscriptionInfo struct {
-	// String uniquely identifying a NF instance. The format of the NF Instance ID shall be a  Universally Unique Identifier (UUID) version 4, as described in IETF RFC 4122.
+	// String uniquely identifying a NF instance. The format of the NF Instance ID shall be a Universally Unique Identifier (UUID) version 4, as described in IETF RFC 4122.
 	AmfInstanceId string `json:"amfInstanceId" yaml:"amfInstanceId"`
 	// String providing an URI formatted according to RFC 3986.
 	SubscriptionId                string       `json:"subscriptionId" yaml:"subscriptionId"`

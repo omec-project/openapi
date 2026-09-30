@@ -33,7 +33,7 @@ type PfdChangeNotification struct {
 	ApplicationId string `json:"applicationId" yaml:"applicationId"`
 	// Indication of removal of PFDs for an existing application identifier. Set to true indicates the PFDs are removed. Set to false indicates the PFDs are not removed. Default value is false if omitted.
 	RemovalFlag *bool `json:"removalFlag,omitempty" yaml:"removalFlag,omitempty"`
-	// Indication of partial update of PFDs for an existing application identifier  if this operation is supported according to feature negotiation. Set to true indicates partial update PFDs for the included application identifier. Set to false indicates not partial update PFDs for the included application identifier. Default value is \"false\" if omitted.
+	// Indication of partial update of PFDs for an existing application identifier if this operation is supported according to feature negotiation. Set to true indicates partial update PFDs for the included application identifier. Set to false indicates not partial update PFDs for the included application identifier. Default value is \"false\" if omitted.
 	PartialFlag *bool        `json:"partialFlag,omitempty" yaml:"partialFlag,omitempty"`
 	Pfds        []PfdContent `json:"pfds,omitempty" yaml:"pfds,omitempty"`
 }

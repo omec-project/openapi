@@ -29,7 +29,7 @@ var _ openapi.MappedNullable = &FiveGVnGroupData{}
 
 // FiveGVnGroupData struct for FiveGVnGroupData
 type FiveGVnGroupData struct {
-	// String representing a Data Network as defined in clause 9A of 3GPP TS 23.003;  it shall contain either a DNN Network Identifier, or a full DNN with both the Network  Identifier and Operator Identifier, as specified in 3GPP TS 23.003 clause 9.1.1 and 9.1.2. It shall be coded as string in which the labels are separated by dots  (e.g. \"Label1.Label2.Label3\").
+	// String representing a Data Network as defined in clause 9A of 3GPP TS 23.003; it shall contain either a DNN Network Identifier, or a full DNN with both the Network Identifier and Operator Identifier, as specified in 3GPP TS 23.003 clause 9.1.1 and 9.1.2. It shall be coded as string in which the labels are separated by dots (e.g. \"Label1.Label2.Label3\").
 	Dnn                      string            `json:"dnn" yaml:"dnn"`
 	SNssai                   Snssai            `json:"sNssai" yaml:"sNssai"`
 	PduSessionTypes          []PduSessionType  `json:"pduSessionTypes,omitempty" yaml:"pduSessionTypes,omitempty"`
@@ -39,7 +39,7 @@ type FiveGVnGroupData struct {
 	DnAaaAddress             NullableIpAddress `json:"dnAaaAddress" yaml:"dnAaaAddress,omitempty"`
 	AdditionalDnAaaAddresses []IpAddress       `json:"additionalDnAaaAddresses,omitempty" yaml:"additionalDnAaaAddresses,omitempty"`
 	// Fully Qualified Domain Name
-	DnAaaFqdn                    *string           `json:"dnAaaFqdn,omitempty" yaml:"dnAaaFqdn,omitempty" validate:"regexp=^([0-9A-Za-z]([-0-9A-Za-z]{0,61}[0-9A-Za-z])?\\\\.)+[A-Za-z]{2,63}\\\\.?$"`
+	DnAaaFqdn                    *string           `json:"dnAaaFqdn,omitempty" yaml:"dnAaaFqdn,omitempty" validate:"regexp=^([0-9A-Za-z]([-0-9A-Za-z]{0\\,61}[0-9A-Za-z])?\\.)+[A-Za-z]{2\\,63}\\.?$"`
 	Var5gVnGroupCommunicationInd *bool             `json:"5gVnGroupCommunicationInd,omitempty" yaml:"5gVnGroupCommunicationInd,omitempty"`
 	MaxGroupDataRate             *MaxGroupDataRate `json:"maxGroupDataRate,omitempty" yaml:"maxGroupDataRate,omitempty"`
 }

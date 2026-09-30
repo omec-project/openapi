@@ -30,21 +30,21 @@ var _ openapi.MappedNullable = &RegistrationContextContainer{}
 // RegistrationContextContainer Registration Context Container used to send the UE context information, N1 message from UE, AN address etc during Registration with AMF re-allocation procedure
 type RegistrationContextContainer struct {
 	UeContext UeContext `json:"ueContext" yaml:"ueContext"`
-	// String with format \"time-numoffset\" optionally appended by \"daylightSavingTime\", where  - \"time-numoffset\" shall represent the time zone adjusted for daylight saving time and be    encoded as time-numoffset as defined in clause 5.6 of IETF RFC 3339;  - \"daylightSavingTime\" shall represent the adjustment that has been made and shall be    encoded as \"+1\" or \"+2\" for a +1 or +2 hours adjustment.   The example is for 8 hours behind UTC, +1 hour adjustment for Daylight Saving Time.
+	// String with format \"time-numoffset\" optionally appended by \"daylightSavingTime\", where - \"time-numoffset\" shall represent the time zone adjusted for daylight saving time and be    encoded as time-numoffset as defined in clause 5.6 of IETF RFC 3339; - \"daylightSavingTime\" shall represent the adjustment that has been made and shall be    encoded as \"+1\" or \"+2\" for a +1 or +2 hours adjustment.  The example is for 8 hours behind UTC, +1 hour adjustment for Daylight Saving Time.
 	LocalTimeZone *string                 `json:"localTimeZone,omitempty" yaml:"localTimeZone,omitempty"`
 	AnType        AccessType              `json:"anType" yaml:"anType"`
 	AnN2ApId      int32                   `json:"anN2ApId" yaml:"anN2ApId"`
 	RanNodeId     NullableGlobalRanNodeId `json:"ranNodeId" yaml:"ranNodeId"`
 	// Fully Qualified Domain Name
-	InitialAmfName   string       `json:"initialAmfName" yaml:"initialAmfName" validate:"regexp=^([0-9A-Za-z]([-0-9A-Za-z]{0,61}[0-9A-Za-z])?\\\\.)+[A-Za-z]{2,63}\\\\.?$"`
+	InitialAmfName   string       `json:"initialAmfName" yaml:"initialAmfName" validate:"regexp=^([0-9A-Za-z]([-0-9A-Za-z]{0\\,61}[0-9A-Za-z])?\\.)+[A-Za-z]{2\\,63}\\.?$"`
 	UserLocation     UserLocation `json:"userLocation" yaml:"userLocation"`
 	RrcEstCause      *string      `json:"rrcEstCause,omitempty" yaml:"rrcEstCause,omitempty" validate:"regexp=^[0-9a-fA-F]+$"`
 	UeContextRequest *bool        `json:"ueContextRequest,omitempty" yaml:"ueContextRequest,omitempty"`
 	InitialAmfN2ApId *int32       `json:"initialAmfN2ApId,omitempty" yaml:"initialAmfN2ApId,omitempty"`
 	// String identifying a IPv4 address formatted in the 'dotted decimal' notation as defined in RFC 1166.
-	AnN2IPv4Addr *string `json:"anN2IPv4Addr,omitempty" yaml:"anN2IPv4Addr,omitempty" validate:"regexp=^(([0-9]|[1-9][0-9]|1[0-9][0-9]|2[0-4][0-9]|25[0-5])\\\\.){3}([0-9]|[1-9][0-9]|1[0-9][0-9]|2[0-4][0-9]|25[0-5])$"`
+	AnN2IPv4Addr *string `json:"anN2IPv4Addr,omitempty" yaml:"anN2IPv4Addr,omitempty" validate:"regexp=^(([0-9]|[1-9][0-9]|1[0-9][0-9]|2[0-4][0-9]|25[0-5])\\.){3}([0-9]|[1-9][0-9]|1[0-9][0-9]|2[0-4][0-9]|25[0-5])$"`
 	// String identifying an IPv6 address formatted according to clause 4 of RFC5952. The mixed IPv4 IPv6 notation according to clause 5 of RFC5952 shall not be used.
-	AnN2IPv6Addr        *string            `json:"anN2IPv6Addr,omitempty" yaml:"anN2IPv6Addr,omitempty" validate:"regexp=^(((:|(0?|([1-9a-f][0-9a-f]{0,3}))):)((0?|([1-9a-f][0-9a-f]{0,3})):){0,6}(:|(0?|([1-9a-f][0-9a-f]{0,3}))))|((([^:]+:){7}([^:]+))|((([^:]+:)*[^:]+)?::(([^:]+:)*[^:]+)?)))$"`
+	AnN2IPv6Addr        *string            `json:"anN2IPv6Addr,omitempty" yaml:"anN2IPv6Addr,omitempty" validate:"regexp=^(((:|(0?|([1-9a-f][0-9a-f]{0\\,3}))):)((0?|([1-9a-f][0-9a-f]{0\\,3})):){0\\,6}(:|(0?|([1-9a-f][0-9a-f]{0\\,3}))))|((([^:]+:){7}([^:]+))|((([^:]+:)*[^:]+)?::(([^:]+:)*[^:]+)?)))$"`
 	AllowedNssai        *AllowedNssai      `json:"allowedNssai,omitempty" yaml:"allowedNssai,omitempty"`
 	ConfiguredNssai     []ConfiguredSnssai `json:"configuredNssai,omitempty" yaml:"configuredNssai,omitempty"`
 	RejectedNssaiInPlmn []Snssai           `json:"rejectedNssaiInPlmn,omitempty" yaml:"rejectedNssaiInPlmn,omitempty"`

@@ -38,7 +38,7 @@ type PwsInformation struct {
 	SendRanResponse *bool             `json:"sendRanResponse,omitempty" yaml:"sendRanResponse,omitempty"`
 	// Represents the OMC Identifier
 	OmcId *string `json:"omcId,omitempty" yaml:"omcId,omitempty"`
-	// String uniquely identifying a NF instance. The format of the NF Instance ID shall be a  Universally Unique Identifier (UUID) version 4, as described in IETF RFC 4122.
+	// String uniquely identifying a NF instance. The format of the NF Instance ID shall be a Universally Unique Identifier (UUID) version 4, as described in IETF RFC 4122.
 	NfId *string `json:"nfId,omitempty" yaml:"nfId,omitempty"`
 }
 

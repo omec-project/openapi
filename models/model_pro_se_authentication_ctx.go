@@ -31,10 +31,9 @@ var _ openapi.MappedNullable = &ProSeAuthenticationCtx{}
 type ProSeAuthenticationCtx struct {
 	AuthType AuthType `json:"authType" yaml:"authType"`
 	// A map(list of key-value pairs) where member serves as key
-	Links map[string]LinksValueSchema `json:"_links" yaml:"_links"`
-	// contains an EAP packet
-	ProSeAuthData openapi.NullableString `json:"proSeAuthData" yaml:"proSeAuthData"`
-	// A string used to indicate the features supported by an API that is used as defined in clause  6.6 in 3GPP TS 29.500. The string shall contain a bitmask indicating supported features in  hexadecimal representation Each character in the string shall take a value of \"0\" to \"9\",  \"a\" to \"f\" or \"A\" to \"F\" and shall represent the support of 4 features as described in  table 5.2.2-3. The most significant character representing the highest-numbered features shall  appear first in the string, and the character representing features 1 to 4 shall appear last  in the string. The list of features and their numbering (starting with 1) are defined  separately for each API. If the string contains a lower number of characters than there are  defined features for an API, all features that would be represented by characters that are not  present in the string are not supported.
+	Links         map[string]LinksValueSchema `json:"_links" yaml:"_links"`
+	ProSeAuthData any                         `json:"proSeAuthData" yaml:"proSeAuthData"`
+	// A string used to indicate the features supported by an API that is used as defined in clause 6.6 in 3GPP TS 29.500. The string shall contain a bitmask indicating supported features in hexadecimal representation Each character in the string shall take a value of \"0\" to \"9\", \"a\" to \"f\" or \"A\" to \"F\" and shall represent the support of 4 features as described in table 5.2.2-3. The most significant character representing the highest-numbered features shall  appear first in the string, and the character representing features 1 to 4 shall appear last  in the string. The list of features and their numbering (starting with 1) are defined  separately for each API. If the string contains a lower number of characters than there are  defined features for an API, all features that would be represented by characters that are not  present in the string are not supported.
 	SupportedFeatures *string `json:"supportedFeatures,omitempty" yaml:"supportedFeatures,omitempty" validate:"regexp=^[A-Fa-f0-9]*$"`
 }
 
@@ -42,7 +41,7 @@ type ProSeAuthenticationCtx struct {
 // This constructor will assign default values to properties that have it defined,
 // and makes sure properties required by API are set, but the set of arguments
 // will change when the set of required properties is changed
-func NewProSeAuthenticationCtx(authType AuthType, links map[string]LinksValueSchema, proSeAuthData openapi.NullableString) *ProSeAuthenticationCtx {
+func NewProSeAuthenticationCtx(authType AuthType, links map[string]LinksValueSchema, proSeAuthData any) *ProSeAuthenticationCtx {
 	this := ProSeAuthenticationCtx{}
 	this.AuthType = authType
 	this.Links = links
@@ -107,29 +106,27 @@ func (o *ProSeAuthenticationCtx) SetLinks(v map[string]LinksValueSchema) {
 }
 
 // GetProSeAuthData returns the ProSeAuthData field value
-// If the value is explicit nil, the zero value for string will be returned
-func (o *ProSeAuthenticationCtx) GetProSeAuthData() string {
-	if o == nil || o.ProSeAuthData.Get() == nil {
-		var ret string
+func (o *ProSeAuthenticationCtx) GetProSeAuthData() any {
+	if o == nil {
+		var ret any
 		return ret
 	}
 
-	return *o.ProSeAuthData.Get()
+	return o.ProSeAuthData
 }
 
 // GetProSeAuthDataOk returns a tuple with the ProSeAuthData field value
 // and a boolean to check if the value has been set.
-// NOTE: If the value is an explicit nil, `nil, true` will be returned
-func (o *ProSeAuthenticationCtx) GetProSeAuthDataOk() (*string, bool) {
+func (o *ProSeAuthenticationCtx) GetProSeAuthDataOk() (*any, bool) {
 	if o == nil {
 		return nil, false
 	}
-	return o.ProSeAuthData.Get(), o.ProSeAuthData.IsSet()
+	return &o.ProSeAuthData, true
 }
 
 // SetProSeAuthData sets field value
-func (o *ProSeAuthenticationCtx) SetProSeAuthData(v string) {
-	o.ProSeAuthData.Set(&v)
+func (o *ProSeAuthenticationCtx) SetProSeAuthData(v any) {
+	o.ProSeAuthData = v
 }
 
 // GetSupportedFeatures returns the SupportedFeatures field value if set, zero value otherwise.
@@ -168,7 +165,7 @@ func (o ProSeAuthenticationCtx) ToMap() (map[string]any, error) {
 	toSerialize := map[string]any{}
 	toSerialize["authType"] = o.AuthType
 	toSerialize["_links"] = o.Links
-	toSerialize["proSeAuthData"] = o.ProSeAuthData.Get()
+	toSerialize["proSeAuthData"] = o.ProSeAuthData
 	if !openapi.IsNil(o.SupportedFeatures) {
 		toSerialize["supportedFeatures"] = o.SupportedFeatures
 	}

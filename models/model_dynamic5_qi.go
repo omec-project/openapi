@@ -30,7 +30,7 @@ var _ openapi.MappedNullable = &Dynamic5Qi{}
 // Dynamic5Qi It indicates the QoS Characteristics for a Non-standardised or not pre-configured 5QI for downlink and uplink.
 type Dynamic5Qi struct {
 	ResourceType QosResourceType `json:"resourceType" yaml:"resourceType"`
-	// Unsigned integer indicating the 5QI Priority Level (see clauses 5.7.3.3 and 5.7.4 of 3GPP TS 23.501, within the range 1 to 127.Values are ordered in decreasing order of priority,  i.e. with 1 as the highest priority and 127 as the lowest priority.
+	// Unsigned integer indicating the 5QI Priority Level (see clauses 5.7.3.3 and 5.7.4 of 3GPP TS 23.501, within the range 1 to 127.Values are ordered in decreasing order of priority, i.e. with 1 as the highest priority and 127 as the lowest priority.
 	PriorityLevel int32 `json:"priorityLevel" yaml:"priorityLevel"`
 	// Unsigned integer indicating Packet Delay Budget (see clauses 5.7.3.4 and 5.7.4 of 3GPP TS 23.501), expressed in milliseconds.
 	PacketDelayBudget int32 `json:"packetDelayBudget" yaml:"packetDelayBudget"`

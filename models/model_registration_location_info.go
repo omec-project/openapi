@@ -29,7 +29,7 @@ var _ openapi.MappedNullable = &RegistrationLocationInfo{}
 
 // RegistrationLocationInfo This data type contains the information about serving AMF, optional VGMLC and access type related information used by (H)GMLC.
 type RegistrationLocationInfo struct {
-	// String uniquely identifying a NF instance. The format of the NF Instance ID shall be a  Universally Unique Identifier (UUID) version 4, as described in IETF RFC 4122.
+	// String uniquely identifying a NF instance. The format of the NF Instance ID shall be a Universally Unique Identifier (UUID) version 4, as described in IETF RFC 4122.
 	AmfInstanceId  string        `json:"amfInstanceId" yaml:"amfInstanceId"`
 	Guami          *Guami        `json:"guami,omitempty" yaml:"guami,omitempty"`
 	PlmnId         *PlmnId       `json:"plmnId,omitempty" yaml:"plmnId,omitempty"`

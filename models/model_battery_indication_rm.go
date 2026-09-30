@@ -27,7 +27,7 @@ import (
 // checks if the BatteryIndicationRm type satisfies the MappedNullable interface at compile time
 var _ openapi.MappedNullable = &BatteryIndicationRm{}
 
-// BatteryIndicationRm struct for BatteryIndicationRm
+// BatteryIndicationRm This data type is defined in the same way as the 'BatteryIndication' data type, but with the OpenAPI 'nullable: true' property.
 type BatteryIndicationRm struct {
 	// This IE shall indicate whether the UE is battery powered or not. true: the UE is battery powered; false or absent: the UE is not battery powered
 	BatteryInd *bool `json:"batteryInd,omitempty" yaml:"batteryInd,omitempty"`

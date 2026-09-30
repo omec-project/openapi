@@ -34,11 +34,11 @@ type PolicyAssociation struct {
 	Triggers      []RequestTrigger                `json:"triggers,omitempty" yaml:"triggers,omitempty"`
 	ServAreaRes   *ServiceAreaRestriction         `json:"servAreaRes,omitempty" yaml:"servAreaRes,omitempty"`
 	WlServAreaRes *WirelineServiceAreaRestriction `json:"wlServAreaRes,omitempty" yaml:"wlServAreaRes,omitempty"`
-	// Unsigned integer representing the \"Subscriber Profile ID for RAT/Frequency Priority\"  as specified in 3GPP TS 36.413.
+	// Unsigned integer representing the \"Subscriber Profile ID for RAT/Frequency Priority\" as specified in 3GPP TS 36.413.
 	Rfsp *int32 `json:"rfsp,omitempty" yaml:"rfsp,omitempty"`
 	// indicating a time in seconds.
 	RfspValTime *int32 `json:"rfspValTime,omitempty" yaml:"rfspValTime,omitempty"`
-	// Unsigned integer representing the \"Subscriber Profile ID for RAT/Frequency Priority\"  as specified in 3GPP TS 36.413.
+	// Unsigned integer representing the \"Subscriber Profile ID for RAT/Frequency Priority\" as specified in 3GPP TS 36.413.
 	TargetRfsp *int32                   `json:"targetRfsp,omitempty" yaml:"targetRfsp,omitempty"`
 	SmfSelInfo NullableSmfSelectionData `json:"smfSelInfo" yaml:"smfSelInfo,omitempty"`
 	UeAmbr     *Ambr                    `json:"ueAmbr,omitempty" yaml:"ueAmbr,omitempty"`
@@ -52,7 +52,7 @@ type PolicyAssociation struct {
 	// Represents the network slice usage control information. The key of the map shall be set to the on-demand S-NSSAI (within the \"snssai\" attribute of the corresponding map entry encoded using the SliceUsgCtrlInfo data structure) to which the network slice usage control information is related.
 	SliceUsgCtrlInfoSets *map[string]SliceUsgCtrlInfo `json:"sliceUsgCtrlInfoSets,omitempty" yaml:"sliceUsgCtrlInfoSets,omitempty"`
 	ChfInfo              *ChargingInformation         `json:"chfInfo,omitempty" yaml:"chfInfo,omitempty"`
-	// A string used to indicate the features supported by an API that is used as defined in clause  6.6 in 3GPP TS 29.500. The string shall contain a bitmask indicating supported features in  hexadecimal representation Each character in the string shall take a value of \"0\" to \"9\",  \"a\" to \"f\" or \"A\" to \"F\" and shall represent the support of 4 features as described in  table 5.2.2-3. The most significant character representing the highest-numbered features shall  appear first in the string, and the character representing features 1 to 4 shall appear last  in the string. The list of features and their numbering (starting with 1) are defined  separately for each API. If the string contains a lower number of characters than there are  defined features for an API, all features that would be represented by characters that are not  present in the string are not supported.
+	// A string used to indicate the features supported by an API that is used as defined in clause 6.6 in 3GPP TS 29.500. The string shall contain a bitmask indicating supported features in hexadecimal representation Each character in the string shall take a value of \"0\" to \"9\", \"a\" to \"f\" or \"A\" to \"F\" and shall represent the support of 4 features as described in table 5.2.2-3. The most significant character representing the highest-numbered features shall  appear first in the string, and the character representing features 1 to 4 shall appear last  in the string. The list of features and their numbering (starting with 1) are defined  separately for each API. If the string contains a lower number of characters than there are  defined features for an API, all features that would be represented by characters that are not  present in the string are not supported.
 	SuppFeat string `json:"suppFeat" yaml:"suppFeat" validate:"regexp=^[A-Fa-f0-9]*$"`
 }
 
