@@ -27,7 +27,7 @@ import (
 // checks if the WirelineArea type satisfies the MappedNullable interface at compile time
 var _ openapi.MappedNullable = &WirelineArea{}
 
-// WirelineArea One and only one of the \"globLineIds\", \"hfcNIds\", \"areaCodeB\",d \"areaCodeC\" and  combGciAndHfcNIds attributes        shall be included in a WirelineArea data structure
+// WirelineArea One and only one of the \"globLineIds\", \"hfcNIds\", \"areaCodeB\",d \"areaCodeC\" and combGciAndHfcNIds attributes        shall be included in a WirelineArea data structure
 type WirelineArea struct {
 	GlobalLineIds []string `json:"globalLineIds,omitempty" yaml:"globalLineIds,omitempty"`
 	HfcNIds       []string `json:"hfcNIds,omitempty" yaml:"hfcNIds,omitempty"`

@@ -29,7 +29,7 @@ var _ openapi.MappedNullable = &ServingNfIdentity{}
 
 // ServingNfIdentity Contains the serving Network Function identity.
 type ServingNfIdentity struct {
-	// String uniquely identifying a NF instance. The format of the NF Instance ID shall be a  Universally Unique Identifier (UUID) version 4, as described in IETF RFC 4122.
+	// String uniquely identifying a NF instance. The format of the NF Instance ID shall be a Universally Unique Identifier (UUID) version 4, as described in IETF RFC 4122.
 	ServNfInstId *string             `json:"servNfInstId,omitempty" yaml:"servNfInstId,omitempty"`
 	Guami        *Guami              `json:"guami,omitempty" yaml:"guami,omitempty"`
 	AnGwAddr     NullableAnGwAddress `json:"anGwAddr" yaml:"anGwAddr,omitempty"`

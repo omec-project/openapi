@@ -30,9 +30,9 @@ var _ openapi.MappedNullable = &MaxGroupDataRate{}
 // MaxGroupDataRate The limits of the total bit rate across all sessions of the 5G VN group (uplink and downlink)
 type MaxGroupDataRate struct {
 	// String representing a bit rate; the prefixes follow the standard symbols from The International System of Units, and represent x1000 multipliers, with the exception that prefix \"K\" is used to represent the standard symbol \"k\".
-	Uplink *string `json:"uplink,omitempty" yaml:"uplink,omitempty" validate:"regexp=^\\\\d+(\\\\.\\\\d+)? (bps|Kbps|Mbps|Gbps|Tbps)$"`
+	Uplink *string `json:"uplink,omitempty" yaml:"uplink,omitempty" validate:"regexp=^\\d+(\\.\\d+)? (bps|Kbps|Mbps|Gbps|Tbps)$"`
 	// String representing a bit rate; the prefixes follow the standard symbols from The International System of Units, and represent x1000 multipliers, with the exception that prefix \"K\" is used to represent the standard symbol \"k\".
-	Downlink *string `json:"downlink,omitempty" yaml:"downlink,omitempty" validate:"regexp=^\\\\d+(\\\\.\\\\d+)? (bps|Kbps|Mbps|Gbps|Tbps)$"`
+	Downlink *string `json:"downlink,omitempty" yaml:"downlink,omitempty" validate:"regexp=^\\d+(\\.\\d+)? (bps|Kbps|Mbps|Gbps|Tbps)$"`
 }
 
 // NewMaxGroupDataRate instantiates a new MaxGroupDataRate object

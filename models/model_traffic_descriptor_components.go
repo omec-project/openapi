@@ -27,7 +27,7 @@ import (
 // checks if the TrafficDescriptorComponents type satisfies the MappedNullable interface at compile time
 var _ openapi.MappedNullable = &TrafficDescriptorComponents{}
 
-// TrafficDescriptorComponents struct for TrafficDescriptorComponents
+// TrafficDescriptorComponents Traffic descriptor components for the requested URSP.
 type TrafficDescriptorComponents struct {
 }
 

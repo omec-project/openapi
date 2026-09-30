@@ -33,7 +33,7 @@ type SmfInfo struct {
 	TaiList           []Tai               `json:"taiList,omitempty" yaml:"taiList,omitempty"`
 	TaiRangeList      []TaiRange          `json:"taiRangeList,omitempty" yaml:"taiRangeList,omitempty"`
 	// Fully Qualified Domain Name
-	PgwFqdn        *string      `json:"pgwFqdn,omitempty" yaml:"pgwFqdn,omitempty" validate:"regexp=^([0-9A-Za-z]([-0-9A-Za-z]{0,61}[0-9A-Za-z])?\\\\.)+[A-Za-z]{2,63}\\\\.?$"`
+	PgwFqdn        *string      `json:"pgwFqdn,omitempty" yaml:"pgwFqdn,omitempty" validate:"regexp=^([0-9A-Za-z]([-0-9A-Za-z]{0\\,61}[0-9A-Za-z])?\\.)+[A-Za-z]{2\\,63}\\.?$"`
 	PgwIpAddrList  []IpAddr     `json:"pgwIpAddrList,omitempty" yaml:"pgwIpAddrList,omitempty"`
 	AccessType     []AccessType `json:"accessType,omitempty" yaml:"accessType,omitempty"`
 	Priority       *int32       `json:"priority,omitempty" yaml:"priority,omitempty"`

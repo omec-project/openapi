@@ -21,7 +21,11 @@ package openapi
 import (
 	"bytes"
 	"encoding/json"
+	"errors"
+	"fmt"
 	"reflect"
+	"regexp"
+	"strings"
 	"time"
 )
 
@@ -396,4 +400,71 @@ func NewStrictDecoder(data []byte) *json.Decoder {
 	dec := json.NewDecoder(bytes.NewBuffer(data))
 	dec.DisallowUnknownFields()
 	return dec
+}
+
+// Validate walks v and its nested fields, checking any "regexp=<pattern>" rule
+// found in a "validate" struct tag against string-kind values. It replaces the
+// long-unmaintained gopkg.in/validator.v2 package, whose "regexp" rule is the
+// only one ever used by generated models.
+func Validate(v any) error {
+	return validateValue(reflect.ValueOf(v))
+}
+
+func validateValue(rv reflect.Value) error {
+	switch rv.Kind() {
+	case reflect.Ptr, reflect.Interface:
+		if rv.IsNil() {
+			return nil
+		}
+		return validateValue(rv.Elem())
+	case reflect.Struct:
+		t := rv.Type()
+		for i := 0; i < t.NumField(); i++ {
+			field := t.Field(i)
+			if field.PkgPath != "" && !field.Anonymous {
+				continue // unexported
+			}
+			if pattern, ok := strings.CutPrefix(field.Tag.Get("validate"), "regexp="); ok {
+				if err := validateRegexp(rv.Field(i), pattern); err != nil {
+					return fmt.Errorf("%s: %w", field.Name, err)
+				}
+			}
+			if err := validateValue(rv.Field(i)); err != nil {
+				return err
+			}
+		}
+	case reflect.Slice, reflect.Array:
+		for i := 0; i < rv.Len(); i++ {
+			if err := validateValue(rv.Index(i)); err != nil {
+				return err
+			}
+		}
+	case reflect.Map:
+		for _, key := range rv.MapKeys() {
+			if err := validateValue(rv.MapIndex(key)); err != nil {
+				return err
+			}
+		}
+	}
+	return nil
+}
+
+func validateRegexp(rv reflect.Value, pattern string) error {
+	for rv.Kind() == reflect.Ptr || rv.Kind() == reflect.Interface {
+		if rv.IsNil() {
+			return nil
+		}
+		rv = rv.Elem()
+	}
+	if rv.Kind() != reflect.String {
+		return errors.New("unsupported type")
+	}
+	re, err := regexp.Compile(pattern)
+	if err != nil {
+		return errors.New("bad parameter")
+	}
+	if !re.MatchString(rv.String()) {
+		return errors.New("regular expression mismatch")
+	}
+	return nil
 }

@@ -27,17 +27,17 @@ import (
 // checks if the QmcConfigInfo type satisfies the MappedNullable interface at compile time
 var _ openapi.MappedNullable = &QmcConfigInfo{}
 
-// QmcConfigInfo It contains the configuration information for signaling-based activation of the  Quality of Experience (QoE) Measurements Collection (QMC) functionality.
+// QmcConfigInfo It contains the configuration information for signaling-based activation of the Quality of Experience (QoE) Measurements Collection (QMC) functionality.
 type QmcConfigInfo struct {
-	// String containing MCC (3 digits), MNC (2 or 3 digits)  and QMC ID (3 octets, encoded as 6 hexadecimal digits).
-	QoeReference               string          `json:"qoeReference" yaml:"qoeReference" validate:"regexp=^[0-9]{3}-[0-9]{2,3}-[A-Fa-f0-9]{6}$"`
+	// String containing MCC (3 digits), MNC (2 or 3 digits) and QMC ID (3 octets, encoded as 6 hexadecimal digits).
+	QoeReference               string          `json:"qoeReference" yaml:"qoeReference" validate:"regexp=^[0-9]{3}-[0-9]{2\\,3}-[A-Fa-f0-9]{6}$"`
 	ServiceType                *QoeServiceType `json:"serviceType,omitempty" yaml:"serviceType,omitempty"`
 	SliceScope                 []Snssai        `json:"sliceScope,omitempty" yaml:"sliceScope,omitempty"`
 	AreaScope                  *QmcAreaScope   `json:"areaScope,omitempty" yaml:"areaScope,omitempty"`
 	QoeCollectionEntityAddress NullableIpAddr  `json:"qoeCollectionEntityAddress" yaml:"qoeCollectionEntityAddress,omitempty"`
 	QoeTarget                  *QoeTarget      `json:"qoeTarget,omitempty" yaml:"qoeTarget,omitempty"`
-	// String containing: - Trace Reference: MCC (3 digits), MNC (2 or 3 digits),    Trace ID (3 octets, encoded as 6 hexadecimal digits) - Trace Recording Session Reference (2 octets, encoded as 4 hexadecimal digits)
-	MdtAlignmentInfo              any                            `json:"mdtAlignmentInfo,omitempty" yaml:"mdtAlignmentInfo,omitempty" validate:"regexp=^[0-9]{3}-[0-9]{2,3}-[A-Fa-f0-9]{6}-[A-Fa-f0-9]{4}$"`
+	// String containing: - Trace Reference: MCC (3 digits), MNC (2 or 3 digits),   Trace ID (3 octets, encoded as 6 hexadecimal digits) - Trace Recording Session Reference (2 octets, encoded as 4 hexadecimal digits)
+	MdtAlignmentInfo              any                            `json:"mdtAlignmentInfo,omitempty" yaml:"mdtAlignmentInfo,omitempty" validate:"regexp=^[0-9]{3}-[0-9]{2\\,3}-[A-Fa-f0-9]{6}-[A-Fa-f0-9]{4}$"`
 	AvailableRanVisibleQoeMetrics []AvailableRanVisibleQoeMetric `json:"availableRanVisibleQoeMetrics,omitempty" yaml:"availableRanVisibleQoeMetrics,omitempty"`
 	// string with format 'bytes' as defined in OpenAPI
 	ContainerForAppLayerMeasConfig *string         `json:"containerForAppLayerMeasConfig,omitempty" yaml:"containerForAppLayerMeasConfig,omitempty"`

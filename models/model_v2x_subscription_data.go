@@ -32,9 +32,9 @@ type V2xSubscriptionData struct {
 	NrV2xServicesAuth  *NrV2xAuth  `json:"nrV2xServicesAuth,omitempty" yaml:"nrV2xServicesAuth,omitempty"`
 	LteV2xServicesAuth *LteV2xAuth `json:"lteV2xServicesAuth,omitempty" yaml:"lteV2xServicesAuth,omitempty"`
 	// String representing a bit rate; the prefixes follow the standard symbols from The International System of Units, and represent x1000 multipliers, with the exception that prefix \"K\" is used to represent the standard symbol \"k\".
-	NrUePc5Ambr *string `json:"nrUePc5Ambr,omitempty" yaml:"nrUePc5Ambr,omitempty" validate:"regexp=^\\\\d+(\\\\.\\\\d+)? (bps|Kbps|Mbps|Gbps|Tbps)$"`
+	NrUePc5Ambr *string `json:"nrUePc5Ambr,omitempty" yaml:"nrUePc5Ambr,omitempty" validate:"regexp=^\\d+(\\.\\d+)? (bps|Kbps|Mbps|Gbps|Tbps)$"`
 	// String representing a bit rate; the prefixes follow the standard symbols from The International System of Units, and represent x1000 multipliers, with the exception that prefix \"K\" is used to represent the standard symbol \"k\".
-	LtePc5Ambr *string `json:"ltePc5Ambr,omitempty" yaml:"ltePc5Ambr,omitempty" validate:"regexp=^\\\\d+(\\\\.\\\\d+)? (bps|Kbps|Mbps|Gbps|Tbps)$"`
+	LtePc5Ambr *string `json:"ltePc5Ambr,omitempty" yaml:"ltePc5Ambr,omitempty" validate:"regexp=^\\d+(\\.\\d+)? (bps|Kbps|Mbps|Gbps|Tbps)$"`
 }
 
 // NewV2xSubscriptionData instantiates a new V2xSubscriptionData object

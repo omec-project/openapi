@@ -34,14 +34,14 @@ type UeCampingRep struct {
 	ServNfId         *ServingNfIdentity `json:"servNfId,omitempty" yaml:"servNfId,omitempty"`
 	ServingNetwork   *PlmnIdNid         `json:"servingNetwork,omitempty" yaml:"servingNetwork,omitempty"`
 	UserLocationInfo *UserLocation      `json:"userLocationInfo,omitempty" yaml:"userLocationInfo,omitempty"`
-	// String with format \"time-numoffset\" optionally appended by \"daylightSavingTime\", where  - \"time-numoffset\" shall represent the time zone adjusted for daylight saving time and be    encoded as time-numoffset as defined in clause 5.6 of IETF RFC 3339;  - \"daylightSavingTime\" shall represent the adjustment that has been made and shall be    encoded as \"+1\" or \"+2\" for a +1 or +2 hours adjustment.   The example is for 8 hours behind UTC, +1 hour adjustment for Daylight Saving Time.
+	// String with format \"time-numoffset\" optionally appended by \"daylightSavingTime\", where - \"time-numoffset\" shall represent the time zone adjusted for daylight saving time and be    encoded as time-numoffset as defined in clause 5.6 of IETF RFC 3339; - \"daylightSavingTime\" shall represent the adjustment that has been made and shall be    encoded as \"+1\" or \"+2\" for a +1 or +2 hours adjustment.  The example is for 8 hours behind UTC, +1 hour adjustment for Daylight Saving Time.
 	UeTimeZone          *string                    `json:"ueTimeZone,omitempty" yaml:"ueTimeZone,omitempty"`
 	NetLocAccSupp       *NetLocAccessSupport       `json:"netLocAccSupp,omitempty" yaml:"netLocAccSupp,omitempty"`
 	SatBackhaulCategory *SatelliteBackhaulCategory `json:"satBackhaulCategory,omitempty" yaml:"satBackhaulCategory,omitempty"`
 	// string with format 'bytes' as defined in OpenAPI
 	UrspEnfInfo *string  `json:"urspEnfInfo,omitempty" yaml:"urspEnfInfo,omitempty"`
 	SscMode     *SscMode `json:"sscMode,omitempty" yaml:"sscMode,omitempty"`
-	// String representing a Data Network as defined in clause 9A of 3GPP TS 23.003;  it shall contain either a DNN Network Identifier, or a full DNN with both the Network  Identifier and Operator Identifier, as specified in 3GPP TS 23.003 clause 9.1.1 and 9.1.2. It shall be coded as string in which the labels are separated by dots  (e.g. \"Label1.Label2.Label3\").
+	// String representing a Data Network as defined in clause 9A of 3GPP TS 23.003; it shall contain either a DNN Network Identifier, or a full DNN with both the Network Identifier and Operator Identifier, as specified in 3GPP TS 23.003 clause 9.1.1 and 9.1.2. It shall be coded as string in which the labels are separated by dots (e.g. \"Label1.Label2.Label3\").
 	UeReqDnn                *string                         `json:"ueReqDnn,omitempty" yaml:"ueReqDnn,omitempty"`
 	RedundantPduSessionInfo *RedundantPduSessionInformation `json:"redundantPduSessionInfo,omitempty" yaml:"redundantPduSessionInfo,omitempty"`
 }

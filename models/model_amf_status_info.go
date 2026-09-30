@@ -32,9 +32,9 @@ type AmfStatusInfo struct {
 	GuamiList    []Guami      `json:"guamiList" yaml:"guamiList"`
 	StatusChange StatusChange `json:"statusChange" yaml:"statusChange"`
 	// Fully Qualified Domain Name
-	TargetAmfRemoval *string `json:"targetAmfRemoval,omitempty" yaml:"targetAmfRemoval,omitempty" validate:"regexp=^([0-9A-Za-z]([-0-9A-Za-z]{0,61}[0-9A-Za-z])?\\\\.)+[A-Za-z]{2,63}\\\\.?$"`
+	TargetAmfRemoval *string `json:"targetAmfRemoval,omitempty" yaml:"targetAmfRemoval,omitempty" validate:"regexp=^([0-9A-Za-z]([-0-9A-Za-z]{0\\,61}[0-9A-Za-z])?\\.)+[A-Za-z]{2\\,63}\\.?$"`
 	// Fully Qualified Domain Name
-	TargetAmfFailure *string `json:"targetAmfFailure,omitempty" yaml:"targetAmfFailure,omitempty" validate:"regexp=^([0-9A-Za-z]([-0-9A-Za-z]{0,61}[0-9A-Za-z])?\\\\.)+[A-Za-z]{2,63}\\\\.?$"`
+	TargetAmfFailure *string `json:"targetAmfFailure,omitempty" yaml:"targetAmfFailure,omitempty" validate:"regexp=^([0-9A-Za-z]([-0-9A-Za-z]{0\\,61}[0-9A-Za-z])?\\.)+[A-Za-z]{2\\,63}\\.?$"`
 }
 
 // NewAmfStatusInfo instantiates a new AmfStatusInfo object

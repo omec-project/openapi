@@ -52,13 +52,13 @@ type DnnConfiguration struct {
 	DnAaaAddress             NullableIpAddress `json:"dnAaaAddress" yaml:"dnAaaAddress,omitempty"`
 	AdditionalDnAaaAddresses []IpAddress       `json:"additionalDnAaaAddresses,omitempty" yaml:"additionalDnAaaAddresses,omitempty"`
 	// Fully Qualified Domain Name
-	DnAaaFqdn                            *string                   `json:"dnAaaFqdn,omitempty" yaml:"dnAaaFqdn,omitempty" validate:"regexp=^([0-9A-Za-z]([-0-9A-Za-z]{0,61}[0-9A-Za-z])?\\\\.)+[A-Za-z]{2,63}\\\\.?$"`
+	DnAaaFqdn                            *string                   `json:"dnAaaFqdn,omitempty" yaml:"dnAaaFqdn,omitempty" validate:"regexp=^([0-9A-Za-z]([-0-9A-Za-z]{0\\,61}[0-9A-Za-z])?\\.)+[A-Za-z]{2\\,63}\\.?$"`
 	IptvAccCtrlInfo                      *string                   `json:"iptvAccCtrlInfo,omitempty" yaml:"iptvAccCtrlInfo,omitempty"`
 	Ipv4Index                            *IpIndex                  `json:"ipv4Index,omitempty" yaml:"ipv4Index,omitempty"`
 	Ipv6Index                            *IpIndex                  `json:"ipv6Index,omitempty" yaml:"ipv6Index,omitempty"`
 	EcsAddrConfigInfo                    NullableEcsAddrConfigInfo `json:"ecsAddrConfigInfo" yaml:"ecsAddrConfigInfo,omitempty"`
 	AdditionalEcsAddrConfigInfos         []EcsAddrConfigInfo       `json:"additionalEcsAddrConfigInfos,omitempty" yaml:"additionalEcsAddrConfigInfos,omitempty"`
-	SharedEcsAddrConfigInfo              *string                   `json:"sharedEcsAddrConfigInfo,omitempty" yaml:"sharedEcsAddrConfigInfo,omitempty" validate:"regexp=^[0-9]{5,6}-.+$"`
+	SharedEcsAddrConfigInfo              *string                   `json:"sharedEcsAddrConfigInfo,omitempty" yaml:"sharedEcsAddrConfigInfo,omitempty" validate:"regexp=^[0-9]{5\\,6}-.+$"`
 	AdditionalSharedEcsAddrConfigInfoIds []string                  `json:"additionalSharedEcsAddrConfigInfoIds,omitempty" yaml:"additionalSharedEcsAddrConfigInfoIds,omitempty"`
 	EasDiscoveryAuthorized               *bool                     `json:"easDiscoveryAuthorized,omitempty" yaml:"easDiscoveryAuthorized,omitempty"`
 	OnboardingInd                        *bool                     `json:"onboardingInd,omitempty" yaml:"onboardingInd,omitempty"`

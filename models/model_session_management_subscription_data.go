@@ -35,10 +35,10 @@ type SessionManagementSubscriptionData struct {
 	InternalGroupIds  []string                     `json:"internalGroupIds,omitempty" yaml:"internalGroupIds,omitempty"`
 	// A map(list of key-value pairs) where GroupId serves as key of SharedDataId
 	SharedVnGroupDataIds      *map[string]string        `json:"sharedVnGroupDataIds,omitempty" yaml:"sharedVnGroupDataIds,omitempty"`
-	SharedDnnConfigurationsId *string                   `json:"sharedDnnConfigurationsId,omitempty" yaml:"sharedDnnConfigurationsId,omitempty" validate:"regexp=^[0-9]{5,6}-.+$"`
+	SharedDnnConfigurationsId *string                   `json:"sharedDnnConfigurationsId,omitempty" yaml:"sharedDnnConfigurationsId,omitempty" validate:"regexp=^[0-9]{5\\,6}-.+$"`
 	OdbPacketServices         NullableOdbPacketServices `json:"odbPacketServices" yaml:"odbPacketServices,omitempty"`
 	TraceData                 NullableTraceData         `json:"traceData" yaml:"traceData,omitempty"`
-	SharedTraceDataId         *string                   `json:"sharedTraceDataId,omitempty" yaml:"sharedTraceDataId,omitempty" validate:"regexp=^[0-9]{5,6}-.+$"`
+	SharedTraceDataId         *string                   `json:"sharedTraceDataId,omitempty" yaml:"sharedTraceDataId,omitempty" validate:"regexp=^[0-9]{5\\,6}-.+$"`
 	// A map(list of key-value pairs) where Dnn serves as key of ExpectedUeBehaviourData
 	ExpectedUeBehavioursList *map[string]ExpectedUeBehaviourData `json:"expectedUeBehavioursList,omitempty" yaml:"expectedUeBehavioursList,omitempty"`
 	// A map(list of key-value pairs) where DNN serves as key
@@ -52,7 +52,7 @@ type SessionManagementSubscriptionData struct {
 	// indicating a time in seconds.
 	SessInactTimer *int32 `json:"sessInactTimer,omitempty" yaml:"sessInactTimer,omitempty"`
 	OnDemand       *bool  `json:"onDemand,omitempty" yaml:"onDemand,omitempty"`
-	// A string used to indicate the features supported by an API that is used as defined in clause  6.6 in 3GPP TS 29.500. The string shall contain a bitmask indicating supported features in  hexadecimal representation Each character in the string shall take a value of \"0\" to \"9\",  \"a\" to \"f\" or \"A\" to \"F\" and shall represent the support of 4 features as described in  table 5.2.2-3. The most significant character representing the highest-numbered features shall  appear first in the string, and the character representing features 1 to 4 shall appear last  in the string. The list of features and their numbering (starting with 1) are defined  separately for each API. If the string contains a lower number of characters than there are  defined features for an API, all features that would be represented by characters that are not  present in the string are not supported.
+	// A string used to indicate the features supported by an API that is used as defined in clause 6.6 in 3GPP TS 29.500. The string shall contain a bitmask indicating supported features in hexadecimal representation Each character in the string shall take a value of \"0\" to \"9\", \"a\" to \"f\" or \"A\" to \"F\" and shall represent the support of 4 features as described in table 5.2.2-3. The most significant character representing the highest-numbered features shall  appear first in the string, and the character representing features 1 to 4 shall appear last  in the string. The list of features and their numbering (starting with 1) are defined  separately for each API. If the string contains a lower number of characters than there are  defined features for an API, all features that would be represented by characters that are not  present in the string are not supported.
 	SupportedFeatures                    *string  `json:"supportedFeatures,omitempty" yaml:"supportedFeatures,omitempty" validate:"regexp=^[A-Fa-f0-9]*$"`
 	AdditionalSharedDnnConfigurationsIds []string `json:"additionalSharedDnnConfigurationsIds,omitempty" yaml:"additionalSharedDnnConfigurationsIds,omitempty"`
 }

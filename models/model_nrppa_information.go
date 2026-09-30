@@ -29,7 +29,7 @@ var _ openapi.MappedNullable = &NrppaInformation{}
 
 // NrppaInformation Represents a NRPPa related N2 information data part
 type NrppaInformation struct {
-	// String uniquely identifying a NF instance. The format of the NF Instance ID shall be a  Universally Unique Identifier (UUID) version 4, as described in IETF RFC 4122.
+	// String uniquely identifying a NF instance. The format of the NF Instance ID shall be a Universally Unique Identifier (UUID) version 4, as described in IETF RFC 4122.
 	NfId              string        `json:"nfId" yaml:"nfId"`
 	NrppaPdu          N2InfoContent `json:"nrppaPdu" yaml:"nrppaPdu"`
 	ServiceInstanceId *string       `json:"serviceInstanceId,omitempty" yaml:"serviceInstanceId,omitempty"`

@@ -25,7 +25,7 @@ import (
 	"github.com/omec-project/openapi/v2"
 )
 
-// AfSigProtocol Indicates the protocol used for signalling between the UE and the AF.   Possible values are - NO_INFORMATION: Indicate that no information about the AF signalling protocol is being provided. - SIP: Indicate that the signalling protocol is Session Initiation Protocol.
+// AfSigProtocol Indicates the protocol used for signalling between the UE and the AF. Possible values are - NO_INFORMATION: Indicate that no information about the AF signalling protocol is being provided. - SIP: Indicate that the signalling protocol is Session Initiation Protocol.
 type AfSigProtocol string
 
 // List of AfSigProtocol

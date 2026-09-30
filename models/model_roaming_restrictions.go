@@ -2,9 +2,9 @@
 // SPDX-License-Identifier: Apache-2.0
 
 /*
-Nudm_SDM
+Nudr_DataRepository API OpenAPI file
 
-Nudm Subscriber Data Management Service.
+Unified Data Repository Service.
 © 2024, 3GPP Organizational Partners (ARIB, ATIS, CCSA, ETSI, TSDSI, TTA, TTC).
 All rights reserved.
 
@@ -27,7 +27,7 @@ import (
 // checks if the RoamingRestrictions type satisfies the MappedNullable interface at compile time
 var _ openapi.MappedNullable = &RoamingRestrictions{}
 
-// RoamingRestrictions Indicates if access is allowed to a given serving network, e.g. a PLMN (MCC, MNC) or an  SNPN (MCC, MNC, NID).
+// RoamingRestrictions Indicates if access is allowed to a given serving network, e.g. a PLMN (MCC, MNC) or an SNPN (MCC, MNC, NID).
 type RoamingRestrictions struct {
 	AccessAllowed *bool `json:"accessAllowed,omitempty" yaml:"accessAllowed,omitempty"`
 }

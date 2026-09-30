@@ -30,9 +30,9 @@ var _ openapi.MappedNullable = &TransferPolicy{}
 // TransferPolicy Describes a transfer policy.
 type TransferPolicy struct {
 	// String representing a bit rate; the prefixes follow the standard symbols from The International System of Units, and represent x1000 multipliers, with the exception that prefix \"K\" is used to represent the standard symbol \"k\".
-	MaxBitRateDl *string `json:"maxBitRateDl,omitempty" yaml:"maxBitRateDl,omitempty" validate:"regexp=^\\\\d+(\\\\.\\\\d+)? (bps|Kbps|Mbps|Gbps|Tbps)$"`
+	MaxBitRateDl *string `json:"maxBitRateDl,omitempty" yaml:"maxBitRateDl,omitempty" validate:"regexp=^\\d+(\\.\\d+)? (bps|Kbps|Mbps|Gbps|Tbps)$"`
 	// String representing a bit rate; the prefixes follow the standard symbols from The International System of Units, and represent x1000 multipliers, with the exception that prefix \"K\" is used to represent the standard symbol \"k\".
-	MaxBitRateUl *string `json:"maxBitRateUl,omitempty" yaml:"maxBitRateUl,omitempty" validate:"regexp=^\\\\d+(\\\\.\\\\d+)? (bps|Kbps|Mbps|Gbps|Tbps)$"`
+	MaxBitRateUl *string `json:"maxBitRateUl,omitempty" yaml:"maxBitRateUl,omitempty" validate:"regexp=^\\d+(\\.\\d+)? (bps|Kbps|Mbps|Gbps|Tbps)$"`
 	// Indicates a rating group for the recommended time window.
 	RatingGroup int32      `json:"ratingGroup" yaml:"ratingGroup"`
 	RecTimeInt  TimeWindow `json:"recTimeInt" yaml:"recTimeInt"`

@@ -37,9 +37,9 @@ type QosMonitoringReport struct {
 	// Represents the packet delay measurement failure indicator.
 	Pdmf *bool `json:"pdmf,omitempty" yaml:"pdmf,omitempty"`
 	// String representing a bit rate; the prefixes follow the standard symbols from The International System of Units, and represent x1000 multipliers, with the exception that prefix \"K\" is used to represent the standard symbol \"k\".
-	UlDataRate *string `json:"ulDataRate,omitempty" yaml:"ulDataRate,omitempty" validate:"regexp=^\\\\d+(\\\\.\\\\d+)? (bps|Kbps|Mbps|Gbps|Tbps)$"`
+	UlDataRate *string `json:"ulDataRate,omitempty" yaml:"ulDataRate,omitempty" validate:"regexp=^\\d+(\\.\\d+)? (bps|Kbps|Mbps|Gbps|Tbps)$"`
 	// String representing a bit rate; the prefixes follow the standard symbols from The International System of Units, and represent x1000 multipliers, with the exception that prefix \"K\" is used to represent the standard symbol \"k\".
-	DlDataRate *string `json:"dlDataRate,omitempty" yaml:"dlDataRate,omitempty" validate:"regexp=^\\\\d+(\\\\.\\\\d+)? (bps|Kbps|Mbps|Gbps|Tbps)$"`
+	DlDataRate *string `json:"dlDataRate,omitempty" yaml:"dlDataRate,omitempty" validate:"regexp=^\\d+(\\.\\d+)? (bps|Kbps|Mbps|Gbps|Tbps)$"`
 	// Unsigned Integer, i.e. only value 0 and integers above 0 are permissible.
 	UlCongInfo *int32 `json:"ulCongInfo,omitempty" yaml:"ulCongInfo,omitempty"`
 	// Unsigned Integer, i.e. only value 0 and integers above 0 are permissible.

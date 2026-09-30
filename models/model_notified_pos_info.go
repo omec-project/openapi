@@ -31,11 +31,11 @@ var _ openapi.MappedNullable = &NotifiedPosInfo{}
 // NotifiedPosInfo Data within EventNotify notification
 type NotifiedPosInfo struct {
 	LocationEvent LocationEvent `json:"locationEvent" yaml:"locationEvent"`
-	// String identifying a Supi that shall contain either an IMSI, a network specific identifier, a Global Cable Identifier (GCI) or a Global Line Identifier (GLI) as specified in clause  2.2A of 3GPP TS 23.003. It shall be formatted as follows  - for an IMSI \"imsi-<imsi>\", where <imsi> shall be formatted according to clause 2.2    of 3GPP TS 23.003 that describes an IMSI.  - for a network specific identifier \"nai-<nai>, where <nai> shall be formatted    according to clause 28.7.2 of 3GPP TS 23.003 that describes an NAI.  - for a GCI \"gci-<gci>\", where <gci> shall be formatted according to clause 28.15.2    of 3GPP TS 23.003.  - for a GLI \"gli-<gli>\", where <gli> shall be formatted according to clause 28.16.2 of    3GPP TS 23.003.To enable that the value is used as part of an URI, the string shall    only contain characters allowed according to the \"lower-with-hyphen\" naming convention    defined in 3GPP TS 29.501.
-	Supi *string `json:"supi,omitempty" yaml:"supi,omitempty" validate:"regexp=^(imsi-[0-9]{5,15}|nai-.+|gci-.+|gli-.+|.+)$"`
-	// String identifying a Gpsi shall contain either an External Id or an MSISDN.  It shall be formatted as follows -External Identifier= \"extid-'extid', where 'extid'  shall be formatted according to clause 19.7.2 of 3GPP TS 23.003 that describes an  External Identifier.
-	Gpsi *string `json:"gpsi,omitempty" yaml:"gpsi,omitempty" validate:"regexp=^(msisdn-[0-9]{5,15}|extid-[^@]+@[^@]+|.+)$"`
-	// String representing a Permanent Equipment Identifier that may contain - an IMEI or IMEISV, as  specified in clause 6.2 of 3GPP TS 23.003; a MAC address for a 5G-RG or FN-RG via  wireline  access, with an indication that this address cannot be trusted for regulatory purpose if this  address cannot be used as an Equipment Identifier of the FN-RG, as specified in clause 4.7.7  of 3GPP TS23.316. Examples are imei-012345678901234 or imeisv-0123456789012345.
+	// String identifying a Supi that shall contain either an IMSI, a network specific identifier, a Global Cable Identifier (GCI) or a Global Line Identifier (GLI) as specified in clause 2.2A of 3GPP TS 23.003. It shall be formatted as follows  - for an IMSI \"imsi-<imsi>\", where <imsi> shall be formatted according to clause 2.2    of 3GPP TS 23.003 that describes an IMSI.  - for a network specific identifier \"nai-<nai>, where <nai> shall be formatted    according to clause 28.7.2 of 3GPP TS 23.003 that describes an NAI.  - for a GCI \"gci-<gci>\", where <gci> shall be formatted according to clause 28.15.2    of 3GPP TS 23.003.  - for a GLI \"gli-<gli>\", where <gli> shall be formatted according to clause 28.16.2 of    3GPP TS 23.003.To enable that the value is used as part of an URI, the string shall    only contain characters allowed according to the \"lower-with-hyphen\" naming convention    defined in 3GPP TS 29.501.
+	Supi *string `json:"supi,omitempty" yaml:"supi,omitempty" validate:"regexp=^(imsi-[0-9]{5\\,15}|nai-.+|gci-.+|gli-.+|.+)$"`
+	// String identifying a Gpsi shall contain either an External Id or an MSISDN. It shall be formatted as follows -External Identifier= \"extid-'extid', where 'extid' shall be formatted according to clause 19.7.2 of 3GPP TS 23.003 that describes an External Identifier.
+	Gpsi *string `json:"gpsi,omitempty" yaml:"gpsi,omitempty" validate:"regexp=^(msisdn-[0-9]{5\\,15}|extid-[^@]+@[^@]+|.+)$"`
+	// String representing a Permanent Equipment Identifier that may contain - an IMEI or IMEISV, as  specified in clause 6.2 of 3GPP TS 23.003; a MAC address for a 5G-RG or FN-RG via wireline  access, with an indication that this address cannot be trusted for regulatory purpose if this  address cannot be used as an Equipment Identifier of the FN-RG, as specified in clause 4.7.7  of 3GPP TS23.316. Examples are imei-012345678901234 or imeisv-0123456789012345.
 	Pei              *string         `json:"pei,omitempty" yaml:"pei,omitempty" validate:"regexp=^(imei-[0-9]{15}|imeisv-[0-9]{16}|mac((-[0-9a-fA-F]{2}){6})(-untrusted)?|eui((-[0-9a-fA-F]{2}){8})|.+)$"`
 	LocationEstimate *GeographicArea `json:"locationEstimate,omitempty" yaml:"locationEstimate,omitempty"`
 	// Indicates value of the age of the location estimate.
@@ -47,12 +47,12 @@ type NotifiedPosInfo struct {
 	GnssPositioningDataList     []GnssPositioningMethodAndUsage `json:"gnssPositioningDataList,omitempty" yaml:"gnssPositioningDataList,omitempty"`
 	Ecgi                        *Ecgi                           `json:"ecgi,omitempty" yaml:"ecgi,omitempty"`
 	Ncgi                        *Ncgi                           `json:"ncgi,omitempty" yaml:"ncgi,omitempty"`
-	// String uniquely identifying a NF instance. The format of the NF Instance ID shall be a  Universally Unique Identifier (UUID) version 4, as described in IETF RFC 4122.
+	// String uniquely identifying a NF instance. The format of the NF Instance ID shall be a Universally Unique Identifier (UUID) version 4, as described in IETF RFC 4122.
 	ServingNode *string `json:"servingNode,omitempty" yaml:"servingNode,omitempty"`
 	// Fully Qualified Domain Name
-	TargetMmeName *string `json:"targetMmeName,omitempty" yaml:"targetMmeName,omitempty" validate:"regexp=^([0-9A-Za-z]([-0-9A-Za-z]{0,61}[0-9A-Za-z])?\\\\.)+[A-Za-z]{2,63}\\\\.?$"`
+	TargetMmeName *string `json:"targetMmeName,omitempty" yaml:"targetMmeName,omitempty" validate:"regexp=^([0-9A-Za-z]([-0-9A-Za-z]{0\\,61}[0-9A-Za-z])?\\.)+[A-Za-z]{2\\,63}\\.?$"`
 	// Fully Qualified Domain Name
-	TargetMmeRealm *string       `json:"targetMmeRealm,omitempty" yaml:"targetMmeRealm,omitempty" validate:"regexp=^([0-9A-Za-z]([-0-9A-Za-z]{0,61}[0-9A-Za-z])?\\\\.)+[A-Za-z]{2,63}\\\\.?$"`
+	TargetMmeRealm *string       `json:"targetMmeRealm,omitempty" yaml:"targetMmeRealm,omitempty" validate:"regexp=^([0-9A-Za-z]([-0-9A-Za-z]{0\\,61}[0-9A-Za-z])?\\.)+[A-Za-z]{2\\,63}\\.?$"`
 	UtranSrvccInd  *bool         `json:"utranSrvccInd,omitempty" yaml:"utranSrvccInd,omitempty"`
 	CivicAddress   *CivicAddress `json:"civicAddress,omitempty" yaml:"civicAddress,omitempty"`
 	// Specifies the measured uncompensated atmospheric pressure.
@@ -68,11 +68,11 @@ type NotifiedPosInfo struct {
 	TerminationCause         *TerminationCauseLmf `json:"terminationCause,omitempty" yaml:"terminationCause,omitempty"`
 	AchievedQos              *MinorLocationQoS    `json:"achievedQos,omitempty" yaml:"achievedQos,omitempty"`
 	// This data type mentions International E.164 number of the SMSF; shall be present if the SMSF supports MAP.
-	MscServerId       *string                  `json:"mscServerId,omitempty" yaml:"mscServerId,omitempty" validate:"regexp=^[0-9]{1,15}$"`
+	MscServerId       *string                  `json:"mscServerId,omitempty" yaml:"mscServerId,omitempty" validate:"regexp=^[0-9]{1\\,15}$"`
 	HaGnssMetrics     *HighAccuracyGnssMetrics `json:"haGnssMetrics,omitempty" yaml:"haGnssMetrics,omitempty"`
 	IndoorOutdoorInd  *IndoorOutdoorInd        `json:"indoorOutdoorInd,omitempty" yaml:"indoorOutdoorInd,omitempty"`
 	LosNlosMeasureInd *LosNlosMeasureInd       `json:"losNlosMeasureInd,omitempty" yaml:"losNlosMeasureInd,omitempty"`
-	// String identifying an UE with application layer ID. The format of the application  layer ID parameter is same as the Application layer ID defined in clause 11.3.4 of  3GPP TS 24.554.
+	// String identifying an UE with application layer ID. The format of the application layer ID parameter is same as the Application layer ID defined in clause 11.3.4 of 3GPP TS 24.554.
 	RelatedApplicationlayerId *string                 `json:"relatedApplicationlayerId,omitempty" yaml:"relatedApplicationlayerId,omitempty"`
 	DistanceDirection         *RangeDirection         `json:"distanceDirection,omitempty" yaml:"distanceDirection,omitempty"`
 	Var2dRelativeLocation     *TwoDRelativeLocation   `json:"2dRelativeLocation,omitempty" yaml:"2dRelativeLocation,omitempty"`

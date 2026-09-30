@@ -22,7 +22,6 @@ import (
 	"encoding/json"
 
 	"github.com/omec-project/openapi/v2"
-	"gopkg.in/validator.v2"
 )
 
 // SubscrCond - Condition to determine the set of NFs to monitor under a certain subscription in NRF
@@ -176,7 +175,7 @@ func (dst *SubscrCond) UnmarshalJSON(data []byte) error {
 		if string(jsonAmfCond) == "{}" { // empty struct
 			dst.AmfCond = nil
 		} else {
-			if err = validator.Validate(dst.AmfCond); err != nil {
+			if err = openapi.Validate(dst.AmfCond); err != nil {
 				dst.AmfCond = nil
 			} else {
 				match++
@@ -193,7 +192,7 @@ func (dst *SubscrCond) UnmarshalJSON(data []byte) error {
 		if string(jsonDccfCond) == "{}" { // empty struct
 			dst.DccfCond = nil
 		} else {
-			if err = validator.Validate(dst.DccfCond); err != nil {
+			if err = openapi.Validate(dst.DccfCond); err != nil {
 				dst.DccfCond = nil
 			} else {
 				match++
@@ -210,7 +209,7 @@ func (dst *SubscrCond) UnmarshalJSON(data []byte) error {
 		if string(jsonGuamiListCond) == "{}" { // empty struct
 			dst.GuamiListCond = nil
 		} else {
-			if err = validator.Validate(dst.GuamiListCond); err != nil {
+			if err = openapi.Validate(dst.GuamiListCond); err != nil {
 				dst.GuamiListCond = nil
 			} else {
 				match++
@@ -227,7 +226,7 @@ func (dst *SubscrCond) UnmarshalJSON(data []byte) error {
 		if string(jsonNefCond) == "{}" { // empty struct
 			dst.NefCond = nil
 		} else {
-			if err = validator.Validate(dst.NefCond); err != nil {
+			if err = openapi.Validate(dst.NefCond); err != nil {
 				dst.NefCond = nil
 			} else {
 				match++
@@ -244,7 +243,7 @@ func (dst *SubscrCond) UnmarshalJSON(data []byte) error {
 		if string(jsonNetworkSliceCond) == "{}" { // empty struct
 			dst.NetworkSliceCond = nil
 		} else {
-			if err = validator.Validate(dst.NetworkSliceCond); err != nil {
+			if err = openapi.Validate(dst.NetworkSliceCond); err != nil {
 				dst.NetworkSliceCond = nil
 			} else {
 				match++
@@ -261,7 +260,7 @@ func (dst *SubscrCond) UnmarshalJSON(data []byte) error {
 		if string(jsonNfGroupCond) == "{}" { // empty struct
 			dst.NfGroupCond = nil
 		} else {
-			if err = validator.Validate(dst.NfGroupCond); err != nil {
+			if err = openapi.Validate(dst.NfGroupCond); err != nil {
 				dst.NfGroupCond = nil
 			} else {
 				match++
@@ -278,7 +277,7 @@ func (dst *SubscrCond) UnmarshalJSON(data []byte) error {
 		if string(jsonNfGroupListCond) == "{}" { // empty struct
 			dst.NfGroupListCond = nil
 		} else {
-			if err = validator.Validate(dst.NfGroupListCond); err != nil {
+			if err = openapi.Validate(dst.NfGroupListCond); err != nil {
 				dst.NfGroupListCond = nil
 			} else {
 				match++
@@ -295,7 +294,7 @@ func (dst *SubscrCond) UnmarshalJSON(data []byte) error {
 		if string(jsonNfInstanceIdCond) == "{}" { // empty struct
 			dst.NfInstanceIdCond = nil
 		} else {
-			if err = validator.Validate(dst.NfInstanceIdCond); err != nil {
+			if err = openapi.Validate(dst.NfInstanceIdCond); err != nil {
 				dst.NfInstanceIdCond = nil
 			} else {
 				match++
@@ -312,7 +311,7 @@ func (dst *SubscrCond) UnmarshalJSON(data []byte) error {
 		if string(jsonNfInstanceIdListCond) == "{}" { // empty struct
 			dst.NfInstanceIdListCond = nil
 		} else {
-			if err = validator.Validate(dst.NfInstanceIdListCond); err != nil {
+			if err = openapi.Validate(dst.NfInstanceIdListCond); err != nil {
 				dst.NfInstanceIdListCond = nil
 			} else {
 				match++
@@ -329,7 +328,7 @@ func (dst *SubscrCond) UnmarshalJSON(data []byte) error {
 		if string(jsonNfServiceSetCond) == "{}" { // empty struct
 			dst.NfServiceSetCond = nil
 		} else {
-			if err = validator.Validate(dst.NfServiceSetCond); err != nil {
+			if err = openapi.Validate(dst.NfServiceSetCond); err != nil {
 				dst.NfServiceSetCond = nil
 			} else {
 				match++
@@ -346,7 +345,7 @@ func (dst *SubscrCond) UnmarshalJSON(data []byte) error {
 		if string(jsonNfSetCond) == "{}" { // empty struct
 			dst.NfSetCond = nil
 		} else {
-			if err = validator.Validate(dst.NfSetCond); err != nil {
+			if err = openapi.Validate(dst.NfSetCond); err != nil {
 				dst.NfSetCond = nil
 			} else {
 				match++
@@ -363,7 +362,7 @@ func (dst *SubscrCond) UnmarshalJSON(data []byte) error {
 		if string(jsonNfTypeCond) == "{}" { // empty struct
 			dst.NfTypeCond = nil
 		} else {
-			if err = validator.Validate(dst.NfTypeCond); err != nil {
+			if err = openapi.Validate(dst.NfTypeCond); err != nil {
 				dst.NfTypeCond = nil
 			} else {
 				match++
@@ -380,7 +379,7 @@ func (dst *SubscrCond) UnmarshalJSON(data []byte) error {
 		if string(jsonNwdafCond) == "{}" { // empty struct
 			dst.NwdafCond = nil
 		} else {
-			if err = validator.Validate(dst.NwdafCond); err != nil {
+			if err = openapi.Validate(dst.NwdafCond); err != nil {
 				dst.NwdafCond = nil
 			} else {
 				match++
@@ -397,7 +396,7 @@ func (dst *SubscrCond) UnmarshalJSON(data []byte) error {
 		if string(jsonScpDomainCond) == "{}" { // empty struct
 			dst.ScpDomainCond = nil
 		} else {
-			if err = validator.Validate(dst.ScpDomainCond); err != nil {
+			if err = openapi.Validate(dst.ScpDomainCond); err != nil {
 				dst.ScpDomainCond = nil
 			} else {
 				match++
@@ -414,7 +413,7 @@ func (dst *SubscrCond) UnmarshalJSON(data []byte) error {
 		if string(jsonServiceNameCond) == "{}" { // empty struct
 			dst.ServiceNameCond = nil
 		} else {
-			if err = validator.Validate(dst.ServiceNameCond); err != nil {
+			if err = openapi.Validate(dst.ServiceNameCond); err != nil {
 				dst.ServiceNameCond = nil
 			} else {
 				match++
@@ -431,7 +430,7 @@ func (dst *SubscrCond) UnmarshalJSON(data []byte) error {
 		if string(jsonServiceNameListCond) == "{}" { // empty struct
 			dst.ServiceNameListCond = nil
 		} else {
-			if err = validator.Validate(dst.ServiceNameListCond); err != nil {
+			if err = openapi.Validate(dst.ServiceNameListCond); err != nil {
 				dst.ServiceNameListCond = nil
 			} else {
 				match++
@@ -448,7 +447,7 @@ func (dst *SubscrCond) UnmarshalJSON(data []byte) error {
 		if string(jsonUpfCond) == "{}" { // empty struct
 			dst.UpfCond = nil
 		} else {
-			if err = validator.Validate(dst.UpfCond); err != nil {
+			if err = openapi.Validate(dst.UpfCond); err != nil {
 				dst.UpfCond = nil
 			} else {
 				match++

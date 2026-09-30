@@ -22,7 +22,6 @@ import (
 	"encoding/json"
 
 	"github.com/omec-project/openapi/v2"
-	"gopkg.in/validator.v2"
 )
 
 // Report - struct for Report
@@ -104,7 +103,7 @@ func (dst *Report) UnmarshalJSON(data []byte) error {
 		if string(jsonChangeOfSupiPeiAssociationReport) == "{}" { // empty struct
 			dst.ChangeOfSupiPeiAssociationReport = nil
 		} else {
-			if err = validator.Validate(dst.ChangeOfSupiPeiAssociationReport); err != nil {
+			if err = openapi.Validate(dst.ChangeOfSupiPeiAssociationReport); err != nil {
 				dst.ChangeOfSupiPeiAssociationReport = nil
 			} else {
 				match++
@@ -121,7 +120,7 @@ func (dst *Report) UnmarshalJSON(data []byte) error {
 		if string(jsonCmInfoReport) == "{}" { // empty struct
 			dst.CmInfoReport = nil
 		} else {
-			if err = validator.Validate(dst.CmInfoReport); err != nil {
+			if err = openapi.Validate(dst.CmInfoReport); err != nil {
 				dst.CmInfoReport = nil
 			} else {
 				match++
@@ -138,7 +137,7 @@ func (dst *Report) UnmarshalJSON(data []byte) error {
 		if string(jsonCnTypeChangeReport) == "{}" { // empty struct
 			dst.CnTypeChangeReport = nil
 		} else {
-			if err = validator.Validate(dst.CnTypeChangeReport); err != nil {
+			if err = openapi.Validate(dst.CnTypeChangeReport); err != nil {
 				dst.CnTypeChangeReport = nil
 			} else {
 				match++
@@ -155,7 +154,7 @@ func (dst *Report) UnmarshalJSON(data []byte) error {
 		if string(jsonGroupMembListChanges) == "{}" { // empty struct
 			dst.GroupMembListChanges = nil
 		} else {
-			if err = validator.Validate(dst.GroupMembListChanges); err != nil {
+			if err = openapi.Validate(dst.GroupMembListChanges); err != nil {
 				dst.GroupMembListChanges = nil
 			} else {
 				match++
@@ -172,7 +171,7 @@ func (dst *Report) UnmarshalJSON(data []byte) error {
 		if string(jsonLocationReport) == "{}" { // empty struct
 			dst.LocationReport = nil
 		} else {
-			if err = validator.Validate(dst.LocationReport); err != nil {
+			if err = openapi.Validate(dst.LocationReport); err != nil {
 				dst.LocationReport = nil
 			} else {
 				match++
@@ -189,7 +188,7 @@ func (dst *Report) UnmarshalJSON(data []byte) error {
 		if string(jsonLossConnectivityReport) == "{}" { // empty struct
 			dst.LossConnectivityReport = nil
 		} else {
-			if err = validator.Validate(dst.LossConnectivityReport); err != nil {
+			if err = openapi.Validate(dst.LossConnectivityReport); err != nil {
 				dst.LossConnectivityReport = nil
 			} else {
 				match++
@@ -206,7 +205,7 @@ func (dst *Report) UnmarshalJSON(data []byte) error {
 		if string(jsonPdnConnectivityStatReport) == "{}" { // empty struct
 			dst.PdnConnectivityStatReport = nil
 		} else {
-			if err = validator.Validate(dst.PdnConnectivityStatReport); err != nil {
+			if err = openapi.Validate(dst.PdnConnectivityStatReport); err != nil {
 				dst.PdnConnectivityStatReport = nil
 			} else {
 				match++
@@ -223,7 +222,7 @@ func (dst *Report) UnmarshalJSON(data []byte) error {
 		if string(jsonRoamingStatusReport) == "{}" { // empty struct
 			dst.RoamingStatusReport = nil
 		} else {
-			if err = validator.Validate(dst.RoamingStatusReport); err != nil {
+			if err = openapi.Validate(dst.RoamingStatusReport); err != nil {
 				dst.RoamingStatusReport = nil
 			} else {
 				match++

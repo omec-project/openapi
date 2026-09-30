@@ -35,9 +35,9 @@ type PcfInfo struct {
 	SupiRanges []SupiRange     `json:"supiRanges,omitempty" yaml:"supiRanges,omitempty"`
 	GpsiRanges []IdentityRange `json:"gpsiRanges,omitempty" yaml:"gpsiRanges,omitempty"`
 	// Fully Qualified Domain Name
-	RxDiamHost *string `json:"rxDiamHost,omitempty" yaml:"rxDiamHost,omitempty" validate:"regexp=^([0-9A-Za-z]([-0-9A-Za-z]{0,61}[0-9A-Za-z])?\\\\.)+[A-Za-z]{2,63}\\\\.?$"`
+	RxDiamHost *string `json:"rxDiamHost,omitempty" yaml:"rxDiamHost,omitempty" validate:"regexp=^([0-9A-Za-z]([-0-9A-Za-z]{0\\,61}[0-9A-Za-z])?\\.)+[A-Za-z]{2\\,63}\\.?$"`
 	// Fully Qualified Domain Name
-	RxDiamRealm            *string          `json:"rxDiamRealm,omitempty" yaml:"rxDiamRealm,omitempty" validate:"regexp=^([0-9A-Za-z]([-0-9A-Za-z]{0,61}[0-9A-Za-z])?\\\\.)+[A-Za-z]{2,63}\\\\.?$"`
+	RxDiamRealm            *string          `json:"rxDiamRealm,omitempty" yaml:"rxDiamRealm,omitempty" validate:"regexp=^([0-9A-Za-z]([-0-9A-Za-z]{0\\,61}[0-9A-Za-z])?\\.)+[A-Za-z]{2\\,63}\\.?$"`
 	V2xSupportInd          *bool            `json:"v2xSupportInd,omitempty" yaml:"v2xSupportInd,omitempty"`
 	ProseSupportInd        *bool            `json:"proseSupportInd,omitempty" yaml:"proseSupportInd,omitempty"`
 	ProseCapability        *ProSeCapability `json:"proseCapability,omitempty" yaml:"proseCapability,omitempty"`

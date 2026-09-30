@@ -31,9 +31,9 @@ var _ openapi.MappedNullable = &AlternativeQosProfile{}
 type AlternativeQosProfile struct {
 	Index int32 `json:"index" yaml:"index"`
 	// String representing a bit rate; the prefixes follow the standard symbols from The International System of Units, and represent x1000 multipliers, with the exception that prefix \"K\" is used to represent the standard symbol \"k\".
-	GuaFbrDl *string `json:"guaFbrDl,omitempty" yaml:"guaFbrDl,omitempty" validate:"regexp=^\\\\d+(\\\\.\\\\d+)? (bps|Kbps|Mbps|Gbps|Tbps)$"`
+	GuaFbrDl *string `json:"guaFbrDl,omitempty" yaml:"guaFbrDl,omitempty" validate:"regexp=^\\d+(\\.\\d+)? (bps|Kbps|Mbps|Gbps|Tbps)$"`
 	// String representing a bit rate; the prefixes follow the standard symbols from The International System of Units, and represent x1000 multipliers, with the exception that prefix \"K\" is used to represent the standard symbol \"k\".
-	GuaFbrUl *string `json:"guaFbrUl,omitempty" yaml:"guaFbrUl,omitempty" validate:"regexp=^\\\\d+(\\\\.\\\\d+)? (bps|Kbps|Mbps|Gbps|Tbps)$"`
+	GuaFbrUl *string `json:"guaFbrUl,omitempty" yaml:"guaFbrUl,omitempty" validate:"regexp=^\\d+(\\.\\d+)? (bps|Kbps|Mbps|Gbps|Tbps)$"`
 	// Unsigned integer indicating Packet Delay Budget (see clauses 5.7.3.4 and 5.7.4 of 3GPP TS 23.501), expressed in milliseconds.
 	PacketDelayBudget *int32 `json:"packetDelayBudget,omitempty" yaml:"packetDelayBudget,omitempty"`
 	// String representing Packet Error Rate (see clause 5.7.3.5 and 5.7.4 of 3GPP TS 23.501, expressed as a \"scalar x 10-k\" where the scalar and the exponent k are each encoded as one decimal digit.

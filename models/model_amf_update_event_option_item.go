@@ -31,7 +31,7 @@ var _ openapi.MappedNullable = &AmfUpdateEventOptionItem{}
 // AmfUpdateEventOptionItem Document describing the modifications to AMF event subscription options
 type AmfUpdateEventOptionItem struct {
 	Op   string `json:"op" yaml:"op"`
-	Path string `json:"path" yaml:"path" validate:"regexp=^(\\/options\\/expiry|\\/options\\/notifFlag|\\/options\\/mutingExcInstructions)$"`
+	Path string `json:"path" yaml:"path" validate:"regexp=^(/options/expiry|/options/notifFlag|/options/mutingExcInstructions)$"`
 	// string with format 'date-time' as defined in OpenAPI.
 	Value                 time.Time                    `json:"value" yaml:"value"`
 	NotifFlag             *NotificationFlag            `json:"notifFlag,omitempty" yaml:"notifFlag,omitempty"`

@@ -36,9 +36,9 @@ type NFService struct {
 	Scheme            UriScheme          `json:"scheme" yaml:"scheme"`
 	NfServiceStatus   NFServiceStatus    `json:"nfServiceStatus" yaml:"nfServiceStatus"`
 	// Fully Qualified Domain Name
-	Fqdn *string `json:"fqdn,omitempty" yaml:"fqdn,omitempty" validate:"regexp=^([0-9A-Za-z]([-0-9A-Za-z]{0,61}[0-9A-Za-z])?\\\\.)+[A-Za-z]{2,63}\\\\.?$"`
+	Fqdn *string `json:"fqdn,omitempty" yaml:"fqdn,omitempty" validate:"regexp=^([0-9A-Za-z]([-0-9A-Za-z]{0\\,61}[0-9A-Za-z])?\\.)+[A-Za-z]{2\\,63}\\.?$"`
 	// Fully Qualified Domain Name
-	InterPlmnFqdn                    *string                           `json:"interPlmnFqdn,omitempty" yaml:"interPlmnFqdn,omitempty" validate:"regexp=^([0-9A-Za-z]([-0-9A-Za-z]{0,61}[0-9A-Za-z])?\\\\.)+[A-Za-z]{2,63}\\\\.?$"`
+	InterPlmnFqdn                    *string                           `json:"interPlmnFqdn,omitempty" yaml:"interPlmnFqdn,omitempty" validate:"regexp=^([0-9A-Za-z]([-0-9A-Za-z]{0\\,61}[0-9A-Za-z])?\\.)+[A-Za-z]{2\\,63}\\.?$"`
 	IpEndPoints                      []IpEndPoint                      `json:"ipEndPoints,omitempty" yaml:"ipEndPoints,omitempty"`
 	ApiPrefix                        *string                           `json:"apiPrefix,omitempty" yaml:"apiPrefix,omitempty"`
 	CallbackUriPrefixList            []CallbackUriPrefixItem           `json:"callbackUriPrefixList,omitempty" yaml:"callbackUriPrefixList,omitempty"`

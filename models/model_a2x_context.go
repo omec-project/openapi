@@ -32,9 +32,9 @@ type A2xContext struct {
 	NrA2xServicesAuth  *NrA2xAuth  `json:"nrA2xServicesAuth,omitempty" yaml:"nrA2xServicesAuth,omitempty"`
 	LteA2xServicesAuth *LteA2xAuth `json:"lteA2xServicesAuth,omitempty" yaml:"lteA2xServicesAuth,omitempty"`
 	// String representing a bit rate; the prefixes follow the standard symbols from The International System of Units, and represent x1000 multipliers, with the exception that prefix \"K\" is used to represent the standard symbol \"k\".
-	NrUeSidelinkAmbr *string `json:"nrUeSidelinkAmbr,omitempty" yaml:"nrUeSidelinkAmbr,omitempty" validate:"regexp=^\\\\d+(\\\\.\\\\d+)? (bps|Kbps|Mbps|Gbps|Tbps)$"`
+	NrUeSidelinkAmbr *string `json:"nrUeSidelinkAmbr,omitempty" yaml:"nrUeSidelinkAmbr,omitempty" validate:"regexp=^\\d+(\\.\\d+)? (bps|Kbps|Mbps|Gbps|Tbps)$"`
 	// String representing a bit rate; the prefixes follow the standard symbols from The International System of Units, and represent x1000 multipliers, with the exception that prefix \"K\" is used to represent the standard symbol \"k\".
-	LteUeSidelinkAmbr *string     `json:"lteUeSidelinkAmbr,omitempty" yaml:"lteUeSidelinkAmbr,omitempty" validate:"regexp=^\\\\d+(\\\\.\\\\d+)? (bps|Kbps|Mbps|Gbps|Tbps)$"`
+	LteUeSidelinkAmbr *string     `json:"lteUeSidelinkAmbr,omitempty" yaml:"lteUeSidelinkAmbr,omitempty" validate:"regexp=^\\d+(\\.\\d+)? (bps|Kbps|Mbps|Gbps|Tbps)$"`
 	Pc5QoSPara        *Pc5QoSPara `json:"pc5QoSPara,omitempty" yaml:"pc5QoSPara,omitempty"`
 }
 

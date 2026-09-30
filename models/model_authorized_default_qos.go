@@ -39,13 +39,13 @@ type AuthorizedDefaultQos struct {
 	// This data type is defined in the same way as the 'MaxDataBurstVol' data type, but with the OpenAPI 'nullable: true' property.
 	MaxDataBurstVol openapi.NullableInt32 `json:"maxDataBurstVol" yaml:"maxDataBurstVol,omitempty"`
 	// This data type is defined in the same way as the 'BitRate' data type, but with the OpenAPI 'nullable: true' property.
-	MaxbrUl openapi.NullableString `json:"maxbrUl" yaml:"maxbrUl,omitempty" validate:"regexp=^\\\\d+(\\\\.\\\\d+)? (bps|Kbps|Mbps|Gbps|Tbps)$"`
+	MaxbrUl openapi.NullableString `json:"maxbrUl" yaml:"maxbrUl,omitempty" validate:"regexp=^\\d+(\\.\\d+)? (bps|Kbps|Mbps|Gbps|Tbps)$"`
 	// This data type is defined in the same way as the 'BitRate' data type, but with the OpenAPI 'nullable: true' property.
-	MaxbrDl openapi.NullableString `json:"maxbrDl" yaml:"maxbrDl,omitempty" validate:"regexp=^\\\\d+(\\\\.\\\\d+)? (bps|Kbps|Mbps|Gbps|Tbps)$"`
+	MaxbrDl openapi.NullableString `json:"maxbrDl" yaml:"maxbrDl,omitempty" validate:"regexp=^\\d+(\\.\\d+)? (bps|Kbps|Mbps|Gbps|Tbps)$"`
 	// This data type is defined in the same way as the 'BitRate' data type, but with the OpenAPI 'nullable: true' property.
-	GbrUl openapi.NullableString `json:"gbrUl" yaml:"gbrUl,omitempty" validate:"regexp=^\\\\d+(\\\\.\\\\d+)? (bps|Kbps|Mbps|Gbps|Tbps)$"`
+	GbrUl openapi.NullableString `json:"gbrUl" yaml:"gbrUl,omitempty" validate:"regexp=^\\d+(\\.\\d+)? (bps|Kbps|Mbps|Gbps|Tbps)$"`
 	// This data type is defined in the same way as the 'BitRate' data type, but with the OpenAPI 'nullable: true' property.
-	GbrDl openapi.NullableString `json:"gbrDl" yaml:"gbrDl,omitempty" validate:"regexp=^\\\\d+(\\\\.\\\\d+)? (bps|Kbps|Mbps|Gbps|Tbps)$"`
+	GbrDl openapi.NullableString `json:"gbrDl" yaml:"gbrDl,omitempty" validate:"regexp=^\\d+(\\.\\d+)? (bps|Kbps|Mbps|Gbps|Tbps)$"`
 	// This data type is defined in the same way as the 'ExtMaxDataBurstVol' data type, but with the OpenAPI 'nullable: true' property.
 	ExtMaxDataBurstVol openapi.NullableInt32 `json:"extMaxDataBurstVol" yaml:"extMaxDataBurstVol,omitempty"`
 }

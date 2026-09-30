@@ -22,7 +22,6 @@ import (
 	"encoding/json"
 
 	"github.com/omec-project/openapi/v2"
-	"gopkg.in/validator.v2"
 )
 
 // SmPoliciesPost200Response - struct for SmPoliciesPost200Response
@@ -64,7 +63,7 @@ func (dst *SmPoliciesPost200Response) UnmarshalJSON(data []byte) error {
 		if string(jsonUeCampingRep) == "{}" { // empty struct
 			dst.UeCampingRep = nil
 		} else {
-			if err = validator.Validate(dst.UeCampingRep); err != nil {
+			if err = openapi.Validate(dst.UeCampingRep); err != nil {
 				dst.UeCampingRep = nil
 			} else {
 				match++
@@ -81,7 +80,7 @@ func (dst *SmPoliciesPost200Response) UnmarshalJSON(data []byte) error {
 		if string(jsonArrayOfPartialSuccessReport) == "{}" { // empty struct
 			dst.ArrayOfPartialSuccessReport = nil
 		} else {
-			if err = validator.Validate(dst.ArrayOfPartialSuccessReport); err != nil {
+			if err = openapi.Validate(dst.ArrayOfPartialSuccessReport); err != nil {
 				dst.ArrayOfPartialSuccessReport = nil
 			} else {
 				match++
@@ -98,7 +97,7 @@ func (dst *SmPoliciesPost200Response) UnmarshalJSON(data []byte) error {
 		if string(jsonArrayOfPolicyDecisionFailureCode) == "{}" { // empty struct
 			dst.ArrayOfPolicyDecisionFailureCode = nil
 		} else {
-			if err = validator.Validate(dst.ArrayOfPolicyDecisionFailureCode); err != nil {
+			if err = openapi.Validate(dst.ArrayOfPolicyDecisionFailureCode); err != nil {
 				dst.ArrayOfPolicyDecisionFailureCode = nil
 			} else {
 				match++

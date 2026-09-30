@@ -32,7 +32,7 @@ type IwmscInfo struct {
 	MsisdnRanges []IdentityRange `json:"msisdnRanges,omitempty" yaml:"msisdnRanges,omitempty"`
 	SupiRanges   []SupiRange     `json:"supiRanges,omitempty" yaml:"supiRanges,omitempty"`
 	TaiRangeList []TaiRange      `json:"taiRangeList,omitempty" yaml:"taiRangeList,omitempty"`
-	ScNumber     *string         `json:"scNumber,omitempty" yaml:"scNumber,omitempty" validate:"regexp=^[0-9]{5,15}$"`
+	ScNumber     *string         `json:"scNumber,omitempty" yaml:"scNumber,omitempty" validate:"regexp=^[0-9]{5\\,15}$"`
 }
 
 // NewIwmscInfo instantiates a new IwmscInfo object

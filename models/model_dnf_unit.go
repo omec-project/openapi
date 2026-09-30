@@ -27,7 +27,7 @@ import (
 // checks if the DnfUnit type satisfies the MappedNullable interface at compile time
 var _ openapi.MappedNullable = &DnfUnit{}
 
-// DnfUnit During the processing of dnfUnits attribute, all the members in the array shall be  interpreted as logically concatenated with logical \"OR\".
+// DnfUnit During the processing of dnfUnits attribute, all the members in the array shall be interpreted as logically concatenated with logical \"OR\".
 type DnfUnit struct {
 	DnfUnit []Atom `json:"dnfUnit" yaml:"dnfUnit"`
 }

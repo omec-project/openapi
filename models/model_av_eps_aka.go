@@ -31,7 +31,7 @@ var _ openapi.MappedNullable = &AvEpsAka{}
 type AvEpsAka struct {
 	AvType HssAvType `json:"avType" yaml:"avType"`
 	Rand   string    `json:"rand" yaml:"rand" validate:"regexp=^[A-Fa-f0-9]{32}$"`
-	Xres   string    `json:"xres" yaml:"xres" validate:"regexp=^[A-Fa-f0-9]{8,32}$"`
+	Xres   string    `json:"xres" yaml:"xres" validate:"regexp=^[A-Fa-f0-9]{8\\,32}$"`
 	Autn   string    `json:"autn" yaml:"autn" validate:"regexp=^[A-Fa-f0-9]{32}$"`
 	Kasme  string    `json:"kasme" yaml:"kasme" validate:"regexp=^[A-Fa-f0-9]{64}$"`
 }

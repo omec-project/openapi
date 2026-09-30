@@ -27,7 +27,7 @@ import (
 // checks if the PartialSuccessReport type satisfies the MappedNullable interface at compile time
 var _ openapi.MappedNullable = &PartialSuccessReport{}
 
-// PartialSuccessReport Includes the information reported by the SMF when some of the PCC rules and/or session rules  and/or policy decision and/or condition data are not successfully installed/activated or stored.
+// PartialSuccessReport Includes the information reported by the SMF when some of the PCC rules and/or session rules and/or policy decision and/or condition data are not successfully installed/activated or stored.
 type PartialSuccessReport struct {
 	FailureCause FailureCause `json:"failureCause" yaml:"failureCause"`
 	// Information about the PCC rules provisioned by the PCF not successfully installed/activated.

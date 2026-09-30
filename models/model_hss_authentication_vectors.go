@@ -22,7 +22,6 @@ import (
 	"encoding/json"
 
 	"github.com/omec-project/openapi/v2"
-	"gopkg.in/validator.v2"
 )
 
 // HssAuthenticationVectors - struct for HssAuthenticationVectors
@@ -64,7 +63,7 @@ func (dst *HssAuthenticationVectors) UnmarshalJSON(data []byte) error {
 		if string(jsonArrayOfAvEapAkaPrime) == "{}" { // empty struct
 			dst.ArrayOfAvEapAkaPrime = nil
 		} else {
-			if err = validator.Validate(dst.ArrayOfAvEapAkaPrime); err != nil {
+			if err = openapi.Validate(dst.ArrayOfAvEapAkaPrime); err != nil {
 				dst.ArrayOfAvEapAkaPrime = nil
 			} else {
 				match++
@@ -81,7 +80,7 @@ func (dst *HssAuthenticationVectors) UnmarshalJSON(data []byte) error {
 		if string(jsonArrayOfAvEpsAka) == "{}" { // empty struct
 			dst.ArrayOfAvEpsAka = nil
 		} else {
-			if err = validator.Validate(dst.ArrayOfAvEpsAka); err != nil {
+			if err = openapi.Validate(dst.ArrayOfAvEpsAka); err != nil {
 				dst.ArrayOfAvEpsAka = nil
 			} else {
 				match++
@@ -98,7 +97,7 @@ func (dst *HssAuthenticationVectors) UnmarshalJSON(data []byte) error {
 		if string(jsonArrayOfAvImsGbaEapAka) == "{}" { // empty struct
 			dst.ArrayOfAvImsGbaEapAka = nil
 		} else {
-			if err = validator.Validate(dst.ArrayOfAvImsGbaEapAka); err != nil {
+			if err = openapi.Validate(dst.ArrayOfAvImsGbaEapAka); err != nil {
 				dst.ArrayOfAvImsGbaEapAka = nil
 			} else {
 				match++

@@ -32,7 +32,7 @@ var _ openapi.MappedNullable = &SmPolicyDecision{}
 type SmPolicyDecision struct {
 	// A map of Sessionrules with the content being the SessionRule as described in clause 5.6.2.7. The key used in this map for each entry is the sessRuleId attribute of the corresponding SessionRule.
 	SessRules *map[string]SessionRule `json:"sessRules,omitempty" yaml:"sessRules,omitempty"`
-	// A map of PCC rules with the content being the PCCRule as described in  clause 5.6.2.6. The key used in this map for each entry is the pccRuleId attribute of the corresponding PccRule.
+	// A map of PCC rules with the content being the PCCRule as described in clause 5.6.2.6. The key used in this map for each entry is the pccRuleId attribute of the corresponding PccRule.
 	PccRules map[string]PccRule `json:"pccRules,omitempty" yaml:"pccRules,omitempty"`
 	// If it is included and set to true, it indicates the P-CSCF Restoration is requested.
 	PcscfRestIndication *bool `json:"pcscfRestIndication,omitempty" yaml:"pcscfRestIndication,omitempty"`
@@ -55,9 +55,9 @@ type SmPolicyDecision struct {
 	Conds map[string]ConditionData `json:"conds,omitempty" yaml:"conds,omitempty"`
 	// string with format 'date-time' as defined in OpenAPI.
 	RevalidationTime *time.Time `json:"revalidationTime,omitempty" yaml:"revalidationTime,omitempty"`
-	// Indicates the offline charging is applicable to the PDU session when it is included and  set to true.
+	// Indicates the offline charging is applicable to the PDU session when it is included and set to true.
 	Offline *bool `json:"offline,omitempty" yaml:"offline,omitempty"`
-	// Indicates the online charging is applicable to the PDU session when it is included and  set to true.
+	// Indicates the online charging is applicable to the PDU session when it is included and set to true.
 	Online *bool `json:"online,omitempty" yaml:"online,omitempty"`
 	// Indicates that the online charging method shall never be used for any PCC rule activated during the lifetime of the PDU session.
 	OfflineChOnly *bool `json:"offlineChOnly,omitempty" yaml:"offlineChOnly,omitempty"`
@@ -66,7 +66,7 @@ type SmPolicyDecision struct {
 	// Defines the last list of rule control data requested by the PCF.
 	LastReqRuleData  []RequestedRuleData `json:"lastReqRuleData,omitempty" yaml:"lastReqRuleData,omitempty"`
 	LastReqUsageData *RequestedUsageData `json:"lastReqUsageData,omitempty" yaml:"lastReqUsageData,omitempty"`
-	// Map of PRA information. The praId attribute within the PresenceInfo data type is the key  of the map.
+	// Map of PRA information. The praId attribute within the PresenceInfo data type is the key of the map.
 	PraInfos map[string]PresenceInfoRm `json:"praInfos,omitempty" yaml:"praInfos,omitempty"`
 	// Represents information that identifies which IP pool or external server is used to allocate the IP address.
 	Ipv4Index *int32 `json:"ipv4Index,omitempty" yaml:"ipv4Index,omitempty"`
@@ -74,7 +74,7 @@ type SmPolicyDecision struct {
 	Ipv6Index    *int32                           `json:"ipv6Index,omitempty" yaml:"ipv6Index,omitempty"`
 	QosFlowUsage *QosFlowUsage                    `json:"qosFlowUsage,omitempty" yaml:"qosFlowUsage,omitempty"`
 	RelCause     *SmPolicyAssociationReleaseCause `json:"relCause,omitempty" yaml:"relCause,omitempty"`
-	// A string used to indicate the features supported by an API that is used as defined in clause  6.6 in 3GPP TS 29.500. The string shall contain a bitmask indicating supported features in  hexadecimal representation Each character in the string shall take a value of \"0\" to \"9\",  \"a\" to \"f\" or \"A\" to \"F\" and shall represent the support of 4 features as described in  table 5.2.2-3. The most significant character representing the highest-numbered features shall  appear first in the string, and the character representing features 1 to 4 shall appear last  in the string. The list of features and their numbering (starting with 1) are defined  separately for each API. If the string contains a lower number of characters than there are  defined features for an API, all features that would be represented by characters that are not  present in the string are not supported.
+	// A string used to indicate the features supported by an API that is used as defined in clause 6.6 in 3GPP TS 29.500. The string shall contain a bitmask indicating supported features in hexadecimal representation Each character in the string shall take a value of \"0\" to \"9\", \"a\" to \"f\" or \"A\" to \"F\" and shall represent the support of 4 features as described in table 5.2.2-3. The most significant character representing the highest-numbered features shall  appear first in the string, and the character representing features 1 to 4 shall appear last  in the string. The list of features and their numbering (starting with 1) are defined  separately for each API. If the string contains a lower number of characters than there are  defined features for an API, all features that would be represented by characters that are not  present in the string are not supported.
 	SuppFeat            *string                    `json:"suppFeat,omitempty" yaml:"suppFeat,omitempty" validate:"regexp=^[A-Fa-f0-9]*$"`
 	TsnBridgeManCont    *BridgeManagementContainer `json:"tsnBridgeManCont,omitempty" yaml:"tsnBridgeManCont,omitempty"`
 	TsnPortManContDstt  *PortManagementContainer   `json:"tsnPortManContDstt,omitempty" yaml:"tsnPortManContDstt,omitempty"`

@@ -32,7 +32,7 @@ var _ openapi.MappedNullable = &SmPolicyUpdateContextData{}
 type SmPolicyUpdateContextData struct {
 	// The policy control reqeust trigges which are met.
 	RepPolicyCtrlReqTriggers []PolicyControlRequestTrigger `json:"repPolicyCtrlReqTriggers,omitempty" yaml:"repPolicyCtrlReqTriggers,omitempty"`
-	// Indicates the access network charging identifier for the PCC rule(s) or whole PDU  session.
+	// Indicates the access network charging identifier for the PCC rule(s) or whole PDU session.
 	AccNetChIds      []AccNetChId          `json:"accNetChIds,omitempty" yaml:"accNetChIds,omitempty"`
 	AccessType       *AccessType           `json:"accessType,omitempty" yaml:"accessType,omitempty"`
 	RatType          *RatType              `json:"ratType,omitempty" yaml:"ratType,omitempty"`
@@ -40,22 +40,22 @@ type SmPolicyUpdateContextData struct {
 	RelAccessInfo    *AdditionalAccessInfo `json:"relAccessInfo,omitempty" yaml:"relAccessInfo,omitempty"`
 	ServingNetwork   *PlmnIdNid            `json:"servingNetwork,omitempty" yaml:"servingNetwork,omitempty"`
 	UserLocationInfo *UserLocation         `json:"userLocationInfo,omitempty" yaml:"userLocationInfo,omitempty"`
-	// String with format \"time-numoffset\" optionally appended by \"daylightSavingTime\", where  - \"time-numoffset\" shall represent the time zone adjusted for daylight saving time and be    encoded as time-numoffset as defined in clause 5.6 of IETF RFC 3339;  - \"daylightSavingTime\" shall represent the adjustment that has been made and shall be    encoded as \"+1\" or \"+2\" for a +1 or +2 hours adjustment.   The example is for 8 hours behind UTC, +1 hour adjustment for Daylight Saving Time.
+	// String with format \"time-numoffset\" optionally appended by \"daylightSavingTime\", where - \"time-numoffset\" shall represent the time zone adjusted for daylight saving time and be    encoded as time-numoffset as defined in clause 5.6 of IETF RFC 3339; - \"daylightSavingTime\" shall represent the adjustment that has been made and shall be    encoded as \"+1\" or \"+2\" for a +1 or +2 hours adjustment.  The example is for 8 hours behind UTC, +1 hour adjustment for Daylight Saving Time.
 	UeTimeZone *string `json:"ueTimeZone,omitempty" yaml:"ueTimeZone,omitempty"`
 	// String identifying a IPv4 address formatted in the 'dotted decimal' notation as defined in RFC 1166.
-	RelIpv4Address *string `json:"relIpv4Address,omitempty" yaml:"relIpv4Address,omitempty" validate:"regexp=^(([0-9]|[1-9][0-9]|1[0-9][0-9]|2[0-4][0-9]|25[0-5])\\\\.){3}([0-9]|[1-9][0-9]|1[0-9][0-9]|2[0-4][0-9]|25[0-5])$"`
+	RelIpv4Address *string `json:"relIpv4Address,omitempty" yaml:"relIpv4Address,omitempty" validate:"regexp=^(([0-9]|[1-9][0-9]|1[0-9][0-9]|2[0-4][0-9]|25[0-5])\\.){3}([0-9]|[1-9][0-9]|1[0-9][0-9]|2[0-4][0-9]|25[0-5])$"`
 	// String identifying a IPv4 address formatted in the 'dotted decimal' notation as defined in RFC 1166.
-	Ipv4Address *string `json:"ipv4Address,omitempty" yaml:"ipv4Address,omitempty" validate:"regexp=^(([0-9]|[1-9][0-9]|1[0-9][0-9]|2[0-4][0-9]|25[0-5])\\\\.){3}([0-9]|[1-9][0-9]|1[0-9][0-9]|2[0-4][0-9]|25[0-5])$"`
+	Ipv4Address *string `json:"ipv4Address,omitempty" yaml:"ipv4Address,omitempty" validate:"regexp=^(([0-9]|[1-9][0-9]|1[0-9][0-9]|2[0-4][0-9]|25[0-5])\\.){3}([0-9]|[1-9][0-9]|1[0-9][0-9]|2[0-4][0-9]|25[0-5])$"`
 	// Indicates the IPv4 address domain
 	IpDomain *string `json:"ipDomain,omitempty" yaml:"ipDomain,omitempty"`
 	// String identifying an IPv6 address prefix formatted according to clause 4 of RFC 5952. IPv6Prefix data type may contain an individual /128 IPv6 address.
-	Ipv6AddressPrefix *string `json:"ipv6AddressPrefix,omitempty" yaml:"ipv6AddressPrefix,omitempty" validate:"regexp=^(((:|(0?|([1-9a-f][0-9a-f]{0,3}))):)((0?|([1-9a-f][0-9a-f]{0,3})):){0,6}(:|(0?|([1-9a-f][0-9a-f]{0,3})))(\\/(([0-9])|([0-9]{2})|(1[0-1][0-9])|(12[0-8])))|((([^:]+:){7}([^:]+))|((([^:]+:)*[^:]+)?::(([^:]+:)*[^:]+)?))(\\/.+))$"`
+	Ipv6AddressPrefix *string `json:"ipv6AddressPrefix,omitempty" yaml:"ipv6AddressPrefix,omitempty" validate:"regexp=^(((:|(0?|([1-9a-f][0-9a-f]{0\\,3}))):)((0?|([1-9a-f][0-9a-f]{0\\,3})):){0\\,6}(:|(0?|([1-9a-f][0-9a-f]{0\\,3})))(/(([0-9])|([0-9]{2})|(1[0-1][0-9])|(12[0-8])))|((([^:]+:){7}([^:]+))|((([^:]+:)*[^:]+)?::(([^:]+:)*[^:]+)?))(/.+))$"`
 	// String identifying an IPv6 address prefix formatted according to clause 4 of RFC 5952. IPv6Prefix data type may contain an individual /128 IPv6 address.
-	RelIpv6AddressPrefix *string `json:"relIpv6AddressPrefix,omitempty" yaml:"relIpv6AddressPrefix,omitempty" validate:"regexp=^(((:|(0?|([1-9a-f][0-9a-f]{0,3}))):)((0?|([1-9a-f][0-9a-f]{0,3})):){0,6}(:|(0?|([1-9a-f][0-9a-f]{0,3})))(\\/(([0-9])|([0-9]{2})|(1[0-1][0-9])|(12[0-8])))|((([^:]+:){7}([^:]+))|((([^:]+:)*[^:]+)?::(([^:]+:)*[^:]+)?))(\\/.+))$"`
+	RelIpv6AddressPrefix *string `json:"relIpv6AddressPrefix,omitempty" yaml:"relIpv6AddressPrefix,omitempty" validate:"regexp=^(((:|(0?|([1-9a-f][0-9a-f]{0\\,3}))):)((0?|([1-9a-f][0-9a-f]{0\\,3})):){0\\,6}(:|(0?|([1-9a-f][0-9a-f]{0\\,3})))(/(([0-9])|([0-9]{2})|(1[0-1][0-9])|(12[0-8])))|((([^:]+:){7}([^:]+))|((([^:]+:)*[^:]+)?::(([^:]+:)*[^:]+)?))(/.+))$"`
 	// String identifying an IPv6 address prefix formatted according to clause 4 of RFC 5952. IPv6Prefix data type may contain an individual /128 IPv6 address.
-	AddIpv6AddrPrefixes *string `json:"addIpv6AddrPrefixes,omitempty" yaml:"addIpv6AddrPrefixes,omitempty" validate:"regexp=^(((:|(0?|([1-9a-f][0-9a-f]{0,3}))):)((0?|([1-9a-f][0-9a-f]{0,3})):){0,6}(:|(0?|([1-9a-f][0-9a-f]{0,3})))(\\/(([0-9])|([0-9]{2})|(1[0-1][0-9])|(12[0-8])))|((([^:]+:){7}([^:]+))|((([^:]+:)*[^:]+)?::(([^:]+:)*[^:]+)?))(\\/.+))$"`
+	AddIpv6AddrPrefixes *string `json:"addIpv6AddrPrefixes,omitempty" yaml:"addIpv6AddrPrefixes,omitempty" validate:"regexp=^(((:|(0?|([1-9a-f][0-9a-f]{0\\,3}))):)((0?|([1-9a-f][0-9a-f]{0\\,3})):){0\\,6}(:|(0?|([1-9a-f][0-9a-f]{0\\,3})))(/(([0-9])|([0-9]{2})|(1[0-1][0-9])|(12[0-8])))|((([^:]+:){7}([^:]+))|((([^:]+:)*[^:]+)?::(([^:]+:)*[^:]+)?))(/.+))$"`
 	// String identifying an IPv6 address prefix formatted according to clause 4 of RFC 5952. IPv6Prefix data type may contain an individual /128 IPv6 address.
-	AddRelIpv6AddrPrefixes *string `json:"addRelIpv6AddrPrefixes,omitempty" yaml:"addRelIpv6AddrPrefixes,omitempty" validate:"regexp=^(((:|(0?|([1-9a-f][0-9a-f]{0,3}))):)((0?|([1-9a-f][0-9a-f]{0,3})):){0,6}(:|(0?|([1-9a-f][0-9a-f]{0,3})))(\\/(([0-9])|([0-9]{2})|(1[0-1][0-9])|(12[0-8])))|((([^:]+:){7}([^:]+))|((([^:]+:)*[^:]+)?::(([^:]+:)*[^:]+)?))(\\/.+))$"`
+	AddRelIpv6AddrPrefixes *string `json:"addRelIpv6AddrPrefixes,omitempty" yaml:"addRelIpv6AddrPrefixes,omitempty" validate:"regexp=^(((:|(0?|([1-9a-f][0-9a-f]{0\\,3}))):)((0?|([1-9a-f][0-9a-f]{0\\,3})):){0\\,6}(:|(0?|([1-9a-f][0-9a-f]{0\\,3})))(/(([0-9])|([0-9]{2})|(1[0-1][0-9])|(12[0-8])))|((([^:]+:){7}([^:]+))|((([^:]+:)*[^:]+)?::(([^:]+:)*[^:]+)?))(/.+))$"`
 	// The multiple allocated IPv6 prefixes of the served UE.
 	MultiIpv6Prefixes []string `json:"multiIpv6Prefixes,omitempty" yaml:"multiIpv6Prefixes,omitempty"`
 	// The multiple released IPv6 prefixes of the served UE.
@@ -130,7 +130,7 @@ type SmPolicyUpdateContextData struct {
 	// string with format 'bytes' as defined in OpenAPI
 	UrspEnfInfo *string  `json:"urspEnfInfo,omitempty" yaml:"urspEnfInfo,omitempty"`
 	SscMode     *SscMode `json:"sscMode,omitempty" yaml:"sscMode,omitempty"`
-	// String representing a Data Network as defined in clause 9A of 3GPP TS 23.003;  it shall contain either a DNN Network Identifier, or a full DNN with both the Network  Identifier and Operator Identifier, as specified in 3GPP TS 23.003 clause 9.1.1 and 9.1.2. It shall be coded as string in which the labels are separated by dots  (e.g. \"Label1.Label2.Label3\").
+	// String representing a Data Network as defined in clause 9A of 3GPP TS 23.003; it shall contain either a DNN Network Identifier, or a full DNN with both the Network Identifier and Operator Identifier, as specified in 3GPP TS 23.003 clause 9.1.1 and 9.1.2. It shall be coded as string in which the labels are separated by dots (e.g. \"Label1.Label2.Label3\").
 	UeReqDnn                *string                         `json:"ueReqDnn,omitempty" yaml:"ueReqDnn,omitempty"`
 	RedundantPduSessionInfo *RedundantPduSessionInformation `json:"redundantPduSessionInfo,omitempty" yaml:"redundantPduSessionInfo,omitempty"`
 	// ECN marking for L4S support availability in 5GS.

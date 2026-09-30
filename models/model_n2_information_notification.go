@@ -38,11 +38,11 @@ type N2InformationNotification struct {
 	SmfChangeInfoList []SmfChangeInfo         `json:"smfChangeInfoList,omitempty" yaml:"smfChangeInfoList,omitempty"`
 	RanNodeId         NullableGlobalRanNodeId `json:"ranNodeId" yaml:"ranNodeId,omitempty"`
 	// Fully Qualified Domain Name
-	InitialAmfName *string `json:"initialAmfName,omitempty" yaml:"initialAmfName,omitempty" validate:"regexp=^([0-9A-Za-z]([-0-9A-Za-z]{0,61}[0-9A-Za-z])?\\\\.)+[A-Za-z]{2,63}\\\\.?$"`
+	InitialAmfName *string `json:"initialAmfName,omitempty" yaml:"initialAmfName,omitempty" validate:"regexp=^([0-9A-Za-z]([-0-9A-Za-z]{0\\,61}[0-9A-Za-z])?\\.)+[A-Za-z]{2\\,63}\\.?$"`
 	// String identifying a IPv4 address formatted in the 'dotted decimal' notation as defined in RFC 1166.
-	AnN2IPv4Addr *string `json:"anN2IPv4Addr,omitempty" yaml:"anN2IPv4Addr,omitempty" validate:"regexp=^(([0-9]|[1-9][0-9]|1[0-9][0-9]|2[0-4][0-9]|25[0-5])\\\\.){3}([0-9]|[1-9][0-9]|1[0-9][0-9]|2[0-4][0-9]|25[0-5])$"`
+	AnN2IPv4Addr *string `json:"anN2IPv4Addr,omitempty" yaml:"anN2IPv4Addr,omitempty" validate:"regexp=^(([0-9]|[1-9][0-9]|1[0-9][0-9]|2[0-4][0-9]|25[0-5])\\.){3}([0-9]|[1-9][0-9]|1[0-9][0-9]|2[0-4][0-9]|25[0-5])$"`
 	// String identifying an IPv6 address formatted according to clause 4 of RFC5952. The mixed IPv4 IPv6 notation according to clause 5 of RFC5952 shall not be used.
-	AnN2IPv6Addr       *string `json:"anN2IPv6Addr,omitempty" yaml:"anN2IPv6Addr,omitempty" validate:"regexp=^(((:|(0?|([1-9a-f][0-9a-f]{0,3}))):)((0?|([1-9a-f][0-9a-f]{0,3})):){0,6}(:|(0?|([1-9a-f][0-9a-f]{0,3}))))|((([^:]+:){7}([^:]+))|((([^:]+:)*[^:]+)?::(([^:]+:)*[^:]+)?)))$"`
+	AnN2IPv6Addr       *string `json:"anN2IPv6Addr,omitempty" yaml:"anN2IPv6Addr,omitempty" validate:"regexp=^(((:|(0?|([1-9a-f][0-9a-f]{0\\,3}))):)((0?|([1-9a-f][0-9a-f]{0\\,3})):){0\\,6}(:|(0?|([1-9a-f][0-9a-f]{0\\,3}))))|((([^:]+:){7}([^:]+))|((([^:]+:)*[^:]+)?::(([^:]+:)*[^:]+)?)))$"`
 	Guami              *Guami  `json:"guami,omitempty" yaml:"guami,omitempty"`
 	NotifySourceNgRan  *bool   `json:"notifySourceNgRan,omitempty" yaml:"notifySourceNgRan,omitempty"`
 	NotifCorrelationId *string `json:"notifCorrelationId,omitempty" yaml:"notifCorrelationId,omitempty"`

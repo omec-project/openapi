@@ -41,7 +41,7 @@ type ProseContext struct {
 	L3End           *UeAuth `json:"l3End,omitempty" yaml:"l3End,omitempty"`
 	MultiPathComm   *UeAuth `json:"multiPathComm,omitempty" yaml:"multiPathComm,omitempty"`
 	// String representing a bit rate; the prefixes follow the standard symbols from The International System of Units, and represent x1000 multipliers, with the exception that prefix \"K\" is used to represent the standard symbol \"k\".
-	NrUePc5Ambr *string     `json:"nrUePc5Ambr,omitempty" yaml:"nrUePc5Ambr,omitempty" validate:"regexp=^\\\\d+(\\\\.\\\\d+)? (bps|Kbps|Mbps|Gbps|Tbps)$"`
+	NrUePc5Ambr *string     `json:"nrUePc5Ambr,omitempty" yaml:"nrUePc5Ambr,omitempty" validate:"regexp=^\\d+(\\.\\d+)? (bps|Kbps|Mbps|Gbps|Tbps)$"`
 	Pc5QoSPara  *Pc5QoSPara `json:"pc5QoSPara,omitempty" yaml:"pc5QoSPara,omitempty"`
 }
 

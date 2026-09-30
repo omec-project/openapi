@@ -29,7 +29,7 @@ var _ openapi.MappedNullable = &AssignedEbiData{}
 
 // AssignedEbiData Data within a successful response to an EBI assignment request
 type AssignedEbiData struct {
-	// Unsigned integer identifying a PDU session, within the range 0 to 255, as specified in  clause 11.2.3.1b, bits 1 to 8, of 3GPP TS 24.007. If the PDU Session ID is allocated by the  Core Network for UEs not supporting N1 mode, reserved range 64 to 95 is used. PDU Session ID  within the reserved range is only visible in the Core Network.
+	// Unsigned integer identifying a PDU session, within the range 0 to 255, as specified in clause 11.2.3.1b, bits 1 to 8, of 3GPP TS 24.007. If the PDU Session ID is allocated by the Core Network for UEs not supporting N1 mode, reserved range 64 to 95 is used. PDU Session ID within the reserved range is only visible in the Core Network.
 	PduSessionId    int32           `json:"pduSessionId" yaml:"pduSessionId"`
 	AssignedEbiList []EbiArpMapping `json:"assignedEbiList" yaml:"assignedEbiList"`
 	FailedArpList   []Arp           `json:"failedArpList,omitempty" yaml:"failedArpList,omitempty"`

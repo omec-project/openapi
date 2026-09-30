@@ -32,7 +32,7 @@ type MulticastMbsGroupMemb struct {
 	MulticastGroupMemb []string `json:"multicastGroupMemb" yaml:"multicastGroupMemb"`
 	AfInstanceId       *string  `json:"afInstanceId,omitempty" yaml:"afInstanceId,omitempty"`
 	// String identifying a group of devices network internal globally unique ID which identifies a set of IMSIs, as specified in clause 19.9 of 3GPP TS 23.003.
-	InternalGroupIdentifier *string `json:"internalGroupIdentifier,omitempty" yaml:"internalGroupIdentifier,omitempty" validate:"regexp=^[A-Fa-f0-9]{8}-[0-9]{3}-[0-9]{2,3}-([A-Fa-f0-9][A-Fa-f0-9]){1,10}$"`
+	InternalGroupIdentifier *string `json:"internalGroupIdentifier,omitempty" yaml:"internalGroupIdentifier,omitempty" validate:"regexp=^[A-Fa-f0-9]{8}-[0-9]{3}-[0-9]{2\\,3}-([A-Fa-f0-9][A-Fa-f0-9]){1\\,10}$"`
 }
 
 // NewMulticastMbsGroupMemb instantiates a new MulticastMbsGroupMemb object

@@ -22,7 +22,6 @@ import (
 	"encoding/json"
 
 	"github.com/omec-project/openapi/v2"
-	"gopkg.in/validator.v2"
 )
 
 // LinksValueSchema - A list of mutually exclusive alternatives of 1 or more links.
@@ -56,7 +55,7 @@ func (dst *LinksValueSchema) UnmarshalJSON(data []byte) error {
 		if string(jsonLink) == "{}" { // empty struct
 			dst.Link = nil
 		} else {
-			if err = validator.Validate(dst.Link); err != nil {
+			if err = openapi.Validate(dst.Link); err != nil {
 				dst.Link = nil
 			} else {
 				match++
@@ -73,7 +72,7 @@ func (dst *LinksValueSchema) UnmarshalJSON(data []byte) error {
 		if string(jsonArrayOfLink) == "{}" { // empty struct
 			dst.ArrayOfLink = nil
 		} else {
-			if err = validator.Validate(dst.ArrayOfLink); err != nil {
+			if err = openapi.Validate(dst.ArrayOfLink); err != nil {
 				dst.ArrayOfLink = nil
 			} else {
 				match++

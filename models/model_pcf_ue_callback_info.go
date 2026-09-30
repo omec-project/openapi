@@ -27,7 +27,7 @@ import (
 // checks if the PcfUeCallbackInfo type satisfies the MappedNullable interface at compile time
 var _ openapi.MappedNullable = &PcfUeCallbackInfo{}
 
-// PcfUeCallbackInfo Contains the PCF for the UE information necessary for the PCF for the PDU session to send  SM Policy Association Establishment and Termination events.
+// PcfUeCallbackInfo Contains the PCF for the UE information necessary for the PCF for the PDU session to send SM Policy Association Establishment and Termination events.
 type PcfUeCallbackInfo struct {
 	// String providing an URI formatted according to RFC 3986.
 	CallbackUri string  `json:"callbackUri" yaml:"callbackUri"`

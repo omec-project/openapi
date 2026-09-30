@@ -22,7 +22,6 @@ import (
 	"encoding/json"
 
 	"github.com/omec-project/openapi/v2"
-	"gopkg.in/validator.v2"
 )
 
 // TraceDataOrSharedTraceDataId - struct for TraceDataOrSharedTraceDataId
@@ -56,7 +55,7 @@ func (dst *TraceDataOrSharedTraceDataId) UnmarshalJSON(data []byte) error {
 		if string(jsonTraceData) == "{}" { // empty struct
 			dst.TraceData = nil
 		} else {
-			if err = validator.Validate(dst.TraceData); err != nil {
+			if err = openapi.Validate(dst.TraceData); err != nil {
 				dst.TraceData = nil
 			} else {
 				match++
@@ -73,7 +72,7 @@ func (dst *TraceDataOrSharedTraceDataId) UnmarshalJSON(data []byte) error {
 		if string(jsonString) == "{}" { // empty struct
 			dst.String = nil
 		} else {
-			if err = validator.Validate(dst.String); err != nil {
+			if err = openapi.Validate(dst.String); err != nil {
 				dst.String = nil
 			} else {
 				match++

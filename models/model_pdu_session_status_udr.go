@@ -25,7 +25,7 @@ import (
 	"github.com/omec-project/openapi/v2"
 )
 
-// PduSessionStatusUdr Represents the state of the PDU session.   Possible values are - \"ACTIVE\": the PDU session is active. - \"RELEASED\": the PDU session released.
+// PduSessionStatusUdr Represents the state of the PDU session. Possible values are - \"ACTIVE\": the PDU session is active. - \"RELEASED\": the PDU session released.
 type PduSessionStatusUdr string
 
 // List of PduSessionStatusUdr

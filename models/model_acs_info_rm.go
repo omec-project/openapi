@@ -27,14 +27,14 @@ import (
 // checks if the AcsInfoRm type satisfies the MappedNullable interface at compile time
 var _ openapi.MappedNullable = &AcsInfoRm{}
 
-// AcsInfoRm struct for AcsInfoRm
+// AcsInfoRm This data type is defined in the same way as the 'AcsInfo' data type, but with the OpenAPI 'nullable: true' property.
 type AcsInfoRm struct {
 	// String providing an URI formatted according to RFC 3986.
 	AcsUrl *string `json:"acsUrl,omitempty" yaml:"acsUrl,omitempty"`
 	// String identifying a IPv4 address formatted in the 'dotted decimal' notation as defined in RFC 1166.
-	AcsIpv4Addr *string `json:"acsIpv4Addr,omitempty" yaml:"acsIpv4Addr,omitempty" validate:"regexp=^(([0-9]|[1-9][0-9]|1[0-9][0-9]|2[0-4][0-9]|25[0-5])\\\\.){3}([0-9]|[1-9][0-9]|1[0-9][0-9]|2[0-4][0-9]|25[0-5])$"`
+	AcsIpv4Addr *string `json:"acsIpv4Addr,omitempty" yaml:"acsIpv4Addr,omitempty" validate:"regexp=^(([0-9]|[1-9][0-9]|1[0-9][0-9]|2[0-4][0-9]|25[0-5])\\.){3}([0-9]|[1-9][0-9]|1[0-9][0-9]|2[0-4][0-9]|25[0-5])$"`
 	// String identifying an IPv6 address formatted according to clause 4 of RFC5952. The mixed IPv4 IPv6 notation according to clause 5 of RFC5952 shall not be used.
-	AcsIpv6Addr *string `json:"acsIpv6Addr,omitempty" yaml:"acsIpv6Addr,omitempty" validate:"regexp=^(((:|(0?|([1-9a-f][0-9a-f]{0,3}))):)((0?|([1-9a-f][0-9a-f]{0,3})):){0,6}(:|(0?|([1-9a-f][0-9a-f]{0,3}))))|((([^:]+:){7}([^:]+))|((([^:]+:)*[^:]+)?::(([^:]+:)*[^:]+)?)))$"`
+	AcsIpv6Addr *string `json:"acsIpv6Addr,omitempty" yaml:"acsIpv6Addr,omitempty" validate:"regexp=^(((:|(0?|([1-9a-f][0-9a-f]{0\\,3}))):)((0?|([1-9a-f][0-9a-f]{0\\,3})):){0\\,6}(:|(0?|([1-9a-f][0-9a-f]{0\\,3}))))|((([^:]+:){7}([^:]+))|((([^:]+:)*[^:]+)?::(([^:]+:)*[^:]+)?)))$"`
 }
 
 // NewAcsInfoRm instantiates a new AcsInfoRm object

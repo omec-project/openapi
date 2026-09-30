@@ -32,9 +32,9 @@ type AfCoordinationInfo struct {
 	// DNAI (Data network access identifier), see clause 5.6.7 of 3GPP TS 23.501.
 	SourceDnai *string `json:"sourceDnai,omitempty" yaml:"sourceDnai,omitempty"`
 	// String identifying a IPv4 address formatted in the 'dotted decimal' notation as defined in RFC 1166.
-	SourceUeIpv4Addr *string `json:"sourceUeIpv4Addr,omitempty" yaml:"sourceUeIpv4Addr,omitempty" validate:"regexp=^(([0-9]|[1-9][0-9]|1[0-9][0-9]|2[0-4][0-9]|25[0-5])\\\\.){3}([0-9]|[1-9][0-9]|1[0-9][0-9]|2[0-4][0-9]|25[0-5])$"`
+	SourceUeIpv4Addr *string `json:"sourceUeIpv4Addr,omitempty" yaml:"sourceUeIpv4Addr,omitempty" validate:"regexp=^(([0-9]|[1-9][0-9]|1[0-9][0-9]|2[0-4][0-9]|25[0-5])\\.){3}([0-9]|[1-9][0-9]|1[0-9][0-9]|2[0-4][0-9]|25[0-5])$"`
 	// String identifying an IPv6 address prefix formatted according to clause 4 of RFC 5952. IPv6Prefix data type may contain an individual /128 IPv6 address.
-	SourceUeIpv6Prefix   *string            `json:"sourceUeIpv6Prefix,omitempty" yaml:"sourceUeIpv6Prefix,omitempty" validate:"regexp=^(((:|(0?|([1-9a-f][0-9a-f]{0,3}))):)((0?|([1-9a-f][0-9a-f]{0,3})):){0,6}(:|(0?|([1-9a-f][0-9a-f]{0,3})))(\\/(([0-9])|([0-9]{2})|(1[0-1][0-9])|(12[0-8])))|((([^:]+:){7}([^:]+))|((([^:]+:)*[^:]+)?::(([^:]+:)*[^:]+)?))(\\/.+))$"`
+	SourceUeIpv6Prefix   *string            `json:"sourceUeIpv6Prefix,omitempty" yaml:"sourceUeIpv6Prefix,omitempty" validate:"regexp=^(((:|(0?|([1-9a-f][0-9a-f]{0\\,3}))):)((0?|([1-9a-f][0-9a-f]{0\\,3})):){0\\,6}(:|(0?|([1-9a-f][0-9a-f]{0\\,3})))(/(([0-9])|([0-9]{2})|(1[0-1][0-9])|(12[0-8])))|((([^:]+:){7}([^:]+))|((([^:]+:)*[^:]+)?::(([^:]+:)*[^:]+)?))(/.+))$"`
 	NotificationInfoList []NotificationInfo `json:"notificationInfoList,omitempty" yaml:"notificationInfoList,omitempty"`
 }
 

@@ -27,7 +27,7 @@ import (
 // checks if the RetainabilityThreshold type satisfies the MappedNullable interface at compile time
 var _ openapi.MappedNullable = &RetainabilityThreshold{}
 
-// RetainabilityThreshold struct for RetainabilityThreshold
+// RetainabilityThreshold Represents a QoS flow retainability threshold.
 type RetainabilityThreshold struct {
 }
 

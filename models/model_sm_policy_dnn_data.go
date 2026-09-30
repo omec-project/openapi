@@ -29,14 +29,14 @@ var _ openapi.MappedNullable = &SmPolicyDnnData{}
 
 // SmPolicyDnnData Contains the SM policy data for a given DNN (and S-NSSAI).
 type SmPolicyDnnData struct {
-	// String representing a Data Network as defined in clause 9A of 3GPP TS 23.003;  it shall contain either a DNN Network Identifier, or a full DNN with both the Network  Identifier and Operator Identifier, as specified in 3GPP TS 23.003 clause 9.1.1 and 9.1.2. It shall be coded as string in which the labels are separated by dots  (e.g. \"Label1.Label2.Label3\").
+	// String representing a Data Network as defined in clause 9A of 3GPP TS 23.003; it shall contain either a DNN Network Identifier, or a full DNN with both the Network Identifier and Operator Identifier, as specified in 3GPP TS 23.003 clause 9.1.1 and 9.1.2. It shall be coded as string in which the labels are separated by dots (e.g. \"Label1.Label2.Label3\").
 	Dnn             string   `json:"dnn" yaml:"dnn"`
 	AllowedServices []string `json:"allowedServices,omitempty" yaml:"allowedServices,omitempty"`
 	SubscCats       []string `json:"subscCats,omitempty" yaml:"subscCats,omitempty"`
 	// String representing a bit rate; the prefixes follow the standard symbols from The International System of Units, and represent x1000 multipliers, with the exception that prefix \"K\" is used to represent the standard symbol \"k\".
-	GbrUl *string `json:"gbrUl,omitempty" yaml:"gbrUl,omitempty" validate:"regexp=^\\\\d+(\\\\.\\\\d+)? (bps|Kbps|Mbps|Gbps|Tbps)$"`
+	GbrUl *string `json:"gbrUl,omitempty" yaml:"gbrUl,omitempty" validate:"regexp=^\\d+(\\.\\d+)? (bps|Kbps|Mbps|Gbps|Tbps)$"`
 	// String representing a bit rate; the prefixes follow the standard symbols from The International System of Units, and represent x1000 multipliers, with the exception that prefix \"K\" is used to represent the standard symbol \"k\".
-	GbrDl      *string `json:"gbrDl,omitempty" yaml:"gbrDl,omitempty" validate:"regexp=^\\\\d+(\\\\.\\\\d+)? (bps|Kbps|Mbps|Gbps|Tbps)$"`
+	GbrDl      *string `json:"gbrDl,omitempty" yaml:"gbrDl,omitempty" validate:"regexp=^\\d+(\\.\\d+)? (bps|Kbps|Mbps|Gbps|Tbps)$"`
 	AdcSupport *bool   `json:"adcSupport,omitempty" yaml:"adcSupport,omitempty"`
 	// Indicates whether the PCF must enforce session management related policies based on subscriber spending limits.
 	SubscSpendingLimits *bool `json:"subscSpendingLimits,omitempty" yaml:"subscSpendingLimits,omitempty"`
@@ -59,9 +59,9 @@ type SmPolicyDnnData struct {
 	// Contains Presence reporting area information. The praId attribute within the PresenceInfo data type is the key of the map.
 	PraInfos *map[string]PresenceInfo `json:"praInfos,omitempty" yaml:"praInfos,omitempty"`
 	// Identifies transfer policies of background data transfer. Any string value can be used as a key of the map.
-	BdtRefIds         map[string]string `json:"bdtRefIds,omitempty" yaml:"bdtRefIds,omitempty"`
-	LocRoutNotAllowed *bool             `json:"locRoutNotAllowed,omitempty" yaml:"locRoutNotAllowed,omitempty"`
-	SfcNotAllowed     *bool             `json:"sfcNotAllowed,omitempty" yaml:"sfcNotAllowed,omitempty"`
+	BdtRefIds         map[string]*string `json:"bdtRefIds,omitempty" yaml:"bdtRefIds,omitempty"`
+	LocRoutNotAllowed *bool              `json:"locRoutNotAllowed,omitempty" yaml:"locRoutNotAllowed,omitempty"`
+	SfcNotAllowed     *bool              `json:"sfcNotAllowed,omitempty" yaml:"sfcNotAllowed,omitempty"`
 	// Contains the TNAP IDs collocated with the 5G-RG(s) of a specific user.
 	Tnaps []TnapId `json:"tnaps,omitempty" yaml:"tnaps,omitempty"`
 }
@@ -717,9 +717,9 @@ func (o *SmPolicyDnnData) SetPraInfos(v map[string]PresenceInfo) {
 }
 
 // GetBdtRefIds returns the BdtRefIds field value if set, zero value otherwise (both if not set or set to explicit null).
-func (o *SmPolicyDnnData) GetBdtRefIds() map[string]string {
+func (o *SmPolicyDnnData) GetBdtRefIds() map[string]*string {
 	if o == nil {
-		var ret map[string]string
+		var ret map[string]*string
 		return ret
 	}
 	return o.BdtRefIds
@@ -728,7 +728,7 @@ func (o *SmPolicyDnnData) GetBdtRefIds() map[string]string {
 // GetBdtRefIdsOk returns a tuple with the BdtRefIds field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 // NOTE: If the value is an explicit nil, `nil, true` will be returned
-func (o *SmPolicyDnnData) GetBdtRefIdsOk() (*map[string]string, bool) {
+func (o *SmPolicyDnnData) GetBdtRefIdsOk() (*map[string]*string, bool) {
 	if o == nil || openapi.IsNil(o.BdtRefIds) {
 		return nil, false
 	}
@@ -744,8 +744,8 @@ func (o *SmPolicyDnnData) HasBdtRefIds() bool {
 	return false
 }
 
-// SetBdtRefIds gets a reference to the given map[string]string and assigns it to the BdtRefIds field.
-func (o *SmPolicyDnnData) SetBdtRefIds(v map[string]string) {
+// SetBdtRefIds gets a reference to the given map[string]*string and assigns it to the BdtRefIds field.
+func (o *SmPolicyDnnData) SetBdtRefIds(v map[string]*string) {
 	o.BdtRefIds = v
 }
 

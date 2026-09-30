@@ -34,14 +34,14 @@ type PduSessionTsnBridge struct {
 	TsnPortManContDstt  *PortManagementContainer   `json:"tsnPortManContDstt,omitempty" yaml:"tsnPortManContDstt,omitempty"`
 	TsnPortManContNwtts []PortManagementContainer  `json:"tsnPortManContNwtts,omitempty" yaml:"tsnPortManContNwtts,omitempty"`
 	// String identifying a IPv4 address formatted in the 'dotted decimal' notation as defined in RFC 1166.
-	UeIpv4Addr *string `json:"ueIpv4Addr,omitempty" yaml:"ueIpv4Addr,omitempty" validate:"regexp=^(([0-9]|[1-9][0-9]|1[0-9][0-9]|2[0-4][0-9]|25[0-5])\\\\.){3}([0-9]|[1-9][0-9]|1[0-9][0-9]|2[0-4][0-9]|25[0-5])$"`
-	// String representing a Data Network as defined in clause 9A of 3GPP TS 23.003;  it shall contain either a DNN Network Identifier, or a full DNN with both the Network  Identifier and Operator Identifier, as specified in 3GPP TS 23.003 clause 9.1.1 and 9.1.2. It shall be coded as string in which the labels are separated by dots  (e.g. \"Label1.Label2.Label3\").
+	UeIpv4Addr *string `json:"ueIpv4Addr,omitempty" yaml:"ueIpv4Addr,omitempty" validate:"regexp=^(([0-9]|[1-9][0-9]|1[0-9][0-9]|2[0-4][0-9]|25[0-5])\\.){3}([0-9]|[1-9][0-9]|1[0-9][0-9]|2[0-4][0-9]|25[0-5])$"`
+	// String representing a Data Network as defined in clause 9A of 3GPP TS 23.003; it shall contain either a DNN Network Identifier, or a full DNN with both the Network Identifier and Operator Identifier, as specified in 3GPP TS 23.003 clause 9.1.1 and 9.1.2. It shall be coded as string in which the labels are separated by dots (e.g. \"Label1.Label2.Label3\").
 	Dnn    *string `json:"dnn,omitempty" yaml:"dnn,omitempty"`
 	Snssai *Snssai `json:"snssai,omitempty" yaml:"snssai,omitempty"`
 	// IPv4 address domain identifier.
 	IpDomain *string `json:"ipDomain,omitempty" yaml:"ipDomain,omitempty"`
 	// String identifying an IPv6 address prefix formatted according to clause 4 of RFC 5952. IPv6Prefix data type may contain an individual /128 IPv6 address.
-	UeIpv6AddrPrefix *string `json:"ueIpv6AddrPrefix,omitempty" yaml:"ueIpv6AddrPrefix,omitempty" validate:"regexp=^(((:|(0?|([1-9a-f][0-9a-f]{0,3}))):)((0?|([1-9a-f][0-9a-f]{0,3})):){0,6}(:|(0?|([1-9a-f][0-9a-f]{0,3})))(\\/(([0-9])|([0-9]{2})|(1[0-1][0-9])|(12[0-8])))|((([^:]+:){7}([^:]+))|((([^:]+:)*[^:]+)?::(([^:]+:)*[^:]+)?))(\\/.+))$"`
+	UeIpv6AddrPrefix *string `json:"ueIpv6AddrPrefix,omitempty" yaml:"ueIpv6AddrPrefix,omitempty" validate:"regexp=^(((:|(0?|([1-9a-f][0-9a-f]{0\\,3}))):)((0?|([1-9a-f][0-9a-f]{0\\,3})):){0\\,6}(:|(0?|([1-9a-f][0-9a-f]{0\\,3})))(/(([0-9])|([0-9]{2})|(1[0-1][0-9])|(12[0-8])))|((([^:]+:){7}([^:]+))|((([^:]+:)*[^:]+)?::(([^:]+:)*[^:]+)?))(/.+))$"`
 }
 
 // NewPduSessionTsnBridge instantiates a new PduSessionTsnBridge object

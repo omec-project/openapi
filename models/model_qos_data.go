@@ -34,13 +34,13 @@ type QosData struct {
 	// Unsigned integer representing a 5G QoS Identifier (see clause 5.7.2.1 of 3GPP TS 23.501, within the range 0 to 255.
 	Var5qi *int32 `json:"5qi,omitempty" yaml:"5qi,omitempty"`
 	// This data type is defined in the same way as the 'BitRate' data type, but with the OpenAPI 'nullable: true' property.
-	MaxbrUl openapi.NullableString `json:"maxbrUl" yaml:"maxbrUl,omitempty" validate:"regexp=^\\\\d+(\\\\.\\\\d+)? (bps|Kbps|Mbps|Gbps|Tbps)$"`
+	MaxbrUl openapi.NullableString `json:"maxbrUl" yaml:"maxbrUl,omitempty" validate:"regexp=^\\d+(\\.\\d+)? (bps|Kbps|Mbps|Gbps|Tbps)$"`
 	// This data type is defined in the same way as the 'BitRate' data type, but with the OpenAPI 'nullable: true' property.
-	MaxbrDl openapi.NullableString `json:"maxbrDl" yaml:"maxbrDl,omitempty" validate:"regexp=^\\\\d+(\\\\.\\\\d+)? (bps|Kbps|Mbps|Gbps|Tbps)$"`
+	MaxbrDl openapi.NullableString `json:"maxbrDl" yaml:"maxbrDl,omitempty" validate:"regexp=^\\d+(\\.\\d+)? (bps|Kbps|Mbps|Gbps|Tbps)$"`
 	// This data type is defined in the same way as the 'BitRate' data type, but with the OpenAPI 'nullable: true' property.
-	GbrUl openapi.NullableString `json:"gbrUl" yaml:"gbrUl,omitempty" validate:"regexp=^\\\\d+(\\\\.\\\\d+)? (bps|Kbps|Mbps|Gbps|Tbps)$"`
+	GbrUl openapi.NullableString `json:"gbrUl" yaml:"gbrUl,omitempty" validate:"regexp=^\\d+(\\.\\d+)? (bps|Kbps|Mbps|Gbps|Tbps)$"`
 	// This data type is defined in the same way as the 'BitRate' data type, but with the OpenAPI 'nullable: true' property.
-	GbrDl openapi.NullableString `json:"gbrDl" yaml:"gbrDl,omitempty" validate:"regexp=^\\\\d+(\\\\.\\\\d+)? (bps|Kbps|Mbps|Gbps|Tbps)$"`
+	GbrDl openapi.NullableString `json:"gbrDl" yaml:"gbrDl,omitempty" validate:"regexp=^\\d+(\\.\\d+)? (bps|Kbps|Mbps|Gbps|Tbps)$"`
 	Arp   *Arp                   `json:"arp,omitempty" yaml:"arp,omitempty"`
 	// Indicates whether notifications are requested from 3GPP NG-RAN when the GFBR can no longer (or again) be guaranteed for a QoS Flow during the lifetime of the QoS Flow.
 	Qnc *bool `json:"qnc,omitempty" yaml:"qnc,omitempty"`
@@ -50,17 +50,17 @@ type QosData struct {
 	AverWindow openapi.NullableInt32 `json:"averWindow" yaml:"averWindow,omitempty"`
 	// This data type is defined in the same way as the 'MaxDataBurstVol' data type, but with the OpenAPI 'nullable: true' property.
 	MaxDataBurstVol openapi.NullableInt32 `json:"maxDataBurstVol" yaml:"maxDataBurstVol,omitempty"`
-	// Indicates whether the QoS information is reflective for the corresponding service data  flow.
+	// Indicates whether the QoS information is reflective for the corresponding service data flow.
 	ReflectiveQos *bool `json:"reflectiveQos,omitempty" yaml:"reflectiveQos,omitempty"`
-	// Indicates, by containing the same value, what PCC rules may share resource in downlink  direction.
+	// Indicates, by containing the same value, what PCC rules may share resource in downlink direction.
 	SharingKeyDl *string `json:"sharingKeyDl,omitempty" yaml:"sharingKeyDl,omitempty"`
-	// Indicates, by containing the same value, what PCC rules may share resource in uplink  direction.
+	// Indicates, by containing the same value, what PCC rules may share resource in uplink direction.
 	SharingKeyUl *string `json:"sharingKeyUl,omitempty" yaml:"sharingKeyUl,omitempty"`
 	// This data type is defined in the same way as the 'PacketLossRate' data type, but with the OpenAPI 'nullable: true' property.
 	MaxPacketLossRateDl openapi.NullableInt32 `json:"maxPacketLossRateDl" yaml:"maxPacketLossRateDl,omitempty"`
 	// This data type is defined in the same way as the 'PacketLossRate' data type, but with the OpenAPI 'nullable: true' property.
 	MaxPacketLossRateUl openapi.NullableInt32 `json:"maxPacketLossRateUl" yaml:"maxPacketLossRateUl,omitempty"`
-	// Indicates that the dynamic PCC rule shall always have its binding with the QoS Flow  associated with the default QoS rule
+	// Indicates that the dynamic PCC rule shall always have its binding with the QoS Flow associated with the default QoS rule
 	DefQosFlowIndication *bool `json:"defQosFlowIndication,omitempty" yaml:"defQosFlowIndication,omitempty"`
 	// This data type is defined in the same way as the 'ExtMaxDataBurstVol' data type, but with the OpenAPI 'nullable: true' property.
 	ExtMaxDataBurstVol openapi.NullableInt32 `json:"extMaxDataBurstVol" yaml:"extMaxDataBurstVol,omitempty"`

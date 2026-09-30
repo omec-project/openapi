@@ -22,10 +22,9 @@ import (
 	"encoding/json"
 
 	"github.com/omec-project/openapi/v2"
-	"gopkg.in/validator.v2"
 )
 
-// ComplexQuery - The ComplexQuery data type is either a conjunctive normal form or a disjunctive normal form.  The attribute names \"cnfUnits\" and \"dnfUnits\" (see clause 5.2.4.11 and clause 5.2.4.12)  serve as discriminator.
+// ComplexQuery - The ComplexQuery data type is either a conjunctive normal form or a disjunctive normal form. The attribute names \"cnfUnits\" and \"dnfUnits\" (see clause 5.2.4.11 and clause 5.2.4.12) serve as discriminator.
 type ComplexQuery struct {
 	Cnf *Cnf
 	Dnf *Dnf
@@ -56,7 +55,7 @@ func (dst *ComplexQuery) UnmarshalJSON(data []byte) error {
 		if string(jsonCnf) == "{}" { // empty struct
 			dst.Cnf = nil
 		} else {
-			if err = validator.Validate(dst.Cnf); err != nil {
+			if err = openapi.Validate(dst.Cnf); err != nil {
 				dst.Cnf = nil
 			} else {
 				match++
@@ -73,7 +72,7 @@ func (dst *ComplexQuery) UnmarshalJSON(data []byte) error {
 		if string(jsonDnf) == "{}" { // empty struct
 			dst.Dnf = nil
 		} else {
-			if err = validator.Validate(dst.Dnf); err != nil {
+			if err = openapi.Validate(dst.Dnf); err != nil {
 				dst.Dnf = nil
 			} else {
 				match++

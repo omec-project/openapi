@@ -29,7 +29,7 @@ var _ openapi.MappedNullable = &TssInformation{}
 
 // TssInformation Represents a Tss related N2 information data part
 type TssInformation struct {
-	// String uniquely identifying a NF instance. The format of the NF Instance ID shall be a  Universally Unique Identifier (UUID) version 4, as described in IETF RFC 4122.
+	// String uniquely identifying a NF instance. The format of the NF Instance ID shall be a Universally Unique Identifier (UUID) version 4, as described in IETF RFC 4122.
 	NfId               *string          `json:"nfId,omitempty" yaml:"nfId,omitempty"`
 	TssContainer       []N2InfoContent  `json:"tssContainer" yaml:"tssContainer"`
 	TssRspPerNgranList []TssRspPerNgran `json:"tssRspPerNgranList,omitempty" yaml:"tssRspPerNgranList,omitempty"`

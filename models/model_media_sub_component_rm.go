@@ -37,9 +37,9 @@ type MediaSubComponentRm struct {
 	AddInfoFlowDescs []AddFlowDescriptionInfo `json:"addInfoFlowDescs,omitempty" yaml:"addInfoFlowDescs,omitempty"`
 	FStatus          *FlowStatus              `json:"fStatus,omitempty" yaml:"fStatus,omitempty"`
 	// This data type is defined in the same way as the 'BitRate' data type, but with the OpenAPI 'nullable: true' property.
-	MarBwDl openapi.NullableString `json:"marBwDl" yaml:"marBwDl,omitempty" validate:"regexp=^\\\\d+(\\\\.\\\\d+)? (bps|Kbps|Mbps|Gbps|Tbps)$"`
+	MarBwDl openapi.NullableString `json:"marBwDl" yaml:"marBwDl,omitempty" validate:"regexp=^\\d+(\\.\\d+)? (bps|Kbps|Mbps|Gbps|Tbps)$"`
 	// This data type is defined in the same way as the 'BitRate' data type, but with the OpenAPI 'nullable: true' property.
-	MarBwUl openapi.NullableString `json:"marBwUl" yaml:"marBwUl,omitempty" validate:"regexp=^\\\\d+(\\\\.\\\\d+)? (bps|Kbps|Mbps|Gbps|Tbps)$"`
+	MarBwUl openapi.NullableString `json:"marBwUl" yaml:"marBwUl,omitempty" validate:"regexp=^\\d+(\\.\\d+)? (bps|Kbps|Mbps|Gbps|Tbps)$"`
 	// This data type is defined in the same way as the TosTrafficClass data type, but with the OpenAPI nullable property set to true.
 	TosTrCl   openapi.NullableString       `json:"tosTrCl" yaml:"tosTrCl,omitempty"`
 	FlowUsage *FlowUsage                   `json:"flowUsage,omitempty" yaml:"flowUsage,omitempty"`

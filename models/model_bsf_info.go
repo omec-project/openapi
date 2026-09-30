@@ -34,9 +34,9 @@ type BsfInfo struct {
 	Ipv4AddressRanges []Ipv4AddressRange `json:"ipv4AddressRanges,omitempty" yaml:"ipv4AddressRanges,omitempty"`
 	Ipv6PrefixRanges  []Ipv6PrefixRange  `json:"ipv6PrefixRanges,omitempty" yaml:"ipv6PrefixRanges,omitempty"`
 	// Fully Qualified Domain Name
-	RxDiamHost *string `json:"rxDiamHost,omitempty" yaml:"rxDiamHost,omitempty" validate:"regexp=^([0-9A-Za-z]([-0-9A-Za-z]{0,61}[0-9A-Za-z])?\\\\.)+[A-Za-z]{2,63}\\\\.?$"`
+	RxDiamHost *string `json:"rxDiamHost,omitempty" yaml:"rxDiamHost,omitempty" validate:"regexp=^([0-9A-Za-z]([-0-9A-Za-z]{0\\,61}[0-9A-Za-z])?\\.)+[A-Za-z]{2\\,63}\\.?$"`
 	// Fully Qualified Domain Name
-	RxDiamRealm *string `json:"rxDiamRealm,omitempty" yaml:"rxDiamRealm,omitempty" validate:"regexp=^([0-9A-Za-z]([-0-9A-Za-z]{0,61}[0-9A-Za-z])?\\\\.)+[A-Za-z]{2,63}\\\\.?$"`
+	RxDiamRealm *string `json:"rxDiamRealm,omitempty" yaml:"rxDiamRealm,omitempty" validate:"regexp=^([0-9A-Za-z]([-0-9A-Za-z]{0\\,61}[0-9A-Za-z])?\\.)+[A-Za-z]{2\\,63}\\.?$"`
 	// Identifier of a group of NFs.
 	GroupId    *string         `json:"groupId,omitempty" yaml:"groupId,omitempty"`
 	SupiRanges []SupiRange     `json:"supiRanges,omitempty" yaml:"supiRanges,omitempty"`

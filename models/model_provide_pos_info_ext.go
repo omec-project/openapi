@@ -41,19 +41,19 @@ type ProvidePosInfoExt struct {
 	GnssPositioningDataList     []GnssPositioningMethodAndUsage `json:"gnssPositioningDataList,omitempty" yaml:"gnssPositioningDataList,omitempty"`
 	Ecgi                        *Ecgi                           `json:"ecgi,omitempty" yaml:"ecgi,omitempty"`
 	Ncgi                        *Ncgi                           `json:"ncgi,omitempty" yaml:"ncgi,omitempty"`
-	// String uniquely identifying a NF instance. The format of the NF Instance ID shall be a  Universally Unique Identifier (UUID) version 4, as described in IETF RFC 4122.
+	// String uniquely identifying a NF instance. The format of the NF Instance ID shall be a Universally Unique Identifier (UUID) version 4, as described in IETF RFC 4122.
 	TargetServingNode *string `json:"targetServingNode,omitempty" yaml:"targetServingNode,omitempty"`
 	// Fully Qualified Domain Name
-	TargetMmeName *string `json:"targetMmeName,omitempty" yaml:"targetMmeName,omitempty" validate:"regexp=^([0-9A-Za-z]([-0-9A-Za-z]{0,61}[0-9A-Za-z])?\\\\.)+[A-Za-z]{2,63}\\\\.?$"`
+	TargetMmeName *string `json:"targetMmeName,omitempty" yaml:"targetMmeName,omitempty" validate:"regexp=^([0-9A-Za-z]([-0-9A-Za-z]{0\\,61}[0-9A-Za-z])?\\.)+[A-Za-z]{2\\,63}\\.?$"`
 	// Fully Qualified Domain Name
-	TargetMmeRealm *string       `json:"targetMmeRealm,omitempty" yaml:"targetMmeRealm,omitempty" validate:"regexp=^([0-9A-Za-z]([-0-9A-Za-z]{0,61}[0-9A-Za-z])?\\\\.)+[A-Za-z]{2,63}\\\\.?$"`
+	TargetMmeRealm *string       `json:"targetMmeRealm,omitempty" yaml:"targetMmeRealm,omitempty" validate:"regexp=^([0-9A-Za-z]([-0-9A-Za-z]{0\\,61}[0-9A-Za-z])?\\.)+[A-Za-z]{2\\,63}\\.?$"`
 	UtranSrvccInd  *bool         `json:"utranSrvccInd,omitempty" yaml:"utranSrvccInd,omitempty"`
 	CivicAddress   *CivicAddress `json:"civicAddress,omitempty" yaml:"civicAddress,omitempty"`
 	// Specifies the measured uncompensated atmospheric pressure.
 	BarometricPressure *int32 `json:"barometricPressure,omitempty" yaml:"barometricPressure,omitempty"`
 	// Indicates value of altitude.
 	Altitude *float64 `json:"altitude,omitempty" yaml:"altitude,omitempty"`
-	// A string used to indicate the features supported by an API that is used as defined in clause  6.6 in 3GPP TS 29.500. The string shall contain a bitmask indicating supported features in  hexadecimal representation Each character in the string shall take a value of \"0\" to \"9\",  \"a\" to \"f\" or \"A\" to \"F\" and shall represent the support of 4 features as described in  table 5.2.2-3. The most significant character representing the highest-numbered features shall  appear first in the string, and the character representing features 1 to 4 shall appear last  in the string. The list of features and their numbering (starting with 1) are defined  separately for each API. If the string contains a lower number of characters than there are  defined features for an API, all features that would be represented by characters that are not  present in the string are not supported.
+	// A string used to indicate the features supported by an API that is used as defined in clause 6.6 in 3GPP TS 29.500. The string shall contain a bitmask indicating supported features in hexadecimal representation Each character in the string shall take a value of \"0\" to \"9\", \"a\" to \"f\" or \"A\" to \"F\" and shall represent the support of 4 features as described in table 5.2.2-3. The most significant character representing the highest-numbered features shall  appear first in the string, and the character representing features 1 to 4 shall appear last  in the string. The list of features and their numbering (starting with 1) are defined  separately for each API. If the string contains a lower number of characters than there are  defined features for an API, all features that would be represented by characters that are not  present in the string are not supported.
 	SupportedFeatures *string `json:"supportedFeatures,omitempty" yaml:"supportedFeatures,omitempty" validate:"regexp=^[A-Fa-f0-9]*$"`
 	// LMF identification.
 	ServingLMFIdentification  *string                   `json:"servingLMFIdentification,omitempty" yaml:"servingLMFIdentification,omitempty"`
@@ -64,7 +64,7 @@ type ProvidePosInfoExt struct {
 	HaGnssMetrics             *HighAccuracyGnssMetrics  `json:"haGnssMetrics,omitempty" yaml:"haGnssMetrics,omitempty"`
 	IndoorOutdoorInd          *IndoorOutdoorInd         `json:"indoorOutdoorInd,omitempty" yaml:"indoorOutdoorInd,omitempty"`
 	LosNlosMeasureInd         *LosNlosMeasureInd        `json:"losNlosMeasureInd,omitempty" yaml:"losNlosMeasureInd,omitempty"`
-	// String identifying an UE with application layer ID. The format of the application  layer ID parameter is same as the Application layer ID defined in clause 11.3.4 of  3GPP TS 24.554.
+	// String identifying an UE with application layer ID. The format of the application layer ID parameter is same as the Application layer ID defined in clause 11.3.4 of 3GPP TS 24.554.
 	RelatedApplicationlayerId *string                 `json:"relatedApplicationlayerId,omitempty" yaml:"relatedApplicationlayerId,omitempty"`
 	DistanceDirection         *RangeDirection         `json:"distanceDirection,omitempty" yaml:"distanceDirection,omitempty"`
 	Var2dRelativeLocation     *TwoDRelativeLocation   `json:"2dRelativeLocation,omitempty" yaml:"2dRelativeLocation,omitempty"`

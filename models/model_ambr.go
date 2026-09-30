@@ -30,9 +30,9 @@ var _ openapi.MappedNullable = &Ambr{}
 // Ambr Contains the maximum aggregated uplink and downlink bit rates.
 type Ambr struct {
 	// String representing a bit rate; the prefixes follow the standard symbols from The International System of Units, and represent x1000 multipliers, with the exception that prefix \"K\" is used to represent the standard symbol \"k\".
-	Uplink string `json:"uplink" yaml:"uplink" validate:"regexp=^\\\\d+(\\\\.\\\\d+)? (bps|Kbps|Mbps|Gbps|Tbps)$"`
+	Uplink string `json:"uplink" yaml:"uplink" validate:"regexp=^\\d+(\\.\\d+)? (bps|Kbps|Mbps|Gbps|Tbps)$"`
 	// String representing a bit rate; the prefixes follow the standard symbols from The International System of Units, and represent x1000 multipliers, with the exception that prefix \"K\" is used to represent the standard symbol \"k\".
-	Downlink string `json:"downlink" yaml:"downlink" validate:"regexp=^\\\\d+(\\\\.\\\\d+)? (bps|Kbps|Mbps|Gbps|Tbps)$"`
+	Downlink string `json:"downlink" yaml:"downlink" validate:"regexp=^\\d+(\\.\\d+)? (bps|Kbps|Mbps|Gbps|Tbps)$"`
 }
 
 // NewAmbr instantiates a new Ambr object

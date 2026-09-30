@@ -32,11 +32,11 @@ type ChargingData struct {
 	// Univocally identifies the charging control policy data within a PDU session.
 	ChgId          string                 `json:"chgId" yaml:"chgId"`
 	MeteringMethod NullableMeteringMethod `json:"meteringMethod" yaml:"meteringMethod,omitempty"`
-	// Indicates the offline charging is applicable to the PCC rule when it is included and set  to true.
+	// Indicates the offline charging is applicable to the PCC rule when it is included and set to true.
 	Offline *bool `json:"offline,omitempty" yaml:"offline,omitempty"`
-	// Indicates the online charging is applicable to the PCC rule when it is included and set  to true.
+	// Indicates the online charging is applicable to the PCC rule when it is included and set to true.
 	Online *bool `json:"online,omitempty" yaml:"online,omitempty"`
-	// Indicates whether the service data flow is allowed to start while the SMF is waiting for  the response to the credit request.
+	// Indicates whether the service data flow is allowed to start while the SMF is waiting for the response to the credit request.
 	SdfHandl *bool `json:"sdfHandl,omitempty" yaml:"sdfHandl,omitempty"`
 	// Integer where the allowed values correspond to the value range of an unsigned 32-bit integer.
 	RatingGroup    *int32                 `json:"ratingGroup,omitempty" yaml:"ratingGroup,omitempty"`

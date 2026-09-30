@@ -33,9 +33,9 @@ type QosMonitoringInformation struct {
 	RepThreshUl *int32 `json:"repThreshUl,omitempty" yaml:"repThreshUl,omitempty"`
 	RepThreshRp *int32 `json:"repThreshRp,omitempty" yaml:"repThreshRp,omitempty"`
 	// String representing a bit rate; the prefixes follow the standard symbols from The International System of Units, and represent x1000 multipliers, with the exception that prefix \"K\" is used to represent the standard symbol \"k\".
-	RepThreshDatRateUl *string `json:"repThreshDatRateUl,omitempty" yaml:"repThreshDatRateUl,omitempty" validate:"regexp=^\\\\d+(\\\\.\\\\d+)? (bps|Kbps|Mbps|Gbps|Tbps)$"`
+	RepThreshDatRateUl *string `json:"repThreshDatRateUl,omitempty" yaml:"repThreshDatRateUl,omitempty" validate:"regexp=^\\d+(\\.\\d+)? (bps|Kbps|Mbps|Gbps|Tbps)$"`
 	// String representing a bit rate; the prefixes follow the standard symbols from The International System of Units, and represent x1000 multipliers, with the exception that prefix \"K\" is used to represent the standard symbol \"k\".
-	RepThreshDatRateDl *string `json:"repThreshDatRateDl,omitempty" yaml:"repThreshDatRateDl,omitempty" validate:"regexp=^\\\\d+(\\\\.\\\\d+)? (bps|Kbps|Mbps|Gbps|Tbps)$"`
+	RepThreshDatRateDl *string `json:"repThreshDatRateDl,omitempty" yaml:"repThreshDatRateDl,omitempty" validate:"regexp=^\\d+(\\.\\d+)? (bps|Kbps|Mbps|Gbps|Tbps)$"`
 	// Unsigned Integer, i.e. only value 0 and integers above 0 are permissible.
 	ConThreshDl *int32 `json:"conThreshDl,omitempty" yaml:"conThreshDl,omitempty"`
 	// Unsigned Integer, i.e. only value 0 and integers above 0 are permissible.

@@ -29,7 +29,7 @@ var _ openapi.MappedNullable = &SpatialValidityRm{}
 
 // SpatialValidityRm This data type is defined in the same way as the SpatialValidity data type, but with the OpenAPI nullable property set to true.
 type SpatialValidityRm struct {
-	// Defines the presence information provisioned by the AF. The praId attribute within the  PresenceInfo data type is the key of the map.
+	// Defines the presence information provisioned by the AF. The praId attribute within the PresenceInfo data type is the key of the map.
 	PresenceInfoList map[string]PresenceInfo `json:"presenceInfoList" yaml:"presenceInfoList"`
 }
 
