@@ -18,7 +18,6 @@ import (
 	"testing"
 	"time"
 
-	"github.com/omec-project/openapi/v2"
 	"github.com/omec-project/openapi/v2/Nnrf_NFDiscovery"
 	"github.com/omec-project/openapi/v2/logger"
 	"github.com/omec-project/openapi/v2/models"
@@ -550,37 +549,54 @@ func setupTest(t *testing.T) (*testContext, func()) {
 }
 
 func createTestParam() Nnrf_NFDiscovery.ApiSearchNFInstancesRequest {
-	param := Nnrf_NFDiscovery.ApiSearchNFInstancesRequest{}
+	var param Nnrf_NFDiscovery.ApiSearchNFInstancesRequest
 	param = param.ServiceNames([]models.ServiceName{models.SERVICENAME_NSMF_PDUSESSION})
 	param = param.Dnn(testDnnInternet)
-	param = param.Snssais([]models.Snssai{{Sst: 1, Sd: openapi.PtrString("010203")}})
+	param = param.Snssais([]models.Snssai{{Sst: 1, Sd: new("010203")}})
 	return param
 }
 
 func createSMFParam(dnn, sd string) Nnrf_NFDiscovery.ApiSearchNFInstancesRequest {
-	param := Nnrf_NFDiscovery.ApiSearchNFInstancesRequest{}
+	var param Nnrf_NFDiscovery.ApiSearchNFInstancesRequest
 	param = param.ServiceNames([]models.ServiceName{models.SERVICENAME_NSMF_PDUSESSION})
 	param = param.Dnn(dnn)
-	param = param.Snssais([]models.Snssai{{Sst: 1, Sd: openapi.PtrString(sd)}})
+	param = param.Snssais([]models.Snssai{{Sst: 1, Sd: new(sd)}})
 	return param
 }
 
 func createAusfParam(supi string) Nnrf_NFDiscovery.ApiSearchNFInstancesRequest {
-	param := Nnrf_NFDiscovery.ApiSearchNFInstancesRequest{}
+	var param Nnrf_NFDiscovery.ApiSearchNFInstancesRequest
 	param = param.Supi(supi)
 	return param
 }
 
 func createAmfParamWithPlmns(plmnList []models.PlmnId) Nnrf_NFDiscovery.ApiSearchNFInstancesRequest {
-	param := Nnrf_NFDiscovery.ApiSearchNFInstancesRequest{}
+	var param Nnrf_NFDiscovery.ApiSearchNFInstancesRequest
 	param = param.TargetPlmnList(plmnList)
 	return param
 }
 
-func waitForEviction(evictionIntervalSeconds int32) {
-	// Wait longer than the eviction interval to ensure eviction has run
-	sleepDuration := time.Duration(evictionIntervalSeconds+1) * time.Second
-	time.Sleep(sleepDuration)
+// pollUntil repeatedly invokes condition until it returns true or timeout
+// elapses, failing the test on timeout. Used instead of a fixed time.Sleep so
+// timing-sensitive assertions proceed as soon as the condition is actually met
+// rather than waiting a worst-case margin (see omec-project/ausf#360).
+func pollUntil(t *testing.T, timeout time.Duration, condition func() bool) {
+	t.Helper()
+
+	deadline := time.After(timeout)
+	ticker := time.NewTicker(10 * time.Millisecond)
+	defer ticker.Stop()
+
+	for {
+		if condition() {
+			return
+		}
+		select {
+		case <-ticker.C:
+		case <-deadline:
+			t.Fatal("timed out waiting for condition")
+		}
+	}
 }
 
 func assertSearchResult(t *testing.T, result *models.SearchResult, err error, expectedInstances int) {
@@ -652,17 +668,20 @@ func TestCacheMissOnTTlExpiry(t *testing.T) {
 	InitNrfCaching(evictionTimerVal*time.Second, testCtx.nrfDbCallback)
 
 	// First call with empty request - should be cache miss
-	emptyParam := Nnrf_NFDiscovery.ApiSearchNFInstancesRequest{}
+	var emptyParam Nnrf_NFDiscovery.ApiSearchNFInstancesRequest
 	result, err := SearchNFInstances(ctx, "testNrf", models.NFTYPE_SMF, models.NFTYPE_AMF, emptyParam)
 	assertSearchResult(t, result, err, 3) // Expecting all 3 SMF profiles
 	assertCallbackCount(t, testCtx.getCallbackCount(), 1)
 
-	t.Log("waiting for profile validity timeout")
-	time.Sleep(3 * time.Second)
+	// Poll for TTL expiry instead of a fixed sleep, so the test proceeds as
+	// soon as the entry actually expires.
+	param := createSMFParam(testDnnInternet, "0a0b0c")
+	pollUntil(t, 5*time.Second, func() bool {
+		result, err = SearchNFInstances(ctx, "testNrf", models.NFTYPE_SMF, models.NFTYPE_AMF, param)
+		return testCtx.getCallbackCount() >= 2
+	})
 
 	// After TTL expiry, this should be a cache miss
-	param := createSMFParam(testDnnInternet, "0a0b0c")
-	result, err = SearchNFInstances(ctx, "testNrf", models.NFTYPE_SMF, models.NFTYPE_AMF, param)
 	assertSearchResult(t, result, err, 1)
 	assertCallbackCount(t, testCtx.getCallbackCount(), 2)
 
@@ -695,11 +714,14 @@ func TestCacheTTLExpiry(t *testing.T) {
 	assertSearchResult(t, result, err, 1)
 	assertCallbackCount(t, ctx.getCallbackCount(), 1) // No additional calls
 
-	// Wait for TTL expiry with some buffer
-	time.Sleep(time.Duration(ctx.validityPeriod+1) * time.Second)
+	// Poll for TTL expiry instead of a fixed sleep, so the test proceeds as
+	// soon as the entry actually expires.
+	pollUntil(t, time.Duration(ctx.validityPeriod+5)*time.Second, func() bool {
+		result, err = SearchNFInstances(context.Background(), "testNrf", models.NFTYPE_SMF, models.NFTYPE_AMF, param)
+		return ctx.getCallbackCount() >= 2
+	})
 
 	// Third call after expiry - should be cache miss again
-	result, err = SearchNFInstances(context.Background(), "testNrf", models.NFTYPE_SMF, models.NFTYPE_AMF, param)
 	assertSearchResult(t, result, err, 1)
 	assertCallbackCount(t, ctx.getCallbackCount(), 2) // One additional call
 }
@@ -761,17 +783,28 @@ func TestCacheEviction(t *testing.T) {
 
 	// Wait for eviction to occur
 	t.Run("verify_eviction", func(t *testing.T) {
-		t.Log("waiting for eviction timeout")
-		waitForEviction(testCtx.evictionInterval + 2) // Wait a bit longer than eviction interval
-
 		// Test that short TTL entry was evicted (should cause new callback)
 		testCtx.setValidityPeriod(60) // Reset to reasonable TTL
 		shortTTLParam := createSMFParam(testDnnInternet, "010203")
-		result, err := SearchNFInstances(ctx, "testNrf", models.NFTYPE_SMF, models.NFTYPE_AMF, shortTTLParam)
-		assertSearchResult(t, result, err, 1)
+		shortTTLInstanceId := "b926f193-1083-49a8-adb3-5fcf57a1f0bf"
+
+		// Poll for the entry's actual removal from the cache under its read
+		// lock, without performing lookups: SearchNFInstances would refresh
+		// the expired entry via the callback as soon as it expires, which is
+		// well before the eviction sweep runs, masking whether background
+		// eviction actually occurred.
+		smfCache := masterCache.getNrfCacheInstance(models.NFTYPE_SMF)
+		pollUntil(t, time.Duration(testCtx.evictionInterval+5)*time.Second, func() bool {
+			smfCache.mutex.RLock()
+			defer smfCache.mutex.RUnlock()
+			_, exists := smfCache.cache[shortTTLInstanceId]
+			return !exists
+		})
 
 		// This should be a cache miss (new callback) if eviction worked
 		expectedCallbacks := int32(4) // 3 initial + 1 after eviction
+		result, err := SearchNFInstances(ctx, "testNrf", models.NFTYPE_SMF, models.NFTYPE_AMF, shortTTLParam)
+		assertSearchResult(t, result, err, 1)
 		assertCallbackCount(t, testCtx.getCallbackCount(), expectedCallbacks)
 
 		t.Log("eviction verification completed")
@@ -1077,7 +1110,7 @@ func TestCacheKeyBehavior(t *testing.T) {
 			t.Fatalf("First SearchNFInstances failed: %v", err)
 		}
 
-		t.Logf("First query returned %d instances", len(result1.NfInstances))
+		t.Logf("First query returned %d instances", len(result1.GetNfInstances()))
 		expectedCallCount := initialCallCount + 1
 		assertCallbackCount(t, testCtx.getCallbackCount(), expectedCallCount)
 
@@ -1088,7 +1121,7 @@ func TestCacheKeyBehavior(t *testing.T) {
 			t.Fatalf("Second SearchNFInstances failed: %v", err)
 		}
 
-		t.Logf("Second query returned %d instances", len(result2.NfInstances))
+		t.Logf("Second query returned %d instances", len(result2.GetNfInstances()))
 		assertCallbackCount(t, testCtx.getCallbackCount(), expectedCallCount) // Should be same
 
 		// Third query: Different SUPI that should match AUSF-2
@@ -1099,7 +1132,7 @@ func TestCacheKeyBehavior(t *testing.T) {
 			t.Fatalf("Third SearchNFInstances failed: %v", err)
 		}
 
-		t.Logf("Third query returned %d instances", len(result3.NfInstances))
+		t.Logf("Third query returned %d instances", len(result3.GetNfInstances()))
 		// This might or might not cause a new callback depending on cache implementation
 
 		// Fourth query: SUPI that matches nothing
@@ -1110,7 +1143,7 @@ func TestCacheKeyBehavior(t *testing.T) {
 			t.Fatalf("Fourth SearchNFInstances failed: %v", err)
 		}
 
-		t.Logf("Fourth query returned %d instances", len(result4.NfInstances))
+		t.Logf("Fourth query returned %d instances", len(result4.GetNfInstances()))
 
 		// Log final callback count
 		t.Logf("Final callback count: %d", testCtx.getCallbackCount())
@@ -1122,10 +1155,10 @@ func TestAmfProfileMatching(t *testing.T) {
 	// Create a test AMF profile
 	amfProfile := models.NewNFProfileDiscovery("9f7d5a3f-88ab-4525-b31e-334da7faedab", models.NFTYPE_AMF, models.NFSTATUS_REGISTERED)
 	amfProfile.SetPlmnList([]models.PlmnId{{Mcc: "208", Mnc: "93"}})
-	amfProfile.SetAmfInfo(models.AmfInfo{
-		AmfRegionId: "ca",
-		AmfSetId:    testAmfSetID,
-	})
+	var amfInfo models.AmfInfo
+	amfInfo.SetAmfRegionId("ca")
+	amfInfo.SetAmfSetId(testAmfSetID)
+	amfProfile.SetAmfInfo(amfInfo)
 
 	testCases := []struct {
 		param    Nnrf_NFDiscovery.ApiSearchNFInstancesRequest
@@ -1177,7 +1210,7 @@ func TestMatchProfileWithoutSupiRangesIsUnrestricted(t *testing.T) {
 			profile: models.NFProfileDiscovery{
 				NfInstanceId: "UDM-no-ranges",
 				NfType:       models.NFTYPE_UDM,
-				UdmInfo:      &models.UdmInfo{},
+				UdmInfo:      models.NewUdmInfo(),
 			},
 		},
 		{
@@ -1194,7 +1227,7 @@ func TestMatchProfileWithoutSupiRangesIsUnrestricted(t *testing.T) {
 			profile: models.NFProfileDiscovery{
 				NfInstanceId: "PCF-no-ranges",
 				NfType:       models.NFTYPE_PCF,
-				PcfInfo:      &models.PcfInfo{},
+				PcfInfo:      models.NewPcfInfo(),
 			},
 		},
 		{
@@ -1211,7 +1244,7 @@ func TestMatchProfileWithoutSupiRangesIsUnrestricted(t *testing.T) {
 			profile: models.NFProfileDiscovery{
 				NfInstanceId: "AUSF-no-ranges",
 				NfType:       models.NFTYPE_AUSF,
-				AusfInfo:     &models.AusfInfo{},
+				AusfInfo:     models.NewAusfInfo(),
 			},
 		},
 		{
@@ -1228,7 +1261,7 @@ func TestMatchProfileWithoutSupiRangesIsUnrestricted(t *testing.T) {
 			profile: models.NFProfileDiscovery{
 				NfInstanceId: "UDR-no-ranges",
 				NfType:       models.NFTYPE_UDR,
-				UdrInfo:      &models.UdrInfo{},
+				UdrInfo:      models.NewUdrInfo(),
 			},
 		},
 		{
@@ -1378,14 +1411,19 @@ func TestAmfTaiFilter(t *testing.T) {
 // included in the comparison so that TAIs with equal PLMN+TAC but different
 // NIDs do not produce false-positive matches across SNPNs (TS 23.501 5.30.2.1).
 func TestAmfTaiFilterSnpn(t *testing.T) {
-	nid1 := openapi.PtrString("1234567890a")
-	nid2 := openapi.PtrString("b0987654321")
-	plmn := models.PlmnId{Mcc: "208", Mnc: "93"}
 	tac := "000001"
-
-	snpnTai1 := models.Tai{PlmnId: plmn, Tac: tac, Nid: nid1}
-	snpnTai2 := models.Tai{PlmnId: plmn, Tac: tac, Nid: nid2}
-	plmnTai := models.Tai{PlmnId: plmn, Tac: tac} // no Nid – standard PLMN context
+	plmn := models.PlmnId{Mcc: "208", Mnc: "93"}
+	var snpnTai1 models.Tai
+	snpnTai1.SetPlmnId(plmn)
+	snpnTai1.SetTac(tac)
+	snpnTai1.SetNid("1234567890a")
+	var snpnTai2 models.Tai
+	snpnTai2.SetPlmnId(plmn)
+	snpnTai2.SetTac(tac)
+	snpnTai2.SetNid("b0987654321")
+	var plmnTai models.Tai
+	plmnTai.SetPlmnId(plmn)
+	plmnTai.SetTac(tac) // no Nid – standard PLMN context
 
 	profile := models.NFProfileDiscovery{
 		NfInstanceId: "AMF-snpn",
@@ -1417,8 +1455,12 @@ func TestAmfTaiFilterSnpn(t *testing.T) {
 // snssais filter. Without this, an SMF with {snssai-A/dnn-X, snssai-B/dnn-Y}
 // would falsely match a query for {snssai-A, dnn-Y}.
 func TestSmfDnnScopedToMatchedSnssai(t *testing.T) {
-	snssaiA := models.Snssai{Sst: 1, Sd: openapi.PtrString("010203")}
-	snssaiB := models.Snssai{Sst: 1, Sd: openapi.PtrString("0a0b0c")}
+	var snssaiA models.Snssai
+	snssaiA.SetSst(1)
+	snssaiA.SetSd("010203")
+	var snssaiB models.Snssai
+	snssaiB.SetSst(1)
+	snssaiB.SetSd("0a0b0c")
 
 	profile := models.NFProfileDiscovery{
 		NfInstanceId: "SMF-cross-snssai",
