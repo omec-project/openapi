@@ -786,19 +786,24 @@ func TestCacheEviction(t *testing.T) {
 		// Test that short TTL entry was evicted (should cause new callback)
 		testCtx.setValidityPeriod(60) // Reset to reasonable TTL
 		shortTTLParam := createSMFParam(testDnnInternet, "010203")
+		shortTTLInstanceId := "b926f193-1083-49a8-adb3-5fcf57a1f0bf"
 
-		// Poll instead of a fixed sleep: the short-TTL entry becomes a cache
-		// miss as soon as it expires, which is well before the eviction sweep
-		// physically removes it from the map.
-		expectedCallbacks := int32(4) // 3 initial + 1 after eviction
-		result := models.NewSearchResultWithDefaults()
-		var err error
+		// Poll for the entry's actual removal from the cache under its read
+		// lock, without performing lookups: SearchNFInstances would refresh
+		// the expired entry via the callback as soon as it expires, which is
+		// well before the eviction sweep runs, masking whether background
+		// eviction actually occurred.
+		smfCache := masterCache.getNrfCacheInstance(models.NFTYPE_SMF)
 		pollUntil(t, time.Duration(testCtx.evictionInterval+5)*time.Second, func() bool {
-			result, err = SearchNFInstances(ctx, "testNrf", models.NFTYPE_SMF, models.NFTYPE_AMF, shortTTLParam)
-			return testCtx.getCallbackCount() >= expectedCallbacks
+			smfCache.mutex.RLock()
+			defer smfCache.mutex.RUnlock()
+			_, exists := smfCache.cache[shortTTLInstanceId]
+			return !exists
 		})
 
 		// This should be a cache miss (new callback) if eviction worked
+		expectedCallbacks := int32(4) // 3 initial + 1 after eviction
+		result, err := SearchNFInstances(ctx, "testNrf", models.NFTYPE_SMF, models.NFTYPE_AMF, shortTTLParam)
 		assertSearchResult(t, result, err, 1)
 		assertCallbackCount(t, testCtx.getCallbackCount(), expectedCallbacks)
 
