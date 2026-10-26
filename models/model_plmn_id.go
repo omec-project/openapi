@@ -32,7 +32,7 @@ type PlmnId struct {
 	// Mobile Country Code part of the PLMN, comprising 3 digits, as defined in clause 9.3.3.5 of 3GPP TS 38.413.
 	Mcc string `json:"mcc" yaml:"mcc" validate:"regexp=^\\d{3}$"`
 	// Mobile Network Code part of the PLMN, comprising 2 or 3 digits, as defined in clause 9.3.3.5 of 3GPP TS 38.413.
-	Mnc string `json:"mnc" yaml:"mnc" validate:"regexp=^\\d{2\\,3}$"`
+	Mnc string `json:"mnc" yaml:"mnc" validate:"regexp=^\\d{2,3}$"`
 }
 
 // NewPlmnId instantiates a new PlmnId object

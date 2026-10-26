@@ -39,7 +39,7 @@ type NefEventNotification struct {
 	ExcepInfos      []ExceptionInfo                `json:"excepInfos,omitempty" yaml:"excepInfos,omitempty"`
 	CongestionInfos []UserDataCongestionCollection `json:"congestionInfos,omitempty" yaml:"congestionInfos,omitempty"`
 	PerfDataInfos   []PerformanceDataInfo          `json:"perfDataInfos,omitempty" yaml:"perfDataInfos,omitempty"`
-	DispersionInfos []DispersionCollection         `json:"dispersionInfos,omitempty" yaml:"dispersionInfos,omitempty"`
+	DispersionInfos []DispersionCollectionAf       `json:"dispersionInfos,omitempty" yaml:"dispersionInfos,omitempty"`
 	CollBhvrInfs    []CollectiveBehaviourInfo      `json:"collBhvrInfs,omitempty" yaml:"collBhvrInfs,omitempty"`
 	// Deprecated
 	MsQoeMetrInfos []MsQoeMetricsCollection `json:"msQoeMetrInfos,omitempty" yaml:"msQoeMetrInfos,omitempty"`
@@ -325,9 +325,9 @@ func (o *NefEventNotification) SetPerfDataInfos(v []PerformanceDataInfo) {
 }
 
 // GetDispersionInfos returns the DispersionInfos field value if set, zero value otherwise.
-func (o *NefEventNotification) GetDispersionInfos() []DispersionCollection {
+func (o *NefEventNotification) GetDispersionInfos() []DispersionCollectionAf {
 	if o == nil || openapi.IsNil(o.DispersionInfos) {
-		var ret []DispersionCollection
+		var ret []DispersionCollectionAf
 		return ret
 	}
 	return o.DispersionInfos
@@ -335,7 +335,7 @@ func (o *NefEventNotification) GetDispersionInfos() []DispersionCollection {
 
 // GetDispersionInfosOk returns a tuple with the DispersionInfos field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *NefEventNotification) GetDispersionInfosOk() ([]DispersionCollection, bool) {
+func (o *NefEventNotification) GetDispersionInfosOk() ([]DispersionCollectionAf, bool) {
 	if o == nil || openapi.IsNil(o.DispersionInfos) {
 		return nil, false
 	}
@@ -351,8 +351,8 @@ func (o *NefEventNotification) HasDispersionInfos() bool {
 	return false
 }
 
-// SetDispersionInfos gets a reference to the given []DispersionCollection and assigns it to the DispersionInfos field.
-func (o *NefEventNotification) SetDispersionInfos(v []DispersionCollection) {
+// SetDispersionInfos gets a reference to the given []DispersionCollectionAf and assigns it to the DispersionInfos field.
+func (o *NefEventNotification) SetDispersionInfos(v []DispersionCollectionAf) {
 	o.DispersionInfos = v
 }
 

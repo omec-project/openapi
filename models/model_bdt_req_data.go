@@ -35,7 +35,7 @@ type BdtReqData struct {
 	// String representing a Data Network as defined in clause 9A of 3GPP TS 23.003; it shall contain either a DNN Network Identifier, or a full DNN with both the Network Identifier and Operator Identifier, as specified in 3GPP TS 23.003 clause 9.1.1 and 9.1.2. It shall be coded as string in which the labels are separated by dots (e.g. \"Label1.Label2.Label3\").
 	Dnn *string `json:"dnn,omitempty" yaml:"dnn,omitempty"`
 	// String identifying a group of devices network internal globally unique ID which identifies a set of IMSIs, as specified in clause 19.9 of 3GPP TS 23.003.
-	InterGroupId *string `json:"interGroupId,omitempty" yaml:"interGroupId,omitempty" validate:"regexp=^[A-Fa-f0-9]{8}-[0-9]{3}-[0-9]{2\\,3}-([A-Fa-f0-9][A-Fa-f0-9]){1\\,10}$"`
+	InterGroupId *string `json:"interGroupId,omitempty" yaml:"interGroupId,omitempty" validate:"regexp=^[A-Fa-f0-9]{8}-[0-9]{3}-[0-9]{2,3}-([A-Fa-f0-9][A-Fa-f0-9]){1,10}$"`
 	// String providing an URI formatted according to RFC 3986.
 	NotifUri   *string          `json:"notifUri,omitempty" yaml:"notifUri,omitempty"`
 	NwAreaInfo *NetworkAreaInfo `json:"nwAreaInfo,omitempty" yaml:"nwAreaInfo,omitempty"`

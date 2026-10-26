@@ -32,9 +32,8 @@ type NrfInfoServedHssInfoListValueValue struct {
 
 // Unmarshal JSON data into any of the pointers in the struct
 func (dst *NrfInfoServedHssInfoListValueValue) UnmarshalJSON(data []byte) error {
-	var err error
 	// try to unmarshal JSON data into HssInfo
-	err = json.Unmarshal(data, &dst.HssInfo)
+	err := json.Unmarshal(data, &dst.HssInfo)
 	if err == nil {
 		jsonHssInfo, _ := json.Marshal(dst.HssInfo)
 		if string(jsonHssInfo) == "{}" { // empty struct

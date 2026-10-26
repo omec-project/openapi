@@ -31,7 +31,7 @@ var _ openapi.MappedNullable = &AuthorizedNetworkSliceInfo{}
 type AuthorizedNetworkSliceInfo struct {
 	AllowedNssaiList    []AllowedNssai     `json:"allowedNssaiList,omitempty" yaml:"allowedNssaiList,omitempty"`
 	ConfiguredNssai     []ConfiguredSnssai `json:"configuredNssai,omitempty" yaml:"configuredNssai,omitempty"`
-	TargetAmfSet        *string            `json:"targetAmfSet,omitempty" yaml:"targetAmfSet,omitempty" validate:"regexp=^[0-9]{3}-[0-9]{2\\,3}-[A-Fa-f0-9]{2}-[0-3][A-Fa-f0-9]{2}$"`
+	TargetAmfSet        *string            `json:"targetAmfSet,omitempty" yaml:"targetAmfSet,omitempty" validate:"regexp=^[0-9]{3}-[0-9]{2,3}-[A-Fa-f0-9]{2}-[0-3][A-Fa-f0-9]{2}$"`
 	CandidateAmfList    []string           `json:"candidateAmfList,omitempty" yaml:"candidateAmfList,omitempty"`
 	RejectedNssaiInPlmn []Snssai           `json:"rejectedNssaiInPlmn,omitempty" yaml:"rejectedNssaiInPlmn,omitempty"`
 	RejectedNssaiInTa   []Snssai           `json:"rejectedNssaiInTa,omitempty" yaml:"rejectedNssaiInTa,omitempty"`

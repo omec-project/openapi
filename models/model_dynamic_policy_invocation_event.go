@@ -52,7 +52,7 @@ type DynamicPolicyInvocationEvent struct {
 	// The policy enforcement method chosen by the 5GMS AF.
 	EnforcementMethod *string `json:"enforcementMethod,omitempty" yaml:"enforcementMethod,omitempty"`
 	// String representing a bit rate; the prefixes follow the standard symbols from The International System of Units, and represent x1000 multipliers, with the exception that prefix \"K\" is used to represent the standard symbol \"k\".
-	EnforcementBitRate *string `json:"enforcementBitRate,omitempty" yaml:"enforcementBitRate,omitempty" validate:"regexp=^\\\\d+(\\\\.\\\\d+)? (bps|Kbps|Mbps|Gbps|Tbps)$"`
+	EnforcementBitRate *string `json:"enforcementBitRate,omitempty" yaml:"enforcementBitRate,omitempty" validate:"regexp=^\\d+(\\.\\d+)? (bps|Kbps|Mbps|Gbps|Tbps)$"`
 }
 
 // NewDynamicPolicyInvocationEvent instantiates a new DynamicPolicyInvocationEvent object

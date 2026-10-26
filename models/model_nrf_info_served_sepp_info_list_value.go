@@ -32,9 +32,8 @@ type NrfInfoServedSeppInfoListValue struct {
 
 // Unmarshal JSON data into any of the pointers in the struct
 func (dst *NrfInfoServedSeppInfoListValue) UnmarshalJSON(data []byte) error {
-	var err error
 	// try to unmarshal JSON data into SeppInfo
-	err = json.Unmarshal(data, &dst.SeppInfo)
+	err := json.Unmarshal(data, &dst.SeppInfo)
 	if err == nil {
 		jsonSeppInfo, _ := json.Marshal(dst.SeppInfo)
 		if string(jsonSeppInfo) == "{}" { // empty struct

@@ -37,9 +37,9 @@ type QosMonitoringMeasurement struct {
 	RtrPacketDelay *int32 `json:"rtrPacketDelay,omitempty" yaml:"rtrPacketDelay,omitempty"`
 	MeasureFailure *bool  `json:"measureFailure,omitempty" yaml:"measureFailure,omitempty"`
 	// String representing a bit rate; the prefixes follow the standard symbols from The International System of Units, and represent x1000 multipliers, with the exception that prefix \"K\" is used to represent the standard symbol \"k\".
-	DlAveThroughput *string `json:"dlAveThroughput,omitempty" yaml:"dlAveThroughput,omitempty" validate:"regexp=^\\\\d+(\\\\.\\\\d+)? (bps|Kbps|Mbps|Gbps|Tbps)$"`
+	DlAveThroughput *string `json:"dlAveThroughput,omitempty" yaml:"dlAveThroughput,omitempty" validate:"regexp=^\\d+(\\.\\d+)? (bps|Kbps|Mbps|Gbps|Tbps)$"`
 	// String representing a bit rate; the prefixes follow the standard symbols from The International System of Units, and represent x1000 multipliers, with the exception that prefix \"K\" is used to represent the standard symbol \"k\".
-	UlAveThroughput   *string `json:"ulAveThroughput,omitempty" yaml:"ulAveThroughput,omitempty" validate:"regexp=^\\\\d+(\\\\.\\\\d+)? (bps|Kbps|Mbps|Gbps|Tbps)$"`
+	UlAveThroughput   *string `json:"ulAveThroughput,omitempty" yaml:"ulAveThroughput,omitempty" validate:"regexp=^\\d+(\\.\\d+)? (bps|Kbps|Mbps|Gbps|Tbps)$"`
 	DlCongestion      *int32  `json:"dlCongestion,omitempty" yaml:"dlCongestion,omitempty"`
 	UlCongestion      *int32  `json:"ulCongestion,omitempty" yaml:"ulCongestion,omitempty"`
 	DefaultQosFlowInd *bool   `json:"defaultQosFlowInd,omitempty" yaml:"defaultQosFlowInd,omitempty"`

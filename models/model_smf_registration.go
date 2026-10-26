@@ -46,7 +46,7 @@ type SmfRegistration struct {
 	PcscfRestorationCallbackUri *string `json:"pcscfRestorationCallbackUri,omitempty" yaml:"pcscfRestorationCallbackUri,omitempty"`
 	PlmnId                      PlmnId  `json:"plmnId" yaml:"plmnId"`
 	// Fully Qualified Domain Name
-	PgwFqdn   *string           `json:"pgwFqdn,omitempty" yaml:"pgwFqdn,omitempty" validate:"regexp=^([0-9A-Za-z]([-0-9A-Za-z]{0\\,61}[0-9A-Za-z])?\\.)+[A-Za-z]{2\\,63}\\.?$"`
+	PgwFqdn   *string           `json:"pgwFqdn,omitempty" yaml:"pgwFqdn,omitempty" validate:"regexp=^([0-9A-Za-z]([-0-9A-Za-z]{0,61}[0-9A-Za-z])?\\.)+[A-Za-z]{2,63}\\.?$"`
 	PgwIpAddr NullableIpAddress `json:"pgwIpAddr" yaml:"pgwIpAddr,omitempty"`
 	EpdgInd   *bool             `json:"epdgInd,omitempty" yaml:"epdgInd,omitempty"`
 	// String providing an URI formatted according to RFC 3986.

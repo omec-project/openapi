@@ -37,7 +37,7 @@ type NssfEventSubscriptionCreateData struct {
 	AdditionalEvents       []NssfEventType `json:"additionalEvents,omitempty" yaml:"additionalEvents,omitempty"`
 	// string with format 'date-time' as defined in OpenAPI.
 	Expiry       *time.Time `json:"expiry,omitempty" yaml:"expiry,omitempty"`
-	AmfSetId     *string    `json:"amfSetId,omitempty" yaml:"amfSetId,omitempty" validate:"regexp=^[0-9]{3}-[0-9]{2\\,3}-[A-Fa-f0-9]{2}-[0-3][A-Fa-f0-9]{2}$"`
+	AmfSetId     *string    `json:"amfSetId,omitempty" yaml:"amfSetId,omitempty" validate:"regexp=^[0-9]{3}-[0-9]{2,3}-[A-Fa-f0-9]{2}-[0-3][A-Fa-f0-9]{2}$"`
 	TaiRangeList []TaiRange `json:"taiRangeList,omitempty" yaml:"taiRangeList,omitempty"`
 	// String uniquely identifying a NF instance. The format of the NF Instance ID shall be a Universally Unique Identifier (UUID) version 4, as described in IETF RFC 4122.
 	AmfId *string `json:"amfId,omitempty" yaml:"amfId,omitempty"`

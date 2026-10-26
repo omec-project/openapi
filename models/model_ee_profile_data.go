@@ -35,7 +35,7 @@ type EeProfileData struct {
 	// A map (list of key-value pairs where EventType serves as key) of MTC provider lists. In addition to defined EventTypes, the key value \"ALL\" may be used to identify a map entry which contains a list of MtcProviders that are allowed monitoring all Event Types.
 	AllowedMtcProvider *map[string][]MtcProvider `json:"allowedMtcProvider,omitempty" yaml:"allowedMtcProvider,omitempty"`
 	IwkEpcRestricted   *bool                     `json:"iwkEpcRestricted,omitempty" yaml:"iwkEpcRestricted,omitempty"`
-	Imsi               *string                   `json:"imsi,omitempty" yaml:"imsi,omitempty" validate:"regexp=^[0-9]{5\\,15}$"`
+	Imsi               *string                   `json:"imsi,omitempty" yaml:"imsi,omitempty" validate:"regexp=^[0-9]{5,15}$"`
 	// Identifier of a group of NFs.
 	HssGroupId *string `json:"hssGroupId,omitempty" yaml:"hssGroupId,omitempty"`
 }

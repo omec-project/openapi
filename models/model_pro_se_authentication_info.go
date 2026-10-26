@@ -30,9 +30,9 @@ var _ openapi.MappedNullable = &ProSeAuthenticationInfo{}
 // ProSeAuthenticationInfo Contains the UE id (i.e. SUCI) or CP-PRUK ID, Relay Service Code and Nonce_1.
 type ProSeAuthenticationInfo struct {
 	// String identifying a SUPI or a SUCI.
-	SupiOrSuci *string `json:"supiOrSuci,omitempty" yaml:"supiOrSuci,omitempty" validate:"regexp=^(imsi-[0-9]{5\\,15}|nai-.+|gli-.+|gci-.+|suci-(0-[0-9]{3}-[0-9]{2\\,3}|[1-7]-.+)-[0-9]{1\\,4}-(0-0-.*|[a-fA-F1-9]-([1-9]|[1-9][0-9]|1[0-9]{2}|2[0-4][0-9]|25[0-5])-[a-fA-F0-9]+)|.+)$"`
+	SupiOrSuci *string `json:"supiOrSuci,omitempty" yaml:"supiOrSuci,omitempty" validate:"regexp=^(imsi-[0-9]{5,15}|nai-.+|gli-.+|gci-.+|suci-(0-[0-9]{3}-[0-9]{2,3}|[1-7]-.+)-[0-9]{1,4}-(0-0-.*|[a-fA-F1-9]-([1-9]|[1-9][0-9]|1[0-9]{2}|2[0-4][0-9]|25[0-5])-[a-fA-F0-9]+)|.+)$"`
 	// A string carrying the CP-PRUK ID of the 5G ProSe Remote UE or the 5G ProSe End UE. The CP-PRUK ID is a string in NAI format as specified in clause 28.7.11 of 3GPP TS 23.003.
-	Var5gPrukId *string `json:"5gPrukId,omitempty" yaml:"5gPrukId,omitempty" validate:"regexp=^rid[0-9]{1\\,4}\\.pid[0-9a-fA-F]+\\@prose-cp\\.5gc\\.mnc[0-9]{2\\,3}\\.mcc[0-9]{3}\\.3gppnetwork\\.org$"`
+	Var5gPrukId *string `json:"5gPrukId,omitempty" yaml:"5gPrukId,omitempty" validate:"regexp=^rid[0-9]{1,4}\\.pid[0-9a-fA-F]+\\@prose-cp\\.5gc\\.mnc[0-9]{2,3}\\.mcc[0-9]{3}\\.3gppnetwork\\.org$"`
 	// Relay Service Code to identify a connectivity service provided by the UE-to-Network relay or the UE-to-UE relay.
 	RelayServiceCode int32 `json:"relayServiceCode" yaml:"relayServiceCode"`
 	// contains an Nonce1

@@ -32,9 +32,8 @@ type NrfInfoServedMbSmfInfoListValueValue struct {
 
 // Unmarshal JSON data into any of the pointers in the struct
 func (dst *NrfInfoServedMbSmfInfoListValueValue) UnmarshalJSON(data []byte) error {
-	var err error
 	// try to unmarshal JSON data into MbSmfInfo
-	err = json.Unmarshal(data, &dst.MbSmfInfo)
+	err := json.Unmarshal(data, &dst.MbSmfInfo)
 	if err == nil {
 		jsonMbSmfInfo, _ := json.Marshal(dst.MbSmfInfo)
 		if string(jsonMbSmfInfo) == "{}" { // empty struct

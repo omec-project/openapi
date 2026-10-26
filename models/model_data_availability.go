@@ -25,7 +25,7 @@ import (
 	"github.com/omec-project/openapi/v2"
 )
 
-// DataAvailability the model 'DataAvailability'
+// DataAvailability Indicates availability of ciphering key data at an LMF.
 type DataAvailability string
 
 // List of DataAvailability

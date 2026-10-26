@@ -30,11 +30,11 @@ var _ openapi.MappedNullable = &VolumeMeasurement{}
 // VolumeMeasurement Volume Measurement information
 type VolumeMeasurement struct {
 	// String representing a Traffic Volume measured in bytes; the prefixes follow the symbols from The International System of Units, and represent x1000 multipliers.
-	TotalVolume *string `json:"totalVolume,omitempty" yaml:"totalVolume,omitempty" validate:"regexp=^\\\\d+(\\\\.\\\\d+)? (B|kB|MB|GB|TB)$"`
+	TotalVolume *string `json:"totalVolume,omitempty" yaml:"totalVolume,omitempty" validate:"regexp=^\\d+(\\.\\d+)? (B|kB|MB|GB|TB)$"`
 	// String representing a Traffic Volume measured in bytes; the prefixes follow the symbols from The International System of Units, and represent x1000 multipliers.
-	UlVolume *string `json:"ulVolume,omitempty" yaml:"ulVolume,omitempty" validate:"regexp=^\\\\d+(\\\\.\\\\d+)? (B|kB|MB|GB|TB)$"`
+	UlVolume *string `json:"ulVolume,omitempty" yaml:"ulVolume,omitempty" validate:"regexp=^\\d+(\\.\\d+)? (B|kB|MB|GB|TB)$"`
 	// String representing a Traffic Volume measured in bytes; the prefixes follow the symbols from The International System of Units, and represent x1000 multipliers.
-	DlVolume *string `json:"dlVolume,omitempty" yaml:"dlVolume,omitempty" validate:"regexp=^\\\\d+(\\\\.\\\\d+)? (B|kB|MB|GB|TB)$"`
+	DlVolume *string `json:"dlVolume,omitempty" yaml:"dlVolume,omitempty" validate:"regexp=^\\d+(\\.\\d+)? (B|kB|MB|GB|TB)$"`
 	// Integer where the allowed values correspond to the value range of an unsigned 64-bit integer.
 	TotalNbOfPackets *int32 `json:"totalNbOfPackets,omitempty" yaml:"totalNbOfPackets,omitempty"`
 	// Integer where the allowed values correspond to the value range of an unsigned 64-bit integer.

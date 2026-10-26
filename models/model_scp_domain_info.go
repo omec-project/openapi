@@ -30,7 +30,7 @@ var _ openapi.MappedNullable = &ScpDomainInfo{}
 // ScpDomainInfo SCP Domain specific information
 type ScpDomainInfo struct {
 	// Fully Qualified Domain Name
-	ScpFqdn        *string      `json:"scpFqdn,omitempty" yaml:"scpFqdn,omitempty" validate:"regexp=^([0-9A-Za-z]([-0-9A-Za-z]{0\\,61}[0-9A-Za-z])?\\.)+[A-Za-z]{2\\,63}\\.?$"`
+	ScpFqdn        *string      `json:"scpFqdn,omitempty" yaml:"scpFqdn,omitempty" validate:"regexp=^([0-9A-Za-z]([-0-9A-Za-z]{0,61}[0-9A-Za-z])?\\.)+[A-Za-z]{2,63}\\.?$"`
 	ScpIpEndPoints []IpEndPoint `json:"scpIpEndPoints,omitempty" yaml:"scpIpEndPoints,omitempty"`
 	ScpPrefix      *string      `json:"scpPrefix,omitempty" yaml:"scpPrefix,omitempty"`
 	// Port numbers for HTTP and HTTPS. The key of the map shall be \"http\" or \"https\".

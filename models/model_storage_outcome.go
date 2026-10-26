@@ -25,7 +25,7 @@ import (
 	"github.com/omec-project/openapi/v2"
 )
 
-// StorageOutcome the model 'StorageOutcome'
+// StorageOutcome Indicates the result of Ciphering Data Set storage.
 type StorageOutcome string
 
 // List of StorageOutcome

@@ -41,7 +41,7 @@ type PduSessionTsnBridge struct {
 	// IPv4 address domain identifier.
 	IpDomain *string `json:"ipDomain,omitempty" yaml:"ipDomain,omitempty"`
 	// String identifying an IPv6 address prefix formatted according to clause 4 of RFC 5952. IPv6Prefix data type may contain an individual /128 IPv6 address.
-	UeIpv6AddrPrefix *string `json:"ueIpv6AddrPrefix,omitempty" yaml:"ueIpv6AddrPrefix,omitempty" validate:"regexp=^(((:|(0?|([1-9a-f][0-9a-f]{0\\,3}))):)((0?|([1-9a-f][0-9a-f]{0\\,3})):){0\\,6}(:|(0?|([1-9a-f][0-9a-f]{0\\,3})))(/(([0-9])|([0-9]{2})|(1[0-1][0-9])|(12[0-8])))|((([^:]+:){7}([^:]+))|((([^:]+:)*[^:]+)?::(([^:]+:)*[^:]+)?))(/.+))$"`
+	UeIpv6AddrPrefix *string `json:"ueIpv6AddrPrefix,omitempty" yaml:"ueIpv6AddrPrefix,omitempty" validate:"regexp=^(((:|(0?|([1-9a-f][0-9a-f]{0,3}))):)((0?|([1-9a-f][0-9a-f]{0,3})):){0,6}(:|(0?|([1-9a-f][0-9a-f]{0,3})))(/(([0-9])|([0-9]{2})|(1[0-1][0-9])|(12[0-8])))|((([^:]+:){7}([^:]+))|((([^:]+:)*[^:]+)?::(([^:]+:)*[^:]+)?))(/.+))$"`
 }
 
 // NewPduSessionTsnBridge instantiates a new PduSessionTsnBridge object

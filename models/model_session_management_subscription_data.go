@@ -35,10 +35,10 @@ type SessionManagementSubscriptionData struct {
 	InternalGroupIds  []string                     `json:"internalGroupIds,omitempty" yaml:"internalGroupIds,omitempty"`
 	// A map(list of key-value pairs) where GroupId serves as key of SharedDataId
 	SharedVnGroupDataIds      *map[string]string        `json:"sharedVnGroupDataIds,omitempty" yaml:"sharedVnGroupDataIds,omitempty"`
-	SharedDnnConfigurationsId *string                   `json:"sharedDnnConfigurationsId,omitempty" yaml:"sharedDnnConfigurationsId,omitempty" validate:"regexp=^[0-9]{5\\,6}-.+$"`
+	SharedDnnConfigurationsId *string                   `json:"sharedDnnConfigurationsId,omitempty" yaml:"sharedDnnConfigurationsId,omitempty" validate:"regexp=^[0-9]{5,6}-.+$"`
 	OdbPacketServices         NullableOdbPacketServices `json:"odbPacketServices" yaml:"odbPacketServices,omitempty"`
 	TraceData                 NullableTraceData         `json:"traceData" yaml:"traceData,omitempty"`
-	SharedTraceDataId         *string                   `json:"sharedTraceDataId,omitempty" yaml:"sharedTraceDataId,omitempty" validate:"regexp=^[0-9]{5\\,6}-.+$"`
+	SharedTraceDataId         *string                   `json:"sharedTraceDataId,omitempty" yaml:"sharedTraceDataId,omitempty" validate:"regexp=^[0-9]{5,6}-.+$"`
 	// A map(list of key-value pairs) where Dnn serves as key of ExpectedUeBehaviourData
 	ExpectedUeBehavioursList *map[string]ExpectedUeBehaviourData `json:"expectedUeBehavioursList,omitempty" yaml:"expectedUeBehavioursList,omitempty"`
 	// A map(list of key-value pairs) where DNN serves as key

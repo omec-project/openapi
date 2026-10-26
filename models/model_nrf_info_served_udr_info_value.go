@@ -32,9 +32,8 @@ type NrfInfoServedUdrInfoValue struct {
 
 // Unmarshal JSON data into any of the pointers in the struct
 func (dst *NrfInfoServedUdrInfoValue) UnmarshalJSON(data []byte) error {
-	var err error
 	// try to unmarshal JSON data into UdrInfo
-	err = json.Unmarshal(data, &dst.UdrInfo)
+	err := json.Unmarshal(data, &dst.UdrInfo)
 	if err == nil {
 		jsonUdrInfo, _ := json.Marshal(dst.UdrInfo)
 		if string(jsonUdrInfo) == "{}" { // empty struct

@@ -41,7 +41,7 @@ type ProSeEapSession struct {
 	// contains an Nonce2
 	Nonce2 openapi.NullableString `json:"nonce2" yaml:"nonce2,omitempty"`
 	// A string carrying the CP-PRUK ID of the 5G ProSe Remote UE or the 5G ProSe End UE. The CP-PRUK ID is a string in NAI format as specified in clause 28.7.11 of 3GPP TS 23.003.
-	Var5gPrukId *string `json:"5gPrukId,omitempty" yaml:"5gPrukId,omitempty" validate:"regexp=^rid[0-9]{1\\,4}\\.pid[0-9a-fA-F]+\\@prose-cp\\.5gc\\.mnc[0-9]{2\\,3}\\.mcc[0-9]{3}\\.3gppnetwork\\.org$"`
+	Var5gPrukId *string `json:"5gPrukId,omitempty" yaml:"5gPrukId,omitempty" validate:"regexp=^rid[0-9]{1,4}\\.pid[0-9a-fA-F]+\\@prose-cp\\.5gc\\.mnc[0-9]{2,3}\\.mcc[0-9]{3}\\.3gppnetwork\\.org$"`
 }
 
 // NewProSeEapSession instantiates a new ProSeEapSession object

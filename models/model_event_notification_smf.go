@@ -53,25 +53,25 @@ type EventNotificationSmf struct {
 	EasRediscoverInd *bool                                  `json:"easRediscoverInd,omitempty" yaml:"easRediscoverInd,omitempty"`
 	TrafCorreInfo    NullableTrafficCorrelationNotification `json:"trafCorreInfo" yaml:"trafCorreInfo,omitempty"`
 	// String identifying a IPv4 address formatted in the 'dotted decimal' notation as defined in RFC 1166.
-	SourceUeIpv4Addr *string `json:"sourceUeIpv4Addr,omitempty" yaml:"sourceUeIpv4Addr,omitempty" validate:"regexp=^(([0-9]|[1-9][0-9]|1[0-9][0-9]|2[0-4][0-9]|25[0-5])\\\\.){3}([0-9]|[1-9][0-9]|1[0-9][0-9]|2[0-4][0-9]|25[0-5])$"`
+	SourceUeIpv4Addr *string `json:"sourceUeIpv4Addr,omitempty" yaml:"sourceUeIpv4Addr,omitempty" validate:"regexp=^(([0-9]|[1-9][0-9]|1[0-9][0-9]|2[0-4][0-9]|25[0-5])\\.){3}([0-9]|[1-9][0-9]|1[0-9][0-9]|2[0-4][0-9]|25[0-5])$"`
 	// String identifying an IPv6 address prefix formatted according to clause 4 of RFC 5952. IPv6Prefix data type may contain an individual /128 IPv6 address.
-	SourceUeIpv6Prefix *string `json:"sourceUeIpv6Prefix,omitempty" yaml:"sourceUeIpv6Prefix,omitempty" validate:"regexp=^(((:|(0?|([1-9a-f][0-9a-f]{0,3}))):)((0?|([1-9a-f][0-9a-f]{0,3})):){0,6}(:|(0?|([1-9a-f][0-9a-f]{0,3})))(\\/(([0-9])|([0-9]{2})|(1[0-1][0-9])|(12[0-8])))|((([^:]+:){7}([^:]+))|((([^:]+:)*[^:]+)?::(([^:]+:)*[^:]+)?))(\\/.+))$"`
+	SourceUeIpv6Prefix *string `json:"sourceUeIpv6Prefix,omitempty" yaml:"sourceUeIpv6Prefix,omitempty" validate:"regexp=^(((:|(0?|([1-9a-f][0-9a-f]{0,3}))):)((0?|([1-9a-f][0-9a-f]{0,3})):){0,6}(:|(0?|([1-9a-f][0-9a-f]{0,3})))(/(([0-9])|([0-9]{2})|(1[0-1][0-9])|(12[0-8])))|((([^:]+:){7}([^:]+))|((([^:]+:)*[^:]+)?::(([^:]+:)*[^:]+)?))(/.+))$"`
 	// String identifying a IPv4 address formatted in the 'dotted decimal' notation as defined in RFC 1166.
-	TargetUeIpv4Addr *string `json:"targetUeIpv4Addr,omitempty" yaml:"targetUeIpv4Addr,omitempty" validate:"regexp=^(([0-9]|[1-9][0-9]|1[0-9][0-9]|2[0-4][0-9]|25[0-5])\\\\.){3}([0-9]|[1-9][0-9]|1[0-9][0-9]|2[0-4][0-9]|25[0-5])$"`
+	TargetUeIpv4Addr *string `json:"targetUeIpv4Addr,omitempty" yaml:"targetUeIpv4Addr,omitempty" validate:"regexp=^(([0-9]|[1-9][0-9]|1[0-9][0-9]|2[0-4][0-9]|25[0-5])\\.){3}([0-9]|[1-9][0-9]|1[0-9][0-9]|2[0-4][0-9]|25[0-5])$"`
 	// String identifying an IPv6 address prefix formatted according to clause 4 of RFC 5952. IPv6Prefix data type may contain an individual /128 IPv6 address.
-	TargetUeIpv6Prefix *string                 `json:"targetUeIpv6Prefix,omitempty" yaml:"targetUeIpv6Prefix,omitempty" validate:"regexp=^(((:|(0?|([1-9a-f][0-9a-f]{0,3}))):)((0?|([1-9a-f][0-9a-f]{0,3})):){0,6}(:|(0?|([1-9a-f][0-9a-f]{0,3})))(\\/(([0-9])|([0-9]{2})|(1[0-1][0-9])|(12[0-8])))|((([^:]+:){7}([^:]+))|((([^:]+:)*[^:]+)?::(([^:]+:)*[^:]+)?))(\\/.+))$"`
+	TargetUeIpv6Prefix *string                 `json:"targetUeIpv6Prefix,omitempty" yaml:"targetUeIpv6Prefix,omitempty" validate:"regexp=^(((:|(0?|([1-9a-f][0-9a-f]{0,3}))):)((0?|([1-9a-f][0-9a-f]{0,3})):){0,6}(:|(0?|([1-9a-f][0-9a-f]{0,3})))(/(([0-9])|([0-9]{2})|(1[0-1][0-9])|(12[0-8])))|((([^:]+:){7}([^:]+))|((([^:]+:)*[^:]+)?::(([^:]+:)*[^:]+)?))(/.+))$"`
 	SourceTraRouting   NullableRouteToLocation `json:"sourceTraRouting" yaml:"sourceTraRouting,omitempty"`
 	TargetTraRouting   NullableRouteToLocation `json:"targetTraRouting" yaml:"targetTraRouting,omitempty"`
 	// String identifying a MAC address formatted in the hexadecimal notation according to clause 1.1 and clause 2.1 of RFC 7042.
 	UeMac *string `json:"ueMac,omitempty" yaml:"ueMac,omitempty" validate:"regexp=^([0-9a-fA-F]{2})((-[0-9a-fA-F]{2}){5})$"`
 	// String identifying a IPv4 address formatted in the 'dotted decimal' notation as defined in RFC 1166.
-	AdIpv4Addr *string `json:"adIpv4Addr,omitempty" yaml:"adIpv4Addr,omitempty" validate:"regexp=^(([0-9]|[1-9][0-9]|1[0-9][0-9]|2[0-4][0-9]|25[0-5])\\\\.){3}([0-9]|[1-9][0-9]|1[0-9][0-9]|2[0-4][0-9]|25[0-5])$"`
+	AdIpv4Addr *string `json:"adIpv4Addr,omitempty" yaml:"adIpv4Addr,omitempty" validate:"regexp=^(([0-9]|[1-9][0-9]|1[0-9][0-9]|2[0-4][0-9]|25[0-5])\\.){3}([0-9]|[1-9][0-9]|1[0-9][0-9]|2[0-4][0-9]|25[0-5])$"`
 	// String identifying an IPv6 address prefix formatted according to clause 4 of RFC 5952. IPv6Prefix data type may contain an individual /128 IPv6 address.
-	AdIpv6Prefix *string `json:"adIpv6Prefix,omitempty" yaml:"adIpv6Prefix,omitempty" validate:"regexp=^(((:|(0?|([1-9a-f][0-9a-f]{0,3}))):)((0?|([1-9a-f][0-9a-f]{0,3})):){0,6}(:|(0?|([1-9a-f][0-9a-f]{0,3})))(\\/(([0-9])|([0-9]{2})|(1[0-1][0-9])|(12[0-8])))|((([^:]+:){7}([^:]+))|((([^:]+:)*[^:]+)?::(([^:]+:)*[^:]+)?))(\\/.+))$"`
+	AdIpv6Prefix *string `json:"adIpv6Prefix,omitempty" yaml:"adIpv6Prefix,omitempty" validate:"regexp=^(((:|(0?|([1-9a-f][0-9a-f]{0,3}))):)((0?|([1-9a-f][0-9a-f]{0,3})):){0,6}(:|(0?|([1-9a-f][0-9a-f]{0,3})))(/(([0-9])|([0-9]{2})|(1[0-1][0-9])|(12[0-8])))|((([^:]+:){7}([^:]+))|((([^:]+:)*[^:]+)?::(([^:]+:)*[^:]+)?))(/.+))$"`
 	// String identifying a IPv4 address formatted in the 'dotted decimal' notation as defined in RFC 1166.
-	ReIpv4Addr *string `json:"reIpv4Addr,omitempty" yaml:"reIpv4Addr,omitempty" validate:"regexp=^(([0-9]|[1-9][0-9]|1[0-9][0-9]|2[0-4][0-9]|25[0-5])\\\\.){3}([0-9]|[1-9][0-9]|1[0-9][0-9]|2[0-4][0-9]|25[0-5])$"`
+	ReIpv4Addr *string `json:"reIpv4Addr,omitempty" yaml:"reIpv4Addr,omitempty" validate:"regexp=^(([0-9]|[1-9][0-9]|1[0-9][0-9]|2[0-4][0-9]|25[0-5])\\.){3}([0-9]|[1-9][0-9]|1[0-9][0-9]|2[0-4][0-9]|25[0-5])$"`
 	// String identifying an IPv6 address prefix formatted according to clause 4 of RFC 5952. IPv6Prefix data type may contain an individual /128 IPv6 address.
-	ReIpv6Prefix *string      `json:"reIpv6Prefix,omitempty" yaml:"reIpv6Prefix,omitempty" validate:"regexp=^(((:|(0?|([1-9a-f][0-9a-f]{0,3}))):)((0?|([1-9a-f][0-9a-f]{0,3})):){0,6}(:|(0?|([1-9a-f][0-9a-f]{0,3})))(\\/(([0-9])|([0-9]{2})|(1[0-1][0-9])|(12[0-8])))|((([^:]+:){7}([^:]+))|((([^:]+:)*[^:]+)?::(([^:]+:)*[^:]+)?))(\\/.+))$"`
+	ReIpv6Prefix *string      `json:"reIpv6Prefix,omitempty" yaml:"reIpv6Prefix,omitempty" validate:"regexp=^(((:|(0?|([1-9a-f][0-9a-f]{0,3}))):)((0?|([1-9a-f][0-9a-f]{0,3})):){0,6}(:|(0?|([1-9a-f][0-9a-f]{0,3})))(/(([0-9])|([0-9]{2})|(1[0-1][0-9])|(12[0-8])))|((([^:]+:){7}([^:]+))|((([^:]+:)*[^:]+)?::(([^:]+:)*[^:]+)?))(/.+))$"`
 	PlmnId       *PlmnId      `json:"plmnId,omitempty" yaml:"plmnId,omitempty"`
 	AccType      *AccessType  `json:"accType,omitempty" yaml:"accType,omitempty"`
 	PduAccTypes  []AccessType `json:"pduAccTypes,omitempty" yaml:"pduAccTypes,omitempty"`
@@ -84,7 +84,7 @@ type EventNotificationSmf struct {
 	MaxWaitTime *time.Time            `json:"maxWaitTime,omitempty" yaml:"maxWaitTime,omitempty"`
 	CommFailure *CommunicationFailure `json:"commFailure,omitempty" yaml:"commFailure,omitempty"`
 	// String identifying a IPv4 address formatted in the 'dotted decimal' notation as defined in RFC 1166.
-	Ipv4Addr     *string         `json:"ipv4Addr,omitempty" yaml:"ipv4Addr,omitempty" validate:"regexp=^(([0-9]|[1-9][0-9]|1[0-9][0-9]|2[0-4][0-9]|25[0-5])\\\\.){3}([0-9]|[1-9][0-9]|1[0-9][0-9]|2[0-4][0-9]|25[0-5])$"`
+	Ipv4Addr     *string         `json:"ipv4Addr,omitempty" yaml:"ipv4Addr,omitempty" validate:"regexp=^(([0-9]|[1-9][0-9]|1[0-9][0-9]|2[0-4][0-9]|25[0-5])\\.){3}([0-9]|[1-9][0-9]|1[0-9][0-9]|2[0-4][0-9]|25[0-5])$"`
 	Ipv6Prefixes []string        `json:"ipv6Prefixes,omitempty" yaml:"ipv6Prefixes,omitempty"`
 	Ipv6Addrs    []string        `json:"ipv6Addrs,omitempty" yaml:"ipv6Addrs,omitempty"`
 	PduSessType  *PduSessionType `json:"pduSessType,omitempty" yaml:"pduSessType,omitempty"`
@@ -112,9 +112,9 @@ type EventNotificationSmf struct {
 	// Unsigned Integer, i.e. only value 0 and integers above 0 are permissible.
 	DlCongInfo *int32 `json:"dlCongInfo,omitempty" yaml:"dlCongInfo,omitempty"`
 	// String representing a bit rate; the prefixes follow the standard symbols from The International System of Units, and represent x1000 multipliers, with the exception that prefix \"K\" is used to represent the standard symbol \"k\".
-	UlDataRate *string `json:"ulDataRate,omitempty" yaml:"ulDataRate,omitempty" validate:"regexp=^\\\\d+(\\\\.\\\\d+)? (bps|Kbps|Mbps|Gbps|Tbps)$"`
+	UlDataRate *string `json:"ulDataRate,omitempty" yaml:"ulDataRate,omitempty" validate:"regexp=^\\d+(\\.\\d+)? (bps|Kbps|Mbps|Gbps|Tbps)$"`
 	// String representing a bit rate; the prefixes follow the standard symbols from The International System of Units, and represent x1000 multipliers, with the exception that prefix \"K\" is used to represent the standard symbol \"k\".
-	DlDataRate   *string       `json:"dlDataRate,omitempty" yaml:"dlDataRate,omitempty" validate:"regexp=^\\\\d+(\\\\.\\\\d+)? (bps|Kbps|Mbps|Gbps|Tbps)$"`
+	DlDataRate   *string       `json:"dlDataRate,omitempty" yaml:"dlDataRate,omitempty" validate:"regexp=^\\d+(\\.\\d+)? (bps|Kbps|Mbps|Gbps|Tbps)$"`
 	TimeWindow   *TimeWindow   `json:"timeWindow,omitempty" yaml:"timeWindow,omitempty"`
 	SmNasFromUe  *SmNasFromUe  `json:"smNasFromUe,omitempty" yaml:"smNasFromUe,omitempty"`
 	SmNasFromSmf *SmNasFromSmf `json:"smNasFromSmf,omitempty" yaml:"smNasFromSmf,omitempty"`
