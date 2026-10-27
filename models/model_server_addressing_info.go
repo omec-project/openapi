@@ -29,9 +29,9 @@ var _ openapi.MappedNullable = &ServerAddressingInfo{}
 
 // ServerAddressingInfo Contains addressing information (IP addresses and/or FQDNs) of a server.
 type ServerAddressingInfo struct {
-	Ipv4Addresses []string
-	Ipv6Addresses []string
-	FqdnList      []string
+	Ipv4Addresses []string `json:"ipv4Addresses,omitempty" yaml:"ipv4Addresses,omitempty"`
+	Ipv6Addresses []string `json:"ipv6Addresses,omitempty" yaml:"ipv6Addresses,omitempty"`
+	FqdnList      []string `json:"fqdnList,omitempty" yaml:"fqdnList,omitempty"`
 }
 
 // NewServerAddressingInfo instantiates a new ServerAddressingInfo object

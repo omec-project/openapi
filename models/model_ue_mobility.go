@@ -31,14 +31,14 @@ var _ openapi.MappedNullable = &UeMobility{}
 // UeMobility Represents UE mobility information.
 type UeMobility struct {
 	// string with format 'date-time' as defined in OpenAPI.
-	Ts            *time.Time
-	RecurringTime *ScheduledCommunicationTime
+	Ts            *time.Time                  `json:"ts,omitempty" yaml:"ts,omitempty"`
+	RecurringTime *ScheduledCommunicationTime `json:"recurringTime,omitempty" yaml:"recurringTime,omitempty"`
 	// indicating a time in seconds.
-	Duration int32
+	Duration int32 `json:"duration" yaml:"duration"`
 	// string with format 'float' as defined in OpenAPI.
-	DurationVariance *float32
-	LocInfos         []LocationInfo
-	DirectionInfos   []DirectionInfo
+	DurationVariance *float32        `json:"durationVariance,omitempty" yaml:"durationVariance,omitempty"`
+	LocInfos         []LocationInfo  `json:"locInfos" yaml:"locInfos"`
+	DirectionInfos   []DirectionInfo `json:"directionInfos,omitempty" yaml:"directionInfos,omitempty"`
 }
 
 // NewUeMobility instantiates a new UeMobility object

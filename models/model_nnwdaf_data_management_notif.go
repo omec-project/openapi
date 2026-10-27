@@ -30,18 +30,18 @@ var _ openapi.MappedNullable = &NnwdafDataManagementNotif{}
 
 // NnwdafDataManagementNotif Represents an Individual Notification.
 type NnwdafDataManagementNotif struct {
-	DataNotification NullableDataNotification
+	DataNotification NullableDataNotification `json:"dataNotification" yaml:"dataNotification,omitempty"`
 	// List of summary reports of processed notifications.
-	DataReports []NotifSummaryReport
-	DelAlert    *DeletionAlert
+	DataReports []NotifSummaryReport `json:"dataReports,omitempty" yaml:"dataReports,omitempty"`
+	DelAlert    *DeletionAlert       `json:"delAlert,omitempty" yaml:"delAlert,omitempty"`
 	// Notification correlation identifier.
-	NotifCorrId string
+	NotifCorrId string `json:"notifCorrId" yaml:"notifCorrId"`
 	// It indicates that the termination of the data management subscription is requested by the NWDAF.
-	TerminationReq *string
-	FetchInstruct  *FetchInstruction
+	TerminationReq *string           `json:"terminationReq,omitempty" yaml:"terminationReq,omitempty"`
+	FetchInstruct  *FetchInstruction `json:"fetchInstruct,omitempty" yaml:"fetchInstruct,omitempty"`
 	// string with format 'date-time' as defined in OpenAPI.
-	NotifTimestamp time.Time
-	PendNotifCause *PendingNotificationCause
+	NotifTimestamp time.Time                 `json:"notifTimestamp" yaml:"notifTimestamp"`
+	PendNotifCause *PendingNotificationCause `json:"pendNotifCause,omitempty" yaml:"pendNotifCause,omitempty"`
 }
 
 // NewNnwdafDataManagementNotif instantiates a new NnwdafDataManagementNotif object

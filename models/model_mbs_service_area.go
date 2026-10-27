@@ -30,9 +30,9 @@ var _ openapi.MappedNullable = &MbsServiceArea{}
 // MbsServiceArea MBS Service Area
 type MbsServiceArea struct {
 	// List of NR cell Ids
-	NcgiList []NcgiTai
+	NcgiList []NcgiTai `json:"ncgiList,omitempty" yaml:"ncgiList,omitempty"`
 	// List of tracking area Ids
-	TaiList []Tai
+	TaiList []Tai `json:"taiList,omitempty" yaml:"taiList,omitempty"`
 }
 
 // NewMbsServiceArea instantiates a new MbsServiceArea object

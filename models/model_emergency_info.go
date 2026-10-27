@@ -31,14 +31,14 @@ var _ openapi.MappedNullable = &EmergencyInfo{}
 // EmergencyInfo struct for EmergencyInfo
 type EmergencyInfo struct {
 	// Fully Qualified Domain Name
-	PgwFqdn      *string
-	PgwIpAddress NullableIpAddress
+	PgwFqdn      *string           `json:"pgwFqdn,omitempty" yaml:"pgwFqdn,omitempty" validate:"regexp=^([0-9A-Za-z]([-0-9A-Za-z]{0,61}[0-9A-Za-z])?\\.)+[A-Za-z]{2,63}\\.?$"`
+	PgwIpAddress NullableIpAddress `json:"pgwIpAddress" yaml:"pgwIpAddress,omitempty"`
 	// String uniquely identifying a NF instance. The format of the NF Instance ID shall be a Universally Unique Identifier (UUID) version 4, as described in IETF RFC 4122.
-	SmfInstanceId *string
-	EpdgInd       *bool
-	PlmnId        *PlmnId
+	SmfInstanceId *string `json:"smfInstanceId,omitempty" yaml:"smfInstanceId,omitempty"`
+	EpdgInd       *bool   `json:"epdgInd,omitempty" yaml:"epdgInd,omitempty"`
+	PlmnId        *PlmnId `json:"plmnId,omitempty" yaml:"plmnId,omitempty"`
 	// string with format 'date-time' as defined in OpenAPI.
-	EmergencyRegistrationTime *time.Time
+	EmergencyRegistrationTime *time.Time `json:"emergencyRegistrationTime,omitempty" yaml:"emergencyRegistrationTime,omitempty"`
 }
 
 // NewEmergencyInfo instantiates a new EmergencyInfo object

@@ -30,17 +30,17 @@ var _ openapi.MappedNullable = &UserDataCongestionCollection{}
 // UserDataCongestionCollection Contains User Data Congestion Analytics related information collection.
 type UserDataCongestionCollection struct {
 	// String providing an application identifier.
-	AppId           *string
-	IpTrafficFilter *FlowInfo
-	TimeInterv      *TimeWindow
+	AppId           *string     `json:"appId,omitempty" yaml:"appId,omitempty"`
+	IpTrafficFilter *FlowInfo   `json:"ipTrafficFilter,omitempty" yaml:"ipTrafficFilter,omitempty"`
+	TimeInterv      *TimeWindow `json:"timeInterv,omitempty" yaml:"timeInterv,omitempty"`
 	// String representing a bit rate; the prefixes follow the standard symbols from The International System of Units, and represent x1000 multipliers, with the exception that prefix \"K\" is used to represent the standard symbol \"k\".
-	ThrputUl *string
+	ThrputUl *string `json:"thrputUl,omitempty" yaml:"thrputUl,omitempty" validate:"regexp=^\\d+(\\.\\d+)? (bps|Kbps|Mbps|Gbps|Tbps)$"`
 	// String representing a bit rate; the prefixes follow the standard symbols from The International System of Units, and represent x1000 multipliers, with the exception that prefix \"K\" is used to represent the standard symbol \"k\".
-	ThrputDl *string
+	ThrputDl *string `json:"thrputDl,omitempty" yaml:"thrputDl,omitempty" validate:"regexp=^\\d+(\\.\\d+)? (bps|Kbps|Mbps|Gbps|Tbps)$"`
 	// String representing a bit rate; the prefixes follow the standard symbols from The International System of Units, and represent x1000 multipliers, with the exception that prefix \"K\" is used to represent the standard symbol \"k\".
-	ThrputPkUl *string
+	ThrputPkUl *string `json:"thrputPkUl,omitempty" yaml:"thrputPkUl,omitempty" validate:"regexp=^\\d+(\\.\\d+)? (bps|Kbps|Mbps|Gbps|Tbps)$"`
 	// String representing a bit rate; the prefixes follow the standard symbols from The International System of Units, and represent x1000 multipliers, with the exception that prefix \"K\" is used to represent the standard symbol \"k\".
-	ThrputPkDl *string
+	ThrputPkDl *string `json:"thrputPkDl,omitempty" yaml:"thrputPkDl,omitempty" validate:"regexp=^\\d+(\\.\\d+)? (bps|Kbps|Mbps|Gbps|Tbps)$"`
 }
 
 // NewUserDataCongestionCollection instantiates a new UserDataCongestionCollection object

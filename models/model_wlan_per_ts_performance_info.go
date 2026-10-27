@@ -31,17 +31,17 @@ var _ openapi.MappedNullable = &WlanPerTsPerformanceInfo{}
 // WlanPerTsPerformanceInfo WLAN performance information per Time Slot during the analytics target period.
 type WlanPerTsPerformanceInfo struct {
 	// string with format 'date-time' as defined in OpenAPI.
-	TsStart time.Time
+	TsStart time.Time `json:"tsStart" yaml:"tsStart"`
 	// indicating a time in seconds.
-	TsDuration int32
-	Rssi       *int32
+	TsDuration int32  `json:"tsDuration" yaml:"tsDuration"`
+	Rssi       *int32 `json:"rssi,omitempty" yaml:"rssi,omitempty"`
 	// Unsigned Integer, i.e. only value 0 and integers above 0 are permissible.
-	Rtt         *int32
-	TrafficInfo NullableTrafficInformation
+	Rtt         *int32                     `json:"rtt,omitempty" yaml:"rtt,omitempty"`
+	TrafficInfo NullableTrafficInformation `json:"trafficInfo" yaml:"trafficInfo,omitempty"`
 	// Unsigned Integer, i.e. only value 0 and integers above 0 are permissible.
-	NumberOfUes *int32
+	NumberOfUes *int32 `json:"numberOfUes,omitempty" yaml:"numberOfUes,omitempty"`
 	// Unsigned Integer, i.e. only value 0 and integers above 0 are permissible.
-	Confidence *int32
+	Confidence *int32 `json:"confidence,omitempty" yaml:"confidence,omitempty"`
 }
 
 // NewWlanPerTsPerformanceInfo instantiates a new WlanPerTsPerformanceInfo object

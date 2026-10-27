@@ -30,15 +30,15 @@ var _ openapi.MappedNullable = &TrafficInformation{}
 // TrafficInformation Traffic information including UL/DL data rate and/or Traffic volume.
 type TrafficInformation struct {
 	// String representing a bit rate; the prefixes follow the standard symbols from The International System of Units, and represent x1000 multipliers, with the exception that prefix \"K\" is used to represent the standard symbol \"k\".
-	UplinkRate *string
+	UplinkRate *string `json:"uplinkRate,omitempty" yaml:"uplinkRate,omitempty" validate:"regexp=^\\d+(\\.\\d+)? (bps|Kbps|Mbps|Gbps|Tbps)$"`
 	// String representing a bit rate; the prefixes follow the standard symbols from The International System of Units, and represent x1000 multipliers, with the exception that prefix \"K\" is used to represent the standard symbol \"k\".
-	DownlinkRate *string
+	DownlinkRate *string `json:"downlinkRate,omitempty" yaml:"downlinkRate,omitempty" validate:"regexp=^\\d+(\\.\\d+)? (bps|Kbps|Mbps|Gbps|Tbps)$"`
 	// Unsigned integer identifying a volume in units of bytes.
-	UplinkVolume *int64
+	UplinkVolume *int64 `json:"uplinkVolume,omitempty" yaml:"uplinkVolume,omitempty"`
 	// Unsigned integer identifying a volume in units of bytes.
-	DownlinkVolume *int64
+	DownlinkVolume *int64 `json:"downlinkVolume,omitempty" yaml:"downlinkVolume,omitempty"`
 	// Unsigned integer identifying a volume in units of bytes.
-	TotalVolume *int64
+	TotalVolume *int64 `json:"totalVolume,omitempty" yaml:"totalVolume,omitempty"`
 }
 
 // NewTrafficInformation instantiates a new TrafficInformation object

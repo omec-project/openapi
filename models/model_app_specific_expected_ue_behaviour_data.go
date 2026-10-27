@@ -31,14 +31,14 @@ var _ openapi.MappedNullable = &AppSpecificExpectedUeBehaviourData{}
 // AppSpecificExpectedUeBehaviourData struct for AppSpecificExpectedUeBehaviourData
 type AppSpecificExpectedUeBehaviourData struct {
 	// String providing an application identifier.
-	AppId          *string
-	TrafficFilters []FlowInfo
+	AppId          *string    `json:"appId,omitempty" yaml:"appId,omitempty"`
+	TrafficFilters []FlowInfo `json:"trafficFilters,omitempty" yaml:"trafficFilters,omitempty"`
 	// indicating a time in seconds.
-	ExpectedInactivityTime *int32
+	ExpectedInactivityTime *int32 `json:"expectedInactivityTime,omitempty" yaml:"expectedInactivityTime,omitempty"`
 	// string with format 'date-time' as defined in OpenAPI.
-	ValidityTime    *time.Time
-	ConfidenceLevel *string
-	AccuracyLevel   *string
+	ValidityTime    *time.Time `json:"validityTime,omitempty" yaml:"validityTime,omitempty"`
+	ConfidenceLevel *string    `json:"confidenceLevel,omitempty" yaml:"confidenceLevel,omitempty" validate:"regexp=^[0]\\.[0-9]{2}$|^1\\.00$"`
+	AccuracyLevel   *string    `json:"accuracyLevel,omitempty" yaml:"accuracyLevel,omitempty" validate:"regexp=^[0]\\.[0-9]{2}$|^1\\.00$"`
 }
 
 // NewAppSpecificExpectedUeBehaviourData instantiates a new AppSpecificExpectedUeBehaviourData object

@@ -30,66 +30,66 @@ var _ openapi.MappedNullable = &PduSessionCreatedData{}
 
 // PduSessionCreatedData Data within Create Response
 type PduSessionCreatedData struct {
-	PduSessionType         PduSessionType
-	SscMode                string
-	HcnTunnelInfo          *TunnelInfo
-	CnTunnelInfo           *TunnelInfo
-	AdditionalCnTunnelInfo *TunnelInfo
-	SessionAmbr            *Ambr
-	QosFlowsSetupList      []QosFlowSetupItem
+	PduSessionType         PduSessionType     `json:"pduSessionType" yaml:"pduSessionType"`
+	SscMode                string             `json:"sscMode" yaml:"sscMode" validate:"regexp=^[0-7]$"`
+	HcnTunnelInfo          *TunnelInfo        `json:"hcnTunnelInfo,omitempty" yaml:"hcnTunnelInfo,omitempty"`
+	CnTunnelInfo           *TunnelInfo        `json:"cnTunnelInfo,omitempty" yaml:"cnTunnelInfo,omitempty"`
+	AdditionalCnTunnelInfo *TunnelInfo        `json:"additionalCnTunnelInfo,omitempty" yaml:"additionalCnTunnelInfo,omitempty"`
+	SessionAmbr            *Ambr              `json:"sessionAmbr,omitempty" yaml:"sessionAmbr,omitempty"`
+	QosFlowsSetupList      []QosFlowSetupItem `json:"qosFlowsSetupList,omitempty" yaml:"qosFlowsSetupList,omitempty"`
 	// String uniquely identifying a NF instance. The format of the NF Instance ID shall be a Universally Unique Identifier (UUID) version 4, as described in IETF RFC 4122.
-	HSmfInstanceId *string
+	HSmfInstanceId *string `json:"hSmfInstanceId,omitempty" yaml:"hSmfInstanceId,omitempty"`
 	// String uniquely identifying a NF instance. The format of the NF Instance ID shall be a Universally Unique Identifier (UUID) version 4, as described in IETF RFC 4122.
-	SmfInstanceId *string
+	SmfInstanceId *string `json:"smfInstanceId,omitempty" yaml:"smfInstanceId,omitempty"`
 	// Unsigned integer identifying a PDU session, within the range 0 to 255, as specified in clause 11.2.3.1b, bits 1 to 8, of 3GPP TS 24.007. If the PDU Session ID is allocated by the Core Network for UEs not supporting N1 mode, reserved range 64 to 95 is used. PDU Session ID within the reserved range is only visible in the Core Network.
-	PduSessionId        *int32
-	SNssai              *Snssai
-	AdditionalSnssai    *Snssai
-	EnablePauseCharging *bool
+	PduSessionId        *int32  `json:"pduSessionId,omitempty" yaml:"pduSessionId,omitempty"`
+	SNssai              *Snssai `json:"sNssai,omitempty" yaml:"sNssai,omitempty"`
+	AdditionalSnssai    *Snssai `json:"additionalSnssai,omitempty" yaml:"additionalSnssai,omitempty"`
+	EnablePauseCharging *bool   `json:"enablePauseCharging,omitempty" yaml:"enablePauseCharging,omitempty"`
 	// String identifying a IPv4 address formatted in the 'dotted decimal' notation as defined in RFC 1166.
-	UeIpv4Address *string
+	UeIpv4Address *string `json:"ueIpv4Address,omitempty" yaml:"ueIpv4Address,omitempty" validate:"regexp=^(([0-9]|[1-9][0-9]|1[0-9][0-9]|2[0-4][0-9]|25[0-5])\\.){3}([0-9]|[1-9][0-9]|1[0-9][0-9]|2[0-4][0-9]|25[0-5])$"`
 	// String identifying an IPv6 address prefix formatted according to clause 4 of RFC 5952. IPv6Prefix data type may contain an individual /128 IPv6 address.
-	UeIpv6Prefix  *string
-	N1SmInfoToUe  *RefToBinaryData
-	EpsPdnCnxInfo *EpsPdnCnxInfo
-	EpsBearerInfo []EpsBearerInfo
+	UeIpv6Prefix  *string          `json:"ueIpv6Prefix,omitempty" yaml:"ueIpv6Prefix,omitempty" validate:"regexp=^(((:|(0?|([1-9a-f][0-9a-f]{0,3}))):)((0?|([1-9a-f][0-9a-f]{0,3})):){0,6}(:|(0?|([1-9a-f][0-9a-f]{0,3})))(/(([0-9])|([0-9]{2})|(1[0-1][0-9])|(12[0-8])))|((([^:]+:){7}([^:]+))|((([^:]+:)*[^:]+)?::(([^:]+:)*[^:]+)?))(/.+))$"`
+	N1SmInfoToUe  *RefToBinaryData `json:"n1SmInfoToUe,omitempty" yaml:"n1SmInfoToUe,omitempty"`
+	EpsPdnCnxInfo *EpsPdnCnxInfo   `json:"epsPdnCnxInfo,omitempty" yaml:"epsPdnCnxInfo,omitempty"`
+	EpsBearerInfo []EpsBearerInfo  `json:"epsBearerInfo,omitempty" yaml:"epsBearerInfo,omitempty"`
 	// A string used to indicate the features supported by an API that is used as defined in clause 6.6 in 3GPP TS 29.500. The string shall contain a bitmask indicating supported features in hexadecimal representation Each character in the string shall take a value of \"0\" to \"9\", \"a\" to \"f\" or \"A\" to \"F\" and shall represent the support of 4 features as described in table 5.2.2-3. The most significant character representing the highest-numbered features shall  appear first in the string, and the character representing features 1 to 4 shall appear last  in the string. The list of features and their numbering (starting with 1) are defined  separately for each API. If the string contains a lower number of characters than there are  defined features for an API, all features that would be represented by characters that are not  present in the string are not supported.
-	SupportedFeatures               *string
-	MaxIntegrityProtectedDataRate   *MaxIntegrityProtectedDataRate
-	MaxIntegrityProtectedDataRateDl *MaxIntegrityProtectedDataRate
-	AlwaysOnGranted                 *bool
+	SupportedFeatures               *string                        `json:"supportedFeatures,omitempty" yaml:"supportedFeatures,omitempty" validate:"regexp=^[A-Fa-f0-9]*$"`
+	MaxIntegrityProtectedDataRate   *MaxIntegrityProtectedDataRate `json:"maxIntegrityProtectedDataRate,omitempty" yaml:"maxIntegrityProtectedDataRate,omitempty"`
+	MaxIntegrityProtectedDataRateDl *MaxIntegrityProtectedDataRate `json:"maxIntegrityProtectedDataRateDl,omitempty" yaml:"maxIntegrityProtectedDataRateDl,omitempty"`
+	AlwaysOnGranted                 *bool                          `json:"alwaysOnGranted,omitempty" yaml:"alwaysOnGranted,omitempty"`
 	// String identifying a Gpsi shall contain either an External Id or an MSISDN. It shall be formatted as follows -External Identifier= \"extid-'extid', where 'extid' shall be formatted according to clause 19.7.2 of 3GPP TS 23.003 that describes an External Identifier.
-	Gpsi                   *string
-	UpSecurity             *UpSecurity
-	RoamingChargingProfile *RoamingChargingProfile
-	HSmfServiceInstanceId  *string
-	SmfServiceInstanceId   *string
+	Gpsi                   *string                 `json:"gpsi,omitempty" yaml:"gpsi,omitempty" validate:"regexp=^(msisdn-[0-9]{5,15}|extid-[^@]+@[^@]+|.+)$"`
+	UpSecurity             *UpSecurity             `json:"upSecurity,omitempty" yaml:"upSecurity,omitempty"`
+	RoamingChargingProfile *RoamingChargingProfile `json:"roamingChargingProfile,omitempty" yaml:"roamingChargingProfile,omitempty"`
+	HSmfServiceInstanceId  *string                 `json:"hSmfServiceInstanceId,omitempty" yaml:"hSmfServiceInstanceId,omitempty"`
+	SmfServiceInstanceId   *string                 `json:"smfServiceInstanceId,omitempty" yaml:"smfServiceInstanceId,omitempty"`
 	// string with format 'date-time' as defined in OpenAPI.
-	RecoveryTime           *time.Time
-	DnaiList               []string
-	Ipv6MultiHomingInd     *bool
-	MaAcceptedInd          *bool
-	HomeProvidedChargingId *string
+	RecoveryTime           *time.Time `json:"recoveryTime,omitempty" yaml:"recoveryTime,omitempty"`
+	DnaiList               []string   `json:"dnaiList,omitempty" yaml:"dnaiList,omitempty"`
+	Ipv6MultiHomingInd     *bool      `json:"ipv6MultiHomingInd,omitempty" yaml:"ipv6MultiHomingInd,omitempty"`
+	MaAcceptedInd          *bool      `json:"maAcceptedInd,omitempty" yaml:"maAcceptedInd,omitempty"`
+	HomeProvidedChargingId *string    `json:"homeProvidedChargingId,omitempty" yaml:"homeProvidedChargingId,omitempty" validate:"regexp=^(0|([1-9]{1}[0-9]{0,9}))$"`
 	// String based Charging ID
-	HomeProvidedSmfChargingId   *string
-	NefExtBufSupportInd         *bool
-	SmallDataRateControlEnabled *bool
-	UeIpv6InterfaceId           *string
+	HomeProvidedSmfChargingId   *string `json:"homeProvidedSmfChargingId,omitempty" yaml:"homeProvidedSmfChargingId,omitempty" validate:"regexp=^(0|([1-9]{1}[0-9]{0,9}))\\.smf-([0-9a-f]{8}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{12})$"`
+	NefExtBufSupportInd         *bool   `json:"nefExtBufSupportInd,omitempty" yaml:"nefExtBufSupportInd,omitempty"`
+	SmallDataRateControlEnabled *bool   `json:"smallDataRateControlEnabled,omitempty" yaml:"smallDataRateControlEnabled,omitempty"`
+	UeIpv6InterfaceId           *string `json:"ueIpv6InterfaceId,omitempty" yaml:"ueIpv6InterfaceId,omitempty" validate:"regexp=^[A-Fa-f0-9]{16}$"`
 	// Represents information that identifies which IP pool or external server is used to allocate the IP address.
-	Ipv6Index               *int32
-	DnAaaAddress            NullableIpAddress
-	RedundantPduSessionInfo *RedundantPduSessionInformation
-	NspuSupportInd          *bool
+	Ipv6Index               *int32                          `json:"ipv6Index,omitempty" yaml:"ipv6Index,omitempty"`
+	DnAaaAddress            NullableIpAddress               `json:"dnAaaAddress" yaml:"dnAaaAddress,omitempty"`
+	RedundantPduSessionInfo *RedundantPduSessionInformation `json:"redundantPduSessionInfo,omitempty" yaml:"redundantPduSessionInfo,omitempty"`
+	NspuSupportInd          *bool                           `json:"nspuSupportInd,omitempty" yaml:"nspuSupportInd,omitempty"`
 	// String providing an URI formatted according to RFC 3986.
-	InterPlmnApiRoot *string
+	InterPlmnApiRoot *string `json:"interPlmnApiRoot,omitempty" yaml:"interPlmnApiRoot,omitempty"`
 	// String providing an URI formatted according to RFC 3986.
-	IntraPlmnApiRoot *string
+	IntraPlmnApiRoot *string `json:"intraPlmnApiRoot,omitempty" yaml:"intraPlmnApiRoot,omitempty"`
 	// Identifier of a group of NFs.
-	UdmGroupId *string
+	UdmGroupId *string `json:"udmGroupId,omitempty" yaml:"udmGroupId,omitempty"`
 	// Identifier of a group of NFs.
-	PcfGroupId            *string
-	HrsboInfo             *HrsboInfoFromHplmn
-	PendingUpdateInfoList []PendingUpdateInfo
+	PcfGroupId            *string             `json:"pcfGroupId,omitempty" yaml:"pcfGroupId,omitempty"`
+	HrsboInfo             *HrsboInfoFromHplmn `json:"hrsboInfo,omitempty" yaml:"hrsboInfo,omitempty"`
+	PendingUpdateInfoList []PendingUpdateInfo `json:"pendingUpdateInfoList,omitempty" yaml:"pendingUpdateInfoList,omitempty"`
 }
 
 // NewPduSessionCreatedData instantiates a new PduSessionCreatedData object

@@ -29,9 +29,9 @@ var _ openapi.MappedNullable = &Area{}
 
 // Area Provides area information.
 type Area struct {
-	Tacs []string
+	Tacs []string `json:"tacs,omitempty" yaml:"tacs,omitempty"`
 	// Values are operator specific.
-	AreaCode *string
+	AreaCode *string `json:"areaCode,omitempty" yaml:"areaCode,omitempty"`
 }
 
 // NewArea instantiates a new Area object

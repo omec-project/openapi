@@ -30,9 +30,9 @@ var _ openapi.MappedNullable = &AnGwAddress{}
 // AnGwAddress Describes the address of the access network gateway control node.
 type AnGwAddress struct {
 	// String identifying a IPv4 address formatted in the 'dotted decimal' notation as defined in RFC 1166.
-	AnGwIpv4Addr *string
+	AnGwIpv4Addr *string `json:"anGwIpv4Addr,omitempty" yaml:"anGwIpv4Addr,omitempty" validate:"regexp=^(([0-9]|[1-9][0-9]|1[0-9][0-9]|2[0-4][0-9]|25[0-5])\\.){3}([0-9]|[1-9][0-9]|1[0-9][0-9]|2[0-4][0-9]|25[0-5])$"`
 	// String identifying an IPv6 address formatted according to clause 4 of RFC5952. The mixed IPv4 IPv6 notation according to clause 5 of RFC5952 shall not be used.
-	AnGwIpv6Addr *string
+	AnGwIpv6Addr *string `json:"anGwIpv6Addr,omitempty" yaml:"anGwIpv6Addr,omitempty" validate:"regexp=^(((:|(0?|([1-9a-f][0-9a-f]{0,3}))):)((0?|([1-9a-f][0-9a-f]{0,3})):){0,6}(:|(0?|([1-9a-f][0-9a-f]{0,3}))))|((([^:]+:){7}([^:]+))|((([^:]+:)*[^:]+)?::(([^:]+:)*[^:]+)?)))$"`
 }
 
 // NewAnGwAddress instantiates a new AnGwAddress object

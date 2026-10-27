@@ -29,8 +29,8 @@ var _ openapi.MappedNullable = &EpdgInfo{}
 
 // EpdgInfo Information of the ePDG end-points
 type EpdgInfo struct {
-	Ipv4EndpointAddresses []string
-	Ipv6EndpointAddresses []string
+	Ipv4EndpointAddresses []string `json:"ipv4EndpointAddresses,omitempty" yaml:"ipv4EndpointAddresses,omitempty"`
+	Ipv6EndpointAddresses []string `json:"ipv6EndpointAddresses,omitempty" yaml:"ipv6EndpointAddresses,omitempty"`
 }
 
 // NewEpdgInfo instantiates a new EpdgInfo object

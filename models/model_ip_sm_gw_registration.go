@@ -2,13 +2,13 @@
 // SPDX-License-Identifier: Apache-2.0
 
 /*
-Nudr_DataRepository API OpenAPI file
+Nudm_UECM
 
-Unified Data Repository Service.
+Nudm Context Management Service.
 © 2024, 3GPP Organizational Partners (ARIB, ATIS, CCSA, ETSI, TSDSI, TTA, TTC).
 All rights reserved.
 
-API version: 2.3.0-alpha.6
+API version: 1.3.0-alpha.6
 
 Authors: Aether SD-Core team
 Contact: dev@lists.aetherproject.org
@@ -30,19 +30,19 @@ var _ openapi.MappedNullable = &IpSmGwRegistration{}
 // IpSmGwRegistration This data type contains the IP-SW-GW routing information.
 type IpSmGwRegistration struct {
 	// This data type mentions International E.164 number of the SMSF; shall be present if the SMSF supports MAP.
-	IpSmGwMapAddress      *string
-	IpSmGwDiameterAddress *NetworkNodeDiameterAddress
+	IpSmGwMapAddress      *string                     `json:"ipSmGwMapAddress,omitempty" yaml:"ipSmGwMapAddress,omitempty" validate:"regexp=^[0-9]{1,15}$"`
+	IpSmGwDiameterAddress *NetworkNodeDiameterAddress `json:"ipSmGwDiameterAddress,omitempty" yaml:"ipSmGwDiameterAddress,omitempty"`
 	// String identifying a IPv4 address formatted in the 'dotted decimal' notation as defined in RFC 1166.
-	IpsmgwIpv4 *string
+	IpsmgwIpv4 *string `json:"ipsmgwIpv4,omitempty" yaml:"ipsmgwIpv4,omitempty" validate:"regexp=^(([0-9]|[1-9][0-9]|1[0-9][0-9]|2[0-4][0-9]|25[0-5])\\.){3}([0-9]|[1-9][0-9]|1[0-9][0-9]|2[0-4][0-9]|25[0-5])$"`
 	// String identifying an IPv6 address formatted according to clause 4 of RFC5952. The mixed IPv4 IPv6 notation according to clause 5 of RFC5952 shall not be used.
-	IpsmgwIpv6 *string
+	IpsmgwIpv6 *string `json:"ipsmgwIpv6,omitempty" yaml:"ipsmgwIpv6,omitempty" validate:"regexp=^(((:|(0?|([1-9a-f][0-9a-f]{0,3}))):)((0?|([1-9a-f][0-9a-f]{0,3})):){0,6}(:|(0?|([1-9a-f][0-9a-f]{0,3}))))|((([^:]+:){7}([^:]+))|((([^:]+:)*[^:]+)?::(([^:]+:)*[^:]+)?)))$"`
 	// Fully Qualified Domain Name
-	IpsmgwFqdn *string
+	IpsmgwFqdn *string `json:"ipsmgwFqdn,omitempty" yaml:"ipsmgwFqdn,omitempty" validate:"regexp=^([0-9A-Za-z]([-0-9A-Za-z]{0,61}[0-9A-Za-z])?\\.)+[A-Za-z]{2,63}\\.?$"`
 	// String uniquely identifying a NF instance. The format of the NF Instance ID shall be a Universally Unique Identifier (UUID) version 4, as described in IETF RFC 4122.
-	NfInstanceId    *string
-	UnriIndicator   *bool
-	ResetIds        []string
-	IpSmGwSbiSupInd *bool
+	NfInstanceId    *string  `json:"nfInstanceId,omitempty" yaml:"nfInstanceId,omitempty"`
+	UnriIndicator   *bool    `json:"unriIndicator,omitempty" yaml:"unriIndicator,omitempty"`
+	ResetIds        []string `json:"resetIds,omitempty" yaml:"resetIds,omitempty"`
+	IpSmGwSbiSupInd *bool    `json:"ipSmGwSbiSupInd,omitempty" yaml:"ipSmGwSbiSupInd,omitempty"`
 }
 
 // NewIpSmGwRegistration instantiates a new IpSmGwRegistration object

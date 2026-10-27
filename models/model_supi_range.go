@@ -29,9 +29,9 @@ var _ openapi.MappedNullable = &SupiRange{}
 
 // SupiRange A range of SUPIs (subscriber identities), either based on a numeric range, or based on regular-expression matching
 type SupiRange struct {
-	Start   *string
-	End     *string
-	Pattern *string
+	Start   *string `json:"start,omitempty" yaml:"start,omitempty" validate:"regexp=^[0-9]+$"`
+	End     *string `json:"end,omitempty" yaml:"end,omitempty" validate:"regexp=^[0-9]+$"`
+	Pattern *string `json:"pattern,omitempty" yaml:"pattern,omitempty"`
 }
 
 // NewSupiRange instantiates a new SupiRange object

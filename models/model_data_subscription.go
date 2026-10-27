@@ -29,15 +29,15 @@ var _ openapi.MappedNullable = &DataSubscription{}
 
 // DataSubscription Contains a data specification.
 type DataSubscription struct {
-	AmfDataSub   *AmfEventSubscription
-	SmfDataSub   *NsmfEventExposure
-	UdmDataSub   *EeSubscription
-	AfDataSub    *AfEventExposureSubsc
-	NefDataSub   *NefEventExposureSubsc
-	NrfDataSub   *SubscriptionData
-	NsacfDataSub *SACEventSubscription
-	UpfDataSub   *UpfEventSubscription
-	GmlcDataSub  *InputDataGmlc
+	AmfDataSub   *AmfEventSubscription  `json:"amfDataSub,omitempty" yaml:"amfDataSub,omitempty"`
+	SmfDataSub   *NsmfEventExposure     `json:"smfDataSub,omitempty" yaml:"smfDataSub,omitempty"`
+	UdmDataSub   *EeSubscription        `json:"udmDataSub,omitempty" yaml:"udmDataSub,omitempty"`
+	AfDataSub    *AfEventExposureSubsc  `json:"afDataSub,omitempty" yaml:"afDataSub,omitempty"`
+	NefDataSub   *NefEventExposureSubsc `json:"nefDataSub,omitempty" yaml:"nefDataSub,omitempty"`
+	NrfDataSub   *SubscriptionData      `json:"nrfDataSub,omitempty" yaml:"nrfDataSub,omitempty"`
+	NsacfDataSub *SACEventSubscription  `json:"nsacfDataSub,omitempty" yaml:"nsacfDataSub,omitempty"`
+	UpfDataSub   *UpfEventSubscription  `json:"upfDataSub,omitempty" yaml:"upfDataSub,omitempty"`
+	GmlcDataSub  *InputDataGmlc         `json:"gmlcDataSub,omitempty" yaml:"gmlcDataSub,omitempty"`
 }
 
 // NewDataSubscription instantiates a new DataSubscription object

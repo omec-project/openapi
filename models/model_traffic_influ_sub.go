@@ -31,28 +31,28 @@ var _ openapi.MappedNullable = &TrafficInfluSub{}
 // TrafficInfluSub Represents traffic influence subscription data.
 type TrafficInfluSub struct {
 	// Each element identifies a DNN.
-	Dnns []string
+	Dnns []string `json:"dnns,omitempty" yaml:"dnns,omitempty"`
 	// Each element identifies a slice.
-	Snssais []Snssai
+	Snssais []Snssai `json:"snssais,omitempty" yaml:"snssais,omitempty"`
 	// Each element identifies a group of users.
-	InternalGroupIds []string
+	InternalGroupIds []string `json:"internalGroupIds,omitempty" yaml:"internalGroupIds,omitempty"`
 	// Each element identifies an internal group.
-	InternalGroupIdsAdd []string
+	InternalGroupIdsAdd []string `json:"internalGroupIdsAdd,omitempty" yaml:"internalGroupIdsAdd,omitempty"`
 	// Each element identifies a subscriber category.
-	SubscriberCatList []string
+	SubscriberCatList []string `json:"subscriberCatList,omitempty" yaml:"subscriberCatList,omitempty"`
 	// Each element identifies the user.
-	Supis []string
+	Supis []string `json:"supis,omitempty" yaml:"supis,omitempty"`
 	// String providing an URI formatted according to RFC 3986.
-	NotificationUri string
+	NotificationUri string `json:"notificationUri" yaml:"notificationUri"`
 	// string with format 'date-time' as defined in OpenAPI.
-	Expiry *time.Time
+	Expiry *time.Time `json:"expiry,omitempty" yaml:"expiry,omitempty"`
 	// A string used to indicate the features supported by an API that is used as defined in clause 6.6 in 3GPP TS 29.500. The string shall contain a bitmask indicating supported features in hexadecimal representation Each character in the string shall take a value of \"0\" to \"9\", \"a\" to \"f\" or \"A\" to \"F\" and shall represent the support of 4 features as described in table 5.2.2-3. The most significant character representing the highest-numbered features shall  appear first in the string, and the character representing features 1 to 4 shall appear last  in the string. The list of features and their numbering (starting with 1) are defined  separately for each API. If the string contains a lower number of characters than there are  defined features for an API, all features that would be represented by characters that are not  present in the string are not supported.
-	SupportedFeatures *string
-	ResetIds          []string
+	SupportedFeatures *string  `json:"supportedFeatures,omitempty" yaml:"supportedFeatures,omitempty" validate:"regexp=^[A-Fa-f0-9]*$"`
+	ResetIds          []string `json:"resetIds,omitempty" yaml:"resetIds,omitempty"`
 	// If provided and set to true, it indicates that existing entries that match this subscription shall be immediately reported in the response.
-	ImmRep *bool
+	ImmRep *bool `json:"immRep,omitempty" yaml:"immRep,omitempty"`
 	// Immediate report with existing UDR entries.
-	ImmReports []TrafficInfluDataNotif
+	ImmReports []TrafficInfluDataNotif `json:"immReports,omitempty" yaml:"immReports,omitempty"`
 }
 
 // NewTrafficInfluSub instantiates a new TrafficInfluSub object

@@ -31,27 +31,27 @@ var _ openapi.MappedNullable = &UeCommunication{}
 // UeCommunication Represents UE communication information.
 type UeCommunication struct {
 	// indicating a time in seconds.
-	CommDur int32
+	CommDur int32 `json:"commDur" yaml:"commDur"`
 	// string with format 'float' as defined in OpenAPI.
-	CommDurVariance *float32
+	CommDurVariance *float32 `json:"commDurVariance,omitempty" yaml:"commDurVariance,omitempty"`
 	// indicating a time in seconds.
-	PerioTime *int32
+	PerioTime *int32 `json:"perioTime,omitempty" yaml:"perioTime,omitempty"`
 	// string with format 'float' as defined in OpenAPI.
-	PerioTimeVariance *float32
+	PerioTimeVariance *float32 `json:"perioTimeVariance,omitempty" yaml:"perioTimeVariance,omitempty"`
 	// string with format 'date-time' as defined in OpenAPI.
-	Ts *time.Time
+	Ts *time.Time `json:"ts,omitempty" yaml:"ts,omitempty"`
 	// string with format 'float' as defined in OpenAPI.
-	TsVariance    *float32
-	RecurringTime *ScheduledCommunicationTime
-	TrafChar      NullableTrafficCharacterization
+	TsVariance    *float32                        `json:"tsVariance,omitempty" yaml:"tsVariance,omitempty"`
+	RecurringTime *ScheduledCommunicationTime     `json:"recurringTime,omitempty" yaml:"recurringTime,omitempty"`
+	TrafChar      NullableTrafficCharacterization `json:"trafChar" yaml:"trafChar"`
 	// Unsigned integer indicating Sampling Ratio (see clauses 4.15.1 of 3GPP TS 23.502), expressed in percent.
-	Ratio *int32
+	Ratio *int32 `json:"ratio,omitempty" yaml:"ratio,omitempty"`
 	// This attribute indicates whether the UE communicates periodically or not. Set to \"true\" to indicate the UE communicates periodically, otherwise set to \"false\" or omitted.
-	PerioCommInd *bool
+	PerioCommInd *bool `json:"perioCommInd,omitempty" yaml:"perioCommInd,omitempty"`
 	// Unsigned Integer, i.e. only value 0 and integers above 0 are permissible.
-	Confidence     *int32
-	AnaOfAppList   *AppListForUeComm
-	SessInactTimer *SessInactTimerForUeComm
+	Confidence     *int32                   `json:"confidence,omitempty" yaml:"confidence,omitempty"`
+	AnaOfAppList   *AppListForUeComm        `json:"anaOfAppList,omitempty" yaml:"anaOfAppList,omitempty"`
+	SessInactTimer *SessInactTimerForUeComm `json:"sessInactTimer,omitempty" yaml:"sessInactTimer,omitempty"`
 }
 
 // NewUeCommunication instantiates a new UeCommunication object

@@ -29,21 +29,21 @@ var _ openapi.MappedNullable = &NfLoadLevelInformation{}
 
 // NfLoadLevelInformation Represents load level information of a given NF instance.
 type NfLoadLevelInformation struct {
-	NfType NFType
+	NfType NFType `json:"nfType" yaml:"nfType"`
 	// String uniquely identifying a NF instance. The format of the NF Instance ID shall be a Universally Unique Identifier (UUID) version 4, as described in IETF RFC 4122.
-	NfInstanceId string
+	NfInstanceId string `json:"nfInstanceId" yaml:"nfInstanceId"`
 	// NF Set Identifier (see clause 28.12 of 3GPP TS 23.003), formatted as the following string \"set<Set ID>.<nftype>set.5gc.mnc<MNC>.mcc<MCC>\", or \"set<SetID>.<NFType>set.5gc.nid<NID>.mnc<MNC>.mcc<MCC>\" with <MCC> encoded as defined in clause 5.4.2 (\"Mcc\" data type definition) <MNC> encoding the Mobile Network Code part of the PLMN, comprising 3 digits.   If there are only 2 significant digits in the MNC, one \"0\" digit shall be inserted   at the left side to fill the 3 digits coding of MNC.  Pattern: '^[0-9]{3}$' <NFType> encoded as a value defined in Table 6.1.6.3.3-1 of 3GPP TS 29.510 but   with lower case characters <Set ID> encoded as a string of characters consisting of   alphabetic characters (A-Z and a-z), digits (0-9) and/or the hyphen (-) and that   shall end with either an alphabetic character or a digit.
-	NfSetId            *string
-	NfStatus           NullableNfStatusNwdaf
-	NfCpuUsage         *int32
-	NfMemoryUsage      *int32
-	NfStorageUsage     *int32
-	NfLoadLevelAverage *int32
-	NfLoadLevelpeak    *int32
-	NfLoadAvgInAoi     *int32
-	Snssai             *Snssai
+	NfSetId            *string               `json:"nfSetId,omitempty" yaml:"nfSetId,omitempty"`
+	NfStatus           NullableNfStatusNwdaf `json:"nfStatus" yaml:"nfStatus,omitempty"`
+	NfCpuUsage         *int32                `json:"nfCpuUsage,omitempty" yaml:"nfCpuUsage,omitempty"`
+	NfMemoryUsage      *int32                `json:"nfMemoryUsage,omitempty" yaml:"nfMemoryUsage,omitempty"`
+	NfStorageUsage     *int32                `json:"nfStorageUsage,omitempty" yaml:"nfStorageUsage,omitempty"`
+	NfLoadLevelAverage *int32                `json:"nfLoadLevelAverage,omitempty" yaml:"nfLoadLevelAverage,omitempty"`
+	NfLoadLevelpeak    *int32                `json:"nfLoadLevelpeak,omitempty" yaml:"nfLoadLevelpeak,omitempty"`
+	NfLoadAvgInAoi     *int32                `json:"nfLoadAvgInAoi,omitempty" yaml:"nfLoadAvgInAoi,omitempty"`
+	Snssai             *Snssai               `json:"snssai,omitempty" yaml:"snssai,omitempty"`
 	// Unsigned Integer, i.e. only value 0 and integers above 0 are permissible.
-	Confidence *int32
+	Confidence *int32 `json:"confidence,omitempty" yaml:"confidence,omitempty"`
 }
 
 // NewNfLoadLevelInformation instantiates a new NfLoadLevelInformation object

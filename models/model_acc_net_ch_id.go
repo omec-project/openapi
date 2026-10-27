@@ -31,13 +31,13 @@ var _ openapi.MappedNullable = &AccNetChId{}
 type AccNetChId struct {
 	// Integer where the allowed values correspond to the value range of an unsigned 32-bit integer.
 	// Deprecated
-	AccNetChaIdValue *int32
+	AccNetChaIdValue *int32 `json:"accNetChaIdValue,omitempty" yaml:"accNetChaIdValue,omitempty"`
 	// A character string containing the access network charging id.
-	AccNetChargId *string
+	AccNetChargId *string `json:"accNetChargId,omitempty" yaml:"accNetChargId,omitempty"`
 	// Contains the identifier of the PCC rule(s) associated to the provided Access Network Charging Identifier.
-	RefPccRuleIds []string
+	RefPccRuleIds []string `json:"refPccRuleIds,omitempty" yaml:"refPccRuleIds,omitempty"`
 	// When it is included and set to true, indicates the Access Network Charging Identifier applies to the whole PDU Session
-	SessionChScope *bool
+	SessionChScope *bool `json:"sessionChScope,omitempty" yaml:"sessionChScope,omitempty"`
 }
 
 // NewAccNetChId instantiates a new AccNetChId object

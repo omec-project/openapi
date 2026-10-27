@@ -29,9 +29,9 @@ var _ openapi.MappedNullable = &SnssaiSmfInfoItem{}
 
 // SnssaiSmfInfoItem Set of parameters supported by SMF for a given S-NSSAI
 type SnssaiSmfInfoItem struct {
-	SNssai           Snssai
-	DnnSmfInfoList   []DnnSmfInfoItem
-	DnnSmfInfoListId *int32
+	SNssai           Snssai           `json:"sNssai" yaml:"sNssai"`
+	DnnSmfInfoList   []DnnSmfInfoItem `json:"dnnSmfInfoList,omitempty" yaml:"dnnSmfInfoList,omitempty"`
+	DnnSmfInfoListId *int32           `json:"dnnSmfInfoListId,omitempty" yaml:"dnnSmfInfoListId,omitempty"`
 }
 
 // NewSnssaiSmfInfoItem instantiates a new SnssaiSmfInfoItem object

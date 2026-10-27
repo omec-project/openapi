@@ -30,19 +30,19 @@ var _ openapi.MappedNullable = &QosSustainabilityInfo{}
 
 // QosSustainabilityInfo Represents the QoS Sustainability information.
 type QosSustainabilityInfo struct {
-	AreaInfo *NetworkAreaInfo
+	AreaInfo *NetworkAreaInfo `json:"areaInfo,omitempty" yaml:"areaInfo,omitempty"`
 	// This attribute contains the geographical locations in a fine granularity.
-	FineAreaInfos []GeographicalArea
+	FineAreaInfos []GeographicalArea `json:"fineAreaInfos,omitempty" yaml:"fineAreaInfos,omitempty"`
 	// string with format 'date-time' as defined in OpenAPI.
-	StartTs *time.Time
+	StartTs *time.Time `json:"startTs,omitempty" yaml:"startTs,omitempty"`
 	// string with format 'date-time' as defined in OpenAPI.
-	EndTs         *time.Time
-	QosFlowRetThd NullableRetainabilityThreshold
+	EndTs         *time.Time                     `json:"endTs,omitempty" yaml:"endTs,omitempty"`
+	QosFlowRetThd NullableRetainabilityThreshold `json:"qosFlowRetThd" yaml:"qosFlowRetThd,omitempty"`
 	// String representing a bit rate; the prefixes follow the standard symbols from The International System of Units, and represent x1000 multipliers, with the exception that prefix \"K\" is used to represent the standard symbol \"k\".
-	RanUeThrouThd *string
-	Snssai        *Snssai
+	RanUeThrouThd *string `json:"ranUeThrouThd,omitempty" yaml:"ranUeThrouThd,omitempty" validate:"regexp=^\\d+(\\.\\d+)? (bps|Kbps|Mbps|Gbps|Tbps)$"`
+	Snssai        *Snssai `json:"snssai,omitempty" yaml:"snssai,omitempty"`
 	// Unsigned Integer, i.e. only value 0 and integers above 0 are permissible.
-	Confidence *int32
+	Confidence *int32 `json:"confidence,omitempty" yaml:"confidence,omitempty"`
 }
 
 // NewQosSustainabilityInfo instantiates a new QosSustainabilityInfo object

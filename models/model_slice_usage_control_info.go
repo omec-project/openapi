@@ -29,11 +29,11 @@ var _ openapi.MappedNullable = &SliceUsageControlInfo{}
 
 // SliceUsageControlInfo The network slice usage control related information
 type SliceUsageControlInfo struct {
-	SNssai Snssai
+	SNssai Snssai `json:"sNssai" yaml:"sNssai"`
 	// indicating a time in seconds.
-	DeregInactTimer *int32
+	DeregInactTimer *int32 `json:"deregInactTimer,omitempty" yaml:"deregInactTimer,omitempty"`
 	// indicating a time in seconds.
-	SessInactTimer *int32
+	SessInactTimer *int32 `json:"sessInactTimer,omitempty" yaml:"sessInactTimer,omitempty"`
 }
 
 // NewSliceUsageControlInfo instantiates a new SliceUsageControlInfo object

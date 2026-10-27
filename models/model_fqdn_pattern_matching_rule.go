@@ -29,8 +29,8 @@ var _ openapi.MappedNullable = &FqdnPatternMatchingRule{}
 
 // FqdnPatternMatchingRule a matching rule for a FQDN pattern
 type FqdnPatternMatchingRule struct {
-	Regex              *string
-	StringMatchingRule *StringMatchingRule
+	Regex              *string             `json:"regex,omitempty" yaml:"regex,omitempty"`
+	StringMatchingRule *StringMatchingRule `json:"stringMatchingRule,omitempty" yaml:"stringMatchingRule,omitempty"`
 }
 
 // NewFqdnPatternMatchingRule instantiates a new FqdnPatternMatchingRule object

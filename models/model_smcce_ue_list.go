@@ -29,9 +29,9 @@ var _ openapi.MappedNullable = &SmcceUeList{}
 
 // SmcceUeList Represents the List of UEs classified based on experience level of Session Management congestion control.
 type SmcceUeList struct {
-	HighLevel   []string
-	MediumLevel []string
-	LowLevel    []string
+	HighLevel   []string `json:"highLevel,omitempty" yaml:"highLevel,omitempty"`
+	MediumLevel []string `json:"mediumLevel,omitempty" yaml:"mediumLevel,omitempty"`
+	LowLevel    []string `json:"lowLevel,omitempty" yaml:"lowLevel,omitempty"`
 }
 
 // NewSmcceUeList instantiates a new SmcceUeList object

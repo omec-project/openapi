@@ -30,10 +30,10 @@ var _ openapi.MappedNullable = &InternalGroupIdRange{}
 // InternalGroupIdRange A range of Group IDs (internal group identities), either based on a numeric range, or based on regular-expression matching
 type InternalGroupIdRange struct {
 	// String identifying a group of devices network internal globally unique ID which identifies a set of IMSIs, as specified in clause 19.9 of 3GPP TS 23.003.
-	Start *string
+	Start *string `json:"start,omitempty" yaml:"start,omitempty" validate:"regexp=^[A-Fa-f0-9]{8}-[0-9]{3}-[0-9]{2,3}-([A-Fa-f0-9][A-Fa-f0-9]){1,10}$"`
 	// String identifying a group of devices network internal globally unique ID which identifies a set of IMSIs, as specified in clause 19.9 of 3GPP TS 23.003.
-	End     *string
-	Pattern *string
+	End     *string `json:"end,omitempty" yaml:"end,omitempty" validate:"regexp=^[A-Fa-f0-9]{8}-[0-9]{3}-[0-9]{2,3}-([A-Fa-f0-9][A-Fa-f0-9]){1,10}$"`
+	Pattern *string `json:"pattern,omitempty" yaml:"pattern,omitempty"`
 }
 
 // NewInternalGroupIdRange instantiates a new InternalGroupIdRange object

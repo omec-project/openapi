@@ -29,8 +29,8 @@ var _ openapi.MappedNullable = &ConditionGroup{}
 
 // ConditionGroup List (array) of conditions (joined by the \"and\" or \"or\" logical relationship), under which an NF Instance with an NFStatus or NFServiceStatus value set to, \"CANARY_RELEASE\", or with a \"canaryRelease\" attribute set to true, shall be selected by an NF Service Consumer.
 type ConditionGroup struct {
-	And []SelectionConditions
-	Or  []SelectionConditions
+	And []SelectionConditions `json:"and,omitempty" yaml:"and,omitempty"`
+	Or  []SelectionConditions `json:"or,omitempty" yaml:"or,omitempty"`
 }
 
 // NewConditionGroup instantiates a new ConditionGroup object

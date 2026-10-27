@@ -29,13 +29,13 @@ var _ openapi.MappedNullable = &NetworkDescription{}
 
 // NetworkDescription Represents the description of a PLMN, by the definition of the PLMN ID, the MCC (and applicable MNC(s)) or the indication of any PLMN.
 type NetworkDescription struct {
-	PlmnId *PlmnId
+	PlmnId *PlmnId `json:"plmnId,omitempty" yaml:"plmnId,omitempty"`
 	// Mobile Country Code part of the PLMN, comprising 3 digits, as defined in clause 9.3.3.5 of 3GPP TS 38.413.
-	Mcc *string
+	Mcc *string `json:"mcc,omitempty" yaml:"mcc,omitempty" validate:"regexp=^\\d{3}$"`
 	// Represents the applicable MNC(s) for the indicated MCC.
-	Mncs []string
+	Mncs []string `json:"mncs,omitempty" yaml:"mncs,omitempty"`
 	// Indicates any PLMN.
-	AnyPlmnInd *bool
+	AnyPlmnInd *bool `json:"anyPlmnInd,omitempty" yaml:"anyPlmnInd,omitempty"`
 }
 
 // NewNetworkDescription instantiates a new NetworkDescription object

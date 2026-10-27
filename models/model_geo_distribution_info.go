@@ -29,9 +29,9 @@ var _ openapi.MappedNullable = &GeoDistributionInfo{}
 
 // GeoDistributionInfo Represents the geographical distribution of the UEs.
 type GeoDistributionInfo struct {
-	Loc   UserLocation
-	Supis []string
-	Gpsis []string
+	Loc   UserLocation `json:"loc" yaml:"loc"`
+	Supis []string     `json:"supis,omitempty" yaml:"supis,omitempty"`
+	Gpsis []string     `json:"gpsis,omitempty" yaml:"gpsis,omitempty"`
 }
 
 // NewGeoDistributionInfo instantiates a new GeoDistributionInfo object

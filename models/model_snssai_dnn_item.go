@@ -29,8 +29,8 @@ var _ openapi.MappedNullable = &SnssaiDnnItem{}
 
 // SnssaiDnnItem Combination of S-NSSAIs and DNNs
 type SnssaiDnnItem struct {
-	SnssaiList []Snssai
-	DnnList    []string
+	SnssaiList []Snssai `json:"snssaiList,omitempty" yaml:"snssaiList,omitempty"`
+	DnnList    []string `json:"dnnList,omitempty" yaml:"dnnList,omitempty"`
 }
 
 // NewSnssaiDnnItem instantiates a new SnssaiDnnItem object

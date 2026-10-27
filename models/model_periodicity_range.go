@@ -30,10 +30,10 @@ var _ openapi.MappedNullable = &PeriodicityRange{}
 // PeriodicityRange Contains the acceptable range (which is formulated as lower bound and upper bound of the periodicity of the start twobursts in reference to the external GM) or acceptable periodicity value(s) (which is formulated as a list of values for the periodicity).
 type PeriodicityRange struct {
 	// Unsigned Integer, i.e. only value 0 and integers above 0 are permissible.
-	LowerBound *int32
+	LowerBound *int32 `json:"lowerBound,omitempty" yaml:"lowerBound,omitempty"`
 	// Unsigned Integer, i.e. only value 0 and integers above 0 are permissible.
-	UpperBound   *int32
-	PeriodicVals []int32
+	UpperBound   *int32  `json:"upperBound,omitempty" yaml:"upperBound,omitempty"`
+	PeriodicVals []int32 `json:"periodicVals,omitempty" yaml:"periodicVals,omitempty"`
 }
 
 // NewPeriodicityRange instantiates a new PeriodicityRange object

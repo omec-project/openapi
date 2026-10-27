@@ -30,8 +30,8 @@ var _ openapi.MappedNullable = &SmscData{}
 // SmscData Addresses of SM-Service Center entities with SMS wating to be delivered to the UE.
 type SmscData struct {
 	// This data type mentions International E.164 number of the SMSF; shall be present if the SMSF supports MAP.
-	SmscMapAddress      *string
-	SmscDiameterAddress *NetworkNodeDiameterAddress
+	SmscMapAddress      *string                     `json:"smscMapAddress,omitempty" yaml:"smscMapAddress,omitempty" validate:"regexp=^[0-9]{1,15}$"`
+	SmscDiameterAddress *NetworkNodeDiameterAddress `json:"smscDiameterAddress,omitempty" yaml:"smscDiameterAddress,omitempty"`
 }
 
 // NewSmscData instantiates a new SmscData object

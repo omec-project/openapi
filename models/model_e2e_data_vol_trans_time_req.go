@@ -30,19 +30,19 @@ var _ openapi.MappedNullable = &E2eDataVolTransTimeReq{}
 
 // E2eDataVolTransTimeReq Represents other E2E data volume transfer time analytics requirements.
 type E2eDataVolTransTimeReq struct {
-	Criterion *E2eDataVolTransTimeCriterion
-	Order     *MatchingDirection
+	Criterion *E2eDataVolTransTimeCriterion `json:"criterion,omitempty" yaml:"criterion,omitempty"`
+	Order     *MatchingDirection            `json:"order,omitempty" yaml:"order,omitempty"`
 	// Unsigned Integer, i.e. only value 0 and integers above 0 are permissible.
-	HighTransTmThr *int32
+	HighTransTmThr *int32 `json:"highTransTmThr,omitempty" yaml:"highTransTmThr,omitempty"`
 	// Unsigned Integer, i.e. only value 0 and integers above 0 are permissible.
-	LowTransTmThr *int32
+	LowTransTmThr *int32 `json:"lowTransTmThr,omitempty" yaml:"lowTransTmThr,omitempty"`
 	// Unsigned Integer, i.e. only value 0 and integers above 0 are permissible.
-	RepeatDataTrans *int32
+	RepeatDataTrans *int32 `json:"repeatDataTrans,omitempty" yaml:"repeatDataTrans,omitempty"`
 	// string with format 'date-time' as defined in OpenAPI.
-	TsIntervalDataTrans *time.Time
-	DataVolume          NullableDataVolume
+	TsIntervalDataTrans *time.Time         `json:"tsIntervalDataTrans,omitempty" yaml:"tsIntervalDataTrans,omitempty"`
+	DataVolume          NullableDataVolume `json:"dataVolume" yaml:"dataVolume,omitempty"`
 	// Unsigned Integer, i.e. only value 0 and integers above 0 are permissible.
-	MaxNumberUes *int32
+	MaxNumberUes *int32 `json:"maxNumberUes,omitempty" yaml:"maxNumberUes,omitempty"`
 }
 
 // NewE2eDataVolTransTimeReq instantiates a new E2eDataVolTransTimeReq object
