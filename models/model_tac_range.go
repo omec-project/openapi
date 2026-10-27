@@ -29,9 +29,9 @@ var _ openapi.MappedNullable = &TacRange{}
 
 // TacRange Range of TACs (Tracking Area Codes)
 type TacRange struct {
-	Start   *string
-	End     *string
-	Pattern *string
+	Start   *string `json:"start,omitempty" yaml:"start,omitempty" validate:"regexp=^([A-Fa-f0-9]{4}|[A-Fa-f0-9]{6})$"`
+	End     *string `json:"end,omitempty" yaml:"end,omitempty" validate:"regexp=^([A-Fa-f0-9]{4}|[A-Fa-f0-9]{6})$"`
+	Pattern *string `json:"pattern,omitempty" yaml:"pattern,omitempty"`
 }
 
 // NewTacRange instantiates a new TacRange object

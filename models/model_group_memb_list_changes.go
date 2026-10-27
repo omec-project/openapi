@@ -29,8 +29,8 @@ var _ openapi.MappedNullable = &GroupMembListChanges{}
 
 // GroupMembListChanges Represents information on the change(s) to a group's members list.
 type GroupMembListChanges struct {
-	AddedUEs   []string
-	RemovedUEs []string
+	AddedUEs   []string `json:"addedUEs,omitempty" yaml:"addedUEs,omitempty"`
+	RemovedUEs []string `json:"removedUEs,omitempty" yaml:"removedUEs,omitempty"`
 }
 
 // NewGroupMembListChanges instantiates a new GroupMembListChanges object

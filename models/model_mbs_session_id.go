@@ -29,10 +29,10 @@ var _ openapi.MappedNullable = &MbsSessionId{}
 
 // MbsSessionId MBS Session Identifier
 type MbsSessionId struct {
-	Tmgi *Tmgi
-	Ssm  *Ssm
+	Tmgi *Tmgi `json:"tmgi,omitempty" yaml:"tmgi,omitempty"`
+	Ssm  *Ssm  `json:"ssm,omitempty" yaml:"ssm,omitempty"`
 	// This represents the Network Identifier, which together with a PLMN ID is used to identify an SNPN (see 3GPP TS 23.003 and 3GPP TS 23.501 clause 5.30.2.1).
-	Nid *string
+	Nid *string `json:"nid,omitempty" yaml:"nid,omitempty" validate:"regexp=^[A-Fa-f0-9]{11}$"`
 }
 
 // NewMbsSessionId instantiates a new MbsSessionId object

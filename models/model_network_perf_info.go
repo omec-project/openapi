@@ -29,16 +29,16 @@ var _ openapi.MappedNullable = &NetworkPerfInfo{}
 
 // NetworkPerfInfo Represents the network performance information.
 type NetworkPerfInfo struct {
-	NetworkArea NetworkAreaInfo
-	NwPerfType  NetworkPerfType
-	AnaPeriod   *TimeWindow
+	NetworkArea NetworkAreaInfo `json:"networkArea" yaml:"networkArea"`
+	NwPerfType  NetworkPerfType `json:"nwPerfType" yaml:"nwPerfType"`
+	AnaPeriod   *TimeWindow     `json:"anaPeriod,omitempty" yaml:"anaPeriod,omitempty"`
 	// Unsigned integer indicating Sampling Ratio (see clauses 4.15.1 of 3GPP TS 23.502), expressed in percent.
-	RelativeRatio *int32
+	RelativeRatio *int32 `json:"relativeRatio,omitempty" yaml:"relativeRatio,omitempty"`
 	// Unsigned Integer, i.e. only value 0 and integers above 0 are permissible.
-	AbsoluteNum *int32
-	RscUsgReq   *ResourceUsageRequirement
+	AbsoluteNum *int32                    `json:"absoluteNum,omitempty" yaml:"absoluteNum,omitempty"`
+	RscUsgReq   *ResourceUsageRequirement `json:"rscUsgReq,omitempty" yaml:"rscUsgReq,omitempty"`
 	// Unsigned Integer, i.e. only value 0 and integers above 0 are permissible.
-	Confidence *int32
+	Confidence *int32 `json:"confidence,omitempty" yaml:"confidence,omitempty"`
 }
 
 // NewNetworkPerfInfo instantiates a new NetworkPerfInfo object

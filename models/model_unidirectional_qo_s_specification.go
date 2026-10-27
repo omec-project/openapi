@@ -30,11 +30,11 @@ var _ openapi.MappedNullable = &UnidirectionalQoSSpecification{}
 // UnidirectionalQoSSpecification A specification for network Quality of Service in either the downlink or uplink direction.
 type UnidirectionalQoSSpecification struct {
 	// String representing a bit rate; the prefixes follow the standard symbols from The International System of Units, and represent x1000 multipliers, with the exception that prefix \"K\" is used to represent the standard symbol \"k\".
-	MaximumRequestedBitRate string `json:"maximumRequestedBitRate" yaml:"maximumRequestedBitRate" validate:"regexp=^\\\\d+(\\\\.\\\\d+)? (bps|Kbps|Mbps|Gbps|Tbps)$"`
+	MaximumRequestedBitRate string `json:"maximumRequestedBitRate" yaml:"maximumRequestedBitRate" validate:"regexp=^\\d+(\\.\\d+)? (bps|Kbps|Mbps|Gbps|Tbps)$"`
 	// String representing a bit rate; the prefixes follow the standard symbols from The International System of Units, and represent x1000 multipliers, with the exception that prefix \"K\" is used to represent the standard symbol \"k\".
-	MinimumDesiredBitRate *string `json:"minimumDesiredBitRate,omitempty" yaml:"minimumDesiredBitRate,omitempty" validate:"regexp=^\\\\d+(\\\\.\\\\d+)? (bps|Kbps|Mbps|Gbps|Tbps)$"`
+	MinimumDesiredBitRate *string `json:"minimumDesiredBitRate,omitempty" yaml:"minimumDesiredBitRate,omitempty" validate:"regexp=^\\d+(\\.\\d+)? (bps|Kbps|Mbps|Gbps|Tbps)$"`
 	// String representing a bit rate; the prefixes follow the standard symbols from The International System of Units, and represent x1000 multipliers, with the exception that prefix \"K\" is used to represent the standard symbol \"k\".
-	MinimumRequestedBitRate string `json:"minimumRequestedBitRate" yaml:"minimumRequestedBitRate" validate:"regexp=^\\\\d+(\\\\.\\\\d+)? (bps|Kbps|Mbps|Gbps|Tbps)$"`
+	MinimumRequestedBitRate string `json:"minimumRequestedBitRate" yaml:"minimumRequestedBitRate" validate:"regexp=^\\d+(\\.\\d+)? (bps|Kbps|Mbps|Gbps|Tbps)$"`
 	DesiredPacketLatency    *int32 `json:"desiredPacketLatency,omitempty" yaml:"desiredPacketLatency,omitempty"`
 	DesiredPacketLossRate   *int32 `json:"desiredPacketLossRate,omitempty" yaml:"desiredPacketLossRate,omitempty"`
 }

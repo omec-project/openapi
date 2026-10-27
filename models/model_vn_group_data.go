@@ -39,7 +39,7 @@ type VnGroupData struct {
 	DnAaaAddress             NullableIpAddress `json:"dnAaaAddress" yaml:"dnAaaAddress,omitempty"`
 	AdditionalDnAaaAddresses []IpAddress       `json:"additionalDnAaaAddresses,omitempty" yaml:"additionalDnAaaAddresses,omitempty"`
 	// Fully Qualified Domain Name
-	DnAaaFqdn *string `json:"dnAaaFqdn,omitempty" yaml:"dnAaaFqdn,omitempty" validate:"regexp=^([0-9A-Za-z]([-0-9A-Za-z]{0\\,61}[0-9A-Za-z])?\\.)+[A-Za-z]{2\\,63}\\.?$"`
+	DnAaaFqdn *string `json:"dnAaaFqdn,omitempty" yaml:"dnAaaFqdn,omitempty" validate:"regexp=^([0-9A-Za-z]([-0-9A-Za-z]{0,61}[0-9A-Za-z])?\\.)+[A-Za-z]{2,63}\\.?$"`
 }
 
 // NewVnGroupData instantiates a new VnGroupData object

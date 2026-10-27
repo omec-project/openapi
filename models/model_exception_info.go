@@ -29,9 +29,9 @@ var _ openapi.MappedNullable = &ExceptionInfo{}
 
 // ExceptionInfo Represents the exceptions information provided by the AF.
 type ExceptionInfo struct {
-	IpTrafficFilter  *FlowInfo
-	EthTrafficFilter *EthFlowDescription
-	Exceps           []Exception
+	IpTrafficFilter  *FlowInfo           `json:"ipTrafficFilter,omitempty" yaml:"ipTrafficFilter,omitempty"`
+	EthTrafficFilter *EthFlowDescription `json:"ethTrafficFilter,omitempty" yaml:"ethTrafficFilter,omitempty"`
+	Exceps           []Exception         `json:"exceps" yaml:"exceps"`
 }
 
 // NewExceptionInfo instantiates a new ExceptionInfo object

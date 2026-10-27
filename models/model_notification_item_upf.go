@@ -30,27 +30,27 @@ var _ openapi.MappedNullable = &NotificationItemUpf{}
 
 // NotificationItemUpf represents a report on one subscribed event
 type NotificationItemUpf struct {
-	EventType EventType
+	EventType EventType `json:"eventType" yaml:"eventType"`
 	// String identifying a IPv4 address formatted in the 'dotted decimal' notation as defined in RFC 1166.
-	UeIpv4Addr *string
+	UeIpv4Addr *string `json:"ueIpv4Addr,omitempty" yaml:"ueIpv4Addr,omitempty" validate:"regexp=^(([0-9]|[1-9][0-9]|1[0-9][0-9]|2[0-4][0-9]|25[0-5])\\.){3}([0-9]|[1-9][0-9]|1[0-9][0-9]|2[0-4][0-9]|25[0-5])$"`
 	// String identifying an IPv6 address prefix formatted according to clause 4 of RFC 5952. IPv6Prefix data type may contain an individual /128 IPv6 address.
-	UeIpv6Prefix *string
+	UeIpv6Prefix *string `json:"ueIpv6Prefix,omitempty" yaml:"ueIpv6Prefix,omitempty" validate:"regexp=^(((:|(0?|([1-9a-f][0-9a-f]{0,3}))):)((0?|([1-9a-f][0-9a-f]{0,3})):){0,6}(:|(0?|([1-9a-f][0-9a-f]{0,3})))(/(([0-9])|([0-9]{2})|(1[0-1][0-9])|(12[0-8])))|((([^:]+:){7}([^:]+))|((([^:]+:)*[^:]+)?::(([^:]+:)*[^:]+)?))(/.+))$"`
 	// String identifying a MAC address formatted in the hexadecimal notation according to clause 1.1 and clause 2.1 of RFC 7042.
-	UeMacAddr *string
+	UeMacAddr *string `json:"ueMacAddr,omitempty" yaml:"ueMacAddr,omitempty" validate:"regexp=^([0-9a-fA-F]{2})((-[0-9a-fA-F]{2}){5})$"`
 	// String representing a Data Network as defined in clause 9A of 3GPP TS 23.003; it shall contain either a DNN Network Identifier, or a full DNN with both the Network Identifier and Operator Identifier, as specified in 3GPP TS 23.003 clause 9.1.1 and 9.1.2. It shall be coded as string in which the labels are separated by dots (e.g. \"Label1.Label2.Label3\").
-	Dnn    *string
-	Snssai *Snssai
+	Dnn    *string `json:"dnn,omitempty" yaml:"dnn,omitempty"`
+	Snssai *Snssai `json:"snssai,omitempty" yaml:"snssai,omitempty"`
 	// String identifying a Gpsi shall contain either an External Id or an MSISDN. It shall be formatted as follows -External Identifier= \"extid-'extid', where 'extid' shall be formatted according to clause 19.7.2 of 3GPP TS 23.003 that describes an External Identifier.
-	Gpsi *string
+	Gpsi *string `json:"gpsi,omitempty" yaml:"gpsi,omitempty" validate:"regexp=^(msisdn-[0-9]{5,15}|extid-[^@]+@[^@]+|.+)$"`
 	// String identifying a Supi that shall contain either an IMSI, a network specific identifier, a Global Cable Identifier (GCI) or a Global Line Identifier (GLI) as specified in clause 2.2A of 3GPP TS 23.003. It shall be formatted as follows  - for an IMSI \"imsi-<imsi>\", where <imsi> shall be formatted according to clause 2.2    of 3GPP TS 23.003 that describes an IMSI.  - for a network specific identifier \"nai-<nai>, where <nai> shall be formatted    according to clause 28.7.2 of 3GPP TS 23.003 that describes an NAI.  - for a GCI \"gci-<gci>\", where <gci> shall be formatted according to clause 28.15.2    of 3GPP TS 23.003.  - for a GLI \"gli-<gli>\", where <gli> shall be formatted according to clause 28.16.2 of    3GPP TS 23.003.To enable that the value is used as part of an URI, the string shall    only contain characters allowed according to the \"lower-with-hyphen\" naming convention    defined in 3GPP TS 29.501.
-	Supi *string
+	Supi *string `json:"supi,omitempty" yaml:"supi,omitempty" validate:"regexp=^(imsi-[0-9]{5,15}|nai-.+|gci-.+|gli-.+|.+)$"`
 	// string with format 'date-time' as defined in OpenAPI.
-	TimeStamp time.Time
+	TimeStamp time.Time `json:"timeStamp" yaml:"timeStamp"`
 	// string with format 'date-time' as defined in OpenAPI.
-	StartTime                 *time.Time
-	QosMonitoringMeasurement  *QosMonitoringMeasurement
-	TscMngtInfo               *TscManagementInfo
-	UserDataUsageMeasurements []UserDataUsageMeasurements
+	StartTime                 *time.Time                  `json:"startTime,omitempty" yaml:"startTime,omitempty"`
+	QosMonitoringMeasurement  *QosMonitoringMeasurement   `json:"qosMonitoringMeasurement,omitempty" yaml:"qosMonitoringMeasurement,omitempty"`
+	TscMngtInfo               *TscManagementInfo          `json:"tscMngtInfo,omitempty" yaml:"tscMngtInfo,omitempty"`
+	UserDataUsageMeasurements []UserDataUsageMeasurements `json:"userDataUsageMeasurements,omitempty" yaml:"userDataUsageMeasurements,omitempty"`
 }
 
 // NewNotificationItemUpf instantiates a new NotificationItemUpf object

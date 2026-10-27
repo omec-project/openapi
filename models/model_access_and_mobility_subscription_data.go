@@ -58,7 +58,7 @@ type AccessAndMobilitySubscriptionData struct {
 	SorafRetrieval         *bool                                                     `json:"sorafRetrieval,omitempty" yaml:"sorafRetrieval,omitempty"`
 	SorUpdateIndicatorList []SorUpdateIndicator                                      `json:"sorUpdateIndicatorList,omitempty" yaml:"sorUpdateIndicatorList,omitempty"`
 	UpuInfo                *UpuInfo                                                  `json:"upuInfo,omitempty" yaml:"upuInfo,omitempty"`
-	RoutingIndicator       *string                                                   `json:"routingIndicator,omitempty" yaml:"routingIndicator,omitempty" validate:"regexp=^[0-9]{1\\,4}$"`
+	RoutingIndicator       *string                                                   `json:"routingIndicator,omitempty" yaml:"routingIndicator,omitempty" validate:"regexp=^[0-9]{1,4}$"`
 	MicoAllowed            *bool                                                     `json:"micoAllowed,omitempty" yaml:"micoAllowed,omitempty"`
 	SharedAmDataIds        []string                                                  `json:"sharedAmDataIds,omitempty" yaml:"sharedAmDataIds,omitempty"`
 	OdbPacketServices      NullableOdbPacketServices                                 `json:"odbPacketServices" yaml:"odbPacketServices,omitempty"`
@@ -70,12 +70,12 @@ type AccessAndMobilitySubscriptionData struct {
 	AdjacentPlmnMdtUserConsents *map[string]MdtUserConsent `json:"adjacentPlmnMdtUserConsents,omitempty" yaml:"adjacentPlmnMdtUserConsents,omitempty"`
 	MdtConfiguration            *MdtConfiguration          `json:"mdtConfiguration,omitempty" yaml:"mdtConfiguration,omitempty"`
 	TraceData                   NullableTraceData          `json:"traceData" yaml:"traceData,omitempty"`
-	SharedTraceDataId           *string                    `json:"sharedTraceDataId,omitempty" yaml:"sharedTraceDataId,omitempty" validate:"regexp=^[0-9]{5\\,6}-.+$"`
+	SharedTraceDataId           *string                    `json:"sharedTraceDataId,omitempty" yaml:"sharedTraceDataId,omitempty" validate:"regexp=^[0-9]{5,6}-.+$"`
 	CagData                     *CagData                   `json:"cagData,omitempty" yaml:"cagData,omitempty"`
 	// String representing the STN-SR as defined in clause 18.6 of 3GPP TS 23.003.
 	StnSr *string `json:"stnSr,omitempty" yaml:"stnSr,omitempty"`
 	// String representing the C-MSISDN as defined in clause 18.7 of 3GPP TS 23.003.
-	CMsisdn               *string `json:"cMsisdn,omitempty" yaml:"cMsisdn,omitempty" validate:"regexp=^[0-9]{5\\,15}$"`
+	CMsisdn               *string `json:"cMsisdn,omitempty" yaml:"cMsisdn,omitempty" validate:"regexp=^[0-9]{5,15}$"`
 	NbIoTUePriority       *int32  `json:"nbIoTUePriority,omitempty" yaml:"nbIoTUePriority,omitempty"`
 	NssaiInclusionAllowed *bool   `json:"nssaiInclusionAllowed,omitempty" yaml:"nssaiInclusionAllowed,omitempty"`
 	// string with format 'bytes' as defined in OpenAPI

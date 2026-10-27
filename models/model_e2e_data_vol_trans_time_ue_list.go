@@ -29,17 +29,17 @@ var _ openapi.MappedNullable = &E2eDataVolTransTimeUeList{}
 
 // E2eDataVolTransTimeUeList Contains the list of UEs classified based on experience level of E2E Data Volume Transfer Time
 type E2eDataVolTransTimeUeList struct {
-	HighLevel   []string
-	MediumLevel []string
-	LowLevel    []string
+	HighLevel   []string `json:"highLevel,omitempty" yaml:"highLevel,omitempty"`
+	MediumLevel []string `json:"mediumLevel,omitempty" yaml:"mediumLevel,omitempty"`
+	LowLevel    []string `json:"lowLevel,omitempty" yaml:"lowLevel,omitempty"`
 	// Unsigned integer indicating Sampling Ratio (see clauses 4.15.1 of 3GPP TS 23.502), expressed in percent.
-	LowRatio *int32
+	LowRatio *int32 `json:"lowRatio,omitempty" yaml:"lowRatio,omitempty"`
 	// Unsigned integer indicating Sampling Ratio (see clauses 4.15.1 of 3GPP TS 23.502), expressed in percent.
-	MediumRatio *int32
+	MediumRatio *int32 `json:"mediumRatio,omitempty" yaml:"mediumRatio,omitempty"`
 	// Unsigned integer indicating Sampling Ratio (see clauses 4.15.1 of 3GPP TS 23.502), expressed in percent.
-	HighRatio       *int32
-	SpatialValidity *NetworkAreaInfo
-	ValidityPeriod  *TimeWindow
+	HighRatio       *int32           `json:"highRatio,omitempty" yaml:"highRatio,omitempty"`
+	SpatialValidity *NetworkAreaInfo `json:"spatialValidity,omitempty" yaml:"spatialValidity,omitempty"`
+	ValidityPeriod  *TimeWindow      `json:"validityPeriod,omitempty" yaml:"validityPeriod,omitempty"`
 }
 
 // NewE2eDataVolTransTimeUeList instantiates a new E2eDataVolTransTimeUeList object

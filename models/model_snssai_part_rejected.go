@@ -29,9 +29,9 @@ var _ openapi.MappedNullable = &SnssaiPartRejected{}
 
 // SnssaiPartRejected Represents the list of the S-NSSAI(s) rejected partially in the RA.
 type SnssaiPartRejected struct {
-	Snssai          Snssai
-	AllowedTaiList  []Tai
-	RejectedTaiList []Tai
+	Snssai          Snssai `json:"snssai" yaml:"snssai"`
+	AllowedTaiList  []Tai  `json:"allowedTaiList,omitempty" yaml:"allowedTaiList,omitempty"`
+	RejectedTaiList []Tai  `json:"rejectedTaiList,omitempty" yaml:"rejectedTaiList,omitempty"`
 }
 
 // NewSnssaiPartRejected instantiates a new SnssaiPartRejected object

@@ -27,7 +27,7 @@ import (
 // checks if the NnwdafEventsSubscriptionNotification type satisfies the MappedNullable interface at compile time
 var _ openapi.MappedNullable = &NnwdafEventsSubscriptionNotification{}
 
-// NnwdafEventsSubscriptionNotification struct for NnwdafEventsSubscriptionNotification
+// NnwdafEventsSubscriptionNotification Represents an Individual NWDAF Event Subscription Notification resource.
 type NnwdafEventsSubscriptionNotification struct {
 }
 

@@ -29,11 +29,11 @@ var _ openapi.MappedNullable = &SnssaiUpfInfoItem{}
 
 // SnssaiUpfInfoItem Set of parameters supported by UPF for a given S-NSSAI
 type SnssaiUpfInfoItem struct {
-	SNssai               Snssai
-	DnnUpfInfoList       []DnnUpfInfoItem
-	RedundantTransport   *bool
-	InterfaceUpfInfoList []InterfaceUpfInfoItem
-	DnnUpfInfoListId     *int32
+	SNssai               Snssai                 `json:"sNssai" yaml:"sNssai"`
+	DnnUpfInfoList       []DnnUpfInfoItem       `json:"dnnUpfInfoList,omitempty" yaml:"dnnUpfInfoList,omitempty"`
+	RedundantTransport   *bool                  `json:"redundantTransport,omitempty" yaml:"redundantTransport,omitempty"`
+	InterfaceUpfInfoList []InterfaceUpfInfoItem `json:"interfaceUpfInfoList,omitempty" yaml:"interfaceUpfInfoList,omitempty"`
+	DnnUpfInfoListId     *int32                 `json:"dnnUpfInfoListId,omitempty" yaml:"dnnUpfInfoListId,omitempty"`
 }
 
 // NewSnssaiUpfInfoItem instantiates a new SnssaiUpfInfoItem object

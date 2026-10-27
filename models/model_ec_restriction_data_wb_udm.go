@@ -29,8 +29,8 @@ var _ openapi.MappedNullable = &EcRestrictionDataWbUdm{}
 
 // EcRestrictionDataWbUdm struct for EcRestrictionDataWbUdm
 type EcRestrictionDataWbUdm struct {
-	EcModeARestricted *bool
-	EcModeBRestricted *bool
+	EcModeARestricted *bool `json:"ecModeARestricted,omitempty" yaml:"ecModeARestricted,omitempty"`
+	EcModeBRestricted *bool `json:"ecModeBRestricted,omitempty" yaml:"ecModeBRestricted,omitempty"`
 }
 
 // NewEcRestrictionDataWbUdm instantiates a new EcRestrictionDataWbUdm object

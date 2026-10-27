@@ -31,7 +31,7 @@ var _ openapi.MappedNullable = &UeContext{}
 // UeContext Represents an individual ueContext resource
 type UeContext struct {
 	// String identifying a Supi that shall contain either an IMSI, a network specific identifier, a Global Cable Identifier (GCI) or a Global Line Identifier (GLI) as specified in clause 2.2A of 3GPP TS 23.003. It shall be formatted as follows  - for an IMSI \"imsi-<imsi>\", where <imsi> shall be formatted according to clause 2.2    of 3GPP TS 23.003 that describes an IMSI.  - for a network specific identifier \"nai-<nai>, where <nai> shall be formatted    according to clause 28.7.2 of 3GPP TS 23.003 that describes an NAI.  - for a GCI \"gci-<gci>\", where <gci> shall be formatted according to clause 28.15.2    of 3GPP TS 23.003.  - for a GLI \"gli-<gli>\", where <gli> shall be formatted according to clause 28.16.2 of    3GPP TS 23.003.To enable that the value is used as part of an URI, the string shall    only contain characters allowed according to the \"lower-with-hyphen\" naming convention    defined in 3GPP TS 29.501.
-	Supi          *string  `json:"supi,omitempty" yaml:"supi,omitempty" validate:"regexp=^(imsi-[0-9]{5\\,15}|nai-.+|gci-.+|gli-.+|.+)$"`
+	Supi          *string  `json:"supi,omitempty" yaml:"supi,omitempty" validate:"regexp=^(imsi-[0-9]{5,15}|nai-.+|gci-.+|gli-.+|.+)$"`
 	SupiUnauthInd *bool    `json:"supiUnauthInd,omitempty" yaml:"supiUnauthInd,omitempty"`
 	GpsiList      []string `json:"gpsiList,omitempty" yaml:"gpsiList,omitempty"`
 	// String representing a Permanent Equipment Identifier that may contain - an IMEI or IMEISV, as  specified in clause 6.2 of 3GPP TS 23.003; a MAC address for a 5G-RG or FN-RG via wireline  access, with an indication that this address cannot be trusted for regulatory purpose if this  address cannot be used as an Equipment Identifier of the FN-RG, as specified in clause 4.7.7  of 3GPP TS23.316. Examples are imei-012345678901234 or imeisv-0123456789012345.
@@ -95,7 +95,7 @@ type UeContext struct {
 	// String representing the STN-SR as defined in clause 18.6 of 3GPP TS 23.003.
 	StnSr *string `json:"stnSr,omitempty" yaml:"stnSr,omitempty"`
 	// String representing the C-MSISDN as defined in clause 18.7 of 3GPP TS 23.003.
-	CMsisdn *string `json:"cMsisdn,omitempty" yaml:"cMsisdn,omitempty" validate:"regexp=^[0-9]{5\\,15}$"`
+	CMsisdn *string `json:"cMsisdn,omitempty" yaml:"cMsisdn,omitempty" validate:"regexp=^[0-9]{5,15}$"`
 	// string with format 'bytes' as defined in OpenAPI
 	MsClassmark2               *string                   `json:"msClassmark2,omitempty" yaml:"msClassmark2,omitempty"`
 	SupportedCodecList         []string                  `json:"supportedCodecList,omitempty" yaml:"supportedCodecList,omitempty"`

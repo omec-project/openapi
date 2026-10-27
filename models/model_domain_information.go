@@ -30,7 +30,7 @@ var _ openapi.MappedNullable = &DomainInformation{}
 // DomainInformation Domain Information
 type DomainInformation struct {
 	// Fully Qualified Domain Name
-	DomainName         string      `json:"domainName" yaml:"domainName" validate:"regexp=^([0-9A-Za-z]([-0-9A-Za-z]{0,61}[0-9A-Za-z])?\\\\.)+[A-Za-z]{2,63}\\\\.?$"`
+	DomainName         string      `json:"domainName" yaml:"domainName" validate:"regexp=^([0-9A-Za-z]([-0-9A-Za-z]{0,61}[0-9A-Za-z])?\\.)+[A-Za-z]{2,63}\\.?$"`
 	DomainNameProtocol *DnProtocol `json:"domainNameProtocol,omitempty" yaml:"domainNameProtocol,omitempty"`
 }
 

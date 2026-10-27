@@ -30,9 +30,9 @@ var _ openapi.MappedNullable = &DataVolume{}
 // DataVolume Data Volume including UL/DL.
 type DataVolume struct {
 	// Unsigned integer identifying a volume in units of bytes.
-	UplinkVolume *int64
+	UplinkVolume *int64 `json:"uplinkVolume,omitempty" yaml:"uplinkVolume,omitempty"`
 	// Unsigned integer identifying a volume in units of bytes.
-	DownlinkVolume *int64
+	DownlinkVolume *int64 `json:"downlinkVolume,omitempty" yaml:"downlinkVolume,omitempty"`
 }
 
 // NewDataVolume instantiates a new DataVolume object

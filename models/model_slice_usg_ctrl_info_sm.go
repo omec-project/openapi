@@ -30,7 +30,7 @@ var _ openapi.MappedNullable = &SliceUsgCtrlInfoSm{}
 // SliceUsgCtrlInfoSm Represents network slice usage control information.
 type SliceUsgCtrlInfoSm struct {
 	// indicating a time in seconds with OpenAPI defined 'nullable: true' property.
-	PduSessInactivTimer openapi.NullableInt32
+	PduSessInactivTimer openapi.NullableInt32 `json:"pduSessInactivTimer" yaml:"pduSessInactivTimer,omitempty"`
 }
 
 // NewSliceUsgCtrlInfoSm instantiates a new SliceUsgCtrlInfoSm object

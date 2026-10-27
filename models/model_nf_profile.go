@@ -31,141 +31,141 @@ var _ openapi.MappedNullable = &NFProfile{}
 // NFProfile Information of an NF Instance registered in the NRF
 type NFProfile struct {
 	// String uniquely identifying a NF instance. The format of the NF Instance ID shall be a Universally Unique Identifier (UUID) version 4, as described in IETF RFC 4122.
-	NfInstanceId          string
-	NfInstanceName        *string
-	NfType                NFType
-	NfStatus              NFStatus
-	CollocatedNfInstances []CollocatedNfInstance
-	HeartBeatTimer        *int32
-	PlmnList              []PlmnId
-	SnpnList              []PlmnIdNid
-	SNssais               []Snssai
-	PerPlmnSnssaiList     []PlmnSnssai
-	NsiList               []string
+	NfInstanceId          string                 `json:"nfInstanceId" yaml:"nfInstanceId"`
+	NfInstanceName        *string                `json:"nfInstanceName,omitempty" yaml:"nfInstanceName,omitempty"`
+	NfType                NFType                 `json:"nfType" yaml:"nfType"`
+	NfStatus              NFStatus               `json:"nfStatus" yaml:"nfStatus"`
+	CollocatedNfInstances []CollocatedNfInstance `json:"collocatedNfInstances,omitempty" yaml:"collocatedNfInstances,omitempty"`
+	HeartBeatTimer        *int32                 `json:"heartBeatTimer,omitempty" yaml:"heartBeatTimer,omitempty"`
+	PlmnList              []PlmnId               `json:"plmnList,omitempty" yaml:"plmnList,omitempty"`
+	SnpnList              []PlmnIdNid            `json:"snpnList,omitempty" yaml:"snpnList,omitempty"`
+	SNssais               []Snssai               `json:"sNssais,omitempty" yaml:"sNssais,omitempty"`
+	PerPlmnSnssaiList     []PlmnSnssai           `json:"perPlmnSnssaiList,omitempty" yaml:"perPlmnSnssaiList,omitempty"`
+	NsiList               []string               `json:"nsiList,omitempty" yaml:"nsiList,omitempty"`
 	// Fully Qualified Domain Name
-	Fqdn *string
+	Fqdn *string `json:"fqdn,omitempty" yaml:"fqdn,omitempty" validate:"regexp=^([0-9A-Za-z]([-0-9A-Za-z]{0,61}[0-9A-Za-z])?\\.)+[A-Za-z]{2,63}\\.?$"`
 	// Fully Qualified Domain Name
-	InterPlmnFqdn    *string
-	Ipv4Addresses    []string
-	Ipv6Addresses    []string
-	AllowedPlmns     []PlmnId
-	AllowedSnpns     []PlmnIdNid
-	AllowedNfTypes   []NFType
-	AllowedNfDomains []string
-	AllowedNssais    []Snssai
+	InterPlmnFqdn    *string     `json:"interPlmnFqdn,omitempty" yaml:"interPlmnFqdn,omitempty" validate:"regexp=^([0-9A-Za-z]([-0-9A-Za-z]{0,61}[0-9A-Za-z])?\\.)+[A-Za-z]{2,63}\\.?$"`
+	Ipv4Addresses    []string    `json:"ipv4Addresses,omitempty" yaml:"ipv4Addresses,omitempty"`
+	Ipv6Addresses    []string    `json:"ipv6Addresses,omitempty" yaml:"ipv6Addresses,omitempty"`
+	AllowedPlmns     []PlmnId    `json:"allowedPlmns,omitempty" yaml:"allowedPlmns,omitempty"`
+	AllowedSnpns     []PlmnIdNid `json:"allowedSnpns,omitempty" yaml:"allowedSnpns,omitempty"`
+	AllowedNfTypes   []NFType    `json:"allowedNfTypes,omitempty" yaml:"allowedNfTypes,omitempty"`
+	AllowedNfDomains []string    `json:"allowedNfDomains,omitempty" yaml:"allowedNfDomains,omitempty"`
+	AllowedNssais    []Snssai    `json:"allowedNssais,omitempty" yaml:"allowedNssais,omitempty"`
 	// A map (list of key-value pairs) where a valid JSON pointer Id serves as key
-	AllowedRuleSet *map[string]RuleSet
-	Priority       *int32
-	Capacity       *int32
-	Load           *int32
+	AllowedRuleSet *map[string]RuleSet `json:"allowedRuleSet,omitempty" yaml:"allowedRuleSet,omitempty"`
+	Priority       *int32              `json:"priority,omitempty" yaml:"priority,omitempty"`
+	Capacity       *int32              `json:"capacity,omitempty" yaml:"capacity,omitempty"`
+	Load           *int32              `json:"load,omitempty" yaml:"load,omitempty"`
 	// string with format 'date-time' as defined in OpenAPI.
-	LoadTimeStamp *time.Time
-	Locality      *string
+	LoadTimeStamp *time.Time `json:"loadTimeStamp,omitempty" yaml:"loadTimeStamp,omitempty"`
+	Locality      *string    `json:"locality,omitempty" yaml:"locality,omitempty"`
 	// A map (list of key-value pairs) where a (unique) valid JSON string serves as key representing a type of locality
-	ExtLocality *map[string]string
-	UdrInfo     *UdrInfo
+	ExtLocality *map[string]string `json:"extLocality,omitempty" yaml:"extLocality,omitempty"`
+	UdrInfo     *UdrInfo           `json:"udrInfo,omitempty" yaml:"udrInfo,omitempty"`
 	// A map (list of key-value pairs) where a (unique) valid JSON string serves as key of UdrInfo
-	UdrInfoList *map[string]UdrInfo
-	UdmInfo     *UdmInfo
+	UdrInfoList *map[string]UdrInfo `json:"udrInfoList,omitempty" yaml:"udrInfoList,omitempty"`
+	UdmInfo     *UdmInfo            `json:"udmInfo,omitempty" yaml:"udmInfo,omitempty"`
 	// A map (list of key-value pairs) where a (unique) valid JSON string serves as key of UdmInfo
-	UdmInfoList *map[string]UdmInfo
-	AusfInfo    *AusfInfo
+	UdmInfoList *map[string]UdmInfo `json:"udmInfoList,omitempty" yaml:"udmInfoList,omitempty"`
+	AusfInfo    *AusfInfo           `json:"ausfInfo,omitempty" yaml:"ausfInfo,omitempty"`
 	// A map (list of key-value pairs) where a (unique) valid JSON string serves as key of AusfInfo
-	AusfInfoList *map[string]AusfInfo
-	AmfInfo      *AmfInfo
+	AusfInfoList *map[string]AusfInfo `json:"ausfInfoList,omitempty" yaml:"ausfInfoList,omitempty"`
+	AmfInfo      *AmfInfo             `json:"amfInfo,omitempty" yaml:"amfInfo,omitempty"`
 	// A map (list of key-value pairs) where a (unique) valid JSON string serves as key of AmfInfo
-	AmfInfoList *map[string]AmfInfo
-	SmfInfo     *SmfInfo
+	AmfInfoList *map[string]AmfInfo `json:"amfInfoList,omitempty" yaml:"amfInfoList,omitempty"`
+	SmfInfo     *SmfInfo            `json:"smfInfo,omitempty" yaml:"smfInfo,omitempty"`
 	// A map (list of key-value pairs) where a (unique) valid JSON string serves as key of SmfInfo
-	SmfInfoList *map[string]SmfInfo
-	UpfInfo     *UpfInfo
+	SmfInfoList *map[string]SmfInfo `json:"smfInfoList,omitempty" yaml:"smfInfoList,omitempty"`
+	UpfInfo     *UpfInfo            `json:"upfInfo,omitempty" yaml:"upfInfo,omitempty"`
 	// A map (list of key-value pairs) where a (unique) valid JSON string serves as key of UpfInfo
-	UpfInfoList *map[string]UpfInfo
-	PcfInfo     *PcfInfo
+	UpfInfoList *map[string]UpfInfo `json:"upfInfoList,omitempty" yaml:"upfInfoList,omitempty"`
+	PcfInfo     *PcfInfo            `json:"pcfInfo,omitempty" yaml:"pcfInfo,omitempty"`
 	// A map (list of key-value pairs) where a (unique) valid JSON string serves as key of PcfInfo
-	PcfInfoList *map[string]PcfInfo
-	BsfInfo     *BsfInfo
+	PcfInfoList *map[string]PcfInfo `json:"pcfInfoList,omitempty" yaml:"pcfInfoList,omitempty"`
+	BsfInfo     *BsfInfo            `json:"bsfInfo,omitempty" yaml:"bsfInfo,omitempty"`
 	// A map (list of key-value pairs) where a (unique) valid JSON string serves as key of BsfInfo
-	BsfInfoList *map[string]BsfInfo
-	ChfInfo     *ChfInfo
+	BsfInfoList *map[string]BsfInfo `json:"bsfInfoList,omitempty" yaml:"bsfInfoList,omitempty"`
+	ChfInfo     *ChfInfo            `json:"chfInfo,omitempty" yaml:"chfInfo,omitempty"`
 	// A map (list of key-value pairs) where a (unique) valid JSON string serves as key of ChfInfo
-	ChfInfoList *map[string]ChfInfo
-	NefInfo     *NefInfo
-	NrfInfo     *NrfInfo
-	UdsfInfo    *UdsfInfo
+	ChfInfoList *map[string]ChfInfo `json:"chfInfoList,omitempty" yaml:"chfInfoList,omitempty"`
+	NefInfo     *NefInfo            `json:"nefInfo,omitempty" yaml:"nefInfo,omitempty"`
+	NrfInfo     *NrfInfo            `json:"nrfInfo,omitempty" yaml:"nrfInfo,omitempty"`
+	UdsfInfo    *UdsfInfo           `json:"udsfInfo,omitempty" yaml:"udsfInfo,omitempty"`
 	// A map (list of key-value pairs) where a (unique) valid JSON string serves as key of UdsfInfo
-	UdsfInfoList *map[string]UdsfInfo
-	NwdafInfo    *NwdafInfo
+	UdsfInfoList *map[string]UdsfInfo `json:"udsfInfoList,omitempty" yaml:"udsfInfoList,omitempty"`
+	NwdafInfo    *NwdafInfo           `json:"nwdafInfo,omitempty" yaml:"nwdafInfo,omitempty"`
 	// A map (list of key-value pairs) where a (unique) valid JSON string serves as key of NwdafInfo
-	NwdafInfoList *map[string]NwdafInfo
+	NwdafInfoList *map[string]NwdafInfo `json:"nwdafInfoList,omitempty" yaml:"nwdafInfoList,omitempty"`
 	// A map (list of key-value pairs) where a (unique) valid JSON string serves as key of PcscfInfo
-	PcscfInfoList *map[string]PcscfInfo
+	PcscfInfoList *map[string]PcscfInfo `json:"pcscfInfoList,omitempty" yaml:"pcscfInfoList,omitempty"`
 	// A map (list of key-value pairs) where a (unique) valid JSON string serves as key of HssInfo
-	HssInfoList *map[string]HssInfo
-	CustomInfo  map[string]any
+	HssInfoList *map[string]HssInfo `json:"hssInfoList,omitempty" yaml:"hssInfoList,omitempty"`
+	CustomInfo  map[string]any      `json:"customInfo,omitempty" yaml:"customInfo,omitempty"`
 	// string with format 'date-time' as defined in OpenAPI.
-	RecoveryTime         *time.Time
-	NfServicePersistence *bool
+	RecoveryTime         *time.Time `json:"recoveryTime,omitempty" yaml:"recoveryTime,omitempty"`
+	NfServicePersistence *bool      `json:"nfServicePersistence,omitempty" yaml:"nfServicePersistence,omitempty"`
 	// Deprecated
-	NfServices []NFService
+	NfServices []NFService `json:"nfServices,omitempty" yaml:"nfServices,omitempty"`
 	// A map (list of key-value pairs) where serviceInstanceId serves as key of NFService
-	NfServiceList                           *map[string]NFService
-	NfProfileChangesSupportInd              *bool
-	NfProfilePartialUpdateChangesSupportInd *bool
-	NfProfileChangesInd                     *bool
-	DefaultNotificationSubscriptions        []DefaultNotificationSubscription
-	LmfInfo                                 *LmfInfo
-	GmlcInfo                                *GmlcInfo
-	NfSetIdList                             []string
-	ServingScope                            []string
-	LcHSupportInd                           *bool
-	OlcHSupportInd                          *bool
+	NfServiceList                           *map[string]NFService             `json:"nfServiceList,omitempty" yaml:"nfServiceList,omitempty"`
+	NfProfileChangesSupportInd              *bool                             `json:"nfProfileChangesSupportInd,omitempty" yaml:"nfProfileChangesSupportInd,omitempty"`
+	NfProfilePartialUpdateChangesSupportInd *bool                             `json:"nfProfilePartialUpdateChangesSupportInd,omitempty" yaml:"nfProfilePartialUpdateChangesSupportInd,omitempty"`
+	NfProfileChangesInd                     *bool                             `json:"nfProfileChangesInd,omitempty" yaml:"nfProfileChangesInd,omitempty"`
+	DefaultNotificationSubscriptions        []DefaultNotificationSubscription `json:"defaultNotificationSubscriptions,omitempty" yaml:"defaultNotificationSubscriptions,omitempty"`
+	LmfInfo                                 *LmfInfo                          `json:"lmfInfo,omitempty" yaml:"lmfInfo,omitempty"`
+	GmlcInfo                                *GmlcInfo                         `json:"gmlcInfo,omitempty" yaml:"gmlcInfo,omitempty"`
+	NfSetIdList                             []string                          `json:"nfSetIdList,omitempty" yaml:"nfSetIdList,omitempty"`
+	ServingScope                            []string                          `json:"servingScope,omitempty" yaml:"servingScope,omitempty"`
+	LcHSupportInd                           *bool                             `json:"lcHSupportInd,omitempty" yaml:"lcHSupportInd,omitempty"`
+	OlcHSupportInd                          *bool                             `json:"olcHSupportInd,omitempty" yaml:"olcHSupportInd,omitempty"`
 	// A map (list of key-value pairs) where NfSetId serves as key of DateTime
-	NfSetRecoveryTimeList *map[string]time.Time
+	NfSetRecoveryTimeList *map[string]time.Time `json:"nfSetRecoveryTimeList,omitempty" yaml:"nfSetRecoveryTimeList,omitempty"`
 	// A map (list of key-value pairs) where NfServiceSetId serves as key of DateTime
-	ServiceSetRecoveryTimeList *map[string]time.Time
-	ScpDomains                 []string
-	ScpInfo                    *ScpInfo
-	SeppInfo                   *SeppInfo
+	ServiceSetRecoveryTimeList *map[string]time.Time `json:"serviceSetRecoveryTimeList,omitempty" yaml:"serviceSetRecoveryTimeList,omitempty"`
+	ScpDomains                 []string              `json:"scpDomains,omitempty" yaml:"scpDomains,omitempty"`
+	ScpInfo                    *ScpInfo              `json:"scpInfo,omitempty" yaml:"scpInfo,omitempty"`
+	SeppInfo                   *SeppInfo             `json:"seppInfo,omitempty" yaml:"seppInfo,omitempty"`
 	// Vendor ID of the NF Service instance (Private Enterprise Number assigned by IANA)
-	VendorId *string
+	VendorId *string `json:"vendorId,omitempty" yaml:"vendorId,omitempty" validate:"regexp=^[0-9]{6}$"`
 	// The key of the map is the IANA-assigned SMI Network Management Private Enterprise Codes
-	SupportedVendorSpecificFeatures *map[string][]VendorSpecificFeature
+	SupportedVendorSpecificFeatures *map[string][]VendorSpecificFeature `json:"supportedVendorSpecificFeatures,omitempty" yaml:"supportedVendorSpecificFeatures,omitempty"`
 	// A map (list of key-value pairs) where a (unique) valid JSON string serves as key of AanfInfo
-	AanfInfoList   *map[string]AanfInfo
-	Var5gDdnmfInfo *FiveGDdnmfInfo
-	MfafInfo       *MfafInfo
+	AanfInfoList   *map[string]AanfInfo `json:"aanfInfoList,omitempty" yaml:"aanfInfoList,omitempty"`
+	Var5gDdnmfInfo *FiveGDdnmfInfo      `json:"5gDdnmfInfo,omitempty" yaml:"5gDdnmfInfo,omitempty"`
+	MfafInfo       *MfafInfo            `json:"mfafInfo,omitempty" yaml:"mfafInfo,omitempty"`
 	// A map (list of key-value pairs) where a (unique) valid JSON string serves as key of EasdfInfo
-	EasdfInfoList *map[string]EasdfInfo
-	DccfInfo      *DccfInfo
+	EasdfInfoList *map[string]EasdfInfo `json:"easdfInfoList,omitempty" yaml:"easdfInfoList,omitempty"`
+	DccfInfo      *DccfInfo             `json:"dccfInfo,omitempty" yaml:"dccfInfo,omitempty"`
 	// A map (list of key-value pairs) where a (unique) valid JSON string serves as key of NsacfInfo
-	NsacfInfoList *map[string]NsacfInfo
+	NsacfInfoList *map[string]NsacfInfo `json:"nsacfInfoList,omitempty" yaml:"nsacfInfoList,omitempty"`
 	// A map (list of key-value pairs) where a (unique) valid JSON string serves as key of MbSmfInfo
-	MbSmfInfoList *map[string]MbSmfInfo
+	MbSmfInfoList *map[string]MbSmfInfo `json:"mbSmfInfoList,omitempty" yaml:"mbSmfInfoList,omitempty"`
 	// A map (list of key-value pairs) where a (unique) valid JSON string serves as key of TsctsfInfo
-	TsctsfInfoList *map[string]TsctsfInfo
+	TsctsfInfoList *map[string]TsctsfInfo `json:"tsctsfInfoList,omitempty" yaml:"tsctsfInfoList,omitempty"`
 	// A map (list of key-value pairs) where a (unique) valid JSON string serves as key of MbUpfInfo
-	MbUpfInfoList *map[string]MbUpfInfo
-	TrustAfInfo   *TrustAfInfo
-	NssaafInfo    *NssaafInfo
-	HniList       []string
-	IwmscInfo     *IwmscInfo
-	MnpfInfo      *MnpfInfo
-	SmsfInfo      *SmsfInfo
+	MbUpfInfoList *map[string]MbUpfInfo `json:"mbUpfInfoList,omitempty" yaml:"mbUpfInfoList,omitempty"`
+	TrustAfInfo   *TrustAfInfo          `json:"trustAfInfo,omitempty" yaml:"trustAfInfo,omitempty"`
+	NssaafInfo    *NssaafInfo           `json:"nssaafInfo,omitempty" yaml:"nssaafInfo,omitempty"`
+	HniList       []string              `json:"hniList,omitempty" yaml:"hniList,omitempty"`
+	IwmscInfo     *IwmscInfo            `json:"iwmscInfo,omitempty" yaml:"iwmscInfo,omitempty"`
+	MnpfInfo      *MnpfInfo             `json:"mnpfInfo,omitempty" yaml:"mnpfInfo,omitempty"`
+	SmsfInfo      *SmsfInfo             `json:"smsfInfo,omitempty" yaml:"smsfInfo,omitempty"`
 	// A map (list of key-value pairs) where a (unique) valid JSON string serves as key of DcsfInfo
-	DcsfInfoList *map[string]DcsfInfo
+	DcsfInfoList *map[string]DcsfInfo `json:"dcsfInfoList,omitempty" yaml:"dcsfInfoList,omitempty"`
 	// A map (list of key-value pairs) where a (unique) valid JSON string serves as key of MrfInfo
-	MrfInfoList *map[string]MrfInfo
+	MrfInfoList *map[string]MrfInfo `json:"mrfInfoList,omitempty" yaml:"mrfInfoList,omitempty"`
 	// A map (list of key-value pairs) where a (unique) valid JSON string serves as key of MrfpInfo
-	MrfpInfoList *map[string]MrfpInfo
+	MrfpInfoList *map[string]MrfpInfo `json:"mrfpInfoList,omitempty" yaml:"mrfpInfoList,omitempty"`
 	// A map (list of key-value pairs) where a (unique) valid JSON string serves as key of MfInfo
-	MfInfoList *map[string]MfInfo
+	MfInfoList *map[string]MfInfo `json:"mfInfoList,omitempty" yaml:"mfInfoList,omitempty"`
 	// A map (list of key-value pairs) where a (unique) valid JSON string serves as key of AdrfInfo
-	AdrfInfoList                    *map[string]AdrfInfo
-	SelectionConditions             *SelectionConditions
-	CanaryRelease                   *bool
-	ExclusiveCanaryReleaseSelection *bool
-	SharedProfileDataId             *string
+	AdrfInfoList                    *map[string]AdrfInfo `json:"adrfInfoList,omitempty" yaml:"adrfInfoList,omitempty"`
+	SelectionConditions             *SelectionConditions `json:"selectionConditions,omitempty" yaml:"selectionConditions,omitempty"`
+	CanaryRelease                   *bool                `json:"canaryRelease,omitempty" yaml:"canaryRelease,omitempty"`
+	ExclusiveCanaryReleaseSelection *bool                `json:"exclusiveCanaryReleaseSelection,omitempty" yaml:"exclusiveCanaryReleaseSelection,omitempty"`
+	SharedProfileDataId             *string              `json:"sharedProfileDataId,omitempty" yaml:"sharedProfileDataId,omitempty"`
 }
 
 // NewNFProfile instantiates a new NFProfile object

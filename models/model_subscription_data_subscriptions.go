@@ -31,7 +31,7 @@ var _ openapi.MappedNullable = &SubscriptionDataSubscriptions{}
 // SubscriptionDataSubscriptions A subscription to notifications.
 type SubscriptionDataSubscriptions struct {
 	// String represents the SUPI or GPSI
-	UeId *string `json:"ueId,omitempty" yaml:"ueId,omitempty" validate:"regexp=^(imsi-[0-9]{5\\,15}|nai-.+|msisdn-[0-9]{5\\,15}|extid-[^@]+@[^@]+|gci-.+|gli-.+|.+)$"`
+	UeId *string `json:"ueId,omitempty" yaml:"ueId,omitempty" validate:"regexp=^(imsi-[0-9]{5,15}|nai-.+|msisdn-[0-9]{5,15}|extid-[^@]+@[^@]+|gci-.+|gli-.+|.+)$"`
 	// String providing an URI formatted according to RFC 3986.
 	CallbackReference string `json:"callbackReference" yaml:"callbackReference"`
 	// String providing an URI formatted according to RFC 3986.

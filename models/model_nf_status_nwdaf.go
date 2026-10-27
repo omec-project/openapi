@@ -30,11 +30,11 @@ var _ openapi.MappedNullable = &NfStatusNwdaf{}
 // NfStatusNwdaf Contains the percentage of time spent on various NF states.
 type NfStatusNwdaf struct {
 	// Unsigned integer indicating Sampling Ratio (see clauses 4.15.1 of 3GPP TS 23.502), expressed in percent.
-	StatusRegistered *int32
+	StatusRegistered *int32 `json:"statusRegistered,omitempty" yaml:"statusRegistered,omitempty"`
 	// Unsigned integer indicating Sampling Ratio (see clauses 4.15.1 of 3GPP TS 23.502), expressed in percent.
-	StatusUnregistered *int32
+	StatusUnregistered *int32 `json:"statusUnregistered,omitempty" yaml:"statusUnregistered,omitempty"`
 	// Unsigned integer indicating Sampling Ratio (see clauses 4.15.1 of 3GPP TS 23.502), expressed in percent.
-	StatusUndiscoverable *int32
+	StatusUndiscoverable *int32 `json:"statusUndiscoverable,omitempty" yaml:"statusUndiscoverable,omitempty"`
 }
 
 // NewNfStatusNwdaf instantiates a new NfStatusNwdaf object

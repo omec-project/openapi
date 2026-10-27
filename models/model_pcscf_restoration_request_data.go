@@ -30,15 +30,15 @@ var _ openapi.MappedNullable = &PcscfRestorationRequestData{}
 // PcscfRestorationRequestData Indicates P-CSCF restoration.
 type PcscfRestorationRequestData struct {
 	// String representing a Data Network as defined in clause 9A of 3GPP TS 23.003; it shall contain either a DNN Network Identifier, or a full DNN with both the Network Identifier and Operator Identifier, as specified in 3GPP TS 23.003 clause 9.1.1 and 9.1.2. It shall be coded as string in which the labels are separated by dots (e.g. \"Label1.Label2.Label3\").
-	Dnn       *string
-	IpDomain  *string
-	SliceInfo *Snssai
+	Dnn       *string `json:"dnn,omitempty" yaml:"dnn,omitempty"`
+	IpDomain  *string `json:"ipDomain,omitempty" yaml:"ipDomain,omitempty"`
+	SliceInfo *Snssai `json:"sliceInfo,omitempty" yaml:"sliceInfo,omitempty"`
 	// String identifying a Supi that shall contain either an IMSI, a network specific identifier, a Global Cable Identifier (GCI) or a Global Line Identifier (GLI) as specified in clause 2.2A of 3GPP TS 23.003. It shall be formatted as follows  - for an IMSI \"imsi-<imsi>\", where <imsi> shall be formatted according to clause 2.2    of 3GPP TS 23.003 that describes an IMSI.  - for a network specific identifier \"nai-<nai>, where <nai> shall be formatted    according to clause 28.7.2 of 3GPP TS 23.003 that describes an NAI.  - for a GCI \"gci-<gci>\", where <gci> shall be formatted according to clause 28.15.2    of 3GPP TS 23.003.  - for a GLI \"gli-<gli>\", where <gli> shall be formatted according to clause 28.16.2 of    3GPP TS 23.003.To enable that the value is used as part of an URI, the string shall    only contain characters allowed according to the \"lower-with-hyphen\" naming convention    defined in 3GPP TS 29.501.
-	Supi *string
+	Supi *string `json:"supi,omitempty" yaml:"supi,omitempty" validate:"regexp=^(imsi-[0-9]{5,15}|nai-.+|gci-.+|gli-.+|.+)$"`
 	// String identifying a IPv4 address formatted in the 'dotted decimal' notation as defined in RFC 1166.
-	UeIpv4 *string
+	UeIpv4 *string `json:"ueIpv4,omitempty" yaml:"ueIpv4,omitempty" validate:"regexp=^(([0-9]|[1-9][0-9]|1[0-9][0-9]|2[0-4][0-9]|25[0-5])\\.){3}([0-9]|[1-9][0-9]|1[0-9][0-9]|2[0-4][0-9]|25[0-5])$"`
 	// String identifying an IPv6 address formatted according to clause 4 of RFC5952. The mixed IPv4 IPv6 notation according to clause 5 of RFC5952 shall not be used.
-	UeIpv6 *string
+	UeIpv6 *string `json:"ueIpv6,omitempty" yaml:"ueIpv6,omitempty" validate:"regexp=^(((:|(0?|([1-9a-f][0-9a-f]{0,3}))):)((0?|([1-9a-f][0-9a-f]{0,3})):){0,6}(:|(0?|([1-9a-f][0-9a-f]{0,3}))))|((([^:]+:){7}([^:]+))|((([^:]+:)*[^:]+)?::(([^:]+:)*[^:]+)?)))$"`
 }
 
 // NewPcscfRestorationRequestData instantiates a new PcscfRestorationRequestData object

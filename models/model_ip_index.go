@@ -32,9 +32,8 @@ type IpIndex struct {
 
 // Unmarshal JSON data into any of the pointers in the struct
 func (dst *IpIndex) UnmarshalJSON(data []byte) error {
-	var err error
 	// try to unmarshal JSON data into Int32
-	err = json.Unmarshal(data, &dst.Int32)
+	err := json.Unmarshal(data, &dst.Int32)
 	if err == nil {
 		jsonInt32, _ := json.Marshal(dst.Int32)
 		if string(jsonInt32) == "{}" { // empty struct

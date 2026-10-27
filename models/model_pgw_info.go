@@ -33,7 +33,7 @@ type PgwInfo struct {
 	// String representing a Data Network as defined in clause 9A of 3GPP TS 23.003; it shall contain either a DNN Network Identifier, or a full DNN with both the Network Identifier and Operator Identifier, as specified in 3GPP TS 23.003 clause 9.1.1 and 9.1.2. It shall be coded as string in which the labels are separated by dots (e.g. \"Label1.Label2.Label3\").
 	Dnn string `json:"dnn" yaml:"dnn"`
 	// Fully Qualified Domain Name
-	PgwFqdn   string            `json:"pgwFqdn" yaml:"pgwFqdn" validate:"regexp=^([0-9A-Za-z]([-0-9A-Za-z]{0\\,61}[0-9A-Za-z])?\\.)+[A-Za-z]{2\\,63}\\.?$"`
+	PgwFqdn   string            `json:"pgwFqdn" yaml:"pgwFqdn" validate:"regexp=^([0-9A-Za-z]([-0-9A-Za-z]{0,61}[0-9A-Za-z])?\\.)+[A-Za-z]{2,63}\\.?$"`
 	PgwIpAddr NullableIpAddress `json:"pgwIpAddr" yaml:"pgwIpAddr,omitempty"`
 	PlmnId    *PlmnId           `json:"plmnId,omitempty" yaml:"plmnId,omitempty"`
 	EpdgInd   *bool             `json:"epdgInd,omitempty" yaml:"epdgInd,omitempty"`

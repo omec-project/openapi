@@ -42,10 +42,9 @@ type GeographicArea struct {
 
 // Unmarshal JSON data into any of the pointers in the struct
 func (dst *GeographicArea) UnmarshalJSON(data []byte) error {
-	var err error
 	// use discriminator value to speed up the lookup
 	var jsonDict map[string]any
-	err = json.Unmarshal(data, &jsonDict)
+	err := json.Unmarshal(data, &jsonDict)
 	if err != nil {
 		return openapi.ReportError("failed to unmarshal JSON into map for the discriminator lookup")
 	}

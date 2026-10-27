@@ -39,7 +39,7 @@ type SmsManagementSubscriptionData struct {
 	MoSmsBarringRoaming *bool             `json:"moSmsBarringRoaming,omitempty" yaml:"moSmsBarringRoaming,omitempty"`
 	SharedSmsMngDataIds []string          `json:"sharedSmsMngDataIds,omitempty" yaml:"sharedSmsMngDataIds,omitempty"`
 	TraceData           NullableTraceData `json:"traceData" yaml:"traceData,omitempty"`
-	SharedTraceDataId   *string           `json:"sharedTraceDataId,omitempty" yaml:"sharedTraceDataId,omitempty" validate:"regexp=^[0-9]{5\\,6}-.+$"`
+	SharedTraceDataId   *string           `json:"sharedTraceDataId,omitempty" yaml:"sharedTraceDataId,omitempty" validate:"regexp=^[0-9]{5,6}-.+$"`
 }
 
 // NewSmsManagementSubscriptionData instantiates a new SmsManagementSubscriptionData object

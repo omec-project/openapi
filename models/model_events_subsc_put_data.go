@@ -32,9 +32,8 @@ type EventsSubscPutData struct {
 
 // Unmarshal JSON data into any of the pointers in the struct
 func (dst *EventsSubscPutData) UnmarshalJSON(data []byte) error {
-	var err error
 	// try to unmarshal JSON data into EventsNotification
-	err = json.Unmarshal(data, &dst.EventsNotification)
+	err := json.Unmarshal(data, &dst.EventsNotification)
 	if err == nil {
 		jsonEventsNotification, _ := json.Marshal(dst.EventsNotification)
 		if string(jsonEventsNotification) == "{}" { // empty struct

@@ -30,8 +30,8 @@ var _ openapi.MappedNullable = &IpEthFlowDescription{}
 // IpEthFlowDescription Contains the description of an Uplink and/or Downlink Ethernet flow.
 type IpEthFlowDescription struct {
 	// Defines a packet filter of an IP flow.
-	IpTrafficFilter  *string
-	EthTrafficFilter *EthFlowDescription
+	IpTrafficFilter  *string             `json:"ipTrafficFilter,omitempty" yaml:"ipTrafficFilter,omitempty"`
+	EthTrafficFilter *EthFlowDescription `json:"ethTrafficFilter,omitempty" yaml:"ethTrafficFilter,omitempty"`
 }
 
 // NewIpEthFlowDescription instantiates a new IpEthFlowDescription object

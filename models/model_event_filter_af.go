@@ -29,16 +29,16 @@ var _ openapi.MappedNullable = &EventFilterAf{}
 
 // EventFilterAf Represents event filter information for an event.
 type EventFilterAf struct {
-	Gpsis         []string
-	Supis         []string
-	ExterGroupIds []string
-	InterGroupIds []string
-	AnyUeInd      *bool
-	UeIpAddr      NullableIpAddr
-	AppIds        []string
-	LocArea       *LocationArea5G
-	CollAttrs     []CollectiveBehaviourFilter
-	ExceptionReqs []Exception
+	Gpsis         []string                    `json:"gpsis,omitempty" yaml:"gpsis,omitempty"`
+	Supis         []string                    `json:"supis,omitempty" yaml:"supis,omitempty"`
+	ExterGroupIds []string                    `json:"exterGroupIds,omitempty" yaml:"exterGroupIds,omitempty"`
+	InterGroupIds []string                    `json:"interGroupIds,omitempty" yaml:"interGroupIds,omitempty"`
+	AnyUeInd      *bool                       `json:"anyUeInd,omitempty" yaml:"anyUeInd,omitempty"`
+	UeIpAddr      NullableIpAddr              `json:"ueIpAddr" yaml:"ueIpAddr,omitempty"`
+	AppIds        []string                    `json:"appIds,omitempty" yaml:"appIds,omitempty"`
+	LocArea       *LocationArea5G             `json:"locArea,omitempty" yaml:"locArea,omitempty"`
+	CollAttrs     []CollectiveBehaviourFilter `json:"collAttrs,omitempty" yaml:"collAttrs,omitempty"`
+	ExceptionReqs []Exception                 `json:"exceptionReqs,omitempty" yaml:"exceptionReqs,omitempty"`
 }
 
 // NewEventFilterAf instantiates a new EventFilterAf object

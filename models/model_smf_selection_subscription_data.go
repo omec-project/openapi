@@ -33,7 +33,7 @@ type SmfSelectionSubscriptionData struct {
 	SupportedFeatures *string `json:"supportedFeatures,omitempty" yaml:"supportedFeatures,omitempty" validate:"regexp=^[A-Fa-f0-9]*$"`
 	// A map(list of key-value pairs) where singleNssai serves as key of SnssaiInfo
 	SubscribedSnssaiInfos *map[string]SnssaiInfo `json:"subscribedSnssaiInfos,omitempty" yaml:"subscribedSnssaiInfos,omitempty"`
-	SharedSnssaiInfosId   *string                `json:"sharedSnssaiInfosId,omitempty" yaml:"sharedSnssaiInfosId,omitempty" validate:"regexp=^[0-9]{5\\,6}-.+$"`
+	SharedSnssaiInfosId   *string                `json:"sharedSnssaiInfosId,omitempty" yaml:"sharedSnssaiInfosId,omitempty" validate:"regexp=^[0-9]{5,6}-.+$"`
 	// Identifier of a group of NFs.
 	HssGroupId *string `json:"hssGroupId,omitempty" yaml:"hssGroupId,omitempty"`
 }

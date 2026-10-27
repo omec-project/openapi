@@ -46,7 +46,7 @@ type ProblemDetailsProvidePosInfo struct {
 	AccessTokenError   *AccessTokenErr `json:"accessTokenError,omitempty" yaml:"accessTokenError,omitempty"`
 	AccessTokenRequest *AccessTokenReq `json:"accessTokenRequest,omitempty" yaml:"accessTokenRequest,omitempty"`
 	// Fully Qualified Domain Name
-	NrfId                       *string                      `json:"nrfId,omitempty" yaml:"nrfId,omitempty" validate:"regexp=^([0-9A-Za-z]([-0-9A-Za-z]{0\\,61}[0-9A-Za-z])?\\.)+[A-Za-z]{2\\,63}\\.?$"`
+	NrfId                       *string                      `json:"nrfId,omitempty" yaml:"nrfId,omitempty" validate:"regexp=^([0-9A-Za-z]([-0-9A-Za-z]{0,61}[0-9A-Za-z])?\\.)+[A-Za-z]{2,63}\\.?$"`
 	SupportedApiVersions        []string                     `json:"supportedApiVersions,omitempty" yaml:"supportedApiVersions,omitempty"`
 	NoProfileMatchInfo          *NoProfileMatchInfo          `json:"noProfileMatchInfo,omitempty" yaml:"noProfileMatchInfo,omitempty"`
 	LocationEstimate            *GeographicArea              `json:"locationEstimate,omitempty" yaml:"locationEstimate,omitempty"`
@@ -63,9 +63,9 @@ type ProblemDetailsProvidePosInfo struct {
 	// String uniquely identifying a NF instance. The format of the NF Instance ID shall be a Universally Unique Identifier (UUID) version 4, as described in IETF RFC 4122.
 	TargetServingNode *string `json:"targetServingNode,omitempty" yaml:"targetServingNode,omitempty"`
 	// Fully Qualified Domain Name
-	TargetMmeName *string `json:"targetMmeName,omitempty" yaml:"targetMmeName,omitempty" validate:"regexp=^([0-9A-Za-z]([-0-9A-Za-z]{0\\,61}[0-9A-Za-z])?\\.)+[A-Za-z]{2\\,63}\\.?$"`
+	TargetMmeName *string `json:"targetMmeName,omitempty" yaml:"targetMmeName,omitempty" validate:"regexp=^([0-9A-Za-z]([-0-9A-Za-z]{0,61}[0-9A-Za-z])?\\.)+[A-Za-z]{2,63}\\.?$"`
 	// Fully Qualified Domain Name
-	TargetMmeRealm *string       `json:"targetMmeRealm,omitempty" yaml:"targetMmeRealm,omitempty" validate:"regexp=^([0-9A-Za-z]([-0-9A-Za-z]{0\\,61}[0-9A-Za-z])?\\.)+[A-Za-z]{2\\,63}\\.?$"`
+	TargetMmeRealm *string       `json:"targetMmeRealm,omitempty" yaml:"targetMmeRealm,omitempty" validate:"regexp=^([0-9A-Za-z]([-0-9A-Za-z]{0,61}[0-9A-Za-z])?\\.)+[A-Za-z]{2,63}\\.?$"`
 	UtranSrvccInd  *bool         `json:"utranSrvccInd,omitempty" yaml:"utranSrvccInd,omitempty"`
 	CivicAddress   *CivicAddress `json:"civicAddress,omitempty" yaml:"civicAddress,omitempty"`
 	// Specifies the measured uncompensated atmospheric pressure.

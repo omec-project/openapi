@@ -30,10 +30,10 @@ var _ openapi.MappedNullable = &RouteToLocation{}
 // RouteToLocation At least one of the \"routeInfo\" attribute and the \"routeProfId\" attribute shall be included in the \"RouteToLocation\" data type.
 type RouteToLocation struct {
 	// DNAI (Data network access identifier), see clause 5.6.7 of 3GPP TS 23.501.
-	Dnai      string
-	RouteInfo NullableRouteInformation
+	Dnai      string                   `json:"dnai" yaml:"dnai"`
+	RouteInfo NullableRouteInformation `json:"routeInfo" yaml:"routeInfo,omitempty"`
 	// Identifies the routing profile Id.
-	RouteProfId openapi.NullableString
+	RouteProfId openapi.NullableString `json:"routeProfId" yaml:"routeProfId,omitempty"`
 }
 
 // NewRouteToLocation instantiates a new RouteToLocation object

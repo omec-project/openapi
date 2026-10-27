@@ -30,9 +30,9 @@ var _ openapi.MappedNullable = &MLModelAddr{}
 // MLModelAddr Addresses of ML model files.
 type MLModelAddr struct {
 	// String providing an URI formatted according to RFC 3986.
-	MLModelUrl *string
+	MLModelUrl *string `json:"mLModelUrl,omitempty" yaml:"mLModelUrl,omitempty"`
 	// The FQDN of the ML Model file.
-	MlFileFqdn *string
+	MlFileFqdn *string `json:"mlFileFqdn,omitempty" yaml:"mlFileFqdn,omitempty"`
 }
 
 // NewMLModelAddr instantiates a new MLModelAddr object

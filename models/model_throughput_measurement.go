@@ -30,13 +30,13 @@ var _ openapi.MappedNullable = &ThroughputMeasurement{}
 // ThroughputMeasurement Throughput Measurement information
 type ThroughputMeasurement struct {
 	// String representing a bit rate; the prefixes follow the standard symbols from The International System of Units, and represent x1000 multipliers, with the exception that prefix \"K\" is used to represent the standard symbol \"k\".
-	UlThroughput *string `json:"ulThroughput,omitempty" yaml:"ulThroughput,omitempty" validate:"regexp=^\\\\d+(\\\\.\\\\d+)? (bps|Kbps|Mbps|Gbps|Tbps)$"`
+	UlThroughput *string `json:"ulThroughput,omitempty" yaml:"ulThroughput,omitempty" validate:"regexp=^\\d+(\\.\\d+)? (bps|Kbps|Mbps|Gbps|Tbps)$"`
 	// String representing a bit rate; the prefixes follow the standard symbols from The International System of Units, and represent x1000 multipliers, with the exception that prefix \"K\" is used to represent the standard symbol \"k\".
-	DlThroughput *string `json:"dlThroughput,omitempty" yaml:"dlThroughput,omitempty" validate:"regexp=^\\\\d+(\\\\.\\\\d+)? (bps|Kbps|Mbps|Gbps|Tbps)$"`
+	DlThroughput *string `json:"dlThroughput,omitempty" yaml:"dlThroughput,omitempty" validate:"regexp=^\\d+(\\.\\d+)? (bps|Kbps|Mbps|Gbps|Tbps)$"`
 	// String representing a packet rate, i.e., packet per second; the prefixes follow the symbols from The International System of Units, and represent x1000 multipliers.
-	UlPacketThroughput *string `json:"ulPacketThroughput,omitempty" yaml:"ulPacketThroughput,omitempty" validate:"regexp=^\\\\d+(\\\\.\\\\d+)? (pps|kpps|Mpps|Gpps|Tpps)$"`
+	UlPacketThroughput *string `json:"ulPacketThroughput,omitempty" yaml:"ulPacketThroughput,omitempty" validate:"regexp=^\\d+(\\.\\d+)? (pps|kpps|Mpps|Gpps|Tpps)$"`
 	// String representing a packet rate, i.e., packet per second; the prefixes follow the symbols from The International System of Units, and represent x1000 multipliers.
-	DlPacketThroughput *string `json:"dlPacketThroughput,omitempty" yaml:"dlPacketThroughput,omitempty" validate:"regexp=^\\\\d+(\\\\.\\\\d+)? (pps|kpps|Mpps|Gpps|Tpps)$"`
+	DlPacketThroughput *string `json:"dlPacketThroughput,omitempty" yaml:"dlPacketThroughput,omitempty" validate:"regexp=^\\d+(\\.\\d+)? (pps|kpps|Mpps|Gpps|Tpps)$"`
 }
 
 // NewThroughputMeasurement instantiates a new ThroughputMeasurement object

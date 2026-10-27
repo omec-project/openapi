@@ -30,19 +30,19 @@ var _ openapi.MappedNullable = &TrafficCharacterization{}
 // TrafficCharacterization Identifies the detailed traffic characterization.
 type TrafficCharacterization struct {
 	// String representing a Data Network as defined in clause 9A of 3GPP TS 23.003; it shall contain either a DNN Network Identifier, or a full DNN with both the Network Identifier and Operator Identifier, as specified in 3GPP TS 23.003 clause 9.1.1 and 9.1.2. It shall be coded as string in which the labels are separated by dots (e.g. \"Label1.Label2.Label3\").
-	Dnn    *string
-	Snssai *Snssai
+	Dnn    *string `json:"dnn,omitempty" yaml:"dnn,omitempty"`
+	Snssai *Snssai `json:"snssai,omitempty" yaml:"snssai,omitempty"`
 	// String providing an application identifier.
-	AppId  *string
-	FDescs []IpEthFlowDescription
+	AppId  *string                `json:"appId,omitempty" yaml:"appId,omitempty"`
+	FDescs []IpEthFlowDescription `json:"fDescs,omitempty" yaml:"fDescs,omitempty"`
 	// Unsigned integer identifying a volume in units of bytes.
-	UlVol *int64
+	UlVol *int64 `json:"ulVol,omitempty" yaml:"ulVol,omitempty"`
 	// string with format 'float' as defined in OpenAPI.
-	UlVolVariance *float32
+	UlVolVariance *float32 `json:"ulVolVariance,omitempty" yaml:"ulVolVariance,omitempty"`
 	// Unsigned integer identifying a volume in units of bytes.
-	DlVol *int64
+	DlVol *int64 `json:"dlVol,omitempty" yaml:"dlVol,omitempty"`
 	// string with format 'float' as defined in OpenAPI.
-	DlVolVariance *float32
+	DlVolVariance *float32 `json:"dlVolVariance,omitempty" yaml:"dlVolVariance,omitempty"`
 }
 
 // NewTrafficCharacterization instantiates a new TrafficCharacterization object

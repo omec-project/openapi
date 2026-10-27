@@ -30,9 +30,9 @@ var _ openapi.MappedNullable = &NetworkAssistanceInvocationRecommendedQoS{}
 // NetworkAssistanceInvocationRecommendedQoS The network QoS parameters (if any) recommended to the Media Session Handler.
 type NetworkAssistanceInvocationRecommendedQoS struct {
 	// String representing a bit rate; the prefixes follow the standard symbols from The International System of Units, and represent x1000 multipliers, with the exception that prefix \"K\" is used to represent the standard symbol \"k\".
-	MaximumBitRate string `json:"maximumBitRate" yaml:"maximumBitRate" validate:"regexp=^\\\\d+(\\\\.\\\\d+)? (bps|Kbps|Mbps|Gbps|Tbps)$"`
+	MaximumBitRate string `json:"maximumBitRate" yaml:"maximumBitRate" validate:"regexp=^\\d+(\\.\\d+)? (bps|Kbps|Mbps|Gbps|Tbps)$"`
 	// String representing a bit rate; the prefixes follow the standard symbols from The International System of Units, and represent x1000 multipliers, with the exception that prefix \"K\" is used to represent the standard symbol \"k\".
-	MinimumBitRate string `json:"minimumBitRate" yaml:"minimumBitRate" validate:"regexp=^\\\\d+(\\\\.\\\\d+)? (bps|Kbps|Mbps|Gbps|Tbps)$"`
+	MinimumBitRate string `json:"minimumBitRate" yaml:"minimumBitRate" validate:"regexp=^\\d+(\\.\\d+)? (bps|Kbps|Mbps|Gbps|Tbps)$"`
 }
 
 // NewNetworkAssistanceInvocationRecommendedQoS instantiates a new NetworkAssistanceInvocationRecommendedQoS object

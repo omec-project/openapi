@@ -29,8 +29,8 @@ var _ openapi.MappedNullable = &AfRequestAuthorization{}
 
 // AfRequestAuthorization AF Request Authorization
 type AfRequestAuthorization struct {
-	GptpAllowedInfoList []GptpAllowedInfo
-	AstiAllowedInfo     *AstiAllowedInfo
+	GptpAllowedInfoList []GptpAllowedInfo `json:"gptpAllowedInfoList,omitempty" yaml:"gptpAllowedInfoList,omitempty"`
+	AstiAllowedInfo     *AstiAllowedInfo  `json:"astiAllowedInfo,omitempty" yaml:"astiAllowedInfo,omitempty"`
 }
 
 // NewAfRequestAuthorization instantiates a new AfRequestAuthorization object

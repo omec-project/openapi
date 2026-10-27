@@ -29,9 +29,9 @@ var _ openapi.MappedNullable = &EcnMarkingCongestionInfoReq{}
 
 // EcnMarkingCongestionInfoReq ECN Marking or Congestion Information Request
 type EcnMarkingCongestionInfoReq struct {
-	EcnMarkingRanReq  *EcnMarkingReq
-	EcnMarkingUpfReq  *EcnMarkingReq
-	CongestionInfoReq *CongestionInfoReq
+	EcnMarkingRanReq  *EcnMarkingReq     `json:"ecnMarkingRanReq,omitempty" yaml:"ecnMarkingRanReq,omitempty"`
+	EcnMarkingUpfReq  *EcnMarkingReq     `json:"ecnMarkingUpfReq,omitempty" yaml:"ecnMarkingUpfReq,omitempty"`
+	CongestionInfoReq *CongestionInfoReq `json:"congestionInfoReq,omitempty" yaml:"congestionInfoReq,omitempty"`
 }
 
 // NewEcnMarkingCongestionInfoReq instantiates a new EcnMarkingCongestionInfoReq object

@@ -30,21 +30,21 @@ var _ openapi.MappedNullable = &ThroughputStatisticsMeasurement{}
 // ThroughputStatisticsMeasurement Throughput Statistics Measurement
 type ThroughputStatisticsMeasurement struct {
 	// String representing a bit rate; the prefixes follow the standard symbols from The International System of Units, and represent x1000 multipliers, with the exception that prefix \"K\" is used to represent the standard symbol \"k\".
-	UlAverageThroughput *string `json:"ulAverageThroughput,omitempty" yaml:"ulAverageThroughput,omitempty" validate:"regexp=^\\\\d+(\\\\.\\\\d+)? (bps|Kbps|Mbps|Gbps|Tbps)$"`
+	UlAverageThroughput *string `json:"ulAverageThroughput,omitempty" yaml:"ulAverageThroughput,omitempty" validate:"regexp=^\\d+(\\.\\d+)? (bps|Kbps|Mbps|Gbps|Tbps)$"`
 	// String representing a bit rate; the prefixes follow the standard symbols from The International System of Units, and represent x1000 multipliers, with the exception that prefix \"K\" is used to represent the standard symbol \"k\".
-	DlAverageThroughput *string `json:"dlAverageThroughput,omitempty" yaml:"dlAverageThroughput,omitempty" validate:"regexp=^\\\\d+(\\\\.\\\\d+)? (bps|Kbps|Mbps|Gbps|Tbps)$"`
+	DlAverageThroughput *string `json:"dlAverageThroughput,omitempty" yaml:"dlAverageThroughput,omitempty" validate:"regexp=^\\d+(\\.\\d+)? (bps|Kbps|Mbps|Gbps|Tbps)$"`
 	// String representing a bit rate; the prefixes follow the standard symbols from The International System of Units, and represent x1000 multipliers, with the exception that prefix \"K\" is used to represent the standard symbol \"k\".
-	UlPeakThroughput *string `json:"ulPeakThroughput,omitempty" yaml:"ulPeakThroughput,omitempty" validate:"regexp=^\\\\d+(\\\\.\\\\d+)? (bps|Kbps|Mbps|Gbps|Tbps)$"`
+	UlPeakThroughput *string `json:"ulPeakThroughput,omitempty" yaml:"ulPeakThroughput,omitempty" validate:"regexp=^\\d+(\\.\\d+)? (bps|Kbps|Mbps|Gbps|Tbps)$"`
 	// String representing a bit rate; the prefixes follow the standard symbols from The International System of Units, and represent x1000 multipliers, with the exception that prefix \"K\" is used to represent the standard symbol \"k\".
-	DlPeakThroughPut *string `json:"dlPeakThroughPut,omitempty" yaml:"dlPeakThroughPut,omitempty" validate:"regexp=^\\\\d+(\\\\.\\\\d+)? (bps|Kbps|Mbps|Gbps|Tbps)$"`
+	DlPeakThroughPut *string `json:"dlPeakThroughPut,omitempty" yaml:"dlPeakThroughPut,omitempty" validate:"regexp=^\\d+(\\.\\d+)? (bps|Kbps|Mbps|Gbps|Tbps)$"`
 	// String representing a packet rate, i.e., packet per second; the prefixes follow the symbols from The International System of Units, and represent x1000 multipliers.
-	UlAveragePacketThroughput *string `json:"ulAveragePacketThroughput,omitempty" yaml:"ulAveragePacketThroughput,omitempty" validate:"regexp=^\\\\d+(\\\\.\\\\d+)? (pps|kpps|Mpps|Gpps|Tpps)$"`
+	UlAveragePacketThroughput *string `json:"ulAveragePacketThroughput,omitempty" yaml:"ulAveragePacketThroughput,omitempty" validate:"regexp=^\\d+(\\.\\d+)? (pps|kpps|Mpps|Gpps|Tpps)$"`
 	// String representing a packet rate, i.e., packet per second; the prefixes follow the symbols from The International System of Units, and represent x1000 multipliers.
-	DlAveragePacketThroughput *string `json:"dlAveragePacketThroughput,omitempty" yaml:"dlAveragePacketThroughput,omitempty" validate:"regexp=^\\\\d+(\\\\.\\\\d+)? (pps|kpps|Mpps|Gpps|Tpps)$"`
+	DlAveragePacketThroughput *string `json:"dlAveragePacketThroughput,omitempty" yaml:"dlAveragePacketThroughput,omitempty" validate:"regexp=^\\d+(\\.\\d+)? (pps|kpps|Mpps|Gpps|Tpps)$"`
 	// String representing a packet rate, i.e., packet per second; the prefixes follow the symbols from The International System of Units, and represent x1000 multipliers.
-	UlPeakPacketThroughput *string `json:"ulPeakPacketThroughput,omitempty" yaml:"ulPeakPacketThroughput,omitempty" validate:"regexp=^\\\\d+(\\\\.\\\\d+)? (pps|kpps|Mpps|Gpps|Tpps)$"`
+	UlPeakPacketThroughput *string `json:"ulPeakPacketThroughput,omitempty" yaml:"ulPeakPacketThroughput,omitempty" validate:"regexp=^\\d+(\\.\\d+)? (pps|kpps|Mpps|Gpps|Tpps)$"`
 	// String representing a packet rate, i.e., packet per second; the prefixes follow the symbols from The International System of Units, and represent x1000 multipliers.
-	DlPeakPacketThroughput *string `json:"dlPeakPacketThroughput,omitempty" yaml:"dlPeakPacketThroughput,omitempty" validate:"regexp=^\\\\d+(\\\\.\\\\d+)? (pps|kpps|Mpps|Gpps|Tpps)$"`
+	DlPeakPacketThroughput *string `json:"dlPeakPacketThroughput,omitempty" yaml:"dlPeakPacketThroughput,omitempty" validate:"regexp=^\\d+(\\.\\d+)? (pps|kpps|Mpps|Gpps|Tpps)$"`
 }
 
 // NewThroughputStatisticsMeasurement instantiates a new ThroughputStatisticsMeasurement object

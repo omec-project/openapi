@@ -29,9 +29,9 @@ var _ openapi.MappedNullable = &PlmnRange{}
 
 // PlmnRange Range of PLMN IDs
 type PlmnRange struct {
-	Start   *string
-	End     *string
-	Pattern *string
+	Start   *string `json:"start,omitempty" yaml:"start,omitempty" validate:"regexp=^[0-9]{3}[0-9]{2,3}$"`
+	End     *string `json:"end,omitempty" yaml:"end,omitempty" validate:"regexp=^[0-9]{3}[0-9]{2,3}$"`
+	Pattern *string `json:"pattern,omitempty" yaml:"pattern,omitempty"`
 }
 
 // NewPlmnRange instantiates a new PlmnRange object

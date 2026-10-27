@@ -29,16 +29,16 @@ var _ openapi.MappedNullable = &DccfEvent{}
 
 // DccfEvent Identifies the (event exposure or analytics) event that the processing instructions shall apply to. Contains all event IDs related to DCCF.
 type DccfEvent struct {
-	NwdafEvent *NwdafEvent
-	SmfEvent   *SmfEvent
-	AmfEvent   *AmfEventType
-	NefEvent   *NefEvent
-	UdmEvent   *EventTypeUdm
-	AfEvent    *AfEvent
-	SacEvent   *SACEvent
-	NrfEvent   *NotificationEventType
-	GmlcEvent  *EventNotifyDataType
-	UpfEvent   *EventType
+	NwdafEvent *NwdafEvent            `json:"nwdafEvent,omitempty" yaml:"nwdafEvent,omitempty"`
+	SmfEvent   *SmfEvent              `json:"smfEvent,omitempty" yaml:"smfEvent,omitempty"`
+	AmfEvent   *AmfEventType          `json:"amfEvent,omitempty" yaml:"amfEvent,omitempty"`
+	NefEvent   *NefEvent              `json:"nefEvent,omitempty" yaml:"nefEvent,omitempty"`
+	UdmEvent   *EventTypeUdm          `json:"udmEvent,omitempty" yaml:"udmEvent,omitempty"`
+	AfEvent    *AfEvent               `json:"afEvent,omitempty" yaml:"afEvent,omitempty"`
+	SacEvent   *SACEvent              `json:"sacEvent,omitempty" yaml:"sacEvent,omitempty"`
+	NrfEvent   *NotificationEventType `json:"nrfEvent,omitempty" yaml:"nrfEvent,omitempty"`
+	GmlcEvent  *EventNotifyDataType   `json:"gmlcEvent,omitempty" yaml:"gmlcEvent,omitempty"`
+	UpfEvent   *EventType             `json:"upfEvent,omitempty" yaml:"upfEvent,omitempty"`
 }
 
 // NewDccfEvent instantiates a new DccfEvent object

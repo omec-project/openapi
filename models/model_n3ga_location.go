@@ -35,7 +35,7 @@ type N3gaLocation struct {
 	// String identifying a IPv4 address formatted in the 'dotted decimal' notation as defined in RFC 1166.
 	UeIpv4Addr *string `json:"ueIpv4Addr,omitempty" yaml:"ueIpv4Addr,omitempty" validate:"regexp=^(([0-9]|[1-9][0-9]|1[0-9][0-9]|2[0-4][0-9]|25[0-5])\\.){3}([0-9]|[1-9][0-9]|1[0-9][0-9]|2[0-4][0-9]|25[0-5])$"`
 	// String identifying an IPv6 address formatted according to clause 4 of RFC5952. The mixed IPv4 IPv6 notation according to clause 5 of RFC5952 shall not be used.
-	UeIpv6Addr *string `json:"ueIpv6Addr,omitempty" yaml:"ueIpv6Addr,omitempty" validate:"regexp=^(((:|(0?|([1-9a-f][0-9a-f]{0\\,3}))):)((0?|([1-9a-f][0-9a-f]{0\\,3})):){0\\,6}(:|(0?|([1-9a-f][0-9a-f]{0\\,3}))))|((([^:]+:){7}([^:]+))|((([^:]+:)*[^:]+)?::(([^:]+:)*[^:]+)?)))$"`
+	UeIpv6Addr *string `json:"ueIpv6Addr,omitempty" yaml:"ueIpv6Addr,omitempty" validate:"regexp=^(((:|(0?|([1-9a-f][0-9a-f]{0,3}))):)((0?|([1-9a-f][0-9a-f]{0,3})):){0,6}(:|(0?|([1-9a-f][0-9a-f]{0,3}))))|((([^:]+:){7}([^:]+))|((([^:]+:)*[^:]+)?::(([^:]+:)*[^:]+)?)))$"`
 	// Unsigned Integer, i.e. only value 0 and integers above 0 are permissible.
 	PortNumber *int32             `json:"portNumber,omitempty" yaml:"portNumber,omitempty"`
 	Protocol   *TransportProtocol `json:"protocol,omitempty" yaml:"protocol,omitempty"`

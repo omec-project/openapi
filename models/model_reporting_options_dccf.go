@@ -29,17 +29,17 @@ var _ openapi.MappedNullable = &ReportingOptionsDccf{}
 
 // ReportingOptionsDccf Represents reporting options for processed notifications.
 type ReportingOptionsDccf struct {
-	NotifyWindow *TimeWindow
+	NotifyWindow *TimeWindow `json:"notifyWindow,omitempty" yaml:"notifyWindow,omitempty"`
 	// indicating a time in seconds.
-	NotifyPeriod *int32
+	NotifyPeriod *int32 `json:"notifyPeriod,omitempty" yaml:"notifyPeriod,omitempty"`
 	// indicating a time in seconds.
-	NotifyPeriodInc *int32
+	NotifyPeriodInc *int32 `json:"notifyPeriodInc,omitempty" yaml:"notifyPeriodInc,omitempty"`
 	// Notifications for the present subscription are sent only upon occurrence of events of the subscription with identifier that matches this attribute.
-	DepEventSubId *string
+	DepEventSubId *string `json:"depEventSubId,omitempty" yaml:"depEventSubId,omitempty"`
 	// Unsigned Integer, i.e. only value 0 and integers above 0 are permissible.
-	MinClubbedNotif *int32
+	MinClubbedNotif *int32 `json:"minClubbedNotif,omitempty" yaml:"minClubbedNotif,omitempty"`
 	// Unsigned Integer, i.e. only value 0 and integers above 0 are permissible.
-	MaxClubbedNotif *int32
+	MaxClubbedNotif *int32 `json:"maxClubbedNotif,omitempty" yaml:"maxClubbedNotif,omitempty"`
 }
 
 // NewReportingOptionsDccf instantiates a new ReportingOptionsDccf object

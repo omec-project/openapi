@@ -31,25 +31,25 @@ var _ openapi.MappedNullable = &DataNotification{}
 // DataNotification Represents a Data Subscription Notification.
 type DataNotification struct {
 	// List of notifications of AMF events.
-	AmfEventNotifs []AmfEventNotification
+	AmfEventNotifs []AmfEventNotification `json:"amfEventNotifs,omitempty" yaml:"amfEventNotifs,omitempty"`
 	// List of notifications of SMF events.
-	SmfEventNotifs []NsmfEventExposureNotification
+	SmfEventNotifs []NsmfEventExposureNotification `json:"smfEventNotifs,omitempty" yaml:"smfEventNotifs,omitempty"`
 	// List of notifications of UDM events.
-	UdmEventNotifs []MonitoringReport
+	UdmEventNotifs []MonitoringReport `json:"udmEventNotifs,omitempty" yaml:"udmEventNotifs,omitempty"`
 	// List of notifications of NEF events.
-	NefEventNotifs []NefEventExposureNotif
+	NefEventNotifs []NefEventExposureNotif `json:"nefEventNotifs,omitempty" yaml:"nefEventNotifs,omitempty"`
 	// List of notifications of AF events.
-	AfEventNotifs []AfEventExposureNotif
+	AfEventNotifs []AfEventExposureNotif `json:"afEventNotifs,omitempty" yaml:"afEventNotifs,omitempty"`
 	// List of notifications of NRF events.
-	NrfEventNotifs []NotificationData
+	NrfEventNotifs []NotificationData `json:"nrfEventNotifs,omitempty" yaml:"nrfEventNotifs,omitempty"`
 	// List of notifications of NSACF events.
-	NsacfEventNotifs []SACEventReport
+	NsacfEventNotifs []SACEventReport `json:"nsacfEventNotifs,omitempty" yaml:"nsacfEventNotifs,omitempty"`
 	// List of notifications of UPF events.
-	UpfEventNotifs []NotificationData
+	UpfEventNotifs []NotificationData `json:"upfEventNotifs,omitempty" yaml:"upfEventNotifs,omitempty"`
 	// List of notifications of GMLC events.
-	GmlcEventNotifs []EventNotifyDataGmlc
+	GmlcEventNotifs []EventNotifyDataGmlc `json:"gmlcEventNotifs,omitempty" yaml:"gmlcEventNotifs,omitempty"`
 	// string with format 'date-time' as defined in OpenAPI.
-	TimeStamp *time.Time
+	TimeStamp *time.Time `json:"timeStamp,omitempty" yaml:"timeStamp,omitempty"`
 }
 
 // NewDataNotification instantiates a new DataNotification object

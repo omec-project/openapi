@@ -29,8 +29,8 @@ var _ openapi.MappedNullable = &GNSSServArea{}
 
 // GNSSServArea Represents the serving area of the GNSS Assistance Data.
 type GNSSServArea struct {
-	GeographicalArea *GeographicArea
-	TaiList          []Tai
+	GeographicalArea *GeographicArea `json:"geographicalArea,omitempty" yaml:"geographicalArea,omitempty"`
+	TaiList          []Tai           `json:"taiList,omitempty" yaml:"taiList,omitempty"`
 }
 
 // NewGNSSServArea instantiates a new GNSSServArea object

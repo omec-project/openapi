@@ -29,12 +29,12 @@ var _ openapi.MappedNullable = &CollectiveBehaviourInfo{}
 
 // CollectiveBehaviourInfo Contains the collective behaviour information to be reported to the subscriber.
 type CollectiveBehaviourInfo struct {
-	ColAttrib []PerUeAttribute
+	ColAttrib []PerUeAttribute `json:"colAttrib" yaml:"colAttrib"`
 	// Total number of UEs that fulfil a collective within the area of interest.
-	NoOfUes  *int32
-	AppIds   []string
-	ExtUeIds []string
-	UeIds    []string
+	NoOfUes  *int32   `json:"noOfUes,omitempty" yaml:"noOfUes,omitempty"`
+	AppIds   []string `json:"appIds,omitempty" yaml:"appIds,omitempty"`
+	ExtUeIds []string `json:"extUeIds,omitempty" yaml:"extUeIds,omitempty"`
+	UeIds    []string `json:"ueIds,omitempty" yaml:"ueIds,omitempty"`
 }
 
 // NewCollectiveBehaviourInfo instantiates a new CollectiveBehaviourInfo object

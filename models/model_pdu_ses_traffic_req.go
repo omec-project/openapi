@@ -30,11 +30,11 @@ var _ openapi.MappedNullable = &PduSesTrafficReq{}
 // PduSesTrafficReq Represents the PDU Session traffic analytics requirements.
 type PduSesTrafficReq struct {
 	// Indicates traffic flow filtering description(s) for IP flow(s).
-	FlowDescs []string
+	FlowDescs []string `json:"flowDescs,omitempty" yaml:"flowDescs,omitempty"`
 	// String providing an application identifier.
-	AppId *string
+	AppId *string `json:"appId,omitempty" yaml:"appId,omitempty"`
 	// FQDN(s) or a regular expression which are used as a domain name matching criteria.
-	DomainDescs []string
+	DomainDescs []string `json:"domainDescs,omitempty" yaml:"domainDescs,omitempty"`
 }
 
 // NewPduSesTrafficReq instantiates a new PduSesTrafficReq object

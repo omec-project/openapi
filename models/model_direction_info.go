@@ -30,16 +30,16 @@ var _ openapi.MappedNullable = &DirectionInfo{}
 // DirectionInfo Represents the UE direction information.
 type DirectionInfo struct {
 	// String identifying a Supi that shall contain either an IMSI, a network specific identifier, a Global Cable Identifier (GCI) or a Global Line Identifier (GLI) as specified in clause 2.2A of 3GPP TS 23.003. It shall be formatted as follows  - for an IMSI \"imsi-<imsi>\", where <imsi> shall be formatted according to clause 2.2    of 3GPP TS 23.003 that describes an IMSI.  - for a network specific identifier \"nai-<nai>, where <nai> shall be formatted    according to clause 28.7.2 of 3GPP TS 23.003 that describes an NAI.  - for a GCI \"gci-<gci>\", where <gci> shall be formatted according to clause 28.15.2    of 3GPP TS 23.003.  - for a GLI \"gli-<gli>\", where <gli> shall be formatted according to clause 28.16.2 of    3GPP TS 23.003.To enable that the value is used as part of an URI, the string shall    only contain characters allowed according to the \"lower-with-hyphen\" naming convention    defined in 3GPP TS 29.501.
-	Supi *string
+	Supi *string `json:"supi,omitempty" yaml:"supi,omitempty" validate:"regexp=^(imsi-[0-9]{5,15}|nai-.+|gci-.+|gli-.+|.+)$"`
 	// String identifying a Gpsi shall contain either an External Id or an MSISDN. It shall be formatted as follows -External Identifier= \"extid-'extid', where 'extid' shall be formatted according to clause 19.7.2 of 3GPP TS 23.003 that describes an External Identifier.
-	Gpsi *string
+	Gpsi *string `json:"gpsi,omitempty" yaml:"gpsi,omitempty" validate:"regexp=^(msisdn-[0-9]{5,15}|extid-[^@]+@[^@]+|.+)$"`
 	// Unsigned Integer, i.e. only value 0 and integers above 0 are permissible.
-	NumOfUe *int32
+	NumOfUe *int32 `json:"numOfUe,omitempty" yaml:"numOfUe,omitempty"`
 	// string with format 'float' as defined in OpenAPI.
-	AvrSpeed *float32
+	AvrSpeed *float32 `json:"avrSpeed,omitempty" yaml:"avrSpeed,omitempty"`
 	// Unsigned integer indicating Sampling Ratio (see clauses 4.15.1 of 3GPP TS 23.502), expressed in percent.
-	Ratio     *int32
-	Direction Direction
+	Ratio     *int32    `json:"ratio,omitempty" yaml:"ratio,omitempty"`
+	Direction Direction `json:"direction" yaml:"direction"`
 }
 
 // NewDirectionInfo instantiates a new DirectionInfo object

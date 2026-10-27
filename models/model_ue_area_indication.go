@@ -30,9 +30,9 @@ var _ openapi.MappedNullable = &UeAreaIndication{}
 // UeAreaIndication Indicates area (country, area in a country or international area) where UE is located
 type UeAreaIndication struct {
 	// Indicates country or area in a country where UE is located
-	Country *string
+	Country *string `json:"country,omitempty" yaml:"country,omitempty"`
 	// Indicates international area indication if UE is located in international area
-	InternationalAreaInd *bool
+	InternationalAreaInd *bool `json:"internationalAreaInd,omitempty" yaml:"internationalAreaInd,omitempty"`
 }
 
 // NewUeAreaIndication instantiates a new UeAreaIndication object

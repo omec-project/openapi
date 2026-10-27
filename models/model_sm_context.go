@@ -42,7 +42,7 @@ type SmContext struct {
 	AltHplmnSnssai *Snssai        `json:"altHplmnSnssai,omitempty" yaml:"altHplmnSnssai,omitempty"`
 	PduSessionType PduSessionType `json:"pduSessionType" yaml:"pduSessionType"`
 	// String identifying a Gpsi shall contain either an External Id or an MSISDN. It shall be formatted as follows -External Identifier= \"extid-'extid', where 'extid' shall be formatted according to clause 19.7.2 of 3GPP TS 23.003 that describes an External Identifier.
-	Gpsi *string `json:"gpsi,omitempty" yaml:"gpsi,omitempty" validate:"regexp=^(msisdn-[0-9]{5\\,15}|extid-[^@]+@[^@]+|.+)$"`
+	Gpsi *string `json:"gpsi,omitempty" yaml:"gpsi,omitempty" validate:"regexp=^(msisdn-[0-9]{5,15}|extid-[^@]+@[^@]+|.+)$"`
 	// String providing an URI formatted according to RFC 3986.
 	HSmfUri *string `json:"hSmfUri,omitempty" yaml:"hSmfUri,omitempty"`
 	// String providing an URI formatted according to RFC 3986.
@@ -79,7 +79,7 @@ type SmContext struct {
 	// String identifying a IPv4 address formatted in the 'dotted decimal' notation as defined in RFC 1166.
 	UeIpv4Address *string `json:"ueIpv4Address,omitempty" yaml:"ueIpv4Address,omitempty" validate:"regexp=^(([0-9]|[1-9][0-9]|1[0-9][0-9]|2[0-4][0-9]|25[0-5])\\.){3}([0-9]|[1-9][0-9]|1[0-9][0-9]|2[0-4][0-9]|25[0-5])$"`
 	// String identifying an IPv6 address prefix formatted according to clause 4 of RFC 5952. IPv6Prefix data type may contain an individual /128 IPv6 address.
-	UeIpv6Prefix                    *string                        `json:"ueIpv6Prefix,omitempty" yaml:"ueIpv6Prefix,omitempty" validate:"regexp=^(((:|(0?|([1-9a-f][0-9a-f]{0\\,3}))):)((0?|([1-9a-f][0-9a-f]{0\\,3})):){0\\,6}(:|(0?|([1-9a-f][0-9a-f]{0\\,3})))(/(([0-9])|([0-9]{2})|(1[0-1][0-9])|(12[0-8])))|((([^:]+:){7}([^:]+))|((([^:]+:)*[^:]+)?::(([^:]+:)*[^:]+)?))(/.+))$"`
+	UeIpv6Prefix                    *string                        `json:"ueIpv6Prefix,omitempty" yaml:"ueIpv6Prefix,omitempty" validate:"regexp=^(((:|(0?|([1-9a-f][0-9a-f]{0,3}))):)((0?|([1-9a-f][0-9a-f]{0,3})):){0,6}(:|(0?|([1-9a-f][0-9a-f]{0,3})))(/(([0-9])|([0-9]{2})|(1[0-1][0-9])|(12[0-8])))|((([^:]+:){7}([^:]+))|((([^:]+:)*[^:]+)?::(([^:]+:)*[^:]+)?))(/.+))$"`
 	EpsPdnCnxInfo                   *EpsPdnCnxInfo                 `json:"epsPdnCnxInfo,omitempty" yaml:"epsPdnCnxInfo,omitempty"`
 	EpsBearerInfo                   []EpsBearerInfo                `json:"epsBearerInfo,omitempty" yaml:"epsBearerInfo,omitempty"`
 	MaxIntegrityProtectedDataRate   *MaxIntegrityProtectedDataRate `json:"maxIntegrityProtectedDataRate,omitempty" yaml:"maxIntegrityProtectedDataRate,omitempty"`
@@ -92,9 +92,9 @@ type SmContext struct {
 	RecoveryTime  *time.Time  `json:"recoveryTime,omitempty" yaml:"recoveryTime,omitempty"`
 	ForwardingInd *bool       `json:"forwardingInd,omitempty" yaml:"forwardingInd,omitempty"`
 	PsaTunnelInfo *TunnelInfo `json:"psaTunnelInfo,omitempty" yaml:"psaTunnelInfo,omitempty"`
-	ChargingId    *string     `json:"chargingId,omitempty" yaml:"chargingId,omitempty" validate:"regexp=^(0|([1-9]{1}[0-9]{0\\,9}))$"`
+	ChargingId    *string     `json:"chargingId,omitempty" yaml:"chargingId,omitempty" validate:"regexp=^(0|([1-9]{1}[0-9]{0,9}))$"`
 	// String based Charging ID
-	SmfChargingId          *string                 `json:"smfChargingId,omitempty" yaml:"smfChargingId,omitempty" validate:"regexp=^(0|([1-9]{1}[0-9]{0\\,9}))\\.smf-([0-9a-f]{8}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{12})$"`
+	SmfChargingId          *string                 `json:"smfChargingId,omitempty" yaml:"smfChargingId,omitempty" validate:"regexp=^(0|([1-9]{1}[0-9]{0,9}))\\.smf-([0-9a-f]{8}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{12})$"`
 	ChargingInfo           *ChargingInformation    `json:"chargingInfo,omitempty" yaml:"chargingInfo,omitempty"`
 	RoamingChargingProfile *RoamingChargingProfile `json:"roamingChargingProfile,omitempty" yaml:"roamingChargingProfile,omitempty"`
 	NefExtBufSupportInd    *bool                   `json:"nefExtBufSupportInd,omitempty" yaml:"nefExtBufSupportInd,omitempty"`

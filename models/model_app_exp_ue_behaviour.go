@@ -31,15 +31,15 @@ var _ openapi.MappedNullable = &AppExpUeBehaviour{}
 // AppExpUeBehaviour Contains the Application Specificf Expected UE Behaviour parameters.
 type AppExpUeBehaviour struct {
 	// Indicates the Application Identifier.
-	AppId           *string
-	ExpPduSesInacTm *TimeWindow
+	AppId           *string     `json:"appId,omitempty" yaml:"appId,omitempty"`
+	ExpPduSesInacTm *TimeWindow `json:"expPduSesInacTm,omitempty" yaml:"expPduSesInacTm,omitempty"`
 	// Represents a 3-tuple with protocol, server ip and server port for UL/DL application traffic. The content of the string has the same encoding as the IPFilterRule AVP value as defined in IETF RFC 6733.
-	FlowDescriptions []string
-	ConfidenceLevel  *string
-	AccuracyLevel    *string
-	FailureCode      *CpFailureCode
+	FlowDescriptions []string       `json:"flowDescriptions,omitempty" yaml:"flowDescriptions,omitempty"`
+	ConfidenceLevel  *string        `json:"confidenceLevel,omitempty" yaml:"confidenceLevel,omitempty" validate:"regexp=^[0]\\.[0-9]{2}|[1.00]$"`
+	AccuracyLevel    *string        `json:"accuracyLevel,omitempty" yaml:"accuracyLevel,omitempty" validate:"regexp=^[0]\\.[0-9]{2}|[1.00]$"`
+	FailureCode      *CpFailureCode `json:"failureCode,omitempty" yaml:"failureCode,omitempty"`
 	// string with format \"date-time\" as defined in OpenAPI.
-	ValidityTime *time.Time
+	ValidityTime *time.Time `json:"validityTime,omitempty" yaml:"validityTime,omitempty"`
 }
 
 // NewAppExpUeBehaviour instantiates a new AppExpUeBehaviour object

@@ -31,10 +31,10 @@ var _ openapi.MappedNullable = &AccessNetChargingIdentifier{}
 type AccessNetChargingIdentifier struct {
 	// Integer where the allowed values correspond to the value range of an unsigned 32-bit integer.
 	// Deprecated
-	AccNetChaIdValue *int32
+	AccNetChaIdValue *int32 `json:"accNetChaIdValue,omitempty" yaml:"accNetChaIdValue,omitempty"`
 	// A character string containing the access network charging identifier.
-	AccNetChargIdString *string
-	Flows               []Flows
+	AccNetChargIdString *string `json:"accNetChargIdString,omitempty" yaml:"accNetChargIdString,omitempty"`
+	Flows               []Flows `json:"flows,omitempty" yaml:"flows,omitempty"`
 }
 
 // NewAccessNetChargingIdentifier instantiates a new AccessNetChargingIdentifier object

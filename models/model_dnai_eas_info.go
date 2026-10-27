@@ -31,14 +31,13 @@ type DnaiEasInfo struct {
 
 // Unmarshal JSON data into any of the pointers in the struct
 func (dst *DnaiEasInfo) UnmarshalJSON(data []byte) error {
-	var err error
 	// this object is nullable so check if the payload is null or empty string
 	if string(data) == "" || string(data) == "{}" {
 		return nil
 	}
 
 	// try to unmarshal JSON data into Any
-	err = json.Unmarshal(data, &dst.Any)
+	err := json.Unmarshal(data, &dst.Any)
 	if err == nil {
 		jsonAny, _ := json.Marshal(dst.Any)
 		if string(jsonAny) == "{}" { // empty struct

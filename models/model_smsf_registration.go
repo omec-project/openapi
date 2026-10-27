@@ -38,7 +38,7 @@ type SmsfRegistration struct {
 	SupportedFeatures *string `json:"supportedFeatures,omitempty" yaml:"supportedFeatures,omitempty" validate:"regexp=^[A-Fa-f0-9]*$"`
 	PlmnId            PlmnId  `json:"plmnId" yaml:"plmnId"`
 	// This data type mentions International E.164 number of the SMSF; shall be present if the SMSF supports MAP.
-	SmsfMAPAddress      *string                     `json:"smsfMAPAddress,omitempty" yaml:"smsfMAPAddress,omitempty" validate:"regexp=^[0-9]{1\\,15}$"`
+	SmsfMAPAddress      *string                     `json:"smsfMAPAddress,omitempty" yaml:"smsfMAPAddress,omitempty" validate:"regexp=^[0-9]{1,15}$"`
 	SmsfDiameterAddress *NetworkNodeDiameterAddress `json:"smsfDiameterAddress,omitempty" yaml:"smsfDiameterAddress,omitempty"`
 	// string with format 'date-time' as defined in OpenAPI.
 	RegistrationTime *time.Time   `json:"registrationTime,omitempty" yaml:"registrationTime,omitempty"`

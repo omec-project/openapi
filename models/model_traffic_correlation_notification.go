@@ -30,15 +30,15 @@ var _ openapi.MappedNullable = &TrafficCorrelationNotification{}
 // TrafficCorrelationNotification Represents notifications for 5GC determined Traffic Correlation Information.
 type TrafficCorrelationNotification struct {
 	// String uniquely identifying a NF instance. The format of the NF Instance ID shall be a Universally Unique Identifier (UUID) version 4, as described in IETF RFC 4122.
-	SmfId string
+	SmfId string `json:"smfId" yaml:"smfId"`
 	// Identification of a set of UEs accessing the application identified by the Application Identifier or traffic filtering information.
-	TfcCorrId string
-	Dnais     []string
+	TfcCorrId string   `json:"tfcCorrId" yaml:"tfcCorrId"`
+	Dnais     []string `json:"dnais,omitempty" yaml:"dnais,omitempty"`
 	// Fully Qualified Domain Name
-	EasFqdn   *string
-	EasIpAddr NullableIpAddr
+	EasFqdn   *string        `json:"easFqdn,omitempty" yaml:"easFqdn,omitempty" validate:"regexp=^([0-9A-Za-z]([-0-9A-Za-z]{0,61}[0-9A-Za-z])?\\.)+[A-Za-z]{2,63}\\.?$"`
+	EasIpAddr NullableIpAddr `json:"easIpAddr" yaml:"easIpAddr,omitempty"`
 	// Unsigned Integer, i.e. only value 0 and integers above 0 are permissible.
-	PduSessionNbr int32
+	PduSessionNbr int32 `json:"pduSessionNbr" yaml:"pduSessionNbr"`
 }
 
 // NewTrafficCorrelationNotification instantiates a new TrafficCorrelationNotification object

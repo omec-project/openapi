@@ -44,7 +44,7 @@ type CpParameterSet struct {
 	ScheduledCommunicationTime *ScheduledCommunicationTime `json:"scheduledCommunicationTime,omitempty" yaml:"scheduledCommunicationTime,omitempty"`
 	ScheduledCommunicationType *ScheduledCommunicationType `json:"scheduledCommunicationType,omitempty" yaml:"scheduledCommunicationType,omitempty"`
 	StationaryIndication       *StationaryIndication       `json:"stationaryIndication,omitempty" yaml:"stationaryIndication,omitempty"`
-	BatteryInds                []BatteryIndication         `json:"batteryInds,omitempty" yaml:"batteryInds,omitempty"`
+	BatteryInds                []BatteryIndicationCp       `json:"batteryInds,omitempty" yaml:"batteryInds,omitempty"`
 	TrafficProfile             *TrafficProfile             `json:"trafficProfile,omitempty" yaml:"trafficProfile,omitempty"`
 	// Identifies the UE's expected geographical movement. The attribute is only applicable in 5G.
 	ExpectedUmts []UmtLocationArea5G `json:"expectedUmts,omitempty" yaml:"expectedUmts,omitempty"`
@@ -54,8 +54,8 @@ type CpParameterSet struct {
 	ExpectedUmtDaysAdd []int32 `json:"expectedUmtDaysAdd,omitempty" yaml:"expectedUmtDaysAdd,omitempty"`
 	// Contains the Application Specific Expected UE Behaviour parameters.
 	AppExpUeBehvs   []AppExpUeBehaviour `json:"appExpUeBehvs,omitempty" yaml:"appExpUeBehvs,omitempty"`
-	ConfidenceLevel *string             `json:"confidenceLevel,omitempty" yaml:"confidenceLevel,omitempty" validate:"regexp=^[0]\\\\.[0-9]{2}|[1.00]$"`
-	AccuracyLevel   *string             `json:"accuracyLevel,omitempty" yaml:"accuracyLevel,omitempty" validate:"regexp=^[0]\\\\.[0-9]{2}|[1.00]$"`
+	ConfidenceLevel *string             `json:"confidenceLevel,omitempty" yaml:"confidenceLevel,omitempty" validate:"regexp=^[0]\\.[0-9]{2}|[1.00]$"`
+	AccuracyLevel   *string             `json:"accuracyLevel,omitempty" yaml:"accuracyLevel,omitempty" validate:"regexp=^[0]\\.[0-9]{2}|[1.00]$"`
 }
 
 // NewCpParameterSet instantiates a new CpParameterSet object
@@ -357,9 +357,9 @@ func (o *CpParameterSet) SetStationaryIndication(v StationaryIndication) {
 }
 
 // GetBatteryInds returns the BatteryInds field value if set, zero value otherwise.
-func (o *CpParameterSet) GetBatteryInds() []BatteryIndication {
+func (o *CpParameterSet) GetBatteryInds() []BatteryIndicationCp {
 	if o == nil || openapi.IsNil(o.BatteryInds) {
-		var ret []BatteryIndication
+		var ret []BatteryIndicationCp
 		return ret
 	}
 	return o.BatteryInds
@@ -367,7 +367,7 @@ func (o *CpParameterSet) GetBatteryInds() []BatteryIndication {
 
 // GetBatteryIndsOk returns a tuple with the BatteryInds field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *CpParameterSet) GetBatteryIndsOk() ([]BatteryIndication, bool) {
+func (o *CpParameterSet) GetBatteryIndsOk() ([]BatteryIndicationCp, bool) {
 	if o == nil || openapi.IsNil(o.BatteryInds) {
 		return nil, false
 	}
@@ -383,8 +383,8 @@ func (o *CpParameterSet) HasBatteryInds() bool {
 	return false
 }
 
-// SetBatteryInds gets a reference to the given []BatteryIndication and assigns it to the BatteryInds field.
-func (o *CpParameterSet) SetBatteryInds(v []BatteryIndication) {
+// SetBatteryInds gets a reference to the given []BatteryIndicationCp and assigns it to the BatteryInds field.
+func (o *CpParameterSet) SetBatteryInds(v []BatteryIndicationCp) {
 	o.BatteryInds = v
 }
 
