@@ -81,16 +81,6 @@ ctx = context.WithValue(context.Background(), Nnwdaf_AnalyticsInfo.ContextOperat
 })
 ```
 
-## Documentation for API Endpoints
-
-All URIs are relative to *https://example.com/nnwdaf-analyticsinfo/v1*
-
-Class | Method | HTTP request | Description
------------- | ------------- | ------------- | -------------
-*NWDAFAnalyticsDocumentAPI* | [**GetNWDAFAnalytics**](docs/NWDAFAnalyticsDocumentAPI.md#getnwdafanalytics) | **Get** /analytics | Read a NWDAF Analytics
-*NWDAFContextDocumentAPI* | [**GetNwdafContext**](docs/NWDAFContextDocumentAPI.md#getnwdafcontext) | **Get** /context | Get context information related to analytics subscriptions.
-
-
 ## Documentation For Authorization
 
 

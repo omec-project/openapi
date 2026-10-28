@@ -81,24 +81,6 @@ ctx = context.WithValue(context.Background(), Nausf_UEAuthentication.ContextOper
 })
 ```
 
-## Documentation for API Endpoints
-
-All URIs are relative to *https://example.com/nausf-auth/v1*
-
-Class | Method | HTTP request | Description
------------- | ------------- | ------------- | -------------
-*AuthenticationResultDeletionAPI* | [**Delete5gAkaAuthenticationResult**](docs/AuthenticationResultDeletionAPI.md#delete5gakaauthenticationresult) | **Delete** /ue-authentications/{authCtxId}/5g-aka-confirmation | Deletes the authentication result in the UDM
-*AuthenticationResultDeletionAPI* | [**DeleteEapAuthenticationResult**](docs/AuthenticationResultDeletionAPI.md#deleteeapauthenticationresult) | **Delete** /ue-authentications/{authCtxId}/eap-session | Deletes the authentication result in the UDM
-*AuthenticationResultDeletionAPI* | [**DeleteProSeAuthenticationResult**](docs/AuthenticationResultDeletionAPI.md#deleteproseauthenticationresult) | **Delete** /prose-authentications/{authCtxId}/prose-auth | Deletes the authentication result in the UDM
-*DefaultAPI* | [**EapAuthMethod**](docs/DefaultAPI.md#eapauthmethod) | **Post** /ue-authentications/{authCtxId}/eap-session |
-*DefaultAPI* | [**ProseAuth**](docs/DefaultAPI.md#proseauth) | **Post** /prose-authentications/{authCtxId}/prose-auth |
-*DefaultAPI* | [**ProseAuthenticationsPost**](docs/DefaultAPI.md#proseauthenticationspost) | **Post** /prose-authentications |
-*DefaultAPI* | [**RgAuthenticationsPost**](docs/DefaultAPI.md#rgauthenticationspost) | **Post** /rg-authentications |
-*DefaultAPI* | [**UeAuthenticationsAuthCtxId5gAkaConfirmationPut**](docs/DefaultAPI.md#ueauthenticationsauthctxid5gakaconfirmationput) | **Put** /ue-authentications/{authCtxId}/5g-aka-confirmation |
-*DefaultAPI* | [**UeAuthenticationsDeregisterPost**](docs/DefaultAPI.md#ueauthenticationsderegisterpost) | **Post** /ue-authentications/deregister |
-*DefaultAPI* | [**UeAuthenticationsPost**](docs/DefaultAPI.md#ueauthenticationspost) | **Post** /ue-authentications |
-
-
 ## Documentation For Authorization
 
 

@@ -81,31 +81,6 @@ ctx = context.WithValue(context.Background(), Nsmf_PDUSession.ContextOperationSe
 })
 ```
 
-## Documentation for API Endpoints
-
-All URIs are relative to *https://example.com/nsmf-pdusession/v1*
-
-Class | Method | HTTP request | Description
------------- | ------------- | ------------- | -------------
-*IndividualPDUSessionHSMFOrSMFAPI* | [**ReleasePduSession**](docs/IndividualPDUSessionHSMFOrSMFAPI.md#releasepdusession) | **Post** /pdu-sessions/{pduSessionRef}/release | Release
-*IndividualPDUSessionHSMFOrSMFAPI* | [**RetrievePduSession**](docs/IndividualPDUSessionHSMFOrSMFAPI.md#retrievepdusession) | **Post** /pdu-sessions/{pduSessionRef}/retrieve | Retrieve
-*IndividualPDUSessionHSMFOrSMFAPI* | [**TransferMoData**](docs/IndividualPDUSessionHSMFOrSMFAPI.md#transfermodata) | **Post** /pdu-sessions/{pduSessionRef}/transfer-mo-data | Transfer MO Data
-*IndividualPDUSessionHSMFOrSMFAPI* | [**UpdatePduSession**](docs/IndividualPDUSessionHSMFOrSMFAPI.md#updatepdusession) | **Post** /pdu-sessions/{pduSessionRef}/modify | Update (initiated by V-SMF or I-SMF)
-*IndividualSMContextAPI* | [**ReleaseSmContext**](docs/IndividualSMContextAPI.md#releasesmcontext) | **Post** /sm-contexts/{smContextRef}/release | Release SM Context
-*IndividualSMContextAPI* | [**RetrieveSmContext**](docs/IndividualSMContextAPI.md#retrievesmcontext) | **Post** /sm-contexts/{smContextRef}/retrieve | Retrieve SM Context
-*IndividualSMContextAPI* | [**SendMoData**](docs/IndividualSMContextAPI.md#sendmodata) | **Post** /sm-contexts/{smContextRef}/send-mo-data | Send MO Data
-*IndividualSMContextAPI* | [**UpdateSmContext**](docs/IndividualSMContextAPI.md#updatesmcontext) | **Post** /sm-contexts/{smContextRef}/modify | Update SM Context
-*PDUSessionsCollectionAPI* | [**PostPduSessions**](docs/PDUSessionsCollectionAPI.md#postpdusessions) | **Post** /pdu-sessions | Create
-*SMContextsCollectionAPI* | [**PostSmContexts**](docs/SMContextsCollectionAPI.md#postsmcontexts) | **Post** /sm-contexts | Create SM Context
-*PDUSessionsCollectionCallbackstatusNotificationAPI* | [**NotifyStatus**](docs/PDUSessionsCollectionCallbackstatusNotificationAPI.md#) | **Post** /{$request.body#/vsmfPduSessionUri} | Notify Status
-*PDUSessionsCollectionCallbackstatusNotificationIsmfAPI* | [**NotifyStatusIsfm**](docs/PDUSessionsCollectionCallbackstatusNotificationIsmfAPI.md#) | **Post** /{$request.body#/ismfPduSessionUri} | Notify Status
-*PDUSessionsCollectionCallbacktransferMtDataAPI* | [**TransferMtData**](docs/PDUSessionsCollectionCallbacktransferMtDataAPI.md#) | **Post** /{$request.body#/vsmfPduSessionUri}/transfer-mt-data | Transfer MT Data (by H-SMF)
-*PDUSessionsCollectionCallbacktransferMtDataIsmfAPI* | [**TransferMtDataIsmf**](docs/PDUSessionsCollectionCallbacktransferMtDataIsmfAPI.md#) | **Post** /{$request.body#/ismfPduSessionUri}/transfer-mt-data | Transfer MT Data (by SMF)
-*PDUSessionsCollectionCallbackupdateAPI* | [**ModifyPduSession**](docs/PDUSessionsCollectionCallbackupdateAPI.md#) | **Post** /{$request.body#/vsmfPduSessionUri}/modify | Update (initiated by H-SMF)
-*PDUSessionsCollectionCallbackupdateIsmfAPI* | [**ModifyPduSessionIsmf**](docs/PDUSessionsCollectionCallbackupdateIsmfAPI.md#) | **Post** /{$request.body#/ismfPduSessionUri}/modify | Update (initiated by SMF)
-*SMContextsCollectionCallbacksmContextStatusNotificationAPI* | [**SmContextStatusNotificationPost**](docs/SMContextsCollectionCallbacksmContextStatusNotificationAPI.md#) | **Post** /{$request.body#/smContextStatusUri} |
-
-
 ## Documentation For Authorization
 
 

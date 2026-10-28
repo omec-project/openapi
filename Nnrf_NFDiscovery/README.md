@@ -81,21 +81,6 @@ ctx = context.WithValue(context.Background(), Nnrf_NFDiscovery.ContextOperationS
 })
 ```
 
-## Documentation for API Endpoints
-
-All URIs are relative to *https://example.com/nnrf-disc/v1*
-
-Class | Method | HTTP request | Description
------------- | ------------- | ------------- | -------------
-*CompleteStoredSearchDocumentAPI* | [**RetrieveCompleteSearch**](docs/CompleteStoredSearchDocumentAPI.md#retrievecompletesearch) | **Get** /searches/{searchId}/complete |
-*IndividualSCPDomainRoutingInformationSubscriptionDocumentAPI* | [**ScpDomainRoutingInfoUnsubscribe**](docs/IndividualSCPDomainRoutingInformationSubscriptionDocumentAPI.md#scpdomainroutinginfounsubscribe) | **Delete** /scp-domain-routing-info-subs/{subscriptionID} | Deletes a subscription
-*NFInstancesStoreAPI* | [**SearchNFInstances**](docs/NFInstancesStoreAPI.md#searchnfinstances) | **Get** /nf-instances | Search a collection of NF Instances
-*SCPDomainRoutingInformationDocumentAPI* | [**SCPDomainRoutingInfoGet**](docs/SCPDomainRoutingInformationDocumentAPI.md#scpdomainroutinginfoget) | **Get** /scp-domain-routing-info |
-*SCPDomainRoutingInformationSubscriptionsCollectionAPI* | [**ScpDomainRoutingInfoSubscribe**](docs/SCPDomainRoutingInformationSubscriptionsCollectionAPI.md#scpdomainroutinginfosubscribe) | **Post** /scp-domain-routing-info-subs | Create a new subscription
-*StoredSearchDocumentAPI* | [**RetrieveStoredSearch**](docs/StoredSearchDocumentAPI.md#retrievestoredsearch) | **Get** /searches/{searchId} |
-*SCPDomainRoutingInformationSubscriptionsCollectionCallbackScpDomainRoutingInformationChangeAPI* | [**OnScpDomainRoutingInformationChangePost**](docs/SCPDomainRoutingInformationSubscriptionsCollectionCallbackScpDomainRoutingInformationChangeAPI.md#) | **Post** /{$request.body#/callbackUri} |
-
-
 ## Documentation For Authorization
 
 

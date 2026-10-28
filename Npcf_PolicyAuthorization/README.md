@@ -81,27 +81,6 @@ ctx = context.WithValue(context.Background(), Npcf_PolicyAuthorization.ContextOp
 })
 ```
 
-## Documentation for API Endpoints
-
-All URIs are relative to *https://example.com/npcf-policyauthorization/v1*
-
-Class | Method | HTTP request | Description
------------- | ------------- | ------------- | -------------
-*ApplicationSessionsCollectionAPI* | [**PostAppSessions**](docs/ApplicationSessionsCollectionAPI.md#postappsessions) | **Post** /app-sessions | Creates a new Individual Application Session Context resource
-*EventsSubscriptionDocumentAPI* | [**DeleteEventsSubsc**](docs/EventsSubscriptionDocumentAPI.md#deleteeventssubsc) | **Delete** /app-sessions/{appSessionId}/events-subscription | deletes the Events Subscription subresource
-*EventsSubscriptionDocumentAPI* | [**UpdateEventsSubsc**](docs/EventsSubscriptionDocumentAPI.md#updateeventssubsc) | **Put** /app-sessions/{appSessionId}/events-subscription | creates or modifies an Events Subscription subresource
-*IndividualApplicationSessionContextDocumentAPI* | [**DeleteAppSession**](docs/IndividualApplicationSessionContextDocumentAPI.md#deleteappsession) | **Post** /app-sessions/{appSessionId}/delete | Deletes an existing Individual Application Session Context
-*IndividualApplicationSessionContextDocumentAPI* | [**GetAppSession**](docs/IndividualApplicationSessionContextDocumentAPI.md#getappsession) | **Get** /app-sessions/{appSessionId} | Reads an existing Individual Application Session Context
-*IndividualApplicationSessionContextDocumentAPI* | [**ModAppSession**](docs/IndividualApplicationSessionContextDocumentAPI.md#modappsession) | **Patch** /app-sessions/{appSessionId} | Modifies an existing Individual Application Session Context
-*PCSCFRestorationIndicationAPI* | [**PcscfRestoration**](docs/PCSCFRestorationIndicationAPI.md#pcscfrestoration) | **Post** /app-sessions/pcscf-restoration | Indicates P-CSCF restoration and does not create an Individual Application Session Context
-*ApplicationSessionsCollectionCallbackdetected5GsBridgeForPduSessionAPI* | [**Detected5GsBridgeForPduSessionNewBridgePost**](docs/ApplicationSessionsCollectionCallbackdetected5GsBridgeForPduSessionAPI.md#) | **Post** /{$request.body#/ascReqData/evSubsc/notifUri}/new-bridge |
-*ApplicationSessionsCollectionCallbackeventNotificationAppSessionsAPI* | [**EventNotificationAppSessionsNotifyPost**](docs/ApplicationSessionsCollectionCallbackeventNotificationAppSessionsAPI.md#) | **Post** /{$request.body#/ascReqData/evSubsc/notifUri}/notify |
-*ApplicationSessionsCollectionCallbackeventNotificationPduSessionAPI* | [**EventNotificationPduSessionPduSessionPost**](docs/ApplicationSessionsCollectionCallbackeventNotificationPduSessionAPI.md#) | **Post** /{$request.body#/ascReqData/evSubsc/notifUri}/pdu-session |
-*ApplicationSessionsCollectionCallbackterminationRequestAPI* | [**TerminationRequestTerminatePost**](docs/ApplicationSessionsCollectionCallbackterminationRequestAPI.md#) | **Post** /{$request.body#/ascReqData/notifUri}/terminate |
-*EventsSubscriptionDocumentCallbackeventNotificationAPI* | [**EventNotificationNotifyPost**](docs/EventsSubscriptionDocumentCallbackeventNotificationAPI.md#) | **Post** /{$request.body#/notifUri}/notify |
-*IndividualApplicationSessionContextDocumentCallbackeventNotificationAppSessionIdAPI* | [**EventNotificationAppSessionIdNotifyPost**](docs/IndividualApplicationSessionContextDocumentCallbackeventNotificationAppSessionIdAPI.md#) | **Post** /{$request.body#/ascReqData/evSubsc/notifUri}/notify |
-
-
 ## Documentation For Authorization
 
 

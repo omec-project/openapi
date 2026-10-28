@@ -81,21 +81,6 @@ ctx = context.WithValue(context.Background(), Nnwdaf_EventsSubscription.ContextO
 })
 ```
 
-## Documentation for API Endpoints
-
-All URIs are relative to *https://example.com/nnwdaf-eventssubscription/v1*
-
-Class | Method | HTTP request | Description
------------- | ------------- | ------------- | -------------
-*IndividualNWDAFEventSubscriptionTransferDocumentAPI* | [**DeleteNWDAFEventSubscriptionTransfer**](docs/IndividualNWDAFEventSubscriptionTransferDocumentAPI.md#deletenwdafeventsubscriptiontransfer) | **Delete** /transfers/{transferId} | Delete an existing Individual NWDAF Event Subscription Transfer
-*IndividualNWDAFEventSubscriptionTransferDocumentAPI* | [**UpdateNWDAFEventSubscriptionTransfer**](docs/IndividualNWDAFEventSubscriptionTransferDocumentAPI.md#updatenwdafeventsubscriptiontransfer) | **Put** /transfers/{transferId} | Update an existing Individual NWDAF Event Subscription Transfer
-*IndividualNWDAFEventsSubscriptionDocumentAPI* | [**DeleteNWDAFEventsSubscription**](docs/IndividualNWDAFEventsSubscriptionDocumentAPI.md#deletenwdafeventssubscription) | **Delete** /subscriptions/{subscriptionId} | Delete an existing Individual NWDAF Events Subscription
-*IndividualNWDAFEventsSubscriptionDocumentAPI* | [**UpdateNWDAFEventsSubscription**](docs/IndividualNWDAFEventsSubscriptionDocumentAPI.md#updatenwdafeventssubscription) | **Put** /subscriptions/{subscriptionId} | Update an existing Individual NWDAF Events Subscription
-*NWDAFEventSubscriptionTransfersCollectionAPI* | [**CreateNWDAFEventSubscriptionTransfer**](docs/NWDAFEventSubscriptionTransfersCollectionAPI.md#createnwdafeventsubscriptiontransfer) | **Post** /transfers | Provide information about requested analytics subscriptions transfer and potentially create a new Individual NWDAF Event Subscription Transfer resource.
-*NWDAFEventsSubscriptionsCollectionAPI* | [**CreateNWDAFEventsSubscription**](docs/NWDAFEventsSubscriptionsCollectionAPI.md#createnwdafeventssubscription) | **Post** /subscriptions | Create a new Individual NWDAF Events Subscription
-*NWDAFEventsSubscriptionsCollectionCallbackmyNotificationAPI* | [**MyNotificationPost**](docs/NWDAFEventsSubscriptionsCollectionCallbackmyNotificationAPI.md#) | **Post** /{$request.body#/notificationURI} |
-
-
 ## Documentation For Authorization
 
 
