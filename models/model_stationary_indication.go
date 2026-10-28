@@ -25,7 +25,7 @@ import (
 	"github.com/omec-project/openapi/v2"
 )
 
-// StationaryIndication Possible values are: - STATIONARY: Identifies the UE is stationary - MOBILE: Identifies the UE is mobile
+// StationaryIndication Represents the stationarity of the UE. Possible values are: - STATIONARY: Identifies the UE is stationary - MOBILE: Identifies the UE is mobile
 type StationaryIndication string
 
 // List of StationaryIndication

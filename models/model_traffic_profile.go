@@ -25,7 +25,7 @@ import (
 	"github.com/omec-project/openapi/v2"
 )
 
-// TrafficProfile Possible values are: - SINGLE_TRANS_UL: Uplink single packet transmission. - SINGLE_TRANS_DL: Downlink single packet transmission. - DUAL_TRANS_UL_FIRST: Dual packet transmission, firstly uplink packet transmission   with subsequent downlink packet transmission. - DUAL_TRANS_DL_FIRST: Dual packet transmission, firstly downlink packet transmission   with subsequent uplink packet transmission.
+// TrafficProfile Represents the type of data transmission. Possible values are: - SINGLE_TRANS_UL: Uplink single packet transmission. - SINGLE_TRANS_DL: Downlink single packet transmission. - DUAL_TRANS_UL_FIRST: Dual packet transmission, firstly uplink packet transmission with   subsequent downlink packet transmission. - DUAL_TRANS_DL_FIRST: Dual packet transmission, firstly downlink packet transmission with   subsequent uplink packet transmission. - MULTI_TRANS: Multiple packet transmission.
 type TrafficProfile string
 
 // List of TrafficProfile
