@@ -80,16 +80,6 @@ ctx = context.WithValue(context.Background(), Nlmf_Broadcast.ContextOperationSer
 })
 ```
 
-## Documentation for API Endpoints
-
-All URIs are relative to *https://example.com/nlmf-broadcast/v1*
-
-Class | Method | HTTP request | Description
------------- | ------------- | ------------- | -------------
-*RequestCipheringKeyDataAPI* | [**CipheringKeyData**](docs/RequestCipheringKeyDataAPI.md#cipheringkeydata) | **Post** /cipher-key-data | Request ciphering key data
-*RequestCipheringKeyDataCallbackCipheringKeyDataAPI* | [**CipheringKeyDataPost**](docs/RequestCipheringKeyDataCallbackCipheringKeyDataAPI.md#) | **Post** /{$request.body#/amfCallBackURI} |
-
-
 ## Documentation For Authorization
 
 Endpoints do not require authorization.

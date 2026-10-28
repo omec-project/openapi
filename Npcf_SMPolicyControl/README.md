@@ -81,20 +81,6 @@ ctx = context.WithValue(context.Background(), Npcf_SMPolicyControl.ContextOperat
 })
 ```
 
-## Documentation for API Endpoints
-
-All URIs are relative to *https://example.com/npcf-smpolicycontrol/v1*
-
-Class | Method | HTTP request | Description
------------- | ------------- | ------------- | -------------
-*IndividualSMPolicyDocumentAPI* | [**DeleteSMPolicy**](docs/IndividualSMPolicyDocumentAPI.md#deletesmpolicy) | **Post** /sm-policies/{smPolicyId}/delete | Delete an existing Individual SM Policy.
-*IndividualSMPolicyDocumentAPI* | [**GetSMPolicy**](docs/IndividualSMPolicyDocumentAPI.md#getsmpolicy) | **Get** /sm-policies/{smPolicyId} | Read an Individual SM Policy
-*IndividualSMPolicyDocumentAPI* | [**UpdateSMPolicy**](docs/IndividualSMPolicyDocumentAPI.md#updatesmpolicy) | **Post** /sm-policies/{smPolicyId}/update | Update an existing Individual SM Policy
-*SMPoliciesCollectionAPI* | [**CreateSMPolicy**](docs/SMPoliciesCollectionAPI.md#createsmpolicy) | **Post** /sm-policies | Create a new Individual SM Policy.
-*SMPoliciesCollectionCallbackSmPolicyControlTerminationRequestNotificationAPI* | [**SmPolicyControlTerminationRequestNotificationTerminatePost**](docs/SMPoliciesCollectionCallbackSmPolicyControlTerminationRequestNotificationAPI.md#) | **Post** /{$request.body#/notificationUri}/terminate |
-*SMPoliciesCollectionCallbackSmPolicyUpdateNotificationAPI* | [**SmPolicyUpdateNotificationUpdatePost**](docs/SMPoliciesCollectionCallbackSmPolicyUpdateNotificationAPI.md#) | **Post** /{$request.body#/notificationUri}/update |
-
-
 ## Documentation For Authorization
 
 

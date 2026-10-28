@@ -81,22 +81,6 @@ ctx = context.WithValue(context.Background(), Nudm_UEAU.ContextOperationServerVa
 })
 ```
 
-## Documentation for API Endpoints
-
-All URIs are relative to *https://example.com/nudm-ueau/v1*
-
-Class | Method | HTTP request | Description
------------- | ------------- | ------------- | -------------
-*ConfirmAuthAPI* | [**ConfirmAuth**](docs/ConfirmAuthAPI.md#confirmauth) | **Post** /{supi}/auth-events | Create a new confirmation event
-*DeleteAuthAPI* | [**DeleteAuth**](docs/DeleteAuthAPI.md#deleteauth) | **Put** /{supi}/auth-events/{authEventId} | Deletes the authentication result in the UDM
-*GenerateAuthDataAPI* | [**GenerateAuthData**](docs/GenerateAuthDataAPI.md#generateauthdata) | **Post** /{supiOrSuci}/security-information/generate-auth-data | Generate authentication data for the UE
-*GenerateGBAAuthenticationVectorsAPI* | [**GenerateGbaAv**](docs/GenerateGBAAuthenticationVectorsAPI.md#generategbaav) | **Post** /{supi}/gba-security-information/generate-av | Generate authentication data for the UE in GBA domain
-*GenerateHSSAuthenticationVectorsAPI* | [**GenerateAv**](docs/GenerateHSSAuthenticationVectorsAPI.md#generateav) | **Post** /{supi}/hss-security-information/{hssAuthType}/generate-av | Generate authentication data for the UE in EPS or IMS domain
-*GenerateProSeAuthenticationVectorsAPI* | [**GenerateProseAV**](docs/GenerateProSeAuthenticationVectorsAPI.md#generateproseav) | **Post** /{supiOrSuci}/prose-security-information/generate-av | Generate authentication data for ProSe
-*GetAuthDataForFNRGAPI* | [**GetRgAuthData**](docs/GetAuthDataForFNRGAPI.md#getrgauthdata) | **Get** /{supiOrSuci}/security-information-rg | Get authentication data for the FN-RG
-*ConfirmAuthCallbackdataRestorationNotificationAPI* | [**DataRestorationNotificationRequestBodyDataRestorationCallbackUriPost**](docs/ConfirmAuthCallbackdataRestorationNotificationAPI.md#) | **Post** /{request.body#/dataRestorationCallbackUri} |
-
-
 ## Documentation For Authorization
 
 

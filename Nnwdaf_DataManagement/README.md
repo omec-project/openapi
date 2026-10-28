@@ -81,18 +81,6 @@ ctx = context.WithValue(context.Background(), Nnwdaf_DataManagement.ContextOpera
 })
 ```
 
-## Documentation for API Endpoints
-
-All URIs are relative to *https://example.com/nnwdaf-datamanagement/v1*
-
-Class | Method | HTTP request | Description
------------- | ------------- | ------------- | -------------
-*IndividualNWDAFDataManagementSubscriptionDocumentAPI* | [**DeleteNWDAFDataSubscription**](docs/IndividualNWDAFDataManagementSubscriptionDocumentAPI.md#deletenwdafdatasubscription) | **Delete** /subscriptions/{subscriptionId} | unsubscribe from notifications
-*IndividualNWDAFDataManagementSubscriptionDocumentAPI* | [**UpdateNWDAFDataSubscription**](docs/IndividualNWDAFDataManagementSubscriptionDocumentAPI.md#updatenwdafdatasubscription) | **Put** /subscriptions/{subscriptionId} | Update an existing Individual NWDAF Data Subscription.
-*SubscriptionsCollectionAPI* | [**CreateIndividualSubcription**](docs/SubscriptionsCollectionAPI.md#createindividualsubcription) | **Post** /subscriptions | subscribe to notifications
-*SubscriptionsCollectionCallbackmyNotificationAPI* | [**MyNotificationPost**](docs/SubscriptionsCollectionCallbackmyNotificationAPI.md#) | **Post** /{$request.body#/notificURI} |
-
-
 ## Documentation For Authorization
 
 

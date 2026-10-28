@@ -81,28 +81,6 @@ ctx = context.WithValue(context.Background(), Nnrf_NFManagement.ContextOperation
 })
 ```
 
-## Documentation for API Endpoints
-
-All URIs are relative to *https://example.com/nnrf-nfm/v1*
-
-Class | Method | HTTP request | Description
------------- | ------------- | ------------- | -------------
-*NFInstanceIDDocumentAPI* | [**DeregisterNFInstance**](docs/NFInstanceIDDocumentAPI.md#deregisternfinstance) | **Delete** /nf-instances/{nfInstanceID} | Deregisters a given NF Instance
-*NFInstanceIDDocumentAPI* | [**GetNFInstance**](docs/NFInstanceIDDocumentAPI.md#getnfinstance) | **Get** /nf-instances/{nfInstanceID} | Read the profile of a given NF Instance
-*NFInstanceIDDocumentAPI* | [**RegisterNFInstance**](docs/NFInstanceIDDocumentAPI.md#registernfinstance) | **Put** /nf-instances/{nfInstanceID} | Register a new NF Instance
-*NFInstanceIDDocumentAPI* | [**UpdateNFInstance**](docs/NFInstanceIDDocumentAPI.md#updatenfinstance) | **Patch** /nf-instances/{nfInstanceID} | Update NF Instance profile
-*NFInstancesStoreAPI* | [**GetNFInstances**](docs/NFInstancesStoreAPI.md#getnfinstances) | **Get** /nf-instances | Retrieves a collection of NF Instances
-*NFInstancesStoreAPI* | [**OptionsNFInstances**](docs/NFInstancesStoreAPI.md#optionsnfinstances) | **Options** /nf-instances | Discover communication options supported by NRF for NF Instances
-*SharedDataDocumentAPI* | [**DeleteSharedData**](docs/SharedDataDocumentAPI.md#deleteshareddata) | **Delete** /shared-data/{sharedDataId} | Delete Shared Data identified by a given sharedDataId
-*SharedDataDocumentAPI* | [**GetSharedData**](docs/SharedDataDocumentAPI.md#getshareddata) | **Get** /shared-data/{sharedDataId} | Read the shared data identified by a given NF sharedDataId
-*SharedDataDocumentAPI* | [**RegisterSharedData**](docs/SharedDataDocumentAPI.md#registershareddata) | **Put** /shared-data/{sharedDataId} | Register new Shared Data
-*SharedDataDocumentAPI* | [**UpdateSharedData**](docs/SharedDataDocumentAPI.md#updateshareddata) | **Patch** /shared-data/{sharedDataId} | Update Shared Data
-*SubscriptionIDDocumentAPI* | [**RemoveSubscription**](docs/SubscriptionIDDocumentAPI.md#removesubscription) | **Delete** /subscriptions/{subscriptionID} | Deletes a subscription
-*SubscriptionIDDocumentAPI* | [**UpdateSubscription**](docs/SubscriptionIDDocumentAPI.md#updatesubscription) | **Patch** /subscriptions/{subscriptionID} | Updates a subscription
-*SubscriptionsCollectionAPI* | [**CreateSubscription**](docs/SubscriptionsCollectionAPI.md#createsubscription) | **Post** /subscriptions | Create a new subscription
-*SubscriptionsCollectionCallbackNFStatusEventAPI* | [**OnNFStatusEventPost**](docs/SubscriptionsCollectionCallbackNFStatusEventAPI.md#) | **Post** /{$request.body#/nfStatusNotificationUri} |
-
-
 ## Documentation For Authorization
 
 

@@ -81,23 +81,6 @@ ctx = context.WithValue(context.Background(), Nlmf_Location.ContextOperationServ
 })
 ```
 
-## Documentation for API Endpoints
-
-All URIs are relative to *https://example.com/nlmf-loc/v1*
-
-Class | Method | HTTP request | Description
------------- | ------------- | ------------- | -------------
-*CancelLocationAPI* | [**CancelLocation**](docs/CancelLocationAPI.md#cancellocation) | **Post** /cancel-location | request cancellation of periodic or triggered location
-*DetermineLocationAPI* | [**DetermineLocation**](docs/DetermineLocationAPI.md#determinelocation) | **Post** /determine-location | Determine Location of an UE
-*LocationContextTransferAPI* | [**LocationContextTransfer**](docs/LocationContextTransferAPI.md#locationcontexttransfer) | **Post** /location-context-transfer | transfer context information for periodic or triggered location
-*LocationMeasureAPI* | [**LocationMeasure**](docs/LocationMeasureAPI.md#locationmeasure) | **Post** /measure-location | PRU location measurement
-*UPConfigureAPI* | [**UpConfig**](docs/UPConfigureAPI.md#upconfig) | **Post** /configure-up | set up, modify or terminate a secure LCS-UP connection for a target UE
-*UPSubscribeAPI* | [**UpSubscriptions**](docs/UPSubscribeAPI.md#upsubscriptions) | **Post** /up-subscriptions | subscribe about status of a secure LCS-UP connection for a target UE
-*UPUnsubscribeAPI* | [**DeleteSubscription**](docs/UPUnsubscribeAPI.md#deletesubscription) | **Delete** /up-subscriptions/{subscriptionId} | Deletes a subscription
-*DetermineLocationCallbackEventNotifyAPI* | [**EventNotifyPost**](docs/DetermineLocationCallbackEventNotifyAPI.md#) | **Post** /{$request.body#/hgmlcCallBackURI} |
-*UPSubscribeCallbackUPNotifyAPI* | [**UPNotifyPost**](docs/UPSubscribeCallbackUPNotifyAPI.md#) | **Post** /{$request.body#/upNotifyCallBackUri} |
-
-
 ## Documentation For Authorization
 
 

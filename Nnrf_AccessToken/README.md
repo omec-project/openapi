@@ -80,15 +80,6 @@ ctx = context.WithValue(context.Background(), Nnrf_AccessToken.ContextOperationS
 })
 ```
 
-## Documentation for API Endpoints
-
-All URIs are relative to *https://example.com*
-
-Class | Method | HTTP request | Description
------------- | ------------- | ------------- | -------------
-*AccessTokenRequestAPI* | [**AccessTokenRequest**](docs/AccessTokenRequestAPI.md#accesstokenrequest) | **Post** /oauth2/token | Access Token Request
-
-
 ## Documentation For Authorization
 
 Endpoints do not require authorization.

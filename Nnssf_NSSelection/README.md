@@ -81,15 +81,6 @@ ctx = context.WithValue(context.Background(), Nnssf_NSSelection.ContextOperation
 })
 ```
 
-## Documentation for API Endpoints
-
-All URIs are relative to *https://example.com/nnssf-nsselection/v2*
-
-Class | Method | HTTP request | Description
------------- | ------------- | ------------- | -------------
-*NetworkSliceInformationDocumentAPI* | [**NSSelectionGet**](docs/NetworkSliceInformationDocumentAPI.md#nsselectionget) | **Get** /network-slice-information | Retrieve the Network Slice Selection Information
-
-
 ## Documentation For Authorization
 
 

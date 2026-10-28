@@ -81,56 +81,6 @@ ctx = context.WithValue(context.Background(), Nudm_SDM.ContextOperationServerVar
 })
 ```
 
-## Documentation for API Endpoints
-
-All URIs are relative to *https://example.com/nudm-sdm/v2*
-
-Class | Method | HTTP request | Description
------------- | ------------- | ------------- | -------------
-*A2XSubscriptionDataRetrievalAPI* | [**GetA2xData**](docs/A2XSubscriptionDataRetrievalAPI.md#geta2xdata) | **Get** /{supi}/a2x-data | retrieve a UE&#39;s A2X Subscription Data
-*AccessAndMobilitySubscriptionDataRetrievalAPI* | [**GetAmData**](docs/AccessAndMobilitySubscriptionDataRetrievalAPI.md#getamdata) | **Get** /{supi}/am-data | retrieve a UE&#39;s Access and Mobility Subscription Data
-*Class5MBSSubscriptionDataRetrievalAPI* | [**GetMbsData**](docs/Class5MBSSubscriptionDataRetrievalAPI.md#getmbsdata) | **Get** /{supi}/5mbs-data | retrieve a UE&#39;s 5MBS Subscription Data
-*EnhancedCoverageRestrictionDataRetrievalAPI* | [**GetEcrData**](docs/EnhancedCoverageRestrictionDataRetrievalAPI.md#getecrdata) | **Get** /{supi}/am-data/ecr-data | retrieve a UE&#39;s subscribed Enhanced Coverage Restriction Data
-*GPSIToSUPITranslationOrSUPIToGPSITranslationAPI* | [**GetSupiOrGpsi**](docs/GPSIToSUPITranslationOrSUPIToGPSITranslationAPI.md#getsupiorgpsi) | **Get** /{ueId}/id-translation-result | retrieve a UE&#39;s SUPI or GPSI
-*GroupIdentifiersAPI* | [**GetGroupIdentifiers**](docs/GroupIdentifiersAPI.md#getgroupidentifiers) | **Get** /group-data/group-identifiers | Mapping of Group Identifiers
-*LCSBroadcastAssistanceDataTypesRetrievalAPI* | [**GetLcsBcaData**](docs/LCSBroadcastAssistanceDataTypesRetrievalAPI.md#getlcsbcadata) | **Get** /{supi}/lcs-bca-data | retrieve a UE&#39;s LCS Broadcast Assistance Data Types Subscription Data
-*LCSMobileOriginatedDataRetrievalAPI* | [**GetLcsMoData**](docs/LCSMobileOriginatedDataRetrievalAPI.md#getlcsmodata) | **Get** /{supi}/lcs-mo-data | retrieve a UE&#39;s LCS Mobile Originated Subscription Data
-*LCSPrivacyDataRetrievalAPI* | [**GetLcsPrivacyData**](docs/LCSPrivacyDataRetrievalAPI.md#getlcsprivacydata) | **Get** /{ueId}/lcs-privacy-data | retrieve a UE&#39;s LCS Privacy Subscription Data
-*LCSSubscriptionDataRetrievalAPI* | [**GetLcsSubscriptionData**](docs/LCSSubscriptionDataRetrievalAPI.md#getlcssubscriptiondata) | **Get** /{supi}/lcs-subscription-data | retrieve a UE&#39;s LCS Subscription Data
-*MultipleIdentifiersAPI* | [**GetMultipleIdentifiers**](docs/MultipleIdentifiersAPI.md#getmultipleidentifiers) | **Get** /multiple-identifiers | Mapping of UE Identifiers
-*ProseSubscriptionDataRetrievalAPI* | [**GetProseData**](docs/ProseSubscriptionDataRetrievalAPI.md#getprosedata) | **Get** /{supi}/prose-data | retrieve a UE&#39;s ProSe Subscription Data
-*ProvidingAcknowledgementOfCAGUpdateAPI* | [**CAGAck**](docs/ProvidingAcknowledgementOfCAGUpdateAPI.md#cagack) | **Put** /{supi}/am-data/cag-ack | Nudm_Sdm Info operation for CAG acknowledgement
-*ProvidingAcknowledgementOfSNSSAIsUpdateAPI* | [**SNSSAIsAck**](docs/ProvidingAcknowledgementOfSNSSAIsUpdateAPI.md#snssaisack) | **Put** /{supi}/am-data/subscribed-snssais-ack | Nudm_Sdm Info operation for S-NSSAIs acknowledgement
-*ProvidingAcknowledgementOfSteeringOfRoamingAPI* | [**SorAckInfo**](docs/ProvidingAcknowledgementOfSteeringOfRoamingAPI.md#sorackinfo) | **Put** /{supi}/am-data/sor-ack | Nudm_Sdm Info service operation
-*ProvidingAcknowledgementOfUEParametersUpdateAPI* | [**UpuAck**](docs/ProvidingAcknowledgementOfUEParametersUpdateAPI.md#upuack) | **Put** /{supi}/am-data/upu-ack | Nudm_Sdm Info for UPU service operation
-*RangingAndSidelinkPositioningSubscriptionDataRetrievalAPI* | [**GetRangingSlPosData**](docs/RangingAndSidelinkPositioningSubscriptionDataRetrievalAPI.md#getrangingslposdata) | **Get** /{supi}/ranging-slpos-data | retrieve a UE&#39;s Ranging and Sidelink Positioning Subscription Data
-*RetrievalOfMultipleDataSetsAPI* | [**GetDataSets**](docs/RetrievalOfMultipleDataSetsAPI.md#getdatasets) | **Get** /{supi} | retrieve multiple data sets
-*RetrievalOfSharedDataAPI* | [**GetSharedData**](docs/RetrievalOfSharedDataAPI.md#getshareddata) | **Get** /shared-data | retrieve shared data
-*RetrievalOfTheIndividualSharedDataAPI* | [**GetIndividualSharedData**](docs/RetrievalOfTheIndividualSharedDataAPI.md#getindividualshareddata) | **Get** /shared-data/{sharedDataId} | retrieve the individual shared data
-*SMFSelectionSubscriptionDataRetrievalAPI* | [**GetSmfSelData**](docs/SMFSelectionSubscriptionDataRetrievalAPI.md#getsmfseldata) | **Get** /{supi}/smf-select-data | retrieve a UE&#39;s SMF Selection Subscription Data
-*SMSManagementSubscriptionDataRetrievalAPI* | [**GetSmsMngtData**](docs/SMSManagementSubscriptionDataRetrievalAPI.md#getsmsmngtdata) | **Get** /{supi}/sms-mng-data | retrieve a UE&#39;s SMS Management Subscription Data
-*SMSSubscriptionDataRetrievalAPI* | [**GetSmsData**](docs/SMSSubscriptionDataRetrievalAPI.md#getsmsdata) | **Get** /{supi}/sms-data | retrieve a UE&#39;s SMS Subscription Data
-*SessionManagementSubscriptionDataRetrievalAPI* | [**GetSmData**](docs/SessionManagementSubscriptionDataRetrievalAPI.md#getsmdata) | **Get** /{supi}/sm-data | retrieve a UE&#39;s Session Management Subscription Data
-*SliceSelectionSubscriptionDataRetrievalAPI* | [**GetNSSAI**](docs/SliceSelectionSubscriptionDataRetrievalAPI.md#getnssai) | **Get** /{supi}/nssai | retrieve a UE&#39;s subscribed NSSAI
-*SubscriptionCreationAPI* | [**Subscribe**](docs/SubscriptionCreationAPI.md#subscribe) | **Post** /{ueId}/sdm-subscriptions | subscribe to notifications
-*SubscriptionCreationForSharedDataAPI* | [**SubscribeToSharedData**](docs/SubscriptionCreationForSharedDataAPI.md#subscribetoshareddata) | **Post** /shared-data-subscriptions | subscribe to notifications for shared data
-*SubscriptionDeletionAPI* | [**Unsubscribe**](docs/SubscriptionDeletionAPI.md#unsubscribe) | **Delete** /{ueId}/sdm-subscriptions/{subscriptionId} | unsubscribe from notifications
-*SubscriptionDeletionForSharedDataAPI* | [**UnsubscribeForSharedData**](docs/SubscriptionDeletionForSharedDataAPI.md#unsubscribeforshareddata) | **Delete** /shared-data-subscriptions/{subscriptionId} | unsubscribe from notifications for shared data
-*SubscriptionModificationAPI* | [**Modify**](docs/SubscriptionModificationAPI.md#modify) | **Patch** /{ueId}/sdm-subscriptions/{subscriptionId} | modify the subscription
-*SubscriptionModificationAPI* | [**ModifySharedDataSubs**](docs/SubscriptionModificationAPI.md#modifyshareddatasubs) | **Patch** /shared-data-subscriptions/{subscriptionId} | modify the subscription
-*TimeSyncSubscriptionDataRetrievalAPI* | [**GetTimeSyncSubscriptionData**](docs/TimeSyncSubscriptionDataRetrievalAPI.md#gettimesyncsubscriptiondata) | **Get** /{supi}/time-sync-data | retrieve a UE&#39;s Time Synchronization Subscription Data
-*TraceConfigurationDataRetrievalAPI* | [**GetTraceConfigData**](docs/TraceConfigurationDataRetrievalAPI.md#gettraceconfigdata) | **Get** /{supi}/trace-data | retrieve a UE&#39;s Trace Configuration Data
-*TriggerSORInfoUpdateAPI* | [**UpdateSORInfo**](docs/TriggerSORInfoUpdateAPI.md#updatesorinfo) | **Post** /{supi}/am-data/update-sor | Nudm_Sdm custom operation to trigger SOR info update
-*UEContextInAMFDataRetrievalAPI* | [**GetUeCtxInAmfData**](docs/UEContextInAMFDataRetrievalAPI.md#getuectxinamfdata) | **Get** /{supi}/ue-context-in-amf-data | retrieve a UE&#39;s UE Context In AMF Data
-*UEContextInSMFDataRetrievalAPI* | [**GetUeCtxInSmfData**](docs/UEContextInSMFDataRetrievalAPI.md#getuectxinsmfdata) | **Get** /{supi}/ue-context-in-smf-data | retrieve a UE&#39;s UE Context In SMF Data
-*UEContextInSMSFDataRetrievalAPI* | [**GetUeCtxInSmsfData**](docs/UEContextInSMSFDataRetrievalAPI.md#getuectxinsmsfdata) | **Get** /{supi}/ue-context-in-smsf-data | retrieve a UE&#39;s UE Context In SMSF Data
-*UserConsentSubscriptionDataRetrievalAPI* | [**GetUcData**](docs/UserConsentSubscriptionDataRetrievalAPI.md#getucdata) | **Get** /{supi}/uc-data | retrieve a UE&#39;s User Consent Subscription Data
-*V2XSubscriptionDataRetrievalAPI* | [**GetV2xData**](docs/V2XSubscriptionDataRetrievalAPI.md#getv2xdata) | **Get** /{supi}/v2x-data | retrieve a UE&#39;s V2X Subscription Data
-*SubscriptionCreationCallbackdataRestorationNotificationAPI* | [**DataRestorationNotificationRequestBodyDataRestorationCallbackUriPost**](docs/SubscriptionCreationCallbackdataRestorationNotificationAPI.md#) | **Post** /{request.body#/dataRestorationCallbackUri} |
-*SubscriptionCreationCallbackdatachangeNotificationUeIdAPI* | [**DatachangeNotificationUeIdRequestBodyCallbackReferencePost**](docs/SubscriptionCreationCallbackdatachangeNotificationUeIdAPI.md#) | **Post** /{request.body#/callbackReference} |
-*SubscriptionCreationForSharedDataCallbackdatachangeNotificationAPI* | [**DatachangeNotificationRequestBodyCallbackReferencePost**](docs/SubscriptionCreationForSharedDataCallbackdatachangeNotificationAPI.md#) | **Post** /{request.body#/callbackReference} |
-
-
 ## Documentation For Authorization
 
 

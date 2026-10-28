@@ -81,37 +81,6 @@ ctx = context.WithValue(context.Background(), Namf_Communication.ContextOperatio
 })
 ```
 
-## Documentation for API Endpoints
-
-All URIs are relative to *https://example.com/namf-comm/v1*
-
-Class | Method | HTTP request | Description
------------- | ------------- | ------------- | -------------
-*IndividualSubscriptionDocumentAPI* | [**AMFStatusChangeSubscribeModify**](docs/IndividualSubscriptionDocumentAPI.md#amfstatuschangesubscribemodify) | **Put** /subscriptions/{subscriptionId} | Namf_Communication AMF Status Change Subscribe Modify service Operation
-*IndividualSubscriptionDocumentAPI* | [**AMFStatusChangeUnSubscribe**](docs/IndividualSubscriptionDocumentAPI.md#amfstatuschangeunsubscribe) | **Delete** /subscriptions/{subscriptionId} | Namf_Communication AMF Status Change UnSubscribe service Operation
-*IndividualUeContextDocumentAPI* | [**CancelRelocateUEContext**](docs/IndividualUeContextDocumentAPI.md#cancelrelocateuecontext) | **Post** /ue-contexts/{ueContextId}/cancel-relocate | Namf_Communication CancelRelocateUEContext service Operation
-*IndividualUeContextDocumentAPI* | [**CreateUEContext**](docs/IndividualUeContextDocumentAPI.md#createuecontext) | **Put** /ue-contexts/{ueContextId} | Namf_Communication CreateUEContext service Operation
-*IndividualUeContextDocumentAPI* | [**EBIAssignment**](docs/IndividualUeContextDocumentAPI.md#ebiassignment) | **Post** /ue-contexts/{ueContextId}/assign-ebi | Namf_Communication EBI Assignment service Operation
-*IndividualUeContextDocumentAPI* | [**RegistrationStatusUpdate**](docs/IndividualUeContextDocumentAPI.md#registrationstatusupdate) | **Post** /ue-contexts/{ueContextId}/transfer-update | Namf_Communication RegistrationStatusUpdate service Operation
-*IndividualUeContextDocumentAPI* | [**ReleaseUEContext**](docs/IndividualUeContextDocumentAPI.md#releaseuecontext) | **Post** /ue-contexts/{ueContextId}/release | Namf_Communication ReleaseUEContext service Operation
-*IndividualUeContextDocumentAPI* | [**RelocateUEContext**](docs/IndividualUeContextDocumentAPI.md#relocateuecontext) | **Post** /ue-contexts/{ueContextId}/relocate | Namf_Communication RelocateUEContext service Operation
-*IndividualUeContextDocumentAPI* | [**UEContextTransfer**](docs/IndividualUeContextDocumentAPI.md#uecontexttransfer) | **Post** /ue-contexts/{ueContextId}/transfer | Namf_Communication UEContextTransfer service Operation
-*N1N2IndividualSubscriptionDocumentAPI* | [**N1N2MessageUnSubscribe**](docs/N1N2IndividualSubscriptionDocumentAPI.md#n1n2messageunsubscribe) | **Delete** /ue-contexts/{ueContextId}/n1-n2-messages/subscriptions/{subscriptionId} | Namf_Communication N1N2 Message UnSubscribe (UE Specific) service Operation
-*N1N2MessageCollectionCollectionAPI* | [**N1N2MessageTransfer**](docs/N1N2MessageCollectionCollectionAPI.md#n1n2messagetransfer) | **Post** /ue-contexts/{ueContextId}/n1-n2-messages | Namf_Communication N1N2 Message Transfer (UE Specific) service Operation
-*N1N2SubscriptionsCollectionForIndividualUEContextsCollectionAPI* | [**N1N2MessageSubscribe**](docs/N1N2SubscriptionsCollectionForIndividualUEContextsCollectionAPI.md#n1n2messagesubscribe) | **Post** /ue-contexts/{ueContextId}/n1-n2-messages/subscriptions | Namf_Communication N1N2 Message Subscribe (UE Specific) service Operation
-*NonUEN2MessageNotificationIndividualSubscriptionDocumentAPI* | [**NonUeN2InfoUnSubscribe**](docs/NonUEN2MessageNotificationIndividualSubscriptionDocumentAPI.md#nonuen2infounsubscribe) | **Delete** /non-ue-n2-messages/subscriptions/{n2NotifySubscriptionId} | Namf_Communication Non UE N2 Info UnSubscribe service Operation
-*NonUEN2MessagesCollectionCollectionAPI* | [**NonUeN2MessageTransfer**](docs/NonUEN2MessagesCollectionCollectionAPI.md#nonuen2messagetransfer) | **Post** /non-ue-n2-messages/transfer | Namf_Communication Non UE N2 Message Transfer service Operation
-*NonUEN2MessagesSubscriptionsCollectionCollectionAPI* | [**NonUeN2InfoSubscribe**](docs/NonUEN2MessagesSubscriptionsCollectionCollectionAPI.md#nonuen2infosubscribe) | **Post** /non-ue-n2-messages/subscriptions | Namf_Communication Non UE N2 Info Subscribe service Operation
-*SubscriptionsCollectionCollectionAPI* | [**AMFStatusChangeSubscribe**](docs/SubscriptionsCollectionCollectionAPI.md#amfstatuschangesubscribe) | **Post** /subscriptions | Namf_Communication AMF Status Change Subscribe service Operation
-*IndividualSubscriptionDocumentCallbackOnAmfStatusChangeAPI* | [**AmfStatusChangeNotify**](docs/IndividualSubscriptionDocumentCallbackOnAmfStatusChangeAPI.md#) | **Post** /{$request.body#/amfStatusUri} | Amf Status Change Notify service Operation
-*IndividualUeContextDocumentCallbackN2MessageNotifyAPI* | [**N2InfoNotifyHandoverComplete**](docs/IndividualUeContextDocumentCallbackN2MessageNotifyAPI.md#) | **Post** /{$request.body#/n2NotifyUri} | Namf_Communication N2 Info Notify (UE Specific) service Operation
-*N1N2MessageCollectionCollectionCallbackN1N2TransferFailureAPI* | [**N1N2TransferFailureNotification**](docs/N1N2MessageCollectionCollectionCallbackN1N2TransferFailureAPI.md#) | **Post** /{$request.body#/n1n2FailureTxfNotifURI} | Namf_Communication N1N2Transfer Failure Notification service Operation
-*N1N2SubscriptionsCollectionForIndividualUEContextsCollectionCallbackN1N2MessageNotifyn1NotifyCallbackUriAPI* | [**N1MessageNotify**](docs/N1N2SubscriptionsCollectionForIndividualUEContextsCollectionCallbackN1N2MessageNotifyn1NotifyCallbackUriAPI.md#) | **Post** /{$request.body#/n1NotifyCallbackUri} | Namf_Communication N1 Message Notify service Operation
-*N1N2SubscriptionsCollectionForIndividualUEContextsCollectionCallbackN1N2MessageNotifyn2NotifyCallbackUriAPI* | [**N2InfoNotify**](docs/N1N2SubscriptionsCollectionForIndividualUEContextsCollectionCallbackN1N2MessageNotifyn2NotifyCallbackUriAPI.md#) | **Post** /{$request.body#/n2NotifyCallbackUri} | Namf_Communication N2 Info Notify (UE Specific) service Operation
-*NonUEN2MessagesSubscriptionsCollectionCollectionCallbackN2InfoNotifyAPI* | [**NonUeN2InfoNotify**](docs/NonUEN2MessagesSubscriptionsCollectionCollectionCallbackN2InfoNotifyAPI.md#) | **Post** /{$request.body#/n2NotifyCallbackUri} | Namf_Communication Non UE N2 Info Notify service Operation
-*SubscriptionsCollectionCollectionCallbackAmfStatusChangeAPI* | [**AmfStatusChangeNotifyOnSubscriptionUpdate**](docs/SubscriptionsCollectionCollectionCallbackAmfStatusChangeAPI.md#) | **Post** /{$request.body#/amfStatusUri} | Amf Status Change Notify service Operation
-
-
 ## Documentation For Authorization
 
 

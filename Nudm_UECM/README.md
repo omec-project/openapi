@@ -81,62 +81,6 @@ ctx = context.WithValue(context.Background(), Nudm_UECM.ContextOperationServerVa
 })
 ```
 
-## Documentation for API Endpoints
-
-All URIs are relative to *https://example.com/nudm-uecm/v1*
-
-Class | Method | HTTP request | Description
------------- | ------------- | ------------- | -------------
-*AMF3GppAccessRegistrationInfoRetrievalAPI* | [**Get3GppRegistration**](docs/AMF3GppAccessRegistrationInfoRetrievalAPI.md#get3gppregistration) | **Get** /{ueId}/registrations/amf-3gpp-access | retrieve the AMF registration for 3GPP access information
-*AMFNon3GPPAccessRegistrationInfoRetrievalAPI* | [**GetNon3GppRegistration**](docs/AMFNon3GPPAccessRegistrationInfoRetrievalAPI.md#getnon3gppregistration) | **Get** /{ueId}/registrations/amf-non-3gpp-access | retrieve the AMF registration for non-3GPP access information
-*AMFRegistrationFor3GPPAccessAPI* | [**Call3GppRegistration**](docs/AMFRegistrationFor3GPPAccessAPI.md#call3gppregistration) | **Put** /{ueId}/registrations/amf-3gpp-access | register as AMF for 3GPP access
-*AMFRegistrationForNon3GPPAccessAPI* | [**Non3GppRegistration**](docs/AMFRegistrationForNon3GPPAccessAPI.md#non3gppregistration) | **Put** /{ueId}/registrations/amf-non-3gpp-access | register as AMF for non-3GPP access
-*IPSMGWDeregistrationAPI* | [**IpSmGwDeregistration**](docs/IPSMGWDeregistrationAPI.md#ipsmgwderegistration) | **Delete** /{ueId}/registrations/ip-sm-gw | Delete the IP-SM-GW registration
-*IPSMGWRegistrationAPI* | [**IpSmGwRegistration**](docs/IPSMGWRegistrationAPI.md#ipsmgwregistration) | **Put** /{ueId}/registrations/ip-sm-gw | Register an IP-SM-GW
-*IPSMGWRegistrationInfoRetrievalAPI* | [**GetIpSmGwRegistration**](docs/IPSMGWRegistrationInfoRetrievalAPI.md#getipsmgwregistration) | **Get** /{ueId}/registrations/ip-sm-gw | Retrieve the IP-SM-GW registration information
-*NWDAFDeregistrationAPI* | [**NwdafDeregistration**](docs/NWDAFDeregistrationAPI.md#nwdafderegistration) | **Delete** /{ueId}/registrations/nwdaf-registrations/{nwdafRegistrationId} | delete an NWDAF registration
-*NWDAFRegistrationAPI* | [**NwdafRegistration**](docs/NWDAFRegistrationAPI.md#nwdafregistration) | **Put** /{ueId}/registrations/nwdaf-registrations/{nwdafRegistrationId} | register as NWDAF
-*NWDAFRegistrationInfoRetrievalAPI* | [**GetNwdafRegistration**](docs/NWDAFRegistrationInfoRetrievalAPI.md#getnwdafregistration) | **Get** /{ueId}/registrations/nwdaf-registrations | retrieve the NWDAF registration
-*PEIUpdateAPI* | [**PeiUpdate**](docs/PEIUpdateAPI.md#peiupdate) | **Post** /{ueId}/registrations/amf-3gpp-access/pei-update | Updates the PEI in the 3GPP access registration context
-*ParameterUpdateInTheAMFRegistrationFor3GPPAccessAPI* | [**Update3GppRegistration**](docs/ParameterUpdateInTheAMFRegistrationFor3GPPAccessAPI.md#update3gppregistration) | **Patch** /{ueId}/registrations/amf-3gpp-access | Update a parameter in the AMF registration for 3GPP access
-*ParameterUpdateInTheAMFRegistrationForNon3GPPAccessAPI* | [**UpdateNon3GppRegistration**](docs/ParameterUpdateInTheAMFRegistrationForNon3GPPAccessAPI.md#updatenon3gppregistration) | **Patch** /{ueId}/registrations/amf-non-3gpp-access | update a parameter in the AMF registration for non-3GPP access
-*ParameterUpdateInTheNWDAFRegistrationAPI* | [**UpdateNwdafRegistration**](docs/ParameterUpdateInTheNWDAFRegistrationAPI.md#updatenwdafregistration) | **Patch** /{ueId}/registrations/nwdaf-registrations/{nwdafRegistrationId} | Update a parameter in the NWDAF registration
-*ParameterUpdateInTheSMFRegistrationAPI* | [**UpdateSmfRegistration**](docs/ParameterUpdateInTheSMFRegistrationAPI.md#updatesmfregistration) | **Patch** /{ueId}/registrations/smf-registrations/{pduSessionId} | update a parameter in the SMF registration
-*ParameterUpdateInTheSMSFRegistrationFor3GPPAccessAPI* | [**UpdateSmsf3GppRegistration**](docs/ParameterUpdateInTheSMSFRegistrationFor3GPPAccessAPI.md#updatesmsf3gppregistration) | **Patch** /{ueId}/registrations/smsf-3gpp-access | update a parameter in the SMSF registration for 3GPP access
-*ParameterUpdateInTheSMSFRegistrationForNon3GPPAccessAPI* | [**UpdateSmsfNon3GppRegistration**](docs/ParameterUpdateInTheSMSFRegistrationForNon3GPPAccessAPI.md#updatesmsfnon3gppregistration) | **Patch** /{ueId}/registrations/smsf-non-3gpp-access | update a parameter in the SMSF registration for non-3GPP access
-*RetrieveSMFRegistrationAPI* | [**RetrieveSmfRegistration**](docs/RetrieveSMFRegistrationAPI.md#retrievesmfregistration) | **Get** /{ueId}/registrations/smf-registrations/{pduSessionId} | get an SMF registration
-*RoamingInformationUpdateAPI* | [**UpdateRoamingInformation**](docs/RoamingInformationUpdateAPI.md#updateroaminginformation) | **Post** /{ueId}/registrations/amf-3gpp-access/roaming-info-update | Update the Roaming Information
-*SMFDeregistrationAPI* | [**SmfDeregistration**](docs/SMFDeregistrationAPI.md#smfderegistration) | **Delete** /{ueId}/registrations/smf-registrations/{pduSessionId} | delete an SMF registration
-*SMFSmfRegistrationAPI* | [**GetSmfRegistration**](docs/SMFSmfRegistrationAPI.md#getsmfregistration) | **Get** /{ueId}/registrations/smf-registrations | retrieve the SMF registration information
-*SMFSmfRegistrationAPI* | [**Registration**](docs/SMFSmfRegistrationAPI.md#registration) | **Put** /{ueId}/registrations/smf-registrations/{pduSessionId} | register as SMF
-*SMSF3GPPAccessRegistrationInfoRetrievalAPI* | [**Get3GppSmsfRegistration**](docs/SMSF3GPPAccessRegistrationInfoRetrievalAPI.md#get3gppsmsfregistration) | **Get** /{ueId}/registrations/smsf-3gpp-access | retrieve the SMSF registration for 3GPP access information
-*SMSFDeregistrationFor3GPPAccessAPI* | [**Call3GppSmsfDeregistration**](docs/SMSFDeregistrationFor3GPPAccessAPI.md#call3gppsmsfderegistration) | **Delete** /{ueId}/registrations/smsf-3gpp-access | delete the SMSF registration for 3GPP access
-*SMSFDeregistrationForNon3GPPAccessAPI* | [**Non3GppSmsfDeregistration**](docs/SMSFDeregistrationForNon3GPPAccessAPI.md#non3gppsmsfderegistration) | **Delete** /{ueId}/registrations/smsf-non-3gpp-access | delete SMSF registration for non 3GPP access
-*SMSFNon3GPPAccessRegistrationInfoRetrievalAPI* | [**GetNon3GppSmsfRegistration**](docs/SMSFNon3GPPAccessRegistrationInfoRetrievalAPI.md#getnon3gppsmsfregistration) | **Get** /{ueId}/registrations/smsf-non-3gpp-access | retrieve the SMSF registration for non-3GPP access information
-*SMSFRegistrationFor3GPPAccessAPI* | [**Call3GppSmsfRegistration**](docs/SMSFRegistrationFor3GPPAccessAPI.md#call3gppsmsfregistration) | **Put** /{ueId}/registrations/smsf-3gpp-access | register as SMSF for 3GPP access
-*SMSFRegistrationForNon3GPPAccessAPI* | [**Non3GppSmsfRegistration**](docs/SMSFRegistrationForNon3GPPAccessAPI.md#non3gppsmsfregistration) | **Put** /{ueId}/registrations/smsf-non-3gpp-access | register as SMSF for non-3GPP access
-*SendRoutingInfoSMCustomOperationAPI* | [**SendRoutingInfoSm**](docs/SendRoutingInfoSMCustomOperationAPI.md#sendroutinginfosm) | **Post** /{ueId}/registrations/send-routing-info-sm | Retrieve addressing information for SMS delivery
-*TriggerAMFFor3GPPAccessDeregistrationAPI* | [**DeregAMF**](docs/TriggerAMFFor3GPPAccessDeregistrationAPI.md#deregamf) | **Post** /{ueId}/registrations/amf-3gpp-access/dereg-amf | trigger AMF for 3GPP access deregistration
-*TriggerPCSCFRestorationAPI* | [**TriggerPCSCFRestoration**](docs/TriggerPCSCFRestorationAPI.md#triggerpcscfrestoration) | **Post** /restore-pcscf | Trigger the Restoration of the P-CSCF
-*TriggerThePrimaryReAuthenticationAPI* | [**AuthTrigger**](docs/TriggerThePrimaryReAuthenticationAPI.md#authtrigger) | **Get** /{ueId}/registrations/auth-trigger | trigger the primary (re-)authentication
-*UECMRegistrationInfoRetrievalAPI* | [**GetRegistrations**](docs/UECMRegistrationInfoRetrievalAPI.md#getregistrations) | **Get** /{ueId}/registrations | retrieve UE registration data sets
-*UELocationInformationRetrievalAPI* | [**GetLocationInfo**](docs/UELocationInformationRetrievalAPI.md#getlocationinfo) | **Get** /{ueId}/registrations/location | retrieve the target UE&#39;s location information
-*AMFRegistrationFor3GPPAccessCallbackdataRestorationNotificationAmf3gppAPI* | [**DataRestorationNotificationAmf3gppRequestBodyDataRestorationCallbackUriPost**](docs/AMFRegistrationFor3GPPAccessCallbackdataRestorationNotificationAmf3gppAPI.md#) | **Post** /{request.body#/dataRestorationCallbackUri} |
-*AMFRegistrationFor3GPPAccessCallbackderegistrationNotificationAmf3gppAPI* | [**DeregistrationNotificationAmf3gppRequestBodyDeregCallbackUriPost**](docs/AMFRegistrationFor3GPPAccessCallbackderegistrationNotificationAmf3gppAPI.md#) | **Post** /{request.body#/deregCallbackUri} |
-*AMFRegistrationFor3GPPAccessCallbackpcscfRestorationNotificationAmf3gppAPI* | [**PcscfRestorationNotificationAmf3gppRequestBodyPcscfRestorationCallbackUriPost**](docs/AMFRegistrationFor3GPPAccessCallbackpcscfRestorationNotificationAmf3gppAPI.md#) | **Post** /{request.body#/pcscfRestorationCallbackUri} |
-*AMFRegistrationFor3GPPAccessCallbackreauthNotificationAPI* | [**ReauthNotificationRequestBodyReauthNotifyCallbackUriPost**](docs/AMFRegistrationFor3GPPAccessCallbackreauthNotificationAPI.md#) | **Post** /{request.body#/reauthNotifyCallbackUri} |
-*AMFRegistrationForNon3GPPAccessCallbackdataRestorationNotificationAmfNon3gppAPI* | [**DataRestorationNotificationAmfNon3gppRequestBodyDataRestorationCallbackUriPost**](docs/AMFRegistrationForNon3GPPAccessCallbackdataRestorationNotificationAmfNon3gppAPI.md#) | **Post** /{request.body#/dataRestorationCallbackUri} |
-*AMFRegistrationForNon3GPPAccessCallbackderegistrationNotificationAmfNon3gppAPI* | [**DeregistrationNotificationAmfNon3gppRequestBodyDeregCallbackUriPost**](docs/AMFRegistrationForNon3GPPAccessCallbackderegistrationNotificationAmfNon3gppAPI.md#) | **Post** /{request.body#/deregCallbackUri} |
-*AMFRegistrationForNon3GPPAccessCallbackpcscfRestorationNotificationAmfNon3gppAPI* | [**PcscfRestorationNotificationAmfNon3gppRequestBodyPcscfRestorationCallbackUriPost**](docs/AMFRegistrationForNon3GPPAccessCallbackpcscfRestorationNotificationAmfNon3gppAPI.md#) | **Post** /{request.body#/pcscfRestorationCallbackUri} |
-*AMFRegistrationForNon3GPPAccessCallbackreauthNotificationAmfNon3gppAPI* | [**ReauthNotificationAmfNon3gppRequestBodyReauthNotifyCallbackUriPost**](docs/AMFRegistrationForNon3GPPAccessCallbackreauthNotificationAmfNon3gppAPI.md#) | **Post** /{request.body#/reauthNotifyCallbackUri} |
-*SMFSmfRegistrationCallbackdataRestorationNotificationAPI* | [**DataRestorationNotificationRequestBodyDataRestorationCallbackUriPost**](docs/SMFSmfRegistrationCallbackdataRestorationNotificationAPI.md#) | **Post** /{request.body#/dataRestorationCallbackUri} |
-*SMFSmfRegistrationCallbackderegistrationNotificationAPI* | [**DeregistrationNotificationRequestBodyDeregCallbackUriPost**](docs/SMFSmfRegistrationCallbackderegistrationNotificationAPI.md#) | **Post** /{request.body#/deregCallbackUri} |
-*SMFSmfRegistrationCallbackpcscfRestorationNotificationAPI* | [**PcscfRestorationNotificationRequestBodyPcscfRestorationCallbackUriPost**](docs/SMFSmfRegistrationCallbackpcscfRestorationNotificationAPI.md#) | **Post** /{request.body#/pcscfRestorationCallbackUri} |
-*SMFSmfRegistrationCallbackstaleCheckNotificationAPI* | [**StaleCheckNotificationRequestBodyStaleCheckCallbackUriPost**](docs/SMFSmfRegistrationCallbackstaleCheckNotificationAPI.md#) | **Post** /{request.body#/staleCheckCallbackUri} |
-*SMSFRegistrationFor3GPPAccessCallbackdataRestorationNotificationSmsf3gppAPI* | [**DataRestorationNotificationSmsf3gppRequestBodyDataRestorationCallbackUriPost**](docs/SMSFRegistrationFor3GPPAccessCallbackdataRestorationNotificationSmsf3gppAPI.md#) | **Post** /{request.body#/dataRestorationCallbackUri} |
-*SMSFRegistrationForNon3GPPAccessCallbackdataRestorationNotificationSmsfNon3gppAPI* | [**DataRestorationNotificationSmsfNon3gppRequestBodyDataRestorationCallbackUriPost**](docs/SMSFRegistrationForNon3GPPAccessCallbackdataRestorationNotificationSmsfNon3gppAPI.md#) | **Post** /{request.body#/dataRestorationCallbackUri} |
-
-
 ## Documentation For Authorization
 
 

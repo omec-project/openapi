@@ -81,20 +81,6 @@ ctx = context.WithValue(context.Background(), Npcf_AMPolicyControl.ContextOperat
 })
 ```
 
-## Documentation for API Endpoints
-
-All URIs are relative to *https://example.com/npcf-am-policy-control/v1*
-
-Class | Method | HTTP request | Description
------------- | ------------- | ------------- | -------------
-*AMPolicyAssociationsCollectionAPI* | [**CreateIndividualAMPolicyAssociation**](docs/AMPolicyAssociationsCollectionAPI.md#createindividualampolicyassociation) | **Post** /policies | Create individual AM policy association.
-*IndividualAMPolicyAssociationDocumentAPI* | [**DeleteIndividualAMPolicyAssociation**](docs/IndividualAMPolicyAssociationDocumentAPI.md#deleteindividualampolicyassociation) | **Delete** /policies/{polAssoId} | Delete individual AM policy association.
-*IndividualAMPolicyAssociationDocumentAPI* | [**ReadIndividualAMPolicyAssociation**](docs/IndividualAMPolicyAssociationDocumentAPI.md#readindividualampolicyassociation) | **Get** /policies/{polAssoId} | Read individual AM policy association.
-*IndividualAMPolicyAssociationDocumentAPI* | [**ReportObservedEventTriggersForIndividualAMPolicyAssociation**](docs/IndividualAMPolicyAssociationDocumentAPI.md#reportobservedeventtriggersforindividualampolicyassociation) | **Post** /policies/{polAssoId}/update | Report observed event triggers and obtain updated policies for an individual AM policy association.
-*AMPolicyAssociationsCollectionCallbackpolicyAssocitionTerminationRequestNotificationAPI* | [**PolicyAssocitionTerminationRequestNotificationTerminatePost**](docs/AMPolicyAssociationsCollectionCallbackpolicyAssocitionTerminationRequestNotificationAPI.md#) | **Post** /{$request.body#/notificationUri}/terminate |
-*AMPolicyAssociationsCollectionCallbackpolicyUpdateNotificationAPI* | [**PolicyUpdateNotificationUpdatePost**](docs/AMPolicyAssociationsCollectionCallbackpolicyUpdateNotificationAPI.md#) | **Post** /{$request.body#/notificationUri}/update |
-
-
 ## Documentation For Authorization
 
 
