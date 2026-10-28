@@ -44,7 +44,7 @@ type RegistrationContextContainer struct {
 	// String identifying a IPv4 address formatted in the 'dotted decimal' notation as defined in RFC 1166.
 	AnN2IPv4Addr *string `json:"anN2IPv4Addr,omitempty" yaml:"anN2IPv4Addr,omitempty" validate:"regexp=^(([0-9]|[1-9][0-9]|1[0-9][0-9]|2[0-4][0-9]|25[0-5])\\.){3}([0-9]|[1-9][0-9]|1[0-9][0-9]|2[0-4][0-9]|25[0-5])$"`
 	// String identifying an IPv6 address formatted according to clause 4 of RFC5952. The mixed IPv4 IPv6 notation according to clause 5 of RFC5952 shall not be used.
-	AnN2IPv6Addr        *string            `json:"anN2IPv6Addr,omitempty" yaml:"anN2IPv6Addr,omitempty" validate:"regexp=^(((:|(0?|([1-9a-f][0-9a-f]{0,3}))):)((0?|([1-9a-f][0-9a-f]{0,3})):){0,6}(:|(0?|([1-9a-f][0-9a-f]{0,3}))))|((([^:]+:){7}([^:]+))|((([^:]+:)*[^:]+)?::(([^:]+:)*[^:]+)?)))$"`
+	AnN2IPv6Addr        *string            `json:"anN2IPv6Addr,omitempty" yaml:"anN2IPv6Addr,omitempty" validate:"regexp=^((((:|(0?|([1-9a-f][0-9a-f]{0,3}))):)((0?|([1-9a-f][0-9a-f]{0,3})):){0,6}(:|(0?|([1-9a-f][0-9a-f]{0,3}))))|((([^:]+:){7}([^:]+))|((([^:]+:)*[^:]+)?::(([^:]+:)*[^:]+)?)))$"`
 	AllowedNssai        *AllowedNssai      `json:"allowedNssai,omitempty" yaml:"allowedNssai,omitempty"`
 	ConfiguredNssai     []ConfiguredSnssai `json:"configuredNssai,omitempty" yaml:"configuredNssai,omitempty"`
 	RejectedNssaiInPlmn []Snssai           `json:"rejectedNssaiInPlmn,omitempty" yaml:"rejectedNssaiInPlmn,omitempty"`

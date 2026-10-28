@@ -37,7 +37,7 @@ type SmsRouterInfo struct {
 	// String identifying a IPv4 address formatted in the 'dotted decimal' notation as defined in RFC 1166.
 	RouterIpv4 *string `json:"routerIpv4,omitempty" yaml:"routerIpv4,omitempty" validate:"regexp=^(([0-9]|[1-9][0-9]|1[0-9][0-9]|2[0-4][0-9]|25[0-5])\\.){3}([0-9]|[1-9][0-9]|1[0-9][0-9]|2[0-4][0-9]|25[0-5])$"`
 	// String identifying an IPv6 address formatted according to clause 4 of RFC5952. The mixed IPv4 IPv6 notation according to clause 5 of RFC5952 shall not be used.
-	RouterIpv6 *string `json:"routerIpv6,omitempty" yaml:"routerIpv6,omitempty" validate:"regexp=^(((:|(0?|([1-9a-f][0-9a-f]{0,3}))):)((0?|([1-9a-f][0-9a-f]{0,3})):){0,6}(:|(0?|([1-9a-f][0-9a-f]{0,3}))))|((([^:]+:){7}([^:]+))|((([^:]+:)*[^:]+)?::(([^:]+:)*[^:]+)?)))$"`
+	RouterIpv6 *string `json:"routerIpv6,omitempty" yaml:"routerIpv6,omitempty" validate:"regexp=^((((:|(0?|([1-9a-f][0-9a-f]{0,3}))):)((0?|([1-9a-f][0-9a-f]{0,3})):){0,6}(:|(0?|([1-9a-f][0-9a-f]{0,3}))))|((([^:]+:){7}([^:]+))|((([^:]+:)*[^:]+)?::(([^:]+:)*[^:]+)?)))$"`
 	// Fully Qualified Domain Name
 	RouterFqdn *string `json:"routerFqdn,omitempty" yaml:"routerFqdn,omitempty" validate:"regexp=^([0-9A-Za-z]([-0-9A-Za-z]{0,61}[0-9A-Za-z])?\\.)+[A-Za-z]{2,63}\\.?$"`
 }

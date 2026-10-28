@@ -35,8 +35,8 @@ type AppExpUeBehaviour struct {
 	ExpPduSesInacTm *TimeWindow `json:"expPduSesInacTm,omitempty" yaml:"expPduSesInacTm,omitempty"`
 	// Represents a 3-tuple with protocol, server ip and server port for UL/DL application traffic. The content of the string has the same encoding as the IPFilterRule AVP value as defined in IETF RFC 6733.
 	FlowDescriptions []string       `json:"flowDescriptions,omitempty" yaml:"flowDescriptions,omitempty"`
-	ConfidenceLevel  *string        `json:"confidenceLevel,omitempty" yaml:"confidenceLevel,omitempty" validate:"regexp=^[0]\\.[0-9]{2}|[1.00]$"`
-	AccuracyLevel    *string        `json:"accuracyLevel,omitempty" yaml:"accuracyLevel,omitempty" validate:"regexp=^[0]\\.[0-9]{2}|[1.00]$"`
+	ConfidenceLevel  *string        `json:"confidenceLevel,omitempty" yaml:"confidenceLevel,omitempty" validate:"regexp=^(0\\.[0-9]{2}|1\\.00)$"`
+	AccuracyLevel    *string        `json:"accuracyLevel,omitempty" yaml:"accuracyLevel,omitempty" validate:"regexp=^(0\\.[0-9]{2}|1\\.00)$"`
 	FailureCode      *CpFailureCode `json:"failureCode,omitempty" yaml:"failureCode,omitempty"`
 	// string with format \"date-time\" as defined in OpenAPI.
 	ValidityTime *time.Time `json:"validityTime,omitempty" yaml:"validityTime,omitempty"`

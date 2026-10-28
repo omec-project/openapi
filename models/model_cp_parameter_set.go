@@ -54,8 +54,8 @@ type CpParameterSet struct {
 	ExpectedUmtDaysAdd []int32 `json:"expectedUmtDaysAdd,omitempty" yaml:"expectedUmtDaysAdd,omitempty"`
 	// Contains the Application Specific Expected UE Behaviour parameters.
 	AppExpUeBehvs   []AppExpUeBehaviour `json:"appExpUeBehvs,omitempty" yaml:"appExpUeBehvs,omitempty"`
-	ConfidenceLevel *string             `json:"confidenceLevel,omitempty" yaml:"confidenceLevel,omitempty" validate:"regexp=^[0]\\.[0-9]{2}|[1.00]$"`
-	AccuracyLevel   *string             `json:"accuracyLevel,omitempty" yaml:"accuracyLevel,omitempty" validate:"regexp=^[0]\\.[0-9]{2}|[1.00]$"`
+	ConfidenceLevel *string             `json:"confidenceLevel,omitempty" yaml:"confidenceLevel,omitempty" validate:"regexp=^(0\\.[0-9]{2}|1\\.00)$"`
+	AccuracyLevel   *string             `json:"accuracyLevel,omitempty" yaml:"accuracyLevel,omitempty" validate:"regexp=^(0\\.[0-9]{2}|1\\.00)$"`
 }
 
 // NewCpParameterSet instantiates a new CpParameterSet object
