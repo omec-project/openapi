@@ -61,8 +61,8 @@ type MediaComponentRm struct {
 	MaxSuppBwUl openapi.NullableString `json:"maxSuppBwUl" yaml:"maxSuppBwUl,omitempty" validate:"regexp=^\\d+(\\.\\d+)? (bps|Kbps|Mbps|Gbps|Tbps)$"`
 	MedCompN    int32                  `json:"medCompN" yaml:"medCompN"`
 	// Contains the requested bitrate and filters for the set of service data flows identified by their common flow identifier. The key of the map is the fNum attribute.
-	MedSubComps *map[string]MediaSubComponentRm `json:"medSubComps,omitempty" yaml:"medSubComps,omitempty"`
-	MedType     *MediaType                      `json:"medType,omitempty" yaml:"medType,omitempty"`
+	MedSubComps *map[string]*MediaSubComponentRm `json:"medSubComps,omitempty" yaml:"medSubComps,omitempty"`
+	MedType     *MediaType                       `json:"medType,omitempty" yaml:"medType,omitempty"`
 	// This data type is defined in the same way as the 'BitRate' data type, but with the OpenAPI 'nullable: true' property.
 	MinDesBwDl openapi.NullableString `json:"minDesBwDl" yaml:"minDesBwDl,omitempty" validate:"regexp=^\\d+(\\.\\d+)? (bps|Kbps|Mbps|Gbps|Tbps)$"`
 	// This data type is defined in the same way as the 'BitRate' data type, but with the OpenAPI 'nullable: true' property.
@@ -888,9 +888,9 @@ func (o *MediaComponentRm) SetMedCompN(v int32) {
 }
 
 // GetMedSubComps returns the MedSubComps field value if set, zero value otherwise.
-func (o *MediaComponentRm) GetMedSubComps() map[string]MediaSubComponentRm {
+func (o *MediaComponentRm) GetMedSubComps() map[string]*MediaSubComponentRm {
 	if o == nil || openapi.IsNil(o.MedSubComps) {
-		var ret map[string]MediaSubComponentRm
+		var ret map[string]*MediaSubComponentRm
 		return ret
 	}
 	return *o.MedSubComps
@@ -898,7 +898,7 @@ func (o *MediaComponentRm) GetMedSubComps() map[string]MediaSubComponentRm {
 
 // GetMedSubCompsOk returns a tuple with the MedSubComps field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *MediaComponentRm) GetMedSubCompsOk() (*map[string]MediaSubComponentRm, bool) {
+func (o *MediaComponentRm) GetMedSubCompsOk() (*map[string]*MediaSubComponentRm, bool) {
 	if o == nil || openapi.IsNil(o.MedSubComps) {
 		return nil, false
 	}
@@ -914,8 +914,8 @@ func (o *MediaComponentRm) HasMedSubComps() bool {
 	return false
 }
 
-// SetMedSubComps gets a reference to the given map[string]MediaSubComponentRm and assigns it to the MedSubComps field.
-func (o *MediaComponentRm) SetMedSubComps(v map[string]MediaSubComponentRm) {
+// SetMedSubComps gets a reference to the given map[string]*MediaSubComponentRm and assigns it to the MedSubComps field.
+func (o *MediaComponentRm) SetMedSubComps(v map[string]*MediaSubComponentRm) {
 	o.MedSubComps = &v
 }
 

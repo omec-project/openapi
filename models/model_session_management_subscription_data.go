@@ -44,7 +44,7 @@ type SessionManagementSubscriptionData struct {
 	// A map(list of key-value pairs) where DNN serves as key
 	ExpectedUeBehaviourData *map[string]map[string]ExpectedUeBehaviourData `json:"expectedUeBehaviourData,omitempty" yaml:"expectedUeBehaviourData,omitempty"`
 	// A map(list of key-value pairs) where DNN serves as key
-	AppSpecificExpectedUeBehaviourData *map[string]map[string]AppSpecificExpectedUeBehaviourData `json:"appSpecificExpectedUeBehaviourData,omitempty" yaml:"appSpecificExpectedUeBehaviourData,omitempty"`
+	AppSpecificExpectedUeBehaviourData *map[string]map[string]*AppSpecificExpectedUeBehaviourData `json:"appSpecificExpectedUeBehaviourData,omitempty" yaml:"appSpecificExpectedUeBehaviourData,omitempty"`
 	// A map(list of key-value pairs) where Dnn serves as key of SuggestedPacketNumDl
 	SuggestedPacketNumDlList       *map[string]SuggestedPacketNumDl `json:"suggestedPacketNumDlList,omitempty" yaml:"suggestedPacketNumDlList,omitempty"`
 	Var3gppChargingCharacteristics *string                          `json:"3gppChargingCharacteristics,omitempty" yaml:"3gppChargingCharacteristics,omitempty"`
@@ -414,9 +414,9 @@ func (o *SessionManagementSubscriptionData) SetExpectedUeBehaviourData(v map[str
 }
 
 // GetAppSpecificExpectedUeBehaviourData returns the AppSpecificExpectedUeBehaviourData field value if set, zero value otherwise.
-func (o *SessionManagementSubscriptionData) GetAppSpecificExpectedUeBehaviourData() map[string]map[string]AppSpecificExpectedUeBehaviourData {
+func (o *SessionManagementSubscriptionData) GetAppSpecificExpectedUeBehaviourData() map[string]map[string]*AppSpecificExpectedUeBehaviourData {
 	if o == nil || openapi.IsNil(o.AppSpecificExpectedUeBehaviourData) {
-		var ret map[string]map[string]AppSpecificExpectedUeBehaviourData
+		var ret map[string]map[string]*AppSpecificExpectedUeBehaviourData
 		return ret
 	}
 	return *o.AppSpecificExpectedUeBehaviourData
@@ -424,7 +424,7 @@ func (o *SessionManagementSubscriptionData) GetAppSpecificExpectedUeBehaviourDat
 
 // GetAppSpecificExpectedUeBehaviourDataOk returns a tuple with the AppSpecificExpectedUeBehaviourData field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *SessionManagementSubscriptionData) GetAppSpecificExpectedUeBehaviourDataOk() (*map[string]map[string]AppSpecificExpectedUeBehaviourData, bool) {
+func (o *SessionManagementSubscriptionData) GetAppSpecificExpectedUeBehaviourDataOk() (*map[string]map[string]*AppSpecificExpectedUeBehaviourData, bool) {
 	if o == nil || openapi.IsNil(o.AppSpecificExpectedUeBehaviourData) {
 		return nil, false
 	}
@@ -440,8 +440,8 @@ func (o *SessionManagementSubscriptionData) HasAppSpecificExpectedUeBehaviourDat
 	return false
 }
 
-// SetAppSpecificExpectedUeBehaviourData gets a reference to the given map[string]map[string]AppSpecificExpectedUeBehaviourData and assigns it to the AppSpecificExpectedUeBehaviourData field.
-func (o *SessionManagementSubscriptionData) SetAppSpecificExpectedUeBehaviourData(v map[string]map[string]AppSpecificExpectedUeBehaviourData) {
+// SetAppSpecificExpectedUeBehaviourData gets a reference to the given map[string]map[string]*AppSpecificExpectedUeBehaviourData and assigns it to the AppSpecificExpectedUeBehaviourData field.
+func (o *SessionManagementSubscriptionData) SetAppSpecificExpectedUeBehaviourData(v map[string]map[string]*AppSpecificExpectedUeBehaviourData) {
 	o.AppSpecificExpectedUeBehaviourData = &v
 }
 

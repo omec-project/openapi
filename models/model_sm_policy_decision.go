@@ -31,28 +31,28 @@ var _ openapi.MappedNullable = &SmPolicyDecision{}
 // SmPolicyDecision Contains the SM policies authorized by the PCF.
 type SmPolicyDecision struct {
 	// A map of Sessionrules with the content being the SessionRule as described in clause 5.6.2.7. The key used in this map for each entry is the sessRuleId attribute of the corresponding SessionRule.
-	SessRules *map[string]SessionRule `json:"sessRules,omitempty" yaml:"sessRules,omitempty"`
+	SessRules *map[string]*SessionRule `json:"sessRules,omitempty" yaml:"sessRules,omitempty"`
 	// A map of PCC rules with the content being the PCCRule as described in clause 5.6.2.6. The key used in this map for each entry is the pccRuleId attribute of the corresponding PccRule.
-	PccRules map[string]PccRule `json:"pccRules,omitempty" yaml:"pccRules,omitempty"`
+	PccRules map[string]*PccRule `json:"pccRules,omitempty" yaml:"pccRules,omitempty"`
 	// If it is included and set to true, it indicates the P-CSCF Restoration is requested.
 	PcscfRestIndication *bool `json:"pcscfRestIndication,omitempty" yaml:"pcscfRestIndication,omitempty"`
 	// Map of QoS data policy decisions. The key used in this map for each entry is the qosId attribute of the corresponding QosData.
-	QosDecs *map[string]QosData `json:"qosDecs,omitempty" yaml:"qosDecs,omitempty"`
+	QosDecs *map[string]*QosData `json:"qosDecs,omitempty" yaml:"qosDecs,omitempty"`
 	// Map of Charging data policy decisions. The key used in this map for each entry is the chgId attribute of the corresponding ChargingData.
-	ChgDecs      map[string]ChargingData `json:"chgDecs,omitempty" yaml:"chgDecs,omitempty"`
-	ChargingInfo *ChargingInformation    `json:"chargingInfo,omitempty" yaml:"chargingInfo,omitempty"`
+	ChgDecs      map[string]*ChargingData `json:"chgDecs,omitempty" yaml:"chgDecs,omitempty"`
+	ChargingInfo *ChargingInformation     `json:"chargingInfo,omitempty" yaml:"chargingInfo,omitempty"`
 	// Map of Traffic Control data policy decisions. The key used in this map for each entry is the tcId attribute of the corresponding TrafficControlData.
-	TraffContDecs *map[string]TrafficControlData `json:"traffContDecs,omitempty" yaml:"traffContDecs,omitempty"`
+	TraffContDecs *map[string]*TrafficControlData `json:"traffContDecs,omitempty" yaml:"traffContDecs,omitempty"`
 	// Map of Usage Monitoring data policy decisions. The key used in this map for each entry is the umId attribute of the corresponding UsageMonitoringData.
-	UmDecs map[string]UsageMonitoringData `json:"umDecs,omitempty" yaml:"umDecs,omitempty"`
+	UmDecs map[string]*UsageMonitoringData `json:"umDecs,omitempty" yaml:"umDecs,omitempty"`
 	// Map of QoS characteristics for non standard 5QIs. This map uses the 5QI values as keys.
 	QosChars *map[string]QosCharacteristics `json:"qosChars,omitempty" yaml:"qosChars,omitempty"`
 	// Map of QoS Monitoring data policy decisions. The key used in this map for each entry is the qmId attribute of the corresponding QosMonitoringData.
-	QosMonDecs map[string]QosMonitoringData `json:"qosMonDecs,omitempty" yaml:"qosMonDecs,omitempty"`
+	QosMonDecs map[string]*QosMonitoringData `json:"qosMonDecs,omitempty" yaml:"qosMonDecs,omitempty"`
 	// indicating a time in seconds.
 	ReflectiveQoSTimer *int32 `json:"reflectiveQoSTimer,omitempty" yaml:"reflectiveQoSTimer,omitempty"`
 	// A map of condition data with the content being as described in clause 5.6.2.9. The key used in this map for each entry is the condId attribute of the corresponding ConditionData.
-	Conds map[string]ConditionData `json:"conds,omitempty" yaml:"conds,omitempty"`
+	Conds map[string]*ConditionData `json:"conds,omitempty" yaml:"conds,omitempty"`
 	// string with format 'date-time' as defined in OpenAPI.
 	RevalidationTime *time.Time `json:"revalidationTime,omitempty" yaml:"revalidationTime,omitempty"`
 	// Indicates the offline charging is applicable to the PDU session when it is included and set to true.
@@ -67,7 +67,7 @@ type SmPolicyDecision struct {
 	LastReqRuleData  []RequestedRuleData `json:"lastReqRuleData,omitempty" yaml:"lastReqRuleData,omitempty"`
 	LastReqUsageData *RequestedUsageData `json:"lastReqUsageData,omitempty" yaml:"lastReqUsageData,omitempty"`
 	// Map of PRA information. The praId attribute within the PresenceInfo data type is the key of the map.
-	PraInfos map[string]PresenceInfoRm `json:"praInfos,omitempty" yaml:"praInfos,omitempty"`
+	PraInfos map[string]*PresenceInfoRm `json:"praInfos,omitempty" yaml:"praInfos,omitempty"`
 	// Represents information that identifies which IP pool or external server is used to allocate the IP address.
 	Ipv4Index *int32 `json:"ipv4Index,omitempty" yaml:"ipv4Index,omitempty"`
 	// Represents information that identifies which IP pool or external server is used to allocate the IP address.
@@ -114,9 +114,9 @@ func NewSmPolicyDecisionWithDefaults() *SmPolicyDecision {
 }
 
 // GetSessRules returns the SessRules field value if set, zero value otherwise.
-func (o *SmPolicyDecision) GetSessRules() map[string]SessionRule {
+func (o *SmPolicyDecision) GetSessRules() map[string]*SessionRule {
 	if o == nil || openapi.IsNil(o.SessRules) {
-		var ret map[string]SessionRule
+		var ret map[string]*SessionRule
 		return ret
 	}
 	return *o.SessRules
@@ -124,7 +124,7 @@ func (o *SmPolicyDecision) GetSessRules() map[string]SessionRule {
 
 // GetSessRulesOk returns a tuple with the SessRules field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *SmPolicyDecision) GetSessRulesOk() (*map[string]SessionRule, bool) {
+func (o *SmPolicyDecision) GetSessRulesOk() (*map[string]*SessionRule, bool) {
 	if o == nil || openapi.IsNil(o.SessRules) {
 		return nil, false
 	}
@@ -140,15 +140,15 @@ func (o *SmPolicyDecision) HasSessRules() bool {
 	return false
 }
 
-// SetSessRules gets a reference to the given map[string]SessionRule and assigns it to the SessRules field.
-func (o *SmPolicyDecision) SetSessRules(v map[string]SessionRule) {
+// SetSessRules gets a reference to the given map[string]*SessionRule and assigns it to the SessRules field.
+func (o *SmPolicyDecision) SetSessRules(v map[string]*SessionRule) {
 	o.SessRules = &v
 }
 
 // GetPccRules returns the PccRules field value if set, zero value otherwise (both if not set or set to explicit null).
-func (o *SmPolicyDecision) GetPccRules() map[string]PccRule {
+func (o *SmPolicyDecision) GetPccRules() map[string]*PccRule {
 	if o == nil {
-		var ret map[string]PccRule
+		var ret map[string]*PccRule
 		return ret
 	}
 	return o.PccRules
@@ -157,7 +157,7 @@ func (o *SmPolicyDecision) GetPccRules() map[string]PccRule {
 // GetPccRulesOk returns a tuple with the PccRules field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 // NOTE: If the value is an explicit nil, `nil, true` will be returned
-func (o *SmPolicyDecision) GetPccRulesOk() (*map[string]PccRule, bool) {
+func (o *SmPolicyDecision) GetPccRulesOk() (*map[string]*PccRule, bool) {
 	if o == nil || openapi.IsNil(o.PccRules) {
 		return nil, false
 	}
@@ -173,8 +173,8 @@ func (o *SmPolicyDecision) HasPccRules() bool {
 	return false
 }
 
-// SetPccRules gets a reference to the given map[string]PccRule and assigns it to the PccRules field.
-func (o *SmPolicyDecision) SetPccRules(v map[string]PccRule) {
+// SetPccRules gets a reference to the given map[string]*PccRule and assigns it to the PccRules field.
+func (o *SmPolicyDecision) SetPccRules(v map[string]*PccRule) {
 	o.PccRules = v
 }
 
@@ -211,9 +211,9 @@ func (o *SmPolicyDecision) SetPcscfRestIndication(v bool) {
 }
 
 // GetQosDecs returns the QosDecs field value if set, zero value otherwise.
-func (o *SmPolicyDecision) GetQosDecs() map[string]QosData {
+func (o *SmPolicyDecision) GetQosDecs() map[string]*QosData {
 	if o == nil || openapi.IsNil(o.QosDecs) {
-		var ret map[string]QosData
+		var ret map[string]*QosData
 		return ret
 	}
 	return *o.QosDecs
@@ -221,7 +221,7 @@ func (o *SmPolicyDecision) GetQosDecs() map[string]QosData {
 
 // GetQosDecsOk returns a tuple with the QosDecs field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *SmPolicyDecision) GetQosDecsOk() (*map[string]QosData, bool) {
+func (o *SmPolicyDecision) GetQosDecsOk() (*map[string]*QosData, bool) {
 	if o == nil || openapi.IsNil(o.QosDecs) {
 		return nil, false
 	}
@@ -237,15 +237,15 @@ func (o *SmPolicyDecision) HasQosDecs() bool {
 	return false
 }
 
-// SetQosDecs gets a reference to the given map[string]QosData and assigns it to the QosDecs field.
-func (o *SmPolicyDecision) SetQosDecs(v map[string]QosData) {
+// SetQosDecs gets a reference to the given map[string]*QosData and assigns it to the QosDecs field.
+func (o *SmPolicyDecision) SetQosDecs(v map[string]*QosData) {
 	o.QosDecs = &v
 }
 
 // GetChgDecs returns the ChgDecs field value if set, zero value otherwise (both if not set or set to explicit null).
-func (o *SmPolicyDecision) GetChgDecs() map[string]ChargingData {
+func (o *SmPolicyDecision) GetChgDecs() map[string]*ChargingData {
 	if o == nil {
-		var ret map[string]ChargingData
+		var ret map[string]*ChargingData
 		return ret
 	}
 	return o.ChgDecs
@@ -254,7 +254,7 @@ func (o *SmPolicyDecision) GetChgDecs() map[string]ChargingData {
 // GetChgDecsOk returns a tuple with the ChgDecs field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 // NOTE: If the value is an explicit nil, `nil, true` will be returned
-func (o *SmPolicyDecision) GetChgDecsOk() (*map[string]ChargingData, bool) {
+func (o *SmPolicyDecision) GetChgDecsOk() (*map[string]*ChargingData, bool) {
 	if o == nil || openapi.IsNil(o.ChgDecs) {
 		return nil, false
 	}
@@ -270,8 +270,8 @@ func (o *SmPolicyDecision) HasChgDecs() bool {
 	return false
 }
 
-// SetChgDecs gets a reference to the given map[string]ChargingData and assigns it to the ChgDecs field.
-func (o *SmPolicyDecision) SetChgDecs(v map[string]ChargingData) {
+// SetChgDecs gets a reference to the given map[string]*ChargingData and assigns it to the ChgDecs field.
+func (o *SmPolicyDecision) SetChgDecs(v map[string]*ChargingData) {
 	o.ChgDecs = v
 }
 
@@ -308,9 +308,9 @@ func (o *SmPolicyDecision) SetChargingInfo(v ChargingInformation) {
 }
 
 // GetTraffContDecs returns the TraffContDecs field value if set, zero value otherwise.
-func (o *SmPolicyDecision) GetTraffContDecs() map[string]TrafficControlData {
+func (o *SmPolicyDecision) GetTraffContDecs() map[string]*TrafficControlData {
 	if o == nil || openapi.IsNil(o.TraffContDecs) {
-		var ret map[string]TrafficControlData
+		var ret map[string]*TrafficControlData
 		return ret
 	}
 	return *o.TraffContDecs
@@ -318,7 +318,7 @@ func (o *SmPolicyDecision) GetTraffContDecs() map[string]TrafficControlData {
 
 // GetTraffContDecsOk returns a tuple with the TraffContDecs field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *SmPolicyDecision) GetTraffContDecsOk() (*map[string]TrafficControlData, bool) {
+func (o *SmPolicyDecision) GetTraffContDecsOk() (*map[string]*TrafficControlData, bool) {
 	if o == nil || openapi.IsNil(o.TraffContDecs) {
 		return nil, false
 	}
@@ -334,15 +334,15 @@ func (o *SmPolicyDecision) HasTraffContDecs() bool {
 	return false
 }
 
-// SetTraffContDecs gets a reference to the given map[string]TrafficControlData and assigns it to the TraffContDecs field.
-func (o *SmPolicyDecision) SetTraffContDecs(v map[string]TrafficControlData) {
+// SetTraffContDecs gets a reference to the given map[string]*TrafficControlData and assigns it to the TraffContDecs field.
+func (o *SmPolicyDecision) SetTraffContDecs(v map[string]*TrafficControlData) {
 	o.TraffContDecs = &v
 }
 
 // GetUmDecs returns the UmDecs field value if set, zero value otherwise (both if not set or set to explicit null).
-func (o *SmPolicyDecision) GetUmDecs() map[string]UsageMonitoringData {
+func (o *SmPolicyDecision) GetUmDecs() map[string]*UsageMonitoringData {
 	if o == nil {
-		var ret map[string]UsageMonitoringData
+		var ret map[string]*UsageMonitoringData
 		return ret
 	}
 	return o.UmDecs
@@ -351,7 +351,7 @@ func (o *SmPolicyDecision) GetUmDecs() map[string]UsageMonitoringData {
 // GetUmDecsOk returns a tuple with the UmDecs field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 // NOTE: If the value is an explicit nil, `nil, true` will be returned
-func (o *SmPolicyDecision) GetUmDecsOk() (*map[string]UsageMonitoringData, bool) {
+func (o *SmPolicyDecision) GetUmDecsOk() (*map[string]*UsageMonitoringData, bool) {
 	if o == nil || openapi.IsNil(o.UmDecs) {
 		return nil, false
 	}
@@ -367,8 +367,8 @@ func (o *SmPolicyDecision) HasUmDecs() bool {
 	return false
 }
 
-// SetUmDecs gets a reference to the given map[string]UsageMonitoringData and assigns it to the UmDecs field.
-func (o *SmPolicyDecision) SetUmDecs(v map[string]UsageMonitoringData) {
+// SetUmDecs gets a reference to the given map[string]*UsageMonitoringData and assigns it to the UmDecs field.
+func (o *SmPolicyDecision) SetUmDecs(v map[string]*UsageMonitoringData) {
 	o.UmDecs = v
 }
 
@@ -405,9 +405,9 @@ func (o *SmPolicyDecision) SetQosChars(v map[string]QosCharacteristics) {
 }
 
 // GetQosMonDecs returns the QosMonDecs field value if set, zero value otherwise (both if not set or set to explicit null).
-func (o *SmPolicyDecision) GetQosMonDecs() map[string]QosMonitoringData {
+func (o *SmPolicyDecision) GetQosMonDecs() map[string]*QosMonitoringData {
 	if o == nil {
-		var ret map[string]QosMonitoringData
+		var ret map[string]*QosMonitoringData
 		return ret
 	}
 	return o.QosMonDecs
@@ -416,7 +416,7 @@ func (o *SmPolicyDecision) GetQosMonDecs() map[string]QosMonitoringData {
 // GetQosMonDecsOk returns a tuple with the QosMonDecs field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 // NOTE: If the value is an explicit nil, `nil, true` will be returned
-func (o *SmPolicyDecision) GetQosMonDecsOk() (*map[string]QosMonitoringData, bool) {
+func (o *SmPolicyDecision) GetQosMonDecsOk() (*map[string]*QosMonitoringData, bool) {
 	if o == nil || openapi.IsNil(o.QosMonDecs) {
 		return nil, false
 	}
@@ -432,8 +432,8 @@ func (o *SmPolicyDecision) HasQosMonDecs() bool {
 	return false
 }
 
-// SetQosMonDecs gets a reference to the given map[string]QosMonitoringData and assigns it to the QosMonDecs field.
-func (o *SmPolicyDecision) SetQosMonDecs(v map[string]QosMonitoringData) {
+// SetQosMonDecs gets a reference to the given map[string]*QosMonitoringData and assigns it to the QosMonDecs field.
+func (o *SmPolicyDecision) SetQosMonDecs(v map[string]*QosMonitoringData) {
 	o.QosMonDecs = v
 }
 
@@ -470,9 +470,9 @@ func (o *SmPolicyDecision) SetReflectiveQoSTimer(v int32) {
 }
 
 // GetConds returns the Conds field value if set, zero value otherwise (both if not set or set to explicit null).
-func (o *SmPolicyDecision) GetConds() map[string]ConditionData {
+func (o *SmPolicyDecision) GetConds() map[string]*ConditionData {
 	if o == nil {
-		var ret map[string]ConditionData
+		var ret map[string]*ConditionData
 		return ret
 	}
 	return o.Conds
@@ -481,7 +481,7 @@ func (o *SmPolicyDecision) GetConds() map[string]ConditionData {
 // GetCondsOk returns a tuple with the Conds field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 // NOTE: If the value is an explicit nil, `nil, true` will be returned
-func (o *SmPolicyDecision) GetCondsOk() (*map[string]ConditionData, bool) {
+func (o *SmPolicyDecision) GetCondsOk() (*map[string]*ConditionData, bool) {
 	if o == nil || openapi.IsNil(o.Conds) {
 		return nil, false
 	}
@@ -497,8 +497,8 @@ func (o *SmPolicyDecision) HasConds() bool {
 	return false
 }
 
-// SetConds gets a reference to the given map[string]ConditionData and assigns it to the Conds field.
-func (o *SmPolicyDecision) SetConds(v map[string]ConditionData) {
+// SetConds gets a reference to the given map[string]*ConditionData and assigns it to the Conds field.
+func (o *SmPolicyDecision) SetConds(v map[string]*ConditionData) {
 	o.Conds = v
 }
 
@@ -728,9 +728,9 @@ func (o *SmPolicyDecision) SetLastReqUsageData(v RequestedUsageData) {
 }
 
 // GetPraInfos returns the PraInfos field value if set, zero value otherwise (both if not set or set to explicit null).
-func (o *SmPolicyDecision) GetPraInfos() map[string]PresenceInfoRm {
+func (o *SmPolicyDecision) GetPraInfos() map[string]*PresenceInfoRm {
 	if o == nil {
-		var ret map[string]PresenceInfoRm
+		var ret map[string]*PresenceInfoRm
 		return ret
 	}
 	return o.PraInfos
@@ -739,7 +739,7 @@ func (o *SmPolicyDecision) GetPraInfos() map[string]PresenceInfoRm {
 // GetPraInfosOk returns a tuple with the PraInfos field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 // NOTE: If the value is an explicit nil, `nil, true` will be returned
-func (o *SmPolicyDecision) GetPraInfosOk() (*map[string]PresenceInfoRm, bool) {
+func (o *SmPolicyDecision) GetPraInfosOk() (*map[string]*PresenceInfoRm, bool) {
 	if o == nil || openapi.IsNil(o.PraInfos) {
 		return nil, false
 	}
@@ -755,8 +755,8 @@ func (o *SmPolicyDecision) HasPraInfos() bool {
 	return false
 }
 
-// SetPraInfos gets a reference to the given map[string]PresenceInfoRm and assigns it to the PraInfos field.
-func (o *SmPolicyDecision) SetPraInfos(v map[string]PresenceInfoRm) {
+// SetPraInfos gets a reference to the given map[string]*PresenceInfoRm and assigns it to the PraInfos field.
+func (o *SmPolicyDecision) SetPraInfos(v map[string]*PresenceInfoRm) {
 	o.PraInfos = v
 }
 

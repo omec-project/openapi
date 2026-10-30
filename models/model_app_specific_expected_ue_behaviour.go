@@ -33,14 +33,14 @@ type AppSpecificExpectedUeBehaviour struct {
 	// Integer where the allowed values correspond to the value range of an unsigned 64-bit integer.
 	ReferenceId int32 `json:"referenceId" yaml:"referenceId"`
 	// A map(list of key-value pairs) where a valid JSON pointer serves as key
-	AppSpecificExpectedUeBehaviourData map[string]AppSpecificExpectedUeBehaviourData `json:"appSpecificExpectedUeBehaviourData" yaml:"appSpecificExpectedUeBehaviourData"`
+	AppSpecificExpectedUeBehaviourData map[string]*AppSpecificExpectedUeBehaviourData `json:"appSpecificExpectedUeBehaviourData" yaml:"appSpecificExpectedUeBehaviourData"`
 }
 
 // NewAppSpecificExpectedUeBehaviour instantiates a new AppSpecificExpectedUeBehaviour object
 // This constructor will assign default values to properties that have it defined,
 // and makes sure properties required by API are set, but the set of arguments
 // will change when the set of required properties is changed
-func NewAppSpecificExpectedUeBehaviour(afInstanceId string, referenceId int32, appSpecificExpectedUeBehaviourData map[string]AppSpecificExpectedUeBehaviourData) *AppSpecificExpectedUeBehaviour {
+func NewAppSpecificExpectedUeBehaviour(afInstanceId string, referenceId int32, appSpecificExpectedUeBehaviourData map[string]*AppSpecificExpectedUeBehaviourData) *AppSpecificExpectedUeBehaviour {
 	this := AppSpecificExpectedUeBehaviour{}
 	this.AfInstanceId = afInstanceId
 	this.ReferenceId = referenceId
@@ -105,9 +105,9 @@ func (o *AppSpecificExpectedUeBehaviour) SetReferenceId(v int32) {
 }
 
 // GetAppSpecificExpectedUeBehaviourData returns the AppSpecificExpectedUeBehaviourData field value
-func (o *AppSpecificExpectedUeBehaviour) GetAppSpecificExpectedUeBehaviourData() map[string]AppSpecificExpectedUeBehaviourData {
+func (o *AppSpecificExpectedUeBehaviour) GetAppSpecificExpectedUeBehaviourData() map[string]*AppSpecificExpectedUeBehaviourData {
 	if o == nil {
-		var ret map[string]AppSpecificExpectedUeBehaviourData
+		var ret map[string]*AppSpecificExpectedUeBehaviourData
 		return ret
 	}
 
@@ -116,7 +116,7 @@ func (o *AppSpecificExpectedUeBehaviour) GetAppSpecificExpectedUeBehaviourData()
 
 // GetAppSpecificExpectedUeBehaviourDataOk returns a tuple with the AppSpecificExpectedUeBehaviourData field value
 // and a boolean to check if the value has been set.
-func (o *AppSpecificExpectedUeBehaviour) GetAppSpecificExpectedUeBehaviourDataOk() (*map[string]AppSpecificExpectedUeBehaviourData, bool) {
+func (o *AppSpecificExpectedUeBehaviour) GetAppSpecificExpectedUeBehaviourDataOk() (*map[string]*AppSpecificExpectedUeBehaviourData, bool) {
 	if o == nil {
 		return nil, false
 	}
@@ -124,7 +124,7 @@ func (o *AppSpecificExpectedUeBehaviour) GetAppSpecificExpectedUeBehaviourDataOk
 }
 
 // SetAppSpecificExpectedUeBehaviourData sets field value
-func (o *AppSpecificExpectedUeBehaviour) SetAppSpecificExpectedUeBehaviourData(v map[string]AppSpecificExpectedUeBehaviourData) {
+func (o *AppSpecificExpectedUeBehaviour) SetAppSpecificExpectedUeBehaviourData(v map[string]*AppSpecificExpectedUeBehaviourData) {
 	o.AppSpecificExpectedUeBehaviourData = v
 }
 

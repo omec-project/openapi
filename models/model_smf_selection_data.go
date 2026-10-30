@@ -31,9 +31,9 @@ var _ openapi.MappedNullable = &SmfSelectionData{}
 type SmfSelectionData struct {
 	UnsuppDnn *bool `json:"unsuppDnn,omitempty" yaml:"unsuppDnn,omitempty"`
 	// Contains the list of DNNs per S-NSSAI that are candidates for replacement. The snssai attribute within the CandidateForReplacement data type is the key of the map.
-	Candidates    map[string]CandidateForReplacement `json:"candidates,omitempty" yaml:"candidates,omitempty"`
-	Snssai        *Snssai                            `json:"snssai,omitempty" yaml:"snssai,omitempty"`
-	MappingSnssai *Snssai                            `json:"mappingSnssai,omitempty" yaml:"mappingSnssai,omitempty"`
+	Candidates    map[string]*CandidateForReplacement `json:"candidates,omitempty" yaml:"candidates,omitempty"`
+	Snssai        *Snssai                             `json:"snssai,omitempty" yaml:"snssai,omitempty"`
+	MappingSnssai *Snssai                             `json:"mappingSnssai,omitempty" yaml:"mappingSnssai,omitempty"`
 	// String representing a Data Network as defined in clause 9A of 3GPP TS 23.003; it shall contain either a DNN Network Identifier, or a full DNN with both the Network Identifier and Operator Identifier, as specified in 3GPP TS 23.003 clause 9.1.1 and 9.1.2. It shall be coded as string in which the labels are separated by dots (e.g. \"Label1.Label2.Label3\").
 	Dnn *string `json:"dnn,omitempty" yaml:"dnn,omitempty"`
 }
@@ -88,9 +88,9 @@ func (o *SmfSelectionData) SetUnsuppDnn(v bool) {
 }
 
 // GetCandidates returns the Candidates field value if set, zero value otherwise (both if not set or set to explicit null).
-func (o *SmfSelectionData) GetCandidates() map[string]CandidateForReplacement {
+func (o *SmfSelectionData) GetCandidates() map[string]*CandidateForReplacement {
 	if o == nil {
-		var ret map[string]CandidateForReplacement
+		var ret map[string]*CandidateForReplacement
 		return ret
 	}
 	return o.Candidates
@@ -99,7 +99,7 @@ func (o *SmfSelectionData) GetCandidates() map[string]CandidateForReplacement {
 // GetCandidatesOk returns a tuple with the Candidates field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 // NOTE: If the value is an explicit nil, `nil, true` will be returned
-func (o *SmfSelectionData) GetCandidatesOk() (*map[string]CandidateForReplacement, bool) {
+func (o *SmfSelectionData) GetCandidatesOk() (*map[string]*CandidateForReplacement, bool) {
 	if o == nil || openapi.IsNil(o.Candidates) {
 		return nil, false
 	}
@@ -115,8 +115,8 @@ func (o *SmfSelectionData) HasCandidates() bool {
 	return false
 }
 
-// SetCandidates gets a reference to the given map[string]CandidateForReplacement and assigns it to the Candidates field.
-func (o *SmfSelectionData) SetCandidates(v map[string]CandidateForReplacement) {
+// SetCandidates gets a reference to the given map[string]*CandidateForReplacement and assigns it to the Candidates field.
+func (o *SmfSelectionData) SetCandidates(v map[string]*CandidateForReplacement) {
 	o.Candidates = v
 }
 
