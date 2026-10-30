@@ -317,6 +317,14 @@ func (o *UePolicySetPatch) SetOsIds(v []string) {
 	o.OsIds = v
 }
 
+func (o UePolicySetPatch) MarshalJSON() ([]byte, error) {
+	toSerialize, err := o.ToMap()
+	if err != nil {
+		return []byte{}, err
+	}
+	return json.Marshal(toSerialize)
+}
+
 func (o UePolicySetPatch) ToMap() (map[string]any, error) {
 	toSerialize := map[string]any{}
 	if !openapi.IsNil(o.UePolicySections) {

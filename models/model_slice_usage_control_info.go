@@ -141,6 +141,14 @@ func (o *SliceUsageControlInfo) SetSessInactTimer(v int32) {
 	o.SessInactTimer = &v
 }
 
+func (o SliceUsageControlInfo) MarshalJSON() ([]byte, error) {
+	toSerialize, err := o.ToMap()
+	if err != nil {
+		return []byte{}, err
+	}
+	return json.Marshal(toSerialize)
+}
+
 func (o SliceUsageControlInfo) ToMap() (map[string]any, error) {
 	toSerialize := map[string]any{}
 	toSerialize["sNssai"] = o.SNssai

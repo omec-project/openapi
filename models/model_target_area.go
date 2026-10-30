@@ -151,6 +151,14 @@ func (o *TargetArea) SetAnyTa(v bool) {
 	o.AnyTa = &v
 }
 
+func (o TargetArea) MarshalJSON() ([]byte, error) {
+	toSerialize, err := o.ToMap()
+	if err != nil {
+		return []byte{}, err
+	}
+	return json.Marshal(toSerialize)
+}
+
 func (o TargetArea) ToMap() (map[string]any, error) {
 	toSerialize := map[string]any{}
 	if !openapi.IsNil(o.TaList) {

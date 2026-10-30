@@ -115,6 +115,14 @@ func (o *GbaAuthenticationInfoResult) SetSupportedFeatures(v string) {
 	o.SupportedFeatures = &v
 }
 
+func (o GbaAuthenticationInfoResult) MarshalJSON() ([]byte, error) {
+	toSerialize, err := o.ToMap()
+	if err != nil {
+		return []byte{}, err
+	}
+	return json.Marshal(toSerialize)
+}
+
 func (o GbaAuthenticationInfoResult) ToMap() (map[string]any, error) {
 	toSerialize := map[string]any{}
 	if !openapi.IsNil(o.Var3gAkaAv) {

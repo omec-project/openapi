@@ -170,6 +170,14 @@ func (o *RestrictedSnssai) SetRoamingRestriction(v bool) {
 	o.RoamingRestriction = &v
 }
 
+func (o RestrictedSnssai) MarshalJSON() ([]byte, error) {
+	toSerialize, err := o.ToMap()
+	if err != nil {
+		return []byte{}, err
+	}
+	return json.Marshal(toSerialize)
+}
+
 func (o RestrictedSnssai) ToMap() (map[string]any, error) {
 	toSerialize := map[string]any{}
 	toSerialize["homePlmnId"] = o.HomePlmnId

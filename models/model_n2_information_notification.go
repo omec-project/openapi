@@ -489,6 +489,14 @@ func (o *N2InformationNotification) SetNotifCorrelationId(v string) {
 	o.NotifCorrelationId = &v
 }
 
+func (o N2InformationNotification) MarshalJSON() ([]byte, error) {
+	toSerialize, err := o.ToMap()
+	if err != nil {
+		return []byte{}, err
+	}
+	return json.Marshal(toSerialize)
+}
+
 func (o N2InformationNotification) ToMap() (map[string]any, error) {
 	toSerialize := map[string]any{}
 	toSerialize["n2NotifySubscriptionId"] = o.N2NotifySubscriptionId

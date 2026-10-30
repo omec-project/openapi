@@ -128,6 +128,14 @@ func (o *ServiceAreaId) SetSac(v string) {
 	o.Sac = v
 }
 
+func (o ServiceAreaId) MarshalJSON() ([]byte, error) {
+	toSerialize, err := o.ToMap()
+	if err != nil {
+		return []byte{}, err
+	}
+	return json.Marshal(toSerialize)
+}
+
 func (o ServiceAreaId) ToMap() (map[string]any, error) {
 	toSerialize := map[string]any{}
 	toSerialize["plmnId"] = o.PlmnId

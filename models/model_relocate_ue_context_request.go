@@ -676,6 +676,14 @@ func (o *RelocateUEContextRequest) SetBinaryDataN2InformationExt16(v *os.File) {
 	o.BinaryDataN2InformationExt16 = &v
 }
 
+func (o RelocateUEContextRequest) MarshalJSON() ([]byte, error) {
+	toSerialize, err := o.ToMap()
+	if err != nil {
+		return []byte{}, err
+	}
+	return json.Marshal(toSerialize)
+}
+
 func (o RelocateUEContextRequest) ToMap() (map[string]any, error) {
 	toSerialize := map[string]any{}
 	if !openapi.IsNil(o.JsonData) {

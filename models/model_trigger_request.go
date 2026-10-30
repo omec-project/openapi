@@ -119,6 +119,14 @@ func (o *TriggerRequest) UnsetFailedPcscf() {
 	o.FailedPcscf.Unset()
 }
 
+func (o TriggerRequest) MarshalJSON() ([]byte, error) {
+	toSerialize, err := o.ToMap()
+	if err != nil {
+		return []byte{}, err
+	}
+	return json.Marshal(toSerialize)
+}
+
 func (o TriggerRequest) ToMap() (map[string]any, error) {
 	toSerialize := map[string]any{}
 	toSerialize["supi"] = o.Supi

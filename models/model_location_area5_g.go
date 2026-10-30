@@ -149,6 +149,14 @@ func (o *LocationArea5G) SetNwAreaInfo(v NetworkAreaInfo) {
 	o.NwAreaInfo = &v
 }
 
+func (o LocationArea5G) MarshalJSON() ([]byte, error) {
+	toSerialize, err := o.ToMap()
+	if err != nil {
+		return []byte{}, err
+	}
+	return json.Marshal(toSerialize)
+}
+
 func (o LocationArea5G) ToMap() (map[string]any, error) {
 	toSerialize := map[string]any{}
 	if !openapi.IsNil(o.GeographicAreas) {

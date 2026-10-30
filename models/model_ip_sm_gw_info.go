@@ -125,6 +125,14 @@ func (o *IpSmGwInfo) SetIpSmGwGuidance(v IpSmGwGuidance) {
 	o.IpSmGwGuidance = &v
 }
 
+func (o IpSmGwInfo) MarshalJSON() ([]byte, error) {
+	toSerialize, err := o.ToMap()
+	if err != nil {
+		return []byte{}, err
+	}
+	return json.Marshal(toSerialize)
+}
+
 func (o IpSmGwInfo) ToMap() (map[string]any, error) {
 	toSerialize := map[string]any{}
 	if o.IpSmGwRegistration.IsSet() {

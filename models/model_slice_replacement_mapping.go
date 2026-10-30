@@ -100,6 +100,14 @@ func (o *SliceReplacementMapping) SetAltSnssai(v Snssai) {
 	o.AltSnssai = v
 }
 
+func (o SliceReplacementMapping) MarshalJSON() ([]byte, error) {
+	toSerialize, err := o.ToMap()
+	if err != nil {
+		return []byte{}, err
+	}
+	return json.Marshal(toSerialize)
+}
+
 func (o SliceReplacementMapping) ToMap() (map[string]any, error) {
 	toSerialize := map[string]any{}
 	toSerialize["replacedSnssai"] = o.ReplacedSnssai

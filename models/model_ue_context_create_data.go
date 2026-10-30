@@ -352,6 +352,14 @@ func (o *UeContextCreateData) SetServingNetwork(v PlmnIdNid) {
 	o.ServingNetwork = &v
 }
 
+func (o UeContextCreateData) MarshalJSON() ([]byte, error) {
+	toSerialize, err := o.ToMap()
+	if err != nil {
+		return []byte{}, err
+	}
+	return json.Marshal(toSerialize)
+}
+
 func (o UeContextCreateData) ToMap() (map[string]any, error) {
 	toSerialize := map[string]any{}
 	toSerialize["ueContext"] = o.UeContext

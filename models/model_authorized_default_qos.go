@@ -479,6 +479,14 @@ func (o *AuthorizedDefaultQos) UnsetExtMaxDataBurstVol() {
 	o.ExtMaxDataBurstVol.Unset()
 }
 
+func (o AuthorizedDefaultQos) MarshalJSON() ([]byte, error) {
+	toSerialize, err := o.ToMap()
+	if err != nil {
+		return []byte{}, err
+	}
+	return json.Marshal(toSerialize)
+}
+
 func (o AuthorizedDefaultQos) ToMap() (map[string]any, error) {
 	toSerialize := map[string]any{}
 	if !openapi.IsNil(o.Var5qi) {

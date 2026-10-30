@@ -276,6 +276,14 @@ func (o *UsageMonDataLimit) SetResetPeriod(v TimePeriod) {
 	o.ResetPeriod = &v
 }
 
+func (o UsageMonDataLimit) MarshalJSON() ([]byte, error) {
+	toSerialize, err := o.ToMap()
+	if err != nil {
+		return []byte{}, err
+	}
+	return json.Marshal(toSerialize)
+}
+
 func (o UsageMonDataLimit) ToMap() (map[string]any, error) {
 	toSerialize := map[string]any{}
 	toSerialize["limitId"] = o.LimitId

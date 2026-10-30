@@ -342,6 +342,14 @@ func (o *StatusNotification) SetIntraPlmnApiRoot(v string) {
 	o.IntraPlmnApiRoot = &v
 }
 
+func (o StatusNotification) MarshalJSON() ([]byte, error) {
+	toSerialize, err := o.ToMap()
+	if err != nil {
+		return []byte{}, err
+	}
+	return json.Marshal(toSerialize)
+}
+
 func (o StatusNotification) ToMap() (map[string]any, error) {
 	toSerialize := map[string]any{}
 	toSerialize["statusInfo"] = o.StatusInfo

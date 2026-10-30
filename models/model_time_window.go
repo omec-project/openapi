@@ -103,6 +103,14 @@ func (o *TimeWindow) SetStopTime(v time.Time) {
 	o.StopTime = v
 }
 
+func (o TimeWindow) MarshalJSON() ([]byte, error) {
+	toSerialize, err := o.ToMap()
+	if err != nil {
+		return []byte{}, err
+	}
+	return json.Marshal(toSerialize)
+}
+
 func (o TimeWindow) ToMap() (map[string]any, error) {
 	toSerialize := map[string]any{}
 	toSerialize["startTime"] = o.StartTime

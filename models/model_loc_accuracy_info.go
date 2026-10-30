@@ -177,6 +177,14 @@ func (o *LocAccuracyInfo) SetConfidence(v int32) {
 	o.Confidence = &v
 }
 
+func (o LocAccuracyInfo) MarshalJSON() ([]byte, error) {
+	toSerialize, err := o.ToMap()
+	if err != nil {
+		return []byte{}, err
+	}
+	return json.Marshal(toSerialize)
+}
+
 func (o LocAccuracyInfo) ToMap() (map[string]any, error) {
 	toSerialize := map[string]any{}
 	toSerialize["locAccPerMeths"] = o.LocAccPerMeths

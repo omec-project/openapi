@@ -237,6 +237,14 @@ func (o *DynamicPolicyInvocationsCollection) SetRecords(v []DynamicPolicyInvocat
 	o.Records = v
 }
 
+func (o DynamicPolicyInvocationsCollection) MarshalJSON() ([]byte, error) {
+	toSerialize, err := o.ToMap()
+	if err != nil {
+		return []byte{}, err
+	}
+	return json.Marshal(toSerialize)
+}
+
 func (o DynamicPolicyInvocationsCollection) ToMap() (map[string]any, error) {
 	toSerialize := map[string]any{}
 	toSerialize["collectionTimestamp"] = o.CollectionTimestamp

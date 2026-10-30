@@ -116,6 +116,14 @@ func (o *AmfCond) SetAmfRegionId(v string) {
 	o.AmfRegionId = &v
 }
 
+func (o AmfCond) MarshalJSON() ([]byte, error) {
+	toSerialize, err := o.ToMap()
+	if err != nil {
+		return []byte{}, err
+	}
+	return json.Marshal(toSerialize)
+}
+
 func (o AmfCond) ToMap() (map[string]any, error) {
 	toSerialize := map[string]any{}
 	if !openapi.IsNil(o.AmfSetId) {

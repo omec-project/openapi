@@ -310,6 +310,14 @@ func (o *EthFlowDescription) SetDestMacAddrEnd(v string) {
 	o.DestMacAddrEnd = &v
 }
 
+func (o EthFlowDescription) MarshalJSON() ([]byte, error) {
+	toSerialize, err := o.ToMap()
+	if err != nil {
+		return []byte{}, err
+	}
+	return json.Marshal(toSerialize)
+}
+
 func (o EthFlowDescription) ToMap() (map[string]any, error) {
 	toSerialize := map[string]any{}
 	if !openapi.IsNil(o.DestMacAddr) {

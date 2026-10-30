@@ -150,6 +150,14 @@ func (o *VgmlcAddress) SetVgmlcFqdn(v string) {
 	o.VgmlcFqdn = &v
 }
 
+func (o VgmlcAddress) MarshalJSON() ([]byte, error) {
+	toSerialize, err := o.ToMap()
+	if err != nil {
+		return []byte{}, err
+	}
+	return json.Marshal(toSerialize)
+}
+
 func (o VgmlcAddress) ToMap() (map[string]any, error) {
 	toSerialize := map[string]any{}
 	if !openapi.IsNil(o.VgmlcAddressIpv4) {

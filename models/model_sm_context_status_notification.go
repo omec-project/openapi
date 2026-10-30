@@ -583,6 +583,14 @@ func (o *SmContextStatusNotification) SetTargetDnai(v string) {
 	o.TargetDnai = &v
 }
 
+func (o SmContextStatusNotification) MarshalJSON() ([]byte, error) {
+	toSerialize, err := o.ToMap()
+	if err != nil {
+		return []byte{}, err
+	}
+	return json.Marshal(toSerialize)
+}
+
 func (o SmContextStatusNotification) ToMap() (map[string]any, error) {
 	toSerialize := map[string]any{}
 	toSerialize["statusInfo"] = o.StatusInfo

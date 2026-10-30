@@ -417,6 +417,14 @@ func (o *QosFlowProfile) SetPduSetQosUl(v PduSetQosPara) {
 	o.PduSetQosUl = &v
 }
 
+func (o QosFlowProfile) MarshalJSON() ([]byte, error) {
+	toSerialize, err := o.ToMap()
+	if err != nil {
+		return []byte{}, err
+	}
+	return json.Marshal(toSerialize)
+}
+
 func (o QosFlowProfile) ToMap() (map[string]any, error) {
 	toSerialize := map[string]any{}
 	toSerialize["5qi"] = o.Var5qi

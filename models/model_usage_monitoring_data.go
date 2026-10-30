@@ -561,6 +561,14 @@ func (o *UsageMonitoringData) SetExUsagePccRuleIds(v []string) {
 	o.ExUsagePccRuleIds = v
 }
 
+func (o UsageMonitoringData) MarshalJSON() ([]byte, error) {
+	toSerialize, err := o.ToMap()
+	if err != nil {
+		return []byte{}, err
+	}
+	return json.Marshal(toSerialize)
+}
+
 func (o UsageMonitoringData) ToMap() (map[string]any, error) {
 	toSerialize := map[string]any{}
 	toSerialize["umId"] = o.UmId

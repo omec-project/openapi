@@ -181,6 +181,14 @@ func (o *PostSmContextsRequest) SetBinaryDataN2SmInformationExt1(v *os.File) {
 	o.BinaryDataN2SmInformationExt1 = &v
 }
 
+func (o PostSmContextsRequest) MarshalJSON() ([]byte, error) {
+	toSerialize, err := o.ToMap()
+	if err != nil {
+		return []byte{}, err
+	}
+	return json.Marshal(toSerialize)
+}
+
 func (o PostSmContextsRequest) ToMap() (map[string]any, error) {
 	toSerialize := map[string]any{}
 	if !openapi.IsNil(o.JsonData) {

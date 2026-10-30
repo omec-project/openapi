@@ -383,6 +383,14 @@ func (o *ReportingOptions) SetVarRepPeriodInfo(v []VarRepPeriod) {
 	o.VarRepPeriodInfo = v
 }
 
+func (o ReportingOptions) MarshalJSON() ([]byte, error) {
+	toSerialize, err := o.ToMap()
+	if err != nil {
+		return []byte{}, err
+	}
+	return json.Marshal(toSerialize)
+}
+
 func (o ReportingOptions) ToMap() (map[string]any, error) {
 	toSerialize := map[string]any{}
 	if !openapi.IsNil(o.ReportMode) {

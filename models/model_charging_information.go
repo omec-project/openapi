@@ -245,6 +245,14 @@ func (o *ChargingInformation) SetSecondaryChfInstanceId(v string) {
 	o.SecondaryChfInstanceId = &v
 }
 
+func (o ChargingInformation) MarshalJSON() ([]byte, error) {
+	toSerialize, err := o.ToMap()
+	if err != nil {
+		return []byte{}, err
+	}
+	return json.Marshal(toSerialize)
+}
+
 func (o ChargingInformation) ToMap() (map[string]any, error) {
 	toSerialize := map[string]any{}
 	toSerialize["primaryChfAddress"] = o.PrimaryChfAddress

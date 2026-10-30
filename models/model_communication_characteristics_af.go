@@ -160,6 +160,14 @@ func (o *CommunicationCharacteristicsAF) SetMaximumLatency(v int32) {
 	o.MaximumLatency = &v
 }
 
+func (o CommunicationCharacteristicsAF) MarshalJSON() ([]byte, error) {
+	toSerialize, err := o.ToMap()
+	if err != nil {
+		return []byte{}, err
+	}
+	return json.Marshal(toSerialize)
+}
+
 func (o CommunicationCharacteristicsAF) ToMap() (map[string]any, error) {
 	toSerialize := map[string]any{}
 	if o.PpDlPacketCount.IsSet() {

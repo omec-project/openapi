@@ -107,6 +107,14 @@ func (o *DdnFailureSubInfo) SetDddTrafficDescriptorList(v []DddTrafficDescriptor
 	o.DddTrafficDescriptorList = v
 }
 
+func (o DdnFailureSubInfo) MarshalJSON() ([]byte, error) {
+	toSerialize, err := o.ToMap()
+	if err != nil {
+		return []byte{}, err
+	}
+	return json.Marshal(toSerialize)
+}
+
 func (o DdnFailureSubInfo) ToMap() (map[string]any, error) {
 	toSerialize := map[string]any{}
 	toSerialize["notifyCorrelationId"] = o.NotifyCorrelationId

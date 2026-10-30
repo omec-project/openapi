@@ -100,6 +100,14 @@ func (o *QosFlowTunnel) SetTunnelInfo(v TunnelInfo) {
 	o.TunnelInfo = v
 }
 
+func (o QosFlowTunnel) MarshalJSON() ([]byte, error) {
+	toSerialize, err := o.ToMap()
+	if err != nil {
+		return []byte{}, err
+	}
+	return json.Marshal(toSerialize)
+}
+
 func (o QosFlowTunnel) ToMap() (map[string]any, error) {
 	toSerialize := map[string]any{}
 	toSerialize["qfiList"] = o.QfiList

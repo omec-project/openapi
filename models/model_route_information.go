@@ -143,6 +143,14 @@ func (o *RouteInformation) SetPortNumber(v int32) {
 	o.PortNumber = v
 }
 
+func (o RouteInformation) MarshalJSON() ([]byte, error) {
+	toSerialize, err := o.ToMap()
+	if err != nil {
+		return []byte{}, err
+	}
+	return json.Marshal(toSerialize)
+}
+
 func (o RouteInformation) ToMap() (map[string]any, error) {
 	toSerialize := map[string]any{}
 	if !openapi.IsNil(o.Ipv4Addr) {

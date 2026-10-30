@@ -609,6 +609,14 @@ func (o *ServiceExperienceInfo) SetPduSesInfo(v PduSessionInfoNwdaf) {
 	o.PduSesInfo = &v
 }
 
+func (o ServiceExperienceInfo) MarshalJSON() ([]byte, error) {
+	toSerialize, err := o.ToMap()
+	if err != nil {
+		return []byte{}, err
+	}
+	return json.Marshal(toSerialize)
+}
+
 func (o ServiceExperienceInfo) ToMap() (map[string]any, error) {
 	toSerialize := map[string]any{}
 	toSerialize["svcExprc"] = o.SvcExprc

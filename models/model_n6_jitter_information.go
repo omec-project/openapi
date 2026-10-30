@@ -116,6 +116,14 @@ func (o *N6JitterInformation) SetHigherJitterInfo(v int32) {
 	o.HigherJitterInfo = &v
 }
 
+func (o N6JitterInformation) MarshalJSON() ([]byte, error) {
+	toSerialize, err := o.ToMap()
+	if err != nil {
+		return []byte{}, err
+	}
+	return json.Marshal(toSerialize)
+}
+
 func (o N6JitterInformation) ToMap() (map[string]any, error) {
 	toSerialize := map[string]any{}
 	if !openapi.IsNil(o.LowerJitterInfo) {

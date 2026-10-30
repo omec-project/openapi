@@ -215,6 +215,14 @@ func (o *LocAccuracyReq) SetPosMethod(v PositioningMethod) {
 	o.PosMethod = &v
 }
 
+func (o LocAccuracyReq) MarshalJSON() ([]byte, error) {
+	toSerialize, err := o.ToMap()
+	if err != nil {
+		return []byte{}, err
+	}
+	return json.Marshal(toSerialize)
+}
+
 func (o LocAccuracyReq) ToMap() (map[string]any, error) {
 	toSerialize := map[string]any{}
 	if !openapi.IsNil(o.AccThres) {

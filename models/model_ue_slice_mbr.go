@@ -134,6 +134,14 @@ func (o *UeSliceMbr) SetMappedHomeSnssai(v Snssai) {
 	o.MappedHomeSnssai = &v
 }
 
+func (o UeSliceMbr) MarshalJSON() ([]byte, error) {
+	toSerialize, err := o.ToMap()
+	if err != nil {
+		return []byte{}, err
+	}
+	return json.Marshal(toSerialize)
+}
+
 func (o UeSliceMbr) ToMap() (map[string]any, error) {
 	toSerialize := map[string]any{}
 	toSerialize["sliceMbr"] = o.SliceMbr

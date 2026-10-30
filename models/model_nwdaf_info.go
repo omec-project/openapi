@@ -346,6 +346,14 @@ func (o *NwdafInfo) SetMlAnalyticsList(v []MlAnalyticsInfo) {
 	o.MlAnalyticsList = v
 }
 
+func (o NwdafInfo) MarshalJSON() ([]byte, error) {
+	toSerialize, err := o.ToMap()
+	if err != nil {
+		return []byte{}, err
+	}
+	return json.Marshal(toSerialize)
+}
+
 func (o NwdafInfo) ToMap() (map[string]any, error) {
 	toSerialize := map[string]any{}
 	if !openapi.IsNil(o.EventIds) {

@@ -100,6 +100,14 @@ func (o *UpSecurity) SetUpConfid(v UpConfidentiality) {
 	o.UpConfid = v
 }
 
+func (o UpSecurity) MarshalJSON() ([]byte, error) {
+	toSerialize, err := o.ToMap()
+	if err != nil {
+		return []byte{}, err
+	}
+	return json.Marshal(toSerialize)
+}
+
 func (o UpSecurity) ToMap() (map[string]any, error) {
 	toSerialize := map[string]any{}
 	toSerialize["upIntegr"] = o.UpIntegr

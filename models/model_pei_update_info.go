@@ -75,6 +75,14 @@ func (o *PeiUpdateInfo) SetPei(v string) {
 	o.Pei = v
 }
 
+func (o PeiUpdateInfo) MarshalJSON() ([]byte, error) {
+	toSerialize, err := o.ToMap()
+	if err != nil {
+		return []byte{}, err
+	}
+	return json.Marshal(toSerialize)
+}
+
 func (o PeiUpdateInfo) ToMap() (map[string]any, error) {
 	toSerialize := map[string]any{}
 	toSerialize["pei"] = o.Pei

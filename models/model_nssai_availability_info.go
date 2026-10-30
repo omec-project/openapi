@@ -141,6 +141,14 @@ func (o *NssaiAvailabilityInfo) SetAmfSetId(v string) {
 	o.AmfSetId = &v
 }
 
+func (o NssaiAvailabilityInfo) MarshalJSON() ([]byte, error) {
+	toSerialize, err := o.ToMap()
+	if err != nil {
+		return []byte{}, err
+	}
+	return json.Marshal(toSerialize)
+}
+
 func (o NssaiAvailabilityInfo) ToMap() (map[string]any, error) {
 	toSerialize := map[string]any{}
 	toSerialize["supportedNssaiAvailabilityData"] = o.SupportedNssaiAvailabilityData

@@ -204,6 +204,14 @@ func (o *AvImsGbaEapAka) SetIk(v string) {
 	o.Ik = v
 }
 
+func (o AvImsGbaEapAka) MarshalJSON() ([]byte, error) {
+	toSerialize, err := o.ToMap()
+	if err != nil {
+		return []byte{}, err
+	}
+	return json.Marshal(toSerialize)
+}
+
 func (o AvImsGbaEapAka) ToMap() (map[string]any, error) {
 	toSerialize := map[string]any{}
 	toSerialize["avType"] = o.AvType

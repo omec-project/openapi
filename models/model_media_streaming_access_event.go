@@ -502,6 +502,14 @@ func (o *MediaStreamingAccessEvent) SetConnectionMetrics(v MediaStreamingAccessC
 	o.ConnectionMetrics = &v
 }
 
+func (o MediaStreamingAccessEvent) MarshalJSON() ([]byte, error) {
+	toSerialize, err := o.ToMap()
+	if err != nil {
+		return []byte{}, err
+	}
+	return json.Marshal(toSerialize)
+}
+
 func (o MediaStreamingAccessEvent) ToMap() (map[string]any, error) {
 	toSerialize := map[string]any{}
 	toSerialize["recordType"] = o.RecordType

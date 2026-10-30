@@ -148,6 +148,14 @@ func (o *MbsSessionId) SetNid(v string) {
 	o.Nid = &v
 }
 
+func (o MbsSessionId) MarshalJSON() ([]byte, error) {
+	toSerialize, err := o.ToMap()
+	if err != nil {
+		return []byte{}, err
+	}
+	return json.Marshal(toSerialize)
+}
+
 func (o MbsSessionId) ToMap() (map[string]any, error) {
 	toSerialize := map[string]any{}
 	if !openapi.IsNil(o.Tmgi) {

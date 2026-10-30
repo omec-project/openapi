@@ -348,6 +348,14 @@ func (o *BsfInfo) SetGpsiRanges(v []IdentityRange) {
 	o.GpsiRanges = v
 }
 
+func (o BsfInfo) MarshalJSON() ([]byte, error) {
+	toSerialize, err := o.ToMap()
+	if err != nil {
+		return []byte{}, err
+	}
+	return json.Marshal(toSerialize)
+}
+
 func (o BsfInfo) ToMap() (map[string]any, error) {
 	toSerialize := map[string]any{}
 	if !openapi.IsNil(o.DnnList) {

@@ -114,6 +114,14 @@ func (o *PlmnOauth2) SetOauth2NotRequiredPlmnIdList(v []PlmnId) {
 	o.Oauth2NotRequiredPlmnIdList = v
 }
 
+func (o PlmnOauth2) MarshalJSON() ([]byte, error) {
+	toSerialize, err := o.ToMap()
+	if err != nil {
+		return []byte{}, err
+	}
+	return json.Marshal(toSerialize)
+}
+
 func (o PlmnOauth2) ToMap() (map[string]any, error) {
 	toSerialize := map[string]any{}
 	if !openapi.IsNil(o.Oauth2RequiredPlmnIdList) {

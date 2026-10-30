@@ -142,6 +142,14 @@ func (o *TssRspPerNgran) SetTssContainer(v N2InfoContent) {
 	o.TssContainer = &v
 }
 
+func (o TssRspPerNgran) MarshalJSON() ([]byte, error) {
+	toSerialize, err := o.ToMap()
+	if err != nil {
+		return []byte{}, err
+	}
+	return json.Marshal(toSerialize)
+}
+
 func (o TssRspPerNgran) ToMap() (map[string]any, error) {
 	toSerialize := map[string]any{}
 	toSerialize["ngranId"] = o.NgranId.Get()

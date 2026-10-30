@@ -114,6 +114,14 @@ func (o *RtpPayloadInfo) SetRtpPayloadFormat(v RtpPayloadFormat) {
 	o.RtpPayloadFormat = &v
 }
 
+func (o RtpPayloadInfo) MarshalJSON() ([]byte, error) {
+	toSerialize, err := o.ToMap()
+	if err != nil {
+		return []byte{}, err
+	}
+	return json.Marshal(toSerialize)
+}
+
 func (o RtpPayloadInfo) ToMap() (map[string]any, error) {
 	toSerialize := map[string]any{}
 	if !openapi.IsNil(o.RtpPayloadTypeList) {

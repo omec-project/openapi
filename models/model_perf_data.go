@@ -555,6 +555,14 @@ func (o *PerfData) SetNumOfUe(v int32) {
 	o.NumOfUe = &v
 }
 
+func (o PerfData) MarshalJSON() ([]byte, error) {
+	toSerialize, err := o.ToMap()
+	if err != nil {
+		return []byte{}, err
+	}
+	return json.Marshal(toSerialize)
+}
+
 func (o PerfData) ToMap() (map[string]any, error) {
 	toSerialize := map[string]any{}
 	if !openapi.IsNil(o.AvgTrafficRate) {

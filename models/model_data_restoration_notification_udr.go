@@ -247,6 +247,14 @@ func (o *DataRestorationNotificationUdr) SetUdrGroupId(v string) {
 	o.UdrGroupId = &v
 }
 
+func (o DataRestorationNotificationUdr) MarshalJSON() ([]byte, error) {
+	toSerialize, err := o.ToMap()
+	if err != nil {
+		return []byte{}, err
+	}
+	return json.Marshal(toSerialize)
+}
+
 func (o DataRestorationNotificationUdr) ToMap() (map[string]any, error) {
 	toSerialize := map[string]any{}
 	if !openapi.IsNil(o.SupiRanges) {

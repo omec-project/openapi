@@ -104,6 +104,14 @@ func (o *Ssm) SetDestIpAddr(v IpAddr) {
 	o.DestIpAddr.Set(&v)
 }
 
+func (o Ssm) MarshalJSON() ([]byte, error) {
+	toSerialize, err := o.ToMap()
+	if err != nil {
+		return []byte{}, err
+	}
+	return json.Marshal(toSerialize)
+}
+
 func (o Ssm) ToMap() (map[string]any, error) {
 	toSerialize := map[string]any{}
 	toSerialize["sourceIpAddr"] = o.SourceIpAddr.Get()

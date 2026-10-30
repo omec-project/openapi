@@ -108,6 +108,14 @@ func (o *UeInfo) SetPduSessionId(v int32) {
 	o.PduSessionId = &v
 }
 
+func (o UeInfo) MarshalJSON() ([]byte, error) {
+	toSerialize, err := o.ToMap()
+	if err != nil {
+		return []byte{}, err
+	}
+	return json.Marshal(toSerialize)
+}
+
 func (o UeInfo) ToMap() (map[string]any, error) {
 	toSerialize := map[string]any{}
 	toSerialize["ueList"] = o.UeList

@@ -81,6 +81,14 @@ func (o *DeregistrationRespData) SetSmfEventRemovedInd(v bool) {
 	o.SmfEventRemovedInd = &v
 }
 
+func (o DeregistrationRespData) MarshalJSON() ([]byte, error) {
+	toSerialize, err := o.ToMap()
+	if err != nil {
+		return []byte{}, err
+	}
+	return json.Marshal(toSerialize)
+}
+
 func (o DeregistrationRespData) ToMap() (map[string]any, error) {
 	toSerialize := map[string]any{}
 	if !openapi.IsNil(o.SmfEventRemovedInd) {

@@ -174,6 +174,14 @@ func (o *E2eDataVolTransTimeInfo) SetConfidence(v int32) {
 	o.Confidence = &v
 }
 
+func (o E2eDataVolTransTimeInfo) MarshalJSON() ([]byte, error) {
+	toSerialize, err := o.ToMap()
+	if err != nil {
+		return []byte{}, err
+	}
+	return json.Marshal(toSerialize)
+}
+
 func (o E2eDataVolTransTimeInfo) ToMap() (map[string]any, error) {
 	toSerialize := map[string]any{}
 	toSerialize["e2eDataVolTransTimes"] = o.E2eDataVolTransTimes

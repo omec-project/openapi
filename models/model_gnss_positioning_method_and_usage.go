@@ -126,6 +126,14 @@ func (o *GnssPositioningMethodAndUsage) SetUsage(v Usage) {
 	o.Usage = v
 }
 
+func (o GnssPositioningMethodAndUsage) MarshalJSON() ([]byte, error) {
+	toSerialize, err := o.ToMap()
+	if err != nil {
+		return []byte{}, err
+	}
+	return json.Marshal(toSerialize)
+}
+
 func (o GnssPositioningMethodAndUsage) ToMap() (map[string]any, error) {
 	toSerialize := map[string]any{}
 	toSerialize["mode"] = o.Mode

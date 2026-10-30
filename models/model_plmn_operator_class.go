@@ -100,6 +100,14 @@ func (o *PlmnOperatorClass) SetLcsClientIds(v []string) {
 	o.LcsClientIds = v
 }
 
+func (o PlmnOperatorClass) MarshalJSON() ([]byte, error) {
+	toSerialize, err := o.ToMap()
+	if err != nil {
+		return []byte{}, err
+	}
+	return json.Marshal(toSerialize)
+}
+
 func (o PlmnOperatorClass) ToMap() (map[string]any, error) {
 	toSerialize := map[string]any{}
 	toSerialize["lcsClientClass"] = o.LcsClientClass

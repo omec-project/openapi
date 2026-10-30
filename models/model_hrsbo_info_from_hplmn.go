@@ -335,6 +335,14 @@ func (o *HrsboInfoFromHplmn) SetTrafficInfluInfo(v TrafficInfluenceInfo) {
 	o.TrafficInfluInfo = &v
 }
 
+func (o HrsboInfoFromHplmn) MarshalJSON() ([]byte, error) {
+	toSerialize, err := o.ToMap()
+	if err != nil {
+		return []byte{}, err
+	}
+	return json.Marshal(toSerialize)
+}
+
 func (o HrsboInfoFromHplmn) ToMap() (map[string]any, error) {
 	toSerialize := map[string]any{}
 	if !openapi.IsNil(o.HrsboAuthResult) {

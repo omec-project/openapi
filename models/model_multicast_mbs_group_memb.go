@@ -141,6 +141,14 @@ func (o *MulticastMbsGroupMemb) SetInternalGroupIdentifier(v string) {
 	o.InternalGroupIdentifier = &v
 }
 
+func (o MulticastMbsGroupMemb) MarshalJSON() ([]byte, error) {
+	toSerialize, err := o.ToMap()
+	if err != nil {
+		return []byte{}, err
+	}
+	return json.Marshal(toSerialize)
+}
+
 func (o MulticastMbsGroupMemb) ToMap() (map[string]any, error) {
 	toSerialize := map[string]any{}
 	toSerialize["multicastGroupMemb"] = o.MulticastGroupMemb

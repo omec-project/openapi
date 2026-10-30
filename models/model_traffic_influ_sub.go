@@ -448,6 +448,14 @@ func (o *TrafficInfluSub) SetImmReports(v []TrafficInfluDataNotif) {
 	o.ImmReports = v
 }
 
+func (o TrafficInfluSub) MarshalJSON() ([]byte, error) {
+	toSerialize, err := o.ToMap()
+	if err != nil {
+		return []byte{}, err
+	}
+	return json.Marshal(toSerialize)
+}
+
 func (o TrafficInfluSub) ToMap() (map[string]any, error) {
 	toSerialize := map[string]any{}
 	if !openapi.IsNil(o.Dnns) {

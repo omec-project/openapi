@@ -174,6 +174,14 @@ func (o *AstiAllowedInfo) SetTempVals(v []TemporalValidity) {
 	o.TempVals = v
 }
 
+func (o AstiAllowedInfo) MarshalJSON() ([]byte, error) {
+	toSerialize, err := o.ToMap()
+	if err != nil {
+		return []byte{}, err
+	}
+	return json.Marshal(toSerialize)
+}
+
 func (o AstiAllowedInfo) ToMap() (map[string]any, error) {
 	toSerialize := map[string]any{}
 	toSerialize["astiAllowed"] = o.AstiAllowed

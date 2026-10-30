@@ -100,6 +100,14 @@ func (o *NssaiMapping) SetHSnssai(v Snssai) {
 	o.HSnssai = v
 }
 
+func (o NssaiMapping) MarshalJSON() ([]byte, error) {
+	toSerialize, err := o.ToMap()
+	if err != nil {
+		return []byte{}, err
+	}
+	return json.Marshal(toSerialize)
+}
+
 func (o NssaiMapping) ToMap() (map[string]any, error) {
 	toSerialize := map[string]any{}
 	toSerialize["mappedSnssai"] = o.MappedSnssai

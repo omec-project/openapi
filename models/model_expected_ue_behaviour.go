@@ -482,6 +482,14 @@ func (o *ExpectedUeBehaviour) SetMtcProviderInformation(v string) {
 	o.MtcProviderInformation = &v
 }
 
+func (o ExpectedUeBehaviour) MarshalJSON() ([]byte, error) {
+	toSerialize, err := o.ToMap()
+	if err != nil {
+		return []byte{}, err
+	}
+	return json.Marshal(toSerialize)
+}
+
 func (o ExpectedUeBehaviour) ToMap() (map[string]any, error) {
 	toSerialize := map[string]any{}
 	toSerialize["afInstanceId"] = o.AfInstanceId

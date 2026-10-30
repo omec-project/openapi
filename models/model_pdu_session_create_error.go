@@ -209,6 +209,14 @@ func (o *PduSessionCreateError) SetRecoveryTime(v time.Time) {
 	o.RecoveryTime = &v
 }
 
+func (o PduSessionCreateError) MarshalJSON() ([]byte, error) {
+	toSerialize, err := o.ToMap()
+	if err != nil {
+		return []byte{}, err
+	}
+	return json.Marshal(toSerialize)
+}
+
 func (o PduSessionCreateError) ToMap() (map[string]any, error) {
 	toSerialize := map[string]any{}
 	toSerialize["error"] = o.Error

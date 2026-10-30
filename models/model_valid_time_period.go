@@ -117,6 +117,14 @@ func (o *ValidTimePeriod) SetEndTime(v time.Time) {
 	o.EndTime = &v
 }
 
+func (o ValidTimePeriod) MarshalJSON() ([]byte, error) {
+	toSerialize, err := o.ToMap()
+	if err != nil {
+		return []byte{}, err
+	}
+	return json.Marshal(toSerialize)
+}
+
 func (o ValidTimePeriod) ToMap() (map[string]any, error) {
 	toSerialize := map[string]any{}
 	if !openapi.IsNil(o.StartTime) {

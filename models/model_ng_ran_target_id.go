@@ -102,6 +102,14 @@ func (o *NgRanTargetId) SetTai(v Tai) {
 	o.Tai = v
 }
 
+func (o NgRanTargetId) MarshalJSON() ([]byte, error) {
+	toSerialize, err := o.ToMap()
+	if err != nil {
+		return []byte{}, err
+	}
+	return json.Marshal(toSerialize)
+}
+
 func (o NgRanTargetId) ToMap() (map[string]any, error) {
 	toSerialize := map[string]any{}
 	toSerialize["ranNodeId"] = o.RanNodeId.Get()

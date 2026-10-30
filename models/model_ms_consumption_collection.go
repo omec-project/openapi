@@ -74,6 +74,14 @@ func (o *MsConsumptionCollection) SetMsConsumps(v []string) {
 	o.MsConsumps = v
 }
 
+func (o MsConsumptionCollection) MarshalJSON() ([]byte, error) {
+	toSerialize, err := o.ToMap()
+	if err != nil {
+		return []byte{}, err
+	}
+	return json.Marshal(toSerialize)
+}
+
 func (o MsConsumptionCollection) ToMap() (map[string]any, error) {
 	toSerialize := map[string]any{}
 	toSerialize["msConsumps"] = o.MsConsumps

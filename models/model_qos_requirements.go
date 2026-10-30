@@ -373,6 +373,14 @@ func (o *QosRequirements) SetCapBatAdaptation(v bool) {
 	o.CapBatAdaptation = &v
 }
 
+func (o QosRequirements) MarshalJSON() ([]byte, error) {
+	toSerialize, err := o.ToMap()
+	if err != nil {
+		return []byte{}, err
+	}
+	return json.Marshal(toSerialize)
+}
+
 func (o QosRequirements) ToMap() (map[string]any, error) {
 	toSerialize := map[string]any{}
 	if !openapi.IsNil(o.MarBwUl) {

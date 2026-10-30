@@ -1588,6 +1588,14 @@ func (o *PduSessionCreatedData) SetPendingUpdateInfoList(v []PendingUpdateInfo) 
 	o.PendingUpdateInfoList = v
 }
 
+func (o PduSessionCreatedData) MarshalJSON() ([]byte, error) {
+	toSerialize, err := o.ToMap()
+	if err != nil {
+		return []byte{}, err
+	}
+	return json.Marshal(toSerialize)
+}
+
 func (o PduSessionCreatedData) ToMap() (map[string]any, error) {
 	toSerialize := map[string]any{}
 	toSerialize["pduSessionType"] = o.PduSessionType

@@ -750,6 +750,14 @@ func (o *HsmfUpdatedData) SetHrsboInfo(v HrsboInfoFromHplmn) {
 	o.HrsboInfo = &v
 }
 
+func (o HsmfUpdatedData) MarshalJSON() ([]byte, error) {
+	toSerialize, err := o.ToMap()
+	if err != nil {
+		return []byte{}, err
+	}
+	return json.Marshal(toSerialize)
+}
+
 func (o HsmfUpdatedData) ToMap() (map[string]any, error) {
 	toSerialize := map[string]any{}
 	if !openapi.IsNil(o.N1SmInfoToUe) {

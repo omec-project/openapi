@@ -620,6 +620,14 @@ func (o *UePolicySet) SetResetIds(v []string) {
 	o.ResetIds = v
 }
 
+func (o UePolicySet) MarshalJSON() ([]byte, error) {
+	toSerialize, err := o.ToMap()
+	if err != nil {
+		return []byte{}, err
+	}
+	return json.Marshal(toSerialize)
+}
+
 func (o UePolicySet) ToMap() (map[string]any, error) {
 	toSerialize := map[string]any{}
 	if !openapi.IsNil(o.PraInfos) {

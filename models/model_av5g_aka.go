@@ -127,6 +127,14 @@ func (o *Av5gAka) SetAutn(v string) {
 	o.Autn = v
 }
 
+func (o Av5gAka) MarshalJSON() ([]byte, error) {
+	toSerialize, err := o.ToMap()
+	if err != nil {
+		return []byte{}, err
+	}
+	return json.Marshal(toSerialize)
+}
+
 func (o Av5gAka) ToMap() (map[string]any, error) {
 	toSerialize := map[string]any{}
 	toSerialize["rand"] = o.Rand

@@ -3346,6 +3346,14 @@ func (o *NFProfile) SetSharedProfileDataId(v string) {
 	o.SharedProfileDataId = &v
 }
 
+func (o NFProfile) MarshalJSON() ([]byte, error) {
+	toSerialize, err := o.ToMap()
+	if err != nil {
+		return []byte{}, err
+	}
+	return json.Marshal(toSerialize)
+}
+
 func (o NFProfile) ToMap() (map[string]any, error) {
 	toSerialize := map[string]any{}
 	toSerialize["nfInstanceId"] = o.NfInstanceId

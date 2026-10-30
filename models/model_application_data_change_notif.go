@@ -350,6 +350,14 @@ func (o *ApplicationDataChangeNotif) SetEcsAddrData(v EcsAddrData) {
 	o.EcsAddrData = &v
 }
 
+func (o ApplicationDataChangeNotif) MarshalJSON() ([]byte, error) {
+	toSerialize, err := o.ToMap()
+	if err != nil {
+		return []byte{}, err
+	}
+	return json.Marshal(toSerialize)
+}
+
 func (o ApplicationDataChangeNotif) ToMap() (map[string]any, error) {
 	toSerialize := map[string]any{}
 	if o.IptvConfigData.IsSet() {

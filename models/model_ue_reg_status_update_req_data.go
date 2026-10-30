@@ -239,6 +239,14 @@ func (o *UeRegStatusUpdateReqData) SetToReleaseSessionInfo(v []ReleaseSessionInf
 	o.ToReleaseSessionInfo = v
 }
 
+func (o UeRegStatusUpdateReqData) MarshalJSON() ([]byte, error) {
+	toSerialize, err := o.ToMap()
+	if err != nil {
+		return []byte{}, err
+	}
+	return json.Marshal(toSerialize)
+}
+
 func (o UeRegStatusUpdateReqData) ToMap() (map[string]any, error) {
 	toSerialize := map[string]any{}
 	toSerialize["transferStatus"] = o.TransferStatus

@@ -140,6 +140,14 @@ func (o *SubscribedSnssai) SetSubscribedNsSrgList(v []string) {
 	o.SubscribedNsSrgList = v
 }
 
+func (o SubscribedSnssai) MarshalJSON() ([]byte, error) {
+	toSerialize, err := o.ToMap()
+	if err != nil {
+		return []byte{}, err
+	}
+	return json.Marshal(toSerialize)
+}
+
 func (o SubscribedSnssai) ToMap() (map[string]any, error) {
 	toSerialize := map[string]any{}
 	toSerialize["subscribedSnssai"] = o.SubscribedSnssai

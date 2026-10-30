@@ -480,6 +480,14 @@ func (o *AccessTokenClaims) SetSourceNfInstanceId(v string) {
 	o.SourceNfInstanceId = &v
 }
 
+func (o AccessTokenClaims) MarshalJSON() ([]byte, error) {
+	toSerialize, err := o.ToMap()
+	if err != nil {
+		return []byte{}, err
+	}
+	return json.Marshal(toSerialize)
+}
+
 func (o AccessTokenClaims) ToMap() (map[string]any, error) {
 	toSerialize := map[string]any{}
 	toSerialize["iss"] = o.Iss

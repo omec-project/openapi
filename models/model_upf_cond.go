@@ -140,6 +140,14 @@ func (o *UpfCond) SetTaiList(v []Tai) {
 	o.TaiList = v
 }
 
+func (o UpfCond) MarshalJSON() ([]byte, error) {
+	toSerialize, err := o.ToMap()
+	if err != nil {
+		return []byte{}, err
+	}
+	return json.Marshal(toSerialize)
+}
+
 func (o UpfCond) ToMap() (map[string]any, error) {
 	toSerialize := map[string]any{}
 	toSerialize["conditionType"] = o.ConditionType

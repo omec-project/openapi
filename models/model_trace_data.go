@@ -291,6 +291,14 @@ func (o *TraceData) SetInterfaceList(v string) {
 	o.InterfaceList = &v
 }
 
+func (o TraceData) MarshalJSON() ([]byte, error) {
+	toSerialize, err := o.ToMap()
+	if err != nil {
+		return []byte{}, err
+	}
+	return json.Marshal(toSerialize)
+}
+
 func (o TraceData) ToMap() (map[string]any, error) {
 	toSerialize := map[string]any{}
 	toSerialize["traceRef"] = o.TraceRef

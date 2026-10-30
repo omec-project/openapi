@@ -144,6 +144,14 @@ func (o *UnTrustAfInfo) SetMappingInd(v bool) {
 	o.MappingInd = &v
 }
 
+func (o UnTrustAfInfo) MarshalJSON() ([]byte, error) {
+	toSerialize, err := o.ToMap()
+	if err != nil {
+		return []byte{}, err
+	}
+	return json.Marshal(toSerialize)
+}
+
 func (o UnTrustAfInfo) ToMap() (map[string]any, error) {
 	toSerialize := map[string]any{}
 	toSerialize["afId"] = o.AfId

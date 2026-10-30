@@ -752,6 +752,14 @@ func (o *AfRequestedQosData) SetSuppFeat(v string) {
 	o.SuppFeat = &v
 }
 
+func (o AfRequestedQosData) MarshalJSON() ([]byte, error) {
+	toSerialize, err := o.ToMap()
+	if err != nil {
+		return []byte{}, err
+	}
+	return json.Marshal(toSerialize)
+}
+
 func (o AfRequestedQosData) ToMap() (map[string]any, error) {
 	toSerialize := map[string]any{}
 	if !openapi.IsNil(o.Supi) {

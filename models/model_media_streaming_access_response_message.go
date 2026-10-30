@@ -162,6 +162,14 @@ func (o *MediaStreamingAccessResponseMessage) SetContentType(v string) {
 	o.ContentType = &v
 }
 
+func (o MediaStreamingAccessResponseMessage) MarshalJSON() ([]byte, error) {
+	toSerialize, err := o.ToMap()
+	if err != nil {
+		return []byte{}, err
+	}
+	return json.Marshal(toSerialize)
+}
+
 func (o MediaStreamingAccessResponseMessage) ToMap() (map[string]any, error) {
 	toSerialize := map[string]any{}
 	toSerialize["responseCode"] = o.ResponseCode

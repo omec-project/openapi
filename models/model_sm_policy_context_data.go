@@ -1824,6 +1824,14 @@ func (o *SmPolicyContextData) SetHrsboInd(v bool) {
 	o.HrsboInd = &v
 }
 
+func (o SmPolicyContextData) MarshalJSON() ([]byte, error) {
+	toSerialize, err := o.ToMap()
+	if err != nil {
+		return []byte{}, err
+	}
+	return json.Marshal(toSerialize)
+}
+
 func (o SmPolicyContextData) ToMap() (map[string]any, error) {
 	toSerialize := map[string]any{}
 	if o.AccNetChId.IsSet() {

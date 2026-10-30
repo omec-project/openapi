@@ -135,6 +135,14 @@ func (o *EpsIwkPgw) SetPlmnId(v PlmnId) {
 	o.PlmnId = &v
 }
 
+func (o EpsIwkPgw) MarshalJSON() ([]byte, error) {
+	toSerialize, err := o.ToMap()
+	if err != nil {
+		return []byte{}, err
+	}
+	return json.Marshal(toSerialize)
+}
+
 func (o EpsIwkPgw) ToMap() (map[string]any, error) {
 	toSerialize := map[string]any{}
 	toSerialize["pgwFqdn"] = o.PgwFqdn

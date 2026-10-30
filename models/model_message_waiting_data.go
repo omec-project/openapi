@@ -81,6 +81,14 @@ func (o *MessageWaitingData) SetMwdList(v []SmscData) {
 	o.MwdList = v
 }
 
+func (o MessageWaitingData) MarshalJSON() ([]byte, error) {
+	toSerialize, err := o.ToMap()
+	if err != nil {
+		return []byte{}, err
+	}
+	return json.Marshal(toSerialize)
+}
+
 func (o MessageWaitingData) ToMap() (map[string]any, error) {
 	toSerialize := map[string]any{}
 	if !openapi.IsNil(o.MwdList) {

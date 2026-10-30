@@ -81,6 +81,14 @@ func (o *NrA2xAuth) SetUavUeAuth(v UeAuth) {
 	o.UavUeAuth = &v
 }
 
+func (o NrA2xAuth) MarshalJSON() ([]byte, error) {
+	toSerialize, err := o.ToMap()
+	if err != nil {
+		return []byte{}, err
+	}
+	return json.Marshal(toSerialize)
+}
+
 func (o NrA2xAuth) ToMap() (map[string]any, error) {
 	toSerialize := map[string]any{}
 	if !openapi.IsNil(o.UavUeAuth) {

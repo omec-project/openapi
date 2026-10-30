@@ -584,6 +584,14 @@ func (o *EeSubscriptionError) SetFailedMoniConfigsEPC(v map[string]FailedMonitor
 	o.FailedMoniConfigsEPC = &v
 }
 
+func (o EeSubscriptionError) MarshalJSON() ([]byte, error) {
+	toSerialize, err := o.ToMap()
+	if err != nil {
+		return []byte{}, err
+	}
+	return json.Marshal(toSerialize)
+}
+
 func (o EeSubscriptionError) ToMap() (map[string]any, error) {
 	toSerialize := map[string]any{}
 	if !openapi.IsNil(o.Type) {

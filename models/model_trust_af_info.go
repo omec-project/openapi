@@ -283,6 +283,14 @@ func (o *TrustAfInfo) SetTaiRangeList(v []TaiRange) {
 	o.TaiRangeList = v
 }
 
+func (o TrustAfInfo) MarshalJSON() ([]byte, error) {
+	toSerialize, err := o.ToMap()
+	if err != nil {
+		return []byte{}, err
+	}
+	return json.Marshal(toSerialize)
+}
+
 func (o TrustAfInfo) ToMap() (map[string]any, error) {
 	toSerialize := map[string]any{}
 	if !openapi.IsNil(o.SNssaiInfoList) {

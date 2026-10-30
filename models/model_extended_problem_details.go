@@ -516,6 +516,14 @@ func (o *ExtendedProblemDetails) SetAcceptableServInfo(v AcceptableServiceInfo) 
 	o.AcceptableServInfo = &v
 }
 
+func (o ExtendedProblemDetails) MarshalJSON() ([]byte, error) {
+	toSerialize, err := o.ToMap()
+	if err != nil {
+		return []byte{}, err
+	}
+	return json.Marshal(toSerialize)
+}
+
 func (o ExtendedProblemDetails) ToMap() (map[string]any, error) {
 	toSerialize := map[string]any{}
 	if !openapi.IsNil(o.Type) {

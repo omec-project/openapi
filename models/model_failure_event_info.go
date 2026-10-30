@@ -100,6 +100,14 @@ func (o *FailureEventInfo) SetFailureCode(v NwdafFailureCode) {
 	o.FailureCode = v
 }
 
+func (o FailureEventInfo) MarshalJSON() ([]byte, error) {
+	toSerialize, err := o.ToMap()
+	if err != nil {
+		return []byte{}, err
+	}
+	return json.Marshal(toSerialize)
+}
+
 func (o FailureEventInfo) ToMap() (map[string]any, error) {
 	toSerialize := map[string]any{}
 	toSerialize["event"] = o.Event

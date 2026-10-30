@@ -612,6 +612,14 @@ func (o *CpParameterSet) SetAccuracyLevel(v string) {
 	o.AccuracyLevel = &v
 }
 
+func (o CpParameterSet) MarshalJSON() ([]byte, error) {
+	toSerialize, err := o.ToMap()
+	if err != nil {
+		return []byte{}, err
+	}
+	return json.Marshal(toSerialize)
+}
+
 func (o CpParameterSet) ToMap() (map[string]any, error) {
 	toSerialize := map[string]any{}
 	toSerialize["setId"] = o.SetId

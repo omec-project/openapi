@@ -237,6 +237,14 @@ func (o *QoEMetricsCollection) SetRecords(v []QoEMetricsEvent) {
 	o.Records = v
 }
 
+func (o QoEMetricsCollection) MarshalJSON() ([]byte, error) {
+	toSerialize, err := o.ToMap()
+	if err != nil {
+		return []byte{}, err
+	}
+	return json.Marshal(toSerialize)
+}
+
 func (o QoEMetricsCollection) ToMap() (map[string]any, error) {
 	toSerialize := map[string]any{}
 	toSerialize["collectionTimestamp"] = o.CollectionTimestamp

@@ -279,6 +279,14 @@ func (o *PlmnRestriction) SetSecondaryRatRestrictions(v []RatType) {
 	o.SecondaryRatRestrictions = v
 }
 
+func (o PlmnRestriction) MarshalJSON() ([]byte, error) {
+	toSerialize, err := o.ToMap()
+	if err != nil {
+		return []byte{}, err
+	}
+	return json.Marshal(toSerialize)
+}
+
 func (o PlmnRestriction) ToMap() (map[string]any, error) {
 	toSerialize := map[string]any{}
 	if !openapi.IsNil(o.RatRestrictions) {

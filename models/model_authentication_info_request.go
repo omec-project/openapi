@@ -349,6 +349,14 @@ func (o *AuthenticationInfoRequest) SetAun3Ind(v bool) {
 	o.Aun3Ind = &v
 }
 
+func (o AuthenticationInfoRequest) MarshalJSON() ([]byte, error) {
+	toSerialize, err := o.ToMap()
+	if err != nil {
+		return []byte{}, err
+	}
+	return json.Marshal(toSerialize)
+}
+
 func (o AuthenticationInfoRequest) ToMap() (map[string]any, error) {
 	toSerialize := map[string]any{}
 	if !openapi.IsNil(o.SupportedFeatures) {

@@ -100,6 +100,14 @@ func (o *SmPolicyControl) SetPolicy(v SmPolicyDecision) {
 	o.Policy = v
 }
 
+func (o SmPolicyControl) MarshalJSON() ([]byte, error) {
+	toSerialize, err := o.ToMap()
+	if err != nil {
+		return []byte{}, err
+	}
+	return json.Marshal(toSerialize)
+}
+
 func (o SmPolicyControl) ToMap() (map[string]any, error) {
 	toSerialize := map[string]any{}
 	toSerialize["context"] = o.Context

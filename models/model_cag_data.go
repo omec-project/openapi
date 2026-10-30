@@ -144,6 +144,14 @@ func (o *CagData) SetProvisioningTime(v time.Time) {
 	o.ProvisioningTime = &v
 }
 
+func (o CagData) MarshalJSON() ([]byte, error) {
+	toSerialize, err := o.ToMap()
+	if err != nil {
+		return []byte{}, err
+	}
+	return json.Marshal(toSerialize)
+}
+
 func (o CagData) ToMap() (map[string]any, error) {
 	toSerialize := map[string]any{}
 	toSerialize["cagInfos"] = o.CagInfos

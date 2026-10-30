@@ -181,6 +181,14 @@ func (o *ExposureDataChangeNotification) SetDelResources(v []string) {
 	o.DelResources = v
 }
 
+func (o ExposureDataChangeNotification) MarshalJSON() ([]byte, error) {
+	toSerialize, err := o.ToMap()
+	if err != nil {
+		return []byte{}, err
+	}
+	return json.Marshal(toSerialize)
+}
+
 func (o ExposureDataChangeNotification) ToMap() (map[string]any, error) {
 	toSerialize := map[string]any{}
 	if !openapi.IsNil(o.UeId) {

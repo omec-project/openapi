@@ -203,6 +203,14 @@ func (o *ChangeItem) SetNewValue(v any) {
 	o.NewValue = v
 }
 
+func (o ChangeItem) MarshalJSON() ([]byte, error) {
+	toSerialize, err := o.ToMap()
+	if err != nil {
+		return []byte{}, err
+	}
+	return json.Marshal(toSerialize)
+}
+
 func (o ChangeItem) ToMap() (map[string]any, error) {
 	toSerialize := map[string]any{}
 	toSerialize["op"] = o.Op

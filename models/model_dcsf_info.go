@@ -213,6 +213,14 @@ func (o *DcsfInfo) SetMsisdnRanges(v []IdentityRange) {
 	o.MsisdnRanges = v
 }
 
+func (o DcsfInfo) MarshalJSON() ([]byte, error) {
+	toSerialize, err := o.ToMap()
+	if err != nil {
+		return []byte{}, err
+	}
+	return json.Marshal(toSerialize)
+}
+
 func (o DcsfInfo) ToMap() (map[string]any, error) {
 	toSerialize := map[string]any{}
 	if !openapi.IsNil(o.ImsDomianNameList) {

@@ -74,6 +74,14 @@ func (o *Dnf) SetDnfUnits(v []DnfUnit) {
 	o.DnfUnits = v
 }
 
+func (o Dnf) MarshalJSON() ([]byte, error) {
+	toSerialize, err := o.ToMap()
+	if err != nil {
+		return []byte{}, err
+	}
+	return json.Marshal(toSerialize)
+}
+
 func (o Dnf) ToMap() (map[string]any, error) {
 	toSerialize := map[string]any{}
 	toSerialize["dnfUnits"] = o.DnfUnits

@@ -140,6 +140,14 @@ func (o *AllowedSnssai) SetMappedHomeSnssai(v Snssai) {
 	o.MappedHomeSnssai = &v
 }
 
+func (o AllowedSnssai) MarshalJSON() ([]byte, error) {
+	toSerialize, err := o.ToMap()
+	if err != nil {
+		return []byte{}, err
+	}
+	return json.Marshal(toSerialize)
+}
+
 func (o AllowedSnssai) ToMap() (map[string]any, error) {
 	toSerialize := map[string]any{}
 	toSerialize["allowedSnssai"] = o.AllowedSnssai

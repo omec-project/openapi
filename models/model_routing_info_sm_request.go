@@ -152,6 +152,14 @@ func (o *RoutingInfoSmRequest) SetSupportedFeatures(v string) {
 	o.SupportedFeatures = &v
 }
 
+func (o RoutingInfoSmRequest) MarshalJSON() ([]byte, error) {
+	toSerialize, err := o.ToMap()
+	if err != nil {
+		return []byte{}, err
+	}
+	return json.Marshal(toSerialize)
+}
+
 func (o RoutingInfoSmRequest) ToMap() (map[string]any, error) {
 	toSerialize := map[string]any{}
 	if !openapi.IsNil(o.IpSmGwInd) {

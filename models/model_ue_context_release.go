@@ -145,6 +145,14 @@ func (o *UEContextRelease) SetNgapCause(v NgApCause) {
 	o.NgapCause = v
 }
 
+func (o UEContextRelease) MarshalJSON() ([]byte, error) {
+	toSerialize, err := o.ToMap()
+	if err != nil {
+		return []byte{}, err
+	}
+	return json.Marshal(toSerialize)
+}
+
 func (o UEContextRelease) ToMap() (map[string]any, error) {
 	toSerialize := map[string]any{}
 	if !openapi.IsNil(o.Supi) {

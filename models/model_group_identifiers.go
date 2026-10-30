@@ -148,6 +148,14 @@ func (o *GroupIdentifiers) SetUeIdList(v []UeId) {
 	o.UeIdList = v
 }
 
+func (o GroupIdentifiers) MarshalJSON() ([]byte, error) {
+	toSerialize, err := o.ToMap()
+	if err != nil {
+		return []byte{}, err
+	}
+	return json.Marshal(toSerialize)
+}
+
 func (o GroupIdentifiers) ToMap() (map[string]any, error) {
 	toSerialize := map[string]any{}
 	if !openapi.IsNil(o.ExtGroupId) {

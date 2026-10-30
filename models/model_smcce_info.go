@@ -143,6 +143,14 @@ func (o *SmcceInfo) SetSmcceUeList(v SmcceUeList) {
 	o.SmcceUeList.Set(&v)
 }
 
+func (o SmcceInfo) MarshalJSON() ([]byte, error) {
+	toSerialize, err := o.ToMap()
+	if err != nil {
+		return []byte{}, err
+	}
+	return json.Marshal(toSerialize)
+}
+
 func (o SmcceInfo) ToMap() (map[string]any, error) {
 	toSerialize := map[string]any{}
 	if !openapi.IsNil(o.Dnn) {

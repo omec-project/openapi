@@ -115,6 +115,14 @@ func (o *EnableGroupReachabilityRspData) SetSupportedFeatures(v string) {
 	o.SupportedFeatures = &v
 }
 
+func (o EnableGroupReachabilityRspData) MarshalJSON() ([]byte, error) {
+	toSerialize, err := o.ToMap()
+	if err != nil {
+		return []byte{}, err
+	}
+	return json.Marshal(toSerialize)
+}
+
 func (o EnableGroupReachabilityRspData) ToMap() (map[string]any, error) {
 	toSerialize := map[string]any{}
 	if !openapi.IsNil(o.UeConnectedList) {

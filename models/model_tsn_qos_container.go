@@ -184,6 +184,14 @@ func (o *TsnQosContainer) SetTscPrioLevel(v int32) {
 	o.TscPrioLevel = &v
 }
 
+func (o TsnQosContainer) MarshalJSON() ([]byte, error) {
+	toSerialize, err := o.ToMap()
+	if err != nil {
+		return []byte{}, err
+	}
+	return json.Marshal(toSerialize)
+}
+
 func (o TsnQosContainer) ToMap() (map[string]any, error) {
 	toSerialize := map[string]any{}
 	if !openapi.IsNil(o.MaxTscBurstSize) {

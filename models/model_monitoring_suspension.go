@@ -114,6 +114,14 @@ func (o *MonitoringSuspension) SetSuspendedOutsidePlmnList(v []PlmnIdNid) {
 	o.SuspendedOutsidePlmnList = v
 }
 
+func (o MonitoringSuspension) MarshalJSON() ([]byte, error) {
+	toSerialize, err := o.ToMap()
+	if err != nil {
+		return []byte{}, err
+	}
+	return json.Marshal(toSerialize)
+}
+
 func (o MonitoringSuspension) ToMap() (map[string]any, error) {
 	toSerialize := map[string]any{}
 	if !openapi.IsNil(o.SuspendedInsidePlmnList) {

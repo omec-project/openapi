@@ -610,6 +610,14 @@ func (o *PcfInfo) SetUrspEnforceSupport(v bool) {
 	o.UrspEnforceSupport = &v
 }
 
+func (o PcfInfo) MarshalJSON() ([]byte, error) {
+	toSerialize, err := o.ToMap()
+	if err != nil {
+		return []byte{}, err
+	}
+	return json.Marshal(toSerialize)
+}
+
 func (o PcfInfo) ToMap() (map[string]any, error) {
 	toSerialize := map[string]any{}
 	if !openapi.IsNil(o.GroupId) {

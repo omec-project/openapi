@@ -268,6 +268,14 @@ func (o *NonUeN2InfoSubscriptionCreateData) SetNotifCorrelationId(v string) {
 	o.NotifCorrelationId = &v
 }
 
+func (o NonUeN2InfoSubscriptionCreateData) MarshalJSON() ([]byte, error) {
+	toSerialize, err := o.ToMap()
+	if err != nil {
+		return []byte{}, err
+	}
+	return json.Marshal(toSerialize)
+}
+
 func (o NonUeN2InfoSubscriptionCreateData) ToMap() (map[string]any, error) {
 	toSerialize := map[string]any{}
 	if !openapi.IsNil(o.GlobalRanNodeList) {

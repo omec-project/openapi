@@ -244,6 +244,14 @@ func (o *SmContextRetrievedData) SetAfCoordinationInfo(v AfCoordinationInfo) {
 	o.AfCoordinationInfo = &v
 }
 
+func (o SmContextRetrievedData) MarshalJSON() ([]byte, error) {
+	toSerialize, err := o.ToMap()
+	if err != nil {
+		return []byte{}, err
+	}
+	return json.Marshal(toSerialize)
+}
+
 func (o SmContextRetrievedData) ToMap() (map[string]any, error) {
 	toSerialize := map[string]any{}
 	toSerialize["ueEpsPdnConnection"] = o.UeEpsPdnConnection

@@ -107,6 +107,14 @@ func (o *CnTypeChangeReport) SetOldCnType(v CnType) {
 	o.OldCnType = &v
 }
 
+func (o CnTypeChangeReport) MarshalJSON() ([]byte, error) {
+	toSerialize, err := o.ToMap()
+	if err != nil {
+		return []byte{}, err
+	}
+	return json.Marshal(toSerialize)
+}
+
 func (o CnTypeChangeReport) ToMap() (map[string]any, error) {
 	toSerialize := map[string]any{}
 	toSerialize["newCnType"] = o.NewCnType

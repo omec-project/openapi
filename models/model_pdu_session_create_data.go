@@ -2723,6 +2723,14 @@ func (o *PduSessionCreateData) SetEcnMarkingCongestionInfoStatus(v []EcnMarkingC
 	o.EcnMarkingCongestionInfoStatus = v
 }
 
+func (o PduSessionCreateData) MarshalJSON() ([]byte, error) {
+	toSerialize, err := o.ToMap()
+	if err != nil {
+		return []byte{}, err
+	}
+	return json.Marshal(toSerialize)
+}
+
 func (o PduSessionCreateData) ToMap() (map[string]any, error) {
 	toSerialize := map[string]any{}
 	if !openapi.IsNil(o.Supi) {

@@ -75,6 +75,14 @@ func (o *ChangeOfSupiPeiAssociationReport) SetNewPei(v string) {
 	o.NewPei = v
 }
 
+func (o ChangeOfSupiPeiAssociationReport) MarshalJSON() ([]byte, error) {
+	toSerialize, err := o.ToMap()
+	if err != nil {
+		return []byte{}, err
+	}
+	return json.Marshal(toSerialize)
+}
+
 func (o ChangeOfSupiPeiAssociationReport) ToMap() (map[string]any, error) {
 	toSerialize := map[string]any{}
 	toSerialize["newPei"] = o.NewPei

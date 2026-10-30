@@ -3358,6 +3358,14 @@ func (o *NotificationDataAllOfNfProfile) SetSharedProfileDataId(v string) {
 	o.SharedProfileDataId = &v
 }
 
+func (o NotificationDataAllOfNfProfile) MarshalJSON() ([]byte, error) {
+	toSerialize, err := o.ToMap()
+	if err != nil {
+		return []byte{}, err
+	}
+	return json.Marshal(toSerialize)
+}
+
 func (o NotificationDataAllOfNfProfile) ToMap() (map[string]any, error) {
 	toSerialize := map[string]any{}
 	toSerialize["nfInstanceId"] = o.NfInstanceId

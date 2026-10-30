@@ -1200,6 +1200,14 @@ func (o *DnnConfiguration) SetHrSboAuthorized(v bool) {
 	o.HrSboAuthorized = &v
 }
 
+func (o DnnConfiguration) MarshalJSON() ([]byte, error) {
+	toSerialize, err := o.ToMap()
+	if err != nil {
+		return []byte{}, err
+	}
+	return json.Marshal(toSerialize)
+}
+
 func (o DnnConfiguration) ToMap() (map[string]any, error) {
 	toSerialize := map[string]any{}
 	toSerialize["pduSessionTypes"] = o.PduSessionTypes

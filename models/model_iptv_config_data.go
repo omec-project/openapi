@@ -336,6 +336,14 @@ func (o *IptvConfigData) SetResetIds(v []string) {
 	o.ResetIds = v
 }
 
+func (o IptvConfigData) MarshalJSON() ([]byte, error) {
+	toSerialize, err := o.ToMap()
+	if err != nil {
+		return []byte{}, err
+	}
+	return json.Marshal(toSerialize)
+}
+
 func (o IptvConfigData) ToMap() (map[string]any, error) {
 	toSerialize := map[string]any{}
 	if !openapi.IsNil(o.Supi) {

@@ -140,6 +140,14 @@ func (o *UnrelatedClass) SetServiceTypeUnrelatedClasses(v []ServiceTypeUnrelated
 	o.ServiceTypeUnrelatedClasses = v
 }
 
+func (o UnrelatedClass) MarshalJSON() ([]byte, error) {
+	toSerialize, err := o.ToMap()
+	if err != nil {
+		return []byte{}, err
+	}
+	return json.Marshal(toSerialize)
+}
+
 func (o UnrelatedClass) ToMap() (map[string]any, error) {
 	toSerialize := map[string]any{}
 	toSerialize["defaultUnrelatedClass"] = o.DefaultUnrelatedClass

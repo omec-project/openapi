@@ -503,6 +503,14 @@ func (o *BdtData) SetResetIds(v []string) {
 	o.ResetIds = v
 }
 
+func (o BdtData) MarshalJSON() ([]byte, error) {
+	toSerialize, err := o.ToMap()
+	if err != nil {
+		return []byte{}, err
+	}
+	return json.Marshal(toSerialize)
+}
+
 func (o BdtData) ToMap() (map[string]any, error) {
 	toSerialize := map[string]any{}
 	toSerialize["aspId"] = o.AspId

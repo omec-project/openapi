@@ -318,6 +318,14 @@ func (o *TrafficCharacterization) SetDlVolVariance(v float32) {
 	o.DlVolVariance = &v
 }
 
+func (o TrafficCharacterization) MarshalJSON() ([]byte, error) {
+	toSerialize, err := o.ToMap()
+	if err != nil {
+		return []byte{}, err
+	}
+	return json.Marshal(toSerialize)
+}
+
 func (o TrafficCharacterization) ToMap() (map[string]any, error) {
 	toSerialize := map[string]any{}
 	if !openapi.IsNil(o.Dnn) {

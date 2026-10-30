@@ -283,6 +283,14 @@ func (o *AppExpUeBehaviour) SetValidityTime(v time.Time) {
 	o.ValidityTime = &v
 }
 
+func (o AppExpUeBehaviour) MarshalJSON() ([]byte, error) {
+	toSerialize, err := o.ToMap()
+	if err != nil {
+		return []byte{}, err
+	}
+	return json.Marshal(toSerialize)
+}
+
 func (o AppExpUeBehaviour) ToMap() (map[string]any, error) {
 	toSerialize := map[string]any{}
 	if !openapi.IsNil(o.AppId) {

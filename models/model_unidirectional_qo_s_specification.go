@@ -202,6 +202,14 @@ func (o *UnidirectionalQoSSpecification) SetDesiredPacketLossRate(v int32) {
 	o.DesiredPacketLossRate = &v
 }
 
+func (o UnidirectionalQoSSpecification) MarshalJSON() ([]byte, error) {
+	toSerialize, err := o.ToMap()
+	if err != nil {
+		return []byte{}, err
+	}
+	return json.Marshal(toSerialize)
+}
+
 func (o UnidirectionalQoSSpecification) ToMap() (map[string]any, error) {
 	toSerialize := map[string]any{}
 	toSerialize["maximumRequestedBitRate"] = o.MaximumRequestedBitRate

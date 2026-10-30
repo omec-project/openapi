@@ -181,6 +181,14 @@ func (o *ScpDomainRoutingInfoSubscription) SetLocalInd(v bool) {
 	o.LocalInd = &v
 }
 
+func (o ScpDomainRoutingInfoSubscription) MarshalJSON() ([]byte, error) {
+	toSerialize, err := o.ToMap()
+	if err != nil {
+		return []byte{}, err
+	}
+	return json.Marshal(toSerialize)
+}
+
 func (o ScpDomainRoutingInfoSubscription) ToMap() (map[string]any, error) {
 	toSerialize := map[string]any{}
 	toSerialize["callbackUri"] = o.CallbackUri

@@ -483,6 +483,14 @@ func (o *ProblemDetails) SetNoProfileMatchInfo(v NoProfileMatchInfo) {
 	o.NoProfileMatchInfo = &v
 }
 
+func (o ProblemDetails) MarshalJSON() ([]byte, error) {
+	toSerialize, err := o.ToMap()
+	if err != nil {
+		return []byte{}, err
+	}
+	return json.Marshal(toSerialize)
+}
+
 func (o ProblemDetails) ToMap() (map[string]any, error) {
 	toSerialize := map[string]any{}
 	if !openapi.IsNil(o.Type) {

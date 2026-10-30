@@ -243,6 +243,14 @@ func (o *PartialSuccessReport) SetInvalidPolicyDecs(v []InvalidParam) {
 	o.InvalidPolicyDecs = v
 }
 
+func (o PartialSuccessReport) MarshalJSON() ([]byte, error) {
+	toSerialize, err := o.ToMap()
+	if err != nil {
+		return []byte{}, err
+	}
+	return json.Marshal(toSerialize)
+}
+
 func (o PartialSuccessReport) ToMap() (map[string]any, error) {
 	toSerialize := map[string]any{}
 	toSerialize["failureCause"] = o.FailureCause

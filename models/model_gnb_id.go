@@ -102,6 +102,14 @@ func (o *GNbId) SetGNBValue(v string) {
 	o.GNBValue = v
 }
 
+func (o GNbId) MarshalJSON() ([]byte, error) {
+	toSerialize, err := o.ToMap()
+	if err != nil {
+		return []byte{}, err
+	}
+	return json.Marshal(toSerialize)
+}
+
 func (o GNbId) ToMap() (map[string]any, error) {
 	toSerialize := map[string]any{}
 	toSerialize["bitLength"] = o.BitLength

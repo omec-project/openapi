@@ -661,6 +661,14 @@ func (o *AccessTokenReq) SetSourceNfInstanceId(v string) {
 	o.SourceNfInstanceId = &v
 }
 
+func (o AccessTokenReq) MarshalJSON() ([]byte, error) {
+	toSerialize, err := o.ToMap()
+	if err != nil {
+		return []byte{}, err
+	}
+	return json.Marshal(toSerialize)
+}
+
 func (o AccessTokenReq) ToMap() (map[string]any, error) {
 	toSerialize := map[string]any{}
 	toSerialize["grant_type"] = o.GrantType

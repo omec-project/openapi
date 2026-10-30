@@ -74,6 +74,14 @@ func (o *MSAccessActivityCollection) SetMsAccActs(v []MediaStreamingAccessRecord
 	o.MsAccActs = v
 }
 
+func (o MSAccessActivityCollection) MarshalJSON() ([]byte, error) {
+	toSerialize, err := o.ToMap()
+	if err != nil {
+		return []byte{}, err
+	}
+	return json.Marshal(toSerialize)
+}
+
 func (o MSAccessActivityCollection) ToMap() (map[string]any, error) {
 	toSerialize := map[string]any{}
 	toSerialize["msAccActs"] = o.MsAccActs

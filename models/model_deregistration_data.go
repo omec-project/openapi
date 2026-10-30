@@ -175,6 +175,14 @@ func (o *DeregistrationData) SetNewSmfInstanceId(v string) {
 	o.NewSmfInstanceId = &v
 }
 
+func (o DeregistrationData) MarshalJSON() ([]byte, error) {
+	toSerialize, err := o.ToMap()
+	if err != nil {
+		return []byte{}, err
+	}
+	return json.Marshal(toSerialize)
+}
+
 func (o DeregistrationData) ToMap() (map[string]any, error) {
 	toSerialize := map[string]any{}
 	toSerialize["deregReason"] = o.DeregReason

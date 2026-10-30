@@ -143,6 +143,14 @@ func (o *AppDetectionInfo) SetSdfDescriptions(v []FlowInformation) {
 	o.SdfDescriptions = v
 }
 
+func (o AppDetectionInfo) MarshalJSON() ([]byte, error) {
+	toSerialize, err := o.ToMap()
+	if err != nil {
+		return []byte{}, err
+	}
+	return json.Marshal(toSerialize)
+}
+
 func (o AppDetectionInfo) ToMap() (map[string]any, error) {
 	toSerialize := map[string]any{}
 	toSerialize["appId"] = o.AppId

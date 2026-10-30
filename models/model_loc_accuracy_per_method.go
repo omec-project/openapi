@@ -169,6 +169,14 @@ func (o *LocAccuracyPerMethod) SetLosNlosInd(v bool) {
 	o.LosNlosInd = &v
 }
 
+func (o LocAccuracyPerMethod) MarshalJSON() ([]byte, error) {
+	toSerialize, err := o.ToMap()
+	if err != nil {
+		return []byte{}, err
+	}
+	return json.Marshal(toSerialize)
+}
+
 func (o LocAccuracyPerMethod) ToMap() (map[string]any, error) {
 	toSerialize := map[string]any{}
 	toSerialize["posMethod"] = o.PosMethod

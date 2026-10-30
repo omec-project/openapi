@@ -197,6 +197,14 @@ func (o *PpSubsRegTimer) SetMtcProviderInformation(v string) {
 	o.MtcProviderInformation = &v
 }
 
+func (o PpSubsRegTimer) MarshalJSON() ([]byte, error) {
+	toSerialize, err := o.ToMap()
+	if err != nil {
+		return []byte{}, err
+	}
+	return json.Marshal(toSerialize)
+}
+
 func (o PpSubsRegTimer) ToMap() (map[string]any, error) {
 	toSerialize := map[string]any{}
 	toSerialize["subsRegTimer"] = o.SubsRegTimer

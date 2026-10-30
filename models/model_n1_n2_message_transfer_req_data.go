@@ -731,6 +731,14 @@ func (o *N1N2MessageTransferReqData) SetPruInd(v bool) {
 	o.PruInd = &v
 }
 
+func (o N1N2MessageTransferReqData) MarshalJSON() ([]byte, error) {
+	toSerialize, err := o.ToMap()
+	if err != nil {
+		return []byte{}, err
+	}
+	return json.Marshal(toSerialize)
+}
+
 func (o N1N2MessageTransferReqData) ToMap() (map[string]any, error) {
 	toSerialize := map[string]any{}
 	if !openapi.IsNil(o.N1MessageContainer) {

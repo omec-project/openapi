@@ -102,6 +102,14 @@ func (o *UeAnalyticsContextDescriptor) SetAnaTypes(v []NwdafEvent) {
 	o.AnaTypes = v
 }
 
+func (o UeAnalyticsContextDescriptor) MarshalJSON() ([]byte, error) {
+	toSerialize, err := o.ToMap()
+	if err != nil {
+		return []byte{}, err
+	}
+	return json.Marshal(toSerialize)
+}
+
 func (o UeAnalyticsContextDescriptor) ToMap() (map[string]any, error) {
 	toSerialize := map[string]any{}
 	toSerialize["supi"] = o.Supi

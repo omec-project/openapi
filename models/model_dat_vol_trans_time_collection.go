@@ -317,6 +317,14 @@ func (o *DatVolTransTimeCollection) SetDlTransTimeDur(v TimeWindow) {
 	o.DlTransTimeDur = &v
 }
 
+func (o DatVolTransTimeCollection) MarshalJSON() ([]byte, error) {
+	toSerialize, err := o.ToMap()
+	if err != nil {
+		return []byte{}, err
+	}
+	return json.Marshal(toSerialize)
+}
+
 func (o DatVolTransTimeCollection) ToMap() (map[string]any, error) {
 	toSerialize := map[string]any{}
 	if !openapi.IsNil(o.AppId) {

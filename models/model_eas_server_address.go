@@ -103,6 +103,14 @@ func (o *EasServerAddress) SetPort(v int32) {
 	o.Port = v
 }
 
+func (o EasServerAddress) MarshalJSON() ([]byte, error) {
+	toSerialize, err := o.ToMap()
+	if err != nil {
+		return []byte{}, err
+	}
+	return json.Marshal(toSerialize)
+}
+
 func (o EasServerAddress) ToMap() (map[string]any, error) {
 	toSerialize := map[string]any{}
 	toSerialize["ip"] = o.Ip.Get()

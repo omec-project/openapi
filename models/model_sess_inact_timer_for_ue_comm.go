@@ -102,6 +102,14 @@ func (o *SessInactTimerForUeComm) SetSessInactiveTimer(v int32) {
 	o.SessInactiveTimer = v
 }
 
+func (o SessInactTimerForUeComm) MarshalJSON() ([]byte, error) {
+	toSerialize, err := o.ToMap()
+	if err != nil {
+		return []byte{}, err
+	}
+	return json.Marshal(toSerialize)
+}
+
 func (o SessInactTimerForUeComm) ToMap() (map[string]any, error) {
 	toSerialize := map[string]any{}
 	toSerialize["n4SessId"] = o.N4SessId

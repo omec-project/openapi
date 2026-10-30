@@ -110,6 +110,14 @@ func (o *ApplicationForPfdRequest) SetPfdTimestamp(v time.Time) {
 	o.PfdTimestamp = &v
 }
 
+func (o ApplicationForPfdRequest) MarshalJSON() ([]byte, error) {
+	toSerialize, err := o.ToMap()
+	if err != nil {
+		return []byte{}, err
+	}
+	return json.Marshal(toSerialize)
+}
+
 func (o ApplicationForPfdRequest) ToMap() (map[string]any, error) {
 	toSerialize := map[string]any{}
 	toSerialize["applicationId"] = o.ApplicationId

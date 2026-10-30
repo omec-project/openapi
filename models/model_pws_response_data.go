@@ -194,6 +194,14 @@ func (o *PWSResponseData) SetN2PwsSubMissInd(v bool) {
 	o.N2PwsSubMissInd = &v
 }
 
+func (o PWSResponseData) MarshalJSON() ([]byte, error) {
+	toSerialize, err := o.ToMap()
+	if err != nil {
+		return []byte{}, err
+	}
+	return json.Marshal(toSerialize)
+}
+
 func (o PWSResponseData) ToMap() (map[string]any, error) {
 	toSerialize := map[string]any{}
 	toSerialize["ngapMessageType"] = o.NgapMessageType

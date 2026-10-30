@@ -1170,6 +1170,14 @@ func (o *CivicAddress) SetProvidedBy(v string) {
 	o.ProvidedBy = &v
 }
 
+func (o CivicAddress) MarshalJSON() ([]byte, error) {
+	toSerialize, err := o.ToMap()
+	if err != nil {
+		return []byte{}, err
+	}
+	return json.Marshal(toSerialize)
+}
+
 func (o CivicAddress) ToMap() (map[string]any, error) {
 	toSerialize := map[string]any{}
 	if !openapi.IsNil(o.Country) {

@@ -100,6 +100,14 @@ func (o *PfdChangeReport) SetApplicationId(v []string) {
 	o.ApplicationId = v
 }
 
+func (o PfdChangeReport) MarshalJSON() ([]byte, error) {
+	toSerialize, err := o.ToMap()
+	if err != nil {
+		return []byte{}, err
+	}
+	return json.Marshal(toSerialize)
+}
+
 func (o PfdChangeReport) ToMap() (map[string]any, error) {
 	toSerialize := map[string]any{}
 	toSerialize["pfdError"] = o.PfdError

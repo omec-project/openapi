@@ -115,6 +115,14 @@ func (o *LcsUpContext) SetServingLMFIdentification(v string) {
 	o.ServingLMFIdentification = &v
 }
 
+func (o LcsUpContext) MarshalJSON() ([]byte, error) {
+	toSerialize, err := o.ToMap()
+	if err != nil {
+		return []byte{}, err
+	}
+	return json.Marshal(toSerialize)
+}
+
 func (o LcsUpContext) ToMap() (map[string]any, error) {
 	toSerialize := map[string]any{}
 	if !openapi.IsNil(o.UpConnectionStatus) {

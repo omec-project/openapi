@@ -428,6 +428,14 @@ func (o *BdtReqData) SetWarnNotifReq(v bool) {
 	o.WarnNotifReq = &v
 }
 
+func (o BdtReqData) MarshalJSON() ([]byte, error) {
+	toSerialize, err := o.ToMap()
+	if err != nil {
+		return []byte{}, err
+	}
+	return json.Marshal(toSerialize)
+}
+
 func (o BdtReqData) ToMap() (map[string]any, error) {
 	toSerialize := map[string]any{}
 	toSerialize["aspId"] = o.AspId

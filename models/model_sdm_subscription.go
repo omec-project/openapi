@@ -810,6 +810,14 @@ func (o *SdmSubscription) SetExpectedUeBehaviourThresholds(v map[string]Expected
 	o.ExpectedUeBehaviourThresholds = &v
 }
 
+func (o SdmSubscription) MarshalJSON() ([]byte, error) {
+	toSerialize, err := o.ToMap()
+	if err != nil {
+		return []byte{}, err
+	}
+	return json.Marshal(toSerialize)
+}
+
 func (o SdmSubscription) ToMap() (map[string]any, error) {
 	toSerialize := map[string]any{}
 	toSerialize["nfInstanceId"] = o.NfInstanceId

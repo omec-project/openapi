@@ -450,6 +450,14 @@ func (o *N3gaLocation) SetGci(v string) {
 	o.Gci = &v
 }
 
+func (o N3gaLocation) MarshalJSON() ([]byte, error) {
+	toSerialize, err := o.ToMap()
+	if err != nil {
+		return []byte{}, err
+	}
+	return json.Marshal(toSerialize)
+}
+
 func (o N3gaLocation) ToMap() (map[string]any, error) {
 	toSerialize := map[string]any{}
 	if !openapi.IsNil(o.N3gppTai) {

@@ -356,6 +356,14 @@ func (o *AuthEvent) SetUdrRestartInd(v bool) {
 	o.UdrRestartInd = &v
 }
 
+func (o AuthEvent) MarshalJSON() ([]byte, error) {
+	toSerialize, err := o.ToMap()
+	if err != nil {
+		return []byte{}, err
+	}
+	return json.Marshal(toSerialize)
+}
+
 func (o AuthEvent) ToMap() (map[string]any, error) {
 	toSerialize := map[string]any{}
 	toSerialize["nfInstanceId"] = o.NfInstanceId

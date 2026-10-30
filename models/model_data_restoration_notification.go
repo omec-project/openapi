@@ -349,6 +349,14 @@ func (o *DataRestorationNotification) SetUdmGroupId(v string) {
 	o.UdmGroupId = &v
 }
 
+func (o DataRestorationNotification) MarshalJSON() ([]byte, error) {
+	toSerialize, err := o.ToMap()
+	if err != nil {
+		return []byte{}, err
+	}
+	return json.Marshal(toSerialize)
+}
+
 func (o DataRestorationNotification) ToMap() (map[string]any, error) {
 	toSerialize := map[string]any{}
 	if !openapi.IsNil(o.LastReplicationTime) {

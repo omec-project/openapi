@@ -115,6 +115,14 @@ func (o *UriList) SetTotalItemCount(v int32) {
 	o.TotalItemCount = &v
 }
 
+func (o UriList) MarshalJSON() ([]byte, error) {
+	toSerialize, err := o.ToMap()
+	if err != nil {
+		return []byte{}, err
+	}
+	return json.Marshal(toSerialize)
+}
+
 func (o UriList) ToMap() (map[string]any, error) {
 	toSerialize := map[string]any{}
 	if !openapi.IsNil(o.Links) {

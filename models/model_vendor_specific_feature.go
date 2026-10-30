@@ -100,6 +100,14 @@ func (o *VendorSpecificFeature) SetFeatureVersion(v string) {
 	o.FeatureVersion = v
 }
 
+func (o VendorSpecificFeature) MarshalJSON() ([]byte, error) {
+	toSerialize, err := o.ToMap()
+	if err != nil {
+		return []byte{}, err
+	}
+	return json.Marshal(toSerialize)
+}
+
 func (o VendorSpecificFeature) ToMap() (map[string]any, error) {
 	toSerialize := map[string]any{}
 	toSerialize["featureName"] = o.FeatureName

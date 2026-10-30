@@ -283,6 +283,14 @@ func (o *UeN1N2InfoSubscriptionCreateData) SetOldGuami(v Guami) {
 	o.OldGuami = &v
 }
 
+func (o UeN1N2InfoSubscriptionCreateData) MarshalJSON() ([]byte, error) {
+	toSerialize, err := o.ToMap()
+	if err != nil {
+		return []byte{}, err
+	}
+	return json.Marshal(toSerialize)
+}
+
 func (o UeN1N2InfoSubscriptionCreateData) ToMap() (map[string]any, error) {
 	toSerialize := map[string]any{}
 	if !openapi.IsNil(o.N2InformationClass) {

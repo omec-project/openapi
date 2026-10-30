@@ -114,6 +114,14 @@ func (o *AfRequestAuthorization) SetAstiAllowedInfo(v AstiAllowedInfo) {
 	o.AstiAllowedInfo = &v
 }
 
+func (o AfRequestAuthorization) MarshalJSON() ([]byte, error) {
+	toSerialize, err := o.ToMap()
+	if err != nil {
+		return []byte{}, err
+	}
+	return json.Marshal(toSerialize)
+}
+
 func (o AfRequestAuthorization) ToMap() (map[string]any, error) {
 	toSerialize := map[string]any{}
 	if !openapi.IsNil(o.GptpAllowedInfoList) {

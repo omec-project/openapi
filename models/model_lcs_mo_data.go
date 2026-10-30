@@ -107,6 +107,14 @@ func (o *LcsMoData) SetMoAssistanceDataTypes(v LcsBroadcastAssistanceTypesData) 
 	o.MoAssistanceDataTypes = &v
 }
 
+func (o LcsMoData) MarshalJSON() ([]byte, error) {
+	toSerialize, err := o.ToMap()
+	if err != nil {
+		return []byte{}, err
+	}
+	return json.Marshal(toSerialize)
+}
+
 func (o LcsMoData) ToMap() (map[string]any, error) {
 	toSerialize := map[string]any{}
 	toSerialize["allowedServiceClasses"] = o.AllowedServiceClasses

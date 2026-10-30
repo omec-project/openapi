@@ -285,6 +285,14 @@ func (o *UeContextRelocateData) SetSupportedFeatures(v string) {
 	o.SupportedFeatures = &v
 }
 
+func (o UeContextRelocateData) MarshalJSON() ([]byte, error) {
+	toSerialize, err := o.ToMap()
+	if err != nil {
+		return []byte{}, err
+	}
+	return json.Marshal(toSerialize)
+}
+
 func (o UeContextRelocateData) ToMap() (map[string]any, error) {
 	toSerialize := map[string]any{}
 	toSerialize["ueContext"] = o.UeContext

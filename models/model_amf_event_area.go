@@ -181,6 +181,14 @@ func (o *AmfEventArea) SetNsiId(v string) {
 	o.NsiId = &v
 }
 
+func (o AmfEventArea) MarshalJSON() ([]byte, error) {
+	toSerialize, err := o.ToMap()
+	if err != nil {
+		return []byte{}, err
+	}
+	return json.Marshal(toSerialize)
+}
+
 func (o AmfEventArea) ToMap() (map[string]any, error) {
 	toSerialize := map[string]any{}
 	if !openapi.IsNil(o.PresenceInfo) {

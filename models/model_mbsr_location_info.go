@@ -114,6 +114,14 @@ func (o *MbsrLocationInfo) SetMbsrLocationAreas(v []string) {
 	o.MbsrLocationAreas = v
 }
 
+func (o MbsrLocationInfo) MarshalJSON() ([]byte, error) {
+	toSerialize, err := o.ToMap()
+	if err != nil {
+		return []byte{}, err
+	}
+	return json.Marshal(toSerialize)
+}
+
 func (o MbsrLocationInfo) ToMap() (map[string]any, error) {
 	toSerialize := map[string]any{}
 	if !openapi.IsNil(o.MbsrLocation) {

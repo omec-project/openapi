@@ -116,6 +116,14 @@ func (o *SgsnAddress) SetSgsnIpv6Addr(v string) {
 	o.SgsnIpv6Addr = &v
 }
 
+func (o SgsnAddress) MarshalJSON() ([]byte, error) {
+	toSerialize, err := o.ToMap()
+	if err != nil {
+		return []byte{}, err
+	}
+	return json.Marshal(toSerialize)
+}
+
 func (o SgsnAddress) ToMap() (map[string]any, error) {
 	toSerialize := map[string]any{}
 	if !openapi.IsNil(o.SgsnIpv4Addr) {

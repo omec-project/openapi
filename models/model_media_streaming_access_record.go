@@ -300,6 +300,14 @@ func (o *MediaStreamingAccessRecord) SetConnectionMetrics(v MediaStreamingAccess
 	o.ConnectionMetrics = &v
 }
 
+func (o MediaStreamingAccessRecord) MarshalJSON() ([]byte, error) {
+	toSerialize, err := o.ToMap()
+	if err != nil {
+		return []byte{}, err
+	}
+	return json.Marshal(toSerialize)
+}
+
 func (o MediaStreamingAccessRecord) ToMap() (map[string]any, error) {
 	toSerialize := map[string]any{}
 	toSerialize["timestamp"] = o.Timestamp

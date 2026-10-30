@@ -109,6 +109,14 @@ func (o *InterFreqTargetInfo) SetCellIdList(v []int32) {
 	o.CellIdList = v
 }
 
+func (o InterFreqTargetInfo) MarshalJSON() ([]byte, error) {
+	toSerialize, err := o.ToMap()
+	if err != nil {
+		return []byte{}, err
+	}
+	return json.Marshal(toSerialize)
+}
+
 func (o InterFreqTargetInfo) ToMap() (map[string]any, error) {
 	toSerialize := map[string]any{}
 	toSerialize["dlCarrierFreq"] = o.DlCarrierFreq

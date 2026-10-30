@@ -136,6 +136,14 @@ func (o *GNSSAssistDataInfo) SetSourceInfo(v GeographicalCoordinates) {
 	o.SourceInfo = &v
 }
 
+func (o GNSSAssistDataInfo) MarshalJSON() ([]byte, error) {
+	toSerialize, err := o.ToMap()
+	if err != nil {
+		return []byte{}, err
+	}
+	return json.Marshal(toSerialize)
+}
+
 func (o GNSSAssistDataInfo) ToMap() (map[string]any, error) {
 	toSerialize := map[string]any{}
 	toSerialize["gnssAssistData"] = o.GnssAssistData

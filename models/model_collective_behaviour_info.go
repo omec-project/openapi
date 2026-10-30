@@ -206,6 +206,14 @@ func (o *CollectiveBehaviourInfo) SetUeIds(v []string) {
 	o.UeIds = v
 }
 
+func (o CollectiveBehaviourInfo) MarshalJSON() ([]byte, error) {
+	toSerialize, err := o.ToMap()
+	if err != nil {
+		return []byte{}, err
+	}
+	return json.Marshal(toSerialize)
+}
+
 func (o CollectiveBehaviourInfo) ToMap() (map[string]any, error) {
 	toSerialize := map[string]any{}
 	toSerialize["colAttrib"] = o.ColAttrib

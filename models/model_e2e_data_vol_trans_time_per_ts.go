@@ -129,6 +129,14 @@ func (o *E2eDataVolTransTimePerTS) SetE2eDataVolTransTimePerUe(v []E2eDataVolTra
 	o.E2eDataVolTransTimePerUe = v
 }
 
+func (o E2eDataVolTransTimePerTS) MarshalJSON() ([]byte, error) {
+	toSerialize, err := o.ToMap()
+	if err != nil {
+		return []byte{}, err
+	}
+	return json.Marshal(toSerialize)
+}
+
 func (o E2eDataVolTransTimePerTS) ToMap() (map[string]any, error) {
 	toSerialize := map[string]any{}
 	toSerialize["tsStart"] = o.TsStart

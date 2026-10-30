@@ -169,6 +169,14 @@ func (o *PeriodicEventInfo) SetReportingIntervalMs(v int32) {
 	o.ReportingIntervalMs = &v
 }
 
+func (o PeriodicEventInfo) MarshalJSON() ([]byte, error) {
+	toSerialize, err := o.ToMap()
+	if err != nil {
+		return []byte{}, err
+	}
+	return json.Marshal(toSerialize)
+}
+
 func (o PeriodicEventInfo) ToMap() (map[string]any, error) {
 	toSerialize := map[string]any{}
 	toSerialize["reportingAmount"] = o.ReportingAmount

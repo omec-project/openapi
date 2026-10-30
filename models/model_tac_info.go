@@ -74,6 +74,14 @@ func (o *TacInfo) SetTacList(v []string) {
 	o.TacList = v
 }
 
+func (o TacInfo) MarshalJSON() ([]byte, error) {
+	toSerialize, err := o.ToMap()
+	if err != nil {
+		return []byte{}, err
+	}
+	return json.Marshal(toSerialize)
+}
+
 func (o TacInfo) ToMap() (map[string]any, error) {
 	toSerialize := map[string]any{}
 	toSerialize["tacList"] = o.TacList

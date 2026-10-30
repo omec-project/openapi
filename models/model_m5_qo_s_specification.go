@@ -290,6 +290,14 @@ func (o *M5QoSSpecification) SetDesLoss(v int32) {
 	o.DesLoss = &v
 }
 
+func (o M5QoSSpecification) MarshalJSON() ([]byte, error) {
+	toSerialize, err := o.ToMap()
+	if err != nil {
+		return []byte{}, err
+	}
+	return json.Marshal(toSerialize)
+}
+
 func (o M5QoSSpecification) ToMap() (map[string]any, error) {
 	toSerialize := map[string]any{}
 	toSerialize["marBwDlBitRate"] = o.MarBwDlBitRate

@@ -135,6 +135,14 @@ func (o *SubscribedDefaultQos) SetPriorityLevel(v int32) {
 	o.PriorityLevel = &v
 }
 
+func (o SubscribedDefaultQos) MarshalJSON() ([]byte, error) {
+	toSerialize, err := o.ToMap()
+	if err != nil {
+		return []byte{}, err
+	}
+	return json.Marshal(toSerialize)
+}
+
 func (o SubscribedDefaultQos) ToMap() (map[string]any, error) {
 	toSerialize := map[string]any{}
 	toSerialize["5qi"] = o.Var5qi

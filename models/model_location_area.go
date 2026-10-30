@@ -182,6 +182,14 @@ func (o *LocationArea) SetUmtTime(v UmtTime) {
 	o.UmtTime = &v
 }
 
+func (o LocationArea) MarshalJSON() ([]byte, error) {
+	toSerialize, err := o.ToMap()
+	if err != nil {
+		return []byte{}, err
+	}
+	return json.Marshal(toSerialize)
+}
+
 func (o LocationArea) ToMap() (map[string]any, error) {
 	toSerialize := map[string]any{}
 	if !openapi.IsNil(o.GeographicAreas) {

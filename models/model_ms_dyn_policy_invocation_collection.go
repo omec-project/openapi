@@ -74,6 +74,14 @@ func (o *MsDynPolicyInvocationCollection) SetMsDynPlyInvocs(v []DynamicPolicy) {
 	o.MsDynPlyInvocs = v
 }
 
+func (o MsDynPolicyInvocationCollection) MarshalJSON() ([]byte, error) {
+	toSerialize, err := o.ToMap()
+	if err != nil {
+		return []byte{}, err
+	}
+	return json.Marshal(toSerialize)
+}
+
 func (o MsDynPolicyInvocationCollection) ToMap() (map[string]any, error) {
 	toSerialize := map[string]any{}
 	toSerialize["msDynPlyInvocs"] = o.MsDynPlyInvocs

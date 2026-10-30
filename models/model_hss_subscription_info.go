@@ -74,6 +74,14 @@ func (o *HssSubscriptionInfo) SetHssSubscriptionList(v []HssSubscriptionItem) {
 	o.HssSubscriptionList = v
 }
 
+func (o HssSubscriptionInfo) MarshalJSON() ([]byte, error) {
+	toSerialize, err := o.ToMap()
+	if err != nil {
+		return []byte{}, err
+	}
+	return json.Marshal(toSerialize)
+}
+
 func (o HssSubscriptionInfo) ToMap() (map[string]any, error) {
 	toSerialize := map[string]any{}
 	toSerialize["hssSubscriptionList"] = o.HssSubscriptionList

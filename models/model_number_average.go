@@ -136,6 +136,14 @@ func (o *NumberAverage) SetSkewness(v float32) {
 	o.Skewness = &v
 }
 
+func (o NumberAverage) MarshalJSON() ([]byte, error) {
+	toSerialize, err := o.ToMap()
+	if err != nil {
+		return []byte{}, err
+	}
+	return json.Marshal(toSerialize)
+}
+
 func (o NumberAverage) ToMap() (map[string]any, error) {
 	toSerialize := map[string]any{}
 	toSerialize["number"] = o.Number

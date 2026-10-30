@@ -253,6 +253,14 @@ func (o *AfEventExposureSubsc) SetSuppFeat(v string) {
 	o.SuppFeat = &v
 }
 
+func (o AfEventExposureSubsc) MarshalJSON() ([]byte, error) {
+	toSerialize, err := o.ToMap()
+	if err != nil {
+		return []byte{}, err
+	}
+	return json.Marshal(toSerialize)
+}
+
 func (o AfEventExposureSubsc) ToMap() (map[string]any, error) {
 	toSerialize := map[string]any{}
 	if !openapi.IsNil(o.DataAccProfId) {

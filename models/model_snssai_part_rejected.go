@@ -139,6 +139,14 @@ func (o *SnssaiPartRejected) SetRejectedTaiList(v []Tai) {
 	o.RejectedTaiList = v
 }
 
+func (o SnssaiPartRejected) MarshalJSON() ([]byte, error) {
+	toSerialize, err := o.ToMap()
+	if err != nil {
+		return []byte{}, err
+	}
+	return json.Marshal(toSerialize)
+}
+
 func (o SnssaiPartRejected) ToMap() (map[string]any, error) {
 	toSerialize := map[string]any{}
 	toSerialize["snssai"] = o.Snssai

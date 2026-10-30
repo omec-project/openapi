@@ -150,6 +150,14 @@ func (o *PduSesTrafficReq) SetDomainDescs(v []string) {
 	o.DomainDescs = v
 }
 
+func (o PduSesTrafficReq) MarshalJSON() ([]byte, error) {
+	toSerialize, err := o.ToMap()
+	if err != nil {
+		return []byte{}, err
+	}
+	return json.Marshal(toSerialize)
+}
+
 func (o PduSesTrafficReq) ToMap() (map[string]any, error) {
 	toSerialize := map[string]any{}
 	if !openapi.IsNil(o.FlowDescs) {

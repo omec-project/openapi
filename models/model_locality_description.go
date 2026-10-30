@@ -133,6 +133,14 @@ func (o *LocalityDescription) SetAddlLocDescrItems(v []LocalityDescriptionItem) 
 	o.AddlLocDescrItems = v
 }
 
+func (o LocalityDescription) MarshalJSON() ([]byte, error) {
+	toSerialize, err := o.ToMap()
+	if err != nil {
+		return []byte{}, err
+	}
+	return json.Marshal(toSerialize)
+}
+
 func (o LocalityDescription) ToMap() (map[string]any, error) {
 	toSerialize := map[string]any{}
 	toSerialize["localityType"] = o.LocalityType

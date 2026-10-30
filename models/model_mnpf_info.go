@@ -74,6 +74,14 @@ func (o *MnpfInfo) SetMsisdnRanges(v []IdentityRange) {
 	o.MsisdnRanges = v
 }
 
+func (o MnpfInfo) MarshalJSON() ([]byte, error) {
+	toSerialize, err := o.ToMap()
+	if err != nil {
+		return []byte{}, err
+	}
+	return json.Marshal(toSerialize)
+}
+
 func (o MnpfInfo) ToMap() (map[string]any, error) {
 	toSerialize := map[string]any{}
 	toSerialize["msisdnRanges"] = o.MsisdnRanges

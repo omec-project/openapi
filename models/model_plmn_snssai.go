@@ -134,6 +134,14 @@ func (o *PlmnSnssai) SetNid(v string) {
 	o.Nid = &v
 }
 
+func (o PlmnSnssai) MarshalJSON() ([]byte, error) {
+	toSerialize, err := o.ToMap()
+	if err != nil {
+		return []byte{}, err
+	}
+	return json.Marshal(toSerialize)
+}
+
 func (o PlmnSnssai) ToMap() (map[string]any, error) {
 	toSerialize := map[string]any{}
 	toSerialize["plmnId"] = o.PlmnId

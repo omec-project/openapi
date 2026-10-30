@@ -775,6 +775,14 @@ func (o *VsmfUpdatedData) SetPduSetSupportInd(v bool) {
 	o.PduSetSupportInd = &v
 }
 
+func (o VsmfUpdatedData) MarshalJSON() ([]byte, error) {
+	toSerialize, err := o.ToMap()
+	if err != nil {
+		return []byte{}, err
+	}
+	return json.Marshal(toSerialize)
+}
+
 func (o VsmfUpdatedData) ToMap() (map[string]any, error) {
 	toSerialize := map[string]any{}
 	if !openapi.IsNil(o.QosFlowsAddModList) {

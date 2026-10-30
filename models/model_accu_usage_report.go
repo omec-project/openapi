@@ -347,6 +347,14 @@ func (o *AccuUsageReport) SetNextTimeUsage(v int32) {
 	o.NextTimeUsage = &v
 }
 
+func (o AccuUsageReport) MarshalJSON() ([]byte, error) {
+	toSerialize, err := o.ToMap()
+	if err != nil {
+		return []byte{}, err
+	}
+	return json.Marshal(toSerialize)
+}
+
 func (o AccuUsageReport) ToMap() (map[string]any, error) {
 	toSerialize := map[string]any{}
 	toSerialize["refUmIds"] = o.RefUmIds

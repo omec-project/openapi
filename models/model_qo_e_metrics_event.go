@@ -365,6 +365,14 @@ func (o *QoEMetricsEvent) SetSamples(v []QoEMetricsEventAllOfSamples) {
 	o.Samples = v
 }
 
+func (o QoEMetricsEvent) MarshalJSON() ([]byte, error) {
+	toSerialize, err := o.ToMap()
+	if err != nil {
+		return []byte{}, err
+	}
+	return json.Marshal(toSerialize)
+}
+
 func (o QoEMetricsEvent) ToMap() (map[string]any, error) {
 	toSerialize := map[string]any{}
 	toSerialize["recordType"] = o.RecordType

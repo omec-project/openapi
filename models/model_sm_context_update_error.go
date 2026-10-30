@@ -241,6 +241,14 @@ func (o *SmContextUpdateError) SetRecoveryTime(v time.Time) {
 	o.RecoveryTime = &v
 }
 
+func (o SmContextUpdateError) MarshalJSON() ([]byte, error) {
+	toSerialize, err := o.ToMap()
+	if err != nil {
+		return []byte{}, err
+	}
+	return json.Marshal(toSerialize)
+}
+
 func (o SmContextUpdateError) ToMap() (map[string]any, error) {
 	toSerialize := map[string]any{}
 	toSerialize["error"] = o.Error

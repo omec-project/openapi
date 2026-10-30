@@ -116,6 +116,14 @@ func (o *AccNetChargingAddress) SetAnChargIpv6Addr(v string) {
 	o.AnChargIpv6Addr = &v
 }
 
+func (o AccNetChargingAddress) MarshalJSON() ([]byte, error) {
+	toSerialize, err := o.ToMap()
+	if err != nil {
+		return []byte{}, err
+	}
+	return json.Marshal(toSerialize)
+}
+
 func (o AccNetChargingAddress) ToMap() (map[string]any, error) {
 	toSerialize := map[string]any{}
 	if !openapi.IsNil(o.AnChargIpv4Addr) {

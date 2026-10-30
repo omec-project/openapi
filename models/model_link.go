@@ -82,6 +82,14 @@ func (o *Link) SetHref(v string) {
 	o.Href = &v
 }
 
+func (o Link) MarshalJSON() ([]byte, error) {
+	toSerialize, err := o.ToMap()
+	if err != nil {
+		return []byte{}, err
+	}
+	return json.Marshal(toSerialize)
+}
+
 func (o Link) ToMap() (map[string]any, error) {
 	toSerialize := map[string]any{}
 	if !openapi.IsNil(o.Href) {

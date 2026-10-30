@@ -149,6 +149,14 @@ func (o *TopApplication) SetRatio(v int32) {
 	o.Ratio = &v
 }
 
+func (o TopApplication) MarshalJSON() ([]byte, error) {
+	toSerialize, err := o.ToMap()
+	if err != nil {
+		return []byte{}, err
+	}
+	return json.Marshal(toSerialize)
+}
+
 func (o TopApplication) ToMap() (map[string]any, error) {
 	toSerialize := map[string]any{}
 	if !openapi.IsNil(o.AppId) {

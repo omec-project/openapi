@@ -100,6 +100,14 @@ func (o *FailedMonitoringConfiguration) SetFailedCause(v FailedCause) {
 	o.FailedCause = v
 }
 
+func (o FailedMonitoringConfiguration) MarshalJSON() ([]byte, error) {
+	toSerialize, err := o.ToMap()
+	if err != nil {
+		return []byte{}, err
+	}
+	return json.Marshal(toSerialize)
+}
+
 func (o FailedMonitoringConfiguration) ToMap() (map[string]any, error) {
 	toSerialize := map[string]any{}
 	toSerialize["eventType"] = o.EventType

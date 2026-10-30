@@ -1179,6 +1179,14 @@ func (o *NotifiedPosInfoExt) SetAddProvidePosInfos(v []NotifiedPosInfo) {
 	o.AddProvidePosInfos = v
 }
 
+func (o NotifiedPosInfoExt) MarshalJSON() ([]byte, error) {
+	toSerialize, err := o.ToMap()
+	if err != nil {
+		return []byte{}, err
+	}
+	return json.Marshal(toSerialize)
+}
+
 func (o NotifiedPosInfoExt) ToMap() (map[string]any, error) {
 	toSerialize := map[string]any{}
 	toSerialize["locationEvent"] = o.LocationEvent

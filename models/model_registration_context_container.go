@@ -787,6 +787,14 @@ func (o *RegistrationContextContainer) SetNpnAccessInfo(v NpnAccessInfo) {
 	o.NpnAccessInfo = &v
 }
 
+func (o RegistrationContextContainer) MarshalJSON() ([]byte, error) {
+	toSerialize, err := o.ToMap()
+	if err != nil {
+		return []byte{}, err
+	}
+	return json.Marshal(toSerialize)
+}
+
 func (o RegistrationContextContainer) ToMap() (map[string]any, error) {
 	toSerialize := map[string]any{}
 	toSerialize["ueContext"] = o.UeContext

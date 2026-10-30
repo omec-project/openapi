@@ -115,6 +115,14 @@ func (o *CancelRelocateUEContextRequest) SetBinaryDataGtpcMessage(v *os.File) {
 	o.BinaryDataGtpcMessage = &v
 }
 
+func (o CancelRelocateUEContextRequest) MarshalJSON() ([]byte, error) {
+	toSerialize, err := o.ToMap()
+	if err != nil {
+		return []byte{}, err
+	}
+	return json.Marshal(toSerialize)
+}
+
 func (o CancelRelocateUEContextRequest) ToMap() (map[string]any, error) {
 	toSerialize := map[string]any{}
 	if !openapi.IsNil(o.JsonData) {

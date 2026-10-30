@@ -524,6 +524,14 @@ func (o *PerformanceData) SetMinThrputDl(v string) {
 	o.MinThrputDl = &v
 }
 
+func (o PerformanceData) MarshalJSON() ([]byte, error) {
+	toSerialize, err := o.ToMap()
+	if err != nil {
+		return []byte{}, err
+	}
+	return json.Marshal(toSerialize)
+}
+
 func (o PerformanceData) ToMap() (map[string]any, error) {
 	toSerialize := map[string]any{}
 	if !openapi.IsNil(o.Pdb) {

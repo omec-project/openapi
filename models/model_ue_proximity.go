@@ -248,6 +248,14 @@ func (o *UeProximity) SetRatio(v int32) {
 	o.Ratio = &v
 }
 
+func (o UeProximity) MarshalJSON() ([]byte, error) {
+	toSerialize, err := o.ToMap()
+	if err != nil {
+		return []byte{}, err
+	}
+	return json.Marshal(toSerialize)
+}
+
 func (o UeProximity) ToMap() (map[string]any, error) {
 	toSerialize := map[string]any{}
 	if !openapi.IsNil(o.UeDistance) {

@@ -74,6 +74,14 @@ func (o *CagInfo) SetCagList(v []string) {
 	o.CagList = v
 }
 
+func (o CagInfo) MarshalJSON() ([]byte, error) {
+	toSerialize, err := o.ToMap()
+	if err != nil {
+		return []byte{}, err
+	}
+	return json.Marshal(toSerialize)
+}
+
 func (o CagInfo) ToMap() (map[string]any, error) {
 	toSerialize := map[string]any{}
 	toSerialize["cagList"] = o.CagList

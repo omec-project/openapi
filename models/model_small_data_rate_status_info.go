@@ -127,6 +127,14 @@ func (o *SmallDataRateStatusInfo) SetSmallDataRateStatus(v SmallDataRateStatus) 
 	o.SmallDataRateStatus = v
 }
 
+func (o SmallDataRateStatusInfo) MarshalJSON() ([]byte, error) {
+	toSerialize, err := o.ToMap()
+	if err != nil {
+		return []byte{}, err
+	}
+	return json.Marshal(toSerialize)
+}
+
 func (o SmallDataRateStatusInfo) ToMap() (map[string]any, error) {
 	toSerialize := map[string]any{}
 	toSerialize["Snssai"] = o.Snssai

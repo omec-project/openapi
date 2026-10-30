@@ -118,6 +118,14 @@ func (o *DdnFailureSubs) SetDdnFailureSubsInfoList(v []DdnFailureSubInfo) {
 	o.DdnFailureSubsInfoList = v
 }
 
+func (o DdnFailureSubs) MarshalJSON() ([]byte, error) {
+	toSerialize, err := o.ToMap()
+	if err != nil {
+		return []byte{}, err
+	}
+	return json.Marshal(toSerialize)
+}
+
 func (o DdnFailureSubs) ToMap() (map[string]any, error) {
 	toSerialize := map[string]any{}
 	if !openapi.IsNil(o.DdnFailureSubsInd) {

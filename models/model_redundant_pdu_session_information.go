@@ -107,6 +107,14 @@ func (o *RedundantPduSessionInformation) SetPduSessionPairId(v int32) {
 	o.PduSessionPairId = &v
 }
 
+func (o RedundantPduSessionInformation) MarshalJSON() ([]byte, error) {
+	toSerialize, err := o.ToMap()
+	if err != nil {
+		return []byte{}, err
+	}
+	return json.Marshal(toSerialize)
+}
+
 func (o RedundantPduSessionInformation) ToMap() (map[string]any, error) {
 	toSerialize := map[string]any{}
 	toSerialize["rsn"] = o.Rsn

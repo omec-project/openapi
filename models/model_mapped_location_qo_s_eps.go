@@ -109,6 +109,14 @@ func (o *MappedLocationQoSEps) SetVAccuracy(v float32) {
 	o.VAccuracy = &v
 }
 
+func (o MappedLocationQoSEps) MarshalJSON() ([]byte, error) {
+	toSerialize, err := o.ToMap()
+	if err != nil {
+		return []byte{}, err
+	}
+	return json.Marshal(toSerialize)
+}
+
 func (o MappedLocationQoSEps) ToMap() (map[string]any, error) {
 	toSerialize := map[string]any{}
 	toSerialize["hAccuracy"] = o.HAccuracy

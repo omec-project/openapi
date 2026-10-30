@@ -166,6 +166,14 @@ func (o *RoamingStatusReport) SetPurged(v bool) {
 	o.Purged = &v
 }
 
+func (o RoamingStatusReport) MarshalJSON() ([]byte, error) {
+	toSerialize, err := o.ToMap()
+	if err != nil {
+		return []byte{}, err
+	}
+	return json.Marshal(toSerialize)
+}
+
 func (o RoamingStatusReport) ToMap() (map[string]any, error) {
 	toSerialize := map[string]any{}
 	toSerialize["roaming"] = o.Roaming

@@ -883,6 +883,14 @@ func (o *SmfRegistration) SetWildcardInd(v bool) {
 	o.WildcardInd = &v
 }
 
+func (o SmfRegistration) MarshalJSON() ([]byte, error) {
+	toSerialize, err := o.ToMap()
+	if err != nil {
+		return []byte{}, err
+	}
+	return json.Marshal(toSerialize)
+}
+
 func (o SmfRegistration) ToMap() (map[string]any, error) {
 	toSerialize := map[string]any{}
 	toSerialize["smfInstanceId"] = o.SmfInstanceId

@@ -100,6 +100,14 @@ func (o *CallbackUriPrefixItem) SetNotificationTypes(v []string) {
 	o.NotificationTypes = v
 }
 
+func (o CallbackUriPrefixItem) MarshalJSON() ([]byte, error) {
+	toSerialize, err := o.ToMap()
+	if err != nil {
+		return []byte{}, err
+	}
+	return json.Marshal(toSerialize)
+}
+
 func (o CallbackUriPrefixItem) ToMap() (map[string]any, error) {
 	toSerialize := map[string]any{}
 	toSerialize["callbackUriPrefix"] = o.CallbackUriPrefix

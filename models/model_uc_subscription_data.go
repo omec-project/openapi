@@ -82,6 +82,14 @@ func (o *UcSubscriptionData) SetUserConsentPerPurposeList(v map[string]UserConse
 	o.UserConsentPerPurposeList = &v
 }
 
+func (o UcSubscriptionData) MarshalJSON() ([]byte, error) {
+	toSerialize, err := o.ToMap()
+	if err != nil {
+		return []byte{}, err
+	}
+	return json.Marshal(toSerialize)
+}
+
 func (o UcSubscriptionData) ToMap() (map[string]any, error) {
 	toSerialize := map[string]any{}
 	if !openapi.IsNil(o.UserConsentPerPurposeList) {

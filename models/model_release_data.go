@@ -413,6 +413,14 @@ func (o *ReleaseData) SetN4InfoExt2(v N4Information) {
 	o.N4InfoExt2 = &v
 }
 
+func (o ReleaseData) MarshalJSON() ([]byte, error) {
+	toSerialize, err := o.ToMap()
+	if err != nil {
+		return []byte{}, err
+	}
+	return json.Marshal(toSerialize)
+}
+
 func (o ReleaseData) ToMap() (map[string]any, error) {
 	toSerialize := map[string]any{}
 	if !openapi.IsNil(o.Cause) {

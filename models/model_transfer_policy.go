@@ -196,6 +196,14 @@ func (o *TransferPolicy) SetTransPolicyId(v int32) {
 	o.TransPolicyId = v
 }
 
+func (o TransferPolicy) MarshalJSON() ([]byte, error) {
+	toSerialize, err := o.ToMap()
+	if err != nil {
+		return []byte{}, err
+	}
+	return json.Marshal(toSerialize)
+}
+
 func (o TransferPolicy) ToMap() (map[string]any, error) {
 	toSerialize := map[string]any{}
 	if !openapi.IsNil(o.MaxBitRateDl) {

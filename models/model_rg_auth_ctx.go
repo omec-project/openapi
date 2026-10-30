@@ -145,6 +145,14 @@ func (o *RgAuthCtx) SetAuthInd(v bool) {
 	o.AuthInd = &v
 }
 
+func (o RgAuthCtx) MarshalJSON() ([]byte, error) {
+	toSerialize, err := o.ToMap()
+	if err != nil {
+		return []byte{}, err
+	}
+	return json.Marshal(toSerialize)
+}
+
 func (o RgAuthCtx) ToMap() (map[string]any, error) {
 	toSerialize := map[string]any{}
 	toSerialize["authResult"] = o.AuthResult

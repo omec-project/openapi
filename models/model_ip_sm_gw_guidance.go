@@ -100,6 +100,14 @@ func (o *IpSmGwGuidance) SetRecommDeliveryTime(v int32) {
 	o.RecommDeliveryTime = v
 }
 
+func (o IpSmGwGuidance) MarshalJSON() ([]byte, error) {
+	toSerialize, err := o.ToMap()
+	if err != nil {
+		return []byte{}, err
+	}
+	return json.Marshal(toSerialize)
+}
+
 func (o IpSmGwGuidance) ToMap() (map[string]any, error) {
 	toSerialize := map[string]any{}
 	toSerialize["minDeliveryTime"] = o.MinDeliveryTime

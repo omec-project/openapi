@@ -141,6 +141,14 @@ func (o *DnaiInformation) SetNoLocalPsaChangeInd(v bool) {
 	o.NoLocalPsaChangeInd = &v
 }
 
+func (o DnaiInformation) MarshalJSON() ([]byte, error) {
+	toSerialize, err := o.ToMap()
+	if err != nil {
+		return []byte{}, err
+	}
+	return json.Marshal(toSerialize)
+}
+
 func (o DnaiInformation) ToMap() (map[string]any, error) {
 	toSerialize := map[string]any{}
 	toSerialize["dnai"] = o.Dnai

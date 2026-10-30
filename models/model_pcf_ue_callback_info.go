@@ -108,6 +108,14 @@ func (o *PcfUeCallbackInfo) SetBindingInfo(v string) {
 	o.BindingInfo = &v
 }
 
+func (o PcfUeCallbackInfo) MarshalJSON() ([]byte, error) {
+	toSerialize, err := o.ToMap()
+	if err != nil {
+		return []byte{}, err
+	}
+	return json.Marshal(toSerialize)
+}
+
 func (o PcfUeCallbackInfo) ToMap() (map[string]any, error) {
 	toSerialize := map[string]any{}
 	toSerialize["callbackUri"] = o.CallbackUri

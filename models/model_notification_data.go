@@ -310,6 +310,14 @@ func (o *NotificationData) UnsetCompleteNfProfile() {
 	o.CompleteNfProfile.Unset()
 }
 
+func (o NotificationData) MarshalJSON() ([]byte, error) {
+	toSerialize, err := o.ToMap()
+	if err != nil {
+		return []byte{}, err
+	}
+	return json.Marshal(toSerialize)
+}
+
 func (o NotificationData) ToMap() (map[string]any, error) {
 	toSerialize := map[string]any{}
 	toSerialize["event"] = o.Event

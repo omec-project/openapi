@@ -107,6 +107,14 @@ func (o *NoProfileMatchInfo) SetQueryParamCombinationList(v []QueryParamCombinat
 	o.QueryParamCombinationList = v
 }
 
+func (o NoProfileMatchInfo) MarshalJSON() ([]byte, error) {
+	toSerialize, err := o.ToMap()
+	if err != nil {
+		return []byte{}, err
+	}
+	return json.Marshal(toSerialize)
+}
+
 func (o NoProfileMatchInfo) ToMap() (map[string]any, error) {
 	toSerialize := map[string]any{}
 	toSerialize["reason"] = o.Reason

@@ -149,6 +149,14 @@ func (o *EeSubscriptionErrorAddInfo) SetFailedMoniConfigsEPC(v map[string]Failed
 	o.FailedMoniConfigsEPC = &v
 }
 
+func (o EeSubscriptionErrorAddInfo) MarshalJSON() ([]byte, error) {
+	toSerialize, err := o.ToMap()
+	if err != nil {
+		return []byte{}, err
+	}
+	return json.Marshal(toSerialize)
+}
+
 func (o EeSubscriptionErrorAddInfo) ToMap() (map[string]any, error) {
 	toSerialize := map[string]any{}
 	if !openapi.IsNil(o.SubType) {

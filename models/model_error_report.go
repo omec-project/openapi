@@ -217,6 +217,14 @@ func (o *ErrorReport) SetInvalidPolicyDecs(v []InvalidParam) {
 	o.InvalidPolicyDecs = v
 }
 
+func (o ErrorReport) MarshalJSON() ([]byte, error) {
+	toSerialize, err := o.ToMap()
+	if err != nil {
+		return []byte{}, err
+	}
+	return json.Marshal(toSerialize)
+}
+
 func (o ErrorReport) ToMap() (map[string]any, error) {
 	toSerialize := map[string]any{}
 	if !openapi.IsNil(o.Error) {

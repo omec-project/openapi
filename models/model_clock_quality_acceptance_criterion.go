@@ -147,6 +147,14 @@ func (o *ClockQualityAcceptanceCriterion) SetParentTimeSource(v []TimeSource) {
 	o.ParentTimeSource = v
 }
 
+func (o ClockQualityAcceptanceCriterion) MarshalJSON() ([]byte, error) {
+	toSerialize, err := o.ToMap()
+	if err != nil {
+		return []byte{}, err
+	}
+	return json.Marshal(toSerialize)
+}
+
 func (o ClockQualityAcceptanceCriterion) ToMap() (map[string]any, error) {
 	toSerialize := map[string]any{}
 	if !openapi.IsNil(o.SynchronizationState) {

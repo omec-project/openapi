@@ -472,6 +472,14 @@ func (o *NssfEventSubscriptionCreateData) SetValidityTimeSubList(v []Snssai) {
 	o.ValidityTimeSubList = v
 }
 
+func (o NssfEventSubscriptionCreateData) MarshalJSON() ([]byte, error) {
+	toSerialize, err := o.ToMap()
+	if err != nil {
+		return []byte{}, err
+	}
+	return json.Marshal(toSerialize)
+}
+
 func (o NssfEventSubscriptionCreateData) ToMap() (map[string]any, error) {
 	toSerialize := map[string]any{}
 	toSerialize["nfNssaiAvailabilityUri"] = o.NfNssaiAvailabilityUri

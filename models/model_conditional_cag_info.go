@@ -140,6 +140,14 @@ func (o *ConditionalCagInfo) SetValidTimePeriod(v ValidTimePeriod) {
 	o.ValidTimePeriod = &v
 }
 
+func (o ConditionalCagInfo) MarshalJSON() ([]byte, error) {
+	toSerialize, err := o.ToMap()
+	if err != nil {
+		return []byte{}, err
+	}
+	return json.Marshal(toSerialize)
+}
+
 func (o ConditionalCagInfo) ToMap() (map[string]any, error) {
 	toSerialize := map[string]any{}
 	toSerialize["allowedCagList"] = o.AllowedCagList

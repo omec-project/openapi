@@ -150,6 +150,14 @@ func (o *PointUncertaintyEllipse) SetConfidence(v int32) {
 	o.Confidence = &v
 }
 
+func (o PointUncertaintyEllipse) MarshalJSON() ([]byte, error) {
+	toSerialize, err := o.ToMap()
+	if err != nil {
+		return []byte{}, err
+	}
+	return json.Marshal(toSerialize)
+}
+
 func (o PointUncertaintyEllipse) ToMap() (map[string]any, error) {
 	toSerialize := map[string]any{}
 	serializedGADShape, errGADShape := json.Marshal(o.GADShape)

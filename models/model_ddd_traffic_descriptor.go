@@ -184,6 +184,14 @@ func (o *DddTrafficDescriptor) SetMacAddr(v string) {
 	o.MacAddr = &v
 }
 
+func (o DddTrafficDescriptor) MarshalJSON() ([]byte, error) {
+	toSerialize, err := o.ToMap()
+	if err != nil {
+		return []byte{}, err
+	}
+	return json.Marshal(toSerialize)
+}
+
 func (o DddTrafficDescriptor) ToMap() (map[string]any, error) {
 	toSerialize := map[string]any{}
 	if !openapi.IsNil(o.Ipv4Addr) {

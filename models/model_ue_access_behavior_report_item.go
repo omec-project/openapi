@@ -128,6 +128,14 @@ func (o *UeAccessBehaviorReportItem) SetDuration(v int32) {
 	o.Duration = v
 }
 
+func (o UeAccessBehaviorReportItem) MarshalJSON() ([]byte, error) {
+	toSerialize, err := o.ToMap()
+	if err != nil {
+		return []byte{}, err
+	}
+	return json.Marshal(toSerialize)
+}
+
 func (o UeAccessBehaviorReportItem) ToMap() (map[string]any, error) {
 	toSerialize := map[string]any{}
 	toSerialize["stateTransitionType"] = o.StateTransitionType

@@ -107,6 +107,14 @@ func (o *N1N2MessageTransferError) SetErrInfo(v N1N2MsgTxfrErrDetail) {
 	o.ErrInfo = &v
 }
 
+func (o N1N2MessageTransferError) MarshalJSON() ([]byte, error) {
+	toSerialize, err := o.ToMap()
+	if err != nil {
+		return []byte{}, err
+	}
+	return json.Marshal(toSerialize)
+}
+
 func (o N1N2MessageTransferError) ToMap() (map[string]any, error) {
 	toSerialize := map[string]any{}
 	toSerialize["error"] = o.Error

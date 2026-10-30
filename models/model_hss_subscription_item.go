@@ -135,6 +135,14 @@ func (o *HssSubscriptionItem) SetContextInfo(v ContextInfo) {
 	o.ContextInfo = &v
 }
 
+func (o HssSubscriptionItem) MarshalJSON() ([]byte, error) {
+	toSerialize, err := o.ToMap()
+	if err != nil {
+		return []byte{}, err
+	}
+	return json.Marshal(toSerialize)
+}
+
 func (o HssSubscriptionItem) ToMap() (map[string]any, error) {
 	toSerialize := map[string]any{}
 	toSerialize["hssInstanceId"] = o.HssInstanceId

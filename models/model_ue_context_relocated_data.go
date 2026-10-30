@@ -74,6 +74,14 @@ func (o *UeContextRelocatedData) SetUeContext(v UeContext) {
 	o.UeContext = v
 }
 
+func (o UeContextRelocatedData) MarshalJSON() ([]byte, error) {
+	toSerialize, err := o.ToMap()
+	if err != nil {
+		return []byte{}, err
+	}
+	return json.Marshal(toSerialize)
+}
+
 func (o UeContextRelocatedData) ToMap() (map[string]any, error) {
 	toSerialize := map[string]any{}
 	toSerialize["ueContext"] = o.UeContext

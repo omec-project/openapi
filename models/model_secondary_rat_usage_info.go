@@ -140,6 +140,14 @@ func (o *SecondaryRatUsageInfo) SetPduSessionUsageData(v []VolumeTimedReport) {
 	o.PduSessionUsageData = v
 }
 
+func (o SecondaryRatUsageInfo) MarshalJSON() ([]byte, error) {
+	toSerialize, err := o.ToMap()
+	if err != nil {
+		return []byte{}, err
+	}
+	return json.Marshal(toSerialize)
+}
+
 func (o SecondaryRatUsageInfo) ToMap() (map[string]any, error) {
 	toSerialize := map[string]any{}
 	toSerialize["secondaryRatType"] = o.SecondaryRatType

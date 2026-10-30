@@ -102,6 +102,14 @@ func (o *MappingInfoRm) SetGpsi(v string) {
 	o.Gpsi = v
 }
 
+func (o MappingInfoRm) MarshalJSON() ([]byte, error) {
+	toSerialize, err := o.ToMap()
+	if err != nil {
+		return []byte{}, err
+	}
+	return json.Marshal(toSerialize)
+}
+
 func (o MappingInfoRm) ToMap() (map[string]any, error) {
 	toSerialize := map[string]any{}
 	toSerialize["appLayerId"] = o.AppLayerId

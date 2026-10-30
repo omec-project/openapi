@@ -107,6 +107,14 @@ func (o *OutOfCreditInformation) SetFlows(v []Flows) {
 	o.Flows = v
 }
 
+func (o OutOfCreditInformation) MarshalJSON() ([]byte, error) {
+	toSerialize, err := o.ToMap()
+	if err != nil {
+		return []byte{}, err
+	}
+	return json.Marshal(toSerialize)
+}
+
 func (o OutOfCreditInformation) ToMap() (map[string]any, error) {
 	toSerialize := map[string]any{}
 	toSerialize["finUnitAct"] = o.FinUnitAct

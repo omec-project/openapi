@@ -159,6 +159,14 @@ func (o *PositioningMethodAndUsage) SetMethodCode(v int32) {
 	o.MethodCode = &v
 }
 
+func (o PositioningMethodAndUsage) MarshalJSON() ([]byte, error) {
+	toSerialize, err := o.ToMap()
+	if err != nil {
+		return []byte{}, err
+	}
+	return json.Marshal(toSerialize)
+}
+
 func (o PositioningMethodAndUsage) ToMap() (map[string]any, error) {
 	toSerialize := map[string]any{}
 	toSerialize["method"] = o.Method

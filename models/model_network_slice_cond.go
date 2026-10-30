@@ -107,6 +107,14 @@ func (o *NetworkSliceCond) SetNsiList(v []string) {
 	o.NsiList = v
 }
 
+func (o NetworkSliceCond) MarshalJSON() ([]byte, error) {
+	toSerialize, err := o.ToMap()
+	if err != nil {
+		return []byte{}, err
+	}
+	return json.Marshal(toSerialize)
+}
+
 func (o NetworkSliceCond) ToMap() (map[string]any, error) {
 	toSerialize := map[string]any{}
 	toSerialize["snssaiList"] = o.SnssaiList

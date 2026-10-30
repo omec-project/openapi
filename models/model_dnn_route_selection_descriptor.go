@@ -213,6 +213,14 @@ func (o *DnnRouteSelectionDescriptor) SetLboRoamAllowed(v bool) {
 	o.LboRoamAllowed = &v
 }
 
+func (o DnnRouteSelectionDescriptor) MarshalJSON() ([]byte, error) {
+	toSerialize, err := o.ToMap()
+	if err != nil {
+		return []byte{}, err
+	}
+	return json.Marshal(toSerialize)
+}
+
 func (o DnnRouteSelectionDescriptor) ToMap() (map[string]any, error) {
 	toSerialize := map[string]any{}
 	toSerialize["dnn"] = o.Dnn

@@ -180,6 +180,14 @@ func (o *LcsClientGroupExternal) SetValidTimePeriod(v ValidTimePeriod) {
 	o.ValidTimePeriod = &v
 }
 
+func (o LcsClientGroupExternal) MarshalJSON() ([]byte, error) {
+	toSerialize, err := o.ToMap()
+	if err != nil {
+		return []byte{}, err
+	}
+	return json.Marshal(toSerialize)
+}
+
 func (o LcsClientGroupExternal) ToMap() (map[string]any, error) {
 	toSerialize := map[string]any{}
 	if !openapi.IsNil(o.LcsClientGroupId) {

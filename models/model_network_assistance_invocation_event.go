@@ -464,6 +464,14 @@ func (o *NetworkAssistanceInvocationEvent) SetNetworkAssistanceType(v NetworkAss
 	o.NetworkAssistanceType = v
 }
 
+func (o NetworkAssistanceInvocationEvent) MarshalJSON() ([]byte, error) {
+	toSerialize, err := o.ToMap()
+	if err != nil {
+		return []byte{}, err
+	}
+	return json.Marshal(toSerialize)
+}
+
 func (o NetworkAssistanceInvocationEvent) ToMap() (map[string]any, error) {
 	toSerialize := map[string]any{}
 	toSerialize["recordType"] = o.RecordType

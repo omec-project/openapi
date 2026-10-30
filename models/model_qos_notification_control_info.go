@@ -203,6 +203,14 @@ func (o *QosNotificationControlInfo) SetAltQosNotSuppInd(v bool) {
 	o.AltQosNotSuppInd = &v
 }
 
+func (o QosNotificationControlInfo) MarshalJSON() ([]byte, error) {
+	toSerialize, err := o.ToMap()
+	if err != nil {
+		return []byte{}, err
+	}
+	return json.Marshal(toSerialize)
+}
+
 func (o QosNotificationControlInfo) ToMap() (map[string]any, error) {
 	toSerialize := map[string]any{}
 	toSerialize["refPccRuleIds"] = o.RefPccRuleIds

@@ -149,6 +149,14 @@ func (o *AccuracyInfo) SetAnaAccuInd(v AnalyticsAccuracyIndication) {
 	o.AnaAccuInd = &v
 }
 
+func (o AccuracyInfo) MarshalJSON() ([]byte, error) {
+	toSerialize, err := o.ToMap()
+	if err != nil {
+		return []byte{}, err
+	}
+	return json.Marshal(toSerialize)
+}
+
 func (o AccuracyInfo) ToMap() (map[string]any, error) {
 	toSerialize := map[string]any{}
 	if !openapi.IsNil(o.AccuracyVal) {

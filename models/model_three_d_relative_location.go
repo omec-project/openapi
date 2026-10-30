@@ -184,6 +184,14 @@ func (o *ThreeDRelativeLocation) SetOrientationAngle(v int32) {
 	o.OrientationAngle = &v
 }
 
+func (o ThreeDRelativeLocation) MarshalJSON() ([]byte, error) {
+	toSerialize, err := o.ToMap()
+	if err != nil {
+		return []byte{}, err
+	}
+	return json.Marshal(toSerialize)
+}
+
 func (o ThreeDRelativeLocation) ToMap() (map[string]any, error) {
 	toSerialize := map[string]any{}
 	if !openapi.IsNil(o.SemiMinor) {

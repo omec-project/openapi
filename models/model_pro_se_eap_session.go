@@ -291,6 +291,14 @@ func (o *ProSeEapSession) SetVar5gPrukId(v string) {
 	o.Var5gPrukId = &v
 }
 
+func (o ProSeEapSession) MarshalJSON() ([]byte, error) {
+	toSerialize, err := o.ToMap()
+	if err != nil {
+		return []byte{}, err
+	}
+	return json.Marshal(toSerialize)
+}
+
 func (o ProSeEapSession) ToMap() (map[string]any, error) {
 	toSerialize := map[string]any{}
 	toSerialize["eapPayload"] = o.EapPayload.Get()

@@ -287,6 +287,14 @@ func (o *DynamicPolicy) SetEnforcementBitRate(v int32) {
 	o.EnforcementBitRate = &v
 }
 
+func (o DynamicPolicy) MarshalJSON() ([]byte, error) {
+	toSerialize, err := o.ToMap()
+	if err != nil {
+		return []byte{}, err
+	}
+	return json.Marshal(toSerialize)
+}
+
 func (o DynamicPolicy) ToMap() (map[string]any, error) {
 	toSerialize := map[string]any{}
 	toSerialize["dynamicPolicyId"] = o.DynamicPolicyId

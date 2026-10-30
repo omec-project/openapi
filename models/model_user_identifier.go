@@ -144,6 +144,14 @@ func (o *UserIdentifier) SetValidityTime(v time.Time) {
 	o.ValidityTime = &v
 }
 
+func (o UserIdentifier) MarshalJSON() ([]byte, error) {
+	toSerialize, err := o.ToMap()
+	if err != nil {
+		return []byte{}, err
+	}
+	return json.Marshal(toSerialize)
+}
+
 func (o UserIdentifier) ToMap() (map[string]any, error) {
 	toSerialize := map[string]any{}
 	toSerialize["supi"] = o.Supi

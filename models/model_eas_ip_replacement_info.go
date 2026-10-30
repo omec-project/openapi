@@ -100,6 +100,14 @@ func (o *EasIpReplacementInfo) SetTarget(v EasServerAddress) {
 	o.Target = v
 }
 
+func (o EasIpReplacementInfo) MarshalJSON() ([]byte, error) {
+	toSerialize, err := o.ToMap()
+	if err != nil {
+		return []byte{}, err
+	}
+	return json.Marshal(toSerialize)
+}
+
 func (o EasIpReplacementInfo) ToMap() (map[string]any, error) {
 	toSerialize := map[string]any{}
 	toSerialize["source"] = o.Source

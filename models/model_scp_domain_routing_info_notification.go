@@ -111,6 +111,14 @@ func (o *ScpDomainRoutingInfoNotification) SetLocalInd(v bool) {
 	o.LocalInd = &v
 }
 
+func (o ScpDomainRoutingInfoNotification) MarshalJSON() ([]byte, error) {
+	toSerialize, err := o.ToMap()
+	if err != nil {
+		return []byte{}, err
+	}
+	return json.Marshal(toSerialize)
+}
+
 func (o ScpDomainRoutingInfoNotification) ToMap() (map[string]any, error) {
 	toSerialize := map[string]any{}
 	toSerialize["routingInfo"] = o.RoutingInfo

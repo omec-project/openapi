@@ -149,6 +149,14 @@ func (o *N1N2MsgTxfrErrDetail) SetMaxWaitingTime(v int32) {
 	o.MaxWaitingTime = &v
 }
 
+func (o N1N2MsgTxfrErrDetail) MarshalJSON() ([]byte, error) {
+	toSerialize, err := o.ToMap()
+	if err != nil {
+		return []byte{}, err
+	}
+	return json.Marshal(toSerialize)
+}
+
 func (o N1N2MsgTxfrErrDetail) ToMap() (map[string]any, error) {
 	toSerialize := map[string]any{}
 	if !openapi.IsNil(o.RetryAfter) {

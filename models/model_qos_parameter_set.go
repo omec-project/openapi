@@ -354,6 +354,14 @@ func (o *QosParameterSet) SetPriorLevel(v int32) {
 	o.PriorLevel = &v
 }
 
+func (o QosParameterSet) MarshalJSON() ([]byte, error) {
+	toSerialize, err := o.ToMap()
+	if err != nil {
+		return []byte{}, err
+	}
+	return json.Marshal(toSerialize)
+}
+
 func (o QosParameterSet) ToMap() (map[string]any, error) {
 	toSerialize := map[string]any{}
 	if !openapi.IsNil(o.ExtMaxBurstSize) {

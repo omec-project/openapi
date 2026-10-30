@@ -251,6 +251,14 @@ func (o *SmsRouterInfo) SetRouterFqdn(v string) {
 	o.RouterFqdn = &v
 }
 
+func (o SmsRouterInfo) MarshalJSON() ([]byte, error) {
+	toSerialize, err := o.ToMap()
+	if err != nil {
+		return []byte{}, err
+	}
+	return json.Marshal(toSerialize)
+}
+
 func (o SmsRouterInfo) ToMap() (map[string]any, error) {
 	toSerialize := map[string]any{}
 	if !openapi.IsNil(o.NfInstanceId) {

@@ -554,6 +554,14 @@ func (o *PduSessionManagementData) SetResetIds(v []string) {
 	o.ResetIds = v
 }
 
+func (o PduSessionManagementData) MarshalJSON() ([]byte, error) {
+	toSerialize, err := o.ToMap()
+	if err != nil {
+		return []byte{}, err
+	}
+	return json.Marshal(toSerialize)
+}
+
 func (o PduSessionManagementData) ToMap() (map[string]any, error) {
 	toSerialize := map[string]any{}
 	if !openapi.IsNil(o.PduSessionStatus) {

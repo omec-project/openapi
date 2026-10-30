@@ -440,6 +440,14 @@ func (o *DnnUpfInfoItem) SetInterfaceUpfInfoList(v []InterfaceUpfInfoItem) {
 	o.InterfaceUpfInfoList = v
 }
 
+func (o DnnUpfInfoItem) MarshalJSON() ([]byte, error) {
+	toSerialize, err := o.ToMap()
+	if err != nil {
+		return []byte{}, err
+	}
+	return json.Marshal(toSerialize)
+}
+
 func (o DnnUpfInfoItem) ToMap() (map[string]any, error) {
 	toSerialize := map[string]any{}
 	toSerialize["dnn"] = o.Dnn

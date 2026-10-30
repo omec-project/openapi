@@ -100,6 +100,14 @@ func (o *AdditionalDataRef) SetAdditionalDataUris(v []string) {
 	o.AdditionalDataUris = v
 }
 
+func (o AdditionalDataRef) MarshalJSON() ([]byte, error) {
+	toSerialize, err := o.ToMap()
+	if err != nil {
+		return []byte{}, err
+	}
+	return json.Marshal(toSerialize)
+}
+
 func (o AdditionalDataRef) ToMap() (map[string]any, error) {
 	toSerialize := map[string]any{}
 	toSerialize["monitoredResourceUris"] = o.MonitoredResourceUris

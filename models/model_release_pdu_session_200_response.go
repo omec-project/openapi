@@ -181,6 +181,14 @@ func (o *ReleasePduSession200Response) SetBinaryDataN4InformationExt2(v *os.File
 	o.BinaryDataN4InformationExt2 = &v
 }
 
+func (o ReleasePduSession200Response) MarshalJSON() ([]byte, error) {
+	toSerialize, err := o.ToMap()
+	if err != nil {
+		return []byte{}, err
+	}
+	return json.Marshal(toSerialize)
+}
+
 func (o ReleasePduSession200Response) ToMap() (map[string]any, error) {
 	toSerialize := map[string]any{}
 	if !openapi.IsNil(o.JsonData) {

@@ -290,6 +290,14 @@ func (o *GbrQosFlowInformation) SetAlternativeQosProfileList(v []AlternativeQosP
 	o.AlternativeQosProfileList = v
 }
 
+func (o GbrQosFlowInformation) MarshalJSON() ([]byte, error) {
+	toSerialize, err := o.ToMap()
+	if err != nil {
+		return []byte{}, err
+	}
+	return json.Marshal(toSerialize)
+}
+
 func (o GbrQosFlowInformation) ToMap() (map[string]any, error) {
 	toSerialize := map[string]any{}
 	toSerialize["maxFbrDl"] = o.MaxFbrDl

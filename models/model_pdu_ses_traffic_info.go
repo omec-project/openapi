@@ -214,6 +214,14 @@ func (o *PduSesTrafficInfo) SetTdUnmatchTrafs(v []TdTraffic) {
 	o.TdUnmatchTrafs = v
 }
 
+func (o PduSesTrafficInfo) MarshalJSON() ([]byte, error) {
+	toSerialize, err := o.ToMap()
+	if err != nil {
+		return []byte{}, err
+	}
+	return json.Marshal(toSerialize)
+}
+
 func (o PduSesTrafficInfo) ToMap() (map[string]any, error) {
 	toSerialize := map[string]any{}
 	if !openapi.IsNil(o.Supis) {

@@ -180,6 +180,14 @@ func (o *AmfEventNotification) SetEventSubsSyncInfo(v AmfEventSubsSyncInfo) {
 	o.EventSubsSyncInfo = &v
 }
 
+func (o AmfEventNotification) MarshalJSON() ([]byte, error) {
+	toSerialize, err := o.ToMap()
+	if err != nil {
+		return []byte{}, err
+	}
+	return json.Marshal(toSerialize)
+}
+
 func (o AmfEventNotification) ToMap() (map[string]any, error) {
 	toSerialize := map[string]any{}
 	if !openapi.IsNil(o.NotifyCorrelationId) {

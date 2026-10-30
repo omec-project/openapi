@@ -177,6 +177,14 @@ func (o *EpsPdnCnxInfo) SetLinkedBearerId(v int32) {
 	o.LinkedBearerId = &v
 }
 
+func (o EpsPdnCnxInfo) MarshalJSON() ([]byte, error) {
+	toSerialize, err := o.ToMap()
+	if err != nil {
+		return []byte{}, err
+	}
+	return json.Marshal(toSerialize)
+}
+
 func (o EpsPdnCnxInfo) ToMap() (map[string]any, error) {
 	toSerialize := map[string]any{}
 	toSerialize["pgwS8cFteid"] = o.PgwS8cFteid

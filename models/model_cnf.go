@@ -74,6 +74,14 @@ func (o *Cnf) SetCnfUnits(v []CnfUnit) {
 	o.CnfUnits = v
 }
 
+func (o Cnf) MarshalJSON() ([]byte, error) {
+	toSerialize, err := o.ToMap()
+	if err != nil {
+		return []byte{}, err
+	}
+	return json.Marshal(toSerialize)
+}
+
 func (o Cnf) ToMap() (map[string]any, error) {
 	toSerialize := map[string]any{}
 	toSerialize["cnfUnits"] = o.CnfUnits

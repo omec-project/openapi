@@ -147,6 +147,14 @@ func (o *RangingSlPosSubscriptionData) SetRangingSlPosQos(v RangingSlPosQos) {
 	o.RangingSlPosQos = &v
 }
 
+func (o RangingSlPosSubscriptionData) MarshalJSON() ([]byte, error) {
+	toSerialize, err := o.ToMap()
+	if err != nil {
+		return []byte{}, err
+	}
+	return json.Marshal(toSerialize)
+}
+
 func (o RangingSlPosSubscriptionData) ToMap() (map[string]any, error) {
 	toSerialize := map[string]any{}
 	if !openapi.IsNil(o.RangingSlPosAuth) {

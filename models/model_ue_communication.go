@@ -473,6 +473,14 @@ func (o *UeCommunication) SetSessInactTimer(v SessInactTimerForUeComm) {
 	o.SessInactTimer = &v
 }
 
+func (o UeCommunication) MarshalJSON() ([]byte, error) {
+	toSerialize, err := o.ToMap()
+	if err != nil {
+		return []byte{}, err
+	}
+	return json.Marshal(toSerialize)
+}
+
 func (o UeCommunication) ToMap() (map[string]any, error) {
 	toSerialize := map[string]any{}
 	toSerialize["commDur"] = o.CommDur

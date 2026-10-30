@@ -216,6 +216,14 @@ func (o *MbSmfInfo) SetMbsSessionList(v map[string]MbsSession) {
 	o.MbsSessionList = &v
 }
 
+func (o MbSmfInfo) MarshalJSON() ([]byte, error) {
+	toSerialize, err := o.ToMap()
+	if err != nil {
+		return []byte{}, err
+	}
+	return json.Marshal(toSerialize)
+}
+
 func (o MbSmfInfo) ToMap() (map[string]any, error) {
 	toSerialize := map[string]any{}
 	if !openapi.IsNil(o.SNssaiInfoList) {

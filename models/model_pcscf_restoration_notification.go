@@ -119,6 +119,14 @@ func (o *PcscfRestorationNotification) UnsetFailedPcscf() {
 	o.FailedPcscf.Unset()
 }
 
+func (o PcscfRestorationNotification) MarshalJSON() ([]byte, error) {
+	toSerialize, err := o.ToMap()
+	if err != nil {
+		return []byte{}, err
+	}
+	return json.Marshal(toSerialize)
+}
+
 func (o PcscfRestorationNotification) ToMap() (map[string]any, error) {
 	toSerialize := map[string]any{}
 	toSerialize["supi"] = o.Supi

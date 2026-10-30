@@ -148,6 +148,14 @@ func (o *MovBehavInfo) SetConfidence(v int32) {
 	o.Confidence = &v
 }
 
+func (o MovBehavInfo) MarshalJSON() ([]byte, error) {
+	toSerialize, err := o.ToMap()
+	if err != nil {
+		return []byte{}, err
+	}
+	return json.Marshal(toSerialize)
+}
+
 func (o MovBehavInfo) ToMap() (map[string]any, error) {
 	toSerialize := map[string]any{}
 	if !openapi.IsNil(o.GeoLoc) {

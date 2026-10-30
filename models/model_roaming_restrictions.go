@@ -81,6 +81,14 @@ func (o *RoamingRestrictions) SetAccessAllowed(v bool) {
 	o.AccessAllowed = &v
 }
 
+func (o RoamingRestrictions) MarshalJSON() ([]byte, error) {
+	toSerialize, err := o.ToMap()
+	if err != nil {
+		return []byte{}, err
+	}
+	return json.Marshal(toSerialize)
+}
+
 func (o RoamingRestrictions) ToMap() (map[string]any, error) {
 	toSerialize := map[string]any{}
 	if !openapi.IsNil(o.AccessAllowed) {

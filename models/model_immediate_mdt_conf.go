@@ -668,6 +668,14 @@ func (o *ImmediateMdtConf) SetSensorMeasurementList(v []SensorMeasurement) {
 	o.SensorMeasurementList = v
 }
 
+func (o ImmediateMdtConf) MarshalJSON() ([]byte, error) {
+	toSerialize, err := o.ToMap()
+	if err != nil {
+		return []byte{}, err
+	}
+	return json.Marshal(toSerialize)
+}
+
 func (o ImmediateMdtConf) ToMap() (map[string]any, error) {
 	toSerialize := map[string]any{}
 	toSerialize["jobType"] = o.JobType

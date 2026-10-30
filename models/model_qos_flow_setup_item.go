@@ -347,6 +347,14 @@ func (o *QosFlowSetupItem) UnsetEcnMarkingCongestInfoReq() {
 	o.EcnMarkingCongestInfoReq.Unset()
 }
 
+func (o QosFlowSetupItem) MarshalJSON() ([]byte, error) {
+	toSerialize, err := o.ToMap()
+	if err != nil {
+		return []byte{}, err
+	}
+	return json.Marshal(toSerialize)
+}
+
 func (o QosFlowSetupItem) ToMap() (map[string]any, error) {
 	toSerialize := map[string]any{}
 	toSerialize["qfi"] = o.Qfi

@@ -386,6 +386,14 @@ func (o *QmcConfigInfo) SetMbsCommunicationServiceType(v MbsServiceType) {
 	o.MbsCommunicationServiceType = &v
 }
 
+func (o QmcConfigInfo) MarshalJSON() ([]byte, error) {
+	toSerialize, err := o.ToMap()
+	if err != nil {
+		return []byte{}, err
+	}
+	return json.Marshal(toSerialize)
+}
+
 func (o QmcConfigInfo) ToMap() (map[string]any, error) {
 	toSerialize := map[string]any{}
 	toSerialize["qoeReference"] = o.QoeReference

@@ -141,6 +141,14 @@ func (o *TssInformation) SetTssRspPerNgranList(v []TssRspPerNgran) {
 	o.TssRspPerNgranList = v
 }
 
+func (o TssInformation) MarshalJSON() ([]byte, error) {
+	toSerialize, err := o.ToMap()
+	if err != nil {
+		return []byte{}, err
+	}
+	return json.Marshal(toSerialize)
+}
+
 func (o TssInformation) ToMap() (map[string]any, error) {
 	toSerialize := map[string]any{}
 	if !openapi.IsNil(o.NfId) {

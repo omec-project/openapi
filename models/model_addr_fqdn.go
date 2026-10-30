@@ -126,6 +126,14 @@ func (o *AddrFqdn) SetFqdn(v string) {
 	o.Fqdn = &v
 }
 
+func (o AddrFqdn) MarshalJSON() ([]byte, error) {
+	toSerialize, err := o.ToMap()
+	if err != nil {
+		return []byte{}, err
+	}
+	return json.Marshal(toSerialize)
+}
+
 func (o AddrFqdn) ToMap() (map[string]any, error) {
 	toSerialize := map[string]any{}
 	if o.IpAddr.IsSet() {

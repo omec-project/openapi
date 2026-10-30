@@ -134,6 +134,14 @@ func (o *TaiRange) SetNid(v string) {
 	o.Nid = &v
 }
 
+func (o TaiRange) MarshalJSON() ([]byte, error) {
+	toSerialize, err := o.ToMap()
+	if err != nil {
+		return []byte{}, err
+	}
+	return json.Marshal(toSerialize)
+}
+
 func (o TaiRange) ToMap() (map[string]any, error) {
 	toSerialize := map[string]any{}
 	toSerialize["plmnId"] = o.PlmnId

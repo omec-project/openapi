@@ -147,6 +147,14 @@ func (o *DnPerformanceReq) SetReportThresholds(v []ThresholdLevel) {
 	o.ReportThresholds = v
 }
 
+func (o DnPerformanceReq) MarshalJSON() ([]byte, error) {
+	toSerialize, err := o.ToMap()
+	if err != nil {
+		return []byte{}, err
+	}
+	return json.Marshal(toSerialize)
+}
+
 func (o DnPerformanceReq) ToMap() (map[string]any, error) {
 	toSerialize := map[string]any{}
 	if !openapi.IsNil(o.DnPerfOrderCriter) {

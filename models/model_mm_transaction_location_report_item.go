@@ -234,6 +234,14 @@ func (o *MmTransactionLocationReportItem) SetTransactions(v int32) {
 	o.Transactions = v
 }
 
+func (o MmTransactionLocationReportItem) MarshalJSON() ([]byte, error) {
+	toSerialize, err := o.ToMap()
+	if err != nil {
+		return []byte{}, err
+	}
+	return json.Marshal(toSerialize)
+}
+
 func (o MmTransactionLocationReportItem) ToMap() (map[string]any, error) {
 	toSerialize := map[string]any{}
 	if !openapi.IsNil(o.Tai) {

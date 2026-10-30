@@ -102,6 +102,14 @@ func (o *NssaiAckData) SetUeUpdateStatus(v UeUpdateStatus) {
 	o.UeUpdateStatus = v
 }
 
+func (o NssaiAckData) MarshalJSON() ([]byte, error) {
+	toSerialize, err := o.ToMap()
+	if err != nil {
+		return []byte{}, err
+	}
+	return json.Marshal(toSerialize)
+}
+
 func (o NssaiAckData) ToMap() (map[string]any, error) {
 	toSerialize := map[string]any{}
 	toSerialize["provisioningTime"] = o.ProvisioningTime

@@ -81,6 +81,14 @@ func (o *OdbData) SetRoamingOdb(v RoamingOdb) {
 	o.RoamingOdb = &v
 }
 
+func (o OdbData) MarshalJSON() ([]byte, error) {
+	toSerialize, err := o.ToMap()
+	if err != nil {
+		return []byte{}, err
+	}
+	return json.Marshal(toSerialize)
+}
+
 func (o OdbData) ToMap() (map[string]any, error) {
 	toSerialize := map[string]any{}
 	if !openapi.IsNil(o.RoamingOdb) {

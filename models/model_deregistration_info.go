@@ -109,6 +109,14 @@ func (o *DeregistrationInfo) SetSupportedFeatures(v string) {
 	o.SupportedFeatures = &v
 }
 
+func (o DeregistrationInfo) MarshalJSON() ([]byte, error) {
+	toSerialize, err := o.ToMap()
+	if err != nil {
+		return []byte{}, err
+	}
+	return json.Marshal(toSerialize)
+}
+
 func (o DeregistrationInfo) ToMap() (map[string]any, error) {
 	toSerialize := map[string]any{}
 	toSerialize["supi"] = o.Supi

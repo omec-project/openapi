@@ -730,6 +730,14 @@ func (o *ProvisionedDataSets) SetA2xData(v A2xSubscriptionData) {
 	o.A2xData = &v
 }
 
+func (o ProvisionedDataSets) MarshalJSON() ([]byte, error) {
+	toSerialize, err := o.ToMap()
+	if err != nil {
+		return []byte{}, err
+	}
+	return json.Marshal(toSerialize)
+}
+
 func (o ProvisionedDataSets) ToMap() (map[string]any, error) {
 	toSerialize := map[string]any{}
 	if !openapi.IsNil(o.AmData) {

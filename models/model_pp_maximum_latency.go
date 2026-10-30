@@ -197,6 +197,14 @@ func (o *PpMaximumLatency) SetMtcProviderInformation(v string) {
 	o.MtcProviderInformation = &v
 }
 
+func (o PpMaximumLatency) MarshalJSON() ([]byte, error) {
+	toSerialize, err := o.ToMap()
+	if err != nil {
+		return []byte{}, err
+	}
+	return json.Marshal(toSerialize)
+}
+
 func (o PpMaximumLatency) ToMap() (map[string]any, error) {
 	toSerialize := map[string]any{}
 	toSerialize["maximumLatency"] = o.MaximumLatency

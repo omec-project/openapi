@@ -182,6 +182,14 @@ func (o *IpEndPoint) SetPort(v int32) {
 	o.Port = &v
 }
 
+func (o IpEndPoint) MarshalJSON() ([]byte, error) {
+	toSerialize, err := o.ToMap()
+	if err != nil {
+		return []byte{}, err
+	}
+	return json.Marshal(toSerialize)
+}
+
 func (o IpEndPoint) ToMap() (map[string]any, error) {
 	toSerialize := map[string]any{}
 	if !openapi.IsNil(o.Ipv4Address) {

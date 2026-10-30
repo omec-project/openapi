@@ -108,6 +108,14 @@ func (o *SponsorConnectivityData) SetSuppFeat(v string) {
 	o.SuppFeat = &v
 }
 
+func (o SponsorConnectivityData) MarshalJSON() ([]byte, error) {
+	toSerialize, err := o.ToMap()
+	if err != nil {
+		return []byte{}, err
+	}
+	return json.Marshal(toSerialize)
+}
+
 func (o SponsorConnectivityData) ToMap() (map[string]any, error) {
 	toSerialize := map[string]any{}
 	toSerialize["aspIds"] = o.AspIds

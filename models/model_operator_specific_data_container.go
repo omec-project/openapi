@@ -202,6 +202,14 @@ func (o *OperatorSpecificDataContainer) SetResetIds(v []string) {
 	o.ResetIds = v
 }
 
+func (o OperatorSpecificDataContainer) MarshalJSON() ([]byte, error) {
+	toSerialize, err := o.ToMap()
+	if err != nil {
+		return []byte{}, err
+	}
+	return json.Marshal(toSerialize)
+}
+
 func (o OperatorSpecificDataContainer) ToMap() (map[string]any, error) {
 	toSerialize := map[string]any{}
 	toSerialize["dataType"] = o.DataType

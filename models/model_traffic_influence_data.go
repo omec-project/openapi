@@ -184,6 +184,14 @@ func (o *TrafficInfluenceData) SetRefTcData(v []string) {
 	o.RefTcData = v
 }
 
+func (o TrafficInfluenceData) MarshalJSON() ([]byte, error) {
+	toSerialize, err := o.ToMap()
+	if err != nil {
+		return []byte{}, err
+	}
+	return json.Marshal(toSerialize)
+}
+
 func (o TrafficInfluenceData) ToMap() (map[string]any, error) {
 	toSerialize := map[string]any{}
 	if !openapi.IsNil(o.FlowInfos) {

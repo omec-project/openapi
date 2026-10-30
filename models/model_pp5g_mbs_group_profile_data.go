@@ -116,6 +116,14 @@ func (o *Pp5gMbsGroupProfileData) SetSupportedFeatures(v string) {
 	o.SupportedFeatures = &v
 }
 
+func (o Pp5gMbsGroupProfileData) MarshalJSON() ([]byte, error) {
+	toSerialize, err := o.ToMap()
+	if err != nil {
+		return []byte{}, err
+	}
+	return json.Marshal(toSerialize)
+}
+
 func (o Pp5gMbsGroupProfileData) ToMap() (map[string]any, error) {
 	toSerialize := map[string]any{}
 	if !openapi.IsNil(o.AllowedMbsInfos) {

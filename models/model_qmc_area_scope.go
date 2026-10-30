@@ -180,6 +180,14 @@ func (o *QmcAreaScope) SetPlmnList(v []PlmnId) {
 	o.PlmnList = v
 }
 
+func (o QmcAreaScope) MarshalJSON() ([]byte, error) {
+	toSerialize, err := o.ToMap()
+	if err != nil {
+		return []byte{}, err
+	}
+	return json.Marshal(toSerialize)
+}
+
 func (o QmcAreaScope) ToMap() (map[string]any, error) {
 	toSerialize := map[string]any{}
 	if !openapi.IsNil(o.NrCellIdList) {

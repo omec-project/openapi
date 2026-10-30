@@ -215,6 +215,14 @@ func (o *V2xContext) SetPc5QoSPara(v Pc5QoSPara) {
 	o.Pc5QoSPara = &v
 }
 
+func (o V2xContext) MarshalJSON() ([]byte, error) {
+	toSerialize, err := o.ToMap()
+	if err != nil {
+		return []byte{}, err
+	}
+	return json.Marshal(toSerialize)
+}
+
 func (o V2xContext) ToMap() (map[string]any, error) {
 	toSerialize := map[string]any{}
 	if !openapi.IsNil(o.NrV2xServicesAuth) {

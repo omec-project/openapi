@@ -1144,6 +1144,14 @@ func (o *PolicyAssociationRequest) SetSuppFeat(v string) {
 	o.SuppFeat = v
 }
 
+func (o PolicyAssociationRequest) MarshalJSON() ([]byte, error) {
+	toSerialize, err := o.ToMap()
+	if err != nil {
+		return []byte{}, err
+	}
+	return json.Marshal(toSerialize)
+}
+
 func (o PolicyAssociationRequest) ToMap() (map[string]any, error) {
 	toSerialize := map[string]any{}
 	toSerialize["notificationUri"] = o.NotificationUri

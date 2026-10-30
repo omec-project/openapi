@@ -884,6 +884,14 @@ func (o *SubscriptionData) SetCompleteProfileSubscription(v bool) {
 	o.CompleteProfileSubscription = &v
 }
 
+func (o SubscriptionData) MarshalJSON() ([]byte, error) {
+	toSerialize, err := o.ToMap()
+	if err != nil {
+		return []byte{}, err
+	}
+	return json.Marshal(toSerialize)
+}
+
 func (o SubscriptionData) ToMap() (map[string]any, error) {
 	toSerialize := map[string]any{}
 	toSerialize["nfStatusNotificationUri"] = o.NfStatusNotificationUri

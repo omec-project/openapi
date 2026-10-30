@@ -107,6 +107,14 @@ func (o *DirectNotificationReport) SetFlows(v []Flows) {
 	o.Flows = v
 }
 
+func (o DirectNotificationReport) MarshalJSON() ([]byte, error) {
+	toSerialize, err := o.ToMap()
+	if err != nil {
+		return []byte{}, err
+	}
+	return json.Marshal(toSerialize)
+}
+
 func (o DirectNotificationReport) ToMap() (map[string]any, error) {
 	toSerialize := map[string]any{}
 	toSerialize["qosMonParamType"] = o.QosMonParamType

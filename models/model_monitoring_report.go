@@ -262,6 +262,14 @@ func (o *MonitoringReport) SetReachabilityReport(v ReachabilityReport) {
 	o.ReachabilityReport = &v
 }
 
+func (o MonitoringReport) MarshalJSON() ([]byte, error) {
+	toSerialize, err := o.ToMap()
+	if err != nil {
+		return []byte{}, err
+	}
+	return json.Marshal(toSerialize)
+}
+
 func (o MonitoringReport) ToMap() (map[string]any, error) {
 	toSerialize := map[string]any{}
 	toSerialize["referenceId"] = o.ReferenceId

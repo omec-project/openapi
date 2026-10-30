@@ -554,6 +554,14 @@ func (o *EventsSubscReqDataRm) UnsetAvrgWndw() {
 	o.AvrgWndw.Unset()
 }
 
+func (o EventsSubscReqDataRm) MarshalJSON() ([]byte, error) {
+	toSerialize, err := o.ToMap()
+	if err != nil {
+		return []byte{}, err
+	}
+	return json.Marshal(toSerialize)
+}
+
 func (o EventsSubscReqDataRm) ToMap() (map[string]any, error) {
 	toSerialize := map[string]any{}
 	toSerialize["events"] = o.Events

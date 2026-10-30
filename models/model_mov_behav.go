@@ -271,6 +271,14 @@ func (o *MovBehav) SetDirectionUeInfos(v []DirectionInfo) {
 	o.DirectionUeInfos = v
 }
 
+func (o MovBehav) MarshalJSON() ([]byte, error) {
+	toSerialize, err := o.ToMap()
+	if err != nil {
+		return []byte{}, err
+	}
+	return json.Marshal(toSerialize)
+}
+
 func (o MovBehav) ToMap() (map[string]any, error) {
 	toSerialize := map[string]any{}
 	toSerialize["tsStart"] = o.TsStart

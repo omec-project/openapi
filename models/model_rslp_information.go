@@ -81,6 +81,14 @@ func (o *RslpInformation) SetN2Pc5RslpPol(v N2InfoContent) {
 	o.N2Pc5RslpPol = &v
 }
 
+func (o RslpInformation) MarshalJSON() ([]byte, error) {
+	toSerialize, err := o.ToMap()
+	if err != nil {
+		return []byte{}, err
+	}
+	return json.Marshal(toSerialize)
+}
+
 func (o RslpInformation) ToMap() (map[string]any, error) {
 	toSerialize := map[string]any{}
 	if !openapi.IsNil(o.N2Pc5RslpPol) {

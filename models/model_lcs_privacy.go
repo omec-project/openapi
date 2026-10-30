@@ -289,6 +289,14 @@ func (o *LcsPrivacy) SetUpLocRepIndAf(v UpLocRepIndAf) {
 	o.UpLocRepIndAf = &v
 }
 
+func (o LcsPrivacy) MarshalJSON() ([]byte, error) {
+	toSerialize, err := o.ToMap()
+	if err != nil {
+		return []byte{}, err
+	}
+	return json.Marshal(toSerialize)
+}
+
 func (o LcsPrivacy) ToMap() (map[string]any, error) {
 	toSerialize := map[string]any{}
 	if !openapi.IsNil(o.AfInstanceId) {

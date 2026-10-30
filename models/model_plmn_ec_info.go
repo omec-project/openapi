@@ -155,6 +155,14 @@ func (o *PlmnEcInfo) SetEcRestrictionDataNb(v bool) {
 	o.EcRestrictionDataNb = &v
 }
 
+func (o PlmnEcInfo) MarshalJSON() ([]byte, error) {
+	toSerialize, err := o.ToMap()
+	if err != nil {
+		return []byte{}, err
+	}
+	return json.Marshal(toSerialize)
+}
+
 func (o PlmnEcInfo) ToMap() (map[string]any, error) {
 	toSerialize := map[string]any{}
 	toSerialize["plmnId"] = o.PlmnId

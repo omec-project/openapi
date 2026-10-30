@@ -75,6 +75,14 @@ func (o *PatchResult) SetReport(v []ReportItem) {
 	o.Report = v
 }
 
+func (o PatchResult) MarshalJSON() ([]byte, error) {
+	toSerialize, err := o.ToMap()
+	if err != nil {
+		return []byte{}, err
+	}
+	return json.Marshal(toSerialize)
+}
+
 func (o PatchResult) ToMap() (map[string]any, error) {
 	toSerialize := map[string]any{}
 	toSerialize["report"] = o.Report

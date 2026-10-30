@@ -516,6 +516,14 @@ func (o *ExtProblemDetails) SetRemoteError(v bool) {
 	o.RemoteError = &v
 }
 
+func (o ExtProblemDetails) MarshalJSON() ([]byte, error) {
+	toSerialize, err := o.ToMap()
+	if err != nil {
+		return []byte{}, err
+	}
+	return json.Marshal(toSerialize)
+}
+
 func (o ExtProblemDetails) ToMap() (map[string]any, error) {
 	toSerialize := map[string]any{}
 	if !openapi.IsNil(o.Type) {

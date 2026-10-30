@@ -180,6 +180,14 @@ func (o *AfExternal) SetValidTimePeriod(v ValidTimePeriod) {
 	o.ValidTimePeriod = &v
 }
 
+func (o AfExternal) MarshalJSON() ([]byte, error) {
+	toSerialize, err := o.ToMap()
+	if err != nil {
+		return []byte{}, err
+	}
+	return json.Marshal(toSerialize)
+}
+
 func (o AfExternal) ToMap() (map[string]any, error) {
 	toSerialize := map[string]any{}
 	if !openapi.IsNil(o.AfId) {

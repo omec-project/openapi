@@ -138,6 +138,14 @@ func (o *NotificationInfo) SetUpBufferInd(v bool) {
 	o.UpBufferInd = &v
 }
 
+func (o NotificationInfo) MarshalJSON() ([]byte, error) {
+	toSerialize, err := o.ToMap()
+	if err != nil {
+		return []byte{}, err
+	}
+	return json.Marshal(toSerialize)
+}
+
 func (o NotificationInfo) ToMap() (map[string]any, error) {
 	toSerialize := map[string]any{}
 	toSerialize["notifId"] = o.NotifId

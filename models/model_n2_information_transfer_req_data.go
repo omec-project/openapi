@@ -207,6 +207,14 @@ func (o *N2InformationTransferReqData) SetSupportedFeatures(v string) {
 	o.SupportedFeatures = &v
 }
 
+func (o N2InformationTransferReqData) MarshalJSON() ([]byte, error) {
+	toSerialize, err := o.ToMap()
+	if err != nil {
+		return []byte{}, err
+	}
+	return json.Marshal(toSerialize)
+}
+
 func (o N2InformationTransferReqData) ToMap() (map[string]any, error) {
 	toSerialize := map[string]any{}
 	if !openapi.IsNil(o.TaiList) {

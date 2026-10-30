@@ -228,6 +228,14 @@ func (o *RelProxInfo) SetTtcInfo(v TimeToCollisionInfo) {
 	o.TtcInfo = &v
 }
 
+func (o RelProxInfo) MarshalJSON() ([]byte, error) {
+	toSerialize, err := o.ToMap()
+	if err != nil {
+		return []byte{}, err
+	}
+	return json.Marshal(toSerialize)
+}
+
 func (o RelProxInfo) ToMap() (map[string]any, error) {
 	toSerialize := map[string]any{}
 	toSerialize["tsStart"] = o.TsStart

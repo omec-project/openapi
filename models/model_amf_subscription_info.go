@@ -168,6 +168,14 @@ func (o *AmfSubscriptionInfo) SetContextInfo(v ContextInfo) {
 	o.ContextInfo = &v
 }
 
+func (o AmfSubscriptionInfo) MarshalJSON() ([]byte, error) {
+	toSerialize, err := o.ToMap()
+	if err != nil {
+		return []byte{}, err
+	}
+	return json.Marshal(toSerialize)
+}
+
 func (o AmfSubscriptionInfo) ToMap() (map[string]any, error) {
 	toSerialize := map[string]any{}
 	toSerialize["amfInstanceId"] = o.AmfInstanceId

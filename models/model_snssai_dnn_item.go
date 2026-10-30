@@ -114,6 +114,14 @@ func (o *SnssaiDnnItem) SetDnnList(v []string) {
 	o.DnnList = v
 }
 
+func (o SnssaiDnnItem) MarshalJSON() ([]byte, error) {
+	toSerialize, err := o.ToMap()
+	if err != nil {
+		return []byte{}, err
+	}
+	return json.Marshal(toSerialize)
+}
+
 func (o SnssaiDnnItem) ToMap() (map[string]any, error) {
 	toSerialize := map[string]any{}
 	if !openapi.IsNil(o.SnssaiList) {

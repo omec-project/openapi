@@ -81,6 +81,14 @@ func (o *NfInstanceIdListCond) SetNfInstanceIdList(v []string) {
 	o.NfInstanceIdList = v
 }
 
+func (o NfInstanceIdListCond) MarshalJSON() ([]byte, error) {
+	toSerialize, err := o.ToMap()
+	if err != nil {
+		return []byte{}, err
+	}
+	return json.Marshal(toSerialize)
+}
+
 func (o NfInstanceIdListCond) ToMap() (map[string]any, error) {
 	toSerialize := map[string]any{}
 	if !openapi.IsNil(o.NfInstanceIdList) {

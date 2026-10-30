@@ -100,6 +100,14 @@ func (o *CmInfo) SetAccessType(v AccessType) {
 	o.AccessType = v
 }
 
+func (o CmInfo) MarshalJSON() ([]byte, error) {
+	toSerialize, err := o.ToMap()
+	if err != nil {
+		return []byte{}, err
+	}
+	return json.Marshal(toSerialize)
+}
+
 func (o CmInfo) ToMap() (map[string]any, error) {
 	toSerialize := map[string]any{}
 	toSerialize["cmState"] = o.CmState

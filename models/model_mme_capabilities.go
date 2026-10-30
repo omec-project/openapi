@@ -159,6 +159,14 @@ func (o *MmeCapabilities) SetUpipSupported(v bool) {
 	o.UpipSupported = &v
 }
 
+func (o MmeCapabilities) MarshalJSON() ([]byte, error) {
+	toSerialize, err := o.ToMap()
+	if err != nil {
+		return []byte{}, err
+	}
+	return json.Marshal(toSerialize)
+}
+
 func (o MmeCapabilities) ToMap() (map[string]any, error) {
 	toSerialize := map[string]any{}
 	if !openapi.IsNil(o.NonIpSupported) {

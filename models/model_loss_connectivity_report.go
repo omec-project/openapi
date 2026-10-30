@@ -74,6 +74,14 @@ func (o *LossConnectivityReport) SetLossOfConnectReason(v LossOfConnectivityReas
 	o.LossOfConnectReason = v
 }
 
+func (o LossConnectivityReport) MarshalJSON() ([]byte, error) {
+	toSerialize, err := o.ToMap()
+	if err != nil {
+		return []byte{}, err
+	}
+	return json.Marshal(toSerialize)
+}
+
 func (o LossConnectivityReport) ToMap() (map[string]any, error) {
 	toSerialize := map[string]any{}
 	toSerialize["lossOfConnectReason"] = o.LossOfConnectReason

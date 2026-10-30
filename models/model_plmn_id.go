@@ -102,6 +102,14 @@ func (o *PlmnId) SetMnc(v string) {
 	o.Mnc = v
 }
 
+func (o PlmnId) MarshalJSON() ([]byte, error) {
+	toSerialize, err := o.ToMap()
+	if err != nil {
+		return []byte{}, err
+	}
+	return json.Marshal(toSerialize)
+}
+
 func (o PlmnId) ToMap() (map[string]any, error) {
 	toSerialize := map[string]any{}
 	toSerialize["mcc"] = o.Mcc

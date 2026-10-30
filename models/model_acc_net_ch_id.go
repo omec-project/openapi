@@ -188,6 +188,14 @@ func (o *AccNetChId) SetSessionChScope(v bool) {
 	o.SessionChScope = &v
 }
 
+func (o AccNetChId) MarshalJSON() ([]byte, error) {
+	toSerialize, err := o.ToMap()
+	if err != nil {
+		return []byte{}, err
+	}
+	return json.Marshal(toSerialize)
+}
+
 func (o AccNetChId) ToMap() (map[string]any, error) {
 	toSerialize := map[string]any{}
 	if !openapi.IsNil(o.AccNetChaIdValue) {

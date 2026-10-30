@@ -102,6 +102,14 @@ func (o *TimeSyncSubscriptionData) SetServiceIds(v []TimeSyncServiceId) {
 	o.ServiceIds = v
 }
 
+func (o TimeSyncSubscriptionData) MarshalJSON() ([]byte, error) {
+	toSerialize, err := o.ToMap()
+	if err != nil {
+		return []byte{}, err
+	}
+	return json.Marshal(toSerialize)
+}
+
 func (o TimeSyncSubscriptionData) ToMap() (map[string]any, error) {
 	toSerialize := map[string]any{}
 	toSerialize["afReqAuthorizations"] = o.AfReqAuthorizations.Get()

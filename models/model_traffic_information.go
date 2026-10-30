@@ -218,6 +218,14 @@ func (o *TrafficInformation) SetTotalVolume(v int64) {
 	o.TotalVolume = &v
 }
 
+func (o TrafficInformation) MarshalJSON() ([]byte, error) {
+	toSerialize, err := o.ToMap()
+	if err != nil {
+		return []byte{}, err
+	}
+	return json.Marshal(toSerialize)
+}
+
 func (o TrafficInformation) ToMap() (map[string]any, error) {
 	toSerialize := map[string]any{}
 	if !openapi.IsNil(o.UplinkRate) {

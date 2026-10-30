@@ -107,6 +107,14 @@ func (o *RoamingInfoUpdate) SetServingPlmn(v PlmnId) {
 	o.ServingPlmn = v
 }
 
+func (o RoamingInfoUpdate) MarshalJSON() ([]byte, error) {
+	toSerialize, err := o.ToMap()
+	if err != nil {
+		return []byte{}, err
+	}
+	return json.Marshal(toSerialize)
+}
+
 func (o RoamingInfoUpdate) ToMap() (map[string]any, error) {
 	toSerialize := map[string]any{}
 	if !openapi.IsNil(o.Roaming) {

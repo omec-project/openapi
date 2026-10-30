@@ -101,6 +101,14 @@ func (o *EcnMarkingCongestionInfoStatus) SetActivationStatus(v ActivationStatus)
 	o.ActivationStatus = v
 }
 
+func (o EcnMarkingCongestionInfoStatus) MarshalJSON() ([]byte, error) {
+	toSerialize, err := o.ToMap()
+	if err != nil {
+		return []byte{}, err
+	}
+	return json.Marshal(toSerialize)
+}
+
 func (o EcnMarkingCongestionInfoStatus) ToMap() (map[string]any, error) {
 	toSerialize := map[string]any{}
 	toSerialize["qfi"] = o.Qfi

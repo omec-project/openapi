@@ -116,6 +116,14 @@ func (o *DataVolume) SetDownlinkVolume(v int64) {
 	o.DownlinkVolume = &v
 }
 
+func (o DataVolume) MarshalJSON() ([]byte, error) {
+	toSerialize, err := o.ToMap()
+	if err != nil {
+		return []byte{}, err
+	}
+	return json.Marshal(toSerialize)
+}
+
 func (o DataVolume) ToMap() (map[string]any, error) {
 	toSerialize := map[string]any{}
 	if !openapi.IsNil(o.UplinkVolume) {

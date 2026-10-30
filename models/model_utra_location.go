@@ -317,6 +317,14 @@ func (o *UtraLocation) SetGeodeticInformation(v string) {
 	o.GeodeticInformation = &v
 }
 
+func (o UtraLocation) MarshalJSON() ([]byte, error) {
+	toSerialize, err := o.ToMap()
+	if err != nil {
+		return []byte{}, err
+	}
+	return json.Marshal(toSerialize)
+}
+
 func (o UtraLocation) ToMap() (map[string]any, error) {
 	toSerialize := map[string]any{}
 	if !openapi.IsNil(o.Cgi) {

@@ -74,6 +74,14 @@ func (o *UeRegStatusUpdateRspData) SetRegStatusTransferComplete(v bool) {
 	o.RegStatusTransferComplete = v
 }
 
+func (o UeRegStatusUpdateRspData) MarshalJSON() ([]byte, error) {
+	toSerialize, err := o.ToMap()
+	if err != nil {
+		return []byte{}, err
+	}
+	return json.Marshal(toSerialize)
+}
+
 func (o UeRegStatusUpdateRspData) ToMap() (map[string]any, error) {
 	toSerialize := map[string]any{}
 	toSerialize["regStatusTransferComplete"] = o.RegStatusTransferComplete

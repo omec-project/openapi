@@ -419,6 +419,14 @@ func (o *MediaSubComponent) SetEvSubsc(v EventsSubscReqData) {
 	o.EvSubsc = &v
 }
 
+func (o MediaSubComponent) MarshalJSON() ([]byte, error) {
+	toSerialize, err := o.ToMap()
+	if err != nil {
+		return []byte{}, err
+	}
+	return json.Marshal(toSerialize)
+}
+
 func (o MediaSubComponent) ToMap() (map[string]any, error) {
 	toSerialize := map[string]any{}
 	if o.AfSigProtocol.IsSet() {

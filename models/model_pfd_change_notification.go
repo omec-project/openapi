@@ -184,6 +184,14 @@ func (o *PfdChangeNotification) SetPfds(v []PfdContent) {
 	o.Pfds = v
 }
 
+func (o PfdChangeNotification) MarshalJSON() ([]byte, error) {
+	toSerialize, err := o.ToMap()
+	if err != nil {
+		return []byte{}, err
+	}
+	return json.Marshal(toSerialize)
+}
+
 func (o PfdChangeNotification) ToMap() (map[string]any, error) {
 	toSerialize := map[string]any{}
 	toSerialize["applicationId"] = o.ApplicationId

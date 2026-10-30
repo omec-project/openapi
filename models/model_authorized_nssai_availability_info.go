@@ -108,6 +108,14 @@ func (o *AuthorizedNssaiAvailabilityInfo) SetSupportedFeatures(v string) {
 	o.SupportedFeatures = &v
 }
 
+func (o AuthorizedNssaiAvailabilityInfo) MarshalJSON() ([]byte, error) {
+	toSerialize, err := o.ToMap()
+	if err != nil {
+		return []byte{}, err
+	}
+	return json.Marshal(toSerialize)
+}
+
 func (o AuthorizedNssaiAvailabilityInfo) ToMap() (map[string]any, error) {
 	toSerialize := map[string]any{}
 	toSerialize["authorizedNssaiAvailabilityData"] = o.AuthorizedNssaiAvailabilityData

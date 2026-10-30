@@ -114,6 +114,14 @@ func (o *WirelineServiceAreaRestriction) SetAreas(v []WirelineArea) {
 	o.Areas = v
 }
 
+func (o WirelineServiceAreaRestriction) MarshalJSON() ([]byte, error) {
+	toSerialize, err := o.ToMap()
+	if err != nil {
+		return []byte{}, err
+	}
+	return json.Marshal(toSerialize)
+}
+
 func (o WirelineServiceAreaRestriction) ToMap() (map[string]any, error) {
 	toSerialize := map[string]any{}
 	if !openapi.IsNil(o.RestrictionType) {

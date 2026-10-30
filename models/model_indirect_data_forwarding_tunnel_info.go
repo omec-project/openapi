@@ -211,6 +211,14 @@ func (o *IndirectDataForwardingTunnelInfo) SetAdditionalTnlNb(v int32) {
 	o.AdditionalTnlNb = &v
 }
 
+func (o IndirectDataForwardingTunnelInfo) MarshalJSON() ([]byte, error) {
+	toSerialize, err := o.ToMap()
+	if err != nil {
+		return []byte{}, err
+	}
+	return json.Marshal(toSerialize)
+}
+
 func (o IndirectDataForwardingTunnelInfo) ToMap() (map[string]any, error) {
 	toSerialize := map[string]any{}
 	if !openapi.IsNil(o.Ipv4Addr) {

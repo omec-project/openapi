@@ -116,6 +116,14 @@ func (o *FrameRouteInfo) SetIpv6Prefix(v string) {
 	o.Ipv6Prefix = &v
 }
 
+func (o FrameRouteInfo) MarshalJSON() ([]byte, error) {
+	toSerialize, err := o.ToMap()
+	if err != nil {
+		return []byte{}, err
+	}
+	return json.Marshal(toSerialize)
+}
+
 func (o FrameRouteInfo) ToMap() (map[string]any, error) {
 	toSerialize := map[string]any{}
 	if !openapi.IsNil(o.Ipv4Mask) {

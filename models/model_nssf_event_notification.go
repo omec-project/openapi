@@ -209,6 +209,14 @@ func (o *NssfEventNotification) SetNssaiValidityTimeInfo(v map[string]time.Time)
 	o.NssaiValidityTimeInfo = &v
 }
 
+func (o NssfEventNotification) MarshalJSON() ([]byte, error) {
+	toSerialize, err := o.ToMap()
+	if err != nil {
+		return []byte{}, err
+	}
+	return json.Marshal(toSerialize)
+}
+
 func (o NssfEventNotification) ToMap() (map[string]any, error) {
 	toSerialize := map[string]any{}
 	toSerialize["subscriptionId"] = o.SubscriptionId

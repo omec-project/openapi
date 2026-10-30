@@ -178,6 +178,14 @@ func (o *AvEpsAka) SetKasme(v string) {
 	o.Kasme = v
 }
 
+func (o AvEpsAka) MarshalJSON() ([]byte, error) {
+	toSerialize, err := o.ToMap()
+	if err != nil {
+		return []byte{}, err
+	}
+	return json.Marshal(toSerialize)
+}
+
 func (o AvEpsAka) ToMap() (map[string]any, error) {
 	toSerialize := map[string]any{}
 	toSerialize["avType"] = o.AvType

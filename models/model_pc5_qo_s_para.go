@@ -108,6 +108,14 @@ func (o *Pc5QoSPara) SetPc5LinkAmbr(v string) {
 	o.Pc5LinkAmbr = &v
 }
 
+func (o Pc5QoSPara) MarshalJSON() ([]byte, error) {
+	toSerialize, err := o.ToMap()
+	if err != nil {
+		return []byte{}, err
+	}
+	return json.Marshal(toSerialize)
+}
+
 func (o Pc5QoSPara) ToMap() (map[string]any, error) {
 	toSerialize := map[string]any{}
 	toSerialize["pc5QosFlowList"] = o.Pc5QosFlowList

@@ -390,6 +390,14 @@ func (o *SmsManagementSubscriptionData) SetSharedTraceDataId(v string) {
 	o.SharedTraceDataId = &v
 }
 
+func (o SmsManagementSubscriptionData) MarshalJSON() ([]byte, error) {
+	toSerialize, err := o.ToMap()
+	if err != nil {
+		return []byte{}, err
+	}
+	return json.Marshal(toSerialize)
+}
+
 func (o SmsManagementSubscriptionData) ToMap() (map[string]any, error) {
 	toSerialize := map[string]any{}
 	if !openapi.IsNil(o.SupportedFeatures) {

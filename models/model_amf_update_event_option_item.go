@@ -194,6 +194,14 @@ func (o *AmfUpdateEventOptionItem) SetMutingExcInstructions(v MutingExceptionIns
 	o.MutingExcInstructions = &v
 }
 
+func (o AmfUpdateEventOptionItem) MarshalJSON() ([]byte, error) {
+	toSerialize, err := o.ToMap()
+	if err != nil {
+		return []byte{}, err
+	}
+	return json.Marshal(toSerialize)
+}
+
 func (o AmfUpdateEventOptionItem) ToMap() (map[string]any, error) {
 	toSerialize := map[string]any{}
 	toSerialize["op"] = o.Op

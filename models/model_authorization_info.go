@@ -290,6 +290,14 @@ func (o *AuthorizationInfo) SetContextInfo(v ContextInfo) {
 	o.ContextInfo = &v
 }
 
+func (o AuthorizationInfo) MarshalJSON() ([]byte, error) {
+	toSerialize, err := o.ToMap()
+	if err != nil {
+		return []byte{}, err
+	}
+	return json.Marshal(toSerialize)
+}
+
 func (o AuthorizationInfo) ToMap() (map[string]any, error) {
 	toSerialize := map[string]any{}
 	toSerialize["snssai"] = o.Snssai

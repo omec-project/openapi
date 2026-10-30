@@ -313,6 +313,14 @@ func (o *HssInfo) SetAdditionalDiamAddresses(v []NetworkNodeDiameterAddress) {
 	o.AdditionalDiamAddresses = v
 }
 
+func (o HssInfo) MarshalJSON() ([]byte, error) {
+	toSerialize, err := o.ToMap()
+	if err != nil {
+		return []byte{}, err
+	}
+	return json.Marshal(toSerialize)
+}
+
 func (o HssInfo) ToMap() (map[string]any, error) {
 	toSerialize := map[string]any{}
 	if !openapi.IsNil(o.GroupId) {

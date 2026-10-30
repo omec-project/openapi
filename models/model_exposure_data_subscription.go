@@ -271,6 +271,14 @@ func (o *ExposureDataSubscription) SetImmReports(v []ExposureDataChangeNotificat
 	o.ImmReports = v
 }
 
+func (o ExposureDataSubscription) MarshalJSON() ([]byte, error) {
+	toSerialize, err := o.ToMap()
+	if err != nil {
+		return []byte{}, err
+	}
+	return json.Marshal(toSerialize)
+}
+
 func (o ExposureDataSubscription) ToMap() (map[string]any, error) {
 	toSerialize := map[string]any{}
 	toSerialize["notificationUri"] = o.NotificationUri

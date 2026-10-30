@@ -677,6 +677,14 @@ func (o *MonitoringConfiguration) SetMonitoringSuspension(v MonitoringSuspension
 	o.MonitoringSuspension = &v
 }
 
+func (o MonitoringConfiguration) MarshalJSON() ([]byte, error) {
+	toSerialize, err := o.ToMap()
+	if err != nil {
+		return []byte{}, err
+	}
+	return json.Marshal(toSerialize)
+}
+
 func (o MonitoringConfiguration) ToMap() (map[string]any, error) {
 	toSerialize := map[string]any{}
 	toSerialize["eventType"] = o.EventType

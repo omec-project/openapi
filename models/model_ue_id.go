@@ -108,6 +108,14 @@ func (o *UeId) SetGpsiList(v []string) {
 	o.GpsiList = v
 }
 
+func (o UeId) MarshalJSON() ([]byte, error) {
+	toSerialize, err := o.ToMap()
+	if err != nil {
+		return []byte{}, err
+	}
+	return json.Marshal(toSerialize)
+}
+
 func (o UeId) ToMap() (map[string]any, error) {
 	toSerialize := map[string]any{}
 	toSerialize["supi"] = o.Supi

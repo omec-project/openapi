@@ -115,6 +115,14 @@ func (o *AllowedMtcProviderInfo) SetAfId(v string) {
 	o.AfId = &v
 }
 
+func (o AllowedMtcProviderInfo) MarshalJSON() ([]byte, error) {
+	toSerialize, err := o.ToMap()
+	if err != nil {
+		return []byte{}, err
+	}
+	return json.Marshal(toSerialize)
+}
+
 func (o AllowedMtcProviderInfo) ToMap() (map[string]any, error) {
 	toSerialize := map[string]any{}
 	if !openapi.IsNil(o.MtcProviderInformation) {

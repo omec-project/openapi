@@ -783,6 +783,14 @@ func (o *SmContextUpdatedData) SetAnchorSmfFeatures(v AnchorSmfFeatures) {
 	o.AnchorSmfFeatures = &v
 }
 
+func (o SmContextUpdatedData) MarshalJSON() ([]byte, error) {
+	toSerialize, err := o.ToMap()
+	if err != nil {
+		return []byte{}, err
+	}
+	return json.Marshal(toSerialize)
+}
+
 func (o SmContextUpdatedData) ToMap() (map[string]any, error) {
 	toSerialize := map[string]any{}
 	if !openapi.IsNil(o.UpCnxState) {

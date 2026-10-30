@@ -81,6 +81,14 @@ func (o *AppSessionContextUpdateDataPatch) SetAscReqData(v AppSessionContextUpda
 	o.AscReqData = &v
 }
 
+func (o AppSessionContextUpdateDataPatch) MarshalJSON() ([]byte, error) {
+	toSerialize, err := o.ToMap()
+	if err != nil {
+		return []byte{}, err
+	}
+	return json.Marshal(toSerialize)
+}
+
 func (o AppSessionContextUpdateDataPatch) ToMap() (map[string]any, error) {
 	toSerialize := map[string]any{}
 	if !openapi.IsNil(o.AscReqData) {

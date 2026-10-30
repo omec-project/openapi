@@ -150,6 +150,14 @@ func (o *SvcExperience) SetLowerRange(v float32) {
 	o.LowerRange = &v
 }
 
+func (o SvcExperience) MarshalJSON() ([]byte, error) {
+	toSerialize, err := o.ToMap()
+	if err != nil {
+		return []byte{}, err
+	}
+	return json.Marshal(toSerialize)
+}
+
 func (o SvcExperience) ToMap() (map[string]any, error) {
 	toSerialize := map[string]any{}
 	if !openapi.IsNil(o.Mos) {

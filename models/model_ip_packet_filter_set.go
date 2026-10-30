@@ -338,6 +338,14 @@ func (o *IpPacketFilterSet) SetDirection(v string) {
 	o.Direction = v
 }
 
+func (o IpPacketFilterSet) MarshalJSON() ([]byte, error) {
+	toSerialize, err := o.ToMap()
+	if err != nil {
+		return []byte{}, err
+	}
+	return json.Marshal(toSerialize)
+}
+
 func (o IpPacketFilterSet) ToMap() (map[string]any, error) {
 	toSerialize := map[string]any{}
 	if !openapi.IsNil(o.SrcIp) {

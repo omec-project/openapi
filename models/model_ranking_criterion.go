@@ -102,6 +102,14 @@ func (o *RankingCriterion) SetLowBase(v int32) {
 	o.LowBase = v
 }
 
+func (o RankingCriterion) MarshalJSON() ([]byte, error) {
+	toSerialize, err := o.ToMap()
+	if err != nil {
+		return []byte{}, err
+	}
+	return json.Marshal(toSerialize)
+}
+
 func (o RankingCriterion) ToMap() (map[string]any, error) {
 	toSerialize := map[string]any{}
 	toSerialize["highBase"] = o.HighBase

@@ -397,6 +397,14 @@ func (o *AmfUpdateEventSubscriptionItem) SetNotifyForSnssaiDnnList(v []SnssaiDnn
 	o.NotifyForSnssaiDnnList = v
 }
 
+func (o AmfUpdateEventSubscriptionItem) MarshalJSON() ([]byte, error) {
+	toSerialize, err := o.ToMap()
+	if err != nil {
+		return []byte{}, err
+	}
+	return json.Marshal(toSerialize)
+}
+
 func (o AmfUpdateEventSubscriptionItem) ToMap() (map[string]any, error) {
 	toSerialize := map[string]any{}
 	toSerialize["op"] = o.Op

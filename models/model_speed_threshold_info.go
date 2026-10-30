@@ -116,6 +116,14 @@ func (o *SpeedThresholdInfo) SetRatio(v int32) {
 	o.Ratio = &v
 }
 
+func (o SpeedThresholdInfo) MarshalJSON() ([]byte, error) {
+	toSerialize, err := o.ToMap()
+	if err != nil {
+		return []byte{}, err
+	}
+	return json.Marshal(toSerialize)
+}
+
 func (o SpeedThresholdInfo) ToMap() (map[string]any, error) {
 	toSerialize := map[string]any{}
 	if !openapi.IsNil(o.NumOfUe) {

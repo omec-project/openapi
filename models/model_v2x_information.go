@@ -81,6 +81,14 @@ func (o *V2xInformation) SetN2Pc5Pol(v N2InfoContent) {
 	o.N2Pc5Pol = &v
 }
 
+func (o V2xInformation) MarshalJSON() ([]byte, error) {
+	toSerialize, err := o.ToMap()
+	if err != nil {
+		return []byte{}, err
+	}
+	return json.Marshal(toSerialize)
+}
+
 func (o V2xInformation) ToMap() (map[string]any, error) {
 	toSerialize := map[string]any{}
 	if !openapi.IsNil(o.N2Pc5Pol) {

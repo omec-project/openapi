@@ -210,6 +210,14 @@ func (o *MulticastAccessControlIptv) SetAccStatus(v AccessRightStatus) {
 	o.AccStatus = v
 }
 
+func (o MulticastAccessControlIptv) MarshalJSON() ([]byte, error) {
+	toSerialize, err := o.ToMap()
+	if err != nil {
+		return []byte{}, err
+	}
+	return json.Marshal(toSerialize)
+}
+
 func (o MulticastAccessControlIptv) ToMap() (map[string]any, error) {
 	toSerialize := map[string]any{}
 	if !openapi.IsNil(o.SrcIpv4Addr) {

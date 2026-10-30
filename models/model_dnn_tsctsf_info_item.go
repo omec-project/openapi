@@ -75,6 +75,14 @@ func (o *DnnTsctsfInfoItem) SetDnn(v string) {
 	o.Dnn = v
 }
 
+func (o DnnTsctsfInfoItem) MarshalJSON() ([]byte, error) {
+	toSerialize, err := o.ToMap()
+	if err != nil {
+		return []byte{}, err
+	}
+	return json.Marshal(toSerialize)
+}
+
 func (o DnnTsctsfInfoItem) ToMap() (map[string]any, error) {
 	toSerialize := map[string]any{}
 	toSerialize["dnn"] = o.Dnn

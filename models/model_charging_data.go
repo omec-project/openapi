@@ -473,6 +473,14 @@ func (o *ChargingData) SetAfChargId(v string) {
 	o.AfChargId = &v
 }
 
+func (o ChargingData) MarshalJSON() ([]byte, error) {
+	toSerialize, err := o.ToMap()
+	if err != nil {
+		return []byte{}, err
+	}
+	return json.Marshal(toSerialize)
+}
+
 func (o ChargingData) ToMap() (map[string]any, error) {
 	toSerialize := map[string]any{}
 	toSerialize["chgId"] = o.ChgId

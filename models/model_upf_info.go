@@ -853,6 +853,14 @@ func (o *UpfInfo) SetUpfEvents(v []EventType) {
 	o.UpfEvents = v
 }
 
+func (o UpfInfo) MarshalJSON() ([]byte, error) {
+	toSerialize, err := o.ToMap()
+	if err != nil {
+		return []byte{}, err
+	}
+	return json.Marshal(toSerialize)
+}
+
 func (o UpfInfo) ToMap() (map[string]any, error) {
 	toSerialize := map[string]any{}
 	toSerialize["sNssaiUpfInfoList"] = o.SNssaiUpfInfoList

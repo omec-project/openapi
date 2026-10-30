@@ -82,6 +82,14 @@ func (o *AdditionInfoEnableUeReachability) SetMaxWaitingTime(v int32) {
 	o.MaxWaitingTime = &v
 }
 
+func (o AdditionInfoEnableUeReachability) MarshalJSON() ([]byte, error) {
+	toSerialize, err := o.ToMap()
+	if err != nil {
+		return []byte{}, err
+	}
+	return json.Marshal(toSerialize)
+}
+
 func (o AdditionInfoEnableUeReachability) ToMap() (map[string]any, error) {
 	toSerialize := map[string]any{}
 	if !openapi.IsNil(o.MaxWaitingTime) {

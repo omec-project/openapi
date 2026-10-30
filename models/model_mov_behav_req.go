@@ -114,6 +114,14 @@ func (o *MovBehavReq) SetReportThresholds(v ThresholdLevel) {
 	o.ReportThresholds = &v
 }
 
+func (o MovBehavReq) MarshalJSON() ([]byte, error) {
+	toSerialize, err := o.ToMap()
+	if err != nil {
+		return []byte{}, err
+	}
+	return json.Marshal(toSerialize)
+}
+
 func (o MovBehavReq) ToMap() (map[string]any, error) {
 	toSerialize := map[string]any{}
 	if !openapi.IsNil(o.LocationGranReq) {

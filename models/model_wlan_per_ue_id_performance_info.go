@@ -142,6 +142,14 @@ func (o *WlanPerUeIdPerformanceInfo) SetWlanPerTsInfos(v []WlanPerTsPerformanceI
 	o.WlanPerTsInfos = v
 }
 
+func (o WlanPerUeIdPerformanceInfo) MarshalJSON() ([]byte, error) {
+	toSerialize, err := o.ToMap()
+	if err != nil {
+		return []byte{}, err
+	}
+	return json.Marshal(toSerialize)
+}
+
 func (o WlanPerUeIdPerformanceInfo) ToMap() (map[string]any, error) {
 	toSerialize := map[string]any{}
 	if !openapi.IsNil(o.Supi) {

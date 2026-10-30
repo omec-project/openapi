@@ -107,6 +107,14 @@ func (o *CagInfoUdm) SetCagOnlyIndicator(v bool) {
 	o.CagOnlyIndicator = &v
 }
 
+func (o CagInfoUdm) MarshalJSON() ([]byte, error) {
+	toSerialize, err := o.ToMap()
+	if err != nil {
+		return []byte{}, err
+	}
+	return json.Marshal(toSerialize)
+}
+
 func (o CagInfoUdm) ToMap() (map[string]any, error) {
 	toSerialize := map[string]any{}
 	toSerialize["allowedCagList"] = o.AllowedCagList

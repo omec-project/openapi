@@ -110,6 +110,14 @@ func (o *MbsSession) SetMbsAreaSessions(v map[string]MbsServiceAreaInfo) {
 	o.MbsAreaSessions = &v
 }
 
+func (o MbsSession) MarshalJSON() ([]byte, error) {
+	toSerialize, err := o.ToMap()
+	if err != nil {
+		return []byte{}, err
+	}
+	return json.Marshal(toSerialize)
+}
+
 func (o MbsSession) ToMap() (map[string]any, error) {
 	toSerialize := map[string]any{}
 	toSerialize["mbsSessionId"] = o.MbsSessionId.Get()

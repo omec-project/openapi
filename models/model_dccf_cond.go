@@ -206,6 +206,14 @@ func (o *DccfCond) SetServingNfSetIdList(v []string) {
 	o.ServingNfSetIdList = v
 }
 
+func (o DccfCond) MarshalJSON() ([]byte, error) {
+	toSerialize, err := o.ToMap()
+	if err != nil {
+		return []byte{}, err
+	}
+	return json.Marshal(toSerialize)
+}
+
 func (o DccfCond) ToMap() (map[string]any, error) {
 	toSerialize := map[string]any{}
 	toSerialize["conditionType"] = o.ConditionType

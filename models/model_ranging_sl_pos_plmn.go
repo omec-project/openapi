@@ -107,6 +107,14 @@ func (o *RangingSlPosPlmn) SetRangingSlPosAllowed(v []RangingSlPosAllowed) {
 	o.RangingSlPosAllowed = v
 }
 
+func (o RangingSlPosPlmn) MarshalJSON() ([]byte, error) {
+	toSerialize, err := o.ToMap()
+	if err != nil {
+		return []byte{}, err
+	}
+	return json.Marshal(toSerialize)
+}
+
 func (o RangingSlPosPlmn) ToMap() (map[string]any, error) {
 	toSerialize := map[string]any{}
 	toSerialize["rangingSlPosPlmn"] = o.RangingSlPosPlmn

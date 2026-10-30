@@ -243,6 +243,14 @@ func (o *AlternativeQosProfile) SetMaxDataBurstVol(v int32) {
 	o.MaxDataBurstVol = &v
 }
 
+func (o AlternativeQosProfile) MarshalJSON() ([]byte, error) {
+	toSerialize, err := o.ToMap()
+	if err != nil {
+		return []byte{}, err
+	}
+	return json.Marshal(toSerialize)
+}
+
 func (o AlternativeQosProfile) ToMap() (map[string]any, error) {
 	toSerialize := map[string]any{}
 	toSerialize["index"] = o.Index

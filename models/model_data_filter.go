@@ -439,6 +439,14 @@ func (o *DataFilter) SetDnais(v []string) {
 	o.Dnais = v
 }
 
+func (o DataFilter) MarshalJSON() ([]byte, error) {
+	toSerialize, err := o.ToMap()
+	if err != nil {
+		return []byte{}, err
+	}
+	return json.Marshal(toSerialize)
+}
+
 func (o DataFilter) ToMap() (map[string]any, error) {
 	toSerialize := map[string]any{}
 	toSerialize["dataInd"] = o.DataInd

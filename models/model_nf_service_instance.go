@@ -149,6 +149,14 @@ func (o *NfServiceInstance) SetNfServiceSetId(v string) {
 	o.NfServiceSetId = &v
 }
 
+func (o NfServiceInstance) MarshalJSON() ([]byte, error) {
+	toSerialize, err := o.ToMap()
+	if err != nil {
+		return []byte{}, err
+	}
+	return json.Marshal(toSerialize)
+}
+
 func (o NfServiceInstance) ToMap() (map[string]any, error) {
 	toSerialize := map[string]any{}
 	if !openapi.IsNil(o.ServiceInstanceId) {

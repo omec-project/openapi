@@ -347,6 +347,14 @@ func (o *MediaStreamingAccessRequestMessage) SetReferer(v string) {
 	o.Referer = &v
 }
 
+func (o MediaStreamingAccessRequestMessage) MarshalJSON() ([]byte, error) {
+	toSerialize, err := o.ToMap()
+	if err != nil {
+		return []byte{}, err
+	}
+	return json.Marshal(toSerialize)
+}
+
 func (o MediaStreamingAccessRequestMessage) ToMap() (map[string]any, error) {
 	toSerialize := map[string]any{}
 	toSerialize["method"] = o.Method

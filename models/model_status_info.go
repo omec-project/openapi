@@ -206,6 +206,14 @@ func (o *StatusInfo) SetAnType(v AccessType) {
 	o.AnType = &v
 }
 
+func (o StatusInfo) MarshalJSON() ([]byte, error) {
+	toSerialize, err := o.ToMap()
+	if err != nil {
+		return []byte{}, err
+	}
+	return json.Marshal(toSerialize)
+}
+
 func (o StatusInfo) ToMap() (map[string]any, error) {
 	toSerialize := map[string]any{}
 	toSerialize["resourceStatus"] = o.ResourceStatus

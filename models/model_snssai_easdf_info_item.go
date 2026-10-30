@@ -100,6 +100,14 @@ func (o *SnssaiEasdfInfoItem) SetDnnEasdfInfoList(v []DnnEasdfInfoItem) {
 	o.DnnEasdfInfoList = v
 }
 
+func (o SnssaiEasdfInfoItem) MarshalJSON() ([]byte, error) {
+	toSerialize, err := o.ToMap()
+	if err != nil {
+		return []byte{}, err
+	}
+	return json.Marshal(toSerialize)
+}
+
 func (o SnssaiEasdfInfoItem) ToMap() (map[string]any, error) {
 	toSerialize := map[string]any{}
 	toSerialize["sNssai"] = o.SNssai

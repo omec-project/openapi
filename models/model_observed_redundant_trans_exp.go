@@ -592,6 +592,14 @@ func (o *ObservedRedundantTransExp) SetVarE2ePktLossRateDl(v float32) {
 	o.VarE2ePktLossRateDl = &v
 }
 
+func (o ObservedRedundantTransExp) MarshalJSON() ([]byte, error) {
+	toSerialize, err := o.ToMap()
+	if err != nil {
+		return []byte{}, err
+	}
+	return json.Marshal(toSerialize)
+}
+
 func (o ObservedRedundantTransExp) ToMap() (map[string]any, error) {
 	toSerialize := map[string]any{}
 	if !openapi.IsNil(o.AvgPktDropRateUl) {

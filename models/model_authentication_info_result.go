@@ -352,6 +352,14 @@ func (o *AuthenticationInfoResult) SetMskInd(v bool) {
 	o.MskInd = &v
 }
 
+func (o AuthenticationInfoResult) MarshalJSON() ([]byte, error) {
+	toSerialize, err := o.ToMap()
+	if err != nil {
+		return []byte{}, err
+	}
+	return json.Marshal(toSerialize)
+}
+
 func (o AuthenticationInfoResult) ToMap() (map[string]any, error) {
 	toSerialize := map[string]any{}
 	toSerialize["authType"] = o.AuthType

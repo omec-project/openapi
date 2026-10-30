@@ -74,6 +74,14 @@ func (o *PWSErrorData) SetNamfCause(v int32) {
 	o.NamfCause = v
 }
 
+func (o PWSErrorData) MarshalJSON() ([]byte, error) {
+	toSerialize, err := o.ToMap()
+	if err != nil {
+		return []byte{}, err
+	}
+	return json.Marshal(toSerialize)
+}
+
 func (o PWSErrorData) ToMap() (map[string]any, error) {
 	toSerialize := map[string]any{}
 	toSerialize["namfCause"] = o.NamfCause

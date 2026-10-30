@@ -100,6 +100,14 @@ func (o *PartiallyAllowedSnssai) SetAllowedTaiList(v []Tai) {
 	o.AllowedTaiList = v
 }
 
+func (o PartiallyAllowedSnssai) MarshalJSON() ([]byte, error) {
+	toSerialize, err := o.ToMap()
+	if err != nil {
+		return []byte{}, err
+	}
+	return json.Marshal(toSerialize)
+}
+
 func (o PartiallyAllowedSnssai) ToMap() (map[string]any, error) {
 	toSerialize := map[string]any{}
 	toSerialize["snssai"] = o.Snssai

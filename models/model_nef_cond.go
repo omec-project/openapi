@@ -272,6 +272,14 @@ func (o *NefCond) SetServedFqdnList(v []string) {
 	o.ServedFqdnList = v
 }
 
+func (o NefCond) MarshalJSON() ([]byte, error) {
+	toSerialize, err := o.ToMap()
+	if err != nil {
+		return []byte{}, err
+	}
+	return json.Marshal(toSerialize)
+}
+
 func (o NefCond) ToMap() (map[string]any, error) {
 	toSerialize := map[string]any{}
 	toSerialize["conditionType"] = o.ConditionType

@@ -102,6 +102,14 @@ func (o *TimestampedLocation) SetLocInfo(v []LocationInfo) {
 	o.LocInfo = v
 }
 
+func (o TimestampedLocation) MarshalJSON() ([]byte, error) {
+	toSerialize, err := o.ToMap()
+	if err != nil {
+		return []byte{}, err
+	}
+	return json.Marshal(toSerialize)
+}
+
 func (o TimestampedLocation) ToMap() (map[string]any, error) {
 	toSerialize := map[string]any{}
 	toSerialize["ts"] = o.Ts

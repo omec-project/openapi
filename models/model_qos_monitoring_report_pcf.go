@@ -348,6 +348,14 @@ func (o *QosMonitoringReportPcf) SetDlDataRate(v string) {
 	o.DlDataRate = &v
 }
 
+func (o QosMonitoringReportPcf) MarshalJSON() ([]byte, error) {
+	toSerialize, err := o.ToMap()
+	if err != nil {
+		return []byte{}, err
+	}
+	return json.Marshal(toSerialize)
+}
+
 func (o QosMonitoringReportPcf) ToMap() (map[string]any, error) {
 	toSerialize := map[string]any{}
 	if !openapi.IsNil(o.Flows) {

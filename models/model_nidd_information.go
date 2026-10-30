@@ -142,6 +142,14 @@ func (o *NiddInformation) SetExtGroupId(v string) {
 	o.ExtGroupId = &v
 }
 
+func (o NiddInformation) MarshalJSON() ([]byte, error) {
+	toSerialize, err := o.ToMap()
+	if err != nil {
+		return []byte{}, err
+	}
+	return json.Marshal(toSerialize)
+}
+
 func (o NiddInformation) ToMap() (map[string]any, error) {
 	toSerialize := map[string]any{}
 	toSerialize["afId"] = o.AfId

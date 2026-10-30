@@ -277,6 +277,14 @@ func (o *Nssai) SetNssaiValidityTimeInfo(v map[string]time.Time) {
 	o.NssaiValidityTimeInfo = &v
 }
 
+func (o Nssai) MarshalJSON() ([]byte, error) {
+	toSerialize, err := o.ToMap()
+	if err != nil {
+		return []byte{}, err
+	}
+	return json.Marshal(toSerialize)
+}
+
 func (o Nssai) ToMap() (map[string]any, error) {
 	toSerialize := map[string]any{}
 	if !openapi.IsNil(o.SupportedFeatures) {

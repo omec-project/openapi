@@ -102,6 +102,14 @@ func (o *Ambr) SetDownlink(v string) {
 	o.Downlink = v
 }
 
+func (o Ambr) MarshalJSON() ([]byte, error) {
+	toSerialize, err := o.ToMap()
+	if err != nil {
+		return []byte{}, err
+	}
+	return json.Marshal(toSerialize)
+}
+
 func (o Ambr) ToMap() (map[string]any, error) {
 	toSerialize := map[string]any{}
 	toSerialize["uplink"] = o.Uplink

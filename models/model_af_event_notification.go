@@ -141,6 +141,14 @@ func (o *AfEventNotification) SetRetryAfter(v int32) {
 	o.RetryAfter = &v
 }
 
+func (o AfEventNotification) MarshalJSON() ([]byte, error) {
+	toSerialize, err := o.ToMap()
+	if err != nil {
+		return []byte{}, err
+	}
+	return json.Marshal(toSerialize)
+}
+
 func (o AfEventNotification) ToMap() (map[string]any, error) {
 	toSerialize := map[string]any{}
 	toSerialize["event"] = o.Event

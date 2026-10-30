@@ -108,6 +108,14 @@ func (o *UeN1N2InfoSubscriptionCreatedData) SetSupportedFeatures(v string) {
 	o.SupportedFeatures = &v
 }
 
+func (o UeN1N2InfoSubscriptionCreatedData) MarshalJSON() ([]byte, error) {
+	toSerialize, err := o.ToMap()
+	if err != nil {
+		return []byte{}, err
+	}
+	return json.Marshal(toSerialize)
+}
+
 func (o UeN1N2InfoSubscriptionCreatedData) ToMap() (map[string]any, error) {
 	toSerialize := map[string]any{}
 	toSerialize["n1n2NotifySubscriptionId"] = o.N1n2NotifySubscriptionId

@@ -109,6 +109,14 @@ func (o *MbsAssistanceInfo) SetAssistanceInfo(v []string) {
 	o.AssistanceInfo = v
 }
 
+func (o MbsAssistanceInfo) MarshalJSON() ([]byte, error) {
+	toSerialize, err := o.ToMap()
+	if err != nil {
+		return []byte{}, err
+	}
+	return json.Marshal(toSerialize)
+}
+
 func (o MbsAssistanceInfo) ToMap() (map[string]any, error) {
 	toSerialize := map[string]any{}
 	toSerialize["mbsSessionId"] = o.MbsSessionId.Get()

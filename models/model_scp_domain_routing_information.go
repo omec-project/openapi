@@ -75,6 +75,14 @@ func (o *ScpDomainRoutingInformation) SetScpDomainList(v map[string]ScpDomainCon
 	o.ScpDomainList = v
 }
 
+func (o ScpDomainRoutingInformation) MarshalJSON() ([]byte, error) {
+	toSerialize, err := o.ToMap()
+	if err != nil {
+		return []byte{}, err
+	}
+	return json.Marshal(toSerialize)
+}
+
 func (o ScpDomainRoutingInformation) ToMap() (map[string]any, error) {
 	toSerialize := map[string]any{}
 	toSerialize["scpDomainList"] = o.ScpDomainList

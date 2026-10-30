@@ -149,6 +149,14 @@ func (o *RedirectResponse) SetTargetSepp(v string) {
 	o.TargetSepp = &v
 }
 
+func (o RedirectResponse) MarshalJSON() ([]byte, error) {
+	toSerialize, err := o.ToMap()
+	if err != nil {
+		return []byte{}, err
+	}
+	return json.Marshal(toSerialize)
+}
+
 func (o RedirectResponse) ToMap() (map[string]any, error) {
 	toSerialize := map[string]any{}
 	if !openapi.IsNil(o.Cause) {

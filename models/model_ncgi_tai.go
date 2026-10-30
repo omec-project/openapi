@@ -101,6 +101,14 @@ func (o *NcgiTai) SetCellList(v []Ncgi) {
 	o.CellList = v
 }
 
+func (o NcgiTai) MarshalJSON() ([]byte, error) {
+	toSerialize, err := o.ToMap()
+	if err != nil {
+		return []byte{}, err
+	}
+	return json.Marshal(toSerialize)
+}
+
 func (o NcgiTai) ToMap() (map[string]any, error) {
 	toSerialize := map[string]any{}
 	toSerialize["tai"] = o.Tai

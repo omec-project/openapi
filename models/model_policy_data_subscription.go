@@ -403,6 +403,14 @@ func (o *PolicyDataSubscription) SetSubsId(v string) {
 	o.SubsId = &v
 }
 
+func (o PolicyDataSubscription) MarshalJSON() ([]byte, error) {
+	toSerialize, err := o.ToMap()
+	if err != nil {
+		return []byte{}, err
+	}
+	return json.Marshal(toSerialize)
+}
+
 func (o PolicyDataSubscription) ToMap() (map[string]any, error) {
 	toSerialize := map[string]any{}
 	toSerialize["notificationUri"] = o.NotificationUri

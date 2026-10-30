@@ -821,6 +821,14 @@ func (o *ExtAmfEventSubscription) SetAccessToken(v string) {
 	o.AccessToken = &v
 }
 
+func (o ExtAmfEventSubscription) MarshalJSON() ([]byte, error) {
+	toSerialize, err := o.ToMap()
+	if err != nil {
+		return []byte{}, err
+	}
+	return json.Marshal(toSerialize)
+}
+
 func (o ExtAmfEventSubscription) ToMap() (map[string]any, error) {
 	toSerialize := map[string]any{}
 	toSerialize["eventList"] = o.EventList

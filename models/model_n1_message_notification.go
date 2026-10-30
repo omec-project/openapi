@@ -444,6 +444,14 @@ func (o *N1MessageNotification) SetPruInd(v PruInd) {
 	o.PruInd = &v
 }
 
+func (o N1MessageNotification) MarshalJSON() ([]byte, error) {
+	toSerialize, err := o.ToMap()
+	if err != nil {
+		return []byte{}, err
+	}
+	return json.Marshal(toSerialize)
+}
+
 func (o N1MessageNotification) ToMap() (map[string]any, error) {
 	toSerialize := map[string]any{}
 	if !openapi.IsNil(o.N1NotifySubscriptionId) {

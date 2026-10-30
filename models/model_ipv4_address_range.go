@@ -102,6 +102,14 @@ func (o *Ipv4AddressRange) SetEnd(v string) {
 	o.End = v
 }
 
+func (o Ipv4AddressRange) MarshalJSON() ([]byte, error) {
+	toSerialize, err := o.ToMap()
+	if err != nil {
+		return []byte{}, err
+	}
+	return json.Marshal(toSerialize)
+}
+
 func (o Ipv4AddressRange) ToMap() (map[string]any, error) {
 	toSerialize := map[string]any{}
 	toSerialize["start"] = o.Start

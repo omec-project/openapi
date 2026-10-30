@@ -148,6 +148,14 @@ func (o *TrafficDescriptor) SetDddTrafficDescriptorList(v []DddTrafficDescriptor
 	o.DddTrafficDescriptorList = v
 }
 
+func (o TrafficDescriptor) MarshalJSON() ([]byte, error) {
+	toSerialize, err := o.ToMap()
+	if err != nil {
+		return []byte{}, err
+	}
+	return json.Marshal(toSerialize)
+}
+
 func (o TrafficDescriptor) ToMap() (map[string]any, error) {
 	toSerialize := map[string]any{}
 	if !openapi.IsNil(o.Dnn) {

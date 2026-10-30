@@ -108,6 +108,14 @@ func (o *CandidateForReplacement) SetDnns(v []string) {
 	o.Dnns = v
 }
 
+func (o CandidateForReplacement) MarshalJSON() ([]byte, error) {
+	toSerialize, err := o.ToMap()
+	if err != nil {
+		return []byte{}, err
+	}
+	return json.Marshal(toSerialize)
+}
+
 func (o CandidateForReplacement) ToMap() (map[string]any, error) {
 	toSerialize := map[string]any{}
 	toSerialize["snssai"] = o.Snssai

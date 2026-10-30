@@ -509,6 +509,14 @@ func (o *NFProfileRegistrationError) SetSharedDataIds(v []string) {
 	o.SharedDataIds = v
 }
 
+func (o NFProfileRegistrationError) MarshalJSON() ([]byte, error) {
+	toSerialize, err := o.ToMap()
+	if err != nil {
+		return []byte{}, err
+	}
+	return json.Marshal(toSerialize)
+}
+
 func (o NFProfileRegistrationError) ToMap() (map[string]any, error) {
 	toSerialize := map[string]any{}
 	if !openapi.IsNil(o.Type) {

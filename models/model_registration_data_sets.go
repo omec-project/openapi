@@ -290,6 +290,14 @@ func (o *RegistrationDataSets) SetNwdafRegistration(v NwdafRegistrationInfo) {
 	o.NwdafRegistration = &v
 }
 
+func (o RegistrationDataSets) MarshalJSON() ([]byte, error) {
+	toSerialize, err := o.ToMap()
+	if err != nil {
+		return []byte{}, err
+	}
+	return json.Marshal(toSerialize)
+}
+
 func (o RegistrationDataSets) ToMap() (map[string]any, error) {
 	toSerialize := map[string]any{}
 	if !openapi.IsNil(o.Amf3Gpp) {
