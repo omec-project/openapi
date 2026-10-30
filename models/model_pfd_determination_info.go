@@ -168,6 +168,14 @@ func (o *PfdDeterminationInfo) SetSuggPfdInfoList(v []SuggestedPfdInfo) {
 	o.SuggPfdInfoList = v
 }
 
+func (o PfdDeterminationInfo) MarshalJSON() ([]byte, error) {
+	toSerialize, err := o.ToMap()
+	if err != nil {
+		return []byte{}, err
+	}
+	return json.Marshal(toSerialize)
+}
+
 func (o PfdDeterminationInfo) ToMap() (map[string]any, error) {
 	toSerialize := map[string]any{}
 	toSerialize["appId"] = o.AppId

@@ -148,6 +148,14 @@ func (o *PcscfAddress) SetFqdn(v string) {
 	o.Fqdn = &v
 }
 
+func (o PcscfAddress) MarshalJSON() ([]byte, error) {
+	toSerialize, err := o.ToMap()
+	if err != nil {
+		return []byte{}, err
+	}
+	return json.Marshal(toSerialize)
+}
+
 func (o PcscfAddress) ToMap() (map[string]any, error) {
 	toSerialize := map[string]any{}
 	if !openapi.IsNil(o.Ipv4Addrs) {

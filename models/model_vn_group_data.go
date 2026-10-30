@@ -358,6 +358,14 @@ func (o *VnGroupData) SetDnAaaFqdn(v string) {
 	o.DnAaaFqdn = &v
 }
 
+func (o VnGroupData) MarshalJSON() ([]byte, error) {
+	toSerialize, err := o.ToMap()
+	if err != nil {
+		return []byte{}, err
+	}
+	return json.Marshal(toSerialize)
+}
+
 func (o VnGroupData) ToMap() (map[string]any, error) {
 	toSerialize := map[string]any{}
 	if !openapi.IsNil(o.PduSessionTypes) {

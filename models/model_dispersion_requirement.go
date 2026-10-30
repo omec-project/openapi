@@ -206,6 +206,14 @@ func (o *DispersionRequirement) SetOrder(v MatchingDirection) {
 	o.Order = &v
 }
 
+func (o DispersionRequirement) MarshalJSON() ([]byte, error) {
+	toSerialize, err := o.ToMap()
+	if err != nil {
+		return []byte{}, err
+	}
+	return json.Marshal(toSerialize)
+}
+
 func (o DispersionRequirement) ToMap() (map[string]any, error) {
 	toSerialize := map[string]any{}
 	toSerialize["disperType"] = o.DisperType

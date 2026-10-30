@@ -114,6 +114,14 @@ func (o *GNSSServArea) SetTaiList(v []Tai) {
 	o.TaiList = v
 }
 
+func (o GNSSServArea) MarshalJSON() ([]byte, error) {
+	toSerialize, err := o.ToMap()
+	if err != nil {
+		return []byte{}, err
+	}
+	return json.Marshal(toSerialize)
+}
+
 func (o GNSSServArea) ToMap() (map[string]any, error) {
 	toSerialize := map[string]any{}
 	if !openapi.IsNil(o.GeographicalArea) {

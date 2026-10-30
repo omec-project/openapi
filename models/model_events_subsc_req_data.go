@@ -543,6 +543,14 @@ func (o *EventsSubscReqData) SetAvrgWndw(v int32) {
 	o.AvrgWndw = &v
 }
 
+func (o EventsSubscReqData) MarshalJSON() ([]byte, error) {
+	toSerialize, err := o.ToMap()
+	if err != nil {
+		return []byte{}, err
+	}
+	return json.Marshal(toSerialize)
+}
+
 func (o EventsSubscReqData) ToMap() (map[string]any, error) {
 	toSerialize := map[string]any{}
 	toSerialize["events"] = o.Events

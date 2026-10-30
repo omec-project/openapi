@@ -371,6 +371,14 @@ func (o *N2InfoContainer) SetA2xInfo(v A2xInformation) {
 	o.A2xInfo = &v
 }
 
+func (o N2InfoContainer) MarshalJSON() ([]byte, error) {
+	toSerialize, err := o.ToMap()
+	if err != nil {
+		return []byte{}, err
+	}
+	return json.Marshal(toSerialize)
+}
+
 func (o N2InfoContainer) ToMap() (map[string]any, error) {
 	toSerialize := map[string]any{}
 	toSerialize["n2InformationClass"] = o.N2InformationClass

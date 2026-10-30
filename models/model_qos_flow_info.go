@@ -210,6 +210,14 @@ func (o *QosFlowInfo) SetDlDataSize(v int32) {
 	o.DlDataSize = &v
 }
 
+func (o QosFlowInfo) MarshalJSON() ([]byte, error) {
+	toSerialize, err := o.ToMap()
+	if err != nil {
+		return []byte{}, err
+	}
+	return json.Marshal(toSerialize)
+}
+
 func (o QosFlowInfo) ToMap() (map[string]any, error) {
 	toSerialize := map[string]any{}
 	toSerialize["qfi"] = o.Qfi

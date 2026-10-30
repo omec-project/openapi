@@ -101,6 +101,14 @@ func (o *NwdafSubscription) SetNwdafEventsSubscription(v NnwdafEventsSubscriptio
 	o.NwdafEventsSubscription = v
 }
 
+func (o NwdafSubscription) MarshalJSON() ([]byte, error) {
+	toSerialize, err := o.ToMap()
+	if err != nil {
+		return []byte{}, err
+	}
+	return json.Marshal(toSerialize)
+}
+
 func (o NwdafSubscription) ToMap() (map[string]any, error) {
 	toSerialize := map[string]any{}
 	toSerialize["nwdafEvtSubsServiceUri"] = o.NwdafEvtSubsServiceUri

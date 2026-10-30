@@ -114,6 +114,14 @@ func (o *ConditionGroup) SetOr(v []SelectionConditions) {
 	o.Or = v
 }
 
+func (o ConditionGroup) MarshalJSON() ([]byte, error) {
+	toSerialize, err := o.ToMap()
+	if err != nil {
+		return []byte{}, err
+	}
+	return json.Marshal(toSerialize)
+}
+
 func (o ConditionGroup) ToMap() (map[string]any, error) {
 	toSerialize := map[string]any{}
 	if !openapi.IsNil(o.And) {

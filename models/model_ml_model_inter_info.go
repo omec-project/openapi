@@ -81,6 +81,14 @@ func (o *MlModelInterInfo) SetVendorList(v []string) {
 	o.VendorList = v
 }
 
+func (o MlModelInterInfo) MarshalJSON() ([]byte, error) {
+	toSerialize, err := o.ToMap()
+	if err != nil {
+		return []byte{}, err
+	}
+	return json.Marshal(toSerialize)
+}
+
 func (o MlModelInterInfo) ToMap() (map[string]any, error) {
 	toSerialize := map[string]any{}
 	if !openapi.IsNil(o.VendorList) {

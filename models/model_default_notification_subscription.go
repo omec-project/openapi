@@ -401,6 +401,14 @@ func (o *DefaultNotificationSubscription) SetCallbackUriPrefix(v string) {
 	o.CallbackUriPrefix = &v
 }
 
+func (o DefaultNotificationSubscription) MarshalJSON() ([]byte, error) {
+	toSerialize, err := o.ToMap()
+	if err != nil {
+		return []byte{}, err
+	}
+	return json.Marshal(toSerialize)
+}
+
 func (o DefaultNotificationSubscription) ToMap() (map[string]any, error) {
 	toSerialize := map[string]any{}
 	toSerialize["notificationType"] = o.NotificationType

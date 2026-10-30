@@ -155,6 +155,14 @@ func (o *UeInAreaFilter) SetUeIdOmitInd(v bool) {
 	o.UeIdOmitInd = &v
 }
 
+func (o UeInAreaFilter) MarshalJSON() ([]byte, error) {
+	toSerialize, err := o.ToMap()
+	if err != nil {
+		return []byte{}, err
+	}
+	return json.Marshal(toSerialize)
+}
+
 func (o UeInAreaFilter) ToMap() (map[string]any, error) {
 	toSerialize := map[string]any{}
 	if !openapi.IsNil(o.UeType) {

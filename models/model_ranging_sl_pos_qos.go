@@ -351,6 +351,14 @@ func (o *RangingSlPosQos) SetLcsQosClass(v LcsQosClass) {
 	o.LcsQosClass = &v
 }
 
+func (o RangingSlPosQos) MarshalJSON() ([]byte, error) {
+	toSerialize, err := o.ToMap()
+	if err != nil {
+		return []byte{}, err
+	}
+	return json.Marshal(toSerialize)
+}
+
 func (o RangingSlPosQos) ToMap() (map[string]any, error) {
 	toSerialize := map[string]any{}
 	if !openapi.IsNil(o.HAccuracy) {

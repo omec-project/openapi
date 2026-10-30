@@ -84,6 +84,14 @@ func (o *Polygon) SetPointList(v []GeographicalCoordinates) {
 	o.PointList = v
 }
 
+func (o Polygon) MarshalJSON() ([]byte, error) {
+	toSerialize, err := o.ToMap()
+	if err != nil {
+		return []byte{}, err
+	}
+	return json.Marshal(toSerialize)
+}
+
 func (o Polygon) ToMap() (map[string]any, error) {
 	toSerialize := map[string]any{}
 	serializedGADShape, errGADShape := json.Marshal(o.GADShape)

@@ -101,6 +101,14 @@ func (o *RelatedUE) SetRelatedUEType(v RelatedUEType) {
 	o.RelatedUEType = v
 }
 
+func (o RelatedUE) MarshalJSON() ([]byte, error) {
+	toSerialize, err := o.ToMap()
+	if err != nil {
+		return []byte{}, err
+	}
+	return json.Marshal(toSerialize)
+}
+
 func (o RelatedUE) ToMap() (map[string]any, error) {
 	toSerialize := map[string]any{}
 	toSerialize["applicationlayerId"] = o.ApplicationlayerId

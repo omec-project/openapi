@@ -133,6 +133,14 @@ func (o *SliceInfoForPDUSession) SetHomeSnssai(v Snssai) {
 	o.HomeSnssai = &v
 }
 
+func (o SliceInfoForPDUSession) MarshalJSON() ([]byte, error) {
+	toSerialize, err := o.ToMap()
+	if err != nil {
+		return []byte{}, err
+	}
+	return json.Marshal(toSerialize)
+}
+
 func (o SliceInfoForPDUSession) ToMap() (map[string]any, error) {
 	toSerialize := map[string]any{}
 	toSerialize["sNssai"] = o.SNssai

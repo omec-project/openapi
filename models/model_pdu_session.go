@@ -161,6 +161,14 @@ func (o *PduSession) SetSingleNssai(v Snssai) {
 	o.SingleNssai = &v
 }
 
+func (o PduSession) MarshalJSON() ([]byte, error) {
+	toSerialize, err := o.ToMap()
+	if err != nil {
+		return []byte{}, err
+	}
+	return json.Marshal(toSerialize)
+}
+
 func (o PduSession) ToMap() (map[string]any, error) {
 	toSerialize := map[string]any{}
 	toSerialize["dnn"] = o.Dnn

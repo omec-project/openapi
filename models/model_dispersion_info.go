@@ -155,6 +155,14 @@ func (o *DispersionInfo) SetDisperType(v DispersionType) {
 	o.DisperType = v
 }
 
+func (o DispersionInfo) MarshalJSON() ([]byte, error) {
+	toSerialize, err := o.ToMap()
+	if err != nil {
+		return []byte{}, err
+	}
+	return json.Marshal(toSerialize)
+}
+
 func (o DispersionInfo) ToMap() (map[string]any, error) {
 	toSerialize := map[string]any{}
 	toSerialize["tsStart"] = o.TsStart

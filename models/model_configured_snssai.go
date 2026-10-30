@@ -107,6 +107,14 @@ func (o *ConfiguredSnssai) SetMappedHomeSnssai(v Snssai) {
 	o.MappedHomeSnssai = &v
 }
 
+func (o ConfiguredSnssai) MarshalJSON() ([]byte, error) {
+	toSerialize, err := o.ToMap()
+	if err != nil {
+		return []byte{}, err
+	}
+	return json.Marshal(toSerialize)
+}
+
 func (o ConfiguredSnssai) ToMap() (map[string]any, error) {
 	toSerialize := map[string]any{}
 	toSerialize["configuredSnssai"] = o.ConfiguredSnssai

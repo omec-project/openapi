@@ -232,6 +232,14 @@ func (o *AuthorizedNssaiAvailabilityData) SetNsagInfos(v []NsagInfo) {
 	o.NsagInfos = v
 }
 
+func (o AuthorizedNssaiAvailabilityData) MarshalJSON() ([]byte, error) {
+	toSerialize, err := o.ToMap()
+	if err != nil {
+		return []byte{}, err
+	}
+	return json.Marshal(toSerialize)
+}
+
 func (o AuthorizedNssaiAvailabilityData) ToMap() (map[string]any, error) {
 	toSerialize := map[string]any{}
 	toSerialize["tai"] = o.Tai

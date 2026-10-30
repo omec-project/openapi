@@ -82,6 +82,14 @@ func (o *IptvConfigDataPatch) SetMultiAccCtrls(v map[string]MulticastAccessContr
 	o.MultiAccCtrls = &v
 }
 
+func (o IptvConfigDataPatch) MarshalJSON() ([]byte, error) {
+	toSerialize, err := o.ToMap()
+	if err != nil {
+		return []byte{}, err
+	}
+	return json.Marshal(toSerialize)
+}
+
 func (o IptvConfigDataPatch) ToMap() (map[string]any, error) {
 	toSerialize := map[string]any{}
 	if !openapi.IsNil(o.MultiAccCtrls) {

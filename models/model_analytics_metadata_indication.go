@@ -180,6 +180,14 @@ func (o *AnalyticsMetadataIndication) SetAggrNwdafIds(v []string) {
 	o.AggrNwdafIds = v
 }
 
+func (o AnalyticsMetadataIndication) MarshalJSON() ([]byte, error) {
+	toSerialize, err := o.ToMap()
+	if err != nil {
+		return []byte{}, err
+	}
+	return json.Marshal(toSerialize)
+}
+
 func (o AnalyticsMetadataIndication) ToMap() (map[string]any, error) {
 	toSerialize := map[string]any{}
 	if !openapi.IsNil(o.DataWindow) {

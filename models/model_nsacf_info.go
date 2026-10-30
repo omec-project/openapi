@@ -214,6 +214,14 @@ func (o *NsacfInfo) SetNsacSaiList(v []string) {
 	o.NsacSaiList = v
 }
 
+func (o NsacfInfo) MarshalJSON() ([]byte, error) {
+	toSerialize, err := o.ToMap()
+	if err != nil {
+		return []byte{}, err
+	}
+	return json.Marshal(toSerialize)
+}
+
 func (o NsacfInfo) ToMap() (map[string]any, error) {
 	toSerialize := map[string]any{}
 	toSerialize["nsacfCapability"] = o.NsacfCapability

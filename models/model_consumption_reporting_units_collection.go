@@ -237,6 +237,14 @@ func (o *ConsumptionReportingUnitsCollection) SetRecords(v []ConsumptionReportin
 	o.Records = v
 }
 
+func (o ConsumptionReportingUnitsCollection) MarshalJSON() ([]byte, error) {
+	toSerialize, err := o.ToMap()
+	if err != nil {
+		return []byte{}, err
+	}
+	return json.Marshal(toSerialize)
+}
+
 func (o ConsumptionReportingUnitsCollection) ToMap() (map[string]any, error) {
 	toSerialize := map[string]any{}
 	toSerialize["collectionTimestamp"] = o.CollectionTimestamp

@@ -184,6 +184,14 @@ func (o *PdvMonitoringReport) SetRtPdv(v int32) {
 	o.RtPdv = &v
 }
 
+func (o PdvMonitoringReport) MarshalJSON() ([]byte, error) {
+	toSerialize, err := o.ToMap()
+	if err != nil {
+		return []byte{}, err
+	}
+	return json.Marshal(toSerialize)
+}
+
 func (o PdvMonitoringReport) ToMap() (map[string]any, error) {
 	toSerialize := map[string]any{}
 	if !openapi.IsNil(o.Flows) {

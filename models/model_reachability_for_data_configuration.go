@@ -108,6 +108,14 @@ func (o *ReachabilityForDataConfiguration) SetMinInterval(v int32) {
 	o.MinInterval = &v
 }
 
+func (o ReachabilityForDataConfiguration) MarshalJSON() ([]byte, error) {
+	toSerialize, err := o.ToMap()
+	if err != nil {
+		return []byte{}, err
+	}
+	return json.Marshal(toSerialize)
+}
+
 func (o ReachabilityForDataConfiguration) ToMap() (map[string]any, error) {
 	toSerialize := map[string]any{}
 	toSerialize["reportCfg"] = o.ReportCfg

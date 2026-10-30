@@ -148,6 +148,14 @@ func (o *N2InfoNotifyRequest) SetBinaryDataN2Information(v *os.File) {
 	o.BinaryDataN2Information = &v
 }
 
+func (o N2InfoNotifyRequest) MarshalJSON() ([]byte, error) {
+	toSerialize, err := o.ToMap()
+	if err != nil {
+		return []byte{}, err
+	}
+	return json.Marshal(toSerialize)
+}
+
 func (o N2InfoNotifyRequest) ToMap() (map[string]any, error) {
 	toSerialize := map[string]any{}
 	if !openapi.IsNil(o.JsonData) {

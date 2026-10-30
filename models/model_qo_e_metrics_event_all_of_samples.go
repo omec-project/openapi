@@ -178,6 +178,14 @@ func (o *QoEMetricsEventAllOfSamples) SetMetrics(v []QoEMetricsEventAllOfMetrics
 	o.Metrics = v
 }
 
+func (o QoEMetricsEventAllOfSamples) MarshalJSON() ([]byte, error) {
+	toSerialize, err := o.ToMap()
+	if err != nil {
+		return []byte{}, err
+	}
+	return json.Marshal(toSerialize)
+}
+
 func (o QoEMetricsEventAllOfSamples) ToMap() (map[string]any, error) {
 	toSerialize := map[string]any{}
 	if !openapi.IsNil(o.SampleTimestamp) {

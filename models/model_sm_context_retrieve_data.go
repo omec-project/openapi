@@ -287,6 +287,14 @@ func (o *SmContextRetrieveData) SetStoredOffloadIds(v []string) {
 	o.StoredOffloadIds = v
 }
 
+func (o SmContextRetrieveData) MarshalJSON() ([]byte, error) {
+	toSerialize, err := o.ToMap()
+	if err != nil {
+		return []byte{}, err
+	}
+	return json.Marshal(toSerialize)
+}
+
 func (o SmContextRetrieveData) ToMap() (map[string]any, error) {
 	toSerialize := map[string]any{}
 	if !openapi.IsNil(o.TargetMmeCap) {

@@ -163,6 +163,14 @@ func (o *RouteToLocation) UnsetRouteProfId() {
 	o.RouteProfId.Unset()
 }
 
+func (o RouteToLocation) MarshalJSON() ([]byte, error) {
+	toSerialize, err := o.ToMap()
+	if err != nil {
+		return []byte{}, err
+	}
+	return json.Marshal(toSerialize)
+}
+
 func (o RouteToLocation) ToMap() (map[string]any, error) {
 	toSerialize := map[string]any{}
 	toSerialize["dnai"] = o.Dnai

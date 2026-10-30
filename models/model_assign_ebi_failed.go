@@ -108,6 +108,14 @@ func (o *AssignEbiFailed) SetFailedArpList(v []Arp) {
 	o.FailedArpList = v
 }
 
+func (o AssignEbiFailed) MarshalJSON() ([]byte, error) {
+	toSerialize, err := o.ToMap()
+	if err != nil {
+		return []byte{}, err
+	}
+	return json.Marshal(toSerialize)
+}
+
 func (o AssignEbiFailed) ToMap() (map[string]any, error) {
 	toSerialize := map[string]any{}
 	toSerialize["pduSessionId"] = o.PduSessionId

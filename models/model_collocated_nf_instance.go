@@ -101,6 +101,14 @@ func (o *CollocatedNfInstance) SetNfType(v CollocatedNfType) {
 	o.NfType = v
 }
 
+func (o CollocatedNfInstance) MarshalJSON() ([]byte, error) {
+	toSerialize, err := o.ToMap()
+	if err != nil {
+		return []byte{}, err
+	}
+	return json.Marshal(toSerialize)
+}
+
 func (o CollocatedNfInstance) ToMap() (map[string]any, error) {
 	toSerialize := map[string]any{}
 	toSerialize["nfInstanceId"] = o.NfInstanceId

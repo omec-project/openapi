@@ -151,6 +151,14 @@ func (o *MbsrOperationAllowed) SetMbsrTimeInfo(v MbsrTimeInfo) {
 	o.MbsrTimeInfo = &v
 }
 
+func (o MbsrOperationAllowed) MarshalJSON() ([]byte, error) {
+	toSerialize, err := o.ToMap()
+	if err != nil {
+		return []byte{}, err
+	}
+	return json.Marshal(toSerialize)
+}
+
 func (o MbsrOperationAllowed) ToMap() (map[string]any, error) {
 	toSerialize := map[string]any{}
 	if !openapi.IsNil(o.MbsrOperationAllowedInd) {

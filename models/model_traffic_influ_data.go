@@ -1218,6 +1218,14 @@ func (o *TrafficInfluData) SetNscSuppFeats(v map[string]string) {
 	o.NscSuppFeats = &v
 }
 
+func (o TrafficInfluData) MarshalJSON() ([]byte, error) {
+	toSerialize, err := o.ToMap()
+	if err != nil {
+		return []byte{}, err
+	}
+	return json.Marshal(toSerialize)
+}
+
 func (o TrafficInfluData) ToMap() (map[string]any, error) {
 	toSerialize := map[string]any{}
 	if !openapi.IsNil(o.UpPathChgNotifCorreId) {

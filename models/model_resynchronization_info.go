@@ -100,6 +100,14 @@ func (o *ResynchronizationInfo) SetAuts(v string) {
 	o.Auts = v
 }
 
+func (o ResynchronizationInfo) MarshalJSON() ([]byte, error) {
+	toSerialize, err := o.ToMap()
+	if err != nil {
+		return []byte{}, err
+	}
+	return json.Marshal(toSerialize)
+}
+
 func (o ResynchronizationInfo) ToMap() (map[string]any, error) {
 	toSerialize := map[string]any{}
 	toSerialize["rand"] = o.Rand

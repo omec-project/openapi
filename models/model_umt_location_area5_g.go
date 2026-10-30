@@ -217,6 +217,14 @@ func (o *UmtLocationArea5G) SetUmtDuration(v int32) {
 	o.UmtDuration = &v
 }
 
+func (o UmtLocationArea5G) MarshalJSON() ([]byte, error) {
+	toSerialize, err := o.ToMap()
+	if err != nil {
+		return []byte{}, err
+	}
+	return json.Marshal(toSerialize)
+}
+
 func (o UmtLocationArea5G) ToMap() (map[string]any, error) {
 	toSerialize := map[string]any{}
 	if !openapi.IsNil(o.GeographicAreas) {

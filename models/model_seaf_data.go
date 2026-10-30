@@ -232,6 +232,14 @@ func (o *SeafData) SetKeyAmfHDerivationInd(v bool) {
 	o.KeyAmfHDerivationInd = &v
 }
 
+func (o SeafData) MarshalJSON() ([]byte, error) {
+	toSerialize, err := o.ToMap()
+	if err != nil {
+		return []byte{}, err
+	}
+	return json.Marshal(toSerialize)
+}
+
 func (o SeafData) ToMap() (map[string]any, error) {
 	toSerialize := map[string]any{}
 	toSerialize["ngKsi"] = o.NgKsi

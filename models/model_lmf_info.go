@@ -458,6 +458,14 @@ func (o *LmfInfo) SetUpPositioningInd(v bool) {
 	o.UpPositioningInd = &v
 }
 
+func (o LmfInfo) MarshalJSON() ([]byte, error) {
+	toSerialize, err := o.ToMap()
+	if err != nil {
+		return []byte{}, err
+	}
+	return json.Marshal(toSerialize)
+}
+
 func (o LmfInfo) ToMap() (map[string]any, error) {
 	toSerialize := map[string]any{}
 	if !openapi.IsNil(o.ServingClientTypes) {

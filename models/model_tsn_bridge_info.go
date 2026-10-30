@@ -252,6 +252,14 @@ func (o *TsnBridgeInfo) SetMtuIpv6(v int32) {
 	o.MtuIpv6 = &v
 }
 
+func (o TsnBridgeInfo) MarshalJSON() ([]byte, error) {
+	toSerialize, err := o.ToMap()
+	if err != nil {
+		return []byte{}, err
+	}
+	return json.Marshal(toSerialize)
+}
+
 func (o TsnBridgeInfo) ToMap() (map[string]any, error) {
 	toSerialize := map[string]any{}
 	if !openapi.IsNil(o.BridgeId) {

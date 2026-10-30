@@ -109,6 +109,14 @@ func (o *BackupAmfInfo) SetGuamiList(v []Guami) {
 	o.GuamiList = v
 }
 
+func (o BackupAmfInfo) MarshalJSON() ([]byte, error) {
+	toSerialize, err := o.ToMap()
+	if err != nil {
+		return []byte{}, err
+	}
+	return json.Marshal(toSerialize)
+}
+
 func (o BackupAmfInfo) ToMap() (map[string]any, error) {
 	toSerialize := map[string]any{}
 	toSerialize["backupAmf"] = o.BackupAmf

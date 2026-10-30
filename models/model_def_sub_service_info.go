@@ -115,6 +115,14 @@ func (o *DefSubServiceInfo) SetSupportedFeatures(v string) {
 	o.SupportedFeatures = &v
 }
 
+func (o DefSubServiceInfo) MarshalJSON() ([]byte, error) {
+	toSerialize, err := o.ToMap()
+	if err != nil {
+		return []byte{}, err
+	}
+	return json.Marshal(toSerialize)
+}
+
 func (o DefSubServiceInfo) ToMap() (map[string]any, error) {
 	toSerialize := map[string]any{}
 	if !openapi.IsNil(o.Versions) {

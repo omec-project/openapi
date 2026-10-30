@@ -114,6 +114,14 @@ func (o *LteV2xAuth) SetPedestrianUeAuth(v UeAuth) {
 	o.PedestrianUeAuth = &v
 }
 
+func (o LteV2xAuth) MarshalJSON() ([]byte, error) {
+	toSerialize, err := o.ToMap()
+	if err != nil {
+		return []byte{}, err
+	}
+	return json.Marshal(toSerialize)
+}
+
 func (o LteV2xAuth) ToMap() (map[string]any, error) {
 	toSerialize := map[string]any{}
 	if !openapi.IsNil(o.VehicleUeAuth) {

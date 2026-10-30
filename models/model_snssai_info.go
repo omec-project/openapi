@@ -74,6 +74,14 @@ func (o *SnssaiInfo) SetDnnInfos(v []DnnInfo) {
 	o.DnnInfos = v
 }
 
+func (o SnssaiInfo) MarshalJSON() ([]byte, error) {
+	toSerialize, err := o.ToMap()
+	if err != nil {
+		return []byte{}, err
+	}
+	return json.Marshal(toSerialize)
+}
+
 func (o SnssaiInfo) ToMap() (map[string]any, error) {
 	toSerialize := map[string]any{}
 	toSerialize["dnnInfos"] = o.DnnInfos

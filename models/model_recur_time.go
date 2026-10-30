@@ -247,6 +247,14 @@ func (o *RecurTime) SetRecurDate(v []time.Time) {
 	o.RecurDate = v
 }
 
+func (o RecurTime) MarshalJSON() ([]byte, error) {
+	toSerialize, err := o.ToMap()
+	if err != nil {
+		return []byte{}, err
+	}
+	return json.Marshal(toSerialize)
+}
+
 func (o RecurTime) ToMap() (map[string]any, error) {
 	toSerialize := map[string]any{}
 	if !openapi.IsNil(o.RecurTimeWindow) {

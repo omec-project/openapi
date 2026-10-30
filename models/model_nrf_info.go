@@ -1407,6 +1407,14 @@ func (o *NrfInfo) SetServedNssaafInfo(v map[string]NssaafInfo) {
 	o.ServedNssaafInfo = &v
 }
 
+func (o NrfInfo) MarshalJSON() ([]byte, error) {
+	toSerialize, err := o.ToMap()
+	if err != nil {
+		return []byte{}, err
+	}
+	return json.Marshal(toSerialize)
+}
+
 func (o NrfInfo) ToMap() (map[string]any, error) {
 	toSerialize := map[string]any{}
 	if !openapi.IsNil(o.ServedUdrInfo) {

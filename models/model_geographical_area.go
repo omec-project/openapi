@@ -114,6 +114,14 @@ func (o *GeographicalArea) SetShapes(v GeographicArea) {
 	o.Shapes = &v
 }
 
+func (o GeographicalArea) MarshalJSON() ([]byte, error) {
+	toSerialize, err := o.ToMap()
+	if err != nil {
+		return []byte{}, err
+	}
+	return json.Marshal(toSerialize)
+}
+
 func (o GeographicalArea) ToMap() (map[string]any, error) {
 	toSerialize := map[string]any{}
 	if !openapi.IsNil(o.CivicAddress) {

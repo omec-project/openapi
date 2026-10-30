@@ -107,6 +107,14 @@ func (o *SteeringInfo) SetAccessTechList(v []AccessTech) {
 	o.AccessTechList = v
 }
 
+func (o SteeringInfo) MarshalJSON() ([]byte, error) {
+	toSerialize, err := o.ToMap()
+	if err != nil {
+		return []byte{}, err
+	}
+	return json.Marshal(toSerialize)
+}
+
 func (o SteeringInfo) ToMap() (map[string]any, error) {
 	toSerialize := map[string]any{}
 	toSerialize["plmnId"] = o.PlmnId

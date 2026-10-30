@@ -114,6 +114,14 @@ func (o *UeContextInSmsfData) SetSmsfInfoNon3GppAccess(v SmsfInfoUdm) {
 	o.SmsfInfoNon3GppAccess = &v
 }
 
+func (o UeContextInSmsfData) MarshalJSON() ([]byte, error) {
+	toSerialize, err := o.ToMap()
+	if err != nil {
+		return []byte{}, err
+	}
+	return json.Marshal(toSerialize)
+}
+
 func (o UeContextInSmsfData) ToMap() (map[string]any, error) {
 	toSerialize := map[string]any{}
 	if !openapi.IsNil(o.SmsfInfo3GppAccess) {

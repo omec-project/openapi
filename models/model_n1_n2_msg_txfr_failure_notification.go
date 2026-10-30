@@ -135,6 +135,14 @@ func (o *N1N2MsgTxfrFailureNotification) SetRetryAfter(v int32) {
 	o.RetryAfter = &v
 }
 
+func (o N1N2MsgTxfrFailureNotification) MarshalJSON() ([]byte, error) {
+	toSerialize, err := o.ToMap()
+	if err != nil {
+		return []byte{}, err
+	}
+	return json.Marshal(toSerialize)
+}
+
 func (o N1N2MsgTxfrFailureNotification) ToMap() (map[string]any, error) {
 	toSerialize := map[string]any{}
 	toSerialize["cause"] = o.Cause

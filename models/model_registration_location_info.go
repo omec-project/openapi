@@ -200,6 +200,14 @@ func (o *RegistrationLocationInfo) SetAccessTypeList(v []AccessType) {
 	o.AccessTypeList = v
 }
 
+func (o RegistrationLocationInfo) MarshalJSON() ([]byte, error) {
+	toSerialize, err := o.ToMap()
+	if err != nil {
+		return []byte{}, err
+	}
+	return json.Marshal(toSerialize)
+}
+
 func (o RegistrationLocationInfo) ToMap() (map[string]any, error) {
 	toSerialize := map[string]any{}
 	toSerialize["amfInstanceId"] = o.AmfInstanceId

@@ -101,6 +101,14 @@ func (o *NotifyItem) SetChanges(v []ChangeItem) {
 	o.Changes = v
 }
 
+func (o NotifyItem) MarshalJSON() ([]byte, error) {
+	toSerialize, err := o.ToMap()
+	if err != nil {
+		return []byte{}, err
+	}
+	return json.Marshal(toSerialize)
+}
+
 func (o NotifyItem) ToMap() (map[string]any, error) {
 	toSerialize := map[string]any{}
 	toSerialize["resourceId"] = o.ResourceId

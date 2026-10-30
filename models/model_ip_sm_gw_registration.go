@@ -354,6 +354,14 @@ func (o *IpSmGwRegistration) SetIpSmGwSbiSupInd(v bool) {
 	o.IpSmGwSbiSupInd = &v
 }
 
+func (o IpSmGwRegistration) MarshalJSON() ([]byte, error) {
+	toSerialize, err := o.ToMap()
+	if err != nil {
+		return []byte{}, err
+	}
+	return json.Marshal(toSerialize)
+}
+
 func (o IpSmGwRegistration) ToMap() (map[string]any, error) {
 	toSerialize := map[string]any{}
 	if !openapi.IsNil(o.IpSmGwMapAddress) {

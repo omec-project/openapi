@@ -150,6 +150,14 @@ func (o *ResourceUsage) SetStorageUsage(v int32) {
 	o.StorageUsage = &v
 }
 
+func (o ResourceUsage) MarshalJSON() ([]byte, error) {
+	toSerialize, err := o.ToMap()
+	if err != nil {
+		return []byte{}, err
+	}
+	return json.Marshal(toSerialize)
+}
+
 func (o ResourceUsage) ToMap() (map[string]any, error) {
 	toSerialize := map[string]any{}
 	if !openapi.IsNil(o.CpuUsage) {

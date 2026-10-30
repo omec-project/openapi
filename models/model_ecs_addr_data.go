@@ -243,6 +243,14 @@ func (o *EcsAddrData) SetSuppFeat(v string) {
 	o.SuppFeat = &v
 }
 
+func (o EcsAddrData) MarshalJSON() ([]byte, error) {
+	toSerialize, err := o.ToMap()
+	if err != nil {
+		return []byte{}, err
+	}
+	return json.Marshal(toSerialize)
+}
+
 func (o EcsAddrData) ToMap() (map[string]any, error) {
 	toSerialize := map[string]any{}
 	if !openapi.IsNil(o.Self) {

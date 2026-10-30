@@ -108,6 +108,14 @@ func (o *NfIdentifier) SetNfInstanceId(v string) {
 	o.NfInstanceId = &v
 }
 
+func (o NfIdentifier) MarshalJSON() ([]byte, error) {
+	toSerialize, err := o.ToMap()
+	if err != nil {
+		return []byte{}, err
+	}
+	return json.Marshal(toSerialize)
+}
+
 func (o NfIdentifier) ToMap() (map[string]any, error) {
 	toSerialize := map[string]any{}
 	toSerialize["nfType"] = o.NfType

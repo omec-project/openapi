@@ -387,6 +387,14 @@ func (o *QosFlowAddModifyRequestItem) SetTscaiDl(v TscAssistanceInformation) {
 	o.TscaiDl = &v
 }
 
+func (o QosFlowAddModifyRequestItem) MarshalJSON() ([]byte, error) {
+	toSerialize, err := o.ToMap()
+	if err != nil {
+		return []byte{}, err
+	}
+	return json.Marshal(toSerialize)
+}
+
 func (o QosFlowAddModifyRequestItem) ToMap() (map[string]any, error) {
 	toSerialize := map[string]any{}
 	toSerialize["qfi"] = o.Qfi

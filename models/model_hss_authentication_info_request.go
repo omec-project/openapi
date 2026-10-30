@@ -266,6 +266,14 @@ func (o *HssAuthenticationInfoRequest) SetAnId(v AccessNetworkId) {
 	o.AnId = &v
 }
 
+func (o HssAuthenticationInfoRequest) MarshalJSON() ([]byte, error) {
+	toSerialize, err := o.ToMap()
+	if err != nil {
+		return []byte{}, err
+	}
+	return json.Marshal(toSerialize)
+}
+
 func (o HssAuthenticationInfoRequest) ToMap() (map[string]any, error) {
 	toSerialize := map[string]any{}
 	if !openapi.IsNil(o.SupportedFeatures) {

@@ -138,6 +138,14 @@ func (o *ThresholdValue) UnsetPlrThres() {
 	o.PlrThres.Unset()
 }
 
+func (o ThresholdValue) MarshalJSON() ([]byte, error) {
+	toSerialize, err := o.ToMap()
+	if err != nil {
+		return []byte{}, err
+	}
+	return json.Marshal(toSerialize)
+}
+
 func (o ThresholdValue) ToMap() (map[string]any, error) {
 	toSerialize := map[string]any{}
 	if o.RttThres.IsSet() {

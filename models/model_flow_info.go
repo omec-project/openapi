@@ -143,6 +143,14 @@ func (o *FlowInfo) SetTosTC(v string) {
 	o.TosTC = &v
 }
 
+func (o FlowInfo) MarshalJSON() ([]byte, error) {
+	toSerialize, err := o.ToMap()
+	if err != nil {
+		return []byte{}, err
+	}
+	return json.Marshal(toSerialize)
+}
+
 func (o FlowInfo) ToMap() (map[string]any, error) {
 	toSerialize := map[string]any{}
 	toSerialize["flowId"] = o.FlowId

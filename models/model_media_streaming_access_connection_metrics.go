@@ -129,6 +129,14 @@ func (o *MediaStreamingAccessConnectionMetrics) SetCongestionWindowSize(v int32)
 	o.CongestionWindowSize = v
 }
 
+func (o MediaStreamingAccessConnectionMetrics) MarshalJSON() ([]byte, error) {
+	toSerialize, err := o.ToMap()
+	if err != nil {
+		return []byte{}, err
+	}
+	return json.Marshal(toSerialize)
+}
+
 func (o MediaStreamingAccessConnectionMetrics) ToMap() (map[string]any, error) {
 	toSerialize := map[string]any{}
 	toSerialize["meanNetworkRoundTripTime"] = o.MeanNetworkRoundTripTime

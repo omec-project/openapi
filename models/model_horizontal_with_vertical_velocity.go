@@ -155,6 +155,14 @@ func (o *HorizontalWithVerticalVelocity) SetVDirection(v VerticalDirection) {
 	o.VDirection = v
 }
 
+func (o HorizontalWithVerticalVelocity) MarshalJSON() ([]byte, error) {
+	toSerialize, err := o.ToMap()
+	if err != nil {
+		return []byte{}, err
+	}
+	return json.Marshal(toSerialize)
+}
+
 func (o HorizontalWithVerticalVelocity) ToMap() (map[string]any, error) {
 	toSerialize := map[string]any{}
 	toSerialize["hSpeed"] = o.HSpeed

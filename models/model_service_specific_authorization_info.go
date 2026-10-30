@@ -74,6 +74,14 @@ func (o *ServiceSpecificAuthorizationInfo) SetServiceSpecificAuthorizationList(v
 	o.ServiceSpecificAuthorizationList = v
 }
 
+func (o ServiceSpecificAuthorizationInfo) MarshalJSON() ([]byte, error) {
+	toSerialize, err := o.ToMap()
+	if err != nil {
+		return []byte{}, err
+	}
+	return json.Marshal(toSerialize)
+}
+
 func (o ServiceSpecificAuthorizationInfo) ToMap() (map[string]any, error) {
 	toSerialize := map[string]any{}
 	toSerialize["serviceSpecificAuthorizationList"] = o.ServiceSpecificAuthorizationList

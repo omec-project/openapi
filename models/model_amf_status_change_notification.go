@@ -74,6 +74,14 @@ func (o *AmfStatusChangeNotification) SetAmfStatusInfoList(v []AmfStatusInfo) {
 	o.AmfStatusInfoList = v
 }
 
+func (o AmfStatusChangeNotification) MarshalJSON() ([]byte, error) {
+	toSerialize, err := o.ToMap()
+	if err != nil {
+		return []byte{}, err
+	}
+	return json.Marshal(toSerialize)
+}
+
 func (o AmfStatusChangeNotification) ToMap() (map[string]any, error) {
 	toSerialize := map[string]any{}
 	toSerialize["amfStatusInfoList"] = o.AmfStatusInfoList

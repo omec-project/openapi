@@ -101,6 +101,14 @@ func (o *EbiArpMapping) SetArp(v Arp) {
 	o.Arp = v
 }
 
+func (o EbiArpMapping) MarshalJSON() ([]byte, error) {
+	toSerialize, err := o.ToMap()
+	if err != nil {
+		return []byte{}, err
+	}
+	return json.Marshal(toSerialize)
+}
+
 func (o EbiArpMapping) ToMap() (map[string]any, error) {
 	toSerialize := map[string]any{}
 	toSerialize["epsBearerId"] = o.EpsBearerId

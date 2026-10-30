@@ -74,6 +74,14 @@ func (o *SmfRegistrationInfo) SetSmfRegistrationList(v []SmfRegistration) {
 	o.SmfRegistrationList = v
 }
 
+func (o SmfRegistrationInfo) MarshalJSON() ([]byte, error) {
+	toSerialize, err := o.ToMap()
+	if err != nil {
+		return []byte{}, err
+	}
+	return json.Marshal(toSerialize)
+}
+
 func (o SmfRegistrationInfo) ToMap() (map[string]any, error) {
 	toSerialize := map[string]any{}
 	toSerialize["smfRegistrationList"] = o.SmfRegistrationList

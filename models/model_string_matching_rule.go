@@ -81,6 +81,14 @@ func (o *StringMatchingRule) SetStringMatchingConditions(v []StringMatchingCondi
 	o.StringMatchingConditions = v
 }
 
+func (o StringMatchingRule) MarshalJSON() ([]byte, error) {
+	toSerialize, err := o.ToMap()
+	if err != nil {
+		return []byte{}, err
+	}
+	return json.Marshal(toSerialize)
+}
+
 func (o StringMatchingRule) ToMap() (map[string]any, error) {
 	toSerialize := map[string]any{}
 	if !openapi.IsNil(o.StringMatchingConditions) {

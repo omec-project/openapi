@@ -168,6 +168,14 @@ func (o *AmfCreatedEventSubscription) SetSupportedFeatures(v string) {
 	o.SupportedFeatures = &v
 }
 
+func (o AmfCreatedEventSubscription) MarshalJSON() ([]byte, error) {
+	toSerialize, err := o.ToMap()
+	if err != nil {
+		return []byte{}, err
+	}
+	return json.Marshal(toSerialize)
+}
+
 func (o AmfCreatedEventSubscription) ToMap() (map[string]any, error) {
 	toSerialize := map[string]any{}
 	toSerialize["subscription"] = o.Subscription

@@ -209,6 +209,14 @@ func (o *IdTranslationResult) SetAdditionalGpsis(v []string) {
 	o.AdditionalGpsis = v
 }
 
+func (o IdTranslationResult) MarshalJSON() ([]byte, error) {
+	toSerialize, err := o.ToMap()
+	if err != nil {
+		return []byte{}, err
+	}
+	return json.Marshal(toSerialize)
+}
+
 func (o IdTranslationResult) ToMap() (map[string]any, error) {
 	toSerialize := map[string]any{}
 	if !openapi.IsNil(o.SupportedFeatures) {

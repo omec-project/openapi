@@ -406,6 +406,14 @@ func (o *SorInfo) SetUsimSupportOfSorCmci(v bool) {
 	o.UsimSupportOfSorCmci = &v
 }
 
+func (o SorInfo) MarshalJSON() ([]byte, error) {
+	toSerialize, err := o.ToMap()
+	if err != nil {
+		return []byte{}, err
+	}
+	return json.Marshal(toSerialize)
+}
+
 func (o SorInfo) ToMap() (map[string]any, error) {
 	toSerialize := map[string]any{}
 	if !openapi.IsNil(o.SteeringContainer) {

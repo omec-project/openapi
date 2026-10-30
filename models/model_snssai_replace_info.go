@@ -239,6 +239,14 @@ func (o *SnssaiReplaceInfo) SetMitigationInfo(v MitigationInfo) {
 	o.MitigationInfo = &v
 }
 
+func (o SnssaiReplaceInfo) MarshalJSON() ([]byte, error) {
+	toSerialize, err := o.ToMap()
+	if err != nil {
+		return []byte{}, err
+	}
+	return json.Marshal(toSerialize)
+}
+
 func (o SnssaiReplaceInfo) ToMap() (map[string]any, error) {
 	toSerialize := map[string]any{}
 	toSerialize["snssai"] = o.Snssai

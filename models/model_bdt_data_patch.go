@@ -148,6 +148,14 @@ func (o *BdtDataPatch) SetWarnNotifEnabled(v bool) {
 	o.WarnNotifEnabled = &v
 }
 
+func (o BdtDataPatch) MarshalJSON() ([]byte, error) {
+	toSerialize, err := o.ToMap()
+	if err != nil {
+		return []byte{}, err
+	}
+	return json.Marshal(toSerialize)
+}
+
 func (o BdtDataPatch) ToMap() (map[string]any, error) {
 	toSerialize := map[string]any{}
 	if !openapi.IsNil(o.TransPolicy) {

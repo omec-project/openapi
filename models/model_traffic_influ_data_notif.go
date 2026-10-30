@@ -108,6 +108,14 @@ func (o *TrafficInfluDataNotif) SetTrafficInfluData(v TrafficInfluData) {
 	o.TrafficInfluData = &v
 }
 
+func (o TrafficInfluDataNotif) MarshalJSON() ([]byte, error) {
+	toSerialize, err := o.ToMap()
+	if err != nil {
+		return []byte{}, err
+	}
+	return json.Marshal(toSerialize)
+}
+
 func (o TrafficInfluDataNotif) ToMap() (map[string]any, error) {
 	toSerialize := map[string]any{}
 	toSerialize["resUri"] = o.ResUri

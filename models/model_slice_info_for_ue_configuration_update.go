@@ -386,6 +386,14 @@ func (o *SliceInfoForUEConfigurationUpdate) SetNsagSupported(v bool) {
 	o.NsagSupported = &v
 }
 
+func (o SliceInfoForUEConfigurationUpdate) MarshalJSON() ([]byte, error) {
+	toSerialize, err := o.ToMap()
+	if err != nil {
+		return []byte{}, err
+	}
+	return json.Marshal(toSerialize)
+}
+
 func (o SliceInfoForUEConfigurationUpdate) ToMap() (map[string]any, error) {
 	toSerialize := map[string]any{}
 	if !openapi.IsNil(o.SubscribedNssai) {

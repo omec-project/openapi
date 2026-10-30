@@ -442,6 +442,14 @@ func (o *NfLoadLevelInformation) SetConfidence(v int32) {
 	o.Confidence = &v
 }
 
+func (o NfLoadLevelInformation) MarshalJSON() ([]byte, error) {
+	toSerialize, err := o.ToMap()
+	if err != nil {
+		return []byte{}, err
+	}
+	return json.Marshal(toSerialize)
+}
+
 func (o NfLoadLevelInformation) ToMap() (map[string]any, error) {
 	toSerialize := map[string]any{}
 	toSerialize["nfType"] = o.NfType

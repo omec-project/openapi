@@ -276,6 +276,14 @@ func (o *UsageMonData) SetResetIds(v []string) {
 	o.ResetIds = v
 }
 
+func (o UsageMonData) MarshalJSON() ([]byte, error) {
+	toSerialize, err := o.ToMap()
+	if err != nil {
+		return []byte{}, err
+	}
+	return json.Marshal(toSerialize)
+}
+
 func (o UsageMonData) ToMap() (map[string]any, error) {
 	toSerialize := map[string]any{}
 	toSerialize["limitId"] = o.LimitId

@@ -1368,6 +1368,14 @@ func (o *PduSessionContext) SetHrsboAllowedInd(v bool) {
 	o.HrsboAllowedInd = &v
 }
 
+func (o PduSessionContext) MarshalJSON() ([]byte, error) {
+	toSerialize, err := o.ToMap()
+	if err != nil {
+		return []byte{}, err
+	}
+	return json.Marshal(toSerialize)
+}
+
 func (o PduSessionContext) ToMap() (map[string]any, error) {
 	toSerialize := map[string]any{}
 	toSerialize["pduSessionId"] = o.PduSessionId

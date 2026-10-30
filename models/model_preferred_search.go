@@ -468,6 +468,14 @@ func (o *PreferredSearch) SetNoPreferredFeaturesInd(v bool) {
 	o.NoPreferredFeaturesInd = &v
 }
 
+func (o PreferredSearch) MarshalJSON() ([]byte, error) {
+	toSerialize, err := o.ToMap()
+	if err != nil {
+		return []byte{}, err
+	}
+	return json.Marshal(toSerialize)
+}
+
 func (o PreferredSearch) ToMap() (map[string]any, error) {
 	toSerialize := map[string]any{}
 	if !openapi.IsNil(o.PreferredTaiMatchInd) {

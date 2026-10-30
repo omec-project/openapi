@@ -76,6 +76,14 @@ func (o *BaseRecord) SetTimestamp(v time.Time) {
 	o.Timestamp = v
 }
 
+func (o BaseRecord) MarshalJSON() ([]byte, error) {
+	toSerialize, err := o.ToMap()
+	if err != nil {
+		return []byte{}, err
+	}
+	return json.Marshal(toSerialize)
+}
+
 func (o BaseRecord) ToMap() (map[string]any, error) {
 	toSerialize := map[string]any{}
 	toSerialize["timestamp"] = o.Timestamp

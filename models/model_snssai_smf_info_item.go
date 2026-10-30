@@ -139,6 +139,14 @@ func (o *SnssaiSmfInfoItem) SetDnnSmfInfoListId(v int32) {
 	o.DnnSmfInfoListId = &v
 }
 
+func (o SnssaiSmfInfoItem) MarshalJSON() ([]byte, error) {
+	toSerialize, err := o.ToMap()
+	if err != nil {
+		return []byte{}, err
+	}
+	return json.Marshal(toSerialize)
+}
+
 func (o SnssaiSmfInfoItem) ToMap() (map[string]any, error) {
 	toSerialize := map[string]any{}
 	toSerialize["sNssai"] = o.SNssai

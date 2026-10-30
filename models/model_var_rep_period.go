@@ -109,6 +109,14 @@ func (o *VarRepPeriod) SetPercValueNfLoad(v int32) {
 	o.PercValueNfLoad = &v
 }
 
+func (o VarRepPeriod) MarshalJSON() ([]byte, error) {
+	toSerialize, err := o.ToMap()
+	if err != nil {
+		return []byte{}, err
+	}
+	return json.Marshal(toSerialize)
+}
+
 func (o VarRepPeriod) ToMap() (map[string]any, error) {
 	toSerialize := map[string]any{}
 	toSerialize["repPeriod"] = o.RepPeriod

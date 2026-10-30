@@ -160,6 +160,14 @@ func (o *TmgiRange) SetNid(v string) {
 	o.Nid = &v
 }
 
+func (o TmgiRange) MarshalJSON() ([]byte, error) {
+	toSerialize, err := o.ToMap()
+	if err != nil {
+		return []byte{}, err
+	}
+	return json.Marshal(toSerialize)
+}
+
 func (o TmgiRange) ToMap() (map[string]any, error) {
 	toSerialize := map[string]any{}
 	toSerialize["mbsServiceIdStart"] = o.MbsServiceIdStart

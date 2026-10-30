@@ -107,6 +107,14 @@ func (o *LadnInfo) SetPresence(v PresenceState) {
 	o.Presence = &v
 }
 
+func (o LadnInfo) MarshalJSON() ([]byte, error) {
+	toSerialize, err := o.ToMap()
+	if err != nil {
+		return []byte{}, err
+	}
+	return json.Marshal(toSerialize)
+}
+
 func (o LadnInfo) ToMap() (map[string]any, error) {
 	toSerialize := map[string]any{}
 	toSerialize["ladn"] = o.Ladn

@@ -490,6 +490,14 @@ func (o *NefInfo) SetMemberUESelAssistInd(v bool) {
 	o.MemberUESelAssistInd = &v
 }
 
+func (o NefInfo) MarshalJSON() ([]byte, error) {
+	toSerialize, err := o.ToMap()
+	if err != nil {
+		return []byte{}, err
+	}
+	return json.Marshal(toSerialize)
+}
+
 func (o NefInfo) ToMap() (map[string]any, error) {
 	toSerialize := map[string]any{}
 	if !openapi.IsNil(o.NefId) {

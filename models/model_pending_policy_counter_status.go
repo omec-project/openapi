@@ -103,6 +103,14 @@ func (o *PendingPolicyCounterStatus) SetActivationTime(v time.Time) {
 	o.ActivationTime = v
 }
 
+func (o PendingPolicyCounterStatus) MarshalJSON() ([]byte, error) {
+	toSerialize, err := o.ToMap()
+	if err != nil {
+		return []byte{}, err
+	}
+	return json.Marshal(toSerialize)
+}
+
 func (o PendingPolicyCounterStatus) ToMap() (map[string]any, error) {
 	toSerialize := map[string]any{}
 	toSerialize["policyCounterStatus"] = o.PolicyCounterStatus

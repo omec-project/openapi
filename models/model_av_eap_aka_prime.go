@@ -204,6 +204,14 @@ func (o *AvEapAkaPrime) SetIkPrime(v string) {
 	o.IkPrime = v
 }
 
+func (o AvEapAkaPrime) MarshalJSON() ([]byte, error) {
+	toSerialize, err := o.ToMap()
+	if err != nil {
+		return []byte{}, err
+	}
+	return json.Marshal(toSerialize)
+}
+
 func (o AvEapAkaPrime) ToMap() (map[string]any, error) {
 	toSerialize := map[string]any{}
 	toSerialize["avType"] = o.AvType

@@ -135,6 +135,14 @@ func (o *EventsSubs) SetEventRepInfo(v ReportingInformation) {
 	o.EventRepInfo = &v
 }
 
+func (o EventsSubs) MarshalJSON() ([]byte, error) {
+	toSerialize, err := o.ToMap()
+	if err != nil {
+		return []byte{}, err
+	}
+	return json.Marshal(toSerialize)
+}
+
 func (o EventsSubs) ToMap() (map[string]any, error) {
 	toSerialize := map[string]any{}
 	toSerialize["event"] = o.Event

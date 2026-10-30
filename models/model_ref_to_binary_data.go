@@ -75,6 +75,14 @@ func (o *RefToBinaryData) SetContentId(v string) {
 	o.ContentId = v
 }
 
+func (o RefToBinaryData) MarshalJSON() ([]byte, error) {
+	toSerialize, err := o.ToMap()
+	if err != nil {
+		return []byte{}, err
+	}
+	return json.Marshal(toSerialize)
+}
+
 func (o RefToBinaryData) ToMap() (map[string]any, error) {
 	toSerialize := map[string]any{}
 	toSerialize["contentId"] = o.ContentId

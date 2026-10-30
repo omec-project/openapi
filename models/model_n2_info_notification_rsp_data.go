@@ -81,6 +81,14 @@ func (o *N2InfoNotificationRspData) SetSecRatDataUsageList(v []N2SmInformation) 
 	o.SecRatDataUsageList = v
 }
 
+func (o N2InfoNotificationRspData) MarshalJSON() ([]byte, error) {
+	toSerialize, err := o.ToMap()
+	if err != nil {
+		return []byte{}, err
+	}
+	return json.Marshal(toSerialize)
+}
+
 func (o N2InfoNotificationRspData) ToMap() (map[string]any, error) {
 	toSerialize := map[string]any{}
 	if !openapi.IsNil(o.SecRatDataUsageList) {

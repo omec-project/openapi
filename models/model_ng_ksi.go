@@ -100,6 +100,14 @@ func (o *NgKsi) SetKsi(v int32) {
 	o.Ksi = v
 }
 
+func (o NgKsi) MarshalJSON() ([]byte, error) {
+	toSerialize, err := o.ToMap()
+	if err != nil {
+		return []byte{}, err
+	}
+	return json.Marshal(toSerialize)
+}
+
 func (o NgKsi) ToMap() (map[string]any, error) {
 	toSerialize := map[string]any{}
 	toSerialize["tsc"] = o.Tsc

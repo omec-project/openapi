@@ -108,6 +108,14 @@ func (o *NwdafData) SetNwdafEvents(v []NwdafEvent) {
 	o.NwdafEvents = v
 }
 
+func (o NwdafData) MarshalJSON() ([]byte, error) {
+	toSerialize, err := o.ToMap()
+	if err != nil {
+		return []byte{}, err
+	}
+	return json.Marshal(toSerialize)
+}
+
 func (o NwdafData) ToMap() (map[string]any, error) {
 	toSerialize := map[string]any{}
 	toSerialize["nwdafInstanceId"] = o.NwdafInstanceId

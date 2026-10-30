@@ -109,6 +109,14 @@ func (o *SuggestedPacketNumDl) SetValidityTime(v time.Time) {
 	o.ValidityTime = &v
 }
 
+func (o SuggestedPacketNumDl) MarshalJSON() ([]byte, error) {
+	toSerialize, err := o.ToMap()
+	if err != nil {
+		return []byte{}, err
+	}
+	return json.Marshal(toSerialize)
+}
+
 func (o SuggestedPacketNumDl) ToMap() (map[string]any, error) {
 	toSerialize := map[string]any{}
 	toSerialize["suggestedPacketNumDl"] = o.SuggestedPacketNumDl

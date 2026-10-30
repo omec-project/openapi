@@ -177,6 +177,14 @@ func (o *SmPolicyData) SetSuppFeat(v string) {
 	o.SuppFeat = &v
 }
 
+func (o SmPolicyData) MarshalJSON() ([]byte, error) {
+	toSerialize, err := o.ToMap()
+	if err != nil {
+		return []byte{}, err
+	}
+	return json.Marshal(toSerialize)
+}
+
 func (o SmPolicyData) ToMap() (map[string]any, error) {
 	toSerialize := map[string]any{}
 	toSerialize["smPolicySnssaiData"] = o.SmPolicySnssaiData

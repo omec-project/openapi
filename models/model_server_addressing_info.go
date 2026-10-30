@@ -147,6 +147,14 @@ func (o *ServerAddressingInfo) SetFqdnList(v []string) {
 	o.FqdnList = v
 }
 
+func (o ServerAddressingInfo) MarshalJSON() ([]byte, error) {
+	toSerialize, err := o.ToMap()
+	if err != nil {
+		return []byte{}, err
+	}
+	return json.Marshal(toSerialize)
+}
+
 func (o ServerAddressingInfo) ToMap() (map[string]any, error) {
 	toSerialize := map[string]any{}
 	if !openapi.IsNil(o.Ipv4Addresses) {

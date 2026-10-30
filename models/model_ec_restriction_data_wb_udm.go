@@ -114,6 +114,14 @@ func (o *EcRestrictionDataWbUdm) SetEcModeBRestricted(v bool) {
 	o.EcModeBRestricted = &v
 }
 
+func (o EcRestrictionDataWbUdm) MarshalJSON() ([]byte, error) {
+	toSerialize, err := o.ToMap()
+	if err != nil {
+		return []byte{}, err
+	}
+	return json.Marshal(toSerialize)
+}
+
 func (o EcRestrictionDataWbUdm) ToMap() (map[string]any, error) {
 	toSerialize := map[string]any{}
 	if !openapi.IsNil(o.EcModeARestricted) {

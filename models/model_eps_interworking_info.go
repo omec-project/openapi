@@ -117,6 +117,14 @@ func (o *EpsInterworkingInfo) SetRegistrationTime(v time.Time) {
 	o.RegistrationTime = &v
 }
 
+func (o EpsInterworkingInfo) MarshalJSON() ([]byte, error) {
+	toSerialize, err := o.ToMap()
+	if err != nil {
+		return []byte{}, err
+	}
+	return json.Marshal(toSerialize)
+}
+
 func (o EpsInterworkingInfo) ToMap() (map[string]any, error) {
 	toSerialize := map[string]any{}
 	if !openapi.IsNil(o.EpsIwkPgws) {

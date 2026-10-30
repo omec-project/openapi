@@ -184,6 +184,14 @@ func (o *DispersionArea) SetN3gaInd(v bool) {
 	o.N3gaInd = &v
 }
 
+func (o DispersionArea) MarshalJSON() ([]byte, error) {
+	toSerialize, err := o.ToMap()
+	if err != nil {
+		return []byte{}, err
+	}
+	return json.Marshal(toSerialize)
+}
+
 func (o DispersionArea) ToMap() (map[string]any, error) {
 	toSerialize := map[string]any{}
 	if !openapi.IsNil(o.TaiList) {

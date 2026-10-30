@@ -147,6 +147,14 @@ func (o *EasdfInfo) SetUpfN6IpAddressList(v []IpAddr) {
 	o.UpfN6IpAddressList = v
 }
 
+func (o EasdfInfo) MarshalJSON() ([]byte, error) {
+	toSerialize, err := o.ToMap()
+	if err != nil {
+		return []byte{}, err
+	}
+	return json.Marshal(toSerialize)
+}
+
 func (o EasdfInfo) ToMap() (map[string]any, error) {
 	toSerialize := map[string]any{}
 	if !openapi.IsNil(o.SNssaiEasdfInfoList) {

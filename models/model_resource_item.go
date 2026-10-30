@@ -101,6 +101,14 @@ func (o *ResourceItem) SetItems(v []string) {
 	o.Items = v
 }
 
+func (o ResourceItem) MarshalJSON() ([]byte, error) {
+	toSerialize, err := o.ToMap()
+	if err != nil {
+		return []byte{}, err
+	}
+	return json.Marshal(toSerialize)
+}
+
 func (o ResourceItem) ToMap() (map[string]any, error) {
 	toSerialize := map[string]any{}
 	toSerialize["monResourceUri"] = o.MonResourceUri

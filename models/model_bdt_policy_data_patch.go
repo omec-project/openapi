@@ -75,6 +75,14 @@ func (o *BdtPolicyDataPatch) SetSelTransPolicyId(v int32) {
 	o.SelTransPolicyId = v
 }
 
+func (o BdtPolicyDataPatch) MarshalJSON() ([]byte, error) {
+	toSerialize, err := o.ToMap()
+	if err != nil {
+		return []byte{}, err
+	}
+	return json.Marshal(toSerialize)
+}
+
 func (o BdtPolicyDataPatch) ToMap() (map[string]any, error) {
 	toSerialize := map[string]any{}
 	toSerialize["selTransPolicyId"] = o.SelTransPolicyId

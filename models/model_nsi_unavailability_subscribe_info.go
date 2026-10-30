@@ -114,6 +114,14 @@ func (o *NsiUnavailabilitySubscribeInfo) SetSnssaiToSubscribe(v []Snssai) {
 	o.SnssaiToSubscribe = v
 }
 
+func (o NsiUnavailabilitySubscribeInfo) MarshalJSON() ([]byte, error) {
+	toSerialize, err := o.ToMap()
+	if err != nil {
+		return []byte{}, err
+	}
+	return json.Marshal(toSerialize)
+}
+
 func (o NsiUnavailabilitySubscribeInfo) ToMap() (map[string]any, error) {
 	toSerialize := map[string]any{}
 	if !openapi.IsNil(o.NsiToSubscribe) {

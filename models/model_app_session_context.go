@@ -158,6 +158,14 @@ func (o *AppSessionContext) SetEvsNotif(v EventsNotification) {
 	o.EvsNotif = &v
 }
 
+func (o AppSessionContext) MarshalJSON() ([]byte, error) {
+	toSerialize, err := o.ToMap()
+	if err != nil {
+		return []byte{}, err
+	}
+	return json.Marshal(toSerialize)
+}
+
 func (o AppSessionContext) ToMap() (map[string]any, error) {
 	toSerialize := map[string]any{}
 	if o.AscReqData.IsSet() {

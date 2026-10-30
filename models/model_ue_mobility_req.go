@@ -182,6 +182,14 @@ func (o *UeMobilityReq) SetDistThresholds(v []int32) {
 	o.DistThresholds = v
 }
 
+func (o UeMobilityReq) MarshalJSON() ([]byte, error) {
+	toSerialize, err := o.ToMap()
+	if err != nil {
+		return []byte{}, err
+	}
+	return json.Marshal(toSerialize)
+}
+
 func (o UeMobilityReq) ToMap() (map[string]any, error) {
 	toSerialize := map[string]any{}
 	if !openapi.IsNil(o.OrderCriterion) {

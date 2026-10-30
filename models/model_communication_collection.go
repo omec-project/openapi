@@ -157,6 +157,14 @@ func (o *CommunicationCollection) SetDlVol(v int64) {
 	o.DlVol = v
 }
 
+func (o CommunicationCollection) MarshalJSON() ([]byte, error) {
+	toSerialize, err := o.ToMap()
+	if err != nil {
+		return []byte{}, err
+	}
+	return json.Marshal(toSerialize)
+}
+
 func (o CommunicationCollection) ToMap() (map[string]any, error) {
 	toSerialize := map[string]any{}
 	toSerialize["startTime"] = o.StartTime

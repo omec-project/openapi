@@ -150,6 +150,14 @@ func (o *ScheduledCommunicationTimeRm) SetTimeOfDayEnd(v string) {
 	o.TimeOfDayEnd = &v
 }
 
+func (o ScheduledCommunicationTimeRm) MarshalJSON() ([]byte, error) {
+	toSerialize, err := o.ToMap()
+	if err != nil {
+		return []byte{}, err
+	}
+	return json.Marshal(toSerialize)
+}
+
 func (o ScheduledCommunicationTimeRm) ToMap() (map[string]any, error) {
 	toSerialize := map[string]any{}
 	if !openapi.IsNil(o.DaysOfWeek) {

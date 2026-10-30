@@ -275,6 +275,14 @@ func (o *PdnConnectivityStatReport) SetPduSessType(v PduSessionType) {
 	o.PduSessType = &v
 }
 
+func (o PdnConnectivityStatReport) MarshalJSON() ([]byte, error) {
+	toSerialize, err := o.ToMap()
+	if err != nil {
+		return []byte{}, err
+	}
+	return json.Marshal(toSerialize)
+}
+
 func (o PdnConnectivityStatReport) ToMap() (map[string]any, error) {
 	toSerialize := map[string]any{}
 	toSerialize["pdnConnStat"] = o.PdnConnStat

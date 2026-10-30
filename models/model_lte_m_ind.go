@@ -74,6 +74,14 @@ func (o *LteMInd) SetLteCatMInd(v bool) {
 	o.LteCatMInd = v
 }
 
+func (o LteMInd) MarshalJSON() ([]byte, error) {
+	toSerialize, err := o.ToMap()
+	if err != nil {
+		return []byte{}, err
+	}
+	return json.Marshal(toSerialize)
+}
+
 func (o LteMInd) ToMap() (map[string]any, error) {
 	toSerialize := map[string]any{}
 	toSerialize["lteCatMInd"] = o.LteCatMInd

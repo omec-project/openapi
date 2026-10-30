@@ -81,6 +81,14 @@ func (o *NpnAccessInfo) SetCellCagInfo(v []string) {
 	o.CellCagInfo = v
 }
 
+func (o NpnAccessInfo) MarshalJSON() ([]byte, error) {
+	toSerialize, err := o.ToMap()
+	if err != nil {
+		return []byte{}, err
+	}
+	return json.Marshal(toSerialize)
+}
+
 func (o NpnAccessInfo) ToMap() (map[string]any, error) {
 	toSerialize := map[string]any{}
 	if !openapi.IsNil(o.CellCagInfo) {

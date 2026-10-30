@@ -149,6 +149,14 @@ func (o *InternalGroupIdRange) SetPattern(v string) {
 	o.Pattern = &v
 }
 
+func (o InternalGroupIdRange) MarshalJSON() ([]byte, error) {
+	toSerialize, err := o.ToMap()
+	if err != nil {
+		return []byte{}, err
+	}
+	return json.Marshal(toSerialize)
+}
+
 func (o InternalGroupIdRange) ToMap() (map[string]any, error) {
 	toSerialize := map[string]any{}
 	if !openapi.IsNil(o.Start) {

@@ -74,6 +74,14 @@ func (o *GuamiListCond) SetGuamiList(v []Guami) {
 	o.GuamiList = v
 }
 
+func (o GuamiListCond) MarshalJSON() ([]byte, error) {
+	toSerialize, err := o.ToMap()
+	if err != nil {
+		return []byte{}, err
+	}
+	return json.Marshal(toSerialize)
+}
+
 func (o GuamiListCond) ToMap() (map[string]any, error) {
 	toSerialize := map[string]any{}
 	toSerialize["guamiList"] = o.GuamiList

@@ -115,6 +115,14 @@ func (o *IpEthFlowDescription) SetEthTrafficFilter(v EthFlowDescription) {
 	o.EthTrafficFilter = &v
 }
 
+func (o IpEthFlowDescription) MarshalJSON() ([]byte, error) {
+	toSerialize, err := o.ToMap()
+	if err != nil {
+		return []byte{}, err
+	}
+	return json.Marshal(toSerialize)
+}
+
 func (o IpEthFlowDescription) ToMap() (map[string]any, error) {
 	toSerialize := map[string]any{}
 	if !openapi.IsNil(o.IpTrafficFilter) {

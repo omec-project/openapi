@@ -185,6 +185,14 @@ func (o *LcsSubscriptionData) SetUserPlanePosIndLmf(v bool) {
 	o.UserPlanePosIndLmf = &v
 }
 
+func (o LcsSubscriptionData) MarshalJSON() ([]byte, error) {
+	toSerialize, err := o.ToMap()
+	if err != nil {
+		return []byte{}, err
+	}
+	return json.Marshal(toSerialize)
+}
+
 func (o LcsSubscriptionData) ToMap() (map[string]any, error) {
 	toSerialize := map[string]any{}
 	if !openapi.IsNil(o.ConfiguredLmfId) {

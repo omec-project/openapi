@@ -180,6 +180,14 @@ func (o *IwmscInfo) SetScNumber(v string) {
 	o.ScNumber = &v
 }
 
+func (o IwmscInfo) MarshalJSON() ([]byte, error) {
+	toSerialize, err := o.ToMap()
+	if err != nil {
+		return []byte{}, err
+	}
+	return json.Marshal(toSerialize)
+}
+
 func (o IwmscInfo) ToMap() (map[string]any, error) {
 	toSerialize := map[string]any{}
 	if !openapi.IsNil(o.MsisdnRanges) {

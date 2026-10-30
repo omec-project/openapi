@@ -400,6 +400,14 @@ func (o *EutraLocation) UnsetGlobalENbId() {
 	o.GlobalENbId.Unset()
 }
 
+func (o EutraLocation) MarshalJSON() ([]byte, error) {
+	toSerialize, err := o.ToMap()
+	if err != nil {
+		return []byte{}, err
+	}
+	return json.Marshal(toSerialize)
+}
+
 func (o EutraLocation) ToMap() (map[string]any, error) {
 	toSerialize := map[string]any{}
 	toSerialize["tai"] = o.Tai

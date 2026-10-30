@@ -82,6 +82,14 @@ func (o *TransferMtDataAddInfo) SetMaxWaitingTime(v int32) {
 	o.MaxWaitingTime = &v
 }
 
+func (o TransferMtDataAddInfo) MarshalJSON() ([]byte, error) {
+	toSerialize, err := o.ToMap()
+	if err != nil {
+		return []byte{}, err
+	}
+	return json.Marshal(toSerialize)
+}
+
 func (o TransferMtDataAddInfo) ToMap() (map[string]any, error) {
 	toSerialize := map[string]any{}
 	if !openapi.IsNil(o.MaxWaitingTime) {

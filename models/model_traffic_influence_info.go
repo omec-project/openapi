@@ -115,6 +115,14 @@ func (o *TrafficInfluenceInfo) SetTraffContDecs(v map[string]TrafficControlData)
 	o.TraffContDecs = &v
 }
 
+func (o TrafficInfluenceInfo) MarshalJSON() ([]byte, error) {
+	toSerialize, err := o.ToMap()
+	if err != nil {
+		return []byte{}, err
+	}
+	return json.Marshal(toSerialize)
+}
+
 func (o TrafficInfluenceInfo) ToMap() (map[string]any, error) {
 	toSerialize := map[string]any{}
 	if !openapi.IsNil(o.TrafficInfluData) {

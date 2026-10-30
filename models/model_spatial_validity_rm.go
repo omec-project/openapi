@@ -75,6 +75,14 @@ func (o *SpatialValidityRm) SetPresenceInfoList(v map[string]PresenceInfo) {
 	o.PresenceInfoList = v
 }
 
+func (o SpatialValidityRm) MarshalJSON() ([]byte, error) {
+	toSerialize, err := o.ToMap()
+	if err != nil {
+		return []byte{}, err
+	}
+	return json.Marshal(toSerialize)
+}
+
 func (o SpatialValidityRm) ToMap() (map[string]any, error) {
 	toSerialize := map[string]any{}
 	toSerialize["presenceInfoList"] = o.PresenceInfoList

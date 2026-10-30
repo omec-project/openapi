@@ -167,6 +167,14 @@ func (o *N1MessageContainer) SetServiceInstanceId(v string) {
 	o.ServiceInstanceId = &v
 }
 
+func (o N1MessageContainer) MarshalJSON() ([]byte, error) {
+	toSerialize, err := o.ToMap()
+	if err != nil {
+		return []byte{}, err
+	}
+	return json.Marshal(toSerialize)
+}
+
 func (o N1MessageContainer) ToMap() (map[string]any, error) {
 	toSerialize := map[string]any{}
 	toSerialize["n1MessageClass"] = o.N1MessageClass

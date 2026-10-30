@@ -168,6 +168,14 @@ func (o *SessionRuleReport) SetPolicyDecFailureReports(v []PolicyDecisionFailure
 	o.PolicyDecFailureReports = v
 }
 
+func (o SessionRuleReport) MarshalJSON() ([]byte, error) {
+	toSerialize, err := o.ToMap()
+	if err != nil {
+		return []byte{}, err
+	}
+	return json.Marshal(toSerialize)
+}
+
 func (o SessionRuleReport) ToMap() (map[string]any, error) {
 	toSerialize := map[string]any{}
 	toSerialize["ruleIds"] = o.RuleIds

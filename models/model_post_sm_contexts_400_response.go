@@ -148,6 +148,14 @@ func (o *PostSmContexts400Response) SetBinaryDataN2SmMessage(v *os.File) {
 	o.BinaryDataN2SmMessage = &v
 }
 
+func (o PostSmContexts400Response) MarshalJSON() ([]byte, error) {
+	toSerialize, err := o.ToMap()
+	if err != nil {
+		return []byte{}, err
+	}
+	return json.Marshal(toSerialize)
+}
+
 func (o PostSmContexts400Response) ToMap() (map[string]any, error) {
 	toSerialize := map[string]any{}
 	if !openapi.IsNil(o.JsonData) {

@@ -284,6 +284,14 @@ func (o *UserDataCongestionCollection) SetThrputPkDl(v string) {
 	o.ThrputPkDl = &v
 }
 
+func (o UserDataCongestionCollection) MarshalJSON() ([]byte, error) {
+	toSerialize, err := o.ToMap()
+	if err != nil {
+		return []byte{}, err
+	}
+	return json.Marshal(toSerialize)
+}
+
 func (o UserDataCongestionCollection) ToMap() (map[string]any, error) {
 	toSerialize := map[string]any{}
 	if !openapi.IsNil(o.AppId) {

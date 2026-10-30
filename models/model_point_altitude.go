@@ -117,6 +117,14 @@ func (o *PointAltitude) SetAltitude(v float64) {
 	o.Altitude = &v
 }
 
+func (o PointAltitude) MarshalJSON() ([]byte, error) {
+	toSerialize, err := o.ToMap()
+	if err != nil {
+		return []byte{}, err
+	}
+	return json.Marshal(toSerialize)
+}
+
 func (o PointAltitude) ToMap() (map[string]any, error) {
 	toSerialize := map[string]any{}
 	serializedGADShape, errGADShape := json.Marshal(o.GADShape)

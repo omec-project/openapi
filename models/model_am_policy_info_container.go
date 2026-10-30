@@ -82,6 +82,14 @@ func (o *AmPolicyInfoContainer) SetSliceUsgCtrlInfoSets(v map[string]SliceUsageC
 	o.SliceUsgCtrlInfoSets = &v
 }
 
+func (o AmPolicyInfoContainer) MarshalJSON() ([]byte, error) {
+	toSerialize, err := o.ToMap()
+	if err != nil {
+		return []byte{}, err
+	}
+	return json.Marshal(toSerialize)
+}
+
 func (o AmPolicyInfoContainer) ToMap() (map[string]any, error) {
 	toSerialize := map[string]any{}
 	if !openapi.IsNil(o.SliceUsgCtrlInfoSets) {

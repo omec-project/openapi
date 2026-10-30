@@ -108,6 +108,14 @@ func (o *ServiceAreaCoverageInfo) SetServingNetwork(v PlmnIdNid) {
 	o.ServingNetwork = &v
 }
 
+func (o ServiceAreaCoverageInfo) MarshalJSON() ([]byte, error) {
+	toSerialize, err := o.ToMap()
+	if err != nil {
+		return []byte{}, err
+	}
+	return json.Marshal(toSerialize)
+}
+
 func (o ServiceAreaCoverageInfo) ToMap() (map[string]any, error) {
 	toSerialize := map[string]any{}
 	toSerialize["tacList"] = o.TacList

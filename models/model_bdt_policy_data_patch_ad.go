@@ -75,6 +75,14 @@ func (o *BdtPolicyDataPatchAD) SetBdtRefId(v string) {
 	o.BdtRefId = v
 }
 
+func (o BdtPolicyDataPatchAD) MarshalJSON() ([]byte, error) {
+	toSerialize, err := o.ToMap()
+	if err != nil {
+		return []byte{}, err
+	}
+	return json.Marshal(toSerialize)
+}
+
 func (o BdtPolicyDataPatchAD) ToMap() (map[string]any, error) {
 	toSerialize := map[string]any{}
 	toSerialize["bdtRefId"] = o.BdtRefId

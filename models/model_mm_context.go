@@ -972,6 +972,14 @@ func (o *MmContext) SetVoSupportMatchInd(v bool) {
 	o.VoSupportMatchInd = &v
 }
 
+func (o MmContext) MarshalJSON() ([]byte, error) {
+	toSerialize, err := o.ToMap()
+	if err != nil {
+		return []byte{}, err
+	}
+	return json.Marshal(toSerialize)
+}
+
 func (o MmContext) ToMap() (map[string]any, error) {
 	toSerialize := map[string]any{}
 	toSerialize["accessType"] = o.AccessType

@@ -182,6 +182,14 @@ func (o *A2xSubscriptionData) SetLtePc5Ambr(v string) {
 	o.LtePc5Ambr = &v
 }
 
+func (o A2xSubscriptionData) MarshalJSON() ([]byte, error) {
+	toSerialize, err := o.ToMap()
+	if err != nil {
+		return []byte{}, err
+	}
+	return json.Marshal(toSerialize)
+}
+
 func (o A2xSubscriptionData) ToMap() (map[string]any, error) {
 	toSerialize := map[string]any{}
 	if !openapi.IsNil(o.NrA2xServicesAuth) {

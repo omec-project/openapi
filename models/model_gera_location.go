@@ -419,6 +419,14 @@ func (o *GeraLocation) SetGeodeticInformation(v string) {
 	o.GeodeticInformation = &v
 }
 
+func (o GeraLocation) MarshalJSON() ([]byte, error) {
+	toSerialize, err := o.ToMap()
+	if err != nil {
+		return []byte{}, err
+	}
+	return json.Marshal(toSerialize)
+}
+
 func (o GeraLocation) ToMap() (map[string]any, error) {
 	toSerialize := map[string]any{}
 	if !openapi.IsNil(o.LocationNumber) {

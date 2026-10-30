@@ -149,6 +149,14 @@ func (o *RangeDirection) SetElevationDirection(v int32) {
 	o.ElevationDirection = &v
 }
 
+func (o RangeDirection) MarshalJSON() ([]byte, error) {
+	toSerialize, err := o.ToMap()
+	if err != nil {
+		return []byte{}, err
+	}
+	return json.Marshal(toSerialize)
+}
+
 func (o RangeDirection) ToMap() (map[string]any, error) {
 	toSerialize := map[string]any{}
 	if !openapi.IsNil(o.Distance) {

@@ -135,6 +135,14 @@ func (o *Ecgi) SetNid(v string) {
 	o.Nid = &v
 }
 
+func (o Ecgi) MarshalJSON() ([]byte, error) {
+	toSerialize, err := o.ToMap()
+	if err != nil {
+		return []byte{}, err
+	}
+	return json.Marshal(toSerialize)
+}
+
 func (o Ecgi) ToMap() (map[string]any, error) {
 	toSerialize := map[string]any{}
 	toSerialize["plmnId"] = o.PlmnId

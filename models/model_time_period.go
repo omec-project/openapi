@@ -108,6 +108,14 @@ func (o *TimePeriod) SetMaxNumPeriod(v int32) {
 	o.MaxNumPeriod = &v
 }
 
+func (o TimePeriod) MarshalJSON() ([]byte, error) {
+	toSerialize, err := o.ToMap()
+	if err != nil {
+		return []byte{}, err
+	}
+	return json.Marshal(toSerialize)
+}
+
 func (o TimePeriod) ToMap() (map[string]any, error) {
 	toSerialize := map[string]any{}
 	toSerialize["period"] = o.Period

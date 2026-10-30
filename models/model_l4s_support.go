@@ -107,6 +107,14 @@ func (o *L4sSupport) SetFlows(v []Flows) {
 	o.Flows = v
 }
 
+func (o L4sSupport) MarshalJSON() ([]byte, error) {
+	toSerialize, err := o.ToMap()
+	if err != nil {
+		return []byte{}, err
+	}
+	return json.Marshal(toSerialize)
+}
+
 func (o L4sSupport) ToMap() (map[string]any, error) {
 	toSerialize := map[string]any{}
 	toSerialize["notifType"] = o.NotifType

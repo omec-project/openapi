@@ -312,6 +312,14 @@ func (o *Trigger) SetTariffTimeChange(v time.Time) {
 	o.TariffTimeChange = &v
 }
 
+func (o Trigger) MarshalJSON() ([]byte, error) {
+	toSerialize, err := o.ToMap()
+	if err != nil {
+		return []byte{}, err
+	}
+	return json.Marshal(toSerialize)
+}
+
 func (o Trigger) ToMap() (map[string]any, error) {
 	toSerialize := map[string]any{}
 	if !openapi.IsNil(o.TriggerType) {

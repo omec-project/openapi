@@ -194,6 +194,14 @@ func (o *UrspRuleRequest) SetRouteSelParamSets(v []RouteSelectionParameterSet) {
 	o.RouteSelParamSets = v
 }
 
+func (o UrspRuleRequest) MarshalJSON() ([]byte, error) {
+	toSerialize, err := o.ToMap()
+	if err != nil {
+		return []byte{}, err
+	}
+	return json.Marshal(toSerialize)
+}
+
 func (o UrspRuleRequest) ToMap() (map[string]any, error) {
 	toSerialize := map[string]any{}
 	if o.TrafficDesc.IsSet() {

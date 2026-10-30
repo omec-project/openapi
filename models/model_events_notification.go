@@ -1318,6 +1318,14 @@ func (o *EventsNotification) SetBatOffsetInfo(v BatOffsetInfo) {
 	o.BatOffsetInfo = &v
 }
 
+func (o EventsNotification) MarshalJSON() ([]byte, error) {
+	toSerialize, err := o.ToMap()
+	if err != nil {
+		return []byte{}, err
+	}
+	return json.Marshal(toSerialize)
+}
+
 func (o EventsNotification) ToMap() (map[string]any, error) {
 	toSerialize := map[string]any{}
 	if !openapi.IsNil(o.AdReports) {

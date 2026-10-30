@@ -75,6 +75,14 @@ func (o *DnaiEasMapping) SetDnaiEasInfos(v []DnaiEasInfo) {
 	o.DnaiEasInfos = v
 }
 
+func (o DnaiEasMapping) MarshalJSON() ([]byte, error) {
+	toSerialize, err := o.ToMap()
+	if err != nil {
+		return []byte{}, err
+	}
+	return json.Marshal(toSerialize)
+}
+
 func (o DnaiEasMapping) ToMap() (map[string]any, error) {
 	toSerialize := map[string]any{}
 	toSerialize["dnaiEasInfos"] = o.DnaiEasInfos

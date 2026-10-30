@@ -183,6 +183,14 @@ func (o *AfCoordinationInfo) SetNotificationInfoList(v []NotificationInfo) {
 	o.NotificationInfoList = v
 }
 
+func (o AfCoordinationInfo) MarshalJSON() ([]byte, error) {
+	toSerialize, err := o.ToMap()
+	if err != nil {
+		return []byte{}, err
+	}
+	return json.Marshal(toSerialize)
+}
+
 func (o AfCoordinationInfo) ToMap() (map[string]any, error) {
 	toSerialize := map[string]any{}
 	if !openapi.IsNil(o.SourceDnai) {

@@ -148,6 +148,14 @@ func (o *N2InterfaceAmfInfo) SetAmfName(v string) {
 	o.AmfName = &v
 }
 
+func (o N2InterfaceAmfInfo) MarshalJSON() ([]byte, error) {
+	toSerialize, err := o.ToMap()
+	if err != nil {
+		return []byte{}, err
+	}
+	return json.Marshal(toSerialize)
+}
+
 func (o N2InterfaceAmfInfo) ToMap() (map[string]any, error) {
 	toSerialize := map[string]any{}
 	if !openapi.IsNil(o.Ipv4EndpointAddress) {

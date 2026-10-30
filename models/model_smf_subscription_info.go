@@ -74,6 +74,14 @@ func (o *SmfSubscriptionInfo) SetSmfSubscriptionList(v []SmfSubscriptionItem) {
 	o.SmfSubscriptionList = v
 }
 
+func (o SmfSubscriptionInfo) MarshalJSON() ([]byte, error) {
+	toSerialize, err := o.ToMap()
+	if err != nil {
+		return []byte{}, err
+	}
+	return json.Marshal(toSerialize)
+}
+
 func (o SmfSubscriptionInfo) ToMap() (map[string]any, error) {
 	toSerialize := map[string]any{}
 	toSerialize["smfSubscriptionList"] = o.SmfSubscriptionList

@@ -100,6 +100,14 @@ func (o *GeographicalCoordinates) SetLat(v float64) {
 	o.Lat = v
 }
 
+func (o GeographicalCoordinates) MarshalJSON() ([]byte, error) {
+	toSerialize, err := o.ToMap()
+	if err != nil {
+		return []byte{}, err
+	}
+	return json.Marshal(toSerialize)
+}
+
 func (o GeographicalCoordinates) ToMap() (map[string]any, error) {
 	toSerialize := map[string]any{}
 	toSerialize["lon"] = o.Lon

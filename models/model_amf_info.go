@@ -374,6 +374,14 @@ func (o *AmfInfo) SetHighLatencyCom(v bool) {
 	o.HighLatencyCom = &v
 }
 
+func (o AmfInfo) MarshalJSON() ([]byte, error) {
+	toSerialize, err := o.ToMap()
+	if err != nil {
+		return []byte{}, err
+	}
+	return json.Marshal(toSerialize)
+}
+
 func (o AmfInfo) ToMap() (map[string]any, error) {
 	toSerialize := map[string]any{}
 	toSerialize["amfSetId"] = o.AmfSetId

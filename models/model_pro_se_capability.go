@@ -418,6 +418,14 @@ func (o *ProSeCapability) SetProseL3EndUe(v bool) {
 	o.ProseL3EndUe = &v
 }
 
+func (o ProSeCapability) MarshalJSON() ([]byte, error) {
+	toSerialize, err := o.ToMap()
+	if err != nil {
+		return []byte{}, err
+	}
+	return json.Marshal(toSerialize)
+}
+
 func (o ProSeCapability) ToMap() (map[string]any, error) {
 	toSerialize := map[string]any{}
 	if !openapi.IsNil(o.ProseDirectDiscovey) {

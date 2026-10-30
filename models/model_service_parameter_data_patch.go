@@ -753,6 +753,14 @@ func (o *ServiceParameterDataPatch) UnsetMappingInfo() {
 	o.MappingInfo.Unset()
 }
 
+func (o ServiceParameterDataPatch) MarshalJSON() ([]byte, error) {
+	toSerialize, err := o.ToMap()
+	if err != nil {
+		return []byte{}, err
+	}
+	return json.Marshal(toSerialize)
+}
+
 func (o ServiceParameterDataPatch) ToMap() (map[string]any, error) {
 	toSerialize := map[string]any{}
 	if o.ParamOverPc5.IsSet() {

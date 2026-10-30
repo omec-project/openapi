@@ -107,6 +107,14 @@ func (o *AreaOfInterestEventState) SetIndividualPraIdList(v []string) {
 	o.IndividualPraIdList = v
 }
 
+func (o AreaOfInterestEventState) MarshalJSON() ([]byte, error) {
+	toSerialize, err := o.ToMap()
+	if err != nil {
+		return []byte{}, err
+	}
+	return json.Marshal(toSerialize)
+}
+
 func (o AreaOfInterestEventState) ToMap() (map[string]any, error) {
 	toSerialize := map[string]any{}
 	toSerialize["presence"] = o.Presence

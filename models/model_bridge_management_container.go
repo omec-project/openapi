@@ -75,6 +75,14 @@ func (o *BridgeManagementContainer) SetBridgeManCont(v string) {
 	o.BridgeManCont = v
 }
 
+func (o BridgeManagementContainer) MarshalJSON() ([]byte, error) {
+	toSerialize, err := o.ToMap()
+	if err != nil {
+		return []byte{}, err
+	}
+	return json.Marshal(toSerialize)
+}
+
 func (o BridgeManagementContainer) ToMap() (map[string]any, error) {
 	toSerialize := map[string]any{}
 	toSerialize["bridgeManCont"] = o.BridgeManCont

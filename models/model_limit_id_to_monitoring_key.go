@@ -107,6 +107,14 @@ func (o *LimitIdToMonitoringKey) SetMonkey(v []string) {
 	o.Monkey = v
 }
 
+func (o LimitIdToMonitoringKey) MarshalJSON() ([]byte, error) {
+	toSerialize, err := o.ToMap()
+	if err != nil {
+		return []byte{}, err
+	}
+	return json.Marshal(toSerialize)
+}
+
 func (o LimitIdToMonitoringKey) ToMap() (map[string]any, error) {
 	toSerialize := map[string]any{}
 	toSerialize["limitId"] = o.LimitId

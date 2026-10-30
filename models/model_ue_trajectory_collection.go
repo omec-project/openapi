@@ -102,6 +102,14 @@ func (o *UeTrajectoryCollection) SetLocArea(v LocationArea5G) {
 	o.LocArea = v
 }
 
+func (o UeTrajectoryCollection) MarshalJSON() ([]byte, error) {
+	toSerialize, err := o.ToMap()
+	if err != nil {
+		return []byte{}, err
+	}
+	return json.Marshal(toSerialize)
+}
+
 func (o UeTrajectoryCollection) ToMap() (map[string]any, error) {
 	toSerialize := map[string]any{}
 	toSerialize["ts"] = o.Ts

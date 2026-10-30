@@ -129,6 +129,14 @@ func (o *HorizontalVelocityWithUncertainty) SetHUncertainty(v float32) {
 	o.HUncertainty = v
 }
 
+func (o HorizontalVelocityWithUncertainty) MarshalJSON() ([]byte, error) {
+	toSerialize, err := o.ToMap()
+	if err != nil {
+		return []byte{}, err
+	}
+	return json.Marshal(toSerialize)
+}
+
 func (o HorizontalVelocityWithUncertainty) ToMap() (map[string]any, error) {
 	toSerialize := map[string]any{}
 	toSerialize["hSpeed"] = o.HSpeed

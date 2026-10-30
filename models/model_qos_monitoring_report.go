@@ -344,6 +344,14 @@ func (o *QosMonitoringReport) SetDlCongInfo(v int32) {
 	o.DlCongInfo = &v
 }
 
+func (o QosMonitoringReport) MarshalJSON() ([]byte, error) {
+	toSerialize, err := o.ToMap()
+	if err != nil {
+		return []byte{}, err
+	}
+	return json.Marshal(toSerialize)
+}
+
 func (o QosMonitoringReport) ToMap() (map[string]any, error) {
 	toSerialize := map[string]any{}
 	toSerialize["refPccRuleIds"] = o.RefPccRuleIds

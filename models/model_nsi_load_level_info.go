@@ -436,6 +436,14 @@ func (o *NsiLoadLevelInfo) SetConfidence(v int32) {
 	o.Confidence = &v
 }
 
+func (o NsiLoadLevelInfo) MarshalJSON() ([]byte, error) {
+	toSerialize, err := o.ToMap()
+	if err != nil {
+		return []byte{}, err
+	}
+	return json.Marshal(toSerialize)
+}
+
 func (o NsiLoadLevelInfo) ToMap() (map[string]any, error) {
 	toSerialize := map[string]any{}
 	toSerialize["loadLevelInformation"] = o.LoadLevelInformation

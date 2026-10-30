@@ -135,6 +135,14 @@ func (o *SmsfInfoUdm) SetSmsfSetId(v string) {
 	o.SmsfSetId = &v
 }
 
+func (o SmsfInfoUdm) MarshalJSON() ([]byte, error) {
+	toSerialize, err := o.ToMap()
+	if err != nil {
+		return []byte{}, err
+	}
+	return json.Marshal(toSerialize)
+}
+
 func (o SmsfInfoUdm) ToMap() (map[string]any, error) {
 	toSerialize := map[string]any{}
 	toSerialize["smsfInstanceId"] = o.SmsfInstanceId

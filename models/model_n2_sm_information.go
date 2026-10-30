@@ -240,6 +240,14 @@ func (o *N2SmInformation) SetSubjectToHo(v bool) {
 	o.SubjectToHo = &v
 }
 
+func (o N2SmInformation) MarshalJSON() ([]byte, error) {
+	toSerialize, err := o.ToMap()
+	if err != nil {
+		return []byte{}, err
+	}
+	return json.Marshal(toSerialize)
+}
+
 func (o N2SmInformation) ToMap() (map[string]any, error) {
 	toSerialize := map[string]any{}
 	toSerialize["pduSessionId"] = o.PduSessionId

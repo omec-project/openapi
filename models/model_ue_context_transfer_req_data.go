@@ -200,6 +200,14 @@ func (o *UeContextTransferReqData) SetSupportedFeatures(v string) {
 	o.SupportedFeatures = &v
 }
 
+func (o UeContextTransferReqData) MarshalJSON() ([]byte, error) {
+	toSerialize, err := o.ToMap()
+	if err != nil {
+		return []byte{}, err
+	}
+	return json.Marshal(toSerialize)
+}
+
 func (o UeContextTransferReqData) ToMap() (map[string]any, error) {
 	toSerialize := map[string]any{}
 	toSerialize["reason"] = o.Reason

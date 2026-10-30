@@ -133,6 +133,14 @@ func (o *UserDataCongestionInfo) SetSnssai(v Snssai) {
 	o.Snssai = &v
 }
 
+func (o UserDataCongestionInfo) MarshalJSON() ([]byte, error) {
+	toSerialize, err := o.ToMap()
+	if err != nil {
+		return []byte{}, err
+	}
+	return json.Marshal(toSerialize)
+}
+
 func (o UserDataCongestionInfo) ToMap() (map[string]any, error) {
 	toSerialize := map[string]any{}
 	toSerialize["networkArea"] = o.NetworkArea

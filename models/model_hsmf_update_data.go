@@ -2432,6 +2432,14 @@ func (o *HsmfUpdateData) SetEcnMarkingCongestionInfoStatus(v []EcnMarkingCongest
 	o.EcnMarkingCongestionInfoStatus = v
 }
 
+func (o HsmfUpdateData) MarshalJSON() ([]byte, error) {
+	toSerialize, err := o.ToMap()
+	if err != nil {
+		return []byte{}, err
+	}
+	return json.Marshal(toSerialize)
+}
+
 func (o HsmfUpdateData) ToMap() (map[string]any, error) {
 	toSerialize := map[string]any{}
 	toSerialize["requestIndication"] = o.RequestIndication

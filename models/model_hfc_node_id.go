@@ -75,6 +75,14 @@ func (o *HfcNodeId) SetHfcNId(v string) {
 	o.HfcNId = v
 }
 
+func (o HfcNodeId) MarshalJSON() ([]byte, error) {
+	toSerialize, err := o.ToMap()
+	if err != nil {
+		return []byte{}, err
+	}
+	return json.Marshal(toSerialize)
+}
+
 func (o HfcNodeId) ToMap() (map[string]any, error) {
 	toSerialize := map[string]any{}
 	toSerialize["hfcNId"] = o.HfcNId

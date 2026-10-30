@@ -234,6 +234,14 @@ func (o *N4Information) SetN9UlPdrIdList(v []int32) {
 	o.N9UlPdrIdList = v
 }
 
+func (o N4Information) MarshalJSON() ([]byte, error) {
+	toSerialize, err := o.ToMap()
+	if err != nil {
+		return []byte{}, err
+	}
+	return json.Marshal(toSerialize)
+}
+
 func (o N4Information) ToMap() (map[string]any, error) {
 	toSerialize := map[string]any{}
 	toSerialize["n4MessageType"] = o.N4MessageType

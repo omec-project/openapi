@@ -252,6 +252,14 @@ func (o *PointAltitudeUncertainty) SetVConfidence(v int32) {
 	o.VConfidence = &v
 }
 
+func (o PointAltitudeUncertainty) MarshalJSON() ([]byte, error) {
+	toSerialize, err := o.ToMap()
+	if err != nil {
+		return []byte{}, err
+	}
+	return json.Marshal(toSerialize)
+}
+
 func (o PointAltitudeUncertainty) ToMap() (map[string]any, error) {
 	toSerialize := map[string]any{}
 	serializedGADShape, errGADShape := json.Marshal(o.GADShape)

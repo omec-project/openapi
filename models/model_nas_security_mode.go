@@ -100,6 +100,14 @@ func (o *NasSecurityMode) SetCipheringAlgorithm(v CipheringAlgorithm) {
 	o.CipheringAlgorithm = v
 }
 
+func (o NasSecurityMode) MarshalJSON() ([]byte, error) {
+	toSerialize, err := o.ToMap()
+	if err != nil {
+		return []byte{}, err
+	}
+	return json.Marshal(toSerialize)
+}
+
 func (o NasSecurityMode) ToMap() (map[string]any, error) {
 	toSerialize := map[string]any{}
 	toSerialize["integrityAlgorithm"] = o.IntegrityAlgorithm

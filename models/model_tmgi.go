@@ -101,6 +101,14 @@ func (o *Tmgi) SetPlmnId(v PlmnId) {
 	o.PlmnId = v
 }
 
+func (o Tmgi) MarshalJSON() ([]byte, error) {
+	toSerialize, err := o.ToMap()
+	if err != nil {
+		return []byte{}, err
+	}
+	return json.Marshal(toSerialize)
+}
+
 func (o Tmgi) ToMap() (map[string]any, error) {
 	toSerialize := map[string]any{}
 	toSerialize["mbsServiceId"] = o.MbsServiceId

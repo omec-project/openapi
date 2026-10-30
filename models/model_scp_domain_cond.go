@@ -107,6 +107,14 @@ func (o *ScpDomainCond) SetNfTypeList(v []NFType) {
 	o.NfTypeList = v
 }
 
+func (o ScpDomainCond) MarshalJSON() ([]byte, error) {
+	toSerialize, err := o.ToMap()
+	if err != nil {
+		return []byte{}, err
+	}
+	return json.Marshal(toSerialize)
+}
+
 func (o ScpDomainCond) ToMap() (map[string]any, error) {
 	toSerialize := map[string]any{}
 	toSerialize["scpDomains"] = o.ScpDomains

@@ -173,6 +173,14 @@ func (o *ReportingArea) SetNcgi(v Ncgi) {
 	o.Ncgi = &v
 }
 
+func (o ReportingArea) MarshalJSON() ([]byte, error) {
+	toSerialize, err := o.ToMap()
+	if err != nil {
+		return []byte{}, err
+	}
+	return json.Marshal(toSerialize)
+}
+
 func (o ReportingArea) ToMap() (map[string]any, error) {
 	toSerialize := map[string]any{}
 	toSerialize["areaType"] = o.AreaType

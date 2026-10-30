@@ -231,6 +231,14 @@ func (o *RedundantTransmissionExpPerTS) SetConfidence(v int32) {
 	o.Confidence = &v
 }
 
+func (o RedundantTransmissionExpPerTS) MarshalJSON() ([]byte, error) {
+	toSerialize, err := o.ToMap()
+	if err != nil {
+		return []byte{}, err
+	}
+	return json.Marshal(toSerialize)
+}
+
 func (o RedundantTransmissionExpPerTS) ToMap() (map[string]any, error) {
 	toSerialize := map[string]any{}
 	toSerialize["tsStart"] = o.TsStart

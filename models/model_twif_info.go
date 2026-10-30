@@ -148,6 +148,14 @@ func (o *TwifInfo) SetEndpointFqdn(v string) {
 	o.EndpointFqdn = &v
 }
 
+func (o TwifInfo) MarshalJSON() ([]byte, error) {
+	toSerialize, err := o.ToMap()
+	if err != nil {
+		return []byte{}, err
+	}
+	return json.Marshal(toSerialize)
+}
+
 func (o TwifInfo) ToMap() (map[string]any, error) {
 	toSerialize := map[string]any{}
 	if !openapi.IsNil(o.Ipv4EndpointAddresses) {

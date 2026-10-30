@@ -272,6 +272,14 @@ func (o *MbUpfInfo) SetSupportedPfcpFeatures(v string) {
 	o.SupportedPfcpFeatures = &v
 }
 
+func (o MbUpfInfo) MarshalJSON() ([]byte, error) {
+	toSerialize, err := o.ToMap()
+	if err != nil {
+		return []byte{}, err
+	}
+	return json.Marshal(toSerialize)
+}
+
 func (o MbUpfInfo) ToMap() (map[string]any, error) {
 	toSerialize := map[string]any{}
 	toSerialize["sNssaiMbUpfInfoList"] = o.SNssaiMbUpfInfoList

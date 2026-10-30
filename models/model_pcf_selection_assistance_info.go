@@ -101,6 +101,14 @@ func (o *PcfSelectionAssistanceInfo) SetSingleNssai(v Snssai) {
 	o.SingleNssai = v
 }
 
+func (o PcfSelectionAssistanceInfo) MarshalJSON() ([]byte, error) {
+	toSerialize, err := o.ToMap()
+	if err != nil {
+		return []byte{}, err
+	}
+	return json.Marshal(toSerialize)
+}
+
 func (o PcfSelectionAssistanceInfo) ToMap() (map[string]any, error) {
 	toSerialize := map[string]any{}
 	toSerialize["dnn"] = o.Dnn

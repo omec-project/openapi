@@ -147,6 +147,14 @@ func (o *SpatialValidityCond) SetGeographicalServiceArea(v GeoServiceArea) {
 	o.GeographicalServiceArea = &v
 }
 
+func (o SpatialValidityCond) MarshalJSON() ([]byte, error) {
+	toSerialize, err := o.ToMap()
+	if err != nil {
+		return []byte{}, err
+	}
+	return json.Marshal(toSerialize)
+}
+
 func (o SpatialValidityCond) ToMap() (map[string]any, error) {
 	toSerialize := map[string]any{}
 	if !openapi.IsNil(o.TrackingAreaList) {

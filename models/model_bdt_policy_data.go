@@ -170,6 +170,14 @@ func (o *BdtPolicyData) SetSuppFeat(v string) {
 	o.SuppFeat = &v
 }
 
+func (o BdtPolicyData) MarshalJSON() ([]byte, error) {
+	toSerialize, err := o.ToMap()
+	if err != nil {
+		return []byte{}, err
+	}
+	return json.Marshal(toSerialize)
+}
+
 func (o BdtPolicyData) ToMap() (map[string]any, error) {
 	toSerialize := map[string]any{}
 	toSerialize["bdtRefId"] = o.BdtRefId

@@ -247,6 +247,14 @@ func (o *ModifyPduSessionRequest) SetBinaryDataN4InformationExt3(v *os.File) {
 	o.BinaryDataN4InformationExt3 = &v
 }
 
+func (o ModifyPduSessionRequest) MarshalJSON() ([]byte, error) {
+	toSerialize, err := o.ToMap()
+	if err != nil {
+		return []byte{}, err
+	}
+	return json.Marshal(toSerialize)
+}
+
 func (o ModifyPduSessionRequest) ToMap() (map[string]any, error) {
 	toSerialize := map[string]any{}
 	if !openapi.IsNil(o.JsonData) {

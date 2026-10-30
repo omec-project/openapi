@@ -74,6 +74,14 @@ func (o *QueryParamCombination) SetQueryParams(v []QueryParameter) {
 	o.QueryParams = v
 }
 
+func (o QueryParamCombination) MarshalJSON() ([]byte, error) {
+	toSerialize, err := o.ToMap()
+	if err != nil {
+		return []byte{}, err
+	}
+	return json.Marshal(toSerialize)
+}
+
 func (o QueryParamCombination) ToMap() (map[string]any, error) {
 	toSerialize := map[string]any{}
 	toSerialize["queryParams"] = o.QueryParams

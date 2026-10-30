@@ -219,6 +219,14 @@ func (o *ApnRateStatus) SetRemainExReportsDl(v int32) {
 	o.RemainExReportsDl = &v
 }
 
+func (o ApnRateStatus) MarshalJSON() ([]byte, error) {
+	toSerialize, err := o.ToMap()
+	if err != nil {
+		return []byte{}, err
+	}
+	return json.Marshal(toSerialize)
+}
+
 func (o ApnRateStatus) ToMap() (map[string]any, error) {
 	toSerialize := map[string]any{}
 	if !openapi.IsNil(o.RemainPacketsUl) {

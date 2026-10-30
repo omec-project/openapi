@@ -143,6 +143,14 @@ func (o *TwapId) SetCivicAddress(v string) {
 	o.CivicAddress = &v
 }
 
+func (o TwapId) MarshalJSON() ([]byte, error) {
+	toSerialize, err := o.ToMap()
+	if err != nil {
+		return []byte{}, err
+	}
+	return json.Marshal(toSerialize)
+}
+
 func (o TwapId) ToMap() (map[string]any, error) {
 	toSerialize := map[string]any{}
 	toSerialize["ssId"] = o.SsId

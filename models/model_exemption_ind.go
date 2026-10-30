@@ -159,6 +159,14 @@ func (o *ExemptionInd) SetSnssaiDnnCongestion(v bool) {
 	o.SnssaiDnnCongestion = &v
 }
 
+func (o ExemptionInd) MarshalJSON() ([]byte, error) {
+	toSerialize, err := o.ToMap()
+	if err != nil {
+		return []byte{}, err
+	}
+	return json.Marshal(toSerialize)
+}
+
 func (o ExemptionInd) ToMap() (map[string]any, error) {
 	toSerialize := map[string]any{}
 	if !openapi.IsNil(o.DnnCongestion) {

@@ -389,6 +389,14 @@ func (o *EventFilterAf) SetExceptionReqs(v []Exception) {
 	o.ExceptionReqs = v
 }
 
+func (o EventFilterAf) MarshalJSON() ([]byte, error) {
+	toSerialize, err := o.ToMap()
+	if err != nil {
+		return []byte{}, err
+	}
+	return json.Marshal(toSerialize)
+}
+
 func (o EventFilterAf) ToMap() (map[string]any, error) {
 	toSerialize := map[string]any{}
 	if !openapi.IsNil(o.Gpsis) {

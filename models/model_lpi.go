@@ -107,6 +107,14 @@ func (o *Lpi) SetValidTimePeriod(v ValidTimePeriod) {
 	o.ValidTimePeriod = &v
 }
 
+func (o Lpi) MarshalJSON() ([]byte, error) {
+	toSerialize, err := o.ToMap()
+	if err != nil {
+		return []byte{}, err
+	}
+	return json.Marshal(toSerialize)
+}
+
 func (o Lpi) ToMap() (map[string]any, error) {
 	toSerialize := map[string]any{}
 	toSerialize["locationPrivacyInd"] = o.LocationPrivacyInd

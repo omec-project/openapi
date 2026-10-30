@@ -318,6 +318,14 @@ func (o *Amf3GppAccessRegistrationModification) SetUeMINTCapability(v bool) {
 	o.UeMINTCapability = &v
 }
 
+func (o Amf3GppAccessRegistrationModification) MarshalJSON() ([]byte, error) {
+	toSerialize, err := o.ToMap()
+	if err != nil {
+		return []byte{}, err
+	}
+	return json.Marshal(toSerialize)
+}
+
 func (o Amf3GppAccessRegistrationModification) ToMap() (map[string]any, error) {
 	toSerialize := map[string]any{}
 	toSerialize["guami"] = o.Guami

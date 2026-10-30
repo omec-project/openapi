@@ -550,6 +550,14 @@ func (o *TransferMtDataError) SetMaxWaitingTime(v int32) {
 	o.MaxWaitingTime = &v
 }
 
+func (o TransferMtDataError) MarshalJSON() ([]byte, error) {
+	toSerialize, err := o.ToMap()
+	if err != nil {
+		return []byte{}, err
+	}
+	return json.Marshal(toSerialize)
+}
+
 func (o TransferMtDataError) ToMap() (map[string]any, error) {
 	toSerialize := map[string]any{}
 	if !openapi.IsNil(o.Type) {

@@ -207,6 +207,14 @@ func (o *AssignEbiData) SetModifiedEbiList(v []EbiArpMapping) {
 	o.ModifiedEbiList = v
 }
 
+func (o AssignEbiData) MarshalJSON() ([]byte, error) {
+	toSerialize, err := o.ToMap()
+	if err != nil {
+		return []byte{}, err
+	}
+	return json.Marshal(toSerialize)
+}
+
 func (o AssignEbiData) ToMap() (map[string]any, error) {
 	toSerialize := map[string]any{}
 	toSerialize["pduSessionId"] = o.PduSessionId

@@ -127,6 +127,14 @@ func (o *ClassCriterion) SetThresMatch(v MatchingDirection) {
 	o.ThresMatch = v
 }
 
+func (o ClassCriterion) MarshalJSON() ([]byte, error) {
+	toSerialize, err := o.ToMap()
+	if err != nil {
+		return []byte{}, err
+	}
+	return json.Marshal(toSerialize)
+}
+
 func (o ClassCriterion) ToMap() (map[string]any, error) {
 	toSerialize := map[string]any{}
 	toSerialize["disperClass"] = o.DisperClass

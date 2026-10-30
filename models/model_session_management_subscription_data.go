@@ -669,6 +669,14 @@ func (o *SessionManagementSubscriptionData) SetAdditionalSharedDnnConfigurations
 	o.AdditionalSharedDnnConfigurationsIds = v
 }
 
+func (o SessionManagementSubscriptionData) MarshalJSON() ([]byte, error) {
+	toSerialize, err := o.ToMap()
+	if err != nil {
+		return []byte{}, err
+	}
+	return json.Marshal(toSerialize)
+}
+
 func (o SessionManagementSubscriptionData) ToMap() (map[string]any, error) {
 	toSerialize := map[string]any{}
 	toSerialize["singleNssai"] = o.SingleNssai

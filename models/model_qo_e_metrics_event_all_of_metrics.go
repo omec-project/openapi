@@ -109,6 +109,14 @@ func (o *QoEMetricsEventAllOfMetrics) SetValue(v any) {
 	o.Value = v
 }
 
+func (o QoEMetricsEventAllOfMetrics) MarshalJSON() ([]byte, error) {
+	toSerialize, err := o.ToMap()
+	if err != nil {
+		return []byte{}, err
+	}
+	return json.Marshal(toSerialize)
+}
+
 func (o QoEMetricsEventAllOfMetrics) ToMap() (map[string]any, error) {
 	toSerialize := map[string]any{}
 	toSerialize["key"] = o.Key

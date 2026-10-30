@@ -81,6 +81,14 @@ func (o *AanfInfo) SetRoutingIndicators(v []string) {
 	o.RoutingIndicators = v
 }
 
+func (o AanfInfo) MarshalJSON() ([]byte, error) {
+	toSerialize, err := o.ToMap()
+	if err != nil {
+		return []byte{}, err
+	}
+	return json.Marshal(toSerialize)
+}
+
 func (o AanfInfo) ToMap() (map[string]any, error) {
 	toSerialize := map[string]any{}
 	if !openapi.IsNil(o.RoutingIndicators) {

@@ -109,6 +109,14 @@ func (o *EthFlowInfo) SetEthFlowDescriptions(v []EthFlowDescription) {
 	o.EthFlowDescriptions = v
 }
 
+func (o EthFlowInfo) MarshalJSON() ([]byte, error) {
+	toSerialize, err := o.ToMap()
+	if err != nil {
+		return []byte{}, err
+	}
+	return json.Marshal(toSerialize)
+}
+
 func (o EthFlowInfo) ToMap() (map[string]any, error) {
 	toSerialize := map[string]any{}
 	toSerialize["flowId"] = o.FlowId

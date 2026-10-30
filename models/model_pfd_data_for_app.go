@@ -283,6 +283,14 @@ func (o *PfdDataForApp) SetSupportedFeatures(v string) {
 	o.SupportedFeatures = &v
 }
 
+func (o PfdDataForApp) MarshalJSON() ([]byte, error) {
+	toSerialize, err := o.ToMap()
+	if err != nil {
+		return []byte{}, err
+	}
+	return json.Marshal(toSerialize)
+}
+
 func (o PfdDataForApp) ToMap() (map[string]any, error) {
 	toSerialize := map[string]any{}
 	toSerialize["applicationId"] = o.ApplicationId

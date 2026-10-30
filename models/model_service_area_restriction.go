@@ -182,6 +182,14 @@ func (o *ServiceAreaRestriction) SetMaxNumOfTAsForNotAllowedAreas(v int32) {
 	o.MaxNumOfTAsForNotAllowedAreas = &v
 }
 
+func (o ServiceAreaRestriction) MarshalJSON() ([]byte, error) {
+	toSerialize, err := o.ToMap()
+	if err != nil {
+		return []byte{}, err
+	}
+	return json.Marshal(toSerialize)
+}
+
 func (o ServiceAreaRestriction) ToMap() (map[string]any, error) {
 	toSerialize := map[string]any{}
 	if !openapi.IsNil(o.RestrictionType) {

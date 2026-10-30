@@ -288,6 +288,14 @@ func (o *QosCharacteristics) SetExtMaxDataBurstVol(v int32) {
 	o.ExtMaxDataBurstVol = &v
 }
 
+func (o QosCharacteristics) MarshalJSON() ([]byte, error) {
+	toSerialize, err := o.ToMap()
+	if err != nil {
+		return []byte{}, err
+	}
+	return json.Marshal(toSerialize)
+}
+
 func (o QosCharacteristics) ToMap() (map[string]any, error) {
 	toSerialize := map[string]any{}
 	toSerialize["5qi"] = o.Var5qi

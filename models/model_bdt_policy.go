@@ -114,6 +114,14 @@ func (o *BdtPolicy) SetBdtReqData(v BdtReqData) {
 	o.BdtReqData = &v
 }
 
+func (o BdtPolicy) MarshalJSON() ([]byte, error) {
+	toSerialize, err := o.ToMap()
+	if err != nil {
+		return []byte{}, err
+	}
+	return json.Marshal(toSerialize)
+}
+
 func (o BdtPolicy) ToMap() (map[string]any, error) {
 	toSerialize := map[string]any{}
 	if !openapi.IsNil(o.BdtPolData) {

@@ -1257,6 +1257,14 @@ func (o *NFService) SetSharedServiceDataId(v string) {
 	o.SharedServiceDataId = &v
 }
 
+func (o NFService) MarshalJSON() ([]byte, error) {
+	toSerialize, err := o.ToMap()
+	if err != nil {
+		return []byte{}, err
+	}
+	return json.Marshal(toSerialize)
+}
+
 func (o NFService) ToMap() (map[string]any, error) {
 	toSerialize := map[string]any{}
 	toSerialize["serviceInstanceId"] = o.ServiceInstanceId

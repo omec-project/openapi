@@ -251,6 +251,14 @@ func (o *PacketFilterInfo) SetFlowDirection(v FlowDirection) {
 	o.FlowDirection = &v
 }
 
+func (o PacketFilterInfo) MarshalJSON() ([]byte, error) {
+	toSerialize, err := o.ToMap()
+	if err != nil {
+		return []byte{}, err
+	}
+	return json.Marshal(toSerialize)
+}
+
 func (o PacketFilterInfo) ToMap() (map[string]any, error) {
 	toSerialize := map[string]any{}
 	if !openapi.IsNil(o.PackFiltId) {

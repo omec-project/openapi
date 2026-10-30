@@ -318,6 +318,14 @@ func (o *VplmnQos) SetVar5qiPL(v int32) {
 	o.Var5qiPL = &v
 }
 
+func (o VplmnQos) MarshalJSON() ([]byte, error) {
+	toSerialize, err := o.ToMap()
+	if err != nil {
+		return []byte{}, err
+	}
+	return json.Marshal(toSerialize)
+}
+
 func (o VplmnQos) ToMap() (map[string]any, error) {
 	toSerialize := map[string]any{}
 	if !openapi.IsNil(o.Var5qi) {

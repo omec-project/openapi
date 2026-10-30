@@ -200,6 +200,14 @@ func (o *AtsssCapability) SetRttWithoutPmf(v bool) {
 	o.RttWithoutPmf = &v
 }
 
+func (o AtsssCapability) MarshalJSON() ([]byte, error) {
+	toSerialize, err := o.ToMap()
+	if err != nil {
+		return []byte{}, err
+	}
+	return json.Marshal(toSerialize)
+}
+
 func (o AtsssCapability) ToMap() (map[string]any, error) {
 	toSerialize := map[string]any{}
 	if !openapi.IsNil(o.AtsssLL) {

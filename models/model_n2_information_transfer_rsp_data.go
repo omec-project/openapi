@@ -174,6 +174,14 @@ func (o *N2InformationTransferRspData) SetTssRspPerNgranList(v []TssRspPerNgran)
 	o.TssRspPerNgranList = v
 }
 
+func (o N2InformationTransferRspData) MarshalJSON() ([]byte, error) {
+	toSerialize, err := o.ToMap()
+	if err != nil {
+		return []byte{}, err
+	}
+	return json.Marshal(toSerialize)
+}
+
 func (o N2InformationTransferRspData) ToMap() (map[string]any, error) {
 	toSerialize := map[string]any{}
 	toSerialize["result"] = o.Result

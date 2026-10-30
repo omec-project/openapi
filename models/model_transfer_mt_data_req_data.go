@@ -74,6 +74,14 @@ func (o *TransferMtDataReqData) SetMtData(v RefToBinaryData) {
 	o.MtData = v
 }
 
+func (o TransferMtDataReqData) MarshalJSON() ([]byte, error) {
+	toSerialize, err := o.ToMap()
+	if err != nil {
+		return []byte{}, err
+	}
+	return json.Marshal(toSerialize)
+}
+
 func (o TransferMtDataReqData) ToMap() (map[string]any, error) {
 	toSerialize := map[string]any{}
 	toSerialize["mtData"] = o.MtData

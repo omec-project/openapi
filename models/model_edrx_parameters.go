@@ -100,6 +100,14 @@ func (o *EdrxParameters) SetEdrxValue(v string) {
 	o.EdrxValue = v
 }
 
+func (o EdrxParameters) MarshalJSON() ([]byte, error) {
+	toSerialize, err := o.ToMap()
+	if err != nil {
+		return []byte{}, err
+	}
+	return json.Marshal(toSerialize)
+}
+
 func (o EdrxParameters) ToMap() (map[string]any, error) {
 	toSerialize := map[string]any{}
 	toSerialize["ratType"] = o.RatType

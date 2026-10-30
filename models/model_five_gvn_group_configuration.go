@@ -283,6 +283,14 @@ func (o *FiveGVnGroupConfiguration) SetMembersData(v map[string]map[string]any) 
 	o.MembersData = v
 }
 
+func (o FiveGVnGroupConfiguration) MarshalJSON() ([]byte, error) {
+	toSerialize, err := o.ToMap()
+	if err != nil {
+		return []byte{}, err
+	}
+	return json.Marshal(toSerialize)
+}
+
 func (o FiveGVnGroupConfiguration) ToMap() (map[string]any, error) {
 	toSerialize := map[string]any{}
 	if !openapi.IsNil(o.Var5gVnGroupData) {

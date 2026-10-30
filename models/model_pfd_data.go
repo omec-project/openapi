@@ -114,6 +114,14 @@ func (o *PfdData) SetAfIds(v []string) {
 	o.AfIds = v
 }
 
+func (o PfdData) MarshalJSON() ([]byte, error) {
+	toSerialize, err := o.ToMap()
+	if err != nil {
+		return []byte{}, err
+	}
+	return json.Marshal(toSerialize)
+}
+
 func (o PfdData) ToMap() (map[string]any, error) {
 	toSerialize := map[string]any{}
 	if !openapi.IsNil(o.AppIds) {

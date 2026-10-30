@@ -102,6 +102,14 @@ func (o *SliceLoadLevelInformation) SetSnssais(v []Snssai) {
 	o.Snssais = v
 }
 
+func (o SliceLoadLevelInformation) MarshalJSON() ([]byte, error) {
+	toSerialize, err := o.ToMap()
+	if err != nil {
+		return []byte{}, err
+	}
+	return json.Marshal(toSerialize)
+}
+
 func (o SliceLoadLevelInformation) ToMap() (map[string]any, error) {
 	toSerialize := map[string]any{}
 	toSerialize["loadLevelInformation"] = o.LoadLevelInformation

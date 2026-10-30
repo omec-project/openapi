@@ -100,6 +100,14 @@ func (o *SmfChangeInfo) SetSmfChangeInd(v SmfChangeIndication) {
 	o.SmfChangeInd = v
 }
 
+func (o SmfChangeInfo) MarshalJSON() ([]byte, error) {
+	toSerialize, err := o.ToMap()
+	if err != nil {
+		return []byte{}, err
+	}
+	return json.Marshal(toSerialize)
+}
+
 func (o SmfChangeInfo) ToMap() (map[string]any, error) {
 	toSerialize := map[string]any{}
 	toSerialize["pduSessionIdList"] = o.PduSessionIdList

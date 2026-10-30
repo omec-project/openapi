@@ -207,6 +207,14 @@ func (o *UeContextTransferRspData) SetSupportedFeatures(v string) {
 	o.SupportedFeatures = &v
 }
 
+func (o UeContextTransferRspData) MarshalJSON() ([]byte, error) {
+	toSerialize, err := o.ToMap()
+	if err != nil {
+		return []byte{}, err
+	}
+	return json.Marshal(toSerialize)
+}
+
 func (o UeContextTransferRspData) ToMap() (map[string]any, error) {
 	toSerialize := map[string]any{}
 	toSerialize["ueContext"] = o.UeContext

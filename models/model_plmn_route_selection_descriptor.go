@@ -107,6 +107,14 @@ func (o *PlmnRouteSelectionDescriptor) SetSnssaiRouteSelDescs(v []SnssaiRouteSel
 	o.SnssaiRouteSelDescs = v
 }
 
+func (o PlmnRouteSelectionDescriptor) MarshalJSON() ([]byte, error) {
+	toSerialize, err := o.ToMap()
+	if err != nil {
+		return []byte{}, err
+	}
+	return json.Marshal(toSerialize)
+}
+
 func (o PlmnRouteSelectionDescriptor) ToMap() (map[string]any, error) {
 	toSerialize := map[string]any{}
 	toSerialize["servingPlmn"] = o.ServingPlmn

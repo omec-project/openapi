@@ -1105,6 +1105,14 @@ func (o *EventNotification) SetRelProxInfos(v []RelProxInfo) {
 	o.RelProxInfos = v
 }
 
+func (o EventNotification) MarshalJSON() ([]byte, error) {
+	toSerialize, err := o.ToMap()
+	if err != nil {
+		return []byte{}, err
+	}
+	return json.Marshal(toSerialize)
+}
+
 func (o EventNotification) ToMap() (map[string]any, error) {
 	toSerialize := map[string]any{}
 	toSerialize["event"] = o.Event

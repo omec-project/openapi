@@ -74,6 +74,14 @@ func (o *SupiInfo) SetSupiList(v []string) {
 	o.SupiList = v
 }
 
+func (o SupiInfo) MarshalJSON() ([]byte, error) {
+	toSerialize, err := o.ToMap()
+	if err != nil {
+		return []byte{}, err
+	}
+	return json.Marshal(toSerialize)
+}
+
 func (o SupiInfo) ToMap() (map[string]any, error) {
 	toSerialize := map[string]any{}
 	toSerialize["supiList"] = o.SupiList

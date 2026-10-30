@@ -114,6 +114,14 @@ func (o *GmlcInfo) SetGmlcNumbers(v []string) {
 	o.GmlcNumbers = v
 }
 
+func (o GmlcInfo) MarshalJSON() ([]byte, error) {
+	toSerialize, err := o.ToMap()
+	if err != nil {
+		return []byte{}, err
+	}
+	return json.Marshal(toSerialize)
+}
+
 func (o GmlcInfo) ToMap() (map[string]any, error) {
 	toSerialize := map[string]any{}
 	if !openapi.IsNil(o.ServingClientTypes) {

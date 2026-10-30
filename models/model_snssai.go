@@ -109,6 +109,14 @@ func (o *Snssai) SetSd(v string) {
 	o.Sd = &v
 }
 
+func (o Snssai) MarshalJSON() ([]byte, error) {
+	toSerialize, err := o.ToMap()
+	if err != nil {
+		return []byte{}, err
+	}
+	return json.Marshal(toSerialize)
+}
+
 func (o Snssai) ToMap() (map[string]any, error) {
 	toSerialize := map[string]any{}
 	toSerialize["sst"] = o.Sst

@@ -140,6 +140,14 @@ func (o *UeContextCreateError) SetTargetToSourceFailureData(v N2InfoContent) {
 	o.TargetToSourceFailureData = &v
 }
 
+func (o UeContextCreateError) MarshalJSON() ([]byte, error) {
+	toSerialize, err := o.ToMap()
+	if err != nil {
+		return []byte{}, err
+	}
+	return json.Marshal(toSerialize)
+}
+
 func (o UeContextCreateError) ToMap() (map[string]any, error) {
 	toSerialize := map[string]any{}
 	toSerialize["error"] = o.Error

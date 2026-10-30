@@ -208,6 +208,14 @@ func (o *NetworkPerfRequirement) SetRscUsgReq(v ResourceUsageRequirement) {
 	o.RscUsgReq = &v
 }
 
+func (o NetworkPerfRequirement) MarshalJSON() ([]byte, error) {
+	toSerialize, err := o.ToMap()
+	if err != nil {
+		return []byte{}, err
+	}
+	return json.Marshal(toSerialize)
+}
+
 func (o NetworkPerfRequirement) ToMap() (map[string]any, error) {
 	toSerialize := map[string]any{}
 	toSerialize["nwPerfType"] = o.NwPerfType

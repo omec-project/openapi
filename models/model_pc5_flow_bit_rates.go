@@ -116,6 +116,14 @@ func (o *Pc5FlowBitRates) SetMaxFbr(v string) {
 	o.MaxFbr = &v
 }
 
+func (o Pc5FlowBitRates) MarshalJSON() ([]byte, error) {
+	toSerialize, err := o.ToMap()
+	if err != nil {
+		return []byte{}, err
+	}
+	return json.Marshal(toSerialize)
+}
+
 func (o Pc5FlowBitRates) ToMap() (map[string]any, error) {
 	toSerialize := map[string]any{}
 	if !openapi.IsNil(o.GuaFbr) {

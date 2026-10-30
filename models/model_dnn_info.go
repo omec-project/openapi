@@ -342,6 +342,14 @@ func (o *DnnInfo) SetHrSboAllowed(v bool) {
 	o.HrSboAllowed = &v
 }
 
+func (o DnnInfo) MarshalJSON() ([]byte, error) {
+	toSerialize, err := o.ToMap()
+	if err != nil {
+		return []byte{}, err
+	}
+	return json.Marshal(toSerialize)
+}
+
 func (o DnnInfo) ToMap() (map[string]any, error) {
 	toSerialize := map[string]any{}
 	toSerialize["dnn"] = o.Dnn

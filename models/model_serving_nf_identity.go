@@ -203,6 +203,14 @@ func (o *ServingNfIdentity) UnsetSgsnAddr() {
 	o.SgsnAddr.Unset()
 }
 
+func (o ServingNfIdentity) MarshalJSON() ([]byte, error) {
+	toSerialize, err := o.ToMap()
+	if err != nil {
+		return []byte{}, err
+	}
+	return json.Marshal(toSerialize)
+}
+
 func (o ServingNfIdentity) ToMap() (map[string]any, error) {
 	toSerialize := map[string]any{}
 	if !openapi.IsNil(o.ServNfInstId) {

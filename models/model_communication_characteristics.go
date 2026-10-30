@@ -312,6 +312,14 @@ func (o *CommunicationCharacteristics) UnsetPpMaximumLatency() {
 	o.PpMaximumLatency.Unset()
 }
 
+func (o CommunicationCharacteristics) MarshalJSON() ([]byte, error) {
+	toSerialize, err := o.ToMap()
+	if err != nil {
+		return []byte{}, err
+	}
+	return json.Marshal(toSerialize)
+}
+
 func (o CommunicationCharacteristics) ToMap() (map[string]any, error) {
 	toSerialize := map[string]any{}
 	if o.PpSubsRegTimer.IsSet() {

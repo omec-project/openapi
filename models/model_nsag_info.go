@@ -166,6 +166,14 @@ func (o *NsagInfo) SetTaiRangeList(v []TaiRange) {
 	o.TaiRangeList = v
 }
 
+func (o NsagInfo) MarshalJSON() ([]byte, error) {
+	toSerialize, err := o.ToMap()
+	if err != nil {
+		return []byte{}, err
+	}
+	return json.Marshal(toSerialize)
+}
+
 func (o NsagInfo) ToMap() (map[string]any, error) {
 	toSerialize := map[string]any{}
 	toSerialize["nsagIds"] = o.NsagIds

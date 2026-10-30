@@ -48,6 +48,14 @@ func NewTrafficDescriptorComponentsWithDefaults() *TrafficDescriptorComponents {
 	return &this
 }
 
+func (o TrafficDescriptorComponents) MarshalJSON() ([]byte, error) {
+	toSerialize, err := o.ToMap()
+	if err != nil {
+		return []byte{}, err
+	}
+	return json.Marshal(toSerialize)
+}
+
 func (o TrafficDescriptorComponents) ToMap() (map[string]any, error) {
 	toSerialize := map[string]any{}
 	return toSerialize, nil

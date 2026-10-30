@@ -109,6 +109,14 @@ func (o *NfServiceSetCond) SetNfSetId(v string) {
 	o.NfSetId = &v
 }
 
+func (o NfServiceSetCond) MarshalJSON() ([]byte, error) {
+	toSerialize, err := o.ToMap()
+	if err != nil {
+		return []byte{}, err
+	}
+	return json.Marshal(toSerialize)
+}
+
 func (o NfServiceSetCond) ToMap() (map[string]any, error) {
 	toSerialize := map[string]any{}
 	toSerialize["nfServiceSetId"] = o.NfServiceSetId

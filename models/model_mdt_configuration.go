@@ -1004,6 +1004,14 @@ func (o *MdtConfiguration) SetInterFreqTargetList(v []InterFreqTargetInfo) {
 	o.InterFreqTargetList = v
 }
 
+func (o MdtConfiguration) MarshalJSON() ([]byte, error) {
+	toSerialize, err := o.ToMap()
+	if err != nil {
+		return []byte{}, err
+	}
+	return json.Marshal(toSerialize)
+}
+
 func (o MdtConfiguration) ToMap() (map[string]any, error) {
 	toSerialize := map[string]any{}
 	toSerialize["jobType"] = o.JobType

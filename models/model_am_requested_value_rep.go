@@ -383,6 +383,14 @@ func (o *AmRequestedValueRep) SetPendingNssai(v []Snssai) {
 	o.PendingNssai = v
 }
 
+func (o AmRequestedValueRep) MarshalJSON() ([]byte, error) {
+	toSerialize, err := o.ToMap()
+	if err != nil {
+		return []byte{}, err
+	}
+	return json.Marshal(toSerialize)
+}
+
 func (o AmRequestedValueRep) ToMap() (map[string]any, error) {
 	toSerialize := map[string]any{}
 	if !openapi.IsNil(o.UserLoc) {

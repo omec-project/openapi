@@ -81,6 +81,14 @@ func (o *SearchResultInfo) SetUnsatisfiedTaiList(v []Tai) {
 	o.UnsatisfiedTaiList = v
 }
 
+func (o SearchResultInfo) MarshalJSON() ([]byte, error) {
+	toSerialize, err := o.ToMap()
+	if err != nil {
+		return []byte{}, err
+	}
+	return json.Marshal(toSerialize)
+}
+
 func (o SearchResultInfo) ToMap() (map[string]any, error) {
 	toSerialize := map[string]any{}
 	if !openapi.IsNil(o.UnsatisfiedTaiList) {

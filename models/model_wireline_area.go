@@ -215,6 +215,14 @@ func (o *WirelineArea) SetCombGciAndHfcNIds(v []CombGciAndHfcNIds) {
 	o.CombGciAndHfcNIds = v
 }
 
+func (o WirelineArea) MarshalJSON() ([]byte, error) {
+	toSerialize, err := o.ToMap()
+	if err != nil {
+		return []byte{}, err
+	}
+	return json.Marshal(toSerialize)
+}
+
 func (o WirelineArea) ToMap() (map[string]any, error) {
 	toSerialize := map[string]any{}
 	if !openapi.IsNil(o.GlobalLineIds) {

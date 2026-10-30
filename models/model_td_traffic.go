@@ -285,6 +285,14 @@ func (o *TdTraffic) SetAllNumOfPkt(v int32) {
 	o.AllNumOfPkt = &v
 }
 
+func (o TdTraffic) MarshalJSON() ([]byte, error) {
+	toSerialize, err := o.ToMap()
+	if err != nil {
+		return []byte{}, err
+	}
+	return json.Marshal(toSerialize)
+}
+
 func (o TdTraffic) ToMap() (map[string]any, error) {
 	toSerialize := map[string]any{}
 	if !openapi.IsNil(o.PduSesTrafReqs) {

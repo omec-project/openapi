@@ -142,6 +142,14 @@ func (o *Pc5QosFlowItem) SetRange(v int32) {
 	o.Range = &v
 }
 
+func (o Pc5QosFlowItem) MarshalJSON() ([]byte, error) {
+	toSerialize, err := o.ToMap()
+	if err != nil {
+		return []byte{}, err
+	}
+	return json.Marshal(toSerialize)
+}
+
 func (o Pc5QosFlowItem) ToMap() (map[string]any, error) {
 	toSerialize := map[string]any{}
 	toSerialize["pqi"] = o.Pqi

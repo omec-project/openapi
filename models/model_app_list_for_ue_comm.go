@@ -211,6 +211,14 @@ func (o *AppListForUeComm) SetSpatialValidity(v NetworkAreaInfo) {
 	o.SpatialValidity = &v
 }
 
+func (o AppListForUeComm) MarshalJSON() ([]byte, error) {
+	toSerialize, err := o.ToMap()
+	if err != nil {
+		return []byte{}, err
+	}
+	return json.Marshal(toSerialize)
+}
+
 func (o AppListForUeComm) ToMap() (map[string]any, error) {
 	toSerialize := map[string]any{}
 	toSerialize["appId"] = o.AppId

@@ -416,6 +416,14 @@ func (o *ExpectedUeBehaviourData) SetAccuracyLevel(v string) {
 	o.AccuracyLevel = &v
 }
 
+func (o ExpectedUeBehaviourData) MarshalJSON() ([]byte, error) {
+	toSerialize, err := o.ToMap()
+	if err != nil {
+		return []byte{}, err
+	}
+	return json.Marshal(toSerialize)
+}
+
 func (o ExpectedUeBehaviourData) ToMap() (map[string]any, error) {
 	toSerialize := map[string]any{}
 	if !openapi.IsNil(o.StationaryIndication) {

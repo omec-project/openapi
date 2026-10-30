@@ -245,6 +245,14 @@ func (o *MediaStreamingAccess) SetConnectionMetrics(v MediaStreamingAccessConnec
 	o.ConnectionMetrics = &v
 }
 
+func (o MediaStreamingAccess) MarshalJSON() ([]byte, error) {
+	toSerialize, err := o.ToMap()
+	if err != nil {
+		return []byte{}, err
+	}
+	return json.Marshal(toSerialize)
+}
+
 func (o MediaStreamingAccess) ToMap() (map[string]any, error) {
 	toSerialize := map[string]any{}
 	toSerialize["mediaStreamHandlerEndpointAddress"] = o.MediaStreamHandlerEndpointAddress

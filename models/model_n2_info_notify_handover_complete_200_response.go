@@ -610,6 +610,14 @@ func (o *N2InfoNotifyHandoverComplete200Response) SetBinaryDataN2InformationExt1
 	o.BinaryDataN2InformationExt16 = &v
 }
 
+func (o N2InfoNotifyHandoverComplete200Response) MarshalJSON() ([]byte, error) {
+	toSerialize, err := o.ToMap()
+	if err != nil {
+		return []byte{}, err
+	}
+	return json.Marshal(toSerialize)
+}
+
 func (o N2InfoNotifyHandoverComplete200Response) ToMap() (map[string]any, error) {
 	toSerialize := map[string]any{}
 	if !openapi.IsNil(o.JsonData) {

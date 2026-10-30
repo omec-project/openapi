@@ -75,6 +75,14 @@ func (o *ReauthNotificationInfo) SetSupi(v string) {
 	o.Supi = v
 }
 
+func (o ReauthNotificationInfo) MarshalJSON() ([]byte, error) {
+	toSerialize, err := o.ToMap()
+	if err != nil {
+		return []byte{}, err
+	}
+	return json.Marshal(toSerialize)
+}
+
 func (o ReauthNotificationInfo) ToMap() (map[string]any, error) {
 	toSerialize := map[string]any{}
 	toSerialize["supi"] = o.Supi

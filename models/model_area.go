@@ -115,6 +115,14 @@ func (o *Area) SetAreaCode(v string) {
 	o.AreaCode = &v
 }
 
+func (o Area) MarshalJSON() ([]byte, error) {
+	toSerialize, err := o.ToMap()
+	if err != nil {
+		return []byte{}, err
+	}
+	return json.Marshal(toSerialize)
+}
+
 func (o Area) ToMap() (map[string]any, error) {
 	toSerialize := map[string]any{}
 	if !openapi.IsNil(o.Tacs) {

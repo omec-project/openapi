@@ -247,6 +247,14 @@ func (o *AdditionalMeasurement) SetCircums(v []CircumstanceDescription) {
 	o.Circums = v
 }
 
+func (o AdditionalMeasurement) MarshalJSON() ([]byte, error) {
+	toSerialize, err := o.ToMap()
+	if err != nil {
+		return []byte{}, err
+	}
+	return json.Marshal(toSerialize)
+}
+
 func (o AdditionalMeasurement) ToMap() (map[string]any, error) {
 	toSerialize := map[string]any{}
 	if !openapi.IsNil(o.UnexpLoc) {

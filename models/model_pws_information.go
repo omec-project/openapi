@@ -266,6 +266,14 @@ func (o *PwsInformation) SetNfId(v string) {
 	o.NfId = &v
 }
 
+func (o PwsInformation) MarshalJSON() ([]byte, error) {
+	toSerialize, err := o.ToMap()
+	if err != nil {
+		return []byte{}, err
+	}
+	return json.Marshal(toSerialize)
+}
+
 func (o PwsInformation) ToMap() (map[string]any, error) {
 	toSerialize := map[string]any{}
 	toSerialize["messageIdentifier"] = o.MessageIdentifier

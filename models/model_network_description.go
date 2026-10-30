@@ -183,6 +183,14 @@ func (o *NetworkDescription) SetAnyPlmnInd(v bool) {
 	o.AnyPlmnInd = &v
 }
 
+func (o NetworkDescription) MarshalJSON() ([]byte, error) {
+	toSerialize, err := o.ToMap()
+	if err != nil {
+		return []byte{}, err
+	}
+	return json.Marshal(toSerialize)
+}
+
 func (o NetworkDescription) ToMap() (map[string]any, error) {
 	toSerialize := map[string]any{}
 	if !openapi.IsNil(o.PlmnId) {

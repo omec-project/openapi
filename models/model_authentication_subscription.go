@@ -587,6 +587,14 @@ func (o *AuthenticationSubscription) SetVar5gKeyHierarSupp(v bool) {
 	o.Var5gKeyHierarSupp = &v
 }
 
+func (o AuthenticationSubscription) MarshalJSON() ([]byte, error) {
+	toSerialize, err := o.ToMap()
+	if err != nil {
+		return []byte{}, err
+	}
+	return json.Marshal(toSerialize)
+}
+
 func (o AuthenticationSubscription) ToMap() (map[string]any, error) {
 	toSerialize := map[string]any{}
 	toSerialize["authenticationMethod"] = o.AuthenticationMethod

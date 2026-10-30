@@ -122,6 +122,14 @@ func (o *V2xCapability) SetNrV2x(v bool) {
 	o.NrV2x = &v
 }
 
+func (o V2xCapability) MarshalJSON() ([]byte, error) {
+	toSerialize, err := o.ToMap()
+	if err != nil {
+		return []byte{}, err
+	}
+	return json.Marshal(toSerialize)
+}
+
 func (o V2xCapability) ToMap() (map[string]any, error) {
 	toSerialize := map[string]any{}
 	if !openapi.IsNil(o.LteV2x) {

@@ -418,6 +418,14 @@ func (o *ReportingInformation) SetMutingSetting(v MutingNotificationsSettings) {
 	o.MutingSetting = &v
 }
 
+func (o ReportingInformation) MarshalJSON() ([]byte, error) {
+	toSerialize, err := o.ToMap()
+	if err != nil {
+		return []byte{}, err
+	}
+	return json.Marshal(toSerialize)
+}
+
 func (o ReportingInformation) ToMap() (map[string]any, error) {
 	toSerialize := map[string]any{}
 	if !openapi.IsNil(o.ImmRep) {

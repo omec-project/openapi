@@ -208,6 +208,14 @@ func (o *AmfNon3GppAccessRegistrationModification) SetBackupAmfInfo(v []BackupAm
 	o.BackupAmfInfo = v
 }
 
+func (o AmfNon3GppAccessRegistrationModification) MarshalJSON() ([]byte, error) {
+	toSerialize, err := o.ToMap()
+	if err != nil {
+		return []byte{}, err
+	}
+	return json.Marshal(toSerialize)
+}
+
 func (o AmfNon3GppAccessRegistrationModification) ToMap() (map[string]any, error) {
 	toSerialize := map[string]any{}
 	toSerialize["guami"] = o.Guami

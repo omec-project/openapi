@@ -139,6 +139,14 @@ func (o *GeoDistributionInfo) SetGpsis(v []string) {
 	o.Gpsis = v
 }
 
+func (o GeoDistributionInfo) MarshalJSON() ([]byte, error) {
+	toSerialize, err := o.ToMap()
+	if err != nil {
+		return []byte{}, err
+	}
+	return json.Marshal(toSerialize)
+}
+
 func (o GeoDistributionInfo) ToMap() (map[string]any, error) {
 	toSerialize := map[string]any{}
 	toSerialize["loc"] = o.Loc

@@ -107,6 +107,14 @@ func (o *MonitoringEvent) SetRevokedCause(v RevokedCause) {
 	o.RevokedCause = &v
 }
 
+func (o MonitoringEvent) MarshalJSON() ([]byte, error) {
+	toSerialize, err := o.ToMap()
+	if err != nil {
+		return []byte{}, err
+	}
+	return json.Marshal(toSerialize)
+}
+
 func (o MonitoringEvent) ToMap() (map[string]any, error) {
 	toSerialize := map[string]any{}
 	toSerialize["eventType"] = o.EventType

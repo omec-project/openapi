@@ -208,6 +208,14 @@ func (o *AfEventSubscription) SetQosMonParamType(v QosMonitoringParamType) {
 	o.QosMonParamType = &v
 }
 
+func (o AfEventSubscription) MarshalJSON() ([]byte, error) {
+	toSerialize, err := o.ToMap()
+	if err != nil {
+		return []byte{}, err
+	}
+	return json.Marshal(toSerialize)
+}
+
 func (o AfEventSubscription) ToMap() (map[string]any, error) {
 	toSerialize := map[string]any{}
 	toSerialize["event"] = o.Event

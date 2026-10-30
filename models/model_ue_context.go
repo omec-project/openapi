@@ -3060,6 +3060,14 @@ func (o *UeContext) SetReconnectInd(v bool) {
 	o.ReconnectInd = &v
 }
 
+func (o UeContext) MarshalJSON() ([]byte, error) {
+	toSerialize, err := o.ToMap()
+	if err != nil {
+		return []byte{}, err
+	}
+	return json.Marshal(toSerialize)
+}
+
 func (o UeContext) ToMap() (map[string]any, error) {
 	toSerialize := map[string]any{}
 	if !openapi.IsNil(o.Supi) {

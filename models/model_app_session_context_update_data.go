@@ -941,6 +941,14 @@ func (o *AppSessionContextUpdateData) SetTscNotifCorreId(v string) {
 	o.TscNotifCorreId = &v
 }
 
+func (o AppSessionContextUpdateData) MarshalJSON() ([]byte, error) {
+	toSerialize, err := o.ToMap()
+	if err != nil {
+		return []byte{}, err
+	}
+	return json.Marshal(toSerialize)
+}
+
 func (o AppSessionContextUpdateData) ToMap() (map[string]any, error) {
 	toSerialize := map[string]any{}
 	if !openapi.IsNil(o.AfAppId) {

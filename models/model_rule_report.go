@@ -303,6 +303,14 @@ func (o *RuleReport) SetAltQosParamId(v string) {
 	o.AltQosParamId = &v
 }
 
+func (o RuleReport) MarshalJSON() ([]byte, error) {
+	toSerialize, err := o.ToMap()
+	if err != nil {
+		return []byte{}, err
+	}
+	return json.Marshal(toSerialize)
+}
+
 func (o RuleReport) ToMap() (map[string]any, error) {
 	toSerialize := map[string]any{}
 	toSerialize["pccRuleIds"] = o.PccRuleIds

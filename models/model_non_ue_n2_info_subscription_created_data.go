@@ -141,6 +141,14 @@ func (o *NonUeN2InfoSubscriptionCreatedData) SetN2InformationClass(v N2Informati
 	o.N2InformationClass = &v
 }
 
+func (o NonUeN2InfoSubscriptionCreatedData) MarshalJSON() ([]byte, error) {
+	toSerialize, err := o.ToMap()
+	if err != nil {
+		return []byte{}, err
+	}
+	return json.Marshal(toSerialize)
+}
+
 func (o NonUeN2InfoSubscriptionCreatedData) ToMap() (map[string]any, error) {
 	toSerialize := map[string]any{}
 	toSerialize["n2NotifySubscriptionId"] = o.N2NotifySubscriptionId

@@ -181,6 +181,14 @@ func (o *DatalinkReportingConfiguration) SetDddStatusList(v []DlDataDeliveryStat
 	o.DddStatusList = v
 }
 
+func (o DatalinkReportingConfiguration) MarshalJSON() ([]byte, error) {
+	toSerialize, err := o.ToMap()
+	if err != nil {
+		return []byte{}, err
+	}
+	return json.Marshal(toSerialize)
+}
+
 func (o DatalinkReportingConfiguration) ToMap() (map[string]any, error) {
 	toSerialize := map[string]any{}
 	if !openapi.IsNil(o.DddTrafficDes) {

@@ -114,6 +114,14 @@ func (o *ServiceDataFlowDescription) SetDomainName(v string) {
 	o.DomainName = &v
 }
 
+func (o ServiceDataFlowDescription) MarshalJSON() ([]byte, error) {
+	toSerialize, err := o.ToMap()
+	if err != nil {
+		return []byte{}, err
+	}
+	return json.Marshal(toSerialize)
+}
+
 func (o ServiceDataFlowDescription) ToMap() (map[string]any, error) {
 	toSerialize := map[string]any{}
 	if !openapi.IsNil(o.FlowDescription) {

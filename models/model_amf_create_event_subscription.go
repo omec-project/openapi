@@ -141,6 +141,14 @@ func (o *AmfCreateEventSubscription) SetOldGuami(v Guami) {
 	o.OldGuami = &v
 }
 
+func (o AmfCreateEventSubscription) MarshalJSON() ([]byte, error) {
+	toSerialize, err := o.ToMap()
+	if err != nil {
+		return []byte{}, err
+	}
+	return json.Marshal(toSerialize)
+}
+
 func (o AmfCreateEventSubscription) ToMap() (map[string]any, error) {
 	toSerialize := map[string]any{}
 	toSerialize["subscription"] = o.Subscription

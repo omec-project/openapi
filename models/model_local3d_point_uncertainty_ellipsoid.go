@@ -155,6 +155,14 @@ func (o *Local3dPointUncertaintyEllipsoid) SetConfidence(v int32) {
 	o.Confidence = v
 }
 
+func (o Local3dPointUncertaintyEllipsoid) MarshalJSON() ([]byte, error) {
+	toSerialize, err := o.ToMap()
+	if err != nil {
+		return []byte{}, err
+	}
+	return json.Marshal(toSerialize)
+}
+
 func (o Local3dPointUncertaintyEllipsoid) ToMap() (map[string]any, error) {
 	toSerialize := map[string]any{}
 	serializedGADShape, errGADShape := json.Marshal(o.GADShape)

@@ -349,6 +349,14 @@ func (o *E2eDataVolTransTimePerUe) SetDataVolTransTime(v DataVolumeTransferTime)
 	o.DataVolTransTime = &v
 }
 
+func (o E2eDataVolTransTimePerUe) MarshalJSON() ([]byte, error) {
+	toSerialize, err := o.ToMap()
+	if err != nil {
+		return []byte{}, err
+	}
+	return json.Marshal(toSerialize)
+}
+
 func (o E2eDataVolTransTimePerUe) ToMap() (map[string]any, error) {
 	toSerialize := map[string]any{}
 	if !openapi.IsNil(o.Supi) {

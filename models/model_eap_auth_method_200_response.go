@@ -104,6 +104,14 @@ func (o *EapAuthMethod200Response) SetLinks(v map[string]LinksValueSchema) {
 	o.Links = v
 }
 
+func (o EapAuthMethod200Response) MarshalJSON() ([]byte, error) {
+	toSerialize, err := o.ToMap()
+	if err != nil {
+		return []byte{}, err
+	}
+	return json.Marshal(toSerialize)
+}
+
 func (o EapAuthMethod200Response) ToMap() (map[string]any, error) {
 	toSerialize := map[string]any{}
 	toSerialize["eapPayload"] = o.EapPayload.Get()

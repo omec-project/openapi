@@ -111,6 +111,14 @@ func (o *SupportedSnssai) SetRestrictionInd(v bool) {
 	o.RestrictionInd = &v
 }
 
+func (o SupportedSnssai) MarshalJSON() ([]byte, error) {
+	toSerialize, err := o.ToMap()
+	if err != nil {
+		return []byte{}, err
+	}
+	return json.Marshal(toSerialize)
+}
+
 func (o SupportedSnssai) ToMap() (map[string]any, error) {
 	toSerialize := map[string]any{}
 	toSerialize["sNssai"] = o.SNssai

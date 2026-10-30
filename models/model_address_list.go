@@ -114,6 +114,14 @@ func (o *AddressList) SetIpv6Addrs(v []string) {
 	o.Ipv6Addrs = v
 }
 
+func (o AddressList) MarshalJSON() ([]byte, error) {
+	toSerialize, err := o.ToMap()
+	if err != nil {
+		return []byte{}, err
+	}
+	return json.Marshal(toSerialize)
+}
+
 func (o AddressList) ToMap() (map[string]any, error) {
 	toSerialize := map[string]any{}
 	if !openapi.IsNil(o.Ipv4Addrs) {

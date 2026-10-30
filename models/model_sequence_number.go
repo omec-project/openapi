@@ -213,6 +213,14 @@ func (o *SequenceNumber) SetDifSign(v Sign) {
 	o.DifSign = &v
 }
 
+func (o SequenceNumber) MarshalJSON() ([]byte, error) {
+	toSerialize, err := o.ToMap()
+	if err != nil {
+		return []byte{}, err
+	}
+	return json.Marshal(toSerialize)
+}
+
 func (o SequenceNumber) ToMap() (map[string]any, error) {
 	toSerialize := map[string]any{}
 	if !openapi.IsNil(o.SqnScheme) {

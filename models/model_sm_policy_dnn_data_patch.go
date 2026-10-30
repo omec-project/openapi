@@ -110,6 +110,14 @@ func (o *SmPolicyDnnDataPatch) SetBdtRefIds(v map[string]*string) {
 	o.BdtRefIds = v
 }
 
+func (o SmPolicyDnnDataPatch) MarshalJSON() ([]byte, error) {
+	toSerialize, err := o.ToMap()
+	if err != nil {
+		return []byte{}, err
+	}
+	return json.Marshal(toSerialize)
+}
+
 func (o SmPolicyDnnDataPatch) ToMap() (map[string]any, error) {
 	toSerialize := map[string]any{}
 	toSerialize["dnn"] = o.Dnn

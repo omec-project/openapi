@@ -107,6 +107,14 @@ func (o *SnssaiRouteSelectionDescriptor) SetDnnRouteSelDescs(v []DnnRouteSelecti
 	o.DnnRouteSelDescs = v
 }
 
+func (o SnssaiRouteSelectionDescriptor) MarshalJSON() ([]byte, error) {
+	toSerialize, err := o.ToMap()
+	if err != nil {
+		return []byte{}, err
+	}
+	return json.Marshal(toSerialize)
+}
+
 func (o SnssaiRouteSelectionDescriptor) ToMap() (map[string]any, error) {
 	toSerialize := map[string]any{}
 	toSerialize["snssai"] = o.Snssai

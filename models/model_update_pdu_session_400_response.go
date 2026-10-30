@@ -115,6 +115,14 @@ func (o *UpdatePduSession400Response) SetBinaryDataN1SmInfoToUe(v *os.File) {
 	o.BinaryDataN1SmInfoToUe = &v
 }
 
+func (o UpdatePduSession400Response) MarshalJSON() ([]byte, error) {
+	toSerialize, err := o.ToMap()
+	if err != nil {
+		return []byte{}, err
+	}
+	return json.Marshal(toSerialize)
+}
+
 func (o UpdatePduSession400Response) ToMap() (map[string]any, error) {
 	toSerialize := map[string]any{}
 	if !openapi.IsNil(o.JsonData) {

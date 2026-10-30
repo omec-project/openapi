@@ -147,6 +147,14 @@ func (o *SupiRange) SetPattern(v string) {
 	o.Pattern = &v
 }
 
+func (o SupiRange) MarshalJSON() ([]byte, error) {
+	toSerialize, err := o.ToMap()
+	if err != nil {
+		return []byte{}, err
+	}
+	return json.Marshal(toSerialize)
+}
+
 func (o SupiRange) ToMap() (map[string]any, error) {
 	toSerialize := map[string]any{}
 	if !openapi.IsNil(o.Start) {

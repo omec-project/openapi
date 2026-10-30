@@ -140,6 +140,14 @@ func (o *Flows) SetMedCompN(v int32) {
 	o.MedCompN = v
 }
 
+func (o Flows) MarshalJSON() ([]byte, error) {
+	toSerialize, err := o.ToMap()
+	if err != nil {
+		return []byte{}, err
+	}
+	return json.Marshal(toSerialize)
+}
+
 func (o Flows) ToMap() (map[string]any, error) {
 	toSerialize := map[string]any{}
 	if !openapi.IsNil(o.ContVers) {

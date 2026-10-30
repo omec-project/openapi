@@ -150,6 +150,14 @@ func (o *AcsInfoRm) SetAcsIpv6Addr(v string) {
 	o.AcsIpv6Addr = &v
 }
 
+func (o AcsInfoRm) MarshalJSON() ([]byte, error) {
+	toSerialize, err := o.ToMap()
+	if err != nil {
+		return []byte{}, err
+	}
+	return json.Marshal(toSerialize)
+}
+
 func (o AcsInfoRm) ToMap() (map[string]any, error) {
 	toSerialize := map[string]any{}
 	if !openapi.IsNil(o.AcsUrl) {

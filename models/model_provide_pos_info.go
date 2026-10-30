@@ -1053,6 +1053,14 @@ func (o *ProvidePosInfo) SetRelativeVelocity(v VelocityEstimate) {
 	o.RelativeVelocity = &v
 }
 
+func (o ProvidePosInfo) MarshalJSON() ([]byte, error) {
+	toSerialize, err := o.ToMap()
+	if err != nil {
+		return []byte{}, err
+	}
+	return json.Marshal(toSerialize)
+}
+
 func (o ProvidePosInfo) ToMap() (map[string]any, error) {
 	toSerialize := map[string]any{}
 	if !openapi.IsNil(o.LocationEstimate) {

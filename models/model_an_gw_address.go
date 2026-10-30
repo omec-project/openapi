@@ -116,6 +116,14 @@ func (o *AnGwAddress) SetAnGwIpv6Addr(v string) {
 	o.AnGwIpv6Addr = &v
 }
 
+func (o AnGwAddress) MarshalJSON() ([]byte, error) {
+	toSerialize, err := o.ToMap()
+	if err != nil {
+		return []byte{}, err
+	}
+	return json.Marshal(toSerialize)
+}
+
 func (o AnGwAddress) ToMap() (map[string]any, error) {
 	toSerialize := map[string]any{}
 	if !openapi.IsNil(o.AnGwIpv4Addr) {

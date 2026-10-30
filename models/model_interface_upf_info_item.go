@@ -206,6 +206,14 @@ func (o *InterfaceUpfInfoItem) SetNetworkInstance(v string) {
 	o.NetworkInstance = &v
 }
 
+func (o InterfaceUpfInfoItem) MarshalJSON() ([]byte, error) {
+	toSerialize, err := o.ToMap()
+	if err != nil {
+		return []byte{}, err
+	}
+	return json.Marshal(toSerialize)
+}
+
 func (o InterfaceUpfInfoItem) ToMap() (map[string]any, error) {
 	toSerialize := map[string]any{}
 	toSerialize["interfaceType"] = o.InterfaceType

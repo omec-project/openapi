@@ -1416,6 +1416,14 @@ func (o *RequestPosInfo) SetCoordinateID(v int32) {
 	o.CoordinateID = &v
 }
 
+func (o RequestPosInfo) MarshalJSON() ([]byte, error) {
+	toSerialize, err := o.ToMap()
+	if err != nil {
+		return []byte{}, err
+	}
+	return json.Marshal(toSerialize)
+}
+
 func (o RequestPosInfo) ToMap() (map[string]any, error) {
 	toSerialize := map[string]any{}
 	toSerialize["lcsClientType"] = o.LcsClientType

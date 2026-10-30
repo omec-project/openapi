@@ -136,6 +136,14 @@ func (o *RelativeCartesianLocation) SetZ(v float32) {
 	o.Z = &v
 }
 
+func (o RelativeCartesianLocation) MarshalJSON() ([]byte, error) {
+	toSerialize, err := o.ToMap()
+	if err != nil {
+		return []byte{}, err
+	}
+	return json.Marshal(toSerialize)
+}
+
 func (o RelativeCartesianLocation) ToMap() (map[string]any, error) {
 	toSerialize := map[string]any{}
 	toSerialize["x"] = o.X

@@ -108,6 +108,14 @@ func (o *N1N2MessageTransferRspData) SetSupportedFeatures(v string) {
 	o.SupportedFeatures = &v
 }
 
+func (o N1N2MessageTransferRspData) MarshalJSON() ([]byte, error) {
+	toSerialize, err := o.ToMap()
+	if err != nil {
+		return []byte{}, err
+	}
+	return json.Marshal(toSerialize)
+}
+
 func (o N1N2MessageTransferRspData) ToMap() (map[string]any, error) {
 	toSerialize := map[string]any{}
 	toSerialize["cause"] = o.Cause

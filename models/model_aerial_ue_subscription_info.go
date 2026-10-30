@@ -108,6 +108,14 @@ func (o *AerialUeSubscriptionInfo) SetVar3gppUavId(v string) {
 	o.Var3gppUavId = &v
 }
 
+func (o AerialUeSubscriptionInfo) MarshalJSON() ([]byte, error) {
+	toSerialize, err := o.ToMap()
+	if err != nil {
+		return []byte{}, err
+	}
+	return json.Marshal(toSerialize)
+}
+
 func (o AerialUeSubscriptionInfo) ToMap() (map[string]any, error) {
 	toSerialize := map[string]any{}
 	toSerialize["aerialUeInd"] = o.AerialUeInd

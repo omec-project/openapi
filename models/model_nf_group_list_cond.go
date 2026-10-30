@@ -126,6 +126,14 @@ func (o *NfGroupListCond) SetNfGroupIdList(v []string) {
 	o.NfGroupIdList = v
 }
 
+func (o NfGroupListCond) MarshalJSON() ([]byte, error) {
+	toSerialize, err := o.ToMap()
+	if err != nil {
+		return []byte{}, err
+	}
+	return json.Marshal(toSerialize)
+}
+
 func (o NfGroupListCond) ToMap() (map[string]any, error) {
 	toSerialize := map[string]any{}
 	toSerialize["conditionType"] = o.ConditionType

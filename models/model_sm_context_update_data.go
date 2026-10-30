@@ -2188,6 +2188,14 @@ func (o *SmContextUpdateData) SetNsReplTerminInd(v bool) {
 	o.NsReplTerminInd = &v
 }
 
+func (o SmContextUpdateData) MarshalJSON() ([]byte, error) {
+	toSerialize, err := o.ToMap()
+	if err != nil {
+		return []byte{}, err
+	}
+	return json.Marshal(toSerialize)
+}
+
 func (o SmContextUpdateData) ToMap() (map[string]any, error) {
 	toSerialize := map[string]any{}
 	if !openapi.IsNil(o.Pei) {

@@ -452,6 +452,14 @@ func (o *ConsumptionReportingEvent) SetMediaComponentIdentifier(v string) {
 	o.MediaComponentIdentifier = v
 }
 
+func (o ConsumptionReportingEvent) MarshalJSON() ([]byte, error) {
+	toSerialize, err := o.ToMap()
+	if err != nil {
+		return []byte{}, err
+	}
+	return json.Marshal(toSerialize)
+}
+
 func (o ConsumptionReportingEvent) ToMap() (map[string]any, error) {
 	toSerialize := map[string]any{}
 	toSerialize["recordType"] = o.RecordType

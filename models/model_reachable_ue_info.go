@@ -107,6 +107,14 @@ func (o *ReachableUeInfo) SetUserLocation(v UserLocation) {
 	o.UserLocation = &v
 }
 
+func (o ReachableUeInfo) MarshalJSON() ([]byte, error) {
+	toSerialize, err := o.ToMap()
+	if err != nil {
+		return []byte{}, err
+	}
+	return json.Marshal(toSerialize)
+}
+
 func (o ReachableUeInfo) ToMap() (map[string]any, error) {
 	toSerialize := map[string]any{}
 	toSerialize["ueList"] = o.UeList

@@ -2159,6 +2159,14 @@ func (o *EventSubscription) SetFeedback(v AnalyticsFeedbackInfo) {
 	o.Feedback = &v
 }
 
+func (o EventSubscription) MarshalJSON() ([]byte, error) {
+	toSerialize, err := o.ToMap()
+	if err != nil {
+		return []byte{}, err
+	}
+	return json.Marshal(toSerialize)
+}
+
 func (o EventSubscription) ToMap() (map[string]any, error) {
 	toSerialize := map[string]any{}
 	if !openapi.IsNil(o.AnySlice) {

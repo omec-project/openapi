@@ -208,6 +208,14 @@ func (o *PrevSubInfo) SetUeAnaEvents(v []UeAnalyticsContextDescriptor) {
 	o.UeAnaEvents = v
 }
 
+func (o PrevSubInfo) MarshalJSON() ([]byte, error) {
+	toSerialize, err := o.ToMap()
+	if err != nil {
+		return []byte{}, err
+	}
+	return json.Marshal(toSerialize)
+}
+
 func (o PrevSubInfo) ToMap() (map[string]any, error) {
 	toSerialize := map[string]any{}
 	if !openapi.IsNil(o.ProducerId) {

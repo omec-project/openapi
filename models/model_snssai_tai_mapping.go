@@ -140,6 +140,14 @@ func (o *SnssaiTaiMapping) SetSupportedSnssaiList(v []SupportedSnssai) {
 	o.SupportedSnssaiList = v
 }
 
+func (o SnssaiTaiMapping) MarshalJSON() ([]byte, error) {
+	toSerialize, err := o.ToMap()
+	if err != nil {
+		return []byte{}, err
+	}
+	return json.Marshal(toSerialize)
+}
+
 func (o SnssaiTaiMapping) ToMap() (map[string]any, error) {
 	toSerialize := map[string]any{}
 	toSerialize["reportingArea"] = o.ReportingArea

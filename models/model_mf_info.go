@@ -81,6 +81,14 @@ func (o *MfInfo) SetMediaCapabilityList(v []string) {
 	o.MediaCapabilityList = v
 }
 
+func (o MfInfo) MarshalJSON() ([]byte, error) {
+	toSerialize, err := o.ToMap()
+	if err != nil {
+		return []byte{}, err
+	}
+	return json.Marshal(toSerialize)
+}
+
 func (o MfInfo) ToMap() (map[string]any, error) {
 	toSerialize := map[string]any{}
 	if !openapi.IsNil(o.MediaCapabilityList) {

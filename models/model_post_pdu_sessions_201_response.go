@@ -126,6 +126,14 @@ func (o *PostPduSessions201Response) SetBinaryDataN1SmInfoToUe(v *os.File) {
 	o.BinaryDataN1SmInfoToUe = &v
 }
 
+func (o PostPduSessions201Response) MarshalJSON() ([]byte, error) {
+	toSerialize, err := o.ToMap()
+	if err != nil {
+		return []byte{}, err
+	}
+	return json.Marshal(toSerialize)
+}
+
 func (o PostPduSessions201Response) ToMap() (map[string]any, error) {
 	toSerialize := map[string]any{}
 	if o.JsonData.IsSet() {

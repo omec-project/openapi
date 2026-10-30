@@ -134,6 +134,14 @@ func (o *NrppaInformation) SetServiceInstanceId(v string) {
 	o.ServiceInstanceId = &v
 }
 
+func (o NrppaInformation) MarshalJSON() ([]byte, error) {
+	toSerialize, err := o.ToMap()
+	if err != nil {
+		return []byte{}, err
+	}
+	return json.Marshal(toSerialize)
+}
+
 func (o NrppaInformation) ToMap() (map[string]any, error) {
 	toSerialize := map[string]any{}
 	toSerialize["nfId"] = o.NfId

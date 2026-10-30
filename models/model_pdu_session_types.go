@@ -114,6 +114,14 @@ func (o *PduSessionTypes) SetAllowedSessionTypes(v []PduSessionType) {
 	o.AllowedSessionTypes = v
 }
 
+func (o PduSessionTypes) MarshalJSON() ([]byte, error) {
+	toSerialize, err := o.ToMap()
+	if err != nil {
+		return []byte{}, err
+	}
+	return json.Marshal(toSerialize)
+}
+
 func (o PduSessionTypes) ToMap() (map[string]any, error) {
 	toSerialize := map[string]any{}
 	if !openapi.IsNil(o.DefaultSessionType) {

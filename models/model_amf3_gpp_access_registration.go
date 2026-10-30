@@ -1167,6 +1167,14 @@ func (o *Amf3GppAccessRegistration) SetLastSynchronizationTime(v time.Time) {
 	o.LastSynchronizationTime = &v
 }
 
+func (o Amf3GppAccessRegistration) MarshalJSON() ([]byte, error) {
+	toSerialize, err := o.ToMap()
+	if err != nil {
+		return []byte{}, err
+	}
+	return json.Marshal(toSerialize)
+}
+
 func (o Amf3GppAccessRegistration) ToMap() (map[string]any, error) {
 	toSerialize := map[string]any{}
 	toSerialize["amfInstanceId"] = o.AmfInstanceId

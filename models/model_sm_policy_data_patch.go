@@ -117,6 +117,14 @@ func (o *SmPolicyDataPatch) SetSmPolicySnssaiData(v map[string]SmPolicySnssaiDat
 	o.SmPolicySnssaiData = &v
 }
 
+func (o SmPolicyDataPatch) MarshalJSON() ([]byte, error) {
+	toSerialize, err := o.ToMap()
+	if err != nil {
+		return []byte{}, err
+	}
+	return json.Marshal(toSerialize)
+}
+
 func (o SmPolicyDataPatch) ToMap() (map[string]any, error) {
 	toSerialize := map[string]any{}
 	if o.UmData != nil {

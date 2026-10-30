@@ -143,6 +143,14 @@ func (o *RequestedQos) SetGbrDl(v string) {
 	o.GbrDl = &v
 }
 
+func (o RequestedQos) MarshalJSON() ([]byte, error) {
+	toSerialize, err := o.ToMap()
+	if err != nil {
+		return []byte{}, err
+	}
+	return json.Marshal(toSerialize)
+}
+
 func (o RequestedQos) ToMap() (map[string]any, error) {
 	toSerialize := map[string]any{}
 	toSerialize["5qi"] = o.Var5qi

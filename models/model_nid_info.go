@@ -74,6 +74,14 @@ func (o *NidInfo) SetNidList(v []string) {
 	o.NidList = v
 }
 
+func (o NidInfo) MarshalJSON() ([]byte, error) {
+	toSerialize, err := o.ToMap()
+	if err != nil {
+		return []byte{}, err
+	}
+	return json.Marshal(toSerialize)
+}
+
 func (o NidInfo) ToMap() (map[string]any, error) {
 	toSerialize := map[string]any{}
 	toSerialize["nidList"] = o.NidList

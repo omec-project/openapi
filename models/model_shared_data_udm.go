@@ -430,6 +430,14 @@ func (o *SharedDataUdm) UnsetSharedEcsAddrConfigInfo() {
 	o.SharedEcsAddrConfigInfo.Unset()
 }
 
+func (o SharedDataUdm) MarshalJSON() ([]byte, error) {
+	toSerialize, err := o.ToMap()
+	if err != nil {
+		return []byte{}, err
+	}
+	return json.Marshal(toSerialize)
+}
+
 func (o SharedDataUdm) ToMap() (map[string]any, error) {
 	toSerialize := map[string]any{}
 	toSerialize["sharedDataId"] = o.SharedDataId

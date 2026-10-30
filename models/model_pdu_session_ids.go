@@ -81,6 +81,14 @@ func (o *PduSessionIds) SetPduSessionIdList(v []int32) {
 	o.PduSessionIdList = v
 }
 
+func (o PduSessionIds) MarshalJSON() ([]byte, error) {
+	toSerialize, err := o.ToMap()
+	if err != nil {
+		return []byte{}, err
+	}
+	return json.Marshal(toSerialize)
+}
+
 func (o PduSessionIds) ToMap() (map[string]any, error) {
 	toSerialize := map[string]any{}
 	if !openapi.IsNil(o.PduSessionIdList) {

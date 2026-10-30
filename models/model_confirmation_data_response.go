@@ -175,6 +175,14 @@ func (o *ConfirmationDataResponse) SetPvsInfo(v []ServerAddressingInfo) {
 	o.PvsInfo = v
 }
 
+func (o ConfirmationDataResponse) MarshalJSON() ([]byte, error) {
+	toSerialize, err := o.ToMap()
+	if err != nil {
+		return []byte{}, err
+	}
+	return json.Marshal(toSerialize)
+}
+
 func (o ConfirmationDataResponse) ToMap() (map[string]any, error) {
 	toSerialize := map[string]any{}
 	toSerialize["authResult"] = o.AuthResult

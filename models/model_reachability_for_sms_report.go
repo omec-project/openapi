@@ -109,6 +109,14 @@ func (o *ReachabilityForSmsReport) SetMaxAvailabilityTime(v time.Time) {
 	o.MaxAvailabilityTime = &v
 }
 
+func (o ReachabilityForSmsReport) MarshalJSON() ([]byte, error) {
+	toSerialize, err := o.ToMap()
+	if err != nil {
+		return []byte{}, err
+	}
+	return json.Marshal(toSerialize)
+}
+
 func (o ReachabilityForSmsReport) ToMap() (map[string]any, error) {
 	toSerialize := map[string]any{}
 	toSerialize["smsfAccessType"] = o.SmsfAccessType

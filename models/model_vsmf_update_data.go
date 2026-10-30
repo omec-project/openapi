@@ -1215,6 +1215,14 @@ func (o *VsmfUpdateData) SetPendingUpdateInfoList(v []PendingUpdateInfo) {
 	o.PendingUpdateInfoList = v
 }
 
+func (o VsmfUpdateData) MarshalJSON() ([]byte, error) {
+	toSerialize, err := o.ToMap()
+	if err != nil {
+		return []byte{}, err
+	}
+	return json.Marshal(toSerialize)
+}
+
 func (o VsmfUpdateData) ToMap() (map[string]any, error) {
 	toSerialize := map[string]any{}
 	toSerialize["requestIndication"] = o.RequestIndication

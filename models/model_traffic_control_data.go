@@ -913,6 +913,14 @@ func (o *TrafficControlData) SetDatEndMarkInd(v bool) {
 	o.DatEndMarkInd = &v
 }
 
+func (o TrafficControlData) MarshalJSON() ([]byte, error) {
+	toSerialize, err := o.ToMap()
+	if err != nil {
+		return []byte{}, err
+	}
+	return json.Marshal(toSerialize)
+}
+
 func (o TrafficControlData) ToMap() (map[string]any, error) {
 	toSerialize := map[string]any{}
 	toSerialize["tcId"] = o.TcId

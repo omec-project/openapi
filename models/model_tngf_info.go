@@ -148,6 +148,14 @@ func (o *TngfInfo) SetEndpointFqdn(v string) {
 	o.EndpointFqdn = &v
 }
 
+func (o TngfInfo) MarshalJSON() ([]byte, error) {
+	toSerialize, err := o.ToMap()
+	if err != nil {
+		return []byte{}, err
+	}
+	return json.Marshal(toSerialize)
+}
+
 func (o TngfInfo) ToMap() (map[string]any, error) {
 	toSerialize := map[string]any{}
 	if !openapi.IsNil(o.Ipv4EndpointAddresses) {

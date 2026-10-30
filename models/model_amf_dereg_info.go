@@ -74,6 +74,14 @@ func (o *AmfDeregInfo) SetDeregReason(v DeregistrationReason) {
 	o.DeregReason = v
 }
 
+func (o AmfDeregInfo) MarshalJSON() ([]byte, error) {
+	toSerialize, err := o.ToMap()
+	if err != nil {
+		return []byte{}, err
+	}
+	return json.Marshal(toSerialize)
+}
+
 func (o AmfDeregInfo) ToMap() (map[string]any, error) {
 	toSerialize := map[string]any{}
 	toSerialize["deregReason"] = o.DeregReason

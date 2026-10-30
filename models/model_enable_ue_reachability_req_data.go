@@ -245,6 +245,14 @@ func (o *EnableUeReachabilityReqData) SetPduSessionId(v int32) {
 	o.PduSessionId = &v
 }
 
+func (o EnableUeReachabilityReqData) MarshalJSON() ([]byte, error) {
+	toSerialize, err := o.ToMap()
+	if err != nil {
+		return []byte{}, err
+	}
+	return json.Marshal(toSerialize)
+}
+
 func (o EnableUeReachabilityReqData) ToMap() (map[string]any, error) {
 	toSerialize := map[string]any{}
 	toSerialize["reachability"] = o.Reachability

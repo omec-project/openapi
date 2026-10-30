@@ -787,6 +787,14 @@ func (o *AfEventNotificationAf) SetDatVolTransTimeInfos(v []DatVolTransTimeColle
 	o.DatVolTransTimeInfos = v
 }
 
+func (o AfEventNotificationAf) MarshalJSON() ([]byte, error) {
+	toSerialize, err := o.ToMap()
+	if err != nil {
+		return []byte{}, err
+	}
+	return json.Marshal(toSerialize)
+}
+
 func (o AfEventNotificationAf) ToMap() (map[string]any, error) {
 	toSerialize := map[string]any{}
 	toSerialize["event"] = o.Event

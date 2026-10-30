@@ -126,6 +126,14 @@ func (o *CellGlobalId) SetCellId(v string) {
 	o.CellId = v
 }
 
+func (o CellGlobalId) MarshalJSON() ([]byte, error) {
+	toSerialize, err := o.ToMap()
+	if err != nil {
+		return []byte{}, err
+	}
+	return json.Marshal(toSerialize)
+}
+
 func (o CellGlobalId) ToMap() (map[string]any, error) {
 	toSerialize := map[string]any{}
 	toSerialize["plmnId"] = o.PlmnId

@@ -2422,6 +2422,14 @@ func (o *SmContext) SetEasInfoToRefresh(v EasInfoToRefresh) {
 	o.EasInfoToRefresh = &v
 }
 
+func (o SmContext) MarshalJSON() ([]byte, error) {
+	toSerialize, err := o.ToMap()
+	if err != nil {
+		return []byte{}, err
+	}
+	return json.Marshal(toSerialize)
+}
+
 func (o SmContext) ToMap() (map[string]any, error) {
 	toSerialize := map[string]any{}
 	toSerialize["pduSessionId"] = o.PduSessionId

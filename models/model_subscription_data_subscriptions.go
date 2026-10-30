@@ -473,6 +473,14 @@ func (o *SubscriptionDataSubscriptions) SetAdditionalDataRefs(v []AdditionalData
 	o.AdditionalDataRefs = v
 }
 
+func (o SubscriptionDataSubscriptions) MarshalJSON() ([]byte, error) {
+	toSerialize, err := o.ToMap()
+	if err != nil {
+		return []byte{}, err
+	}
+	return json.Marshal(toSerialize)
+}
+
 func (o SubscriptionDataSubscriptions) ToMap() (map[string]any, error) {
 	toSerialize := map[string]any{}
 	if !openapi.IsNil(o.UeId) {

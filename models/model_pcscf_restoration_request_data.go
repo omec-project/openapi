@@ -250,6 +250,14 @@ func (o *PcscfRestorationRequestData) SetUeIpv6(v string) {
 	o.UeIpv6 = &v
 }
 
+func (o PcscfRestorationRequestData) MarshalJSON() ([]byte, error) {
+	toSerialize, err := o.ToMap()
+	if err != nil {
+		return []byte{}, err
+	}
+	return json.Marshal(toSerialize)
+}
+
 func (o PcscfRestorationRequestData) ToMap() (map[string]any, error) {
 	toSerialize := map[string]any{}
 	if !openapi.IsNil(o.Dnn) {

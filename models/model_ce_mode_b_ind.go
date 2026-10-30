@@ -74,6 +74,14 @@ func (o *CeModeBInd) SetCeModeBSupportInd(v bool) {
 	o.CeModeBSupportInd = v
 }
 
+func (o CeModeBInd) MarshalJSON() ([]byte, error) {
+	toSerialize, err := o.ToMap()
+	if err != nil {
+		return []byte{}, err
+	}
+	return json.Marshal(toSerialize)
+}
+
 func (o CeModeBInd) ToMap() (map[string]any, error) {
 	toSerialize := map[string]any{}
 	toSerialize["ceModeBSupportInd"] = o.CeModeBSupportInd

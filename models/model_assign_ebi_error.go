@@ -100,6 +100,14 @@ func (o *AssignEbiError) SetFailureDetails(v AssignEbiFailed) {
 	o.FailureDetails = v
 }
 
+func (o AssignEbiError) MarshalJSON() ([]byte, error) {
+	toSerialize, err := o.ToMap()
+	if err != nil {
+		return []byte{}, err
+	}
+	return json.Marshal(toSerialize)
+}
+
 func (o AssignEbiError) ToMap() (map[string]any, error) {
 	toSerialize := map[string]any{}
 	toSerialize["error"] = o.Error

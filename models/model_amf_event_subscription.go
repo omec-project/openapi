@@ -621,6 +621,14 @@ func (o *AmfEventSubscription) SetTermNotifyInd(v bool) {
 	o.TermNotifyInd = &v
 }
 
+func (o AmfEventSubscription) MarshalJSON() ([]byte, error) {
+	toSerialize, err := o.ToMap()
+	if err != nil {
+		return []byte{}, err
+	}
+	return json.Marshal(toSerialize)
+}
+
 func (o AmfEventSubscription) ToMap() (map[string]any, error) {
 	toSerialize := map[string]any{}
 	toSerialize["eventList"] = o.EventList

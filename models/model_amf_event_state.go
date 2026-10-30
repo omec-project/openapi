@@ -141,6 +141,14 @@ func (o *AmfEventState) SetRemainDuration(v int32) {
 	o.RemainDuration = &v
 }
 
+func (o AmfEventState) MarshalJSON() ([]byte, error) {
+	toSerialize, err := o.ToMap()
+	if err != nil {
+		return []byte{}, err
+	}
+	return json.Marshal(toSerialize)
+}
+
 func (o AmfEventState) ToMap() (map[string]any, error) {
 	toSerialize := map[string]any{}
 	toSerialize["active"] = o.Active

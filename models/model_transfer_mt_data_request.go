@@ -115,6 +115,14 @@ func (o *TransferMtDataRequest) SetBinaryMtData(v *os.File) {
 	o.BinaryMtData = &v
 }
 
+func (o TransferMtDataRequest) MarshalJSON() ([]byte, error) {
+	toSerialize, err := o.ToMap()
+	if err != nil {
+		return []byte{}, err
+	}
+	return json.Marshal(toSerialize)
+}
+
 func (o TransferMtDataRequest) ToMap() (map[string]any, error) {
 	toSerialize := map[string]any{}
 	if !openapi.IsNil(o.JsonData) {

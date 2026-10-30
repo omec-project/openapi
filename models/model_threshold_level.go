@@ -655,6 +655,14 @@ func (o *ThresholdLevel) SetSpeed(v float32) {
 	o.Speed = &v
 }
 
+func (o ThresholdLevel) MarshalJSON() ([]byte, error) {
+	toSerialize, err := o.ToMap()
+	if err != nil {
+		return []byte{}, err
+	}
+	return json.Marshal(toSerialize)
+}
+
 func (o ThresholdLevel) ToMap() (map[string]any, error) {
 	toSerialize := map[string]any{}
 	if !openapi.IsNil(o.CongLevel) {

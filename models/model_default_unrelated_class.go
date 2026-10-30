@@ -213,6 +213,14 @@ func (o *DefaultUnrelatedClass) SetCodeWordList(v []string) {
 	o.CodeWordList = v
 }
 
+func (o DefaultUnrelatedClass) MarshalJSON() ([]byte, error) {
+	toSerialize, err := o.ToMap()
+	if err != nil {
+		return []byte{}, err
+	}
+	return json.Marshal(toSerialize)
+}
+
 func (o DefaultUnrelatedClass) ToMap() (map[string]any, error) {
 	toSerialize := map[string]any{}
 	if !openapi.IsNil(o.AllowedGeographicArea) {

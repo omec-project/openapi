@@ -1211,6 +1211,14 @@ func (o *PccRule) SetTraffParaData(v TrafficParaData) {
 	o.TraffParaData = &v
 }
 
+func (o PccRule) MarshalJSON() ([]byte, error) {
+	toSerialize, err := o.ToMap()
+	if err != nil {
+		return []byte{}, err
+	}
+	return json.Marshal(toSerialize)
+}
+
 func (o PccRule) ToMap() (map[string]any, error) {
 	toSerialize := map[string]any{}
 	if !openapi.IsNil(o.FlowInfos) {

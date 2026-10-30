@@ -107,6 +107,14 @@ func (o *N2InformationTransferError) SetPwsErrorInfo(v PWSErrorData) {
 	o.PwsErrorInfo = &v
 }
 
+func (o N2InformationTransferError) MarshalJSON() ([]byte, error) {
+	toSerialize, err := o.ToMap()
+	if err != nil {
+		return []byte{}, err
+	}
+	return json.Marshal(toSerialize)
+}
+
 func (o N2InformationTransferError) ToMap() (map[string]any, error) {
 	toSerialize := map[string]any{}
 	toSerialize["error"] = o.Error

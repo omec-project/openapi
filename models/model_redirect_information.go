@@ -149,6 +149,14 @@ func (o *RedirectInformation) SetRedirectServerAddress(v string) {
 	o.RedirectServerAddress = &v
 }
 
+func (o RedirectInformation) MarshalJSON() ([]byte, error) {
+	toSerialize, err := o.ToMap()
+	if err != nil {
+		return []byte{}, err
+	}
+	return json.Marshal(toSerialize)
+}
+
 func (o RedirectInformation) ToMap() (map[string]any, error) {
 	toSerialize := map[string]any{}
 	if !openapi.IsNil(o.RedirectEnabled) {

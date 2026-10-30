@@ -107,6 +107,14 @@ func (o *AmfUpdatedEventSubscription) SetReportList(v []AmfEventReport) {
 	o.ReportList = v
 }
 
+func (o AmfUpdatedEventSubscription) MarshalJSON() ([]byte, error) {
+	toSerialize, err := o.ToMap()
+	if err != nil {
+		return []byte{}, err
+	}
+	return json.Marshal(toSerialize)
+}
+
 func (o AmfUpdatedEventSubscription) ToMap() (map[string]any, error) {
 	toSerialize := map[string]any{}
 	toSerialize["subscription"] = o.Subscription

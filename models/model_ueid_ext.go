@@ -116,6 +116,14 @@ func (o *UEIdExt) SetGpsi(v string) {
 	o.Gpsi = &v
 }
 
+func (o UEIdExt) MarshalJSON() ([]byte, error) {
+	toSerialize, err := o.ToMap()
+	if err != nil {
+		return []byte{}, err
+	}
+	return json.Marshal(toSerialize)
+}
+
 func (o UEIdExt) ToMap() (map[string]any, error) {
 	toSerialize := map[string]any{}
 	if !openapi.IsNil(o.Supi) {

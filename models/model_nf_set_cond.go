@@ -75,6 +75,14 @@ func (o *NfSetCond) SetNfSetId(v string) {
 	o.NfSetId = v
 }
 
+func (o NfSetCond) MarshalJSON() ([]byte, error) {
+	toSerialize, err := o.ToMap()
+	if err != nil {
+		return []byte{}, err
+	}
+	return json.Marshal(toSerialize)
+}
+
 func (o NfSetCond) ToMap() (map[string]any, error) {
 	toSerialize := map[string]any{}
 	toSerialize["nfSetId"] = o.NfSetId

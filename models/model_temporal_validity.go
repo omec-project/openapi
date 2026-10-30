@@ -117,6 +117,14 @@ func (o *TemporalValidity) SetStopTime(v time.Time) {
 	o.StopTime = &v
 }
 
+func (o TemporalValidity) MarshalJSON() ([]byte, error) {
+	toSerialize, err := o.ToMap()
+	if err != nil {
+		return []byte{}, err
+	}
+	return json.Marshal(toSerialize)
+}
+
 func (o TemporalValidity) ToMap() (map[string]any, error) {
 	toSerialize := map[string]any{}
 	if !openapi.IsNil(o.StartTime) {

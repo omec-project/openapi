@@ -116,6 +116,14 @@ func (o *RequestedUsageData) SetAllUmIds(v bool) {
 	o.AllUmIds = &v
 }
 
+func (o RequestedUsageData) MarshalJSON() ([]byte, error) {
+	toSerialize, err := o.ToMap()
+	if err != nil {
+		return []byte{}, err
+	}
+	return json.Marshal(toSerialize)
+}
+
 func (o RequestedUsageData) ToMap() (map[string]any, error) {
 	toSerialize := map[string]any{}
 	if !openapi.IsNil(o.RefUmIds) {

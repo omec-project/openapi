@@ -178,6 +178,14 @@ func (o *Av5GHeAka) SetKausf(v string) {
 	o.Kausf = v
 }
 
+func (o Av5GHeAka) MarshalJSON() ([]byte, error) {
+	toSerialize, err := o.ToMap()
+	if err != nil {
+		return []byte{}, err
+	}
+	return json.Marshal(toSerialize)
+}
+
 func (o Av5GHeAka) ToMap() (map[string]any, error) {
 	toSerialize := map[string]any{}
 	toSerialize["avType"] = o.AvType

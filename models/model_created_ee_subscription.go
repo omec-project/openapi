@@ -341,6 +341,14 @@ func (o *CreatedEeSubscription) SetCurrentStatusNotAvailableList(v []EventTypeUd
 	o.CurrentStatusNotAvailableList = v
 }
 
+func (o CreatedEeSubscription) MarshalJSON() ([]byte, error) {
+	toSerialize, err := o.ToMap()
+	if err != nil {
+		return []byte{}, err
+	}
+	return json.Marshal(toSerialize)
+}
+
 func (o CreatedEeSubscription) ToMap() (map[string]any, error) {
 	toSerialize := map[string]any{}
 	toSerialize["eeSubscription"] = o.EeSubscription

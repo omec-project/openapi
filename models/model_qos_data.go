@@ -922,6 +922,14 @@ func (o *QosData) UnsetPduSetQosUl() {
 	o.PduSetQosUl.Unset()
 }
 
+func (o QosData) MarshalJSON() ([]byte, error) {
+	toSerialize, err := o.ToMap()
+	if err != nil {
+		return []byte{}, err
+	}
+	return json.Marshal(toSerialize)
+}
+
 func (o QosData) ToMap() (map[string]any, error) {
 	toSerialize := map[string]any{}
 	toSerialize["qosId"] = o.QosId

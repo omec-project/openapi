@@ -342,6 +342,14 @@ func (o *PduSessionTsnBridge) SetUeIpv6AddrPrefix(v string) {
 	o.UeIpv6AddrPrefix = &v
 }
 
+func (o PduSessionTsnBridge) MarshalJSON() ([]byte, error) {
+	toSerialize, err := o.ToMap()
+	if err != nil {
+		return []byte{}, err
+	}
+	return json.Marshal(toSerialize)
+}
+
 func (o PduSessionTsnBridge) ToMap() (map[string]any, error) {
 	toSerialize := map[string]any{}
 	toSerialize["tsnBridgeInfo"] = o.TsnBridgeInfo

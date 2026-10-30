@@ -150,6 +150,14 @@ func (o *BatteryIndication) SetRechargeableInd(v bool) {
 	o.RechargeableInd = &v
 }
 
+func (o BatteryIndication) MarshalJSON() ([]byte, error) {
+	toSerialize, err := o.ToMap()
+	if err != nil {
+		return []byte{}, err
+	}
+	return json.Marshal(toSerialize)
+}
+
 func (o BatteryIndication) ToMap() (map[string]any, error) {
 	toSerialize := map[string]any{}
 	if !openapi.IsNil(o.BatteryInd) {

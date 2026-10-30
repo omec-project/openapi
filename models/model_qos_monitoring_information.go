@@ -283,6 +283,14 @@ func (o *QosMonitoringInformation) SetConThreshUl(v int32) {
 	o.ConThreshUl = &v
 }
 
+func (o QosMonitoringInformation) MarshalJSON() ([]byte, error) {
+	toSerialize, err := o.ToMap()
+	if err != nil {
+		return []byte{}, err
+	}
+	return json.Marshal(toSerialize)
+}
+
 func (o QosMonitoringInformation) ToMap() (map[string]any, error) {
 	toSerialize := map[string]any{}
 	if !openapi.IsNil(o.RepThreshDl) {

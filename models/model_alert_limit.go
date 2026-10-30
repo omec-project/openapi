@@ -109,6 +109,14 @@ func (o *AlertLimit) SetVerticalProtectionLevel(v int32) {
 	o.VerticalProtectionLevel = &v
 }
 
+func (o AlertLimit) MarshalJSON() ([]byte, error) {
+	toSerialize, err := o.ToMap()
+	if err != nil {
+		return []byte{}, err
+	}
+	return json.Marshal(toSerialize)
+}
+
 func (o AlertLimit) ToMap() (map[string]any, error) {
 	toSerialize := map[string]any{}
 	toSerialize["horizontalProtectionLevel"] = o.HorizontalProtectionLevel

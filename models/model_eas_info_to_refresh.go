@@ -147,6 +147,14 @@ func (o *EasInfoToRefresh) SetFqdnList(v []string) {
 	o.FqdnList = v
 }
 
+func (o EasInfoToRefresh) MarshalJSON() ([]byte, error) {
+	toSerialize, err := o.ToMap()
+	if err != nil {
+		return []byte{}, err
+	}
+	return json.Marshal(toSerialize)
+}
+
 func (o EasInfoToRefresh) ToMap() (map[string]any, error) {
 	toSerialize := map[string]any{}
 	if !openapi.IsNil(o.Ipv4AddressRanges) {

@@ -101,6 +101,14 @@ func (o *NotificationItem) SetNotifItems(v []UpdatedItem) {
 	o.NotifItems = v
 }
 
+func (o NotificationItem) MarshalJSON() ([]byte, error) {
+	toSerialize, err := o.ToMap()
+	if err != nil {
+		return []byte{}, err
+	}
+	return json.Marshal(toSerialize)
+}
+
 func (o NotificationItem) ToMap() (map[string]any, error) {
 	toSerialize := map[string]any{}
 	toSerialize["resourceId"] = o.ResourceId

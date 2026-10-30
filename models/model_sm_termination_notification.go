@@ -101,6 +101,14 @@ func (o *SmTerminationNotification) SetCause(v SmPolicyAssociationReleaseCause) 
 	o.Cause = v
 }
 
+func (o SmTerminationNotification) MarshalJSON() ([]byte, error) {
+	toSerialize, err := o.ToMap()
+	if err != nil {
+		return []byte{}, err
+	}
+	return json.Marshal(toSerialize)
+}
+
 func (o SmTerminationNotification) ToMap() (map[string]any, error) {
 	toSerialize := map[string]any{}
 	toSerialize["resourceUri"] = o.ResourceUri

@@ -114,6 +114,14 @@ func (o *SmsfInfo) SetRemotePlmnRangeList(v []PlmnRange) {
 	o.RemotePlmnRangeList = v
 }
 
+func (o SmsfInfo) MarshalJSON() ([]byte, error) {
+	toSerialize, err := o.ToMap()
+	if err != nil {
+		return []byte{}, err
+	}
+	return json.Marshal(toSerialize)
+}
+
 func (o SmsfInfo) ToMap() (map[string]any, error) {
 	toSerialize := map[string]any{}
 	if !openapi.IsNil(o.RoamingUeInd) {

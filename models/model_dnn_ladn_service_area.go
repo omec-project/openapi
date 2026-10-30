@@ -100,6 +100,14 @@ func (o *DnnLadnServiceArea) SetLadnServiceArea(v []Tai) {
 	o.LadnServiceArea = v
 }
 
+func (o DnnLadnServiceArea) MarshalJSON() ([]byte, error) {
+	toSerialize, err := o.ToMap()
+	if err != nil {
+		return []byte{}, err
+	}
+	return json.Marshal(toSerialize)
+}
+
 func (o DnnLadnServiceArea) ToMap() (map[string]any, error) {
 	toSerialize := map[string]any{}
 	toSerialize["dnn"] = o.Dnn

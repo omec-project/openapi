@@ -74,6 +74,14 @@ func (o *N2RanInformation) SetN2InfoContent(v N2InfoContent) {
 	o.N2InfoContent = v
 }
 
+func (o N2RanInformation) MarshalJSON() ([]byte, error) {
+	toSerialize, err := o.ToMap()
+	if err != nil {
+		return []byte{}, err
+	}
+	return json.Marshal(toSerialize)
+}
+
 func (o N2RanInformation) ToMap() (map[string]any, error) {
 	toSerialize := map[string]any{}
 	toSerialize["n2InfoContent"] = o.N2InfoContent

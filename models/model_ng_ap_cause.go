@@ -102,6 +102,14 @@ func (o *NgApCause) SetValue(v int32) {
 	o.Value = v
 }
 
+func (o NgApCause) MarshalJSON() ([]byte, error) {
+	toSerialize, err := o.ToMap()
+	if err != nil {
+		return []byte{}, err
+	}
+	return json.Marshal(toSerialize)
+}
+
 func (o NgApCause) ToMap() (map[string]any, error) {
 	toSerialize := map[string]any{}
 	toSerialize["group"] = o.Group

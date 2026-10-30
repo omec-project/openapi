@@ -183,6 +183,14 @@ func (o *PerUeAttribute) SetTimeOfArrival(v time.Time) {
 	o.TimeOfArrival = &v
 }
 
+func (o PerUeAttribute) MarshalJSON() ([]byte, error) {
+	toSerialize, err := o.ToMap()
+	if err != nil {
+		return []byte{}, err
+	}
+	return json.Marshal(toSerialize)
+}
+
 func (o PerUeAttribute) ToMap() (map[string]any, error) {
 	toSerialize := map[string]any{}
 	if !openapi.IsNil(o.UeDest) {

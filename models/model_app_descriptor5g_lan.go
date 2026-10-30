@@ -102,6 +102,14 @@ func (o *AppDescriptor5gLan) SetAppIds(v map[string]string) {
 	o.AppIds = v
 }
 
+func (o AppDescriptor5gLan) MarshalJSON() ([]byte, error) {
+	toSerialize, err := o.ToMap()
+	if err != nil {
+		return []byte{}, err
+	}
+	return json.Marshal(toSerialize)
+}
+
 func (o AppDescriptor5gLan) ToMap() (map[string]any, error) {
 	toSerialize := map[string]any{}
 	toSerialize["osId"] = o.OsId

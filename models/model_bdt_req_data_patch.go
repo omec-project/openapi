@@ -82,6 +82,14 @@ func (o *BdtReqDataPatch) SetWarnNotifReq(v bool) {
 	o.WarnNotifReq = &v
 }
 
+func (o BdtReqDataPatch) MarshalJSON() ([]byte, error) {
+	toSerialize, err := o.ToMap()
+	if err != nil {
+		return []byte{}, err
+	}
+	return json.Marshal(toSerialize)
+}
+
 func (o BdtReqDataPatch) ToMap() (map[string]any, error) {
 	toSerialize := map[string]any{}
 	if !openapi.IsNil(o.WarnNotifReq) {

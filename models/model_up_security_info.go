@@ -173,6 +173,14 @@ func (o *UpSecurityInfo) SetSecurityResult(v SecurityResult) {
 	o.SecurityResult = &v
 }
 
+func (o UpSecurityInfo) MarshalJSON() ([]byte, error) {
+	toSerialize, err := o.ToMap()
+	if err != nil {
+		return []byte{}, err
+	}
+	return json.Marshal(toSerialize)
+}
+
 func (o UpSecurityInfo) ToMap() (map[string]any, error) {
 	toSerialize := map[string]any{}
 	toSerialize["upSecurity"] = o.UpSecurity

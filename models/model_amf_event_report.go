@@ -1126,6 +1126,14 @@ func (o *AmfEventReport) SetUnavailabilityPeriod(v int32) {
 	o.UnavailabilityPeriod = &v
 }
 
+func (o AmfEventReport) MarshalJSON() ([]byte, error) {
+	toSerialize, err := o.ToMap()
+	if err != nil {
+		return []byte{}, err
+	}
+	return json.Marshal(toSerialize)
+}
+
 func (o AmfEventReport) ToMap() (map[string]any, error) {
 	toSerialize := map[string]any{}
 	toSerialize["type"] = o.Type

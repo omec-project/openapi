@@ -76,6 +76,14 @@ func (o *Point) SetPoint(v GeographicalCoordinates) {
 	o.Point = v
 }
 
+func (o Point) MarshalJSON() ([]byte, error) {
+	toSerialize, err := o.ToMap()
+	if err != nil {
+		return []byte{}, err
+	}
+	return json.Marshal(toSerialize)
+}
+
 func (o Point) ToMap() (map[string]any, error) {
 	toSerialize := map[string]any{}
 	serializedGADShape, errGADShape := json.Marshal(o.GADShape)

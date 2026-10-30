@@ -140,6 +140,14 @@ func (o *Exception) SetExcepTrend(v ExceptionTrend) {
 	o.ExcepTrend = &v
 }
 
+func (o Exception) MarshalJSON() ([]byte, error) {
+	toSerialize, err := o.ToMap()
+	if err != nil {
+		return []byte{}, err
+	}
+	return json.Marshal(toSerialize)
+}
+
 func (o Exception) ToMap() (map[string]any, error) {
 	toSerialize := map[string]any{}
 	toSerialize["excepId"] = o.ExcepId

@@ -110,6 +110,14 @@ func (o *MoExpDataCounter) SetTimeStamp(v time.Time) {
 	o.TimeStamp = &v
 }
 
+func (o MoExpDataCounter) MarshalJSON() ([]byte, error) {
+	toSerialize, err := o.ToMap()
+	if err != nil {
+		return []byte{}, err
+	}
+	return json.Marshal(toSerialize)
+}
+
 func (o MoExpDataCounter) ToMap() (map[string]any, error) {
 	toSerialize := map[string]any{}
 	toSerialize["counter"] = o.Counter

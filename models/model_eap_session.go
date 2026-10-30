@@ -313,6 +313,14 @@ func (o *EapSession) SetMsk(v string) {
 	o.Msk = &v
 }
 
+func (o EapSession) MarshalJSON() ([]byte, error) {
+	toSerialize, err := o.ToMap()
+	if err != nil {
+		return []byte{}, err
+	}
+	return json.Marshal(toSerialize)
+}
+
 func (o EapSession) ToMap() (map[string]any, error) {
 	toSerialize := map[string]any{}
 	toSerialize["eapPayload"] = o.EapPayload.Get()

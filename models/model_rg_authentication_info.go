@@ -137,6 +137,14 @@ func (o *RgAuthenticationInfo) SetSupportedFeatures(v string) {
 	o.SupportedFeatures = &v
 }
 
+func (o RgAuthenticationInfo) MarshalJSON() ([]byte, error) {
+	toSerialize, err := o.ToMap()
+	if err != nil {
+		return []byte{}, err
+	}
+	return json.Marshal(toSerialize)
+}
+
 func (o RgAuthenticationInfo) ToMap() (map[string]any, error) {
 	toSerialize := map[string]any{}
 	toSerialize["suci"] = o.Suci

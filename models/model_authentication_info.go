@@ -531,6 +531,14 @@ func (o *AuthenticationInfo) SetAun3Ind(v bool) {
 	o.Aun3Ind = &v
 }
 
+func (o AuthenticationInfo) MarshalJSON() ([]byte, error) {
+	toSerialize, err := o.ToMap()
+	if err != nil {
+		return []byte{}, err
+	}
+	return json.Marshal(toSerialize)
+}
+
 func (o AuthenticationInfo) ToMap() (map[string]any, error) {
 	toSerialize := map[string]any{}
 	toSerialize["supiOrSuci"] = o.SupiOrSuci

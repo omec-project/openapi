@@ -1672,6 +1672,14 @@ func (o *MediaComponent) SetL4sInd(v UplinkDownlinkSupport) {
 	o.L4sInd = &v
 }
 
+func (o MediaComponent) MarshalJSON() ([]byte, error) {
+	toSerialize, err := o.ToMap()
+	if err != nil {
+		return []byte{}, err
+	}
+	return json.Marshal(toSerialize)
+}
+
 func (o MediaComponent) ToMap() (map[string]any, error) {
 	toSerialize := map[string]any{}
 	if !openapi.IsNil(o.AfAppId) {

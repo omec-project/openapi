@@ -117,6 +117,14 @@ func (o *PointUncertaintyCircle) SetUncertainty(v float32) {
 	o.Uncertainty = &v
 }
 
+func (o PointUncertaintyCircle) MarshalJSON() ([]byte, error) {
+	toSerialize, err := o.ToMap()
+	if err != nil {
+		return []byte{}, err
+	}
+	return json.Marshal(toSerialize)
+}
+
 func (o PointUncertaintyCircle) ToMap() (map[string]any, error) {
 	toSerialize := map[string]any{}
 	serializedGADShape, errGADShape := json.Marshal(o.GADShape)

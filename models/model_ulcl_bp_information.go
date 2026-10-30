@@ -82,6 +82,14 @@ func (o *UlclBpInformation) SetUlclBpUpfId(v string) {
 	o.UlclBpUpfId = &v
 }
 
+func (o UlclBpInformation) MarshalJSON() ([]byte, error) {
+	toSerialize, err := o.ToMap()
+	if err != nil {
+		return []byte{}, err
+	}
+	return json.Marshal(toSerialize)
+}
+
 func (o UlclBpInformation) ToMap() (map[string]any, error) {
 	toSerialize := map[string]any{}
 	if !openapi.IsNil(o.UlclBpUpfId) {

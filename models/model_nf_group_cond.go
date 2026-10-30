@@ -101,6 +101,14 @@ func (o *NfGroupCond) SetNfGroupId(v string) {
 	o.NfGroupId = v
 }
 
+func (o NfGroupCond) MarshalJSON() ([]byte, error) {
+	toSerialize, err := o.ToMap()
+	if err != nil {
+		return []byte{}, err
+	}
+	return json.Marshal(toSerialize)
+}
+
 func (o NfGroupCond) ToMap() (map[string]any, error) {
 	toSerialize := map[string]any{}
 	toSerialize["nfType"] = o.NfType

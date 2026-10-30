@@ -622,6 +622,14 @@ func (o *PpData) SetSliceUsageControlInfos(v []SliceUsageControlInfo) {
 	o.SliceUsageControlInfos = v
 }
 
+func (o PpData) MarshalJSON() ([]byte, error) {
+	toSerialize, err := o.ToMap()
+	if err != nil {
+		return []byte{}, err
+	}
+	return json.Marshal(toSerialize)
+}
+
 func (o PpData) ToMap() (map[string]any, error) {
 	toSerialize := map[string]any{}
 	if o.CommunicationCharacteristics.IsSet() {

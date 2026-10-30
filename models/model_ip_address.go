@@ -150,6 +150,14 @@ func (o *IpAddress) SetIpv6Prefix(v string) {
 	o.Ipv6Prefix = &v
 }
 
+func (o IpAddress) MarshalJSON() ([]byte, error) {
+	toSerialize, err := o.ToMap()
+	if err != nil {
+		return []byte{}, err
+	}
+	return json.Marshal(toSerialize)
+}
+
 func (o IpAddress) ToMap() (map[string]any, error) {
 	toSerialize := map[string]any{}
 	if !openapi.IsNil(o.Ipv4Addr) {

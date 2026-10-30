@@ -151,6 +151,14 @@ func (o *UeContextInSmfDataSubFilter) SetEmergencyInd(v bool) {
 	o.EmergencyInd = &v
 }
 
+func (o UeContextInSmfDataSubFilter) MarshalJSON() ([]byte, error) {
+	toSerialize, err := o.ToMap()
+	if err != nil {
+		return []byte{}, err
+	}
+	return json.Marshal(toSerialize)
+}
+
 func (o UeContextInSmfDataSubFilter) ToMap() (map[string]any, error) {
 	toSerialize := map[string]any{}
 	if !openapi.IsNil(o.DnnList) {

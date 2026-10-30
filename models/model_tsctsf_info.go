@@ -214,6 +214,14 @@ func (o *TsctsfInfo) SetInternalGroupIdentifiersRanges(v []InternalGroupIdRange)
 	o.InternalGroupIdentifiersRanges = v
 }
 
+func (o TsctsfInfo) MarshalJSON() ([]byte, error) {
+	toSerialize, err := o.ToMap()
+	if err != nil {
+		return []byte{}, err
+	}
+	return json.Marshal(toSerialize)
+}
+
 func (o TsctsfInfo) ToMap() (map[string]any, error) {
 	toSerialize := map[string]any{}
 	if !openapi.IsNil(o.SNssaiInfoList) {

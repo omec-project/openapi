@@ -140,6 +140,14 @@ func (o *AccessTokenErr) SetErrorUri(v string) {
 	o.ErrorUri = &v
 }
 
+func (o AccessTokenErr) MarshalJSON() ([]byte, error) {
+	toSerialize, err := o.ToMap()
+	if err != nil {
+		return []byte{}, err
+	}
+	return json.Marshal(toSerialize)
+}
+
 func (o AccessTokenErr) ToMap() (map[string]any, error) {
 	toSerialize := map[string]any{}
 	toSerialize["error"] = o.Error

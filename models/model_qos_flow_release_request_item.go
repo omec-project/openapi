@@ -143,6 +143,14 @@ func (o *QosFlowReleaseRequestItem) SetQosFlowDescription(v string) {
 	o.QosFlowDescription = &v
 }
 
+func (o QosFlowReleaseRequestItem) MarshalJSON() ([]byte, error) {
+	toSerialize, err := o.ToMap()
+	if err != nil {
+		return []byte{}, err
+	}
+	return json.Marshal(toSerialize)
+}
+
 func (o QosFlowReleaseRequestItem) ToMap() (map[string]any, error) {
 	toSerialize := map[string]any{}
 	toSerialize["qfi"] = o.Qfi

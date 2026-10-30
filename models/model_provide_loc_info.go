@@ -348,6 +348,14 @@ func (o *ProvideLocInfo) SetOldGuami(v Guami) {
 	o.OldGuami = &v
 }
 
+func (o ProvideLocInfo) MarshalJSON() ([]byte, error) {
+	toSerialize, err := o.ToMap()
+	if err != nil {
+		return []byte{}, err
+	}
+	return json.Marshal(toSerialize)
+}
+
 func (o ProvideLocInfo) ToMap() (map[string]any, error) {
 	toSerialize := map[string]any{}
 	if !openapi.IsNil(o.CurrentLoc) {

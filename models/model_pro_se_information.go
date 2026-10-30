@@ -81,6 +81,14 @@ func (o *ProSeInformation) SetN2Pc5ProSePol(v N2InfoContent) {
 	o.N2Pc5ProSePol = &v
 }
 
+func (o ProSeInformation) MarshalJSON() ([]byte, error) {
+	toSerialize, err := o.ToMap()
+	if err != nil {
+		return []byte{}, err
+	}
+	return json.Marshal(toSerialize)
+}
+
 func (o ProSeInformation) ToMap() (map[string]any, error) {
 	toSerialize := map[string]any{}
 	if !openapi.IsNil(o.N2Pc5ProSePol) {

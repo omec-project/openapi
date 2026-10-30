@@ -100,6 +100,14 @@ func (o *AfEventExposureNotif) SetEventNotifs(v []AfEventNotificationAf) {
 	o.EventNotifs = v
 }
 
+func (o AfEventExposureNotif) MarshalJSON() ([]byte, error) {
+	toSerialize, err := o.ToMap()
+	if err != nil {
+		return []byte{}, err
+	}
+	return json.Marshal(toSerialize)
+}
+
 func (o AfEventExposureNotif) ToMap() (map[string]any, error) {
 	toSerialize := map[string]any{}
 	toSerialize["notifId"] = o.NotifId

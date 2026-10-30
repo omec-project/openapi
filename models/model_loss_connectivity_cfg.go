@@ -82,6 +82,14 @@ func (o *LossConnectivityCfg) SetMaxDetectionTime(v int32) {
 	o.MaxDetectionTime = &v
 }
 
+func (o LossConnectivityCfg) MarshalJSON() ([]byte, error) {
+	toSerialize, err := o.ToMap()
+	if err != nil {
+		return []byte{}, err
+	}
+	return json.Marshal(toSerialize)
+}
+
 func (o LossConnectivityCfg) ToMap() (map[string]any, error) {
 	toSerialize := map[string]any{}
 	if !openapi.IsNil(o.MaxDetectionTime) {

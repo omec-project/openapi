@@ -208,6 +208,14 @@ func (o *AuthorizationData) SetValidityTime(v time.Time) {
 	o.ValidityTime = &v
 }
 
+func (o AuthorizationData) MarshalJSON() ([]byte, error) {
+	toSerialize, err := o.ToMap()
+	if err != nil {
+		return []byte{}, err
+	}
+	return json.Marshal(toSerialize)
+}
+
 func (o AuthorizationData) ToMap() (map[string]any, error) {
 	toSerialize := map[string]any{}
 	toSerialize["authorizationData"] = o.AuthorizationData

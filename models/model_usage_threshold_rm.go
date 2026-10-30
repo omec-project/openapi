@@ -228,6 +228,14 @@ func (o *UsageThresholdRm) UnsetUplinkVolume() {
 	o.UplinkVolume.Unset()
 }
 
+func (o UsageThresholdRm) MarshalJSON() ([]byte, error) {
+	toSerialize, err := o.ToMap()
+	if err != nil {
+		return []byte{}, err
+	}
+	return json.Marshal(toSerialize)
+}
+
 func (o UsageThresholdRm) ToMap() (map[string]any, error) {
 	toSerialize := map[string]any{}
 	if o.Duration.IsSet() {

@@ -278,6 +278,14 @@ func (o *UpuInfo) SetUpuTransparentContainer(v string) {
 	o.UpuTransparentContainer = &v
 }
 
+func (o UpuInfo) MarshalJSON() ([]byte, error) {
+	toSerialize, err := o.ToMap()
+	if err != nil {
+		return []byte{}, err
+	}
+	return json.Marshal(toSerialize)
+}
+
 func (o UpuInfo) ToMap() (map[string]any, error) {
 	toSerialize := map[string]any{}
 	if !openapi.IsNil(o.UpuDataList) {

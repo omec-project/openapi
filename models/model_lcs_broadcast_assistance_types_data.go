@@ -76,6 +76,14 @@ func (o *LcsBroadcastAssistanceTypesData) SetLocationAssistanceType(v *os.File) 
 	o.LocationAssistanceType = v
 }
 
+func (o LcsBroadcastAssistanceTypesData) MarshalJSON() ([]byte, error) {
+	toSerialize, err := o.ToMap()
+	if err != nil {
+		return []byte{}, err
+	}
+	return json.Marshal(toSerialize)
+}
+
 func (o LcsBroadcastAssistanceTypesData) ToMap() (map[string]any, error) {
 	toSerialize := map[string]any{}
 	toSerialize["locationAssistanceType"] = o.LocationAssistanceType

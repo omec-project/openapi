@@ -169,6 +169,14 @@ func (o *PatchItem) SetValue(v any) {
 	o.Value = v
 }
 
+func (o PatchItem) MarshalJSON() ([]byte, error) {
+	toSerialize, err := o.ToMap()
+	if err != nil {
+		return []byte{}, err
+	}
+	return json.Marshal(toSerialize)
+}
+
 func (o PatchItem) ToMap() (map[string]any, error) {
 	toSerialize := map[string]any{}
 	toSerialize["op"] = o.Op

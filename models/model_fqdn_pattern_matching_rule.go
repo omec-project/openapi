@@ -114,6 +114,14 @@ func (o *FqdnPatternMatchingRule) SetStringMatchingRule(v StringMatchingRule) {
 	o.StringMatchingRule = &v
 }
 
+func (o FqdnPatternMatchingRule) MarshalJSON() ([]byte, error) {
+	toSerialize, err := o.ToMap()
+	if err != nil {
+		return []byte{}, err
+	}
+	return json.Marshal(toSerialize)
+}
+
 func (o FqdnPatternMatchingRule) ToMap() (map[string]any, error) {
 	toSerialize := map[string]any{}
 	if !openapi.IsNil(o.Regex) {

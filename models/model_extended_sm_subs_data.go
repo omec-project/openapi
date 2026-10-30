@@ -107,6 +107,14 @@ func (o *ExtendedSmSubsData) SetIndividualSmSubsData(v []SessionManagementSubscr
 	o.IndividualSmSubsData = v
 }
 
+func (o ExtendedSmSubsData) MarshalJSON() ([]byte, error) {
+	toSerialize, err := o.ToMap()
+	if err != nil {
+		return []byte{}, err
+	}
+	return json.Marshal(toSerialize)
+}
+
 func (o ExtendedSmSubsData) ToMap() (map[string]any, error) {
 	toSerialize := map[string]any{}
 	toSerialize["sharedSmSubsDataIds"] = o.SharedSmSubsDataIds

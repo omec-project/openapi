@@ -173,6 +173,14 @@ func (o *LocationReportingConfiguration) SetN3gppAccuracy(v LocationAccuracy) {
 	o.N3gppAccuracy = &v
 }
 
+func (o LocationReportingConfiguration) MarshalJSON() ([]byte, error) {
+	toSerialize, err := o.ToMap()
+	if err != nil {
+		return []byte{}, err
+	}
+	return json.Marshal(toSerialize)
+}
+
 func (o LocationReportingConfiguration) ToMap() (map[string]any, error) {
 	toSerialize := map[string]any{}
 	toSerialize["currentLocation"] = o.CurrentLocation

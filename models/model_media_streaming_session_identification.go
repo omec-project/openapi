@@ -75,6 +75,14 @@ func (o *MediaStreamingSessionIdentification) SetSessionId(v string) {
 	o.SessionId = v
 }
 
+func (o MediaStreamingSessionIdentification) MarshalJSON() ([]byte, error) {
+	toSerialize, err := o.ToMap()
+	if err != nil {
+		return []byte{}, err
+	}
+	return json.Marshal(toSerialize)
+}
+
 func (o MediaStreamingSessionIdentification) ToMap() (map[string]any, error) {
 	toSerialize := map[string]any{}
 	toSerialize["sessionId"] = o.SessionId

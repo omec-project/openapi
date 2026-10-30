@@ -142,6 +142,14 @@ func (o *SmsfRegistrationModification) SetUeMemoryAvailableInd(v bool) {
 	o.UeMemoryAvailableInd = &v
 }
 
+func (o SmsfRegistrationModification) MarshalJSON() ([]byte, error) {
+	toSerialize, err := o.ToMap()
+	if err != nil {
+		return []byte{}, err
+	}
+	return json.Marshal(toSerialize)
+}
+
 func (o SmsfRegistrationModification) ToMap() (map[string]any, error) {
 	toSerialize := map[string]any{}
 	toSerialize["smsfInstanceId"] = o.SmsfInstanceId

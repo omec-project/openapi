@@ -845,6 +845,14 @@ func (o *SmPolicyDnnData) SetTnaps(v []TnapId) {
 	o.Tnaps = v
 }
 
+func (o SmPolicyDnnData) MarshalJSON() ([]byte, error) {
+	toSerialize, err := o.ToMap()
+	if err != nil {
+		return []byte{}, err
+	}
+	return json.Marshal(toSerialize)
+}
+
 func (o SmPolicyDnnData) ToMap() (map[string]any, error) {
 	toSerialize := map[string]any{}
 	toSerialize["dnn"] = o.Dnn

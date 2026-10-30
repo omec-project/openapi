@@ -111,6 +111,14 @@ func (o *ConfirmationData) SetSupportedFeatures(v string) {
 	o.SupportedFeatures = &v
 }
 
+func (o ConfirmationData) MarshalJSON() ([]byte, error) {
+	toSerialize, err := o.ToMap()
+	if err != nil {
+		return []byte{}, err
+	}
+	return json.Marshal(toSerialize)
+}
+
 func (o ConfirmationData) ToMap() (map[string]any, error) {
 	toSerialize := map[string]any{}
 	toSerialize["resStar"] = o.ResStar.Get()

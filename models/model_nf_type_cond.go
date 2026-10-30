@@ -81,6 +81,14 @@ func (o *NfTypeCond) SetNfType(v NFType) {
 	o.NfType = &v
 }
 
+func (o NfTypeCond) MarshalJSON() ([]byte, error) {
+	toSerialize, err := o.ToMap()
+	if err != nil {
+		return []byte{}, err
+	}
+	return json.Marshal(toSerialize)
+}
+
 func (o NfTypeCond) ToMap() (map[string]any, error) {
 	toSerialize := map[string]any{}
 	if !openapi.IsNil(o.NfType) {

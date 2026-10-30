@@ -176,6 +176,14 @@ func (o *TunnelInfo) SetAnType(v AccessType) {
 	o.AnType = &v
 }
 
+func (o TunnelInfo) MarshalJSON() ([]byte, error) {
+	toSerialize, err := o.ToMap()
+	if err != nil {
+		return []byte{}, err
+	}
+	return json.Marshal(toSerialize)
+}
+
 func (o TunnelInfo) ToMap() (map[string]any, error) {
 	toSerialize := map[string]any{}
 	if !openapi.IsNil(o.Ipv4Addr) {

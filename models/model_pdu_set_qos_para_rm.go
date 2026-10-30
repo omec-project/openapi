@@ -149,6 +149,14 @@ func (o *PduSetQosParaRm) SetPduSetHandlingInfo(v PduSetHandlingInfo) {
 	o.PduSetHandlingInfo = &v
 }
 
+func (o PduSetQosParaRm) MarshalJSON() ([]byte, error) {
+	toSerialize, err := o.ToMap()
+	if err != nil {
+		return []byte{}, err
+	}
+	return json.Marshal(toSerialize)
+}
+
 func (o PduSetQosParaRm) ToMap() (map[string]any, error) {
 	toSerialize := map[string]any{}
 	if !openapi.IsNil(o.PduSetDelayBudget) {

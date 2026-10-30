@@ -295,6 +295,14 @@ func (o *NetworkAssistanceSession) SetNotficationURL(v string) {
 	o.NotficationURL = &v
 }
 
+func (o NetworkAssistanceSession) MarshalJSON() ([]byte, error) {
+	toSerialize, err := o.ToMap()
+	if err != nil {
+		return []byte{}, err
+	}
+	return json.Marshal(toSerialize)
+}
+
 func (o NetworkAssistanceSession) ToMap() (map[string]any, error) {
 	toSerialize := map[string]any{}
 	toSerialize["naSessionId"] = o.NaSessionId
