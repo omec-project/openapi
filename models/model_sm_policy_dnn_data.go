@@ -50,12 +50,12 @@ type SmPolicyDnnData struct {
 	Online    *bool                `json:"online,omitempty" yaml:"online,omitempty"`
 	ChfInfo   *ChargingInformation `json:"chfInfo,omitempty" yaml:"chfInfo,omitempty"`
 	// A reference to the UsageMonDataLimit or UsageMonData instances for this DNN and SNSSAI that may also include the related monitoring key(s). The key of the map is the limit identifier.
-	RefUmDataLimitIds *map[string]LimitIdToMonitoringKey `json:"refUmDataLimitIds,omitempty" yaml:"refUmDataLimitIds,omitempty"`
-	MpsPriority       *bool                              `json:"mpsPriority,omitempty" yaml:"mpsPriority,omitempty"`
-	McsPriority       *bool                              `json:"mcsPriority,omitempty" yaml:"mcsPriority,omitempty"`
-	ImsSignallingPrio *bool                              `json:"imsSignallingPrio,omitempty" yaml:"imsSignallingPrio,omitempty"`
-	MpsPriorityLevel  *int32                             `json:"mpsPriorityLevel,omitempty" yaml:"mpsPriorityLevel,omitempty"`
-	McsPriorityLevel  *int32                             `json:"mcsPriorityLevel,omitempty" yaml:"mcsPriorityLevel,omitempty"`
+	RefUmDataLimitIds *map[string]*LimitIdToMonitoringKey `json:"refUmDataLimitIds,omitempty" yaml:"refUmDataLimitIds,omitempty"`
+	MpsPriority       *bool                               `json:"mpsPriority,omitempty" yaml:"mpsPriority,omitempty"`
+	McsPriority       *bool                               `json:"mcsPriority,omitempty" yaml:"mcsPriority,omitempty"`
+	ImsSignallingPrio *bool                               `json:"imsSignallingPrio,omitempty" yaml:"imsSignallingPrio,omitempty"`
+	MpsPriorityLevel  *int32                              `json:"mpsPriorityLevel,omitempty" yaml:"mpsPriorityLevel,omitempty"`
+	McsPriorityLevel  *int32                              `json:"mcsPriorityLevel,omitempty" yaml:"mcsPriorityLevel,omitempty"`
 	// Contains Presence reporting area information. The praId attribute within the PresenceInfo data type is the key of the map.
 	PraInfos *map[string]PresenceInfo `json:"praInfos,omitempty" yaml:"praInfos,omitempty"`
 	// Identifies transfer policies of background data transfer. Any string value can be used as a key of the map.
@@ -493,9 +493,9 @@ func (o *SmPolicyDnnData) SetChfInfo(v ChargingInformation) {
 }
 
 // GetRefUmDataLimitIds returns the RefUmDataLimitIds field value if set, zero value otherwise.
-func (o *SmPolicyDnnData) GetRefUmDataLimitIds() map[string]LimitIdToMonitoringKey {
+func (o *SmPolicyDnnData) GetRefUmDataLimitIds() map[string]*LimitIdToMonitoringKey {
 	if o == nil || openapi.IsNil(o.RefUmDataLimitIds) {
-		var ret map[string]LimitIdToMonitoringKey
+		var ret map[string]*LimitIdToMonitoringKey
 		return ret
 	}
 	return *o.RefUmDataLimitIds
@@ -503,7 +503,7 @@ func (o *SmPolicyDnnData) GetRefUmDataLimitIds() map[string]LimitIdToMonitoringK
 
 // GetRefUmDataLimitIdsOk returns a tuple with the RefUmDataLimitIds field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *SmPolicyDnnData) GetRefUmDataLimitIdsOk() (*map[string]LimitIdToMonitoringKey, bool) {
+func (o *SmPolicyDnnData) GetRefUmDataLimitIdsOk() (*map[string]*LimitIdToMonitoringKey, bool) {
 	if o == nil || openapi.IsNil(o.RefUmDataLimitIds) {
 		return nil, false
 	}
@@ -519,8 +519,8 @@ func (o *SmPolicyDnnData) HasRefUmDataLimitIds() bool {
 	return false
 }
 
-// SetRefUmDataLimitIds gets a reference to the given map[string]LimitIdToMonitoringKey and assigns it to the RefUmDataLimitIds field.
-func (o *SmPolicyDnnData) SetRefUmDataLimitIds(v map[string]LimitIdToMonitoringKey) {
+// SetRefUmDataLimitIds gets a reference to the given map[string]*LimitIdToMonitoringKey and assigns it to the RefUmDataLimitIds field.
+func (o *SmPolicyDnnData) SetRefUmDataLimitIds(v map[string]*LimitIdToMonitoringKey) {
 	o.RefUmDataLimitIds = &v
 }
 

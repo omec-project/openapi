@@ -30,7 +30,7 @@ var _ openapi.MappedNullable = &AmPolicyInfoContainer{}
 // AmPolicyInfoContainer AM Policy Information Container
 type AmPolicyInfoContainer struct {
 	// A map(list of key-value pairs) where Snssai serves as key.
-	SliceUsgCtrlInfoSets *map[string]SliceUsageControlInfo `json:"sliceUsgCtrlInfoSets,omitempty" yaml:"sliceUsgCtrlInfoSets,omitempty"`
+	SliceUsgCtrlInfoSets *map[string]*SliceUsageControlInfo `json:"sliceUsgCtrlInfoSets,omitempty" yaml:"sliceUsgCtrlInfoSets,omitempty"`
 }
 
 // NewAmPolicyInfoContainer instantiates a new AmPolicyInfoContainer object
@@ -51,9 +51,9 @@ func NewAmPolicyInfoContainerWithDefaults() *AmPolicyInfoContainer {
 }
 
 // GetSliceUsgCtrlInfoSets returns the SliceUsgCtrlInfoSets field value if set, zero value otherwise.
-func (o *AmPolicyInfoContainer) GetSliceUsgCtrlInfoSets() map[string]SliceUsageControlInfo {
+func (o *AmPolicyInfoContainer) GetSliceUsgCtrlInfoSets() map[string]*SliceUsageControlInfo {
 	if o == nil || openapi.IsNil(o.SliceUsgCtrlInfoSets) {
-		var ret map[string]SliceUsageControlInfo
+		var ret map[string]*SliceUsageControlInfo
 		return ret
 	}
 	return *o.SliceUsgCtrlInfoSets
@@ -61,7 +61,7 @@ func (o *AmPolicyInfoContainer) GetSliceUsgCtrlInfoSets() map[string]SliceUsageC
 
 // GetSliceUsgCtrlInfoSetsOk returns a tuple with the SliceUsgCtrlInfoSets field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *AmPolicyInfoContainer) GetSliceUsgCtrlInfoSetsOk() (*map[string]SliceUsageControlInfo, bool) {
+func (o *AmPolicyInfoContainer) GetSliceUsgCtrlInfoSetsOk() (*map[string]*SliceUsageControlInfo, bool) {
 	if o == nil || openapi.IsNil(o.SliceUsgCtrlInfoSets) {
 		return nil, false
 	}
@@ -77,8 +77,8 @@ func (o *AmPolicyInfoContainer) HasSliceUsgCtrlInfoSets() bool {
 	return false
 }
 
-// SetSliceUsgCtrlInfoSets gets a reference to the given map[string]SliceUsageControlInfo and assigns it to the SliceUsgCtrlInfoSets field.
-func (o *AmPolicyInfoContainer) SetSliceUsgCtrlInfoSets(v map[string]SliceUsageControlInfo) {
+// SetSliceUsgCtrlInfoSets gets a reference to the given map[string]*SliceUsageControlInfo and assigns it to the SliceUsgCtrlInfoSets field.
+func (o *AmPolicyInfoContainer) SetSliceUsgCtrlInfoSets(v map[string]*SliceUsageControlInfo) {
 	o.SliceUsgCtrlInfoSets = &v
 }
 

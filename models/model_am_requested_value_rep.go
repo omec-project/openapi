@@ -41,9 +41,9 @@ type AmRequestedValueRep struct {
 	// Represents the Partially Allowed NSSAI. The key of the map shall be set to the value of the \"snssai\" attribute of the corresponding map entry (encoded using the PartiallyAllowedSnssai data structure).
 	PartAllowedNssai *map[string]PartiallyAllowedSnssai `json:"partAllowedNssai,omitempty" yaml:"partAllowedNssai,omitempty"`
 	// Represents the set of S-NSSAI(s) rejected partially in the RA. The key of the map shall be set to the value of the \"snssai\" attribute of the corresponding map entry (encoded using the SnssaiPartRejected data structure).
-	SnssaisPartRejected *map[string]SnssaiPartRejected `json:"snssaisPartRejected,omitempty" yaml:"snssaisPartRejected,omitempty"`
-	RejectedSnssais     []Snssai                       `json:"rejectedSnssais,omitempty" yaml:"rejectedSnssais,omitempty"`
-	PendingNssai        []Snssai                       `json:"pendingNssai,omitempty" yaml:"pendingNssai,omitempty"`
+	SnssaisPartRejected *map[string]*SnssaiPartRejected `json:"snssaisPartRejected,omitempty" yaml:"snssaisPartRejected,omitempty"`
+	RejectedSnssais     []Snssai                        `json:"rejectedSnssais,omitempty" yaml:"rejectedSnssais,omitempty"`
+	PendingNssai        []Snssai                        `json:"pendingNssai,omitempty" yaml:"pendingNssai,omitempty"`
 }
 
 // NewAmRequestedValueRep instantiates a new AmRequestedValueRep object
@@ -288,9 +288,9 @@ func (o *AmRequestedValueRep) SetPartAllowedNssai(v map[string]PartiallyAllowedS
 }
 
 // GetSnssaisPartRejected returns the SnssaisPartRejected field value if set, zero value otherwise.
-func (o *AmRequestedValueRep) GetSnssaisPartRejected() map[string]SnssaiPartRejected {
+func (o *AmRequestedValueRep) GetSnssaisPartRejected() map[string]*SnssaiPartRejected {
 	if o == nil || openapi.IsNil(o.SnssaisPartRejected) {
-		var ret map[string]SnssaiPartRejected
+		var ret map[string]*SnssaiPartRejected
 		return ret
 	}
 	return *o.SnssaisPartRejected
@@ -298,7 +298,7 @@ func (o *AmRequestedValueRep) GetSnssaisPartRejected() map[string]SnssaiPartReje
 
 // GetSnssaisPartRejectedOk returns a tuple with the SnssaisPartRejected field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *AmRequestedValueRep) GetSnssaisPartRejectedOk() (*map[string]SnssaiPartRejected, bool) {
+func (o *AmRequestedValueRep) GetSnssaisPartRejectedOk() (*map[string]*SnssaiPartRejected, bool) {
 	if o == nil || openapi.IsNil(o.SnssaisPartRejected) {
 		return nil, false
 	}
@@ -314,8 +314,8 @@ func (o *AmRequestedValueRep) HasSnssaisPartRejected() bool {
 	return false
 }
 
-// SetSnssaisPartRejected gets a reference to the given map[string]SnssaiPartRejected and assigns it to the SnssaisPartRejected field.
-func (o *AmRequestedValueRep) SetSnssaisPartRejected(v map[string]SnssaiPartRejected) {
+// SetSnssaisPartRejected gets a reference to the given map[string]*SnssaiPartRejected and assigns it to the SnssaisPartRejected field.
+func (o *AmRequestedValueRep) SetSnssaisPartRejected(v map[string]*SnssaiPartRejected) {
 	o.SnssaisPartRejected = &v
 }
 

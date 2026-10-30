@@ -64,9 +64,9 @@ type PolicyAssociationRequest struct {
 	// Represents the Partially Allowed NSSAI. The key of the map shall be set to the value of the \"snssai\" attribute of the corresponding map entry (encoded using the PartiallyAllowedSnssai data structure).
 	PartAllowedNssai *map[string]PartiallyAllowedSnssai `json:"partAllowedNssai,omitempty" yaml:"partAllowedNssai,omitempty"`
 	// Represents the set of S-NSSAI(s) rejected partially in the RA. The key of the map shall be set to the value of the \"snssai\" attribute of the corresponding map entry (encoded using the SnssaiPartRejected data structure).
-	SnssaisPartRejected *map[string]SnssaiPartRejected `json:"snssaisPartRejected,omitempty" yaml:"snssaisPartRejected,omitempty"`
-	RejectedSnssais     []Snssai                       `json:"rejectedSnssais,omitempty" yaml:"rejectedSnssais,omitempty"`
-	PendingNssai        []Snssai                       `json:"pendingNssai,omitempty" yaml:"pendingNssai,omitempty"`
+	SnssaisPartRejected *map[string]*SnssaiPartRejected `json:"snssaisPartRejected,omitempty" yaml:"snssaisPartRejected,omitempty"`
+	RejectedSnssais     []Snssai                        `json:"rejectedSnssais,omitempty" yaml:"rejectedSnssais,omitempty"`
+	PendingNssai        []Snssai                        `json:"pendingNssai,omitempty" yaml:"pendingNssai,omitempty"`
 	// array of target S-NSSAIs.
 	TargetSnssais []Snssai `json:"targetSnssais,omitempty" yaml:"targetSnssais,omitempty"`
 	// mapping of each S-NSSAI of the Allowed NSSAI to the corresponding S-NSSAI of the HPLMN.
@@ -790,9 +790,9 @@ func (o *PolicyAssociationRequest) SetPartAllowedNssai(v map[string]PartiallyAll
 }
 
 // GetSnssaisPartRejected returns the SnssaisPartRejected field value if set, zero value otherwise.
-func (o *PolicyAssociationRequest) GetSnssaisPartRejected() map[string]SnssaiPartRejected {
+func (o *PolicyAssociationRequest) GetSnssaisPartRejected() map[string]*SnssaiPartRejected {
 	if o == nil || openapi.IsNil(o.SnssaisPartRejected) {
-		var ret map[string]SnssaiPartRejected
+		var ret map[string]*SnssaiPartRejected
 		return ret
 	}
 	return *o.SnssaisPartRejected
@@ -800,7 +800,7 @@ func (o *PolicyAssociationRequest) GetSnssaisPartRejected() map[string]SnssaiPar
 
 // GetSnssaisPartRejectedOk returns a tuple with the SnssaisPartRejected field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *PolicyAssociationRequest) GetSnssaisPartRejectedOk() (*map[string]SnssaiPartRejected, bool) {
+func (o *PolicyAssociationRequest) GetSnssaisPartRejectedOk() (*map[string]*SnssaiPartRejected, bool) {
 	if o == nil || openapi.IsNil(o.SnssaisPartRejected) {
 		return nil, false
 	}
@@ -816,8 +816,8 @@ func (o *PolicyAssociationRequest) HasSnssaisPartRejected() bool {
 	return false
 }
 
-// SetSnssaisPartRejected gets a reference to the given map[string]SnssaiPartRejected and assigns it to the SnssaisPartRejected field.
-func (o *PolicyAssociationRequest) SetSnssaisPartRejected(v map[string]SnssaiPartRejected) {
+// SetSnssaisPartRejected gets a reference to the given map[string]*SnssaiPartRejected and assigns it to the SnssaisPartRejected field.
+func (o *PolicyAssociationRequest) SetSnssaisPartRejected(v map[string]*SnssaiPartRejected) {
 	o.SnssaisPartRejected = &v
 }
 

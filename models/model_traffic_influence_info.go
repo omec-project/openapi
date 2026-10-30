@@ -31,7 +31,7 @@ var _ openapi.MappedNullable = &TrafficInfluenceInfo{}
 type TrafficInfluenceInfo struct {
 	TrafficInfluData []TrafficInfluenceData `json:"trafficInfluData,omitempty" yaml:"trafficInfluData,omitempty"`
 	// Map of Traffic Control data policy decisions. The key used in this map for each entry is the tcId attribute of the corresponding TrafficControlData.
-	TraffContDecs *map[string]TrafficControlData `json:"traffContDecs,omitempty" yaml:"traffContDecs,omitempty"`
+	TraffContDecs *map[string]*TrafficControlData `json:"traffContDecs,omitempty" yaml:"traffContDecs,omitempty"`
 }
 
 // NewTrafficInfluenceInfo instantiates a new TrafficInfluenceInfo object
@@ -84,9 +84,9 @@ func (o *TrafficInfluenceInfo) SetTrafficInfluData(v []TrafficInfluenceData) {
 }
 
 // GetTraffContDecs returns the TraffContDecs field value if set, zero value otherwise.
-func (o *TrafficInfluenceInfo) GetTraffContDecs() map[string]TrafficControlData {
+func (o *TrafficInfluenceInfo) GetTraffContDecs() map[string]*TrafficControlData {
 	if o == nil || openapi.IsNil(o.TraffContDecs) {
-		var ret map[string]TrafficControlData
+		var ret map[string]*TrafficControlData
 		return ret
 	}
 	return *o.TraffContDecs
@@ -94,7 +94,7 @@ func (o *TrafficInfluenceInfo) GetTraffContDecs() map[string]TrafficControlData 
 
 // GetTraffContDecsOk returns a tuple with the TraffContDecs field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *TrafficInfluenceInfo) GetTraffContDecsOk() (*map[string]TrafficControlData, bool) {
+func (o *TrafficInfluenceInfo) GetTraffContDecsOk() (*map[string]*TrafficControlData, bool) {
 	if o == nil || openapi.IsNil(o.TraffContDecs) {
 		return nil, false
 	}
@@ -110,8 +110,8 @@ func (o *TrafficInfluenceInfo) HasTraffContDecs() bool {
 	return false
 }
 
-// SetTraffContDecs gets a reference to the given map[string]TrafficControlData and assigns it to the TraffContDecs field.
-func (o *TrafficInfluenceInfo) SetTraffContDecs(v map[string]TrafficControlData) {
+// SetTraffContDecs gets a reference to the given map[string]*TrafficControlData and assigns it to the TraffContDecs field.
+func (o *TrafficInfluenceInfo) SetTraffContDecs(v map[string]*TrafficControlData) {
 	o.TraffContDecs = &v
 }
 

@@ -43,8 +43,8 @@ type AppSessionContextUpdateData struct {
 	// Indication of modification of MCVideo service.
 	McVideoId *string `json:"mcVideoId,omitempty" yaml:"mcVideoId,omitempty"`
 	// Contains media component information. The key of the map is the medCompN attribute.
-	MedComponents *map[string]MediaComponentRm `json:"medComponents,omitempty" yaml:"medComponents,omitempty"`
-	MpsAction     *MpsAction                   `json:"mpsAction,omitempty" yaml:"mpsAction,omitempty"`
+	MedComponents *map[string]*MediaComponentRm `json:"medComponents,omitempty" yaml:"medComponents,omitempty"`
+	MpsAction     *MpsAction                    `json:"mpsAction,omitempty" yaml:"mpsAction,omitempty"`
 	// Indication of MPS service request.
 	MpsId *string `json:"mpsId,omitempty" yaml:"mpsId,omitempty"`
 	// Indication of MCS service request.
@@ -376,9 +376,9 @@ func (o *AppSessionContextUpdateData) SetMcVideoId(v string) {
 }
 
 // GetMedComponents returns the MedComponents field value if set, zero value otherwise.
-func (o *AppSessionContextUpdateData) GetMedComponents() map[string]MediaComponentRm {
+func (o *AppSessionContextUpdateData) GetMedComponents() map[string]*MediaComponentRm {
 	if o == nil || openapi.IsNil(o.MedComponents) {
-		var ret map[string]MediaComponentRm
+		var ret map[string]*MediaComponentRm
 		return ret
 	}
 	return *o.MedComponents
@@ -386,7 +386,7 @@ func (o *AppSessionContextUpdateData) GetMedComponents() map[string]MediaCompone
 
 // GetMedComponentsOk returns a tuple with the MedComponents field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *AppSessionContextUpdateData) GetMedComponentsOk() (*map[string]MediaComponentRm, bool) {
+func (o *AppSessionContextUpdateData) GetMedComponentsOk() (*map[string]*MediaComponentRm, bool) {
 	if o == nil || openapi.IsNil(o.MedComponents) {
 		return nil, false
 	}
@@ -402,8 +402,8 @@ func (o *AppSessionContextUpdateData) HasMedComponents() bool {
 	return false
 }
 
-// SetMedComponents gets a reference to the given map[string]MediaComponentRm and assigns it to the MedComponents field.
-func (o *AppSessionContextUpdateData) SetMedComponents(v map[string]MediaComponentRm) {
+// SetMedComponents gets a reference to the given map[string]*MediaComponentRm and assigns it to the MedComponents field.
+func (o *AppSessionContextUpdateData) SetMedComponents(v map[string]*MediaComponentRm) {
 	o.MedComponents = &v
 }
 

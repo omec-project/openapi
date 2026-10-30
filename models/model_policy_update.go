@@ -46,7 +46,7 @@ type PolicyUpdate struct {
 	// One or more UE-Slice-MBR(s) for S-NSSAI(s) of serving PLMN the allowed NSSAI as part of the AMF Access and Mobility Policy as determined by the PCF.
 	UeSliceMbrs []UeSliceMbr `json:"ueSliceMbrs,omitempty" yaml:"ueSliceMbrs,omitempty"`
 	// Contains the presence reporting area(s) for which reporting was requested. The praId attribute within the PresenceInfo data type is the key of the map.
-	Pras           map[string]PresenceInfoRm       `json:"pras,omitempty" yaml:"pras,omitempty"`
+	Pras           map[string]*PresenceInfoRm      `json:"pras,omitempty" yaml:"pras,omitempty"`
 	PcfUeInfo      NullablePcfUeCallbackInfo       `json:"pcfUeInfo" yaml:"pcfUeInfo,omitempty"`
 	MatchPdus      []PduSessionInfo                `json:"matchPdus,omitempty" yaml:"matchPdus,omitempty"`
 	AsTimeDisParam NullableAsTimeDistributionParam `json:"asTimeDisParam" yaml:"asTimeDisParam,omitempty"`
@@ -401,9 +401,9 @@ func (o *PolicyUpdate) SetUeSliceMbrs(v []UeSliceMbr) {
 }
 
 // GetPras returns the Pras field value if set, zero value otherwise (both if not set or set to explicit null).
-func (o *PolicyUpdate) GetPras() map[string]PresenceInfoRm {
+func (o *PolicyUpdate) GetPras() map[string]*PresenceInfoRm {
 	if o == nil {
-		var ret map[string]PresenceInfoRm
+		var ret map[string]*PresenceInfoRm
 		return ret
 	}
 	return o.Pras
@@ -412,7 +412,7 @@ func (o *PolicyUpdate) GetPras() map[string]PresenceInfoRm {
 // GetPrasOk returns a tuple with the Pras field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 // NOTE: If the value is an explicit nil, `nil, true` will be returned
-func (o *PolicyUpdate) GetPrasOk() (*map[string]PresenceInfoRm, bool) {
+func (o *PolicyUpdate) GetPrasOk() (*map[string]*PresenceInfoRm, bool) {
 	if o == nil || openapi.IsNil(o.Pras) {
 		return nil, false
 	}
@@ -428,8 +428,8 @@ func (o *PolicyUpdate) HasPras() bool {
 	return false
 }
 
-// SetPras gets a reference to the given map[string]PresenceInfoRm and assigns it to the Pras field.
-func (o *PolicyUpdate) SetPras(v map[string]PresenceInfoRm) {
+// SetPras gets a reference to the given map[string]*PresenceInfoRm and assigns it to the Pras field.
+func (o *PolicyUpdate) SetPras(v map[string]*PresenceInfoRm) {
 	o.Pras = v
 }
 
