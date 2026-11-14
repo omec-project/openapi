@@ -10,10 +10,13 @@ import (
 )
 
 var (
-	log         *zap.Logger
-	OpenapiLog  *zap.SugaredLogger
-	NrfcacheLog *zap.SugaredLogger
-	atomicLevel zap.AtomicLevel
+	log                *zap.Logger
+	OpenapiLog         *zap.SugaredLogger
+	NrfcacheLog        *zap.SugaredLogger
+	NrfRegistrationLog *zap.SugaredLogger
+	NfConfigPollLog    *zap.SugaredLogger
+	NrfClientLog       *zap.SugaredLogger
+	atomicLevel        zap.AtomicLevel
 )
 
 func init() {
@@ -44,6 +47,9 @@ func init() {
 
 	OpenapiLog = log.Sugar().With("component", "LIB", "category", "Openapi")
 	NrfcacheLog = log.Sugar().With("component", "LIB", "category", "Nrfcache")
+	NrfRegistrationLog = log.Sugar().With("component", "LIB", "category", "NrfRegistration")
+	NfConfigPollLog = log.Sugar().With("component", "LIB", "category", "NfConfigPoll")
+	NrfClientLog = log.Sugar().With("component", "LIB", "category", "NrfClient")
 }
 
 func GetLogger() *zap.Logger {

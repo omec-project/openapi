@@ -28,6 +28,10 @@ const (
 	testAmfSetID    = "3f8"
 )
 
+// testTimeUnit is the duration of one "second" of validityPeriod/evictionInterval
+// in the TTL and eviction tests, keeping them fast.
+const testTimeUnit = 100 * time.Millisecond
+
 type testContext struct {
 	nfProfilesDb           map[string]string
 	validityPeriod         int32
@@ -541,8 +545,12 @@ func setupTest(t *testing.T) (*testContext, func()) {
 
 	tc.initTestData()
 
+	origUnit := validityPeriodUnit
+	validityPeriodUnit = testTimeUnit
+
 	cleanup := func() {
 		disableNrfCaching()
+		validityPeriodUnit = origUnit
 	}
 
 	return tc, cleanup
@@ -664,8 +672,8 @@ func TestCacheMissOnTTlExpiry(t *testing.T) {
 	testCtx.evictionInterval = 4
 
 	ctx := context.Background()
-	evictionTimerVal := time.Duration(testCtx.evictionInterval)
-	InitNrfCaching(evictionTimerVal*time.Second, testCtx.nrfDbCallback)
+	evictionTimerVal := time.Duration(testCtx.evictionInterval) * testTimeUnit
+	InitNrfCaching(evictionTimerVal, testCtx.nrfDbCallback)
 
 	// First call with empty request - should be cache miss
 	var emptyParam Nnrf_NFDiscovery.ApiSearchNFInstancesRequest
@@ -696,10 +704,10 @@ func TestCacheTTLExpiry(t *testing.T) {
 	defer cleanup()
 
 	// Use shorter, more predictable intervals for testing
-	ctx.validityPeriod = 1   // 1 second
-	ctx.evictionInterval = 2 // 2 seconds
+	ctx.validityPeriod = 1   // 1 time unit
+	ctx.evictionInterval = 2 // 2 time units
 
-	evictionTimerVal := time.Duration(ctx.evictionInterval) * time.Second
+	evictionTimerVal := time.Duration(ctx.evictionInterval) * testTimeUnit
 	InitNrfCaching(evictionTimerVal, ctx.nrfDbCallback)
 
 	param := createTestParam()
@@ -731,11 +739,11 @@ func TestCacheEviction(t *testing.T) {
 	defer cleanup()
 
 	// Use shorter intervals for faster testing
-	testCtx.evictionInterval = 2 // 2 seconds eviction check
+	testCtx.evictionInterval = 2 // 2 time units eviction check
 
 	ctx := context.Background()
-	evictionTimerVal := time.Duration(testCtx.evictionInterval)
-	InitNrfCaching(evictionTimerVal*time.Second, testCtx.nrfDbCallback)
+	evictionTimerVal := time.Duration(testCtx.evictionInterval) * testTimeUnit
+	InitNrfCaching(evictionTimerVal, testCtx.nrfDbCallback)
 
 	testCases := []struct {
 		name           string
@@ -749,21 +757,21 @@ func TestCacheEviction(t *testing.T) {
 			dnn:            testDnnInternet,
 			sd:             "010203",
 			validityPeriod: 1,
-			description:    "Entry with 1 second TTL (will expire first)",
+			description:    "Entry with 1 time unit TTL (will expire first)",
 		},
 		{
 			name:           "medium_ttl_entry",
 			dnn:            "ims",
 			sd:             "010203",
 			validityPeriod: 5,
-			description:    "Entry with 5 second TTL",
+			description:    "Entry with 5 time unit TTL",
 		},
 		{
 			name:           "long_ttl_entry",
 			dnn:            testDnnInternet,
 			sd:             "0a0b0c",
 			validityPeriod: 30,
-			description:    "Entry with 30 second TTL (will survive)",
+			description:    "Entry with 30 time unit TTL (will survive)",
 		},
 	}
 

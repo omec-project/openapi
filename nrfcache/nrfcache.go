@@ -25,6 +25,10 @@ const (
 	defaultNfProfileTTl = time.Minute
 )
 
+// validityPeriodUnit is the unit of the NRF validityPeriod field. Tests shrink it
+// to avoid waiting whole seconds for entries to expire.
+var validityPeriodUnit = time.Second
+
 type nfProfileItem struct {
 	nfProfile  *models.NFProfileDiscovery
 	expiryTime time.Time
@@ -182,7 +186,7 @@ func (c *nrfCache) handleLookup(ctx context.Context, nrfUri string, targetNfType
 		return models.SearchResult{}, fmt.Errorf("NRF discovery returned nil result")
 	}
 
-	ttl := time.Duration(searchResult.GetValidityPeriod()) * time.Second
+	ttl := time.Duration(searchResult.GetValidityPeriod()) * validityPeriodUnit
 	c.mutex.Lock()
 	nfInstances = searchResult.GetNfInstances()
 	for i := range nfInstances {
@@ -197,11 +201,6 @@ func (c *nrfCache) handleLookup(ctx context.Context, nrfUri string, targetNfType
 func (c *nrfCache) set(nfProfile *models.NFProfileDiscovery, ttl time.Duration) {
 	if ttl == 0 {
 		ttl = defaultNfProfileTTl
-	}
-
-	// Convert seconds to duration if needed
-	if ttl < time.Second {
-		ttl = ttl * time.Second
 	}
 
 	item, exists := c.cache[nfProfile.GetNfInstanceId()]
