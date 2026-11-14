@@ -48,10 +48,14 @@ type Config[C any] struct {
 	// returns true for the new config and the last config that was sent for registration. The first
 	// config after start, or after a deregistration, always registers.
 	RequiresRegistration func(newCfg, lastCfg C) bool
-	// Clone is optional. When set, the copy it returns is what is kept as the last registered config,
-	// which protects RequiresRegistration from callers that mutate configs after sending them.
+	// Clone is optional. When set, the copy it returns is what is kept as the last registered config, and what
+	// Register and OnConfig get, so that what they use and what RequiresRegistration compares against are the
+	// same value. It does not make mutation of a value after it was sent on the channel safe: Start takes the
+	// copy after receiving, so the sender must not modify a config once it has sent it, and must send a new
+	// value for each change. IsEmpty, RequiresRegistration and Clone read the value without synchronization.
 	Clone func(cfg C) (C, error)
-	// OnConfig is optional. It is called for every non-empty config that is accepted for registration.
+	// OnConfig is optional. It is called for every non-empty config that is accepted for registration, with the
+	// copy Clone made when it is set.
 	OnConfig func(cfg C)
 }
 
@@ -65,8 +69,8 @@ type Service[C any] struct {
 	keepAliveTimer      *time.Timer
 	keepAliveShutdown   bool
 	keepAliveTimerMutex sync.Mutex
-	// registerCtxMutex serializes registration work: initial registration, retries and recovery after
-	// a failed heartbeat.
+	// registerCtxMutex serializes registration work: initial registration, retries, the heartbeat Update and the
+	// recovery after a failed heartbeat.
 	registerCtxMutex sync.Mutex
 
 	// activeCancel cancels the registration context of the current config. It is guarded by cancelMutex.
@@ -102,7 +106,8 @@ func New[C any](cfg Config[C]) (*Service[C], error) {
 
 // Start runs the registration service until ctx is done or cfgChan is closed. If the new config is
 // empty, the NF deregisters from the NRF. Else, it registers to the NRF. A new config cancels the
-// registration in progress, so only one registration process runs at a time.
+// registration in progress, so only one registration process runs at a time. Configs sent on cfgChan must be
+// treated as immutable once sent (see Config.Clone).
 func (s *Service[C]) Start(ctx context.Context, cfgChan <-chan C) {
 	var lastCfg C
 	hasLastCfg := false
@@ -159,9 +164,12 @@ func (s *Service[C]) Start(ctx context.Context, cfgChan <-chan C) {
 			// caller's deadline and values (e.g. the OAuth2 token source) reach the NRF requests
 			registerCtx, registerCancel := context.WithCancel(ctx)
 			s.setRegistrationCancel(registerCancel)
-			go s.registerNF(registerCtx, newCfg)
+			// The accepted snapshot, not the caller's value: registration, its retries and the recovery after
+			// a failed heartbeat have to use what RequiresRegistration compares against, and the caller may
+			// mutate what it sent.
+			go s.registerNF(registerCtx, lastCfg)
 			if s.cfg.OnConfig != nil {
-				s.cfg.OnConfig(newCfg)
+				s.cfg.OnConfig(lastCfg)
 			}
 		}
 	}
@@ -176,8 +184,13 @@ func (s *Service[C]) StartStatic(ctx context.Context, cfg C) {
 	s.Start(ctx, cfgChan)
 }
 
-// Deregister cancels the registration in progress, stops the heartbeat, prevents it from being
-// re-armed until Start is called again, and sends a DeregisterNFInstance. It is meant for NF termination.
+// Deregister cancels the registration in progress, stops the heartbeat, and sends a DeregisterNFInstance. It is
+// meant for NF termination and is terminal: until Start is called again, a Start loop that is still running
+// registers nothing, so that a configuration received after the deregistration cannot register the NF again
+// without a heartbeat to keep it registered.
+//
+// A registration that is in flight is waited for, and the wait ends when ctx does: give ctx a deadline, so that
+// a request to the NRF that does not return cannot hold up the shutdown of the NF.
 func (s *Service[C]) Deregister(ctx context.Context) {
 	s.shutdownKeepAliveTimer()
 	s.cancelRegistrationAndWait(ctx)
@@ -185,11 +198,16 @@ func (s *Service[C]) Deregister(ctx context.Context) {
 }
 
 // deregister is Deregister for an empty config: Start stays able to register a later config.
+//
+// The registration work is cancelled, and waited for, before the timer is stopped. The other way round, a
+// registration or heartbeat that completes after the stop but before its context is cancelled would arm a
+// new timer, which then stays armed after the deregistration and sends heartbeats for an NF that is gone.
+// Once the context is cancelled nothing can arm a timer, so the stop is final.
 func (s *Service[C]) deregister(ctx context.Context) {
+	s.cancelRegistrationAndWait(ctx)
 	s.keepAliveTimerMutex.Lock()
 	s.stopKeepAliveTimer()
 	s.keepAliveTimerMutex.Unlock()
-	s.cancelRegistrationAndWait(ctx)
 	s.sendDeregister(ctx)
 }
 
@@ -244,14 +262,23 @@ func (s *Service[C]) registerNF(registerCtx context.Context, cfg C) {
 	defer s.registerCtxMutex.Unlock()
 	interval := 0 * time.Millisecond
 	for {
+		// a timer that is stopped when the context ends, where time.After would stay until it fired
+		timer := time.NewTimer(interval)
 		select {
 		case <-registerCtx.Done():
+			timer.Stop()
 			s.log.Infoln("no-op. Registration context was cancelled")
 			return
-		case <-time.After(interval):
+		case <-timer.C:
 			// select picks randomly when both cases are ready, so check cancellation first
 			if registerCtx.Err() != nil {
 				s.log.Infoln("no-op. Registration context was cancelled")
+				return
+			}
+			// Checked here, with registerCtxMutex held: Deregister waits for this mutex after setting the
+			// flag, so a registration is either already in flight, and waited for, or sees the flag.
+			if s.isShutdown() {
+				s.log.Infoln("NF registration service is shut down, the NF will not be registered")
 				return
 			}
 			nfProfile, err := s.cfg.Register(registerCtx, cfg)
@@ -286,16 +313,13 @@ func (s *Service[C]) heartbeatNF(registerCtx context.Context, cfg C, interval in
 	}
 	s.keepAliveTimerMutex.Unlock()
 
-	patchItem := []models.PatchItem{
-		{
-			Op:    models.PATCHOPERATION_REPLACE,
-			Path:  "/nfStatus",
-			Value: models.NFSTATUS_REGISTERED,
-		},
+	hb, sent := s.sendHeartbeat(registerCtx)
+	if !sent {
+		return
 	}
-	nfProfile, problemDetails, err := s.cfg.Update(registerCtx, patchItem)
+	nfProfile := hb.profile
 
-	if s.shouldRegister(problemDetails, err) {
+	if s.shouldRegister(hb.problem, hb.err) {
 		s.log.Debugln("NF heartbeat failed. Trying to register again")
 		s.registerNF(registerCtx, cfg)
 		return
@@ -305,6 +329,37 @@ func (s *Service[C]) heartbeatNF(registerCtx context.Context, cfg C, interval in
 		interval = next
 	}
 	s.startKeepAliveTimer(registerCtx, interval, cfg)
+}
+
+// sendHeartbeat sends the heartbeat Update under registerCtxMutex, like every other request that registration
+// work makes. Cancelling a context does not stop a request that is already running, so without the mutex an
+// Update could overlap the Register of a newer configuration, and cancelRegistrationAndWait would report the
+// registration work idle while it still ran. Cancellation is checked again once the mutex is held; sent is
+// false if the heartbeat was not sent for that reason. The mutex is released before the caller recovers with
+// registerNF, which takes it.
+func (s *Service[C]) sendHeartbeat(registerCtx context.Context) (hb heartbeatResult, sent bool) {
+	s.registerCtxMutex.Lock()
+	defer s.registerCtxMutex.Unlock()
+	if registerCtx.Err() != nil || s.isShutdown() {
+		s.log.Infoln("registration was cancelled, heartbeat will not be sent to NRF")
+		return heartbeatResult{}, false
+	}
+	patchItem := []models.PatchItem{
+		{
+			Op:    models.PATCHOPERATION_REPLACE,
+			Path:  "/nfStatus",
+			Value: models.NFSTATUS_REGISTERED,
+		},
+	}
+	hb.profile, hb.problem, hb.err = s.cfg.Update(registerCtx, patchItem)
+	return hb, true
+}
+
+// heartbeatResult is what the NRF answered to a heartbeat.
+type heartbeatResult struct {
+	profile *models.NFProfile
+	problem *models.ProblemDetails
+	err     error
 }
 
 func (s *Service[C]) shouldRegister(problemDetails *models.ProblemDetails, err error) bool {
@@ -335,6 +390,14 @@ func (s *Service[C]) startKeepAliveTimer(registerCtx context.Context, profileHea
 	// AfterFunc starts a timer and waits for keepAliveTimer to elapse and then calls heartbeatNF function
 	s.keepAliveTimer = s.afterFunc(time.Duration(heartbeatTimer)*time.Second, heartbeatFunction)
 	s.log.Debugf("started heartbeat timer: %d sec", heartbeatTimer)
+}
+
+// isShutdown reports whether the service was shut down, by Deregister or by the end of Start, and not
+// started again.
+func (s *Service[C]) isShutdown() bool {
+	s.keepAliveTimerMutex.Lock()
+	defer s.keepAliveTimerMutex.Unlock()
+	return s.keepAliveShutdown
 }
 
 // stopKeepAliveTimer must be called with keepAliveTimerMutex held.

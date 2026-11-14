@@ -5,11 +5,13 @@
 package nfconfigpoll
 
 import (
+	"bytes"
 	"context"
 	"errors"
 	"net/http"
 	"net/http/httptest"
 	"reflect"
+	"strconv"
 	"strings"
 	"sync"
 	"sync/atomic"
@@ -366,5 +368,73 @@ func TestNew_MaxBackoffNeverBelowInterval(t *testing.T) {
 		if p.cfg.MaxBackoff != tc.want {
 			t.Errorf("interval=%v MaxBackoff=%v: got %v, want %v", tc.interval, tc.maxBackoff, p.cfg.MaxBackoff, tc.want)
 		}
+	}
+}
+
+// An error response from a proxy or a server in front of the endpoint is usually not JSON. It has to be reported
+// by its status, not as a Content-Type problem that hides it.
+func TestFetchJSON_ReportsTheStatusOfANonJSONErrorResponse(t *testing.T) {
+	for _, status := range []int{http.StatusBadGateway, http.StatusServiceUnavailable, http.StatusNotFound, http.StatusInternalServerError} {
+		srv := httptest.NewServer(http.HandlerFunc(func(w http.ResponseWriter, r *http.Request) {
+			w.Header().Set("Content-Type", "text/html")
+			w.WriteHeader(status)
+			if _, err := w.Write([]byte("<html>error</html>")); err != nil {
+				t.Errorf("write response: %v", err)
+			}
+		}))
+		_, err := FetchJSON[[]models.PlmnId](context.Background(), srv.Client(), srv.URL)
+		srv.Close()
+		if err == nil || !strings.Contains(err.Error(), strconv.Itoa(status)) || strings.Contains(err.Error(), "Content-Type") {
+			t.Errorf("status %d: err = %v, want it to name the status and not the Content-Type", status, err)
+		}
+	}
+}
+
+// A configuration is a short list. A response above the limit is refused, and what is read of it is bounded: the
+// client stops reading, so a server that keeps sending is cut off long before it has sent everything.
+func TestFetchJSON_RefusesAnOversizedBody(t *testing.T) {
+	const serverWouldSend = 4 * maxResponseBytes
+	var sent atomic.Int64
+	finished := make(chan struct{})
+	srv := httptest.NewServer(http.HandlerFunc(func(w http.ResponseWriter, r *http.Request) {
+		defer close(finished)
+		w.Header().Set("Content-Type", "application/json")
+		chunk := bytes.Repeat([]byte(" "), 1<<20)
+		for sent.Load() < serverWouldSend {
+			n, err := w.Write(chunk)
+			sent.Add(int64(n))
+			if err != nil {
+				return
+			}
+			if f, ok := w.(http.Flusher); ok {
+				f.Flush()
+			}
+		}
+	}))
+	defer srv.Close()
+
+	_, err := FetchJSON[[]models.PlmnId](context.Background(), srv.Client(), srv.URL)
+	if err == nil || !strings.Contains(err.Error(), "larger than") {
+		t.Fatalf("err = %v, want the body refused as too large", err)
+	}
+	select {
+	case <-finished:
+	case <-time.After(10 * time.Second):
+		t.Fatal("the server was still sending long after the client gave up")
+	}
+	if got := sent.Load(); got >= serverWouldSend {
+		t.Errorf("the server sent all %d bytes: the client read them although the limit is %d", got, maxResponseBytes)
+	}
+
+	// a body at the limit is still read (and here is not JSON, which is a different error)
+	exact := httptest.NewServer(http.HandlerFunc(func(w http.ResponseWriter, r *http.Request) {
+		w.Header().Set("Content-Type", "application/json")
+		if _, err := w.Write(append([]byte("[]"), bytes.Repeat([]byte(" "), maxResponseBytes-2)...)); err != nil {
+			t.Errorf("write response: %v", err)
+		}
+	}))
+	defer exact.Close()
+	if got, err := FetchJSON[[]models.PlmnId](context.Background(), exact.Client(), exact.URL); err != nil || got == nil {
+		t.Errorf("a body of exactly the limit was refused: %v", err)
 	}
 }

@@ -48,7 +48,7 @@ func WithHTTPClient(c *http.Client) Option { return func(cl *Client) { cl.httpCl
 // WithObserver sets an Observer.
 func WithObserver(o Observer) Option { return func(cl *Client) { cl.observer = o } }
 
-// WithLogger sets the logger. It defaults to logger.NrfClientLog.
+// WithLogger sets the logger. It defaults to logger.NrfClientLog, which a nil logger also selects.
 func WithLogger(l *zap.SugaredLogger) Option { return func(cl *Client) { cl.log = l } }
 
 // New returns a Client for the NRF at nrfURI (the apiRoot, e.g. "http://nrf:8000").
@@ -56,6 +56,9 @@ func New(nrfURI string, opts ...Option) *Client {
 	c := &Client{nrfURI: nrfURI, log: logger.NrfClientLog}
 	for _, opt := range opts {
 		opt(c)
+	}
+	if c.log == nil { // WithLogger(nil)
+		c.log = logger.NrfClientLog
 	}
 	return c
 }

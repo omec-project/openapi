@@ -17,6 +17,7 @@ import (
 )
 
 const (
+	nfStatusPath     = "/nfStatus"
 	testNfInstanceID = "abc"
 	locationHeader   = "Location"
 )
@@ -186,7 +187,7 @@ func TestRegister_ContextCancelled(t *testing.T) {
 }
 
 func TestUpdate(t *testing.T) {
-	patch := []models.PatchItem{{Op: models.PATCHOPERATION_REPLACE, Path: "/nfStatus", Value: models.NFSTATUS_REGISTERED}}
+	patch := []models.PatchItem{{Op: models.PATCHOPERATION_REPLACE, Path: nfStatusPath, Value: models.NFSTATUS_REGISTERED}}
 
 	t.Run("200 returns profile", func(t *testing.T) {
 		prof := testProfile()
@@ -335,7 +336,7 @@ func TestObserver_SeesEveryOperationWithResponse(t *testing.T) {
 	if err := c.Deregister(context.Background(), testNfInstanceID); err != nil {
 		t.Errorf("Deregister: %v", err)
 	}
-	patch := []models.PatchItem{{Op: models.PATCHOPERATION_REPLACE, Path: "/nfStatus", Value: models.NFSTATUS_REGISTERED}}
+	patch := []models.PatchItem{{Op: models.PATCHOPERATION_REPLACE, Path: nfStatusPath, Value: models.NFSTATUS_REGISTERED}}
 	if _, _, err := c.Update(context.Background(), testNfInstanceID, patch); err != nil {
 		t.Errorf("Update: %v", err)
 	}
@@ -412,5 +413,134 @@ func TestParseLocation(t *testing.T) {
 		if uri != c.uri || id != c.id {
 			t.Errorf("parseLocation(%q) = %q, %q; want %q, %q", c.in, uri, id, c.uri, c.id)
 		}
+	}
+}
+
+// The generated client takes every status below 300 as success and decodes an empty body without complaint, so
+// the NRF's answer has to be checked here: only 201 with the data of the subscription creates one.
+func TestCreateSubscription_OnlyCreatedWithDataIsSuccess(t *testing.T) {
+	data := *models.NewSubscriptionData("http://nf/notify")
+	withData := *models.NewSubscriptionData("http://nf/notify")
+	withData.SetSubscriptionId("sub-1")
+
+	cases := []struct {
+		name    string
+		status  int
+		body    any
+		wantErr string // empty for success
+	}{
+		{"201 with the subscription", http.StatusCreated, withData, ""},
+		{"201 without a body", http.StatusCreated, nil, "without the data"},
+		{"200 with the subscription", http.StatusOK, withData, "unexpected response code 200"},
+		{"202 without a body", http.StatusAccepted, nil, "unexpected response code 202"},
+		{"202 with a body", http.StatusAccepted, withData, "unexpected response code 202"},
+		{"204", http.StatusNoContent, nil, "unexpected response code 204"},
+	}
+	for _, tc := range cases {
+		t.Run(tc.name, func(t *testing.T) {
+			f := newFakeNrf(t, tc.status, tc.body, nil)
+			got, pd, err := New(f.srv.URL).CreateSubscription(context.Background(), data)
+			if tc.wantErr == "" {
+				if err != nil || pd != nil || got == nil || got.GetSubscriptionId() != "sub-1" {
+					t.Fatalf("got=%+v pd=%v err=%v", got, pd, err)
+				}
+				return
+			}
+			if err == nil || !strings.Contains(err.Error(), tc.wantErr) {
+				t.Fatalf("err = %v, want one containing %q", err, tc.wantErr)
+			}
+			if got != nil || pd != nil {
+				t.Errorf("a failed creation returned data: got=%+v pd=%v", got, pd)
+			}
+		})
+	}
+}
+
+// Only 204 confirms that a subscription is gone: a 202 says the removal was accepted, not that it happened.
+func TestRemoveSubscription_OnlyNoContentIsSuccess(t *testing.T) {
+	for name, tc := range map[string]struct {
+		status  int
+		wantErr bool
+	}{
+		"204": {http.StatusNoContent, false},
+		"200": {http.StatusOK, true},
+		"202": {http.StatusAccepted, true},
+	} {
+		t.Run(name, func(t *testing.T) {
+			f := newFakeNrf(t, tc.status, nil, nil)
+			pd, err := New(f.srv.URL).RemoveSubscription(context.Background(), "sub-1")
+			if (err != nil) != tc.wantErr || pd != nil {
+				t.Fatalf("pd=%v err=%v, wantErr %v", pd, err, tc.wantErr)
+			}
+			if tc.wantErr && !strings.Contains(err.Error(), "unexpected response code") {
+				t.Errorf("err = %v", err)
+			}
+		})
+	}
+}
+
+// An empty identifier leaves a path parameter empty, which addresses the collection ("/nf-instances/") instead
+// of the resource, so it is refused before any request is sent.
+func TestEmptyIdentifiersAreRefusedWithoutARequest(t *testing.T) {
+	patch := []models.PatchItem{{Op: models.PATCHOPERATION_REPLACE, Path: nfStatusPath, Value: models.NFSTATUS_REGISTERED}}
+	noID := testProfile()
+	noID.SetNfInstanceId("")
+
+	cases := map[string]func(c *Client) error{
+		"Register without an instance ID in the profile": func(c *Client) error {
+			_, err := c.Register(context.Background(), noID)
+			return err
+		},
+		"Update without an instance ID": func(c *Client) error {
+			_, _, err := c.Update(context.Background(), "", patch)
+			return err
+		},
+		"Deregister without an instance ID": func(c *Client) error {
+			return c.Deregister(context.Background(), "")
+		},
+		"RemoveSubscription without a subscription ID": func(c *Client) error {
+			_, err := c.RemoveSubscription(context.Background(), "")
+			return err
+		},
+	}
+	for name, call := range cases {
+		t.Run(name, func(t *testing.T) {
+			f := newFakeNrf(t, http.StatusNoContent, nil, nil)
+			err := call(New(f.srv.URL))
+			if err == nil || !strings.Contains(err.Error(), "is required") {
+				t.Fatalf("err = %v, want it to say the identifier is required", err)
+			}
+			f.mu.Lock()
+			defer f.mu.Unlock()
+			if len(f.seen) != 0 {
+				t.Errorf("%d request(s) reached the NRF: %+v", len(f.seen), f.seen)
+			}
+		})
+	}
+}
+
+// A nil logger selects the default one: it must not be left nil, which panics on the first request.
+func TestWithLoggerNilFallsBackToTheDefault(t *testing.T) {
+	f := newFakeNrf(t, http.StatusNoContent, nil, nil)
+	c := New(f.srv.URL, WithLogger(nil))
+	if err := c.Deregister(context.Background(), testNfInstanceID); err != nil {
+		t.Fatal(err)
+	}
+	if _, err := c.Register(context.Background(), testProfile()); err == nil {
+		t.Fatal("a 204 is not a registration, expected an error")
+	}
+}
+
+// A query or a fragment is not part of the path, so it must not end up in the instance ID that the NF adopts.
+func TestParseLocation_IgnoresQueryAndFragment(t *testing.T) {
+	const base = "https://nrf:8000/nnrf-nfm/v1/nf-instances/abc"
+	for _, loc := range []string{base + "?rev=1", base + "#frag", base + "?a=b/c#d/e", base + "?"} {
+		uri, id := parseLocation(loc)
+		if uri != "https://nrf:8000" || id != "abc" {
+			t.Errorf("parseLocation(%q) = %q, %q; want %q, %q", loc, uri, id, "https://nrf:8000", "abc")
+		}
+	}
+	if _, id := parseLocation("https://nrf/nnrf-nfm/v1/nf-instances/?x=1"); id != "" {
+		t.Errorf("id %q, want none for an empty last segment", id)
 	}
 }
