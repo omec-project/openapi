@@ -463,6 +463,11 @@ func (r ApiReplaceIndividualApplicationDataSubscriptionRequest) ApplicationDataS
 	return r
 }
 
+// GetApplicationDataSubs returns the applicationDataSubs set with ApplicationDataSubs, or nil if it was not set.
+func (r ApiReplaceIndividualApplicationDataSubscriptionRequest) GetApplicationDataSubs() *models.ApplicationDataSubs {
+	return r.applicationDataSubs
+}
+
 func (r ApiReplaceIndividualApplicationDataSubscriptionRequest) Execute() (*models.ApplicationDataSubs, *http.Response, error) {
 	return r.ApiService.ReplaceIndividualApplicationDataSubscriptionExecute(r)
 }

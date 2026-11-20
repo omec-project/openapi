@@ -61,6 +61,11 @@ func (r ApiCreate5GVnGroupRequest) FiveGVnGroupConfiguration(fiveGVnGroupConfigu
 	return r
 }
 
+// GetFiveGVnGroupConfiguration returns the fiveGVnGroupConfiguration set with FiveGVnGroupConfiguration, or nil if it was not set.
+func (r ApiCreate5GVnGroupRequest) GetFiveGVnGroupConfiguration() *models.FiveGVnGroupConfiguration {
+	return r.fiveGVnGroupConfiguration
+}
+
 func (r ApiCreate5GVnGroupRequest) Execute() (*models.FiveGVnGroupConfiguration, *http.Response, error) {
 	return r.ApiService.Create5GVnGroupExecute(r)
 }

@@ -87,10 +87,20 @@ func (r ApiModifysubscriptionDataSubscriptionRequest) PatchItem(patchItem []mode
 	return r
 }
 
+// GetPatchItem returns the patchItem set with PatchItem, or nil if it was not set.
+func (r ApiModifysubscriptionDataSubscriptionRequest) GetPatchItem() *[]models.PatchItem {
+	return r.patchItem
+}
+
 // Features required to be supported by the target NF
 func (r ApiModifysubscriptionDataSubscriptionRequest) SupportedFeatures(supportedFeatures string) ApiModifysubscriptionDataSubscriptionRequest {
 	r.supportedFeatures = &supportedFeatures
 	return r
+}
+
+// GetSupportedFeatures returns the supportedFeatures set with SupportedFeatures, or nil if it was not set.
+func (r ApiModifysubscriptionDataSubscriptionRequest) GetSupportedFeatures() *string {
+	return r.supportedFeatures
 }
 
 func (r ApiModifysubscriptionDataSubscriptionRequest) Execute() (*models.ModifysubscriptionDataSubscription200Response, *http.Response, error) {

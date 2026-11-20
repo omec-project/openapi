@@ -63,10 +63,20 @@ func (r ApiQueryEEDataRequest) Fields(fields []string) ApiQueryEEDataRequest {
 	return r
 }
 
+// GetFields returns the fields set with Fields, or nil if it was not set.
+func (r ApiQueryEEDataRequest) GetFields() *[]string {
+	return r.fields
+}
+
 // Supported Features
 func (r ApiQueryEEDataRequest) SupportedFeatures(supportedFeatures string) ApiQueryEEDataRequest {
 	r.supportedFeatures = &supportedFeatures
 	return r
+}
+
+// GetSupportedFeatures returns the supportedFeatures set with SupportedFeatures, or nil if it was not set.
+func (r ApiQueryEEDataRequest) GetSupportedFeatures() *string {
+	return r.supportedFeatures
 }
 
 func (r ApiQueryEEDataRequest) Execute() (*models.EeProfileData, *http.Response, error) {

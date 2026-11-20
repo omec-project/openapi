@@ -99,6 +99,11 @@ func (r ApiCreateNIDDAuthorizationInfoRequest) NiddAuthorizationInfo(niddAuthori
 	return r
 }
 
+// GetNiddAuthorizationInfo returns the niddAuthorizationInfo set with NiddAuthorizationInfo, or nil if it was not set.
+func (r ApiCreateNIDDAuthorizationInfoRequest) GetNiddAuthorizationInfo() *models.NiddAuthorizationInfo {
+	return r.niddAuthorizationInfo
+}
+
 func (r ApiCreateNIDDAuthorizationInfoRequest) Execute() (*models.NiddAuthorizationInfo, *http.Response, error) {
 	return r.ApiService.CreateNIDDAuthorizationInfoExecute(r)
 }
@@ -522,10 +527,20 @@ func (r ApiModifyNiddAuthorizationInfoRequest) PatchItem(patchItem []models.Patc
 	return r
 }
 
+// GetPatchItem returns the patchItem set with PatchItem, or nil if it was not set.
+func (r ApiModifyNiddAuthorizationInfoRequest) GetPatchItem() *[]models.PatchItem {
+	return r.patchItem
+}
+
 // Features required to be supported by the target NF
 func (r ApiModifyNiddAuthorizationInfoRequest) SupportedFeatures(supportedFeatures string) ApiModifyNiddAuthorizationInfoRequest {
 	r.supportedFeatures = &supportedFeatures
 	return r
+}
+
+// GetSupportedFeatures returns the supportedFeatures set with SupportedFeatures, or nil if it was not set.
+func (r ApiModifyNiddAuthorizationInfoRequest) GetSupportedFeatures() *string {
+	return r.supportedFeatures
 }
 
 func (r ApiModifyNiddAuthorizationInfoRequest) Execute() (*models.PatchResult, *http.Response, error) {

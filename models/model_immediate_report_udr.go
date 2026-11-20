@@ -37,7 +37,7 @@ func ProvisionedDataSetsAsImmediateReportUdr(v *ProvisionedDataSets) ImmediateRe
 	}
 }
 
-// []SharedDataUdm1AsImmediateReportUdr is a convenience function that returns []SharedDataUdm wrapped in ImmediateReportUdr
+// []SharedDataUdmAsImmediateReportUdr is a convenience function that returns []SharedDataUdm wrapped in ImmediateReportUdr
 func ArrayOfSharedDataUdmAsImmediateReportUdr(v *[]SharedDataUdm) ImmediateReportUdr {
 	return ImmediateReportUdr{
 		ArrayOfSharedDataUdm: v,
@@ -65,7 +65,7 @@ func (dst *ImmediateReportUdr) UnmarshalJSON(data []byte) error {
 		dst.ProvisionedDataSets = nil
 	}
 
-	// try to unmarshal data into ArrayOfSharedDataUdm1
+	// try to unmarshal data into ArrayOfSharedDataUdm
 	err = openapi.NewStrictDecoder(data).Decode(&dst.ArrayOfSharedDataUdm)
 	if err == nil {
 		jsonArrayOfSharedDataUdm, _ := json.Marshal(dst.ArrayOfSharedDataUdm)

@@ -69,10 +69,20 @@ func (r ApiReadServiceParameterDataRequest) ServiceParamIds(serviceParamIds []st
 	return r
 }
 
+// GetServiceParamIds returns the serviceParamIds set with ServiceParamIds, or nil if it was not set.
+func (r ApiReadServiceParameterDataRequest) GetServiceParamIds() *[]string {
+	return r.serviceParamIds
+}
+
 // Each element identifies a DNN.
 func (r ApiReadServiceParameterDataRequest) Dnns(dnns []string) ApiReadServiceParameterDataRequest {
 	r.dnns = &dnns
 	return r
+}
+
+// GetDnns returns the dnns set with Dnns, or nil if it was not set.
+func (r ApiReadServiceParameterDataRequest) GetDnns() *[]string {
+	return r.dnns
 }
 
 // Each element identifies a slice.
@@ -81,10 +91,20 @@ func (r ApiReadServiceParameterDataRequest) Snssais(snssais []models.Snssai) Api
 	return r
 }
 
+// GetSnssais returns the snssais set with Snssais, or nil if it was not set.
+func (r ApiReadServiceParameterDataRequest) GetSnssais() *[]models.Snssai {
+	return r.snssais
+}
+
 // Each element identifies a group of users.
 func (r ApiReadServiceParameterDataRequest) InternalGroupIds(internalGroupIds []string) ApiReadServiceParameterDataRequest {
 	r.internalGroupIds = &internalGroupIds
 	return r
+}
+
+// GetInternalGroupIds returns the internalGroupIds set with InternalGroupIds, or nil if it was not set.
+func (r ApiReadServiceParameterDataRequest) GetInternalGroupIds() *[]string {
+	return r.internalGroupIds
 }
 
 // Each element identifies the user.
@@ -93,10 +113,20 @@ func (r ApiReadServiceParameterDataRequest) Supis(supis []string) ApiReadService
 	return r
 }
 
+// GetSupis returns the supis set with Supis, or nil if it was not set.
+func (r ApiReadServiceParameterDataRequest) GetSupis() *[]string {
+	return r.supis
+}
+
 // Each element identifies the user.
 func (r ApiReadServiceParameterDataRequest) UeIpv4s(ueIpv4s []string) ApiReadServiceParameterDataRequest {
 	r.ueIpv4s = &ueIpv4s
 	return r
+}
+
+// GetUeIpv4s returns the ueIpv4s set with UeIpv4s, or nil if it was not set.
+func (r ApiReadServiceParameterDataRequest) GetUeIpv4s() *[]string {
+	return r.ueIpv4s
 }
 
 // Each element identifies the user.
@@ -105,10 +135,20 @@ func (r ApiReadServiceParameterDataRequest) UeIpv6s(ueIpv6s []string) ApiReadSer
 	return r
 }
 
+// GetUeIpv6s returns the ueIpv6s set with UeIpv6s, or nil if it was not set.
+func (r ApiReadServiceParameterDataRequest) GetUeIpv6s() *[]string {
+	return r.ueIpv6s
+}
+
 // Each element identifies the user.
 func (r ApiReadServiceParameterDataRequest) UeMacs(ueMacs []string) ApiReadServiceParameterDataRequest {
 	r.ueMacs = &ueMacs
 	return r
+}
+
+// GetUeMacs returns the ueMacs set with UeMacs, or nil if it was not set.
+func (r ApiReadServiceParameterDataRequest) GetUeMacs() *[]string {
+	return r.ueMacs
 }
 
 // Indicates whether the request is for any UE.
@@ -117,16 +157,31 @@ func (r ApiReadServiceParameterDataRequest) AnyUe(anyUe bool) ApiReadServicePara
 	return r
 }
 
+// GetAnyUe returns the anyUe set with AnyUe, or nil if it was not set.
+func (r ApiReadServiceParameterDataRequest) GetAnyUe() *bool {
+	return r.anyUe
+}
+
 // Each element identifies oner or more PLMNs for a roaming UE.
 func (r ApiReadServiceParameterDataRequest) RoamUeNetDescs(roamUeNetDescs []models.NetworkDescription) ApiReadServiceParameterDataRequest {
 	r.roamUeNetDescs = &roamUeNetDescs
 	return r
 }
 
+// GetRoamUeNetDescs returns the roamUeNetDescs set with RoamUeNetDescs, or nil if it was not set.
+func (r ApiReadServiceParameterDataRequest) GetRoamUeNetDescs() *[]models.NetworkDescription {
+	return r.roamUeNetDescs
+}
+
 // Supported Features
 func (r ApiReadServiceParameterDataRequest) SuppFeat(suppFeat string) ApiReadServiceParameterDataRequest {
 	r.suppFeat = &suppFeat
 	return r
+}
+
+// GetSuppFeat returns the suppFeat set with SuppFeat, or nil if it was not set.
+func (r ApiReadServiceParameterDataRequest) GetSuppFeat() *string {
+	return r.suppFeat
 }
 
 func (r ApiReadServiceParameterDataRequest) Execute() ([]models.ServiceParameterData, *http.Response, error) {

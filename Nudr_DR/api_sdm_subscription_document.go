@@ -104,10 +104,20 @@ func (r ApiModifysdmSubscriptionRequest) PatchItem(patchItem []models.PatchItem)
 	return r
 }
 
+// GetPatchItem returns the patchItem set with PatchItem, or nil if it was not set.
+func (r ApiModifysdmSubscriptionRequest) GetPatchItem() *[]models.PatchItem {
+	return r.patchItem
+}
+
 // Features required to be supported by the target NF
 func (r ApiModifysdmSubscriptionRequest) SupportedFeatures(supportedFeatures string) ApiModifysdmSubscriptionRequest {
 	r.supportedFeatures = &supportedFeatures
 	return r
+}
+
+// GetSupportedFeatures returns the supportedFeatures set with SupportedFeatures, or nil if it was not set.
+func (r ApiModifysdmSubscriptionRequest) GetSupportedFeatures() *string {
+	return r.supportedFeatures
 }
 
 func (r ApiModifysdmSubscriptionRequest) Execute() (*models.PatchResult, *http.Response, error) {
@@ -725,6 +735,11 @@ type ApiUpdatesdmsubscriptionsRequest struct {
 func (r ApiUpdatesdmsubscriptionsRequest) SdmSubscription(sdmSubscription models.SdmSubscription) ApiUpdatesdmsubscriptionsRequest {
 	r.sdmSubscription = &sdmSubscription
 	return r
+}
+
+// GetSdmSubscription returns the sdmSubscription set with SdmSubscription, or nil if it was not set.
+func (r ApiUpdatesdmsubscriptionsRequest) GetSdmSubscription() *models.SdmSubscription {
+	return r.sdmSubscription
 }
 
 func (r ApiUpdatesdmsubscriptionsRequest) Execute() (*http.Response, error) {

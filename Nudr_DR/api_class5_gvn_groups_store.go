@@ -59,6 +59,11 @@ func (r ApiQuery5GVnGroupRequest) Gpsis(gpsis []string) ApiQuery5GVnGroupRequest
 	return r
 }
 
+// GetGpsis returns the gpsis set with Gpsis, or nil if it was not set.
+func (r ApiQuery5GVnGroupRequest) GetGpsis() *[]string {
+	return r.gpsis
+}
+
 func (r ApiQuery5GVnGroupRequest) Execute() (*map[string]models.FiveGVnGroupConfiguration, *http.Response, error) {
 	return r.ApiService.Query5GVnGroupExecute(r)
 }

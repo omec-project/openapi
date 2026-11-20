@@ -62,10 +62,20 @@ func (r ApiGetGroupIdentifiersRequest) ExtGroupId(extGroupId string) ApiGetGroup
 	return r
 }
 
+// GetExtGroupId returns the extGroupId set with ExtGroupId, or nil if it was not set.
+func (r ApiGetGroupIdentifiersRequest) GetExtGroupId() *string {
+	return r.extGroupId
+}
+
 // Internal Group Identifier
 func (r ApiGetGroupIdentifiersRequest) IntGroupId(intGroupId string) ApiGetGroupIdentifiersRequest {
 	r.intGroupId = &intGroupId
 	return r
+}
+
+// GetIntGroupId returns the intGroupId set with IntGroupId, or nil if it was not set.
+func (r ApiGetGroupIdentifiersRequest) GetIntGroupId() *string {
+	return r.intGroupId
 }
 
 // Indication whether UE identifiers are required or not
@@ -74,10 +84,20 @@ func (r ApiGetGroupIdentifiersRequest) UeIdInd(ueIdInd bool) ApiGetGroupIdentifi
 	return r
 }
 
+// GetUeIdInd returns the ueIdInd set with UeIdInd, or nil if it was not set.
+func (r ApiGetGroupIdentifiersRequest) GetUeIdInd() *bool {
+	return r.ueIdInd
+}
+
 // Supported Features
 func (r ApiGetGroupIdentifiersRequest) SupportedFeatures(supportedFeatures string) ApiGetGroupIdentifiersRequest {
 	r.supportedFeatures = &supportedFeatures
 	return r
+}
+
+// GetSupportedFeatures returns the supportedFeatures set with SupportedFeatures, or nil if it was not set.
+func (r ApiGetGroupIdentifiersRequest) GetSupportedFeatures() *string {
+	return r.supportedFeatures
 }
 
 func (r ApiGetGroupIdentifiersRequest) Execute() (*models.GroupIdentifiersUdr, *http.Response, error) {

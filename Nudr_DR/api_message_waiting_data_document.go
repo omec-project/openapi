@@ -98,6 +98,11 @@ func (r ApiCreateMessageWaitingDataRequest) MessageWaitingData(messageWaitingDat
 	return r
 }
 
+// GetMessageWaitingData returns the messageWaitingData set with MessageWaitingData, or nil if it was not set.
+func (r ApiCreateMessageWaitingDataRequest) GetMessageWaitingData() *models.MessageWaitingData {
+	return r.messageWaitingData
+}
+
 func (r ApiCreateMessageWaitingDataRequest) Execute() (*models.MessageWaitingData, *http.Response, error) {
 	return r.ApiService.CreateMessageWaitingDataExecute(r)
 }
@@ -508,6 +513,11 @@ func (r ApiModifyMessageWaitingDataRequest) PatchItem(patchItem []models.PatchIt
 	return r
 }
 
+// GetPatchItem returns the patchItem set with PatchItem, or nil if it was not set.
+func (r ApiModifyMessageWaitingDataRequest) GetPatchItem() *[]models.PatchItem {
+	return r.patchItem
+}
+
 func (r ApiModifyMessageWaitingDataRequest) Execute() (*http.Response, error) {
 	return r.ApiService.ModifyMessageWaitingDataExecute(r)
 }
@@ -734,10 +744,20 @@ func (r ApiQueryMessageWaitingDataRequest) Fields(fields []string) ApiQueryMessa
 	return r
 }
 
+// GetFields returns the fields set with Fields, or nil if it was not set.
+func (r ApiQueryMessageWaitingDataRequest) GetFields() *[]string {
+	return r.fields
+}
+
 // Supported Features
 func (r ApiQueryMessageWaitingDataRequest) SupportedFeatures(supportedFeatures string) ApiQueryMessageWaitingDataRequest {
 	r.supportedFeatures = &supportedFeatures
 	return r
+}
+
+// GetSupportedFeatures returns the supportedFeatures set with SupportedFeatures, or nil if it was not set.
+func (r ApiQueryMessageWaitingDataRequest) GetSupportedFeatures() *string {
+	return r.supportedFeatures
 }
 
 func (r ApiQueryMessageWaitingDataRequest) Execute() (*models.MessageWaitingData, *http.Response, error) {

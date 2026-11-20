@@ -63,10 +63,20 @@ func (r ApiReadPolicyDataRequest) SuppFeat(suppFeat string) ApiReadPolicyDataReq
 	return r
 }
 
+// GetSuppFeat returns the suppFeat set with SuppFeat, or nil if it was not set.
+func (r ApiReadPolicyDataRequest) GetSuppFeat() *string {
+	return r.suppFeat
+}
+
 // List of policy data subset names
 func (r ApiReadPolicyDataRequest) DataSubsetNames(dataSubsetNames []models.PolicyDataSubset) ApiReadPolicyDataRequest {
 	r.dataSubsetNames = &dataSubsetNames
 	return r
+}
+
+// GetDataSubsetNames returns the dataSubsetNames set with DataSubsetNames, or nil if it was not set.
+func (r ApiReadPolicyDataRequest) GetDataSubsetNames() *[]models.PolicyDataSubset {
+	return r.dataSubsetNames
 }
 
 func (r ApiReadPolicyDataRequest) Execute() (*models.PolicyDataForIndividualUe, *http.Response, error) {

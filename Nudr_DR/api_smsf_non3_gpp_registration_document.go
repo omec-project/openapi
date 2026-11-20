@@ -86,6 +86,11 @@ func (r ApiCreateSmsfContextNon3gppRequest) SmsfRegistration(smsfRegistration mo
 	return r
 }
 
+// GetSmsfRegistration returns the smsfRegistration set with SmsfRegistration, or nil if it was not set.
+func (r ApiCreateSmsfContextNon3gppRequest) GetSmsfRegistration() *models.SmsfRegistration {
+	return r.smsfRegistration
+}
+
 func (r ApiCreateSmsfContextNon3gppRequest) Execute() (*models.SmsfRegistration, *http.Response, error) {
 	return r.ApiService.CreateSmsfContextNon3gppExecute(r)
 }
@@ -498,10 +503,20 @@ func (r ApiQuerySmsfContextNon3gppRequest) Fields(fields []string) ApiQuerySmsfC
 	return r
 }
 
+// GetFields returns the fields set with Fields, or nil if it was not set.
+func (r ApiQuerySmsfContextNon3gppRequest) GetFields() *[]string {
+	return r.fields
+}
+
 // Supported Features
 func (r ApiQuerySmsfContextNon3gppRequest) SupportedFeatures(supportedFeatures string) ApiQuerySmsfContextNon3gppRequest {
 	r.supportedFeatures = &supportedFeatures
 	return r
+}
+
+// GetSupportedFeatures returns the supportedFeatures set with SupportedFeatures, or nil if it was not set.
+func (r ApiQuerySmsfContextNon3gppRequest) GetSupportedFeatures() *string {
+	return r.supportedFeatures
 }
 
 func (r ApiQuerySmsfContextNon3gppRequest) Execute() (*models.SmsfRegistration, *http.Response, error) {

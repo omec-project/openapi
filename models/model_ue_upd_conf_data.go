@@ -30,10 +30,10 @@ var _ openapi.MappedNullable = &UeUpdConfData{}
 
 // UeUpdConfData The complete UE Update Confirmation Data.
 type UeUpdConfData struct {
-	SorData      *SorData      `json:"sorData,omitempty"`
-	UpuData      *UpuDataUdr   `json:"upuData,omitempty"`
-	NssaiAckData *NssaiAckData `json:"nssaiAckData,omitempty"`
-	CagAckData   *CagAckData   `json:"cagAckData,omitempty"`
+	SorData      *SorData      `json:"sorData,omitempty" yaml:"sorData,omitempty"`
+	UpuData      *UpuDataUdr   `json:"upuData,omitempty" yaml:"upuData,omitempty"`
+	NssaiAckData *NssaiAckData `json:"nssaiAckData,omitempty" yaml:"nssaiAckData,omitempty"`
+	CagAckData   *CagAckData   `json:"cagAckData,omitempty" yaml:"cagAckData,omitempty"`
 }
 
 // NewUeUpdConfData instantiates a new UeUpdConfData object
@@ -179,6 +179,14 @@ func (o *UeUpdConfData) HasCagAckData() bool {
 // SetCagAckData gets a reference to the given CagAckData and assigns it to the CagAckData field.
 func (o *UeUpdConfData) SetCagAckData(v CagAckData) {
 	o.CagAckData = &v
+}
+
+func (o UeUpdConfData) MarshalJSON() ([]byte, error) {
+	toSerialize, err := o.ToMap()
+	if err != nil {
+		return []byte{}, err
+	}
+	return json.Marshal(toSerialize)
 }
 
 func (o UeUpdConfData) ToMap() (map[string]any, error) {

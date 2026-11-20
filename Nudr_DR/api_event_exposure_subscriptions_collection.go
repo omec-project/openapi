@@ -74,6 +74,11 @@ func (r ApiCreateEeSubscriptionsRequest) EeSubscription(eeSubscription models.Ee
 	return r
 }
 
+// GetEeSubscription returns the eeSubscription set with EeSubscription, or nil if it was not set.
+func (r ApiCreateEeSubscriptionsRequest) GetEeSubscription() *models.EeSubscription {
+	return r.eeSubscription
+}
+
 func (r ApiCreateEeSubscriptionsRequest) Execute() (*models.EeSubscription, *http.Response, error) {
 	return r.ApiService.CreateEeSubscriptionsExecute(r)
 }
@@ -310,16 +315,31 @@ func (r ApiQueryeesubscriptionsRequest) SupportedFeatures(supportedFeatures stri
 	return r
 }
 
+// GetSupportedFeatures returns the supportedFeatures set with SupportedFeatures, or nil if it was not set.
+func (r ApiQueryeesubscriptionsRequest) GetSupportedFeatures() *string {
+	return r.supportedFeatures
+}
+
 // Event Types
 func (r ApiQueryeesubscriptionsRequest) EventTypes(eventTypes []models.EventTypeUdm) ApiQueryeesubscriptionsRequest {
 	r.eventTypes = &eventTypes
 	return r
 }
 
+// GetEventTypes returns the eventTypes set with EventTypes, or nil if it was not set.
+func (r ApiQueryeesubscriptionsRequest) GetEventTypes() *[]models.EventTypeUdm {
+	return r.eventTypes
+}
+
 // NF Identifiers
 func (r ApiQueryeesubscriptionsRequest) NfIdentifiers(nfIdentifiers []models.NfIdentifier) ApiQueryeesubscriptionsRequest {
 	r.nfIdentifiers = &nfIdentifiers
 	return r
+}
+
+// GetNfIdentifiers returns the nfIdentifiers set with NfIdentifiers, or nil if it was not set.
+func (r ApiQueryeesubscriptionsRequest) GetNfIdentifiers() *[]models.NfIdentifier {
+	return r.nfIdentifiers
 }
 
 func (r ApiQueryeesubscriptionsRequest) Execute() ([]models.EeSubscriptionExt, *http.Response, error) {

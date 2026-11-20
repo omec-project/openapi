@@ -86,6 +86,11 @@ func (r ApiCreateOrReplaceIndividualIPTVConfigurationDataRequest) IptvConfigData
 	return r
 }
 
+// GetIptvConfigData returns the iptvConfigData set with IptvConfigData, or nil if it was not set.
+func (r ApiCreateOrReplaceIndividualIPTVConfigurationDataRequest) GetIptvConfigData() *models.IptvConfigData {
+	return r.iptvConfigData
+}
+
 func (r ApiCreateOrReplaceIndividualIPTVConfigurationDataRequest) Execute() (*models.IptvConfigData, *http.Response, error) {
 	return r.ApiService.CreateOrReplaceIndividualIPTVConfigurationDataExecute(r)
 }
@@ -505,6 +510,11 @@ type ApiPartialReplaceIndividualIPTVConfigurationDataRequest struct {
 func (r ApiPartialReplaceIndividualIPTVConfigurationDataRequest) IptvConfigDataPatch(iptvConfigDataPatch models.IptvConfigDataPatch) ApiPartialReplaceIndividualIPTVConfigurationDataRequest {
 	r.iptvConfigDataPatch = &iptvConfigDataPatch
 	return r
+}
+
+// GetIptvConfigDataPatch returns the iptvConfigDataPatch set with IptvConfigDataPatch, or nil if it was not set.
+func (r ApiPartialReplaceIndividualIPTVConfigurationDataRequest) GetIptvConfigDataPatch() *models.IptvConfigDataPatch {
+	return r.iptvConfigDataPatch
 }
 
 func (r ApiPartialReplaceIndividualIPTVConfigurationDataRequest) Execute() (*models.IptvConfigData, *http.Response, error) {

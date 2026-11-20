@@ -67,10 +67,20 @@ func (r ApiGetNiddAuDataRequest) SingleNssai(singleNssai models.Snssai) ApiGetNi
 	return r
 }
 
+// GetSingleNssai returns the singleNssai set with SingleNssai, or nil if it was not set.
+func (r ApiGetNiddAuDataRequest) GetSingleNssai() *models.Snssai {
+	return r.singleNssai
+}
+
 // DNN
 func (r ApiGetNiddAuDataRequest) Dnn(dnn string) ApiGetNiddAuDataRequest {
 	r.dnn = &dnn
 	return r
+}
+
+// GetDnn returns the dnn set with Dnn, or nil if it was not set.
+func (r ApiGetNiddAuDataRequest) GetDnn() *string {
+	return r.dnn
 }
 
 // MTC Provider Information
@@ -79,10 +89,20 @@ func (r ApiGetNiddAuDataRequest) MtcProviderInformation(mtcProviderInformation s
 	return r
 }
 
+// GetMtcProviderInformation returns the mtcProviderInformation set with MtcProviderInformation, or nil if it was not set.
+func (r ApiGetNiddAuDataRequest) GetMtcProviderInformation() *string {
+	return r.mtcProviderInformation
+}
+
 // Application Function Identifier
 func (r ApiGetNiddAuDataRequest) AfId(afId string) ApiGetNiddAuDataRequest {
 	r.afId = &afId
 	return r
+}
+
+// GetAfId returns the afId set with AfId, or nil if it was not set.
+func (r ApiGetNiddAuDataRequest) GetAfId() *string {
+	return r.afId
 }
 
 // Validator for conditional requests, as described in RFC 9110, 13.1.2
@@ -91,10 +111,20 @@ func (r ApiGetNiddAuDataRequest) IfNoneMatch(ifNoneMatch string) ApiGetNiddAuDat
 	return r
 }
 
+// GetIfNoneMatch returns the ifNoneMatch set with IfNoneMatch, or nil if it was not set.
+func (r ApiGetNiddAuDataRequest) GetIfNoneMatch() *string {
+	return r.ifNoneMatch
+}
+
 // Validator for conditional requests, as described in RFC 9110, 13.1.3
 func (r ApiGetNiddAuDataRequest) IfModifiedSince(ifModifiedSince string) ApiGetNiddAuDataRequest {
 	r.ifModifiedSince = &ifModifiedSince
 	return r
+}
+
+// GetIfModifiedSince returns the ifModifiedSince set with IfModifiedSince, or nil if it was not set.
+func (r ApiGetNiddAuDataRequest) GetIfModifiedSince() *string {
+	return r.ifModifiedSince
 }
 
 func (r ApiGetNiddAuDataRequest) Execute() (*models.AuthorizationData, *http.Response, error) {

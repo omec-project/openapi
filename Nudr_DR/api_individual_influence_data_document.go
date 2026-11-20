@@ -86,6 +86,11 @@ func (r ApiCreateOrReplaceIndividualInfluenceDataRequest) TrafficInfluData(traff
 	return r
 }
 
+// GetTrafficInfluData returns the trafficInfluData set with TrafficInfluData, or nil if it was not set.
+func (r ApiCreateOrReplaceIndividualInfluenceDataRequest) GetTrafficInfluData() *models.TrafficInfluData {
+	return r.trafficInfluData
+}
+
 func (r ApiCreateOrReplaceIndividualInfluenceDataRequest) Execute() (*models.TrafficInfluData, *http.Response, error) {
 	return r.ApiService.CreateOrReplaceIndividualInfluenceDataExecute(r)
 }
@@ -505,6 +510,11 @@ type ApiUpdateIndividualInfluenceDataRequest struct {
 func (r ApiUpdateIndividualInfluenceDataRequest) TrafficInfluDataPatch(trafficInfluDataPatch models.TrafficInfluDataPatch) ApiUpdateIndividualInfluenceDataRequest {
 	r.trafficInfluDataPatch = &trafficInfluDataPatch
 	return r
+}
+
+// GetTrafficInfluDataPatch returns the trafficInfluDataPatch set with TrafficInfluDataPatch, or nil if it was not set.
+func (r ApiUpdateIndividualInfluenceDataRequest) GetTrafficInfluDataPatch() *models.TrafficInfluDataPatch {
+	return r.trafficInfluDataPatch
 }
 
 func (r ApiUpdateIndividualInfluenceDataRequest) Execute() (*models.TrafficInfluData, *http.Response, error) {

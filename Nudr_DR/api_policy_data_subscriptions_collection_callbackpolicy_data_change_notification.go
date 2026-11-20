@@ -57,6 +57,11 @@ func (r ApiPolicyDataChangeNotificationPostRequest) PolicyDataChangeNotification
 	return r
 }
 
+// GetPolicyDataChangeNotification returns the policyDataChangeNotification set with PolicyDataChangeNotification, or nil if it was not set.
+func (r ApiPolicyDataChangeNotificationPostRequest) GetPolicyDataChangeNotification() *[]models.PolicyDataChangeNotification {
+	return r.policyDataChangeNotification
+}
+
 func (r ApiPolicyDataChangeNotificationPostRequest) Execute() (*http.Response, error) {
 	return r.ApiService.PolicyDataChangeNotificationPostExecute(r)
 }

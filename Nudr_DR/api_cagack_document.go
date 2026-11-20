@@ -62,6 +62,11 @@ func (r ApiQueryCagAckRequest) SupportedFeatures(supportedFeatures string) ApiQu
 	return r
 }
 
+// GetSupportedFeatures returns the supportedFeatures set with SupportedFeatures, or nil if it was not set.
+func (r ApiQueryCagAckRequest) GetSupportedFeatures() *string {
+	return r.supportedFeatures
+}
+
 func (r ApiQueryCagAckRequest) Execute() (*models.CagAckData, *http.Response, error) {
 	return r.ApiService.QueryCagAckExecute(r)
 }

@@ -63,10 +63,20 @@ func (r ApiReadIPTVConfigurationDataRequest) ConfigIds(configIds []string) ApiRe
 	return r
 }
 
+// GetConfigIds returns the configIds set with ConfigIds, or nil if it was not set.
+func (r ApiReadIPTVConfigurationDataRequest) GetConfigIds() *[]string {
+	return r.configIds
+}
+
 // Each element identifies a DNN.
 func (r ApiReadIPTVConfigurationDataRequest) Dnns(dnns []string) ApiReadIPTVConfigurationDataRequest {
 	r.dnns = &dnns
 	return r
+}
+
+// GetDnns returns the dnns set with Dnns, or nil if it was not set.
+func (r ApiReadIPTVConfigurationDataRequest) GetDnns() *[]string {
+	return r.dnns
 }
 
 // Each element identifies a slice.
@@ -75,16 +85,31 @@ func (r ApiReadIPTVConfigurationDataRequest) Snssais(snssais []models.Snssai) Ap
 	return r
 }
 
+// GetSnssais returns the snssais set with Snssais, or nil if it was not set.
+func (r ApiReadIPTVConfigurationDataRequest) GetSnssais() *[]models.Snssai {
+	return r.snssais
+}
+
 // Each element identifies the user.
 func (r ApiReadIPTVConfigurationDataRequest) Supis(supis []string) ApiReadIPTVConfigurationDataRequest {
 	r.supis = &supis
 	return r
 }
 
+// GetSupis returns the supis set with Supis, or nil if it was not set.
+func (r ApiReadIPTVConfigurationDataRequest) GetSupis() *[]string {
+	return r.supis
+}
+
 // Each element identifies a group of users.
 func (r ApiReadIPTVConfigurationDataRequest) InterGroupIds(interGroupIds []string) ApiReadIPTVConfigurationDataRequest {
 	r.interGroupIds = &interGroupIds
 	return r
+}
+
+// GetInterGroupIds returns the interGroupIds set with InterGroupIds, or nil if it was not set.
+func (r ApiReadIPTVConfigurationDataRequest) GetInterGroupIds() *[]string {
+	return r.interGroupIds
 }
 
 func (r ApiReadIPTVConfigurationDataRequest) Execute() ([]models.IptvConfigData, *http.Response, error) {

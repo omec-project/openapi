@@ -65,10 +65,20 @@ func (r ApiQueryLcsSubscriptionDataRequest) Fields(fields []string) ApiQueryLcsS
 	return r
 }
 
+// GetFields returns the fields set with Fields, or nil if it was not set.
+func (r ApiQueryLcsSubscriptionDataRequest) GetFields() *[]string {
+	return r.fields
+}
+
 // Supported Features
 func (r ApiQueryLcsSubscriptionDataRequest) SupportedFeatures(supportedFeatures string) ApiQueryLcsSubscriptionDataRequest {
 	r.supportedFeatures = &supportedFeatures
 	return r
+}
+
+// GetSupportedFeatures returns the supportedFeatures set with SupportedFeatures, or nil if it was not set.
+func (r ApiQueryLcsSubscriptionDataRequest) GetSupportedFeatures() *string {
+	return r.supportedFeatures
 }
 
 // Validator for conditional requests, as described in RFC 9110, 13.1.2
@@ -77,10 +87,20 @@ func (r ApiQueryLcsSubscriptionDataRequest) IfNoneMatch(ifNoneMatch string) ApiQ
 	return r
 }
 
+// GetIfNoneMatch returns the ifNoneMatch set with IfNoneMatch, or nil if it was not set.
+func (r ApiQueryLcsSubscriptionDataRequest) GetIfNoneMatch() *string {
+	return r.ifNoneMatch
+}
+
 // Validator for conditional requests, as described in RFC 9110, 13.1.3
 func (r ApiQueryLcsSubscriptionDataRequest) IfModifiedSince(ifModifiedSince string) ApiQueryLcsSubscriptionDataRequest {
 	r.ifModifiedSince = &ifModifiedSince
 	return r
+}
+
+// GetIfModifiedSince returns the ifModifiedSince set with IfModifiedSince, or nil if it was not set.
+func (r ApiQueryLcsSubscriptionDataRequest) GetIfModifiedSince() *string {
+	return r.ifModifiedSince
 }
 
 func (r ApiQueryLcsSubscriptionDataRequest) Execute() (*models.LcsSubscriptionData, *http.Response, error) {

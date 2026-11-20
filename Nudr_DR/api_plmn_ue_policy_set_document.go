@@ -62,6 +62,11 @@ func (r ApiReadPlmnUePolicySetRequest) SuppFeat(suppFeat string) ApiReadPlmnUePo
 	return r
 }
 
+// GetSuppFeat returns the suppFeat set with SuppFeat, or nil if it was not set.
+func (r ApiReadPlmnUePolicySetRequest) GetSuppFeat() *string {
+	return r.suppFeat
+}
+
 func (r ApiReadPlmnUePolicySetRequest) Execute() (*models.UePolicySet, *http.Response, error) {
 	return r.ApiService.ReadPlmnUePolicySetExecute(r)
 }

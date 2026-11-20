@@ -59,6 +59,11 @@ func (r ApiQuery5GVnGroupInternalRequest) InternalGroupIds(internalGroupIds []st
 	return r
 }
 
+// GetInternalGroupIds returns the internalGroupIds set with InternalGroupIds, or nil if it was not set.
+func (r ApiQuery5GVnGroupInternalRequest) GetInternalGroupIds() *[]string {
+	return r.internalGroupIds
+}
+
 func (r ApiQuery5GVnGroupInternalRequest) Execute() (*map[string]models.FiveGVnGroupConfiguration, *http.Response, error) {
 	return r.ApiService.Query5GVnGroupInternalExecute(r)
 }

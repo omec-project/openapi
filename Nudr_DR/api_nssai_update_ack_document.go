@@ -61,10 +61,20 @@ func (r ApiCreateOrUpdateNssaiAckRequest) NssaiAckData(nssaiAckData models.Nssai
 	return r
 }
 
+// GetNssaiAckData returns the nssaiAckData set with NssaiAckData, or nil if it was not set.
+func (r ApiCreateOrUpdateNssaiAckRequest) GetNssaiAckData() *models.NssaiAckData {
+	return r.nssaiAckData
+}
+
 // Supported Features
 func (r ApiCreateOrUpdateNssaiAckRequest) SupportedFeatures(supportedFeatures string) ApiCreateOrUpdateNssaiAckRequest {
 	r.supportedFeatures = &supportedFeatures
 	return r
+}
+
+// GetSupportedFeatures returns the supportedFeatures set with SupportedFeatures, or nil if it was not set.
+func (r ApiCreateOrUpdateNssaiAckRequest) GetSupportedFeatures() *string {
+	return r.supportedFeatures
 }
 
 func (r ApiCreateOrUpdateNssaiAckRequest) Execute() (*http.Response, error) {

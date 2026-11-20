@@ -63,6 +63,11 @@ func (r ApiCreateHssGroupSubscriptionsRequest) HssSubscriptionInfo(hssSubscripti
 	return r
 }
 
+// GetHssSubscriptionInfo returns the hssSubscriptionInfo set with HssSubscriptionInfo, or nil if it was not set.
+func (r ApiCreateHssGroupSubscriptionsRequest) GetHssSubscriptionInfo() *models.HssSubscriptionInfo {
+	return r.hssSubscriptionInfo
+}
+
 func (r ApiCreateHssGroupSubscriptionsRequest) Execute() (*models.HssSubscriptionInfo, *http.Response, error) {
 	return r.ApiService.CreateHssGroupSubscriptionsExecute(r)
 }

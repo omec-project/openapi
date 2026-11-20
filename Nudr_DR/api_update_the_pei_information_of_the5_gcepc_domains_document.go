@@ -61,6 +61,11 @@ func (r ApiCreateOrUpdatePeiInformationRequest) PeiUpdateInfo(peiUpdateInfo mode
 	return r
 }
 
+// GetPeiUpdateInfo returns the peiUpdateInfo set with PeiUpdateInfo, or nil if it was not set.
+func (r ApiCreateOrUpdatePeiInformationRequest) GetPeiUpdateInfo() *models.PeiUpdateInfo {
+	return r.peiUpdateInfo
+}
+
 func (r ApiCreateOrUpdatePeiInformationRequest) Execute() (*models.PeiUpdateInfo, *http.Response, error) {
 	return r.ApiService.CreateOrUpdatePeiInformationExecute(r)
 }

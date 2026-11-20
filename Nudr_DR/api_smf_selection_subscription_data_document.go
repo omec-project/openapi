@@ -67,10 +67,20 @@ func (r ApiQuerySmfSelectDataRequest) Fields(fields []string) ApiQuerySmfSelectD
 	return r
 }
 
+// GetFields returns the fields set with Fields, or nil if it was not set.
+func (r ApiQuerySmfSelectDataRequest) GetFields() *[]string {
+	return r.fields
+}
+
 // Supported Features
 func (r ApiQuerySmfSelectDataRequest) SupportedFeatures(supportedFeatures string) ApiQuerySmfSelectDataRequest {
 	r.supportedFeatures = &supportedFeatures
 	return r
+}
+
+// GetSupportedFeatures returns the supportedFeatures set with SupportedFeatures, or nil if it was not set.
+func (r ApiQuerySmfSelectDataRequest) GetSupportedFeatures() *string {
+	return r.supportedFeatures
 }
 
 // Validator for conditional requests, as described in RFC 9110, 13.1.29110, 13.1.2
@@ -79,10 +89,20 @@ func (r ApiQuerySmfSelectDataRequest) IfNoneMatch(ifNoneMatch string) ApiQuerySm
 	return r
 }
 
+// GetIfNoneMatch returns the ifNoneMatch set with IfNoneMatch, or nil if it was not set.
+func (r ApiQuerySmfSelectDataRequest) GetIfNoneMatch() *string {
+	return r.ifNoneMatch
+}
+
 // Validator for conditional requests, as described in RFC 9110, 13.1.39110, 13.1.3
 func (r ApiQuerySmfSelectDataRequest) IfModifiedSince(ifModifiedSince string) ApiQuerySmfSelectDataRequest {
 	r.ifModifiedSince = &ifModifiedSince
 	return r
+}
+
+// GetIfModifiedSince returns the ifModifiedSince set with IfModifiedSince, or nil if it was not set.
+func (r ApiQuerySmfSelectDataRequest) GetIfModifiedSince() *string {
+	return r.ifModifiedSince
 }
 
 func (r ApiQuerySmfSelectDataRequest) Execute() (*models.SmfSelectionSubscriptionData, *http.Response, error) {

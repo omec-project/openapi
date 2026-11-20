@@ -30,7 +30,7 @@ var _ openapi.MappedNullable = &ExposureDataChangeNotification{}
 // ExposureDataChangeNotification Represents changed exposure data for one UE for which Notification was requested.
 type ExposureDataChangeNotification struct {
 	// String represents the SUPI or GPSI
-	UeId                     *string                    `json:"ueId,omitempty" yaml:"ueId,omitempty" validate:"regexp=^(imsi-[0-9]{5,15}|nai-.+|msisdn-[0-9]{5,15}|extid-[^@]+@[^@]+|gci-.+|gli-.+|.+)$"`
+	UeId                     *string                    `json:"ueId,omitempty" yaml:"ueId,omitempty" validate:"regexp=^(imsi-[0-9]{5\\,15}|nai-.+|msisdn-[0-9]{5\\,15}|extid-[^@]+@[^@]+|gci-.+|gli-.+|.+)$"`
 	AccessAndMobilityData    *AccessAndMobilityData     `json:"accessAndMobilityData,omitempty" yaml:"accessAndMobilityData,omitempty"`
 	PduSessionManagementData []PduSessionManagementData `json:"pduSessionManagementData,omitempty" yaml:"pduSessionManagementData,omitempty"`
 	DelResources             []string                   `json:"delResources,omitempty" yaml:"delResources,omitempty"`

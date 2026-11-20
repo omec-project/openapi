@@ -62,6 +62,11 @@ func (r ApiQuerySmfRegListRequest) SupportedFeatures(supportedFeatures string) A
 	return r
 }
 
+// GetSupportedFeatures returns the supportedFeatures set with SupportedFeatures, or nil if it was not set.
+func (r ApiQuerySmfRegListRequest) GetSupportedFeatures() *string {
+	return r.supportedFeatures
+}
+
 func (r ApiQuerySmfRegListRequest) Execute() ([]models.SmfRegistration, *http.Response, error) {
 	return r.ApiService.QuerySmfRegListExecute(r)
 }

@@ -68,10 +68,20 @@ func (r ApiQueryAmDataRequest) Fields(fields []string) ApiQueryAmDataRequest {
 	return r
 }
 
+// GetFields returns the fields set with Fields, or nil if it was not set.
+func (r ApiQueryAmDataRequest) GetFields() *[]string {
+	return r.fields
+}
+
 // Supported Features
 func (r ApiQueryAmDataRequest) SupportedFeatures(supportedFeatures string) ApiQueryAmDataRequest {
 	r.supportedFeatures = &supportedFeatures
 	return r
+}
+
+// GetSupportedFeatures returns the supportedFeatures set with SupportedFeatures, or nil if it was not set.
+func (r ApiQueryAmDataRequest) GetSupportedFeatures() *string {
+	return r.supportedFeatures
 }
 
 // List of PLMNs adjacent to the UE&#39;s serving PLMN
@@ -80,16 +90,31 @@ func (r ApiQueryAmDataRequest) AdjacentPlmns(adjacentPlmns []models.PlmnId) ApiQ
 	return r
 }
 
+// GetAdjacentPlmns returns the adjacentPlmns set with AdjacentPlmns, or nil if it was not set.
+func (r ApiQueryAmDataRequest) GetAdjacentPlmns() *[]models.PlmnId {
+	return r.adjacentPlmns
+}
+
 // Validator for conditional requests, as described in RFC 9110, 13.1.29110, 13.1.2
 func (r ApiQueryAmDataRequest) IfNoneMatch(ifNoneMatch string) ApiQueryAmDataRequest {
 	r.ifNoneMatch = &ifNoneMatch
 	return r
 }
 
+// GetIfNoneMatch returns the ifNoneMatch set with IfNoneMatch, or nil if it was not set.
+func (r ApiQueryAmDataRequest) GetIfNoneMatch() *string {
+	return r.ifNoneMatch
+}
+
 // Validator for conditional requests, as described in RFC 9110, 13.1.39110, 13.1.3
 func (r ApiQueryAmDataRequest) IfModifiedSince(ifModifiedSince string) ApiQueryAmDataRequest {
 	r.ifModifiedSince = &ifModifiedSince
 	return r
+}
+
+// GetIfModifiedSince returns the ifModifiedSince set with IfModifiedSince, or nil if it was not set.
+func (r ApiQueryAmDataRequest) GetIfModifiedSince() *string {
+	return r.ifModifiedSince
 }
 
 func (r ApiQueryAmDataRequest) Execute() (*models.AccessAndMobilitySubscriptionData, *http.Response, error) {

@@ -69,10 +69,20 @@ func (r ApiGetSSAuDataRequest) SingleNssai(singleNssai models.Snssai) ApiGetSSAu
 	return r
 }
 
+// GetSingleNssai returns the singleNssai set with SingleNssai, or nil if it was not set.
+func (r ApiGetSSAuDataRequest) GetSingleNssai() *models.Snssai {
+	return r.singleNssai
+}
+
 // DNN
 func (r ApiGetSSAuDataRequest) Dnn(dnn string) ApiGetSSAuDataRequest {
 	r.dnn = &dnn
 	return r
+}
+
+// GetDnn returns the dnn set with Dnn, or nil if it was not set.
+func (r ApiGetSSAuDataRequest) GetDnn() *string {
+	return r.dnn
 }
 
 // MTC Provider Information
@@ -81,10 +91,20 @@ func (r ApiGetSSAuDataRequest) MtcProviderInformation(mtcProviderInformation str
 	return r
 }
 
+// GetMtcProviderInformation returns the mtcProviderInformation set with MtcProviderInformation, or nil if it was not set.
+func (r ApiGetSSAuDataRequest) GetMtcProviderInformation() *string {
+	return r.mtcProviderInformation
+}
+
 // Application Function Identifier
 func (r ApiGetSSAuDataRequest) AfId(afId string) ApiGetSSAuDataRequest {
 	r.afId = &afId
 	return r
+}
+
+// GetAfId returns the afId set with AfId, or nil if it was not set.
+func (r ApiGetSSAuDataRequest) GetAfId() *string {
+	return r.afId
 }
 
 // Validator for conditional requests, as described in RFC 9110, 13.1.2
@@ -93,10 +113,20 @@ func (r ApiGetSSAuDataRequest) IfNoneMatch(ifNoneMatch string) ApiGetSSAuDataReq
 	return r
 }
 
+// GetIfNoneMatch returns the ifNoneMatch set with IfNoneMatch, or nil if it was not set.
+func (r ApiGetSSAuDataRequest) GetIfNoneMatch() *string {
+	return r.ifNoneMatch
+}
+
 // Validator for conditional requests, as described in RFC 9110, 13.1.3
 func (r ApiGetSSAuDataRequest) IfModifiedSince(ifModifiedSince string) ApiGetSSAuDataRequest {
 	r.ifModifiedSince = &ifModifiedSince
 	return r
+}
+
+// GetIfModifiedSince returns the ifModifiedSince set with IfModifiedSince, or nil if it was not set.
+func (r ApiGetSSAuDataRequest) GetIfModifiedSince() *string {
+	return r.ifModifiedSince
 }
 
 func (r ApiGetSSAuDataRequest) Execute() (*models.AuthorizationData, *http.Response, error) {

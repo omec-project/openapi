@@ -57,6 +57,11 @@ func (r ApiExposureDataChangeNotificationPostRequest) ExposureDataChangeNotifica
 	return r
 }
 
+// GetExposureDataChangeNotification returns the exposureDataChangeNotification set with ExposureDataChangeNotification, or nil if it was not set.
+func (r ApiExposureDataChangeNotificationPostRequest) GetExposureDataChangeNotification() *[]models.ExposureDataChangeNotification {
+	return r.exposureDataChangeNotification
+}
+
 func (r ApiExposureDataChangeNotificationPostRequest) Execute() (*http.Response, error) {
 	return r.ApiService.ExposureDataChangeNotificationPostExecute(r)
 }

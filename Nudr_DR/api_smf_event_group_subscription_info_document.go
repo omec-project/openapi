@@ -63,6 +63,11 @@ func (r ApiCreateSmfGroupSubscriptionsRequest) SmfSubscriptionInfo(smfSubscripti
 	return r
 }
 
+// GetSmfSubscriptionInfo returns the smfSubscriptionInfo set with SmfSubscriptionInfo, or nil if it was not set.
+func (r ApiCreateSmfGroupSubscriptionsRequest) GetSmfSubscriptionInfo() *models.SmfSubscriptionInfo {
+	return r.smfSubscriptionInfo
+}
+
 func (r ApiCreateSmfGroupSubscriptionsRequest) Execute() (*models.SmfSubscriptionInfo, *http.Response, error) {
 	return r.ApiService.CreateSmfGroupSubscriptionsExecute(r)
 }

@@ -62,6 +62,11 @@ func (r ApiCreateIndividualAuthenticationStatusRequest) AuthEvent(authEvent mode
 	return r
 }
 
+// GetAuthEvent returns the authEvent set with AuthEvent, or nil if it was not set.
+func (r ApiCreateIndividualAuthenticationStatusRequest) GetAuthEvent() *models.AuthEvent {
+	return r.authEvent
+}
+
 func (r ApiCreateIndividualAuthenticationStatusRequest) Execute() (*http.Response, error) {
 	return r.ApiService.CreateIndividualAuthenticationStatusExecute(r)
 }

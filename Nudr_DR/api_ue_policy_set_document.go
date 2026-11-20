@@ -86,6 +86,11 @@ func (r ApiCreateOrReplaceUEPolicySetRequest) UePolicySet(uePolicySet models.UeP
 	return r
 }
 
+// GetUePolicySet returns the uePolicySet set with UePolicySet, or nil if it was not set.
+func (r ApiCreateOrReplaceUEPolicySetRequest) GetUePolicySet() *models.UePolicySet {
+	return r.uePolicySet
+}
+
 func (r ApiCreateOrReplaceUEPolicySetRequest) Execute() (*models.UePolicySet, *http.Response, error) {
 	return r.ApiService.CreateOrReplaceUEPolicySetExecute(r)
 }
@@ -320,6 +325,11 @@ func (r ApiReadUEPolicySetRequest) SuppFeat(suppFeat string) ApiReadUEPolicySetR
 	return r
 }
 
+// GetSuppFeat returns the suppFeat set with SuppFeat, or nil if it was not set.
+func (r ApiReadUEPolicySetRequest) GetSuppFeat() *string {
+	return r.suppFeat
+}
+
 func (r ApiReadUEPolicySetRequest) Execute() (*models.UePolicySet, *http.Response, error) {
 	return r.ApiService.ReadUEPolicySetExecute(r)
 }
@@ -516,6 +526,11 @@ type ApiUpdateUEPolicySetRequest struct {
 func (r ApiUpdateUEPolicySetRequest) UePolicySetPatch(uePolicySetPatch models.UePolicySetPatch) ApiUpdateUEPolicySetRequest {
 	r.uePolicySetPatch = &uePolicySetPatch
 	return r
+}
+
+// GetUePolicySetPatch returns the uePolicySetPatch set with UePolicySetPatch, or nil if it was not set.
+func (r ApiUpdateUEPolicySetRequest) GetUePolicySetPatch() *models.UePolicySetPatch {
+	return r.uePolicySetPatch
 }
 
 func (r ApiUpdateUEPolicySetRequest) Execute() (*http.Response, error) {

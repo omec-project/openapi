@@ -40,7 +40,7 @@ type RetrievalOfSharedDataAPI interface {
 	GetSharedData(ctx context.Context) ApiGetSharedDataRequest
 
 	// GetSharedDataExecute executes the request
-	//   @return []SharedDataUdm1
+	//   @return []SharedDataUdm
 	GetSharedDataExecute(r ApiGetSharedDataRequest) ([]models.SharedDataUdm, *http.Response, error)
 }
 
@@ -60,10 +60,20 @@ func (r ApiGetSharedDataRequest) SharedDataIds(sharedDataIds []string) ApiGetSha
 	return r
 }
 
+// GetSharedDataIds returns the sharedDataIds set with SharedDataIds, or nil if it was not set.
+func (r ApiGetSharedDataRequest) GetSharedDataIds() *[]string {
+	return r.sharedDataIds
+}
+
 // Supported Features
 func (r ApiGetSharedDataRequest) SupportedFeatures(supportedFeatures string) ApiGetSharedDataRequest {
 	r.supportedFeatures = &supportedFeatures
 	return r
+}
+
+// GetSupportedFeatures returns the supportedFeatures set with SupportedFeatures, or nil if it was not set.
+func (r ApiGetSharedDataRequest) GetSupportedFeatures() *string {
+	return r.supportedFeatures
 }
 
 func (r ApiGetSharedDataRequest) Execute() ([]models.SharedDataUdm, *http.Response, error) {
@@ -85,7 +95,7 @@ func (a *RetrievalOfSharedDataAPIService) GetSharedData(ctx context.Context) Api
 
 // Execute executes the request
 //
-//	@return []SharedDataUdm1
+//	@return []SharedDataUdm
 func (a *RetrievalOfSharedDataAPIService) GetSharedDataExecute(r ApiGetSharedDataRequest) ([]models.SharedDataUdm, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodGet

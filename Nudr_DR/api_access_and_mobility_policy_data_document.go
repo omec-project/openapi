@@ -62,6 +62,11 @@ func (r ApiReadAccessAndMobilityPolicyDataRequest) SuppFeat(suppFeat string) Api
 	return r
 }
 
+// GetSuppFeat returns the suppFeat set with SuppFeat, or nil if it was not set.
+func (r ApiReadAccessAndMobilityPolicyDataRequest) GetSuppFeat() *string {
+	return r.suppFeat
+}
+
 func (r ApiReadAccessAndMobilityPolicyDataRequest) Execute() (*models.AmPolicyData, *http.Response, error) {
 	return r.ApiService.ReadAccessAndMobilityPolicyDataExecute(r)
 }

@@ -30,42 +30,42 @@ var _ openapi.MappedNullable = &UeSubscribedDataSets{}
 
 // UeSubscribedDataSets Contains the subscribed data sets of a UE.
 type UeSubscribedDataSets struct {
-	AmData                        *AccessAndMobilitySubscriptionData `json:"amData,omitempty"`
-	SmfSelData                    *SmfSelectionSubscriptionData      `json:"smfSelData,omitempty"`
-	SmsSubsData                   *SmsSubscriptionData               `json:"smsSubsData,omitempty"`
-	SmData                        *SmSubsData                        `json:"smData,omitempty"`
-	TraceData                     NullableTraceData                  `json:"traceData"`
-	SmsMngData                    *SmsManagementSubscriptionData     `json:"smsMngData,omitempty"`
-	LcsPrivacyData                *LcsPrivacyData                    `json:"lcsPrivacyData,omitempty"`
-	LcsMoData                     *LcsMoData                         `json:"lcsMoData,omitempty"`
-	LcsSubscriptionData           *LcsSubscriptionData               `json:"lcsSubscriptionData,omitempty"`
-	LcsBcaData                    *LcsBroadcastAssistanceTypesData   `json:"lcsBcaData,omitempty"`
-	V2xData                       *V2xSubscriptionData               `json:"v2xData,omitempty"`
-	ProseData                     *ProseSubscriptionData             `json:"proseData,omitempty"`
-	OdbData                       *OdbData                           `json:"odbData,omitempty"`
-	EeProfileData                 *EeProfileData                     `json:"eeProfileData,omitempty"`
-	PpProfileData                 *PpProfileData                     `json:"ppProfileData,omitempty"`
-	NiddAuthData                  *AuthorizationData                 `json:"niddAuthData,omitempty"`
-	UcData                        *UcSubscriptionData                `json:"ucData,omitempty"`
-	MbsSubscriptionData           *MbsSubscriptionData               `json:"mbsSubscriptionData,omitempty"`
-	PpData                        NullablePpData                     `json:"ppData"`
-	A2xData                       *A2xSubscriptionData               `json:"a2xData,omitempty"`
-	Amf3Gpp                       *Amf3GppAccessRegistration         `json:"amf3Gpp,omitempty"`
-	AmfNon3Gpp                    *AmfNon3GppAccessRegistration      `json:"amfNon3Gpp,omitempty"`
-	SdmSubscriptions              []SdmSubscription                  `json:"sdmSubscriptions,omitempty"`
-	EeSubscriptions               []EeSubscription                   `json:"eeSubscriptions,omitempty"`
-	Smsf3GppAccess                *SmsfRegistration                  `json:"smsf3GppAccess,omitempty"`
-	SmsfNon3GppAccess             *SmsfRegistration                  `json:"smsfNon3GppAccess,omitempty"`
-	SubscriptionDataSubscriptions []SubscriptionDataSubscriptions    `json:"subscriptionDataSubscriptions,omitempty"`
+	AmData                        *AccessAndMobilitySubscriptionData `json:"amData,omitempty" yaml:"amData,omitempty"`
+	SmfSelData                    *SmfSelectionSubscriptionData      `json:"smfSelData,omitempty" yaml:"smfSelData,omitempty"`
+	SmsSubsData                   *SmsSubscriptionData               `json:"smsSubsData,omitempty" yaml:"smsSubsData,omitempty"`
+	SmData                        *SmSubsData                        `json:"smData,omitempty" yaml:"smData,omitempty"`
+	TraceData                     NullableTraceData                  `json:"traceData" yaml:"traceData,omitempty"`
+	SmsMngData                    *SmsManagementSubscriptionData     `json:"smsMngData,omitempty" yaml:"smsMngData,omitempty"`
+	LcsPrivacyData                *LcsPrivacyData                    `json:"lcsPrivacyData,omitempty" yaml:"lcsPrivacyData,omitempty"`
+	LcsMoData                     *LcsMoData                         `json:"lcsMoData,omitempty" yaml:"lcsMoData,omitempty"`
+	LcsSubscriptionData           *LcsSubscriptionData               `json:"lcsSubscriptionData,omitempty" yaml:"lcsSubscriptionData,omitempty"`
+	LcsBcaData                    *LcsBroadcastAssistanceTypesData   `json:"lcsBcaData,omitempty" yaml:"lcsBcaData,omitempty"`
+	V2xData                       *V2xSubscriptionData               `json:"v2xData,omitempty" yaml:"v2xData,omitempty"`
+	ProseData                     *ProseSubscriptionData             `json:"proseData,omitempty" yaml:"proseData,omitempty"`
+	OdbData                       *OdbData                           `json:"odbData,omitempty" yaml:"odbData,omitempty"`
+	EeProfileData                 *EeProfileData                     `json:"eeProfileData,omitempty" yaml:"eeProfileData,omitempty"`
+	PpProfileData                 *PpProfileData                     `json:"ppProfileData,omitempty" yaml:"ppProfileData,omitempty"`
+	NiddAuthData                  *AuthorizationData                 `json:"niddAuthData,omitempty" yaml:"niddAuthData,omitempty"`
+	UcData                        *UcSubscriptionData                `json:"ucData,omitempty" yaml:"ucData,omitempty"`
+	MbsSubscriptionData           *MbsSubscriptionData               `json:"mbsSubscriptionData,omitempty" yaml:"mbsSubscriptionData,omitempty"`
+	PpData                        NullablePpData                     `json:"ppData" yaml:"ppData,omitempty"`
+	A2xData                       *A2xSubscriptionData               `json:"a2xData,omitempty" yaml:"a2xData,omitempty"`
+	Amf3Gpp                       *Amf3GppAccessRegistration         `json:"amf3Gpp,omitempty" yaml:"amf3Gpp,omitempty"`
+	AmfNon3Gpp                    *AmfNon3GppAccessRegistration      `json:"amfNon3Gpp,omitempty" yaml:"amfNon3Gpp,omitempty"`
+	SdmSubscriptions              []SdmSubscription                  `json:"sdmSubscriptions,omitempty" yaml:"sdmSubscriptions,omitempty"`
+	EeSubscriptions               []EeSubscription                   `json:"eeSubscriptions,omitempty" yaml:"eeSubscriptions,omitempty"`
+	Smsf3GppAccess                *SmsfRegistration                  `json:"smsf3GppAccess,omitempty" yaml:"smsf3GppAccess,omitempty"`
+	SmsfNon3GppAccess             *SmsfRegistration                  `json:"smsfNon3GppAccess,omitempty" yaml:"smsfNon3GppAccess,omitempty"`
+	SubscriptionDataSubscriptions []SubscriptionDataSubscriptions    `json:"subscriptionDataSubscriptions,omitempty" yaml:"subscriptionDataSubscriptions,omitempty"`
 	// The list of all the SMF registrations of a UE.
-	SmfRegistrations []SmfRegistration          `json:"smfRegistrations,omitempty"`
-	IpSmGw           NullableIpSmGwRegistration `json:"ipSmGw"`
-	RoamingInfo      *RoamingInfoUpdate         `json:"roamingInfo,omitempty"`
-	PeiInfo          *PeiUpdateInfo             `json:"peiInfo,omitempty"`
-	SorData          *SorData                   `json:"sorData,omitempty"`
-	UpuData          *UpuDataUdr                `json:"upuData,omitempty"`
-	NssaiAckData     *NssaiAckData              `json:"nssaiAckData,omitempty"`
-	CagAckData       *CagAckData                `json:"cagAckData,omitempty"`
+	SmfRegistrations []SmfRegistration          `json:"smfRegistrations,omitempty" yaml:"smfRegistrations,omitempty"`
+	IpSmGw           NullableIpSmGwRegistration `json:"ipSmGw" yaml:"ipSmGw,omitempty"`
+	RoamingInfo      *RoamingInfoUpdate         `json:"roamingInfo,omitempty" yaml:"roamingInfo,omitempty"`
+	PeiInfo          *PeiUpdateInfo             `json:"peiInfo,omitempty" yaml:"peiInfo,omitempty"`
+	SorData          *SorData                   `json:"sorData,omitempty" yaml:"sorData,omitempty"`
+	UpuData          *UpuDataUdr                `json:"upuData,omitempty" yaml:"upuData,omitempty"`
+	NssaiAckData     *NssaiAckData              `json:"nssaiAckData,omitempty" yaml:"nssaiAckData,omitempty"`
+	CagAckData       *CagAckData                `json:"cagAckData,omitempty" yaml:"cagAckData,omitempty"`
 }
 
 // NewUeSubscribedDataSets instantiates a new UeSubscribedDataSets object
@@ -1236,6 +1236,14 @@ func (o *UeSubscribedDataSets) HasCagAckData() bool {
 // SetCagAckData gets a reference to the given CagAckData and assigns it to the CagAckData field.
 func (o *UeSubscribedDataSets) SetCagAckData(v CagAckData) {
 	o.CagAckData = &v
+}
+
+func (o UeSubscribedDataSets) MarshalJSON() ([]byte, error) {
+	toSerialize, err := o.ToMap()
+	if err != nil {
+		return []byte{}, err
+	}
+	return json.Marshal(toSerialize)
 }
 
 func (o UeSubscribedDataSets) ToMap() (map[string]any, error) {

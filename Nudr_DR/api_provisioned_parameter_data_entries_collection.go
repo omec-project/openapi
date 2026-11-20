@@ -62,6 +62,11 @@ func (r ApiGetMultiplePPDataEntriesRequest) SupportedFeatures(supportedFeatures 
 	return r
 }
 
+// GetSupportedFeatures returns the supportedFeatures set with SupportedFeatures, or nil if it was not set.
+func (r ApiGetMultiplePPDataEntriesRequest) GetSupportedFeatures() *string {
+	return r.supportedFeatures
+}
+
 func (r ApiGetMultiplePPDataEntriesRequest) Execute() (*models.PpDataEntryList, *http.Response, error) {
 	return r.ApiService.GetMultiplePPDataEntriesExecute(r)
 }

@@ -31,8 +31,7 @@ var _ openapi.MappedNullable = &PpDlPacketCountExt{}
 // PpDlPacketCountExt struct for PpDlPacketCountExt
 type PpDlPacketCountExt struct {
 	AfInstanceId string `json:"afInstanceId" yaml:"afInstanceId"`
-	// Integer where the allowed values correspond to the value range of an unsigned 64-bit integer.
-	ReferenceId int32 `json:"referenceId" yaml:"referenceId"`
+	ReferenceId  uint64 `json:"referenceId" yaml:"referenceId"`
 	// String representing a Data Network as defined in clause 9A of 3GPP TS 23.003; it shall contain either a DNN Network Identifier, or a full DNN with both the Network Identifier and Operator Identifier, as specified in 3GPP TS 23.003 clause 9.1.1 and 9.1.2. It shall be coded as string in which the labels are separated by dots (e.g. \"Label1.Label2.Label3\").
 	Dnn         *string `json:"dnn,omitempty" yaml:"dnn,omitempty"`
 	SingleNssai *Snssai `json:"singleNssai,omitempty" yaml:"singleNssai,omitempty"`
@@ -46,7 +45,7 @@ type PpDlPacketCountExt struct {
 // This constructor will assign default values to properties that have it defined,
 // and makes sure properties required by API are set, but the set of arguments
 // will change when the set of required properties is changed
-func NewPpDlPacketCountExt(afInstanceId string, referenceId int32) *PpDlPacketCountExt {
+func NewPpDlPacketCountExt(afInstanceId string, referenceId uint64) *PpDlPacketCountExt {
 	this := PpDlPacketCountExt{}
 	this.AfInstanceId = afInstanceId
 	this.ReferenceId = referenceId
@@ -86,9 +85,9 @@ func (o *PpDlPacketCountExt) SetAfInstanceId(v string) {
 }
 
 // GetReferenceId returns the ReferenceId field value
-func (o *PpDlPacketCountExt) GetReferenceId() int32 {
+func (o *PpDlPacketCountExt) GetReferenceId() uint64 {
 	if o == nil {
-		var ret int32
+		var ret uint64
 		return ret
 	}
 
@@ -97,7 +96,7 @@ func (o *PpDlPacketCountExt) GetReferenceId() int32 {
 
 // GetReferenceIdOk returns a tuple with the ReferenceId field value
 // and a boolean to check if the value has been set.
-func (o *PpDlPacketCountExt) GetReferenceIdOk() (*int32, bool) {
+func (o *PpDlPacketCountExt) GetReferenceIdOk() (*uint64, bool) {
 	if o == nil {
 		return nil, false
 	}
@@ -105,7 +104,7 @@ func (o *PpDlPacketCountExt) GetReferenceIdOk() (*int32, bool) {
 }
 
 // SetReferenceId sets field value
-func (o *PpDlPacketCountExt) SetReferenceId(v int32) {
+func (o *PpDlPacketCountExt) SetReferenceId(v uint64) {
 	o.ReferenceId = v
 }
 

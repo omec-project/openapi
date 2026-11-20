@@ -57,6 +57,11 @@ func (r ApiApplicationDataChangeNotifPostRequest) ApplicationDataChangeNotif(app
 	return r
 }
 
+// GetApplicationDataChangeNotif returns the applicationDataChangeNotif set with ApplicationDataChangeNotif, or nil if it was not set.
+func (r ApiApplicationDataChangeNotifPostRequest) GetApplicationDataChangeNotif() *[]models.ApplicationDataChangeNotif {
+	return r.applicationDataChangeNotif
+}
+
 func (r ApiApplicationDataChangeNotifPostRequest) Execute() (*http.Response, error) {
 	return r.ApiService.ApplicationDataChangeNotifPostExecute(r)
 }

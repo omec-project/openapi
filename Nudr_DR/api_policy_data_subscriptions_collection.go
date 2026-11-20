@@ -70,6 +70,11 @@ func (r ApiCreateIndividualPolicyDataSubscriptionRequest) PolicyDataSubscription
 	return r
 }
 
+// GetPolicyDataSubscription returns the policyDataSubscription set with PolicyDataSubscription, or nil if it was not set.
+func (r ApiCreateIndividualPolicyDataSubscriptionRequest) GetPolicyDataSubscription() *models.PolicyDataSubscription {
+	return r.policyDataSubscription
+}
+
 func (r ApiCreateIndividualPolicyDataSubscriptionRequest) Execute() (*models.PolicyDataSubscription, *http.Response, error) {
 	return r.ApiService.CreateIndividualPolicyDataSubscriptionExecute(r)
 }
@@ -302,16 +307,31 @@ func (r ApiReadPolicyDataSubscriptionsRequest) MonResources(monResources []strin
 	return r
 }
 
+// GetMonResources returns the monResources set with MonResources, or nil if it was not set.
+func (r ApiReadPolicyDataSubscriptionsRequest) GetMonResources() *[]string {
+	return r.monResources
+}
+
 // Represents the Subscription Identifier SUPI or GPSI.
 func (r ApiReadPolicyDataSubscriptionsRequest) UeId(ueId string) ApiReadPolicyDataSubscriptionsRequest {
 	r.ueId = &ueId
 	return r
 }
 
+// GetUeId returns the ueId set with UeId, or nil if it was not set.
+func (r ApiReadPolicyDataSubscriptionsRequest) GetUeId() *string {
+	return r.ueId
+}
+
 // Supported Features
 func (r ApiReadPolicyDataSubscriptionsRequest) SuppFeat(suppFeat string) ApiReadPolicyDataSubscriptionsRequest {
 	r.suppFeat = &suppFeat
 	return r
+}
+
+// GetSuppFeat returns the suppFeat set with SuppFeat, or nil if it was not set.
+func (r ApiReadPolicyDataSubscriptionsRequest) GetSuppFeat() *string {
+	return r.suppFeat
 }
 
 func (r ApiReadPolicyDataSubscriptionsRequest) Execute() ([]models.PolicyDataSubscription, *http.Response, error) {

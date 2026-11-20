@@ -30,9 +30,8 @@ var _ openapi.MappedNullable = &LcsPrivacy{}
 // LcsPrivacy struct for LcsPrivacy
 type LcsPrivacy struct {
 	AfInstanceId *string `json:"afInstanceId,omitempty" yaml:"afInstanceId,omitempty"`
-	// Integer where the allowed values correspond to the value range of an unsigned 64-bit integer.
-	ReferenceId *int32 `json:"referenceId,omitempty" yaml:"referenceId,omitempty"`
-	Lpi         *Lpi   `json:"lpi,omitempty" yaml:"lpi,omitempty"`
+	ReferenceId  *uint64 `json:"referenceId,omitempty" yaml:"referenceId,omitempty"`
+	Lpi          *Lpi    `json:"lpi,omitempty" yaml:"lpi,omitempty"`
 	// String uniquely identifying MTC provider information.
 	MtcProviderInformation *string         `json:"mtcProviderInformation,omitempty" yaml:"mtcProviderInformation,omitempty"`
 	EvtRptExpectedArea     *GeographicArea `json:"evtRptExpectedArea,omitempty" yaml:"evtRptExpectedArea,omitempty"`
@@ -98,9 +97,9 @@ func (o *LcsPrivacy) SetAfInstanceId(v string) {
 }
 
 // GetReferenceId returns the ReferenceId field value if set, zero value otherwise.
-func (o *LcsPrivacy) GetReferenceId() int32 {
+func (o *LcsPrivacy) GetReferenceId() uint64 {
 	if o == nil || openapi.IsNil(o.ReferenceId) {
-		var ret int32
+		var ret uint64
 		return ret
 	}
 	return *o.ReferenceId
@@ -108,7 +107,7 @@ func (o *LcsPrivacy) GetReferenceId() int32 {
 
 // GetReferenceIdOk returns a tuple with the ReferenceId field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *LcsPrivacy) GetReferenceIdOk() (*int32, bool) {
+func (o *LcsPrivacy) GetReferenceIdOk() (*uint64, bool) {
 	if o == nil || openapi.IsNil(o.ReferenceId) {
 		return nil, false
 	}
@@ -124,8 +123,8 @@ func (o *LcsPrivacy) HasReferenceId() bool {
 	return false
 }
 
-// SetReferenceId gets a reference to the given int32 and assigns it to the ReferenceId field.
-func (o *LcsPrivacy) SetReferenceId(v int32) {
+// SetReferenceId gets a reference to the given uint64 and assigns it to the ReferenceId field.
+func (o *LcsPrivacy) SetReferenceId(v uint64) {
 	o.ReferenceId = &v
 }
 

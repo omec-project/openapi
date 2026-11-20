@@ -259,10 +259,20 @@ func (r ApiQueryIndividualAuthenticationStatusRequest) Fields(fields []string) A
 	return r
 }
 
+// GetFields returns the fields set with Fields, or nil if it was not set.
+func (r ApiQueryIndividualAuthenticationStatusRequest) GetFields() *[]string {
+	return r.fields
+}
+
 // Supported Features
 func (r ApiQueryIndividualAuthenticationStatusRequest) SupportedFeatures(supportedFeatures string) ApiQueryIndividualAuthenticationStatusRequest {
 	r.supportedFeatures = &supportedFeatures
 	return r
+}
+
+// GetSupportedFeatures returns the supportedFeatures set with SupportedFeatures, or nil if it was not set.
+func (r ApiQueryIndividualAuthenticationStatusRequest) GetSupportedFeatures() *string {
+	return r.supportedFeatures
 }
 
 func (r ApiQueryIndividualAuthenticationStatusRequest) Execute() (*models.AuthEvent, *http.Response, error) {

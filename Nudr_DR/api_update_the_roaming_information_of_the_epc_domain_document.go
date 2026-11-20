@@ -61,6 +61,11 @@ func (r ApiUpdateRoamingInformationRequest) RoamingInfoUpdate(roamingInfoUpdate 
 	return r
 }
 
+// GetRoamingInfoUpdate returns the roamingInfoUpdate set with RoamingInfoUpdate, or nil if it was not set.
+func (r ApiUpdateRoamingInformationRequest) GetRoamingInfoUpdate() *models.RoamingInfoUpdate {
+	return r.roamingInfoUpdate
+}
+
 func (r ApiUpdateRoamingInformationRequest) Execute() (*models.RoamingInfoUpdate, *http.Response, error) {
 	return r.ApiService.UpdateRoamingInformationExecute(r)
 }

@@ -98,6 +98,11 @@ func (r ApiCreateOrReplaceAccessAndMobilityDataRequest) AccessAndMobilityData(ac
 	return r
 }
 
+// GetAccessAndMobilityData returns the accessAndMobilityData set with AccessAndMobilityData, or nil if it was not set.
+func (r ApiCreateOrReplaceAccessAndMobilityDataRequest) GetAccessAndMobilityData() *models.AccessAndMobilityData {
+	return r.accessAndMobilityData
+}
+
 func (r ApiCreateOrReplaceAccessAndMobilityDataRequest) Execute() (*models.AccessAndMobilityData, *http.Response, error) {
 	return r.ApiService.CreateOrReplaceAccessAndMobilityDataExecute(r)
 }
@@ -509,6 +514,11 @@ func (r ApiQueryAccessAndMobilityDataRequest) SuppFeat(suppFeat string) ApiQuery
 	return r
 }
 
+// GetSuppFeat returns the suppFeat set with SuppFeat, or nil if it was not set.
+func (r ApiQueryAccessAndMobilityDataRequest) GetSuppFeat() *string {
+	return r.suppFeat
+}
+
 func (r ApiQueryAccessAndMobilityDataRequest) Execute() (*models.AccessAndMobilityData, *http.Response, error) {
 	return r.ApiService.QueryAccessAndMobilityDataExecute(r)
 }
@@ -716,6 +726,11 @@ type ApiUpdateAccessAndMobilityDataRequest struct {
 func (r ApiUpdateAccessAndMobilityDataRequest) AccessAndMobilityData(accessAndMobilityData models.AccessAndMobilityData) ApiUpdateAccessAndMobilityDataRequest {
 	r.accessAndMobilityData = &accessAndMobilityData
 	return r
+}
+
+// GetAccessAndMobilityData returns the accessAndMobilityData set with AccessAndMobilityData, or nil if it was not set.
+func (r ApiUpdateAccessAndMobilityDataRequest) GetAccessAndMobilityData() *models.AccessAndMobilityData {
+	return r.accessAndMobilityData
 }
 
 func (r ApiUpdateAccessAndMobilityDataRequest) Execute() (*http.Response, error) {

@@ -62,6 +62,11 @@ func (r ApiQueryAuthSubsDataRequest) SupportedFeatures(supportedFeatures string)
 	return r
 }
 
+// GetSupportedFeatures returns the supportedFeatures set with SupportedFeatures, or nil if it was not set.
+func (r ApiQueryAuthSubsDataRequest) GetSupportedFeatures() *string {
+	return r.supportedFeatures
+}
+
 func (r ApiQueryAuthSubsDataRequest) Execute() (*models.AuthenticationSubscription, *http.Response, error) {
 	return r.ApiService.QueryAuthSubsDataExecute(r)
 }

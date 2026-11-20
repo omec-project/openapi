@@ -145,6 +145,11 @@ func (r ApiCreateHSSSubscriptionsRequest) HssSubscriptionInfo(hssSubscriptionInf
 	return r
 }
 
+// GetHssSubscriptionInfo returns the hssSubscriptionInfo set with HssSubscriptionInfo, or nil if it was not set.
+func (r ApiCreateHSSSubscriptionsRequest) GetHssSubscriptionInfo() *models.HssSubscriptionInfo {
+	return r.hssSubscriptionInfo
+}
+
 func (r ApiCreateHSSSubscriptionsRequest) Execute() (*models.HssSubscriptionInfo, *http.Response, error) {
 	return r.ApiService.CreateHSSSubscriptionsExecute(r)
 }
@@ -769,10 +774,20 @@ func (r ApiModifyHssGroupSubscriptionsRequest) PatchItem(patchItem []models.Patc
 	return r
 }
 
+// GetPatchItem returns the patchItem set with PatchItem, or nil if it was not set.
+func (r ApiModifyHssGroupSubscriptionsRequest) GetPatchItem() *[]models.PatchItem {
+	return r.patchItem
+}
+
 // Features required to be supported by the target NF
 func (r ApiModifyHssGroupSubscriptionsRequest) SupportedFeatures(supportedFeatures string) ApiModifyHssGroupSubscriptionsRequest {
 	r.supportedFeatures = &supportedFeatures
 	return r
+}
+
+// GetSupportedFeatures returns the supportedFeatures set with SupportedFeatures, or nil if it was not set.
+func (r ApiModifyHssGroupSubscriptionsRequest) GetSupportedFeatures() *string {
+	return r.supportedFeatures
 }
 
 func (r ApiModifyHssGroupSubscriptionsRequest) Execute() (*models.PatchResult, *http.Response, error) {
@@ -1016,10 +1031,20 @@ func (r ApiModifyHssSubscriptionInfoRequest) PatchItem(patchItem []models.PatchI
 	return r
 }
 
+// GetPatchItem returns the patchItem set with PatchItem, or nil if it was not set.
+func (r ApiModifyHssSubscriptionInfoRequest) GetPatchItem() *[]models.PatchItem {
+	return r.patchItem
+}
+
 // Features required to be supported by the target NF
 func (r ApiModifyHssSubscriptionInfoRequest) SupportedFeatures(supportedFeatures string) ApiModifyHssSubscriptionInfoRequest {
 	r.supportedFeatures = &supportedFeatures
 	return r
+}
+
+// GetSupportedFeatures returns the supportedFeatures set with SupportedFeatures, or nil if it was not set.
+func (r ApiModifyHssSubscriptionInfoRequest) GetSupportedFeatures() *string {
+	return r.supportedFeatures
 }
 
 func (r ApiModifyHssSubscriptionInfoRequest) Execute() (*models.PatchResult, *http.Response, error) {

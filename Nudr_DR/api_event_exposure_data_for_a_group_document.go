@@ -62,6 +62,11 @@ func (r ApiQueryGroupEEDataRequest) SupportedFeatures(supportedFeatures string) 
 	return r
 }
 
+// GetSupportedFeatures returns the supportedFeatures set with SupportedFeatures, or nil if it was not set.
+func (r ApiQueryGroupEEDataRequest) GetSupportedFeatures() *string {
+	return r.supportedFeatures
+}
+
 func (r ApiQueryGroupEEDataRequest) Execute() (*models.EeGroupProfileData, *http.Response, error) {
 	return r.ApiService.QueryGroupEEDataExecute(r)
 }

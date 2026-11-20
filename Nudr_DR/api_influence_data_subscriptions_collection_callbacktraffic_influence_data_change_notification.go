@@ -57,6 +57,11 @@ func (r ApiTrafficInfluenceDataChangeNotificationPostRequest) ApplicationDataInf
 	return r
 }
 
+// GetApplicationDataInfluenceDataSubsToNotifyPostRequestInner returns the applicationDataInfluenceDataSubsToNotifyPostRequestInner set with ApplicationDataInfluenceDataSubsToNotifyPostRequestInner, or nil if it was not set.
+func (r ApiTrafficInfluenceDataChangeNotificationPostRequest) GetApplicationDataInfluenceDataSubsToNotifyPostRequestInner() *[]models.ApplicationDataInfluenceDataSubsToNotifyPostRequestInner {
+	return r.applicationDataInfluenceDataSubsToNotifyPostRequestInner
+}
+
 func (r ApiTrafficInfluenceDataChangeNotificationPostRequest) Execute() (*http.Response, error) {
 	return r.ApiService.TrafficInfluenceDataChangeNotificationPostExecute(r)
 }

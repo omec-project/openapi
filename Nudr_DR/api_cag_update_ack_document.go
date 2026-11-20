@@ -61,10 +61,20 @@ func (r ApiCreateCagUpdateAckRequest) CagAckData(cagAckData models.CagAckData) A
 	return r
 }
 
+// GetCagAckData returns the cagAckData set with CagAckData, or nil if it was not set.
+func (r ApiCreateCagUpdateAckRequest) GetCagAckData() *models.CagAckData {
+	return r.cagAckData
+}
+
 // Supported Features
 func (r ApiCreateCagUpdateAckRequest) SupportedFeatures(supportedFeatures string) ApiCreateCagUpdateAckRequest {
 	r.supportedFeatures = &supportedFeatures
 	return r
+}
+
+// GetSupportedFeatures returns the supportedFeatures set with SupportedFeatures, or nil if it was not set.
+func (r ApiCreateCagUpdateAckRequest) GetSupportedFeatures() *string {
+	return r.supportedFeatures
 }
 
 func (r ApiCreateCagUpdateAckRequest) Execute() (*http.Response, error) {

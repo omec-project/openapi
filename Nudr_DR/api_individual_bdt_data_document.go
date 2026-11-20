@@ -99,6 +99,11 @@ func (r ApiCreateIndividualBdtDataRequest) BdtData(bdtData models.BdtData) ApiCr
 	return r
 }
 
+// GetBdtData returns the bdtData set with BdtData, or nil if it was not set.
+func (r ApiCreateIndividualBdtDataRequest) GetBdtData() *models.BdtData {
+	return r.bdtData
+}
+
 func (r ApiCreateIndividualBdtDataRequest) Execute() (*models.BdtData, *http.Response, error) {
 	return r.ApiService.CreateIndividualBdtDataExecute(r)
 }
@@ -521,6 +526,11 @@ func (r ApiReadIndividualBdtDataRequest) SuppFeat(suppFeat string) ApiReadIndivi
 	return r
 }
 
+// GetSuppFeat returns the suppFeat set with SuppFeat, or nil if it was not set.
+func (r ApiReadIndividualBdtDataRequest) GetSuppFeat() *string {
+	return r.suppFeat
+}
+
 func (r ApiReadIndividualBdtDataRequest) Execute() (*models.BdtData, *http.Response, error) {
 	return r.ApiService.ReadIndividualBdtDataExecute(r)
 }
@@ -717,6 +727,11 @@ type ApiUpdateIndividualBdtDataRequest struct {
 func (r ApiUpdateIndividualBdtDataRequest) BdtDataPatch(bdtDataPatch models.BdtDataPatch) ApiUpdateIndividualBdtDataRequest {
 	r.bdtDataPatch = &bdtDataPatch
 	return r
+}
+
+// GetBdtDataPatch returns the bdtDataPatch set with BdtDataPatch, or nil if it was not set.
+func (r ApiUpdateIndividualBdtDataRequest) GetBdtDataPatch() *models.BdtDataPatch {
+	return r.bdtDataPatch
 }
 
 func (r ApiUpdateIndividualBdtDataRequest) Execute() (*models.BdtData, *http.Response, error) {

@@ -31,8 +31,7 @@ var _ openapi.MappedNullable = &PpDataEntry{}
 // PpDataEntry struct for PpDataEntry
 type PpDataEntry struct {
 	CommunicationCharacteristics NullableCommunicationCharacteristicsAF `json:"communicationCharacteristics" yaml:"communicationCharacteristics,omitempty"`
-	// Integer where the allowed values correspond to the value range of an unsigned 64-bit integer.
-	ReferenceId *int32 `json:"referenceId,omitempty" yaml:"referenceId,omitempty"`
+	ReferenceId                  *uint64                                `json:"referenceId,omitempty" yaml:"referenceId,omitempty"`
 	// string with format 'date-time' as defined in OpenAPI.
 	ValidityTime *time.Time `json:"validityTime,omitempty" yaml:"validityTime,omitempty"`
 	// String uniquely identifying MTC provider information.
@@ -108,9 +107,9 @@ func (o *PpDataEntry) UnsetCommunicationCharacteristics() {
 }
 
 // GetReferenceId returns the ReferenceId field value if set, zero value otherwise.
-func (o *PpDataEntry) GetReferenceId() int32 {
+func (o *PpDataEntry) GetReferenceId() uint64 {
 	if o == nil || openapi.IsNil(o.ReferenceId) {
-		var ret int32
+		var ret uint64
 		return ret
 	}
 	return *o.ReferenceId
@@ -118,7 +117,7 @@ func (o *PpDataEntry) GetReferenceId() int32 {
 
 // GetReferenceIdOk returns a tuple with the ReferenceId field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *PpDataEntry) GetReferenceIdOk() (*int32, bool) {
+func (o *PpDataEntry) GetReferenceIdOk() (*uint64, bool) {
 	if o == nil || openapi.IsNil(o.ReferenceId) {
 		return nil, false
 	}
@@ -134,8 +133,8 @@ func (o *PpDataEntry) HasReferenceId() bool {
 	return false
 }
 
-// SetReferenceId gets a reference to the given int32 and assigns it to the ReferenceId field.
-func (o *PpDataEntry) SetReferenceId(v int32) {
+// SetReferenceId gets a reference to the given uint64 and assigns it to the ReferenceId field.
+func (o *PpDataEntry) SetReferenceId(v uint64) {
 	o.ReferenceId = &v
 }
 

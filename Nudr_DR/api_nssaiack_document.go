@@ -62,6 +62,11 @@ func (r ApiQueryNssaiAckRequest) SupportedFeatures(supportedFeatures string) Api
 	return r
 }
 
+// GetSupportedFeatures returns the supportedFeatures set with SupportedFeatures, or nil if it was not set.
+func (r ApiQueryNssaiAckRequest) GetSupportedFeatures() *string {
+	return r.supportedFeatures
+}
+
 func (r ApiQueryNssaiAckRequest) Execute() (*models.NssaiAckData, *http.Response, error) {
 	return r.ApiService.QueryNssaiAckExecute(r)
 }

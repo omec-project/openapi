@@ -86,6 +86,11 @@ func (r ApiCreateIndividualAppliedBdtPolicyDataRequest) BdtPolicyDataAD(bdtPolic
 	return r
 }
 
+// GetBdtPolicyDataAD returns the bdtPolicyDataAD set with BdtPolicyDataAD, or nil if it was not set.
+func (r ApiCreateIndividualAppliedBdtPolicyDataRequest) GetBdtPolicyDataAD() *models.BdtPolicyDataAD {
+	return r.bdtPolicyDataAD
+}
+
 func (r ApiCreateIndividualAppliedBdtPolicyDataRequest) Execute() (*models.BdtPolicyDataAD, *http.Response, error) {
 	return r.ApiService.CreateIndividualAppliedBdtPolicyDataExecute(r)
 }
@@ -505,6 +510,11 @@ type ApiUpdateIndividualAppliedBdtPolicyDataRequest struct {
 func (r ApiUpdateIndividualAppliedBdtPolicyDataRequest) BdtPolicyDataPatchAD(bdtPolicyDataPatchAD models.BdtPolicyDataPatchAD) ApiUpdateIndividualAppliedBdtPolicyDataRequest {
 	r.bdtPolicyDataPatchAD = &bdtPolicyDataPatchAD
 	return r
+}
+
+// GetBdtPolicyDataPatchAD returns the bdtPolicyDataPatchAD set with BdtPolicyDataPatchAD, or nil if it was not set.
+func (r ApiUpdateIndividualAppliedBdtPolicyDataRequest) GetBdtPolicyDataPatchAD() *models.BdtPolicyDataPatchAD {
+	return r.bdtPolicyDataPatchAD
 }
 
 func (r ApiUpdateIndividualAppliedBdtPolicyDataRequest) Execute() (*models.BdtPolicyDataAD, *http.Response, error) {

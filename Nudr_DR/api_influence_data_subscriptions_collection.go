@@ -70,6 +70,11 @@ func (r ApiCreateIndividualInfluenceDataSubscriptionRequest) TrafficInfluSub(tra
 	return r
 }
 
+// GetTrafficInfluSub returns the trafficInfluSub set with TrafficInfluSub, or nil if it was not set.
+func (r ApiCreateIndividualInfluenceDataSubscriptionRequest) GetTrafficInfluSub() *models.TrafficInfluSub {
+	return r.trafficInfluSub
+}
+
 func (r ApiCreateIndividualInfluenceDataSubscriptionRequest) Execute() (*models.TrafficInfluSub, *http.Response, error) {
 	return r.ApiService.CreateIndividualInfluenceDataSubscriptionExecute(r)
 }
@@ -306,10 +311,20 @@ func (r ApiReadInfluenceDataSubscriptionsRequest) Dnn(dnn string) ApiReadInfluen
 	return r
 }
 
+// GetDnn returns the dnn set with Dnn, or nil if it was not set.
+func (r ApiReadInfluenceDataSubscriptionsRequest) GetDnn() *string {
+	return r.dnn
+}
+
 // Identifies a slice.
 func (r ApiReadInfluenceDataSubscriptionsRequest) Snssai(snssai models.Snssai) ApiReadInfluenceDataSubscriptionsRequest {
 	r.snssai = &snssai
 	return r
+}
+
+// GetSnssai returns the snssai set with Snssai, or nil if it was not set.
+func (r ApiReadInfluenceDataSubscriptionsRequest) GetSnssai() *models.Snssai {
+	return r.snssai
 }
 
 // Identifies a group of users.
@@ -318,10 +333,20 @@ func (r ApiReadInfluenceDataSubscriptionsRequest) InternalGroupId(internalGroupI
 	return r
 }
 
+// GetInternalGroupId returns the internalGroupId set with InternalGroupId, or nil if it was not set.
+func (r ApiReadInfluenceDataSubscriptionsRequest) GetInternalGroupId() *string {
+	return r.internalGroupId
+}
+
 // Identifies a user.
 func (r ApiReadInfluenceDataSubscriptionsRequest) Supi(supi string) ApiReadInfluenceDataSubscriptionsRequest {
 	r.supi = &supi
 	return r
+}
+
+// GetSupi returns the supi set with Supi, or nil if it was not set.
+func (r ApiReadInfluenceDataSubscriptionsRequest) GetSupi() *string {
+	return r.supi
 }
 
 // Each element identifies an internal group.
@@ -330,16 +355,31 @@ func (r ApiReadInfluenceDataSubscriptionsRequest) InternalGroupIds(internalGroup
 	return r
 }
 
+// GetInternalGroupIds returns the internalGroupIds set with InternalGroupIds, or nil if it was not set.
+func (r ApiReadInfluenceDataSubscriptionsRequest) GetInternalGroupIds() *[]string {
+	return r.internalGroupIds
+}
+
 // Each element identifies a subscriber category.
 func (r ApiReadInfluenceDataSubscriptionsRequest) SubscriberCategories(subscriberCategories []string) ApiReadInfluenceDataSubscriptionsRequest {
 	r.subscriberCategories = &subscriberCategories
 	return r
 }
 
+// GetSubscriberCategories returns the subscriberCategories set with SubscriberCategories, or nil if it was not set.
+func (r ApiReadInfluenceDataSubscriptionsRequest) GetSubscriberCategories() *[]string {
+	return r.subscriberCategories
+}
+
 // Each element identifies a PLMN.
 func (r ApiReadInfluenceDataSubscriptionsRequest) RoamUePlmnIds(roamUePlmnIds []models.PlmnId) ApiReadInfluenceDataSubscriptionsRequest {
 	r.roamUePlmnIds = &roamUePlmnIds
 	return r
+}
+
+// GetRoamUePlmnIds returns the roamUePlmnIds set with RoamUePlmnIds, or nil if it was not set.
+func (r ApiReadInfluenceDataSubscriptionsRequest) GetRoamUePlmnIds() *[]models.PlmnId {
+	return r.roamUePlmnIds
 }
 
 func (r ApiReadInfluenceDataSubscriptionsRequest) Execute() ([]models.TrafficInfluSub, *http.Response, error) {

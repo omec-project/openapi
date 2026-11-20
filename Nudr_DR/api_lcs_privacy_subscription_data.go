@@ -65,10 +65,20 @@ func (r ApiQueryLcsPrivacyDataRequest) Fields(fields []string) ApiQueryLcsPrivac
 	return r
 }
 
+// GetFields returns the fields set with Fields, or nil if it was not set.
+func (r ApiQueryLcsPrivacyDataRequest) GetFields() *[]string {
+	return r.fields
+}
+
 // Supported Features
 func (r ApiQueryLcsPrivacyDataRequest) SupportedFeatures(supportedFeatures string) ApiQueryLcsPrivacyDataRequest {
 	r.supportedFeatures = &supportedFeatures
 	return r
+}
+
+// GetSupportedFeatures returns the supportedFeatures set with SupportedFeatures, or nil if it was not set.
+func (r ApiQueryLcsPrivacyDataRequest) GetSupportedFeatures() *string {
+	return r.supportedFeatures
 }
 
 // Validator for conditional requests, as described in RFC 9110, 13.1.2
@@ -77,10 +87,20 @@ func (r ApiQueryLcsPrivacyDataRequest) IfNoneMatch(ifNoneMatch string) ApiQueryL
 	return r
 }
 
+// GetIfNoneMatch returns the ifNoneMatch set with IfNoneMatch, or nil if it was not set.
+func (r ApiQueryLcsPrivacyDataRequest) GetIfNoneMatch() *string {
+	return r.ifNoneMatch
+}
+
 // Validator for conditional requests, as described in RFC 9110, 13.1.3
 func (r ApiQueryLcsPrivacyDataRequest) IfModifiedSince(ifModifiedSince string) ApiQueryLcsPrivacyDataRequest {
 	r.ifModifiedSince = &ifModifiedSince
 	return r
+}
+
+// GetIfModifiedSince returns the ifModifiedSince set with IfModifiedSince, or nil if it was not set.
+func (r ApiQueryLcsPrivacyDataRequest) GetIfModifiedSince() *string {
+	return r.ifModifiedSince
 }
 
 func (r ApiQueryLcsPrivacyDataRequest) Execute() (*models.LcsPrivacyData, *http.Response, error) {

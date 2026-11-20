@@ -58,6 +58,11 @@ func (r ApiCreateIndividualExposureDataSubscriptionRequest) ExposureDataSubscrip
 	return r
 }
 
+// GetExposureDataSubscription returns the exposureDataSubscription set with ExposureDataSubscription, or nil if it was not set.
+func (r ApiCreateIndividualExposureDataSubscriptionRequest) GetExposureDataSubscription() *models.ExposureDataSubscription {
+	return r.exposureDataSubscription
+}
+
 func (r ApiCreateIndividualExposureDataSubscriptionRequest) Execute() (*models.ExposureDataSubscription, *http.Response, error) {
 	return r.ApiService.CreateIndividualExposureDataSubscriptionExecute(r)
 }

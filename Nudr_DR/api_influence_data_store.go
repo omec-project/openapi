@@ -66,10 +66,20 @@ func (r ApiReadInfluenceDataRequest) InfluenceIds(influenceIds []string) ApiRead
 	return r
 }
 
+// GetInfluenceIds returns the influenceIds set with InfluenceIds, or nil if it was not set.
+func (r ApiReadInfluenceDataRequest) GetInfluenceIds() *[]string {
+	return r.influenceIds
+}
+
 // Each element identifies a DNN.
 func (r ApiReadInfluenceDataRequest) Dnns(dnns []string) ApiReadInfluenceDataRequest {
 	r.dnns = &dnns
 	return r
+}
+
+// GetDnns returns the dnns set with Dnns, or nil if it was not set.
+func (r ApiReadInfluenceDataRequest) GetDnns() *[]string {
+	return r.dnns
 }
 
 // Each element identifies a slice.
@@ -78,10 +88,20 @@ func (r ApiReadInfluenceDataRequest) Snssais(snssais []models.Snssai) ApiReadInf
 	return r
 }
 
+// GetSnssais returns the snssais set with Snssais, or nil if it was not set.
+func (r ApiReadInfluenceDataRequest) GetSnssais() *[]models.Snssai {
+	return r.snssais
+}
+
 // Each element identifies a group of users.
 func (r ApiReadInfluenceDataRequest) InternalGroupIds(internalGroupIds []string) ApiReadInfluenceDataRequest {
 	r.internalGroupIds = &internalGroupIds
 	return r
+}
+
+// GetInternalGroupIds returns the internalGroupIds set with InternalGroupIds, or nil if it was not set.
+func (r ApiReadInfluenceDataRequest) GetInternalGroupIds() *[]string {
+	return r.internalGroupIds
 }
 
 // Each element identifies an internal Group.
@@ -90,10 +110,20 @@ func (r ApiReadInfluenceDataRequest) InternalGroupIdsAdd(internalGroupIdsAdd []s
 	return r
 }
 
+// GetInternalGroupIdsAdd returns the internalGroupIdsAdd set with InternalGroupIdsAdd, or nil if it was not set.
+func (r ApiReadInfluenceDataRequest) GetInternalGroupIdsAdd() *[]string {
+	return r.internalGroupIdsAdd
+}
+
 // Each element identifies a subscriber category.
 func (r ApiReadInfluenceDataRequest) SubscriberCategories(subscriberCategories []string) ApiReadInfluenceDataRequest {
 	r.subscriberCategories = &subscriberCategories
 	return r
+}
+
+// GetSubscriberCategories returns the subscriberCategories set with SubscriberCategories, or nil if it was not set.
+func (r ApiReadInfluenceDataRequest) GetSubscriberCategories() *[]string {
+	return r.subscriberCategories
 }
 
 // Each element identifies the user.
@@ -102,10 +132,20 @@ func (r ApiReadInfluenceDataRequest) Supis(supis []string) ApiReadInfluenceDataR
 	return r
 }
 
+// GetSupis returns the supis set with Supis, or nil if it was not set.
+func (r ApiReadInfluenceDataRequest) GetSupis() *[]string {
+	return r.supis
+}
+
 // Supported Features
 func (r ApiReadInfluenceDataRequest) SuppFeat(suppFeat string) ApiReadInfluenceDataRequest {
 	r.suppFeat = &suppFeat
 	return r
+}
+
+// GetSuppFeat returns the suppFeat set with SuppFeat, or nil if it was not set.
+func (r ApiReadInfluenceDataRequest) GetSuppFeat() *string {
+	return r.suppFeat
 }
 
 func (r ApiReadInfluenceDataRequest) Execute() ([]models.TrafficInfluData, *http.Response, error) {

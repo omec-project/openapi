@@ -87,10 +87,20 @@ func (r ApiCreateAuthenticationSoRRequest) SorData(sorData models.SorData) ApiCr
 	return r
 }
 
+// GetSorData returns the sorData set with SorData, or nil if it was not set.
+func (r ApiCreateAuthenticationSoRRequest) GetSorData() *models.SorData {
+	return r.sorData
+}
+
 // Supported Features
 func (r ApiCreateAuthenticationSoRRequest) SupportedFeatures(supportedFeatures string) ApiCreateAuthenticationSoRRequest {
 	r.supportedFeatures = &supportedFeatures
 	return r
+}
+
+// GetSupportedFeatures returns the supportedFeatures set with SupportedFeatures, or nil if it was not set.
+func (r ApiCreateAuthenticationSoRRequest) GetSupportedFeatures() *string {
+	return r.supportedFeatures
 }
 
 func (r ApiCreateAuthenticationSoRRequest) Execute() (*http.Response, error) {
@@ -318,6 +328,11 @@ func (r ApiQueryAuthSoRRequest) SupportedFeatures(supportedFeatures string) ApiQ
 	return r
 }
 
+// GetSupportedFeatures returns the supportedFeatures set with SupportedFeatures, or nil if it was not set.
+func (r ApiQueryAuthSoRRequest) GetSupportedFeatures() *string {
+	return r.supportedFeatures
+}
+
 func (r ApiQueryAuthSoRRequest) Execute() (*models.SorData, *http.Response, error) {
 	return r.ApiService.QueryAuthSoRExecute(r)
 }
@@ -517,10 +532,20 @@ func (r ApiUpdateAuthenticationSoRRequest) PatchItem(patchItem []models.PatchIte
 	return r
 }
 
+// GetPatchItem returns the patchItem set with PatchItem, or nil if it was not set.
+func (r ApiUpdateAuthenticationSoRRequest) GetPatchItem() *[]models.PatchItem {
+	return r.patchItem
+}
+
 // Features required to be supported by the target NF
 func (r ApiUpdateAuthenticationSoRRequest) SupportedFeatures(supportedFeatures string) ApiUpdateAuthenticationSoRRequest {
 	r.supportedFeatures = &supportedFeatures
 	return r
+}
+
+// GetSupportedFeatures returns the supportedFeatures set with SupportedFeatures, or nil if it was not set.
+func (r ApiUpdateAuthenticationSoRRequest) GetSupportedFeatures() *string {
+	return r.supportedFeatures
 }
 
 func (r ApiUpdateAuthenticationSoRRequest) Execute() (*models.PatchResult, *http.Response, error) {

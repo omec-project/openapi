@@ -40,7 +40,7 @@ type PolicyDataChangeNotification struct {
 	// Operator Specific Data resource data, if changed and notification was requested. The key of the map is operator specific data element name and the value is the operator specific data of the UE.
 	OpSpecDataMap *map[string]OperatorSpecificDataContainer `json:"opSpecDataMap,omitempty" yaml:"opSpecDataMap,omitempty"`
 	// String represents the SUPI or GPSI
-	UeId      *string `json:"ueId,omitempty" yaml:"ueId,omitempty" validate:"regexp=^(imsi-[0-9]{5,15}|nai-.+|msisdn-[0-9]{5,15}|extid-[^@]+@[^@]+|gci-.+|gli-.+|.+)$"`
+	UeId      *string `json:"ueId,omitempty" yaml:"ueId,omitempty" validate:"regexp=^(imsi-[0-9]{5\\,15}|nai-.+|msisdn-[0-9]{5\\,15}|extid-[^@]+@[^@]+|gci-.+|gli-.+|.+)$"`
 	SponsorId *string `json:"sponsorId,omitempty" yaml:"sponsorId,omitempty"`
 	// string identifying a BDT Reference ID as defined in clause 5.3.3 of 3GPP TS 29.154.
 	BdtRefId          *string            `json:"bdtRefId,omitempty" yaml:"bdtRefId,omitempty"`
@@ -56,7 +56,7 @@ type PolicyDataChangeNotification struct {
 	PdtqRefId       *string          `json:"pdtqRefId,omitempty" yaml:"pdtqRefId,omitempty"`
 	GroupPolicyData *GroupPolicyData `json:"groupPolicyData,omitempty" yaml:"groupPolicyData,omitempty"`
 	// String identifying a group of devices network internal globally unique ID which identifies a set of IMSIs, as specified in clause 19.9 of 3GPP TS 23.003.
-	IntGroupId *string `json:"intGroupId,omitempty" yaml:"intGroupId,omitempty" validate:"regexp=^[A-Fa-f0-9]{8}-[0-9]{3}-[0-9]{2,3}-([A-Fa-f0-9][A-Fa-f0-9]){1,10}$"`
+	IntGroupId *string `json:"intGroupId,omitempty" yaml:"intGroupId,omitempty" validate:"regexp=^[A-Fa-f0-9]{8}-[0-9]{3}-[0-9]{2\\,3}-([A-Fa-f0-9][A-Fa-f0-9]){1\\,10}$"`
 }
 
 // NewPolicyDataChangeNotification instantiates a new PolicyDataChangeNotification object

@@ -57,6 +57,11 @@ func (r ApiRestorationNotificationDataRestorationCallbackUriPostRequest) DataRes
 	return r
 }
 
+// GetDataRestorationNotificationUdr returns the dataRestorationNotificationUdr set with DataRestorationNotificationUdr, or nil if it was not set.
+func (r ApiRestorationNotificationDataRestorationCallbackUriPostRequest) GetDataRestorationNotificationUdr() *models.DataRestorationNotificationUdr {
+	return r.dataRestorationNotificationUdr
+}
+
 func (r ApiRestorationNotificationDataRestorationCallbackUriPostRequest) Execute() (*http.Response, error) {
 	return r.ApiService.RestorationNotificationDataRestorationCallbackUriPostExecute(r)
 }

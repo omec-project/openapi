@@ -145,6 +145,11 @@ func (r ApiCreateSMFSubscriptionsRequest) SmfSubscriptionInfo(smfSubscriptionInf
 	return r
 }
 
+// GetSmfSubscriptionInfo returns the smfSubscriptionInfo set with SmfSubscriptionInfo, or nil if it was not set.
+func (r ApiCreateSMFSubscriptionsRequest) GetSmfSubscriptionInfo() *models.SmfSubscriptionInfo {
+	return r.smfSubscriptionInfo
+}
+
 func (r ApiCreateSMFSubscriptionsRequest) Execute() (*models.SmfSubscriptionInfo, *http.Response, error) {
 	return r.ApiService.CreateSMFSubscriptionsExecute(r)
 }
@@ -769,10 +774,20 @@ func (r ApiModifySmfGroupSubscriptionsRequest) PatchItem(patchItem []models.Patc
 	return r
 }
 
+// GetPatchItem returns the patchItem set with PatchItem, or nil if it was not set.
+func (r ApiModifySmfGroupSubscriptionsRequest) GetPatchItem() *[]models.PatchItem {
+	return r.patchItem
+}
+
 // Features required to be supported by the target NF
 func (r ApiModifySmfGroupSubscriptionsRequest) SupportedFeatures(supportedFeatures string) ApiModifySmfGroupSubscriptionsRequest {
 	r.supportedFeatures = &supportedFeatures
 	return r
+}
+
+// GetSupportedFeatures returns the supportedFeatures set with SupportedFeatures, or nil if it was not set.
+func (r ApiModifySmfGroupSubscriptionsRequest) GetSupportedFeatures() *string {
+	return r.supportedFeatures
 }
 
 func (r ApiModifySmfGroupSubscriptionsRequest) Execute() (*models.PatchResult, *http.Response, error) {
@@ -1016,10 +1031,20 @@ func (r ApiModifySmfSubscriptionInfoRequest) PatchItem(patchItem []models.PatchI
 	return r
 }
 
+// GetPatchItem returns the patchItem set with PatchItem, or nil if it was not set.
+func (r ApiModifySmfSubscriptionInfoRequest) GetPatchItem() *[]models.PatchItem {
+	return r.patchItem
+}
+
 // Features required to be supported by the target NF
 func (r ApiModifySmfSubscriptionInfoRequest) SupportedFeatures(supportedFeatures string) ApiModifySmfSubscriptionInfoRequest {
 	r.supportedFeatures = &supportedFeatures
 	return r
+}
+
+// GetSupportedFeatures returns the supportedFeatures set with SupportedFeatures, or nil if it was not set.
+func (r ApiModifySmfSubscriptionInfoRequest) GetSupportedFeatures() *string {
+	return r.supportedFeatures
 }
 
 func (r ApiModifySmfSubscriptionInfoRequest) Execute() (*models.PatchResult, *http.Response, error) {

@@ -60,10 +60,20 @@ func (r ApiReadPFDDataRequest) AppId(appId []string) ApiReadPFDDataRequest {
 	return r
 }
 
+// GetAppId returns the appId set with AppId, or nil if it was not set.
+func (r ApiReadPFDDataRequest) GetAppId() *[]string {
+	return r.appId
+}
+
 // Supported Features
 func (r ApiReadPFDDataRequest) SuppFeat(suppFeat string) ApiReadPFDDataRequest {
 	r.suppFeat = &suppFeat
 	return r
+}
+
+// GetSuppFeat returns the suppFeat set with SuppFeat, or nil if it was not set.
+func (r ApiReadPFDDataRequest) GetSuppFeat() *string {
+	return r.suppFeat
 }
 
 func (r ApiReadPFDDataRequest) Execute() ([]models.PfdDataForAppExt, *http.Response, error) {

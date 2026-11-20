@@ -69,10 +69,20 @@ func (r ApiQuerySmDataRequest) SingleNssai(singleNssai models.Snssai) ApiQuerySm
 	return r
 }
 
+// GetSingleNssai returns the singleNssai set with SingleNssai, or nil if it was not set.
+func (r ApiQuerySmDataRequest) GetSingleNssai() *models.Snssai {
+	return r.singleNssai
+}
+
 // DNN
 func (r ApiQuerySmDataRequest) Dnn(dnn string) ApiQuerySmDataRequest {
 	r.dnn = &dnn
 	return r
+}
+
+// GetDnn returns the dnn set with Dnn, or nil if it was not set.
+func (r ApiQuerySmDataRequest) GetDnn() *string {
+	return r.dnn
 }
 
 // attributes to be retrieved
@@ -81,10 +91,20 @@ func (r ApiQuerySmDataRequest) Fields(fields []string) ApiQuerySmDataRequest {
 	return r
 }
 
+// GetFields returns the fields set with Fields, or nil if it was not set.
+func (r ApiQuerySmDataRequest) GetFields() *[]string {
+	return r.fields
+}
+
 // Supported Features
 func (r ApiQuerySmDataRequest) SupportedFeatures(supportedFeatures string) ApiQuerySmDataRequest {
 	r.supportedFeatures = &supportedFeatures
 	return r
+}
+
+// GetSupportedFeatures returns the supportedFeatures set with SupportedFeatures, or nil if it was not set.
+func (r ApiQuerySmDataRequest) GetSupportedFeatures() *string {
+	return r.supportedFeatures
 }
 
 // Validator for conditional requests, as described in RFC 9110, 13.1.29110, 13.1.2
@@ -93,10 +113,20 @@ func (r ApiQuerySmDataRequest) IfNoneMatch(ifNoneMatch string) ApiQuerySmDataReq
 	return r
 }
 
+// GetIfNoneMatch returns the ifNoneMatch set with IfNoneMatch, or nil if it was not set.
+func (r ApiQuerySmDataRequest) GetIfNoneMatch() *string {
+	return r.ifNoneMatch
+}
+
 // Validator for conditional requests, as described in RFC 9110, 13.1.39110, 13.1.3
 func (r ApiQuerySmDataRequest) IfModifiedSince(ifModifiedSince string) ApiQuerySmDataRequest {
 	r.ifModifiedSince = &ifModifiedSince
 	return r
+}
+
+// GetIfModifiedSince returns the ifModifiedSince set with IfModifiedSince, or nil if it was not set.
+func (r ApiQuerySmDataRequest) GetIfModifiedSince() *string {
+	return r.ifModifiedSince
 }
 
 func (r ApiQuerySmDataRequest) Execute() (*models.SmSubsData, *http.Response, error) {

@@ -74,10 +74,20 @@ func (r ApiCreateAuthenticationUPURequest) UpuDataUdr(upuDataUdr models.UpuDataU
 	return r
 }
 
+// GetUpuDataUdr returns the upuDataUdr set with UpuDataUdr, or nil if it was not set.
+func (r ApiCreateAuthenticationUPURequest) GetUpuDataUdr() *models.UpuDataUdr {
+	return r.upuDataUdr
+}
+
 // Supported Features
 func (r ApiCreateAuthenticationUPURequest) SupportedFeatures(supportedFeatures string) ApiCreateAuthenticationUPURequest {
 	r.supportedFeatures = &supportedFeatures
 	return r
+}
+
+// GetSupportedFeatures returns the supportedFeatures set with SupportedFeatures, or nil if it was not set.
+func (r ApiCreateAuthenticationUPURequest) GetSupportedFeatures() *string {
+	return r.supportedFeatures
 }
 
 func (r ApiCreateAuthenticationUPURequest) Execute() (*http.Response, error) {
@@ -303,6 +313,11 @@ type ApiQueryAuthUPURequest struct {
 func (r ApiQueryAuthUPURequest) SupportedFeatures(supportedFeatures string) ApiQueryAuthUPURequest {
 	r.supportedFeatures = &supportedFeatures
 	return r
+}
+
+// GetSupportedFeatures returns the supportedFeatures set with SupportedFeatures, or nil if it was not set.
+func (r ApiQueryAuthUPURequest) GetSupportedFeatures() *string {
+	return r.supportedFeatures
 }
 
 func (r ApiQueryAuthUPURequest) Execute() (*models.UpuDataUdr, *http.Response, error) {

@@ -57,6 +57,11 @@ func (r ApiStaleCheckNotificationRequestBodyUdmStaleCheckCallbackUriPostRequest)
 	return r
 }
 
+// GetSmfRegistrationInfo returns the smfRegistrationInfo set with SmfRegistrationInfo, or nil if it was not set.
+func (r ApiStaleCheckNotificationRequestBodyUdmStaleCheckCallbackUriPostRequest) GetSmfRegistrationInfo() *models.SmfRegistrationInfo {
+	return r.smfRegistrationInfo
+}
+
 func (r ApiStaleCheckNotificationRequestBodyUdmStaleCheckCallbackUriPostRequest) Execute() (*http.Response, error) {
 	return r.ApiService.StaleCheckNotificationRequestBodyUdmStaleCheckCallbackUriPostExecute(r)
 }

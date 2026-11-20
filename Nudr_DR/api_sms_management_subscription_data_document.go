@@ -66,16 +66,31 @@ func (r ApiQuerySmsMngDataRequest) SupportedFeatures(supportedFeatures string) A
 	return r
 }
 
+// GetSupportedFeatures returns the supportedFeatures set with SupportedFeatures, or nil if it was not set.
+func (r ApiQuerySmsMngDataRequest) GetSupportedFeatures() *string {
+	return r.supportedFeatures
+}
+
 // Validator for conditional requests, as described in RFC 9110, 13.1.2
 func (r ApiQuerySmsMngDataRequest) IfNoneMatch(ifNoneMatch string) ApiQuerySmsMngDataRequest {
 	r.ifNoneMatch = &ifNoneMatch
 	return r
 }
 
+// GetIfNoneMatch returns the ifNoneMatch set with IfNoneMatch, or nil if it was not set.
+func (r ApiQuerySmsMngDataRequest) GetIfNoneMatch() *string {
+	return r.ifNoneMatch
+}
+
 // Validator for conditional requests, as described in RFC 9110, 13.1.3
 func (r ApiQuerySmsMngDataRequest) IfModifiedSince(ifModifiedSince string) ApiQuerySmsMngDataRequest {
 	r.ifModifiedSince = &ifModifiedSince
 	return r
+}
+
+// GetIfModifiedSince returns the ifModifiedSince set with IfModifiedSince, or nil if it was not set.
+func (r ApiQuerySmsMngDataRequest) GetIfModifiedSince() *string {
+	return r.ifModifiedSince
 }
 
 func (r ApiQuerySmsMngDataRequest) Execute() (*models.SmsManagementSubscriptionData, *http.Response, error) {

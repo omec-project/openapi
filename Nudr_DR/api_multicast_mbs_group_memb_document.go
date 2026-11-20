@@ -61,6 +61,11 @@ func (r ApiCreate5GmbsGroupRequest) MulticastMbsGroupMemb(multicastMbsGroupMemb 
 	return r
 }
 
+// GetMulticastMbsGroupMemb returns the multicastMbsGroupMemb set with MulticastMbsGroupMemb, or nil if it was not set.
+func (r ApiCreate5GmbsGroupRequest) GetMulticastMbsGroupMemb() *models.MulticastMbsGroupMemb {
+	return r.multicastMbsGroupMemb
+}
+
 func (r ApiCreate5GmbsGroupRequest) Execute() (*models.MulticastMbsGroupMemb, *http.Response, error) {
 	return r.ApiService.Create5GmbsGroupExecute(r)
 }

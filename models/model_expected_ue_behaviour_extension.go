@@ -30,8 +30,7 @@ var _ openapi.MappedNullable = &ExpectedUeBehaviourExtension{}
 // ExpectedUeBehaviourExtension struct for ExpectedUeBehaviourExtension
 type ExpectedUeBehaviourExtension struct {
 	AfInstanceId string `json:"afInstanceId" yaml:"afInstanceId"`
-	// Integer where the allowed values correspond to the value range of an unsigned 64-bit integer.
-	ReferenceId int32 `json:"referenceId" yaml:"referenceId"`
+	ReferenceId  uint64 `json:"referenceId" yaml:"referenceId"`
 	// A map(list of key-value pairs) where a valid JSON pointer serves as key
 	ExpectedUeBehaviourData *map[string]ExpectedUeBehaviourData `json:"expectedUeBehaviourData,omitempty" yaml:"expectedUeBehaviourData,omitempty"`
 	// String uniquely identifying MTC provider information.
@@ -42,7 +41,7 @@ type ExpectedUeBehaviourExtension struct {
 // This constructor will assign default values to properties that have it defined,
 // and makes sure properties required by API are set, but the set of arguments
 // will change when the set of required properties is changed
-func NewExpectedUeBehaviourExtension(afInstanceId string, referenceId int32) *ExpectedUeBehaviourExtension {
+func NewExpectedUeBehaviourExtension(afInstanceId string, referenceId uint64) *ExpectedUeBehaviourExtension {
 	this := ExpectedUeBehaviourExtension{}
 	this.AfInstanceId = afInstanceId
 	this.ReferenceId = referenceId
@@ -82,9 +81,9 @@ func (o *ExpectedUeBehaviourExtension) SetAfInstanceId(v string) {
 }
 
 // GetReferenceId returns the ReferenceId field value
-func (o *ExpectedUeBehaviourExtension) GetReferenceId() int32 {
+func (o *ExpectedUeBehaviourExtension) GetReferenceId() uint64 {
 	if o == nil {
-		var ret int32
+		var ret uint64
 		return ret
 	}
 
@@ -93,7 +92,7 @@ func (o *ExpectedUeBehaviourExtension) GetReferenceId() int32 {
 
 // GetReferenceIdOk returns a tuple with the ReferenceId field value
 // and a boolean to check if the value has been set.
-func (o *ExpectedUeBehaviourExtension) GetReferenceIdOk() (*int32, bool) {
+func (o *ExpectedUeBehaviourExtension) GetReferenceIdOk() (*uint64, bool) {
 	if o == nil {
 		return nil, false
 	}
@@ -101,7 +100,7 @@ func (o *ExpectedUeBehaviourExtension) GetReferenceIdOk() (*int32, bool) {
 }
 
 // SetReferenceId sets field value
-func (o *ExpectedUeBehaviourExtension) SetReferenceId(v int32) {
+func (o *ExpectedUeBehaviourExtension) SetReferenceId(v uint64) {
 	o.ReferenceId = v
 }
 

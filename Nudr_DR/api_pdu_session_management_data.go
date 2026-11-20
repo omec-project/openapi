@@ -90,6 +90,11 @@ func (r ApiCreateOrReplaceSessionManagementDataRequest) PduSessionManagementData
 	return r
 }
 
+// GetPduSessionManagementData returns the pduSessionManagementData set with PduSessionManagementData, or nil if it was not set.
+func (r ApiCreateOrReplaceSessionManagementDataRequest) GetPduSessionManagementData() *models.PduSessionManagementData {
+	return r.pduSessionManagementData
+}
+
 func (r ApiCreateOrReplaceSessionManagementDataRequest) Execute() (*models.PduSessionManagementData, *http.Response, error) {
 	return r.ApiService.CreateOrReplaceSessionManagementDataExecute(r)
 }
@@ -525,10 +530,20 @@ func (r ApiQuerySessionManagementDataRequest) Ipv4Addr(ipv4Addr string) ApiQuery
 	return r
 }
 
+// GetIpv4Addr returns the ipv4Addr set with Ipv4Addr, or nil if it was not set.
+func (r ApiQuerySessionManagementDataRequest) GetIpv4Addr() *string {
+	return r.ipv4Addr
+}
+
 // IPv6 Address Prefix of the UE
 func (r ApiQuerySessionManagementDataRequest) Ipv6Prefix(ipv6Prefix string) ApiQuerySessionManagementDataRequest {
 	r.ipv6Prefix = &ipv6Prefix
 	return r
+}
+
+// GetIpv6Prefix returns the ipv6Prefix set with Ipv6Prefix, or nil if it was not set.
+func (r ApiQuerySessionManagementDataRequest) GetIpv6Prefix() *string {
+	return r.ipv6Prefix
 }
 
 // DNN of the UE
@@ -537,16 +552,31 @@ func (r ApiQuerySessionManagementDataRequest) Dnn(dnn string) ApiQuerySessionMan
 	return r
 }
 
+// GetDnn returns the dnn set with Dnn, or nil if it was not set.
+func (r ApiQuerySessionManagementDataRequest) GetDnn() *string {
+	return r.dnn
+}
+
 // attributes to be retrieved
 func (r ApiQuerySessionManagementDataRequest) Fields(fields []string) ApiQuerySessionManagementDataRequest {
 	r.fields = &fields
 	return r
 }
 
+// GetFields returns the fields set with Fields, or nil if it was not set.
+func (r ApiQuerySessionManagementDataRequest) GetFields() *[]string {
+	return r.fields
+}
+
 // Supported Features
 func (r ApiQuerySessionManagementDataRequest) SuppFeat(suppFeat string) ApiQuerySessionManagementDataRequest {
 	r.suppFeat = &suppFeat
 	return r
+}
+
+// GetSuppFeat returns the suppFeat set with SuppFeat, or nil if it was not set.
+func (r ApiQuerySessionManagementDataRequest) GetSuppFeat() *string {
+	return r.suppFeat
 }
 
 func (r ApiQuerySessionManagementDataRequest) Execute() (*models.PduSessionManagementData, *http.Response, error) {

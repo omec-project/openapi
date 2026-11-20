@@ -463,6 +463,11 @@ func (r ApiReplaceIndividualInfluenceDataSubscriptionRequest) TrafficInfluSub(tr
 	return r
 }
 
+// GetTrafficInfluSub returns the trafficInfluSub set with TrafficInfluSub, or nil if it was not set.
+func (r ApiReplaceIndividualInfluenceDataSubscriptionRequest) GetTrafficInfluSub() *models.TrafficInfluSub {
+	return r.trafficInfluSub
+}
+
 func (r ApiReplaceIndividualInfluenceDataSubscriptionRequest) Execute() (*models.TrafficInfluSub, *http.Response, error) {
 	return r.ApiService.ReplaceIndividualInfluenceDataSubscriptionExecute(r)
 }

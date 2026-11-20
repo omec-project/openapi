@@ -62,6 +62,11 @@ func (r ApiReadSponsorConnectivityDataRequest) SuppFeat(suppFeat string) ApiRead
 	return r
 }
 
+// GetSuppFeat returns the suppFeat set with SuppFeat, or nil if it was not set.
+func (r ApiReadSponsorConnectivityDataRequest) GetSuppFeat() *string {
+	return r.suppFeat
+}
+
 func (r ApiReadSponsorConnectivityDataRequest) Execute() (*models.SponsorConnectivityData, *http.Response, error) {
 	return r.ApiService.ReadSponsorConnectivityDataExecute(r)
 }

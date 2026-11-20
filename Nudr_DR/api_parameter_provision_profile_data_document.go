@@ -62,6 +62,11 @@ func (r ApiQueryPPDataRequest) SupportedFeatures(supportedFeatures string) ApiQu
 	return r
 }
 
+// GetSupportedFeatures returns the supportedFeatures set with SupportedFeatures, or nil if it was not set.
+func (r ApiQueryPPDataRequest) GetSupportedFeatures() *string {
+	return r.supportedFeatures
+}
+
 func (r ApiQueryPPDataRequest) Execute() (*models.PpProfileData, *http.Response, error) {
 	return r.ApiService.QueryPPDataExecute(r)
 }

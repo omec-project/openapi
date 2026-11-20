@@ -62,10 +62,20 @@ func (r ApiModifyAuthenticationSubscriptionRequest) PatchItem(patchItem []models
 	return r
 }
 
+// GetPatchItem returns the patchItem set with PatchItem, or nil if it was not set.
+func (r ApiModifyAuthenticationSubscriptionRequest) GetPatchItem() *[]models.PatchItem {
+	return r.patchItem
+}
+
 // Features required to be supported by the target NF
 func (r ApiModifyAuthenticationSubscriptionRequest) SupportedFeatures(supportedFeatures string) ApiModifyAuthenticationSubscriptionRequest {
 	r.supportedFeatures = &supportedFeatures
 	return r
+}
+
+// GetSupportedFeatures returns the supportedFeatures set with SupportedFeatures, or nil if it was not set.
+func (r ApiModifyAuthenticationSubscriptionRequest) GetSupportedFeatures() *string {
+	return r.supportedFeatures
 }
 
 func (r ApiModifyAuthenticationSubscriptionRequest) Execute() (*models.PatchResult, *http.Response, error) {

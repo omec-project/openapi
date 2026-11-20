@@ -278,10 +278,20 @@ func (r ApiReadOperatorSpecificDataRequest) Fields(fields []string) ApiReadOpera
 	return r
 }
 
+// GetFields returns the fields set with Fields, or nil if it was not set.
+func (r ApiReadOperatorSpecificDataRequest) GetFields() *[]string {
+	return r.fields
+}
+
 // Supported Features
 func (r ApiReadOperatorSpecificDataRequest) SuppFeat(suppFeat string) ApiReadOperatorSpecificDataRequest {
 	r.suppFeat = &suppFeat
 	return r
+}
+
+// GetSuppFeat returns the suppFeat set with SuppFeat, or nil if it was not set.
+func (r ApiReadOperatorSpecificDataRequest) GetSuppFeat() *string {
+	return r.suppFeat
 }
 
 func (r ApiReadOperatorSpecificDataRequest) Execute() (*map[string]models.OperatorSpecificDataContainer, *http.Response, error) {
@@ -494,6 +504,11 @@ type ApiReplaceOperatorSpecificDataRequest struct {
 func (r ApiReplaceOperatorSpecificDataRequest) RequestBody(requestBody map[string]models.OperatorSpecificDataContainer) ApiReplaceOperatorSpecificDataRequest {
 	r.requestBody = &requestBody
 	return r
+}
+
+// GetRequestBody returns the requestBody set with RequestBody, or nil if it was not set.
+func (r ApiReplaceOperatorSpecificDataRequest) GetRequestBody() *map[string]models.OperatorSpecificDataContainer {
+	return r.requestBody
 }
 
 func (r ApiReplaceOperatorSpecificDataRequest) Execute() (*map[string]models.OperatorSpecificDataContainer, *http.Response, error) {
@@ -727,6 +742,11 @@ type ApiUpdateOperatorSpecificDataRequest struct {
 func (r ApiUpdateOperatorSpecificDataRequest) PatchItem(patchItem []models.PatchItem) ApiUpdateOperatorSpecificDataRequest {
 	r.patchItem = &patchItem
 	return r
+}
+
+// GetPatchItem returns the patchItem set with PatchItem, or nil if it was not set.
+func (r ApiUpdateOperatorSpecificDataRequest) GetPatchItem() *[]models.PatchItem {
+	return r.patchItem
 }
 
 func (r ApiUpdateOperatorSpecificDataRequest) Execute() (*models.PatchResult, *http.Response, error) {

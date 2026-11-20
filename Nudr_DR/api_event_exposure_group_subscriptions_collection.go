@@ -74,6 +74,11 @@ func (r ApiCreateEeGroupSubscriptionsRequest) EeSubscription(eeSubscription mode
 	return r
 }
 
+// GetEeSubscription returns the eeSubscription set with EeSubscription, or nil if it was not set.
+func (r ApiCreateEeGroupSubscriptionsRequest) GetEeSubscription() *models.EeSubscription {
+	return r.eeSubscription
+}
+
 func (r ApiCreateEeGroupSubscriptionsRequest) Execute() (*models.EeSubscription, *http.Response, error) {
 	return r.ApiService.CreateEeGroupSubscriptionsExecute(r)
 }
@@ -306,6 +311,11 @@ type ApiQueryEeGroupSubscriptionsRequest struct {
 func (r ApiQueryEeGroupSubscriptionsRequest) SupportedFeatures(supportedFeatures string) ApiQueryEeGroupSubscriptionsRequest {
 	r.supportedFeatures = &supportedFeatures
 	return r
+}
+
+// GetSupportedFeatures returns the supportedFeatures set with SupportedFeatures, or nil if it was not set.
+func (r ApiQueryEeGroupSubscriptionsRequest) GetSupportedFeatures() *string {
+	return r.supportedFeatures
 }
 
 func (r ApiQueryEeGroupSubscriptionsRequest) Execute() ([]models.EeSubscription, *http.Response, error) {

@@ -62,6 +62,11 @@ func (r ApiQueryUeLocationRequest) SupportedFeatures(supportedFeatures string) A
 	return r
 }
 
+// GetSupportedFeatures returns the supportedFeatures set with SupportedFeatures, or nil if it was not set.
+func (r ApiQueryUeLocationRequest) GetSupportedFeatures() *string {
+	return r.supportedFeatures
+}
+
 func (r ApiQueryUeLocationRequest) Execute() (*models.LocationInfoUdm, *http.Response, error) {
 	return r.ApiService.QueryUeLocationExecute(r)
 }

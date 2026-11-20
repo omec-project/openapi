@@ -61,16 +61,31 @@ func (r ApiReadBdtPolicyDataRequest) BdtPolicyIds(bdtPolicyIds []string) ApiRead
 	return r
 }
 
+// GetBdtPolicyIds returns the bdtPolicyIds set with BdtPolicyIds, or nil if it was not set.
+func (r ApiReadBdtPolicyDataRequest) GetBdtPolicyIds() *[]string {
+	return r.bdtPolicyIds
+}
+
 // Each element identifies a group of users.
 func (r ApiReadBdtPolicyDataRequest) InternalGroupIds(internalGroupIds []string) ApiReadBdtPolicyDataRequest {
 	r.internalGroupIds = &internalGroupIds
 	return r
 }
 
+// GetInternalGroupIds returns the internalGroupIds set with InternalGroupIds, or nil if it was not set.
+func (r ApiReadBdtPolicyDataRequest) GetInternalGroupIds() *[]string {
+	return r.internalGroupIds
+}
+
 // Each element identifies the user.
 func (r ApiReadBdtPolicyDataRequest) Supis(supis []string) ApiReadBdtPolicyDataRequest {
 	r.supis = &supis
 	return r
+}
+
+// GetSupis returns the supis set with Supis, or nil if it was not set.
+func (r ApiReadBdtPolicyDataRequest) GetSupis() *[]string {
+	return r.supis
 }
 
 func (r ApiReadBdtPolicyDataRequest) Execute() ([]models.BdtPolicyDataAD, *http.Response, error) {

@@ -57,6 +57,11 @@ func (r ApiOnDataChangeRequestBodyCallbackReferencePostRequest) Body(body models
 	return r
 }
 
+// GetBody returns the body set with Body, or nil if it was not set.
+func (r ApiOnDataChangeRequestBodyCallbackReferencePostRequest) GetBody() *models.DataChangeNotify {
+	return r.body
+}
+
 func (r ApiOnDataChangeRequestBodyCallbackReferencePostRequest) Execute() (*http.Response, error) {
 	return r.ApiService.OnDataChangeRequestBodyCallbackReferencePostExecute(r)
 }

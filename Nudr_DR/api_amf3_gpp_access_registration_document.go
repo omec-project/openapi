@@ -88,10 +88,20 @@ func (r ApiAmfContext3gppRequest) PatchItem(patchItem []models.PatchItem) ApiAmf
 	return r
 }
 
+// GetPatchItem returns the patchItem set with PatchItem, or nil if it was not set.
+func (r ApiAmfContext3gppRequest) GetPatchItem() *[]models.PatchItem {
+	return r.patchItem
+}
+
 // Features required to be supported by the target NF
 func (r ApiAmfContext3gppRequest) SupportedFeatures(supportedFeatures string) ApiAmfContext3gppRequest {
 	r.supportedFeatures = &supportedFeatures
 	return r
+}
+
+// GetSupportedFeatures returns the supportedFeatures set with SupportedFeatures, or nil if it was not set.
+func (r ApiAmfContext3gppRequest) GetSupportedFeatures() *string {
+	return r.supportedFeatures
 }
 
 func (r ApiAmfContext3gppRequest) Execute() (*models.PatchResult, *http.Response, error) {
@@ -330,6 +340,11 @@ func (r ApiCreateAmfContext3gppRequest) Amf3GppAccessRegistration(amf3GppAccessR
 	return r
 }
 
+// GetAmf3GppAccessRegistration returns the amf3GppAccessRegistration set with Amf3GppAccessRegistration, or nil if it was not set.
+func (r ApiCreateAmfContext3gppRequest) GetAmf3GppAccessRegistration() *models.Amf3GppAccessRegistration {
+	return r.amf3GppAccessRegistration
+}
+
 func (r ApiCreateAmfContext3gppRequest) Execute() (*models.Amf3GppAccessRegistration, *http.Response, error) {
 	return r.ApiService.CreateAmfContext3gppExecute(r)
 }
@@ -565,10 +580,20 @@ func (r ApiQueryAmfContext3gppRequest) Fields(fields []string) ApiQueryAmfContex
 	return r
 }
 
+// GetFields returns the fields set with Fields, or nil if it was not set.
+func (r ApiQueryAmfContext3gppRequest) GetFields() *[]string {
+	return r.fields
+}
+
 // Supported Features
 func (r ApiQueryAmfContext3gppRequest) SupportedFeatures(supportedFeatures string) ApiQueryAmfContext3gppRequest {
 	r.supportedFeatures = &supportedFeatures
 	return r
+}
+
+// GetSupportedFeatures returns the supportedFeatures set with SupportedFeatures, or nil if it was not set.
+func (r ApiQueryAmfContext3gppRequest) GetSupportedFeatures() *string {
+	return r.supportedFeatures
 }
 
 func (r ApiQueryAmfContext3gppRequest) Execute() (*models.Amf3GppAccessRegistration, *http.Response, error) {

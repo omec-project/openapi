@@ -62,10 +62,20 @@ func (r ApiModifyPpDataRequest) PatchItem(patchItem []models.PatchItem) ApiModif
 	return r
 }
 
+// GetPatchItem returns the patchItem set with PatchItem, or nil if it was not set.
+func (r ApiModifyPpDataRequest) GetPatchItem() *[]models.PatchItem {
+	return r.patchItem
+}
+
 // Features required to be supported by the target NF
 func (r ApiModifyPpDataRequest) SupportedFeatures(supportedFeatures string) ApiModifyPpDataRequest {
 	r.supportedFeatures = &supportedFeatures
 	return r
+}
+
+// GetSupportedFeatures returns the supportedFeatures set with SupportedFeatures, or nil if it was not set.
+func (r ApiModifyPpDataRequest) GetSupportedFeatures() *string {
+	return r.supportedFeatures
 }
 
 func (r ApiModifyPpDataRequest) Execute() (*models.PatchResult, *http.Response, error) {

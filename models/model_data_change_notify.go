@@ -30,15 +30,15 @@ var _ openapi.MappedNullable = &DataChangeNotify{}
 
 // DataChangeNotify Container for data which have changed and notification was requested when changed.
 type DataChangeNotify struct {
-	OriginalCallbackReference []string `json:"originalCallbackReference,omitempty"`
+	OriginalCallbackReference []string `json:"originalCallbackReference,omitempty" yaml:"originalCallbackReference,omitempty"`
 	// String represents the SUPI or GPSI
-	UeId                          *string                         `json:"ueId,omitempty" validate:"regexp=^(imsi-[0-9]{5,15}|nai-.+|msisdn-[0-9]{5,15}|extid-[^@]+@[^@]+|gci-.+|gli-.+|.+)$"`
-	NotifyItems                   []NotifyItem                    `json:"notifyItems,omitempty"`
-	SdmSubscription               *SdmSubscription                `json:"sdmSubscription,omitempty"`
-	AdditionalSdmSubscriptions    []SdmSubscription               `json:"additionalSdmSubscriptions,omitempty"`
-	SubscriptionDataSubscriptions []SubscriptionDataSubscriptions `json:"subscriptionDataSubscriptions,omitempty"`
+	UeId                          *string                         `json:"ueId,omitempty" yaml:"ueId,omitempty" validate:"regexp=^(imsi-[0-9]{5\\,15}|nai-.+|msisdn-[0-9]{5\\,15}|extid-[^@]+@[^@]+|gci-.+|gli-.+|.+)$"`
+	NotifyItems                   []NotifyItem                    `json:"notifyItems,omitempty" yaml:"notifyItems,omitempty"`
+	SdmSubscription               *SdmSubscription                `json:"sdmSubscription,omitempty" yaml:"sdmSubscription,omitempty"`
+	AdditionalSdmSubscriptions    []SdmSubscription               `json:"additionalSdmSubscriptions,omitempty" yaml:"additionalSdmSubscriptions,omitempty"`
+	SubscriptionDataSubscriptions []SubscriptionDataSubscriptions `json:"subscriptionDataSubscriptions,omitempty" yaml:"subscriptionDataSubscriptions,omitempty"`
 	// A map (list of key-value pairs where URI serves as key) of Any Type.
-	AdditionalData map[string]DataChangeNotifyAdditionalDataValue `json:"additionalData,omitempty"`
+	AdditionalData map[string]DataChangeNotifyAdditionalDataValue `json:"additionalData,omitempty" yaml:"additionalData,omitempty"`
 }
 
 // NewDataChangeNotify instantiates a new DataChangeNotify object
@@ -280,6 +280,14 @@ func (o *DataChangeNotify) HasAdditionalData() bool {
 // SetAdditionalData gets a reference to the given map[string]DataChangeNotifyAdditionalDataValue and assigns it to the AdditionalData field.
 func (o *DataChangeNotify) SetAdditionalData(v map[string]DataChangeNotifyAdditionalDataValue) {
 	o.AdditionalData = v
+}
+
+func (o DataChangeNotify) MarshalJSON() ([]byte, error) {
+	toSerialize, err := o.ToMap()
+	if err != nil {
+		return []byte{}, err
+	}
+	return json.Marshal(toSerialize)
 }
 
 func (o DataChangeNotify) ToMap() (map[string]any, error) {

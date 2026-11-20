@@ -104,6 +104,11 @@ func (r ApiCreateServiceSpecificAuthorizationInfoRequest) ServiceSpecificAuthori
 	return r
 }
 
+// GetServiceSpecificAuthorizationInfo returns the serviceSpecificAuthorizationInfo set with ServiceSpecificAuthorizationInfo, or nil if it was not set.
+func (r ApiCreateServiceSpecificAuthorizationInfoRequest) GetServiceSpecificAuthorizationInfo() *models.ServiceSpecificAuthorizationInfo {
+	return r.serviceSpecificAuthorizationInfo
+}
+
 func (r ApiCreateServiceSpecificAuthorizationInfoRequest) Execute() (*models.ServiceSpecificAuthorizationInfo, *http.Response, error) {
 	return r.ApiService.CreateServiceSpecificAuthorizationInfoExecute(r)
 }
@@ -535,10 +540,20 @@ func (r ApiModifyServiceSpecificAuthorizationInfoRequest) PatchItem(patchItem []
 	return r
 }
 
+// GetPatchItem returns the patchItem set with PatchItem, or nil if it was not set.
+func (r ApiModifyServiceSpecificAuthorizationInfoRequest) GetPatchItem() *[]models.PatchItem {
+	return r.patchItem
+}
+
 // Features required to be supported by the target NF
 func (r ApiModifyServiceSpecificAuthorizationInfoRequest) SupportedFeatures(supportedFeatures string) ApiModifyServiceSpecificAuthorizationInfoRequest {
 	r.supportedFeatures = &supportedFeatures
 	return r
+}
+
+// GetSupportedFeatures returns the supportedFeatures set with SupportedFeatures, or nil if it was not set.
+func (r ApiModifyServiceSpecificAuthorizationInfoRequest) GetSupportedFeatures() *string {
+	return r.supportedFeatures
 }
 
 func (r ApiModifyServiceSpecificAuthorizationInfoRequest) Execute() (*models.PatchResult, *http.Response, error) {

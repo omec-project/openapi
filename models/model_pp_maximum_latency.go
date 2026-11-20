@@ -33,8 +33,7 @@ type PpMaximumLatency struct {
 	// indicating a time in seconds.
 	MaximumLatency int32  `json:"maximumLatency" yaml:"maximumLatency"`
 	AfInstanceId   string `json:"afInstanceId" yaml:"afInstanceId"`
-	// Integer where the allowed values correspond to the value range of an unsigned 64-bit integer.
-	ReferenceId int32 `json:"referenceId" yaml:"referenceId"`
+	ReferenceId    uint64 `json:"referenceId" yaml:"referenceId"`
 	// string with format 'date-time' as defined in OpenAPI.
 	ValidityTime *time.Time `json:"validityTime,omitempty" yaml:"validityTime,omitempty"`
 	// String uniquely identifying MTC provider information.
@@ -45,7 +44,7 @@ type PpMaximumLatency struct {
 // This constructor will assign default values to properties that have it defined,
 // and makes sure properties required by API are set, but the set of arguments
 // will change when the set of required properties is changed
-func NewPpMaximumLatency(maximumLatency int32, afInstanceId string, referenceId int32) *PpMaximumLatency {
+func NewPpMaximumLatency(maximumLatency int32, afInstanceId string, referenceId uint64) *PpMaximumLatency {
 	this := PpMaximumLatency{}
 	this.MaximumLatency = maximumLatency
 	this.AfInstanceId = afInstanceId
@@ -110,9 +109,9 @@ func (o *PpMaximumLatency) SetAfInstanceId(v string) {
 }
 
 // GetReferenceId returns the ReferenceId field value
-func (o *PpMaximumLatency) GetReferenceId() int32 {
+func (o *PpMaximumLatency) GetReferenceId() uint64 {
 	if o == nil {
-		var ret int32
+		var ret uint64
 		return ret
 	}
 
@@ -121,7 +120,7 @@ func (o *PpMaximumLatency) GetReferenceId() int32 {
 
 // GetReferenceIdOk returns a tuple with the ReferenceId field value
 // and a boolean to check if the value has been set.
-func (o *PpMaximumLatency) GetReferenceIdOk() (*int32, bool) {
+func (o *PpMaximumLatency) GetReferenceIdOk() (*uint64, bool) {
 	if o == nil {
 		return nil, false
 	}
@@ -129,7 +128,7 @@ func (o *PpMaximumLatency) GetReferenceIdOk() (*int32, bool) {
 }
 
 // SetReferenceId sets field value
-func (o *PpMaximumLatency) SetReferenceId(v int32) {
+func (o *PpMaximumLatency) SetReferenceId(v uint64) {
 	o.ReferenceId = v
 }
 

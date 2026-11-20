@@ -42,7 +42,7 @@ type RetrievalOfIndividualSharedDataAPI interface {
 	GetIndividualSharedData(ctx context.Context, sharedDataId string) ApiGetIndividualSharedDataRequest
 
 	// GetIndividualSharedDataExecute executes the request
-	//   @return SharedDataUdm1
+	//   @return SharedDataUdm
 	GetIndividualSharedDataExecute(r ApiGetIndividualSharedDataRequest) (*models.SharedDataUdm, *http.Response, error)
 }
 
@@ -63,10 +63,20 @@ func (r ApiGetIndividualSharedDataRequest) IfNoneMatch(ifNoneMatch string) ApiGe
 	return r
 }
 
+// GetIfNoneMatch returns the ifNoneMatch set with IfNoneMatch, or nil if it was not set.
+func (r ApiGetIndividualSharedDataRequest) GetIfNoneMatch() *string {
+	return r.ifNoneMatch
+}
+
 // Validator for conditional requests, as described in RFC 9110, 13.1.3
 func (r ApiGetIndividualSharedDataRequest) IfModifiedSince(ifModifiedSince string) ApiGetIndividualSharedDataRequest {
 	r.ifModifiedSince = &ifModifiedSince
 	return r
+}
+
+// GetIfModifiedSince returns the ifModifiedSince set with IfModifiedSince, or nil if it was not set.
+func (r ApiGetIndividualSharedDataRequest) GetIfModifiedSince() *string {
+	return r.ifModifiedSince
 }
 
 func (r ApiGetIndividualSharedDataRequest) Execute() (*models.SharedDataUdm, *http.Response, error) {
@@ -90,7 +100,7 @@ func (a *RetrievalOfIndividualSharedDataAPIService) GetIndividualSharedData(ctx 
 
 // Execute executes the request
 //
-//	@return SharedDataUdm1
+//	@return SharedDataUdm
 func (a *RetrievalOfIndividualSharedDataAPIService) GetIndividualSharedDataExecute(r ApiGetIndividualSharedDataRequest) (*models.SharedDataUdm, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodGet

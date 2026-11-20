@@ -104,10 +104,20 @@ func (r ApiModifyEesubscriptionRequest) PatchItem(patchItem []models.PatchItem) 
 	return r
 }
 
+// GetPatchItem returns the patchItem set with PatchItem, or nil if it was not set.
+func (r ApiModifyEesubscriptionRequest) GetPatchItem() *[]models.PatchItem {
+	return r.patchItem
+}
+
 // Features required to be supported by the target NF
 func (r ApiModifyEesubscriptionRequest) SupportedFeatures(supportedFeatures string) ApiModifyEesubscriptionRequest {
 	r.supportedFeatures = &supportedFeatures
 	return r
+}
+
+// GetSupportedFeatures returns the supportedFeatures set with SupportedFeatures, or nil if it was not set.
+func (r ApiModifyEesubscriptionRequest) GetSupportedFeatures() *string {
+	return r.supportedFeatures
 }
 
 func (r ApiModifyEesubscriptionRequest) Execute() (*models.PatchResult, *http.Response, error) {
@@ -725,6 +735,11 @@ type ApiUpdateEesubscriptionsRequest struct {
 func (r ApiUpdateEesubscriptionsRequest) EeSubscription(eeSubscription models.EeSubscription) ApiUpdateEesubscriptionsRequest {
 	r.eeSubscription = &eeSubscription
 	return r
+}
+
+// GetEeSubscription returns the eeSubscription set with EeSubscription, or nil if it was not set.
+func (r ApiUpdateEesubscriptionsRequest) GetEeSubscription() *models.EeSubscription {
+	return r.eeSubscription
 }
 
 func (r ApiUpdateEesubscriptionsRequest) Execute() (*http.Response, error) {

@@ -64,16 +64,31 @@ func (r ApiQueryTimeSyncSubscriptionDataRequest) SupportedFeatures(supportedFeat
 	return r
 }
 
+// GetSupportedFeatures returns the supportedFeatures set with SupportedFeatures, or nil if it was not set.
+func (r ApiQueryTimeSyncSubscriptionDataRequest) GetSupportedFeatures() *string {
+	return r.supportedFeatures
+}
+
 // Validator for conditional requests, as described in RFC 9110, 13.1.2
 func (r ApiQueryTimeSyncSubscriptionDataRequest) IfNoneMatch(ifNoneMatch string) ApiQueryTimeSyncSubscriptionDataRequest {
 	r.ifNoneMatch = &ifNoneMatch
 	return r
 }
 
+// GetIfNoneMatch returns the ifNoneMatch set with IfNoneMatch, or nil if it was not set.
+func (r ApiQueryTimeSyncSubscriptionDataRequest) GetIfNoneMatch() *string {
+	return r.ifNoneMatch
+}
+
 // Validator for conditional requests, as described in RFC 9110, 13.1.3
 func (r ApiQueryTimeSyncSubscriptionDataRequest) IfModifiedSince(ifModifiedSince string) ApiQueryTimeSyncSubscriptionDataRequest {
 	r.ifModifiedSince = &ifModifiedSince
 	return r
+}
+
+// GetIfModifiedSince returns the ifModifiedSince set with IfModifiedSince, or nil if it was not set.
+func (r ApiQueryTimeSyncSubscriptionDataRequest) GetIfModifiedSince() *string {
+	return r.ifModifiedSince
 }
 
 func (r ApiQueryTimeSyncSubscriptionDataRequest) Execute() (*models.TimeSyncSubscriptionData, *http.Response, error) {

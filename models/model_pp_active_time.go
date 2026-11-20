@@ -33,8 +33,7 @@ type PpActiveTime struct {
 	// indicating a time in seconds.
 	ActiveTime   int32  `json:"activeTime" yaml:"activeTime"`
 	AfInstanceId string `json:"afInstanceId" yaml:"afInstanceId"`
-	// Integer where the allowed values correspond to the value range of an unsigned 64-bit integer.
-	ReferenceId int32 `json:"referenceId" yaml:"referenceId"`
+	ReferenceId  uint64 `json:"referenceId" yaml:"referenceId"`
 	// string with format 'date-time' as defined in OpenAPI.
 	ValidityTime *time.Time `json:"validityTime,omitempty" yaml:"validityTime,omitempty"`
 	// String uniquely identifying MTC provider information.
@@ -45,7 +44,7 @@ type PpActiveTime struct {
 // This constructor will assign default values to properties that have it defined,
 // and makes sure properties required by API are set, but the set of arguments
 // will change when the set of required properties is changed
-func NewPpActiveTime(activeTime int32, afInstanceId string, referenceId int32) *PpActiveTime {
+func NewPpActiveTime(activeTime int32, afInstanceId string, referenceId uint64) *PpActiveTime {
 	this := PpActiveTime{}
 	this.ActiveTime = activeTime
 	this.AfInstanceId = afInstanceId
@@ -110,9 +109,9 @@ func (o *PpActiveTime) SetAfInstanceId(v string) {
 }
 
 // GetReferenceId returns the ReferenceId field value
-func (o *PpActiveTime) GetReferenceId() int32 {
+func (o *PpActiveTime) GetReferenceId() uint64 {
 	if o == nil {
-		var ret int32
+		var ret uint64
 		return ret
 	}
 
@@ -121,7 +120,7 @@ func (o *PpActiveTime) GetReferenceId() int32 {
 
 // GetReferenceIdOk returns a tuple with the ReferenceId field value
 // and a boolean to check if the value has been set.
-func (o *PpActiveTime) GetReferenceIdOk() (*int32, bool) {
+func (o *PpActiveTime) GetReferenceIdOk() (*uint64, bool) {
 	if o == nil {
 		return nil, false
 	}
@@ -129,7 +128,7 @@ func (o *PpActiveTime) GetReferenceIdOk() (*int32, bool) {
 }
 
 // SetReferenceId sets field value
-func (o *PpActiveTime) SetReferenceId(v int32) {
+func (o *PpActiveTime) SetReferenceId(v uint64) {
 	o.ReferenceId = v
 }
 

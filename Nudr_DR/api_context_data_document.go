@@ -62,6 +62,11 @@ func (r ApiQueryContextDataRequest) ContextDatasetNames(contextDatasetNames []mo
 	return r
 }
 
+// GetContextDatasetNames returns the contextDatasetNames set with ContextDatasetNames, or nil if it was not set.
+func (r ApiQueryContextDataRequest) GetContextDatasetNames() *[]models.ContextDataSetName {
+	return r.contextDatasetNames
+}
+
 func (r ApiQueryContextDataRequest) Execute() (*models.ContextDataSets, *http.Response, error) {
 	return r.ApiService.QueryContextDataExecute(r)
 }

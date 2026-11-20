@@ -86,6 +86,11 @@ func (r ApiCreateOrReplaceIndividualPFDDataRequest) PfdDataForAppExt(pfdDataForA
 	return r
 }
 
+// GetPfdDataForAppExt returns the pfdDataForAppExt set with PfdDataForAppExt, or nil if it was not set.
+func (r ApiCreateOrReplaceIndividualPFDDataRequest) GetPfdDataForAppExt() *models.PfdDataForAppExt {
+	return r.pfdDataForAppExt
+}
+
 func (r ApiCreateOrReplaceIndividualPFDDataRequest) Execute() (*models.PfdDataForAppExt, *http.Response, error) {
 	return r.ApiService.CreateOrReplaceIndividualPFDDataExecute(r)
 }
@@ -506,6 +511,11 @@ type ApiReadIndividualPFDDataRequest struct {
 func (r ApiReadIndividualPFDDataRequest) SuppFeat(suppFeat string) ApiReadIndividualPFDDataRequest {
 	r.suppFeat = &suppFeat
 	return r
+}
+
+// GetSuppFeat returns the suppFeat set with SuppFeat, or nil if it was not set.
+func (r ApiReadIndividualPFDDataRequest) GetSuppFeat() *string {
+	return r.suppFeat
 }
 
 func (r ApiReadIndividualPFDDataRequest) Execute() (*models.PfdDataForAppExt, *http.Response, error) {

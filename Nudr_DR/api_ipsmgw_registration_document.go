@@ -97,6 +97,11 @@ func (r ApiCreateIpSmGwContextRequest) IpSmGwRegistration(ipSmGwRegistration mod
 	return r
 }
 
+// GetIpSmGwRegistration returns the ipSmGwRegistration set with IpSmGwRegistration, or nil if it was not set.
+func (r ApiCreateIpSmGwContextRequest) GetIpSmGwRegistration() *models.IpSmGwRegistration {
+	return r.ipSmGwRegistration
+}
+
 func (r ApiCreateIpSmGwContextRequest) Execute() (*http.Response, error) {
 	return r.ApiService.CreateIpSmGwContextExecute(r)
 }
@@ -495,6 +500,11 @@ func (r ApiModifyIpSmGwContextRequest) PatchItem(patchItem []models.PatchItem) A
 	return r
 }
 
+// GetPatchItem returns the patchItem set with PatchItem, or nil if it was not set.
+func (r ApiModifyIpSmGwContextRequest) GetPatchItem() *[]models.PatchItem {
+	return r.patchItem
+}
+
 func (r ApiModifyIpSmGwContextRequest) Execute() (*http.Response, error) {
 	return r.ApiService.ModifyIpSmGwContextExecute(r)
 }
@@ -721,10 +731,20 @@ func (r ApiQueryIpSmGwContextRequest) Fields(fields []string) ApiQueryIpSmGwCont
 	return r
 }
 
+// GetFields returns the fields set with Fields, or nil if it was not set.
+func (r ApiQueryIpSmGwContextRequest) GetFields() *[]string {
+	return r.fields
+}
+
 // Supported Features
 func (r ApiQueryIpSmGwContextRequest) SupportedFeatures(supportedFeatures string) ApiQueryIpSmGwContextRequest {
 	r.supportedFeatures = &supportedFeatures
 	return r
+}
+
+// GetSupportedFeatures returns the supportedFeatures set with SupportedFeatures, or nil if it was not set.
+func (r ApiQueryIpSmGwContextRequest) GetSupportedFeatures() *string {
+	return r.supportedFeatures
 }
 
 func (r ApiQueryIpSmGwContextRequest) Execute() (*models.IpSmGwRegistration, *http.Response, error) {

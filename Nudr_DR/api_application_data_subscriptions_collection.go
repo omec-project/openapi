@@ -70,6 +70,11 @@ func (r ApiCreateIndividualApplicationDataSubscriptionRequest) ApplicationDataSu
 	return r
 }
 
+// GetApplicationDataSubs returns the applicationDataSubs set with ApplicationDataSubs, or nil if it was not set.
+func (r ApiCreateIndividualApplicationDataSubscriptionRequest) GetApplicationDataSubs() *models.ApplicationDataSubs {
+	return r.applicationDataSubs
+}
+
 func (r ApiCreateIndividualApplicationDataSubscriptionRequest) Execute() (*models.ApplicationDataSubs, *http.Response, error) {
 	return r.ApiService.CreateIndividualApplicationDataSubscriptionExecute(r)
 }
@@ -298,6 +303,11 @@ type ApiReadApplicationDataChangeSubscriptionsRequest struct {
 func (r ApiReadApplicationDataChangeSubscriptionsRequest) DataFilter(dataFilter models.DataFilter) ApiReadApplicationDataChangeSubscriptionsRequest {
 	r.dataFilter = &dataFilter
 	return r
+}
+
+// GetDataFilter returns the dataFilter set with DataFilter, or nil if it was not set.
+func (r ApiReadApplicationDataChangeSubscriptionsRequest) GetDataFilter() *models.DataFilter {
+	return r.dataFilter
 }
 
 func (r ApiReadApplicationDataChangeSubscriptionsRequest) Execute() ([]models.ApplicationDataSubs, *http.Response, error) {

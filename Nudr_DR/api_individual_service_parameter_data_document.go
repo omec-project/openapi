@@ -86,6 +86,11 @@ func (r ApiCreateOrReplaceServiceParameterDataRequest) ServiceParameterData(serv
 	return r
 }
 
+// GetServiceParameterData returns the serviceParameterData set with ServiceParameterData, or nil if it was not set.
+func (r ApiCreateOrReplaceServiceParameterDataRequest) GetServiceParameterData() *models.ServiceParameterData {
+	return r.serviceParameterData
+}
+
 func (r ApiCreateOrReplaceServiceParameterDataRequest) Execute() (*models.ServiceParameterData, *http.Response, error) {
 	return r.ApiService.CreateOrReplaceServiceParameterDataExecute(r)
 }
@@ -505,6 +510,11 @@ type ApiUpdateIndividualServiceParameterDataRequest struct {
 func (r ApiUpdateIndividualServiceParameterDataRequest) ServiceParameterDataPatch(serviceParameterDataPatch models.ServiceParameterDataPatch) ApiUpdateIndividualServiceParameterDataRequest {
 	r.serviceParameterDataPatch = &serviceParameterDataPatch
 	return r
+}
+
+// GetServiceParameterDataPatch returns the serviceParameterDataPatch set with ServiceParameterDataPatch, or nil if it was not set.
+func (r ApiUpdateIndividualServiceParameterDataRequest) GetServiceParameterDataPatch() *models.ServiceParameterDataPatch {
+	return r.serviceParameterDataPatch
 }
 
 func (r ApiUpdateIndividualServiceParameterDataRequest) Execute() (*models.ServiceParameterData, *http.Response, error) {

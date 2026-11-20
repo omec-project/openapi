@@ -250,6 +250,11 @@ func (r ApiReplaceIndividualPolicyDataSubscriptionRequest) PolicyDataSubscriptio
 	return r
 }
 
+// GetPolicyDataSubscription returns the policyDataSubscription set with PolicyDataSubscription, or nil if it was not set.
+func (r ApiReplaceIndividualPolicyDataSubscriptionRequest) GetPolicyDataSubscription() *models.PolicyDataSubscription {
+	return r.policyDataSubscription
+}
+
 func (r ApiReplaceIndividualPolicyDataSubscriptionRequest) Execute() (*models.PolicyDataSubscription, *http.Response, error) {
 	return r.ApiService.ReplaceIndividualPolicyDataSubscriptionExecute(r)
 }

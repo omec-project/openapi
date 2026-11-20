@@ -100,10 +100,20 @@ func (r ApiCreateOperSpecDataRequest) RequestBody(requestBody map[string]models.
 	return r
 }
 
+// GetRequestBody returns the requestBody set with RequestBody, or nil if it was not set.
+func (r ApiCreateOperSpecDataRequest) GetRequestBody() *map[string]models.OperatorSpecificDataContainer {
+	return r.requestBody
+}
+
 // Supported Features
 func (r ApiCreateOperSpecDataRequest) SupportedFeatures(supportedFeatures string) ApiCreateOperSpecDataRequest {
 	r.supportedFeatures = &supportedFeatures
 	return r
+}
+
+// GetSupportedFeatures returns the supportedFeatures set with SupportedFeatures, or nil if it was not set.
+func (r ApiCreateOperSpecDataRequest) GetSupportedFeatures() *string {
+	return r.supportedFeatures
 }
 
 func (r ApiCreateOperSpecDataRequest) Execute() (*map[string]models.OperatorSpecificDataContainer, *http.Response, error) {
@@ -520,10 +530,20 @@ func (r ApiModifyOperSpecDataRequest) PatchItem(patchItem []models.PatchItem) Ap
 	return r
 }
 
+// GetPatchItem returns the patchItem set with PatchItem, or nil if it was not set.
+func (r ApiModifyOperSpecDataRequest) GetPatchItem() *[]models.PatchItem {
+	return r.patchItem
+}
+
 // Features required to be supported by the target NF
 func (r ApiModifyOperSpecDataRequest) SupportedFeatures(supportedFeatures string) ApiModifyOperSpecDataRequest {
 	r.supportedFeatures = &supportedFeatures
 	return r
+}
+
+// GetSupportedFeatures returns the supportedFeatures set with SupportedFeatures, or nil if it was not set.
+func (r ApiModifyOperSpecDataRequest) GetSupportedFeatures() *string {
+	return r.supportedFeatures
 }
 
 func (r ApiModifyOperSpecDataRequest) Execute() (*models.PatchResult, *http.Response, error) {
@@ -766,10 +786,20 @@ func (r ApiQueryOperSpecDataRequest) Fields(fields []string) ApiQueryOperSpecDat
 	return r
 }
 
+// GetFields returns the fields set with Fields, or nil if it was not set.
+func (r ApiQueryOperSpecDataRequest) GetFields() *[]string {
+	return r.fields
+}
+
 // Supported Features
 func (r ApiQueryOperSpecDataRequest) SupportedFeatures(supportedFeatures string) ApiQueryOperSpecDataRequest {
 	r.supportedFeatures = &supportedFeatures
 	return r
+}
+
+// GetSupportedFeatures returns the supportedFeatures set with SupportedFeatures, or nil if it was not set.
+func (r ApiQueryOperSpecDataRequest) GetSupportedFeatures() *string {
+	return r.supportedFeatures
 }
 
 // Validator for conditional requests, as described in RFC 9110, 13.1.2
@@ -778,10 +808,20 @@ func (r ApiQueryOperSpecDataRequest) IfNoneMatch(ifNoneMatch string) ApiQueryOpe
 	return r
 }
 
+// GetIfNoneMatch returns the ifNoneMatch set with IfNoneMatch, or nil if it was not set.
+func (r ApiQueryOperSpecDataRequest) GetIfNoneMatch() *string {
+	return r.ifNoneMatch
+}
+
 // Validator for conditional requests, as described in RFC 9110, 13.1.3
 func (r ApiQueryOperSpecDataRequest) IfModifiedSince(ifModifiedSince string) ApiQueryOperSpecDataRequest {
 	r.ifModifiedSince = &ifModifiedSince
 	return r
+}
+
+// GetIfModifiedSince returns the ifModifiedSince set with IfModifiedSince, or nil if it was not set.
+func (r ApiQueryOperSpecDataRequest) GetIfModifiedSince() *string {
+	return r.ifModifiedSince
 }
 
 func (r ApiQueryOperSpecDataRequest) Execute() (*map[string]models.OperatorSpecificDataContainer, *http.Response, error) {

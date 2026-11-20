@@ -78,10 +78,20 @@ func (r ApiModifyAmfGroupSubscriptionsRequest) PatchItem(patchItem []models.Patc
 	return r
 }
 
+// GetPatchItem returns the patchItem set with PatchItem, or nil if it was not set.
+func (r ApiModifyAmfGroupSubscriptionsRequest) GetPatchItem() *[]models.PatchItem {
+	return r.patchItem
+}
+
 // Features required to be supported by the target NF
 func (r ApiModifyAmfGroupSubscriptionsRequest) SupportedFeatures(supportedFeatures string) ApiModifyAmfGroupSubscriptionsRequest {
 	r.supportedFeatures = &supportedFeatures
 	return r
+}
+
+// GetSupportedFeatures returns the supportedFeatures set with SupportedFeatures, or nil if it was not set.
+func (r ApiModifyAmfGroupSubscriptionsRequest) GetSupportedFeatures() *string {
+	return r.supportedFeatures
 }
 
 func (r ApiModifyAmfGroupSubscriptionsRequest) Execute() (*models.PatchResult, *http.Response, error) {
@@ -325,10 +335,20 @@ func (r ApiModifyAmfSubscriptionInfoRequest) PatchItem(patchItem []models.PatchI
 	return r
 }
 
+// GetPatchItem returns the patchItem set with PatchItem, or nil if it was not set.
+func (r ApiModifyAmfSubscriptionInfoRequest) GetPatchItem() *[]models.PatchItem {
+	return r.patchItem
+}
+
 // Features required to be supported by the target NF
 func (r ApiModifyAmfSubscriptionInfoRequest) SupportedFeatures(supportedFeatures string) ApiModifyAmfSubscriptionInfoRequest {
 	r.supportedFeatures = &supportedFeatures
 	return r
+}
+
+// GetSupportedFeatures returns the supportedFeatures set with SupportedFeatures, or nil if it was not set.
+func (r ApiModifyAmfSubscriptionInfoRequest) GetSupportedFeatures() *string {
+	return r.supportedFeatures
 }
 
 func (r ApiModifyAmfSubscriptionInfoRequest) Execute() (*models.PatchResult, *http.Response, error) {

@@ -65,10 +65,20 @@ func (r ApiQueryTraceDataRequest) IfNoneMatch(ifNoneMatch string) ApiQueryTraceD
 	return r
 }
 
+// GetIfNoneMatch returns the ifNoneMatch set with IfNoneMatch, or nil if it was not set.
+func (r ApiQueryTraceDataRequest) GetIfNoneMatch() *string {
+	return r.ifNoneMatch
+}
+
 // Validator for conditional requests, as described in RFC 9110, 13.1.3
 func (r ApiQueryTraceDataRequest) IfModifiedSince(ifModifiedSince string) ApiQueryTraceDataRequest {
 	r.ifModifiedSince = &ifModifiedSince
 	return r
+}
+
+// GetIfModifiedSince returns the ifModifiedSince set with IfModifiedSince, or nil if it was not set.
+func (r ApiQueryTraceDataRequest) GetIfModifiedSince() *string {
+	return r.ifModifiedSince
 }
 
 func (r ApiQueryTraceDataRequest) Execute() (*models.TraceDataOrSharedTraceDataId, *http.Response, error) {

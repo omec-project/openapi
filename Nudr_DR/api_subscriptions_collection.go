@@ -56,6 +56,11 @@ func (r ApiCreateIndividualSubscriptionRequest) Body(body any) ApiCreateIndividu
 	return r
 }
 
+// GetBody returns the body set with Body, or nil if it was not set.
+func (r ApiCreateIndividualSubscriptionRequest) GetBody() *any {
+	return r.body
+}
+
 func (r ApiCreateIndividualSubscriptionRequest) Execute() (*http.Response, error) {
 	return r.ApiService.CreateIndividualSubscriptionExecute(r)
 }

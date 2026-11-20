@@ -63,6 +63,11 @@ func (r ApiCreateAmfGroupSubscriptionsRequest) AmfSubscriptionInfo(amfSubscripti
 	return r
 }
 
+// GetAmfSubscriptionInfo returns the amfSubscriptionInfo set with AmfSubscriptionInfo, or nil if it was not set.
+func (r ApiCreateAmfGroupSubscriptionsRequest) GetAmfSubscriptionInfo() *[]models.AmfSubscriptionInfo {
+	return r.amfSubscriptionInfo
+}
+
 func (r ApiCreateAmfGroupSubscriptionsRequest) Execute() ([]models.AmfSubscriptionInfo, *http.Response, error) {
 	return r.ApiService.CreateAmfGroupSubscriptionsExecute(r)
 }

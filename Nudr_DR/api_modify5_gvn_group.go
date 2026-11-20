@@ -62,10 +62,20 @@ func (r ApiModify5GVnGroupRequest) PatchItem(patchItem []models.PatchItem) ApiMo
 	return r
 }
 
+// GetPatchItem returns the patchItem set with PatchItem, or nil if it was not set.
+func (r ApiModify5GVnGroupRequest) GetPatchItem() *[]models.PatchItem {
+	return r.patchItem
+}
+
 // Features required to be supported by the target NF
 func (r ApiModify5GVnGroupRequest) SupportedFeatures(supportedFeatures string) ApiModify5GVnGroupRequest {
 	r.supportedFeatures = &supportedFeatures
 	return r
+}
+
+// GetSupportedFeatures returns the supportedFeatures set with SupportedFeatures, or nil if it was not set.
+func (r ApiModify5GVnGroupRequest) GetSupportedFeatures() *string {
+	return r.supportedFeatures
 }
 
 func (r ApiModify5GVnGroupRequest) Execute() (*models.PatchResult, *http.Response, error) {

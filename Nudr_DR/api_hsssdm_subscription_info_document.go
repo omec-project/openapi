@@ -103,6 +103,11 @@ func (r ApiCreateHSSSDMSubscriptionsRequest) HssSubscriptionInfo(hssSubscription
 	return r
 }
 
+// GetHssSubscriptionInfo returns the hssSubscriptionInfo set with HssSubscriptionInfo, or nil if it was not set.
+func (r ApiCreateHSSSDMSubscriptionsRequest) GetHssSubscriptionInfo() *models.HssSubscriptionInfo {
+	return r.hssSubscriptionInfo
+}
+
 func (r ApiCreateHSSSDMSubscriptionsRequest) Execute() (*http.Response, error) {
 	return r.ApiService.CreateHSSSDMSubscriptionsExecute(r)
 }
@@ -522,10 +527,20 @@ func (r ApiModifyHssSDMSubscriptionInfoRequest) PatchItem(patchItem []models.Pat
 	return r
 }
 
+// GetPatchItem returns the patchItem set with PatchItem, or nil if it was not set.
+func (r ApiModifyHssSDMSubscriptionInfoRequest) GetPatchItem() *[]models.PatchItem {
+	return r.patchItem
+}
+
 // Features required to be supported by the target NF
 func (r ApiModifyHssSDMSubscriptionInfoRequest) SupportedFeatures(supportedFeatures string) ApiModifyHssSDMSubscriptionInfoRequest {
 	r.supportedFeatures = &supportedFeatures
 	return r
+}
+
+// GetSupportedFeatures returns the supportedFeatures set with SupportedFeatures, or nil if it was not set.
+func (r ApiModifyHssSDMSubscriptionInfoRequest) GetSupportedFeatures() *string {
+	return r.supportedFeatures
 }
 
 func (r ApiModifyHssSDMSubscriptionInfoRequest) Execute() (*models.PatchResult, *http.Response, error) {

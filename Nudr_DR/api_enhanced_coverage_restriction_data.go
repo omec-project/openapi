@@ -64,16 +64,31 @@ func (r ApiQueryCoverageRestrictionDataRequest) SupportedFeatures(supportedFeatu
 	return r
 }
 
+// GetSupportedFeatures returns the supportedFeatures set with SupportedFeatures, or nil if it was not set.
+func (r ApiQueryCoverageRestrictionDataRequest) GetSupportedFeatures() *string {
+	return r.supportedFeatures
+}
+
 // Validator for conditional requests, as described in RFC 9110, 13.1.2
 func (r ApiQueryCoverageRestrictionDataRequest) IfNoneMatch(ifNoneMatch string) ApiQueryCoverageRestrictionDataRequest {
 	r.ifNoneMatch = &ifNoneMatch
 	return r
 }
 
+// GetIfNoneMatch returns the ifNoneMatch set with IfNoneMatch, or nil if it was not set.
+func (r ApiQueryCoverageRestrictionDataRequest) GetIfNoneMatch() *string {
+	return r.ifNoneMatch
+}
+
 // Validator for conditional requests, as described in RFC 9110, 13.1.3
 func (r ApiQueryCoverageRestrictionDataRequest) IfModifiedSince(ifModifiedSince string) ApiQueryCoverageRestrictionDataRequest {
 	r.ifModifiedSince = &ifModifiedSince
 	return r
+}
+
+// GetIfModifiedSince returns the ifModifiedSince set with IfModifiedSince, or nil if it was not set.
+func (r ApiQueryCoverageRestrictionDataRequest) GetIfModifiedSince() *string {
+	return r.ifModifiedSince
 }
 
 func (r ApiQueryCoverageRestrictionDataRequest) Execute() (*models.EnhancedCoverageRestrictionData, *http.Response, error) {

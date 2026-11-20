@@ -60,10 +60,20 @@ func (r ApiQuery5GVNGroupPPDataRequest) ExtGroupIds(extGroupIds []string) ApiQue
 	return r
 }
 
+// GetExtGroupIds returns the extGroupIds set with ExtGroupIds, or nil if it was not set.
+func (r ApiQuery5GVNGroupPPDataRequest) GetExtGroupIds() *[]string {
+	return r.extGroupIds
+}
+
 // Supported Features
 func (r ApiQuery5GVNGroupPPDataRequest) SupportedFeatures(supportedFeatures string) ApiQuery5GVNGroupPPDataRequest {
 	r.supportedFeatures = &supportedFeatures
 	return r
+}
+
+// GetSupportedFeatures returns the supportedFeatures set with SupportedFeatures, or nil if it was not set.
+func (r ApiQuery5GVNGroupPPDataRequest) GetSupportedFeatures() *string {
+	return r.supportedFeatures
 }
 
 func (r ApiQuery5GVNGroupPPDataRequest) Execute() (*models.Pp5gVnGroupProfileData, *http.Response, error) {

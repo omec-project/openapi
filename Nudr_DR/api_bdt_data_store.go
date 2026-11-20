@@ -60,10 +60,20 @@ func (r ApiReadBdtDataRequest) BdtRefIds(bdtRefIds []string) ApiReadBdtDataReque
 	return r
 }
 
+// GetBdtRefIds returns the bdtRefIds set with BdtRefIds, or nil if it was not set.
+func (r ApiReadBdtDataRequest) GetBdtRefIds() *[]string {
+	return r.bdtRefIds
+}
+
 // Supported Features
 func (r ApiReadBdtDataRequest) SuppFeat(suppFeat string) ApiReadBdtDataRequest {
 	r.suppFeat = &suppFeat
 	return r
+}
+
+// GetSuppFeat returns the suppFeat set with SuppFeat, or nil if it was not set.
+func (r ApiReadBdtDataRequest) GetSuppFeat() *string {
+	return r.suppFeat
 }
 
 func (r ApiReadBdtDataRequest) Execute() ([]models.BdtData, *http.Response, error) {

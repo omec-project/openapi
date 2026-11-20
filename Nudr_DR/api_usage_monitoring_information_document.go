@@ -90,6 +90,11 @@ func (r ApiCreateUsageMonitoringResourceRequest) UsageMonData(usageMonData model
 	return r
 }
 
+// GetUsageMonData returns the usageMonData set with UsageMonData, or nil if it was not set.
+func (r ApiCreateUsageMonitoringResourceRequest) GetUsageMonData() *models.UsageMonData {
+	return r.usageMonData
+}
+
 func (r ApiCreateUsageMonitoringResourceRequest) Execute() (*models.UsageMonData, *http.Response, error) {
 	return r.ApiService.CreateUsageMonitoringResourceExecute(r)
 }
@@ -518,6 +523,11 @@ type ApiReadUsageMonitoringInformationRequest struct {
 func (r ApiReadUsageMonitoringInformationRequest) SuppFeat(suppFeat string) ApiReadUsageMonitoringInformationRequest {
 	r.suppFeat = &suppFeat
 	return r
+}
+
+// GetSuppFeat returns the suppFeat set with SuppFeat, or nil if it was not set.
+func (r ApiReadUsageMonitoringInformationRequest) GetSuppFeat() *string {
+	return r.suppFeat
 }
 
 func (r ApiReadUsageMonitoringInformationRequest) Execute() (*models.UsageMonData, *http.Response, error) {

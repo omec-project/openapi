@@ -69,10 +69,20 @@ func (r ApiQueryProvisionedDataRequest) DatasetNames(datasetNames []models.Provi
 	return r
 }
 
+// GetDatasetNames returns the datasetNames set with DatasetNames, or nil if it was not set.
+func (r ApiQueryProvisionedDataRequest) GetDatasetNames() *[]models.ProvisionedDataSetName {
+	return r.datasetNames
+}
+
 // List of PLMNs adjacent to the UE&#39;s serving PLMN
 func (r ApiQueryProvisionedDataRequest) AdjacentPlmns(adjacentPlmns []models.PlmnId) ApiQueryProvisionedDataRequest {
 	r.adjacentPlmns = &adjacentPlmns
 	return r
+}
+
+// GetAdjacentPlmns returns the adjacentPlmns set with AdjacentPlmns, or nil if it was not set.
+func (r ApiQueryProvisionedDataRequest) GetAdjacentPlmns() *[]models.PlmnId {
+	return r.adjacentPlmns
 }
 
 // single NSSAI
@@ -81,10 +91,20 @@ func (r ApiQueryProvisionedDataRequest) SingleNssai(singleNssai models.Snssai) A
 	return r
 }
 
+// GetSingleNssai returns the singleNssai set with SingleNssai, or nil if it was not set.
+func (r ApiQueryProvisionedDataRequest) GetSingleNssai() *models.Snssai {
+	return r.singleNssai
+}
+
 // DNN
 func (r ApiQueryProvisionedDataRequest) Dnn(dnn string) ApiQueryProvisionedDataRequest {
 	r.dnn = &dnn
 	return r
+}
+
+// GetDnn returns the dnn set with Dnn, or nil if it was not set.
+func (r ApiQueryProvisionedDataRequest) GetDnn() *string {
+	return r.dnn
 }
 
 // List of external VN group identifiers
@@ -93,10 +113,20 @@ func (r ApiQueryProvisionedDataRequest) ExtGroupIds(extGroupIds []string) ApiQue
 	return r
 }
 
+// GetExtGroupIds returns the extGroupIds set with ExtGroupIds, or nil if it was not set.
+func (r ApiQueryProvisionedDataRequest) GetExtGroupIds() *[]string {
+	return r.extGroupIds
+}
+
 // User consent purpose
 func (r ApiQueryProvisionedDataRequest) UcPurpose(ucPurpose models.UcPurpose) ApiQueryProvisionedDataRequest {
 	r.ucPurpose = &ucPurpose
 	return r
+}
+
+// GetUcPurpose returns the ucPurpose set with UcPurpose, or nil if it was not set.
+func (r ApiQueryProvisionedDataRequest) GetUcPurpose() *models.UcPurpose {
+	return r.ucPurpose
 }
 
 func (r ApiQueryProvisionedDataRequest) Execute() (*models.ProvisionedDataSets, *http.Response, error) {

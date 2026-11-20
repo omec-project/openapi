@@ -59,6 +59,11 @@ func (r ApiQuery5GMbsGroupInternalRequest) InternalGroupIds(internalGroupIds []s
 	return r
 }
 
+// GetInternalGroupIds returns the internalGroupIds set with InternalGroupIds, or nil if it was not set.
+func (r ApiQuery5GMbsGroupInternalRequest) GetInternalGroupIds() *[]string {
+	return r.internalGroupIds
+}
+
 func (r ApiQuery5GMbsGroupInternalRequest) Execute() (*map[string]models.MulticastMbsGroupMemb, *http.Response, error) {
 	return r.ApiService.Query5GMbsGroupInternalExecute(r)
 }

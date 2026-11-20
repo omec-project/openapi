@@ -82,78 +82,102 @@ func (dst *DataChangeNotifyAdditionalDataValue) UnmarshalJSON(data []byte) error
 	var err error
 	match := 0
 	// try to unmarshal data into ArrayOfString
-	err = json.Unmarshal(data, &dst.ArrayOfString)
+	err = openapi.NewStrictDecoder(data).Decode(&dst.ArrayOfString)
 	if err == nil {
 		jsonArrayOfString, _ := json.Marshal(dst.ArrayOfString)
 		if string(jsonArrayOfString) == "{}" { // empty struct
 			dst.ArrayOfString = nil
 		} else {
-			match++
+			if err = openapi.Validate(dst.ArrayOfString); err != nil {
+				dst.ArrayOfString = nil
+			} else {
+				match++
+			}
 		}
 	} else {
 		dst.ArrayOfString = nil
 	}
 
 	// try to unmarshal data into Bool
-	err = json.Unmarshal(data, &dst.Bool)
+	err = openapi.NewStrictDecoder(data).Decode(&dst.Bool)
 	if err == nil {
 		jsonBool, _ := json.Marshal(dst.Bool)
 		if string(jsonBool) == "{}" { // empty struct
 			dst.Bool = nil
 		} else {
-			match++
+			if err = openapi.Validate(dst.Bool); err != nil {
+				dst.Bool = nil
+			} else {
+				match++
+			}
 		}
 	} else {
 		dst.Bool = nil
 	}
 
 	// try to unmarshal data into Float32
-	err = json.Unmarshal(data, &dst.Float32)
+	err = openapi.NewStrictDecoder(data).Decode(&dst.Float32)
 	if err == nil {
 		jsonFloat32, _ := json.Marshal(dst.Float32)
 		if string(jsonFloat32) == "{}" { // empty struct
 			dst.Float32 = nil
 		} else {
-			match++
+			if err = openapi.Validate(dst.Float32); err != nil {
+				dst.Float32 = nil
+			} else {
+				match++
+			}
 		}
 	} else {
 		dst.Float32 = nil
 	}
 
 	// try to unmarshal data into Int32
-	err = json.Unmarshal(data, &dst.Int32)
+	err = openapi.NewStrictDecoder(data).Decode(&dst.Int32)
 	if err == nil {
 		jsonInt32, _ := json.Marshal(dst.Int32)
 		if string(jsonInt32) == "{}" { // empty struct
 			dst.Int32 = nil
 		} else {
-			match++
+			if err = openapi.Validate(dst.Int32); err != nil {
+				dst.Int32 = nil
+			} else {
+				match++
+			}
 		}
 	} else {
 		dst.Int32 = nil
 	}
 
 	// try to unmarshal data into MapmapOfStringAny
-	err = json.Unmarshal(data, &dst.MapmapOfStringAny)
+	err = openapi.NewStrictDecoder(data).Decode(&dst.MapmapOfStringAny)
 	if err == nil {
 		jsonMapmapOfStringAny, _ := json.Marshal(dst.MapmapOfStringAny)
 		if string(jsonMapmapOfStringAny) == "{}" { // empty struct
 			dst.MapmapOfStringAny = nil
 		} else {
-			match++
+			if err = openapi.Validate(dst.MapmapOfStringAny); err != nil {
+				dst.MapmapOfStringAny = nil
+			} else {
+				match++
+			}
 		}
 	} else {
 		dst.MapmapOfStringAny = nil
 	}
 
 	// try to unmarshal data into String
-	err = json.Unmarshal(data, &dst.String)
+	err = openapi.NewStrictDecoder(data).Decode(&dst.String)
 	if err == nil {
 		jsonString, _ := json.Marshal(dst.String)
 		if string(jsonString) == "{}" { // empty struct
 			dst.String = nil
 		} else {
-			match++
+			if err = openapi.Validate(dst.String); err != nil {
+				dst.String = nil
+			} else {
+				match++
+			}
 		}
 	} else {
 		dst.String = nil

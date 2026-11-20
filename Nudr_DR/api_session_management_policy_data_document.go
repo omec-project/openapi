@@ -77,9 +77,19 @@ func (r ApiReadSessionManagementPolicyDataRequest) Snssai(snssai models.Snssai) 
 	return r
 }
 
+// GetSnssai returns the snssai set with Snssai, or nil if it was not set.
+func (r ApiReadSessionManagementPolicyDataRequest) GetSnssai() *models.Snssai {
+	return r.snssai
+}
+
 func (r ApiReadSessionManagementPolicyDataRequest) Dnn(dnn string) ApiReadSessionManagementPolicyDataRequest {
 	r.dnn = &dnn
 	return r
+}
+
+// GetDnn returns the dnn set with Dnn, or nil if it was not set.
+func (r ApiReadSessionManagementPolicyDataRequest) GetDnn() *string {
+	return r.dnn
 }
 
 // attributes to be retrieved
@@ -88,10 +98,20 @@ func (r ApiReadSessionManagementPolicyDataRequest) Fields(fields []string) ApiRe
 	return r
 }
 
+// GetFields returns the fields set with Fields, or nil if it was not set.
+func (r ApiReadSessionManagementPolicyDataRequest) GetFields() *[]string {
+	return r.fields
+}
+
 // Supported Features
 func (r ApiReadSessionManagementPolicyDataRequest) SuppFeat(suppFeat string) ApiReadSessionManagementPolicyDataRequest {
 	r.suppFeat = &suppFeat
 	return r
+}
+
+// GetSuppFeat returns the suppFeat set with SuppFeat, or nil if it was not set.
+func (r ApiReadSessionManagementPolicyDataRequest) GetSuppFeat() *string {
+	return r.suppFeat
 }
 
 func (r ApiReadSessionManagementPolicyDataRequest) Execute() (*models.SmPolicyData, *http.Response, error) {
@@ -310,6 +330,11 @@ type ApiUpdateSessionManagementPolicyDataRequest struct {
 func (r ApiUpdateSessionManagementPolicyDataRequest) SmPolicyDataPatch(smPolicyDataPatch models.SmPolicyDataPatch) ApiUpdateSessionManagementPolicyDataRequest {
 	r.smPolicyDataPatch = &smPolicyDataPatch
 	return r
+}
+
+// GetSmPolicyDataPatch returns the smPolicyDataPatch set with SmPolicyDataPatch, or nil if it was not set.
+func (r ApiUpdateSessionManagementPolicyDataRequest) GetSmPolicyDataPatch() *models.SmPolicyDataPatch {
+	return r.smPolicyDataPatch
 }
 
 func (r ApiUpdateSessionManagementPolicyDataRequest) Execute() (*models.SmPolicyData, *http.Response, error) {

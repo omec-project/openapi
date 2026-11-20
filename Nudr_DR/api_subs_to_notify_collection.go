@@ -83,10 +83,20 @@ func (r ApiQuerySubsToNotifyRequest) UeId(ueId string) ApiQuerySubsToNotifyReque
 	return r
 }
 
+// GetUeId returns the ueId set with UeId, or nil if it was not set.
+func (r ApiQuerySubsToNotifyRequest) GetUeId() *string {
+	return r.ueId
+}
+
 // Supported Features
 func (r ApiQuerySubsToNotifyRequest) SupportedFeatures(supportedFeatures string) ApiQuerySubsToNotifyRequest {
 	r.supportedFeatures = &supportedFeatures
 	return r
+}
+
+// GetSupportedFeatures returns the supportedFeatures set with SupportedFeatures, or nil if it was not set.
+func (r ApiQuerySubsToNotifyRequest) GetSupportedFeatures() *string {
+	return r.supportedFeatures
 }
 
 func (r ApiQuerySubsToNotifyRequest) Execute() ([]models.SubscriptionDataSubscriptions, *http.Response, error) {
@@ -291,10 +301,20 @@ func (r ApiRemoveMultipleSubscriptionDataSubscriptionsRequest) UeId(ueId string)
 	return r
 }
 
+// GetUeId returns the ueId set with UeId, or nil if it was not set.
+func (r ApiRemoveMultipleSubscriptionDataSubscriptionsRequest) GetUeId() *string {
+	return r.ueId
+}
+
 // NF Instance ID
 func (r ApiRemoveMultipleSubscriptionDataSubscriptionsRequest) NfInstanceId(nfInstanceId string) ApiRemoveMultipleSubscriptionDataSubscriptionsRequest {
 	r.nfInstanceId = &nfInstanceId
 	return r
+}
+
+// GetNfInstanceId returns the nfInstanceId set with NfInstanceId, or nil if it was not set.
+func (r ApiRemoveMultipleSubscriptionDataSubscriptionsRequest) GetNfInstanceId() *string {
+	return r.nfInstanceId
 }
 
 // Flag to delete subscriptions from all NFs
@@ -303,10 +323,20 @@ func (r ApiRemoveMultipleSubscriptionDataSubscriptionsRequest) DeleteAllNfs(dele
 	return r
 }
 
+// GetDeleteAllNfs returns the deleteAllNfs set with DeleteAllNfs, or nil if it was not set.
+func (r ApiRemoveMultipleSubscriptionDataSubscriptionsRequest) GetDeleteAllNfs() *bool {
+	return r.deleteAllNfs
+}
+
 // Implicit Unsubscribe Indication
 func (r ApiRemoveMultipleSubscriptionDataSubscriptionsRequest) ImplicitUnsubscribeIndication(implicitUnsubscribeIndication bool) ApiRemoveMultipleSubscriptionDataSubscriptionsRequest {
 	r.implicitUnsubscribeIndication = &implicitUnsubscribeIndication
 	return r
+}
+
+// GetImplicitUnsubscribeIndication returns the implicitUnsubscribeIndication set with ImplicitUnsubscribeIndication, or nil if it was not set.
+func (r ApiRemoveMultipleSubscriptionDataSubscriptionsRequest) GetImplicitUnsubscribeIndication() *bool {
+	return r.implicitUnsubscribeIndication
 }
 
 func (r ApiRemoveMultipleSubscriptionDataSubscriptionsRequest) Execute() (*http.Response, error) {
@@ -499,6 +529,11 @@ type ApiSubscriptionDataSubscriptionsRequest struct {
 func (r ApiSubscriptionDataSubscriptionsRequest) SubscriptionDataSubscriptions(subscriptionDataSubscriptions models.SubscriptionDataSubscriptions) ApiSubscriptionDataSubscriptionsRequest {
 	r.subscriptionDataSubscriptions = &subscriptionDataSubscriptions
 	return r
+}
+
+// GetSubscriptionDataSubscriptions returns the subscriptionDataSubscriptions set with SubscriptionDataSubscriptions, or nil if it was not set.
+func (r ApiSubscriptionDataSubscriptionsRequest) GetSubscriptionDataSubscriptions() *models.SubscriptionDataSubscriptions {
+	return r.subscriptionDataSubscriptions
 }
 
 func (r ApiSubscriptionDataSubscriptionsRequest) Execute() (*models.SubscriptionDataSubscriptions, *http.Response, error) {

@@ -59,6 +59,11 @@ func (r ApiQuery5GmbsGroupRequest) Gpsis(gpsis []string) ApiQuery5GmbsGroupReque
 	return r
 }
 
+// GetGpsis returns the gpsis set with Gpsis, or nil if it was not set.
+func (r ApiQuery5GmbsGroupRequest) GetGpsis() *[]string {
+	return r.gpsis
+}
+
 func (r ApiQuery5GmbsGroupRequest) Execute() (*map[string]models.MulticastMbsGroupMemb, *http.Response, error) {
 	return r.ApiService.Query5GmbsGroupExecute(r)
 }

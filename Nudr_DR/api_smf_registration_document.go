@@ -104,6 +104,11 @@ func (r ApiCreateOrUpdateSmfRegistrationRequest) SmfRegistration(smfRegistration
 	return r
 }
 
+// GetSmfRegistration returns the smfRegistration set with SmfRegistration, or nil if it was not set.
+func (r ApiCreateOrUpdateSmfRegistrationRequest) GetSmfRegistration() *models.SmfRegistration {
+	return r.smfRegistration
+}
+
 func (r ApiCreateOrUpdateSmfRegistrationRequest) Execute() (*models.SmfRegistration, *http.Response, error) {
 	return r.ApiService.CreateOrUpdateSmfRegistrationExecute(r)
 }
@@ -536,10 +541,20 @@ func (r ApiQuerySmfRegistrationRequest) Fields(fields []string) ApiQuerySmfRegis
 	return r
 }
 
+// GetFields returns the fields set with Fields, or nil if it was not set.
+func (r ApiQuerySmfRegistrationRequest) GetFields() *[]string {
+	return r.fields
+}
+
 // Supported Features
 func (r ApiQuerySmfRegistrationRequest) SupportedFeatures(supportedFeatures string) ApiQuerySmfRegistrationRequest {
 	r.supportedFeatures = &supportedFeatures
 	return r
+}
+
+// GetSupportedFeatures returns the supportedFeatures set with SupportedFeatures, or nil if it was not set.
+func (r ApiQuerySmfRegistrationRequest) GetSupportedFeatures() *string {
+	return r.supportedFeatures
 }
 
 func (r ApiQuerySmfRegistrationRequest) Execute() (*models.SmfRegistration, *http.Response, error) {
@@ -754,10 +769,20 @@ func (r ApiUpdateSmfContextRequest) PatchItem(patchItem []models.PatchItem) ApiU
 	return r
 }
 
+// GetPatchItem returns the patchItem set with PatchItem, or nil if it was not set.
+func (r ApiUpdateSmfContextRequest) GetPatchItem() *[]models.PatchItem {
+	return r.patchItem
+}
+
 // Features required to be supported by the target NF
 func (r ApiUpdateSmfContextRequest) SupportedFeatures(supportedFeatures string) ApiUpdateSmfContextRequest {
 	r.supportedFeatures = &supportedFeatures
 	return r
+}
+
+// GetSupportedFeatures returns the supportedFeatures set with SupportedFeatures, or nil if it was not set.
+func (r ApiUpdateSmfContextRequest) GetSupportedFeatures() *string {
+	return r.supportedFeatures
 }
 
 func (r ApiUpdateSmfContextRequest) Execute() (*models.PatchResult, *http.Response, error) {

@@ -64,16 +64,31 @@ func (r ApiGetIdentityDataRequest) AppPortId(appPortId models.AppPortId) ApiGetI
 	return r
 }
 
+// GetAppPortId returns the appPortId set with AppPortId, or nil if it was not set.
+func (r ApiGetIdentityDataRequest) GetAppPortId() *models.AppPortId {
+	return r.appPortId
+}
+
 // Validator for conditional requests, as described in RFC 9110, 13.1.2
 func (r ApiGetIdentityDataRequest) IfNoneMatch(ifNoneMatch string) ApiGetIdentityDataRequest {
 	r.ifNoneMatch = &ifNoneMatch
 	return r
 }
 
+// GetIfNoneMatch returns the ifNoneMatch set with IfNoneMatch, or nil if it was not set.
+func (r ApiGetIdentityDataRequest) GetIfNoneMatch() *string {
+	return r.ifNoneMatch
+}
+
 // Validator for conditional requests, as described in RFC 9110, 13.1.3
 func (r ApiGetIdentityDataRequest) IfModifiedSince(ifModifiedSince string) ApiGetIdentityDataRequest {
 	r.ifModifiedSince = &ifModifiedSince
 	return r
+}
+
+// GetIfModifiedSince returns the ifModifiedSince set with IfModifiedSince, or nil if it was not set.
+func (r ApiGetIdentityDataRequest) GetIfModifiedSince() *string {
+	return r.ifModifiedSince
 }
 
 func (r ApiGetIdentityDataRequest) Execute() (*models.IdentityData, *http.Response, error) {

@@ -29,10 +29,9 @@ var _ openapi.MappedNullable = &EcRestriction{}
 
 // EcRestriction struct for EcRestriction
 type EcRestriction struct {
-	AfInstanceId string `json:"afInstanceId" yaml:"afInstanceId"`
-	// Integer where the allowed values correspond to the value range of an unsigned 64-bit integer.
-	ReferenceId int32        `json:"referenceId" yaml:"referenceId"`
-	PlmnEcInfos []PlmnEcInfo `json:"plmnEcInfos,omitempty" yaml:"plmnEcInfos,omitempty"`
+	AfInstanceId string       `json:"afInstanceId" yaml:"afInstanceId"`
+	ReferenceId  uint64       `json:"referenceId" yaml:"referenceId"`
+	PlmnEcInfos  []PlmnEcInfo `json:"plmnEcInfos,omitempty" yaml:"plmnEcInfos,omitempty"`
 	// String uniquely identifying MTC provider information.
 	MtcProviderInformation *string `json:"mtcProviderInformation,omitempty" yaml:"mtcProviderInformation,omitempty"`
 }
@@ -41,7 +40,7 @@ type EcRestriction struct {
 // This constructor will assign default values to properties that have it defined,
 // and makes sure properties required by API are set, but the set of arguments
 // will change when the set of required properties is changed
-func NewEcRestriction(afInstanceId string, referenceId int32) *EcRestriction {
+func NewEcRestriction(afInstanceId string, referenceId uint64) *EcRestriction {
 	this := EcRestriction{}
 	this.AfInstanceId = afInstanceId
 	this.ReferenceId = referenceId
@@ -81,9 +80,9 @@ func (o *EcRestriction) SetAfInstanceId(v string) {
 }
 
 // GetReferenceId returns the ReferenceId field value
-func (o *EcRestriction) GetReferenceId() int32 {
+func (o *EcRestriction) GetReferenceId() uint64 {
 	if o == nil {
-		var ret int32
+		var ret uint64
 		return ret
 	}
 
@@ -92,7 +91,7 @@ func (o *EcRestriction) GetReferenceId() int32 {
 
 // GetReferenceIdOk returns a tuple with the ReferenceId field value
 // and a boolean to check if the value has been set.
-func (o *EcRestriction) GetReferenceIdOk() (*int32, bool) {
+func (o *EcRestriction) GetReferenceIdOk() (*uint64, bool) {
 	if o == nil {
 		return nil, false
 	}
@@ -100,7 +99,7 @@ func (o *EcRestriction) GetReferenceIdOk() (*int32, bool) {
 }
 
 // SetReferenceId sets field value
-func (o *EcRestriction) SetReferenceId(v int32) {
+func (o *EcRestriction) SetReferenceId(v uint64) {
 	o.ReferenceId = v
 }
 

@@ -42,7 +42,7 @@ type Class5MBSSubscriptionDataDocumentAPI interface {
 	Query5mbsData(ctx context.Context, ueId string) ApiQuery5mbsDataRequest
 
 	// Query5mbsDataExecute executes the request
-	//   @return MbsSubscriptionData1
+	//   @return MbsSubscriptionData
 	Query5mbsDataExecute(r ApiQuery5mbsDataRequest) (*models.MbsSubscriptionData, *http.Response, error)
 }
 
@@ -64,16 +64,31 @@ func (r ApiQuery5mbsDataRequest) SupportedFeatures(supportedFeatures string) Api
 	return r
 }
 
+// GetSupportedFeatures returns the supportedFeatures set with SupportedFeatures, or nil if it was not set.
+func (r ApiQuery5mbsDataRequest) GetSupportedFeatures() *string {
+	return r.supportedFeatures
+}
+
 // Validator for conditional requests, as described in RFC 9110, 13.1.2
 func (r ApiQuery5mbsDataRequest) IfNoneMatch(ifNoneMatch string) ApiQuery5mbsDataRequest {
 	r.ifNoneMatch = &ifNoneMatch
 	return r
 }
 
+// GetIfNoneMatch returns the ifNoneMatch set with IfNoneMatch, or nil if it was not set.
+func (r ApiQuery5mbsDataRequest) GetIfNoneMatch() *string {
+	return r.ifNoneMatch
+}
+
 // Validator for conditional requests, as described in RFC 9110, 13.1.3
 func (r ApiQuery5mbsDataRequest) IfModifiedSince(ifModifiedSince string) ApiQuery5mbsDataRequest {
 	r.ifModifiedSince = &ifModifiedSince
 	return r
+}
+
+// GetIfModifiedSince returns the ifModifiedSince set with IfModifiedSince, or nil if it was not set.
+func (r ApiQuery5mbsDataRequest) GetIfModifiedSince() *string {
+	return r.ifModifiedSince
 }
 
 func (r ApiQuery5mbsDataRequest) Execute() (*models.MbsSubscriptionData, *http.Response, error) {
@@ -97,7 +112,7 @@ func (a *Class5MBSSubscriptionDataDocumentAPIService) Query5mbsData(ctx context.
 
 // Execute executes the request
 //
-//	@return MbsSubscriptionData1
+//	@return MbsSubscriptionData
 func (a *Class5MBSSubscriptionDataDocumentAPIService) Query5mbsDataExecute(r ApiQuery5mbsDataRequest) (*models.MbsSubscriptionData, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodGet

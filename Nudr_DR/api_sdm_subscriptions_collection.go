@@ -74,6 +74,11 @@ func (r ApiCreateSdmSubscriptionsRequest) SdmSubscription(sdmSubscription models
 	return r
 }
 
+// GetSdmSubscription returns the sdmSubscription set with SdmSubscription, or nil if it was not set.
+func (r ApiCreateSdmSubscriptionsRequest) GetSdmSubscription() *models.SdmSubscription {
+	return r.sdmSubscription
+}
+
 func (r ApiCreateSdmSubscriptionsRequest) Execute() (*models.SdmSubscription, *http.Response, error) {
 	return r.ApiService.CreateSdmSubscriptionsExecute(r)
 }
@@ -306,6 +311,11 @@ type ApiQuerysdmsubscriptionsRequest struct {
 func (r ApiQuerysdmsubscriptionsRequest) SupportedFeatures(supportedFeatures string) ApiQuerysdmsubscriptionsRequest {
 	r.supportedFeatures = &supportedFeatures
 	return r
+}
+
+// GetSupportedFeatures returns the supportedFeatures set with SupportedFeatures, or nil if it was not set.
+func (r ApiQuerysdmsubscriptionsRequest) GetSupportedFeatures() *string {
+	return r.supportedFeatures
 }
 
 func (r ApiQuerysdmsubscriptionsRequest) Execute() ([]models.SdmSubscription, *http.Response, error) {

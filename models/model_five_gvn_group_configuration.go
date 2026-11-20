@@ -31,11 +31,10 @@ var _ openapi.MappedNullable = &FiveGVnGroupConfiguration{}
 type FiveGVnGroupConfiguration struct {
 	Var5gVnGroupData *FiveGVnGroupData `json:"5gVnGroupData,omitempty" yaml:"5gVnGroupData,omitempty"`
 	Members          []string          `json:"members,omitempty" yaml:"members,omitempty"`
-	// Integer where the allowed values correspond to the value range of an unsigned 64-bit integer.
-	ReferenceId  *int32  `json:"referenceId,omitempty" yaml:"referenceId,omitempty"`
-	AfInstanceId *string `json:"afInstanceId,omitempty" yaml:"afInstanceId,omitempty"`
+	ReferenceId      *uint64           `json:"referenceId,omitempty" yaml:"referenceId,omitempty"`
+	AfInstanceId     *string           `json:"afInstanceId,omitempty" yaml:"afInstanceId,omitempty"`
 	// String identifying a group of devices network internal globally unique ID which identifies a set of IMSIs, as specified in clause 19.9 of 3GPP TS 23.003.
-	InternalGroupIdentifier *string `json:"internalGroupIdentifier,omitempty" yaml:"internalGroupIdentifier,omitempty" validate:"regexp=^[A-Fa-f0-9]{8}-[0-9]{3}-[0-9]{2,3}-([A-Fa-f0-9][A-Fa-f0-9]){1,10}$"`
+	InternalGroupIdentifier *string `json:"internalGroupIdentifier,omitempty" yaml:"internalGroupIdentifier,omitempty" validate:"regexp=^[A-Fa-f0-9]{8}-[0-9]{3}-[0-9]{2\\,3}-([A-Fa-f0-9][A-Fa-f0-9]){1\\,10}$"`
 	// String uniquely identifying MTC provider information.
 	MtcProviderInformation *string `json:"mtcProviderInformation,omitempty" yaml:"mtcProviderInformation,omitempty"`
 	// Contains the list of 5G VN Group members, each member is identified by GPSI. A map (list of key-value pairs where Gpsi serves as key) of GpsiInfo. The value in each entries of the map shall be an empty JSON object.
@@ -124,9 +123,9 @@ func (o *FiveGVnGroupConfiguration) SetMembers(v []string) {
 }
 
 // GetReferenceId returns the ReferenceId field value if set, zero value otherwise.
-func (o *FiveGVnGroupConfiguration) GetReferenceId() int32 {
+func (o *FiveGVnGroupConfiguration) GetReferenceId() uint64 {
 	if o == nil || openapi.IsNil(o.ReferenceId) {
-		var ret int32
+		var ret uint64
 		return ret
 	}
 	return *o.ReferenceId
@@ -134,7 +133,7 @@ func (o *FiveGVnGroupConfiguration) GetReferenceId() int32 {
 
 // GetReferenceIdOk returns a tuple with the ReferenceId field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *FiveGVnGroupConfiguration) GetReferenceIdOk() (*int32, bool) {
+func (o *FiveGVnGroupConfiguration) GetReferenceIdOk() (*uint64, bool) {
 	if o == nil || openapi.IsNil(o.ReferenceId) {
 		return nil, false
 	}
@@ -150,8 +149,8 @@ func (o *FiveGVnGroupConfiguration) HasReferenceId() bool {
 	return false
 }
 
-// SetReferenceId gets a reference to the given int32 and assigns it to the ReferenceId field.
-func (o *FiveGVnGroupConfiguration) SetReferenceId(v int32) {
+// SetReferenceId gets a reference to the given uint64 and assigns it to the ReferenceId field.
+func (o *FiveGVnGroupConfiguration) SetReferenceId(v uint64) {
 	o.ReferenceId = &v
 }
 

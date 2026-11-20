@@ -30,8 +30,7 @@ var _ openapi.MappedNullable = &AppSpecificExpectedUeBehaviour{}
 // AppSpecificExpectedUeBehaviour struct for AppSpecificExpectedUeBehaviour
 type AppSpecificExpectedUeBehaviour struct {
 	AfInstanceId string `json:"afInstanceId" yaml:"afInstanceId"`
-	// Integer where the allowed values correspond to the value range of an unsigned 64-bit integer.
-	ReferenceId int32 `json:"referenceId" yaml:"referenceId"`
+	ReferenceId  uint64 `json:"referenceId" yaml:"referenceId"`
 	// A map(list of key-value pairs) where a valid JSON pointer serves as key
 	AppSpecificExpectedUeBehaviourData map[string]*AppSpecificExpectedUeBehaviourData `json:"appSpecificExpectedUeBehaviourData" yaml:"appSpecificExpectedUeBehaviourData"`
 }
@@ -40,7 +39,7 @@ type AppSpecificExpectedUeBehaviour struct {
 // This constructor will assign default values to properties that have it defined,
 // and makes sure properties required by API are set, but the set of arguments
 // will change when the set of required properties is changed
-func NewAppSpecificExpectedUeBehaviour(afInstanceId string, referenceId int32, appSpecificExpectedUeBehaviourData map[string]*AppSpecificExpectedUeBehaviourData) *AppSpecificExpectedUeBehaviour {
+func NewAppSpecificExpectedUeBehaviour(afInstanceId string, referenceId uint64, appSpecificExpectedUeBehaviourData map[string]*AppSpecificExpectedUeBehaviourData) *AppSpecificExpectedUeBehaviour {
 	this := AppSpecificExpectedUeBehaviour{}
 	this.AfInstanceId = afInstanceId
 	this.ReferenceId = referenceId
@@ -81,9 +80,9 @@ func (o *AppSpecificExpectedUeBehaviour) SetAfInstanceId(v string) {
 }
 
 // GetReferenceId returns the ReferenceId field value
-func (o *AppSpecificExpectedUeBehaviour) GetReferenceId() int32 {
+func (o *AppSpecificExpectedUeBehaviour) GetReferenceId() uint64 {
 	if o == nil {
-		var ret int32
+		var ret uint64
 		return ret
 	}
 
@@ -92,7 +91,7 @@ func (o *AppSpecificExpectedUeBehaviour) GetReferenceId() int32 {
 
 // GetReferenceIdOk returns a tuple with the ReferenceId field value
 // and a boolean to check if the value has been set.
-func (o *AppSpecificExpectedUeBehaviour) GetReferenceIdOk() (*int32, bool) {
+func (o *AppSpecificExpectedUeBehaviour) GetReferenceIdOk() (*uint64, bool) {
 	if o == nil {
 		return nil, false
 	}
@@ -100,7 +99,7 @@ func (o *AppSpecificExpectedUeBehaviour) GetReferenceIdOk() (*int32, bool) {
 }
 
 // SetReferenceId sets field value
-func (o *AppSpecificExpectedUeBehaviour) SetReferenceId(v int32) {
+func (o *AppSpecificExpectedUeBehaviour) SetReferenceId(v uint64) {
 	o.ReferenceId = v
 }
 
