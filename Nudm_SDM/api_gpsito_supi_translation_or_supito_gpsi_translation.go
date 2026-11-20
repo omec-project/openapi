@@ -69,10 +69,20 @@ func (r ApiGetSupiOrGpsiRequest) SupportedFeatures(supportedFeatures string) Api
 	return r
 }
 
+// GetSupportedFeatures returns the supportedFeatures set with SupportedFeatures, or nil if it was not set.
+func (r ApiGetSupiOrGpsiRequest) GetSupportedFeatures() *string {
+	return r.supportedFeatures
+}
+
 // AF identifier
 func (r ApiGetSupiOrGpsiRequest) AfId(afId string) ApiGetSupiOrGpsiRequest {
 	r.afId = &afId
 	return r
+}
+
+// GetAfId returns the afId set with AfId, or nil if it was not set.
+func (r ApiGetSupiOrGpsiRequest) GetAfId() *string {
+	return r.afId
 }
 
 // Application port identifier
@@ -81,10 +91,20 @@ func (r ApiGetSupiOrGpsiRequest) AppPortId(appPortId models.AppPortId) ApiGetSup
 	return r
 }
 
+// GetAppPortId returns the appPortId set with AppPortId, or nil if it was not set.
+func (r ApiGetSupiOrGpsiRequest) GetAppPortId() *models.AppPortId {
+	return r.appPortId
+}
+
 // AF Service Identifier
 func (r ApiGetSupiOrGpsiRequest) AfServiceId(afServiceId string) ApiGetSupiOrGpsiRequest {
 	r.afServiceId = &afServiceId
 	return r
+}
+
+// GetAfServiceId returns the afServiceId set with AfServiceId, or nil if it was not set.
+func (r ApiGetSupiOrGpsiRequest) GetAfServiceId() *string {
+	return r.afServiceId
 }
 
 // MTC Provider Information
@@ -93,10 +113,20 @@ func (r ApiGetSupiOrGpsiRequest) MtcProviderInfo(mtcProviderInfo string) ApiGetS
 	return r
 }
 
+// GetMtcProviderInfo returns the mtcProviderInfo set with MtcProviderInfo, or nil if it was not set.
+func (r ApiGetSupiOrGpsiRequest) GetMtcProviderInfo() *string {
+	return r.mtcProviderInfo
+}
+
 // Requested GPSI Type
 func (r ApiGetSupiOrGpsiRequest) RequestedGpsiType(requestedGpsiType models.GpsiType) ApiGetSupiOrGpsiRequest {
 	r.requestedGpsiType = &requestedGpsiType
 	return r
+}
+
+// GetRequestedGpsiType returns the requestedGpsiType set with RequestedGpsiType, or nil if it was not set.
+func (r ApiGetSupiOrGpsiRequest) GetRequestedGpsiType() *models.GpsiType {
+	return r.requestedGpsiType
 }
 
 // Validator for conditional requests, as described in RFC 9110, 3.2
@@ -105,10 +135,20 @@ func (r ApiGetSupiOrGpsiRequest) IfNoneMatch(ifNoneMatch string) ApiGetSupiOrGps
 	return r
 }
 
+// GetIfNoneMatch returns the ifNoneMatch set with IfNoneMatch, or nil if it was not set.
+func (r ApiGetSupiOrGpsiRequest) GetIfNoneMatch() *string {
+	return r.ifNoneMatch
+}
+
 // Validator for conditional requests, as described in RFC 9110, 3.3
 func (r ApiGetSupiOrGpsiRequest) IfModifiedSince(ifModifiedSince string) ApiGetSupiOrGpsiRequest {
 	r.ifModifiedSince = &ifModifiedSince
 	return r
+}
+
+// GetIfModifiedSince returns the ifModifiedSince set with IfModifiedSince, or nil if it was not set.
+func (r ApiGetSupiOrGpsiRequest) GetIfModifiedSince() *string {
+	return r.ifModifiedSince
 }
 
 func (r ApiGetSupiOrGpsiRequest) Execute() (*models.IdTranslationResult, *http.Response, error) {

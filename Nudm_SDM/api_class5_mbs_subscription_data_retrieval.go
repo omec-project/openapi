@@ -64,16 +64,31 @@ func (r ApiGetMbsDataRequest) SupportedFeatures(supportedFeatures string) ApiGet
 	return r
 }
 
+// GetSupportedFeatures returns the supportedFeatures set with SupportedFeatures, or nil if it was not set.
+func (r ApiGetMbsDataRequest) GetSupportedFeatures() *string {
+	return r.supportedFeatures
+}
+
 // Validator for conditional requests, as described in RFC 9110, 3.2
 func (r ApiGetMbsDataRequest) IfNoneMatch(ifNoneMatch string) ApiGetMbsDataRequest {
 	r.ifNoneMatch = &ifNoneMatch
 	return r
 }
 
+// GetIfNoneMatch returns the ifNoneMatch set with IfNoneMatch, or nil if it was not set.
+func (r ApiGetMbsDataRequest) GetIfNoneMatch() *string {
+	return r.ifNoneMatch
+}
+
 // Validator for conditional requests, as described in RFC 9110, 3.3
 func (r ApiGetMbsDataRequest) IfModifiedSince(ifModifiedSince string) ApiGetMbsDataRequest {
 	r.ifModifiedSince = &ifModifiedSince
 	return r
+}
+
+// GetIfModifiedSince returns the ifModifiedSince set with IfModifiedSince, or nil if it was not set.
+func (r ApiGetMbsDataRequest) GetIfModifiedSince() *string {
+	return r.ifModifiedSince
 }
 
 func (r ApiGetMbsDataRequest) Execute() (*models.MbsSubscriptionData, *http.Response, error) {

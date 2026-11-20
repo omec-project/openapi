@@ -64,16 +64,31 @@ func (r ApiGetLcsSubscriptionDataRequest) SupportedFeatures(supportedFeatures st
 	return r
 }
 
+// GetSupportedFeatures returns the supportedFeatures set with SupportedFeatures, or nil if it was not set.
+func (r ApiGetLcsSubscriptionDataRequest) GetSupportedFeatures() *string {
+	return r.supportedFeatures
+}
+
 // Validator for conditional requests, as described in RFC 9110, 3.2
 func (r ApiGetLcsSubscriptionDataRequest) IfNoneMatch(ifNoneMatch string) ApiGetLcsSubscriptionDataRequest {
 	r.ifNoneMatch = &ifNoneMatch
 	return r
 }
 
+// GetIfNoneMatch returns the ifNoneMatch set with IfNoneMatch, or nil if it was not set.
+func (r ApiGetLcsSubscriptionDataRequest) GetIfNoneMatch() *string {
+	return r.ifNoneMatch
+}
+
 // Validator for conditional requests, as described in RFC 9110, 3.3
 func (r ApiGetLcsSubscriptionDataRequest) IfModifiedSince(ifModifiedSince string) ApiGetLcsSubscriptionDataRequest {
 	r.ifModifiedSince = &ifModifiedSince
 	return r
+}
+
+// GetIfModifiedSince returns the ifModifiedSince set with IfModifiedSince, or nil if it was not set.
+func (r ApiGetLcsSubscriptionDataRequest) GetIfModifiedSince() *string {
+	return r.ifModifiedSince
 }
 
 func (r ApiGetLcsSubscriptionDataRequest) Execute() (*models.LcsSubscriptionData, *http.Response, error) {

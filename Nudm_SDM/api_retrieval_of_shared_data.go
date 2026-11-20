@@ -63,11 +63,21 @@ func (r ApiGetSharedDataRequest) SharedDataIds(sharedDataIds []string) ApiGetSha
 	return r
 }
 
+// GetSharedDataIds returns the sharedDataIds set with SharedDataIds, or nil if it was not set.
+func (r ApiGetSharedDataRequest) GetSharedDataIds() *[]string {
+	return r.sharedDataIds
+}
+
 // Supported Features; this query parameter should not be used
 // Deprecated
 func (r ApiGetSharedDataRequest) SupportedFeatures(supportedFeatures string) ApiGetSharedDataRequest {
 	r.supportedFeatures = &supportedFeatures
 	return r
+}
+
+// GetSupportedFeatures returns the supportedFeatures set with SupportedFeatures, or nil if it was not set.
+func (r ApiGetSharedDataRequest) GetSupportedFeatures() *string {
+	return r.supportedFeatures
 }
 
 // Supported Features
@@ -76,16 +86,31 @@ func (r ApiGetSharedDataRequest) SupportedFeatures2(supportedFeatures2 string) A
 	return r
 }
 
+// GetSupportedFeatures2 returns the supportedFeatures2 set with SupportedFeatures2, or nil if it was not set.
+func (r ApiGetSharedDataRequest) GetSupportedFeatures2() *string {
+	return r.supportedFeatures2
+}
+
 // Validator for conditional requests, as described in RFC 9110, 3.2
 func (r ApiGetSharedDataRequest) IfNoneMatch(ifNoneMatch string) ApiGetSharedDataRequest {
 	r.ifNoneMatch = &ifNoneMatch
 	return r
 }
 
+// GetIfNoneMatch returns the ifNoneMatch set with IfNoneMatch, or nil if it was not set.
+func (r ApiGetSharedDataRequest) GetIfNoneMatch() *string {
+	return r.ifNoneMatch
+}
+
 // Validator for conditional requests, as described in RFC 9110, 3.3
 func (r ApiGetSharedDataRequest) IfModifiedSince(ifModifiedSince string) ApiGetSharedDataRequest {
 	r.ifModifiedSince = &ifModifiedSince
 	return r
+}
+
+// GetIfModifiedSince returns the ifModifiedSince set with IfModifiedSince, or nil if it was not set.
+func (r ApiGetSharedDataRequest) GetIfModifiedSince() *string {
+	return r.ifModifiedSince
 }
 
 func (r ApiGetSharedDataRequest) Execute() ([]models.SharedDataUdm, *http.Response, error) {

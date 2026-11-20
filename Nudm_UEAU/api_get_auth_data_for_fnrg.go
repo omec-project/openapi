@@ -66,10 +66,20 @@ func (r ApiGetRgAuthDataRequest) AuthenticatedInd(authenticatedInd bool) ApiGetR
 	return r
 }
 
+// GetAuthenticatedInd returns the authenticatedInd set with AuthenticatedInd, or nil if it was not set.
+func (r ApiGetRgAuthDataRequest) GetAuthenticatedInd() *bool {
+	return r.authenticatedInd
+}
+
 // Supported Features
 func (r ApiGetRgAuthDataRequest) SupportedFeatures(supportedFeatures string) ApiGetRgAuthDataRequest {
 	r.supportedFeatures = &supportedFeatures
 	return r
+}
+
+// GetSupportedFeatures returns the supportedFeatures set with SupportedFeatures, or nil if it was not set.
+func (r ApiGetRgAuthDataRequest) GetSupportedFeatures() *string {
+	return r.supportedFeatures
 }
 
 // serving PLMN ID
@@ -78,16 +88,31 @@ func (r ApiGetRgAuthDataRequest) PlmnId(plmnId models.PlmnId) ApiGetRgAuthDataRe
 	return r
 }
 
+// GetPlmnId returns the plmnId set with PlmnId, or nil if it was not set.
+func (r ApiGetRgAuthDataRequest) GetPlmnId() *models.PlmnId {
+	return r.plmnId
+}
+
 // Validator for conditional requests, as described in RFC 9110, 3.2
 func (r ApiGetRgAuthDataRequest) IfNoneMatch(ifNoneMatch string) ApiGetRgAuthDataRequest {
 	r.ifNoneMatch = &ifNoneMatch
 	return r
 }
 
+// GetIfNoneMatch returns the ifNoneMatch set with IfNoneMatch, or nil if it was not set.
+func (r ApiGetRgAuthDataRequest) GetIfNoneMatch() *string {
+	return r.ifNoneMatch
+}
+
 // Validator for conditional requests, as described in RFC 9110, 3.3
 func (r ApiGetRgAuthDataRequest) IfModifiedSince(ifModifiedSince string) ApiGetRgAuthDataRequest {
 	r.ifModifiedSince = &ifModifiedSince
 	return r
+}
+
+// GetIfModifiedSince returns the ifModifiedSince set with IfModifiedSince, or nil if it was not set.
+func (r ApiGetRgAuthDataRequest) GetIfModifiedSince() *string {
+	return r.ifModifiedSince
 }
 
 func (r ApiGetRgAuthDataRequest) Execute() (*models.RgAuthCtxUdm, *http.Response, error) {

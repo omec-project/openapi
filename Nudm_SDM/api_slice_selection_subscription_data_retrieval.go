@@ -66,10 +66,20 @@ func (r ApiGetNSSAIRequest) SupportedFeatures(supportedFeatures string) ApiGetNS
 	return r
 }
 
+// GetSupportedFeatures returns the supportedFeatures set with SupportedFeatures, or nil if it was not set.
+func (r ApiGetNSSAIRequest) GetSupportedFeatures() *string {
+	return r.supportedFeatures
+}
+
 // serving PLMN ID
 func (r ApiGetNSSAIRequest) PlmnId(plmnId models.PlmnId) ApiGetNSSAIRequest {
 	r.plmnId = &plmnId
 	return r
+}
+
+// GetPlmnId returns the plmnId set with PlmnId, or nil if it was not set.
+func (r ApiGetNSSAIRequest) GetPlmnId() *models.PlmnId {
+	return r.plmnId
 }
 
 // Indication whether Disaster Roaming service is applied or not
@@ -78,16 +88,31 @@ func (r ApiGetNSSAIRequest) DisasterRoamingInd(disasterRoamingInd bool) ApiGetNS
 	return r
 }
 
+// GetDisasterRoamingInd returns the disasterRoamingInd set with DisasterRoamingInd, or nil if it was not set.
+func (r ApiGetNSSAIRequest) GetDisasterRoamingInd() *bool {
+	return r.disasterRoamingInd
+}
+
 // Validator for conditional requests, as described in RFC 9110, 3.2
 func (r ApiGetNSSAIRequest) IfNoneMatch(ifNoneMatch string) ApiGetNSSAIRequest {
 	r.ifNoneMatch = &ifNoneMatch
 	return r
 }
 
+// GetIfNoneMatch returns the ifNoneMatch set with IfNoneMatch, or nil if it was not set.
+func (r ApiGetNSSAIRequest) GetIfNoneMatch() *string {
+	return r.ifNoneMatch
+}
+
 // Validator for conditional requests, as described in RFC 9110, 3.3
 func (r ApiGetNSSAIRequest) IfModifiedSince(ifModifiedSince string) ApiGetNSSAIRequest {
 	r.ifModifiedSince = &ifModifiedSince
 	return r
+}
+
+// GetIfModifiedSince returns the ifModifiedSince set with IfModifiedSince, or nil if it was not set.
+func (r ApiGetNSSAIRequest) GetIfModifiedSince() *string {
+	return r.ifModifiedSince
 }
 
 func (r ApiGetNSSAIRequest) Execute() (*models.Nssai, *http.Response, error) {

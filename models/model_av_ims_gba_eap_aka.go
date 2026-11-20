@@ -31,7 +31,7 @@ var _ openapi.MappedNullable = &AvImsGbaEapAka{}
 type AvImsGbaEapAka struct {
 	AvType HssAvType `json:"avType" yaml:"avType"`
 	Rand   string    `json:"rand" yaml:"rand" validate:"regexp=^[A-Fa-f0-9]{32}$"`
-	Xres   string    `json:"xres" yaml:"xres" validate:"regexp=^[A-Fa-f0-9]{8,32}$"`
+	Xres   string    `json:"xres" yaml:"xres" validate:"regexp=^[A-Fa-f0-9]{8\\,32}$"`
 	Autn   string    `json:"autn" yaml:"autn" validate:"regexp=^[A-Fa-f0-9]{32}$"`
 	Ck     string    `json:"ck" yaml:"ck" validate:"regexp=^[A-Fa-f0-9]{32}$"`
 	Ik     string    `json:"ik" yaml:"ik" validate:"regexp=^[A-Fa-f0-9]{32}$"`

@@ -64,16 +64,31 @@ func (r ApiGetLcsMoDataRequest) SupportedFeatures(supportedFeatures string) ApiG
 	return r
 }
 
+// GetSupportedFeatures returns the supportedFeatures set with SupportedFeatures, or nil if it was not set.
+func (r ApiGetLcsMoDataRequest) GetSupportedFeatures() *string {
+	return r.supportedFeatures
+}
+
 // Validator for conditional requests, as described in RFC 9110, 3.2
 func (r ApiGetLcsMoDataRequest) IfNoneMatch(ifNoneMatch string) ApiGetLcsMoDataRequest {
 	r.ifNoneMatch = &ifNoneMatch
 	return r
 }
 
+// GetIfNoneMatch returns the ifNoneMatch set with IfNoneMatch, or nil if it was not set.
+func (r ApiGetLcsMoDataRequest) GetIfNoneMatch() *string {
+	return r.ifNoneMatch
+}
+
 // Validator for conditional requests, as described in RFC 9110, 3.3
 func (r ApiGetLcsMoDataRequest) IfModifiedSince(ifModifiedSince string) ApiGetLcsMoDataRequest {
 	r.ifModifiedSince = &ifModifiedSince
 	return r
+}
+
+// GetIfModifiedSince returns the ifModifiedSince set with IfModifiedSince, or nil if it was not set.
+func (r ApiGetLcsMoDataRequest) GetIfModifiedSince() *string {
+	return r.ifModifiedSince
 }
 
 func (r ApiGetLcsMoDataRequest) Execute() (*models.LcsMoData, *http.Response, error) {

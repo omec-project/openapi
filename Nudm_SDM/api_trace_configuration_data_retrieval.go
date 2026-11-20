@@ -65,10 +65,20 @@ func (r ApiGetTraceConfigDataRequest) SupportedFeatures(supportedFeatures string
 	return r
 }
 
+// GetSupportedFeatures returns the supportedFeatures set with SupportedFeatures, or nil if it was not set.
+func (r ApiGetTraceConfigDataRequest) GetSupportedFeatures() *string {
+	return r.supportedFeatures
+}
+
 // serving PLMN ID
 func (r ApiGetTraceConfigDataRequest) PlmnId(plmnId models.PlmnId) ApiGetTraceConfigDataRequest {
 	r.plmnId = &plmnId
 	return r
+}
+
+// GetPlmnId returns the plmnId set with PlmnId, or nil if it was not set.
+func (r ApiGetTraceConfigDataRequest) GetPlmnId() *models.PlmnId {
+	return r.plmnId
 }
 
 // Validator for conditional requests, as described in RFC 9110, 3.2
@@ -77,10 +87,20 @@ func (r ApiGetTraceConfigDataRequest) IfNoneMatch(ifNoneMatch string) ApiGetTrac
 	return r
 }
 
+// GetIfNoneMatch returns the ifNoneMatch set with IfNoneMatch, or nil if it was not set.
+func (r ApiGetTraceConfigDataRequest) GetIfNoneMatch() *string {
+	return r.ifNoneMatch
+}
+
 // Validator for conditional requests, as described in RFC 9110, 3.3
 func (r ApiGetTraceConfigDataRequest) IfModifiedSince(ifModifiedSince string) ApiGetTraceConfigDataRequest {
 	r.ifModifiedSince = &ifModifiedSince
 	return r
+}
+
+// GetIfModifiedSince returns the ifModifiedSince set with IfModifiedSince, or nil if it was not set.
+func (r ApiGetTraceConfigDataRequest) GetIfModifiedSince() *string {
+	return r.ifModifiedSince
 }
 
 func (r ApiGetTraceConfigDataRequest) Execute() (*models.TraceDataResponse, *http.Response, error) {

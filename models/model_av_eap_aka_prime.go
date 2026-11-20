@@ -31,7 +31,7 @@ var _ openapi.MappedNullable = &AvEapAkaPrime{}
 type AvEapAkaPrime struct {
 	AvType  AvType `json:"avType" yaml:"avType"`
 	Rand    string `json:"rand" yaml:"rand" validate:"regexp=^[A-Fa-f0-9]{32}$"`
-	Xres    string `json:"xres" yaml:"xres" validate:"regexp=^[A-Fa-f0-9]{8,32}$"`
+	Xres    string `json:"xres" yaml:"xres" validate:"regexp=^[A-Fa-f0-9]{8\\,32}$"`
 	Autn    string `json:"autn" yaml:"autn" validate:"regexp=^[A-Fa-f0-9]{32}$"`
 	CkPrime string `json:"ckPrime" yaml:"ckPrime" validate:"regexp=^[A-Fa-f0-9]{32}$"`
 	IkPrime string `json:"ikPrime" yaml:"ikPrime" validate:"regexp=^[A-Fa-f0-9]{32}$"`

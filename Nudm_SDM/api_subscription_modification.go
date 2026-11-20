@@ -77,10 +77,20 @@ func (r ApiModifyRequest) SdmSubsModification(sdmSubsModification models.SdmSubs
 	return r
 }
 
+// GetSdmSubsModification returns the sdmSubsModification set with SdmSubsModification, or nil if it was not set.
+func (r ApiModifyRequest) GetSdmSubsModification() *models.SdmSubsModification {
+	return r.sdmSubsModification
+}
+
 // Features required to be supported by the target NF
 func (r ApiModifyRequest) SupportedFeatures(supportedFeatures string) ApiModifyRequest {
 	r.supportedFeatures = &supportedFeatures
 	return r
+}
+
+// GetSupportedFeatures returns the supportedFeatures set with SupportedFeatures, or nil if it was not set.
+func (r ApiModifyRequest) GetSupportedFeatures() *string {
+	return r.supportedFeatures
 }
 
 func (r ApiModifyRequest) Execute() (*models.Modify200Response, *http.Response, error) {
@@ -323,10 +333,20 @@ func (r ApiModifySharedDataSubsRequest) SdmSubsModification(sdmSubsModification 
 	return r
 }
 
+// GetSdmSubsModification returns the sdmSubsModification set with SdmSubsModification, or nil if it was not set.
+func (r ApiModifySharedDataSubsRequest) GetSdmSubsModification() *models.SdmSubsModification {
+	return r.sdmSubsModification
+}
+
 // Features required to be supported by the target NF
 func (r ApiModifySharedDataSubsRequest) SupportedFeatures(supportedFeatures string) ApiModifySharedDataSubsRequest {
 	r.supportedFeatures = &supportedFeatures
 	return r
+}
+
+// GetSupportedFeatures returns the supportedFeatures set with SupportedFeatures, or nil if it was not set.
+func (r ApiModifySharedDataSubsRequest) GetSupportedFeatures() *string {
+	return r.supportedFeatures
 }
 
 func (r ApiModifySharedDataSubsRequest) Execute() (*models.Modify200Response, *http.Response, error) {

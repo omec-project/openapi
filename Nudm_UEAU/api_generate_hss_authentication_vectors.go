@@ -63,6 +63,11 @@ func (r ApiGenerateAvRequest) HssAuthenticationInfoRequest(hssAuthenticationInfo
 	return r
 }
 
+// GetHssAuthenticationInfoRequest returns the hssAuthenticationInfoRequest set with HssAuthenticationInfoRequest, or nil if it was not set.
+func (r ApiGenerateAvRequest) GetHssAuthenticationInfoRequest() *models.HssAuthenticationInfoRequest {
+	return r.hssAuthenticationInfoRequest
+}
+
 func (r ApiGenerateAvRequest) Execute() (*models.HssAuthenticationInfoResult, *http.Response, error) {
 	return r.ApiService.GenerateAvExecute(r)
 }

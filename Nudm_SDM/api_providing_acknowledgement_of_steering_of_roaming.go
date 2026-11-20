@@ -60,6 +60,11 @@ func (r ApiSorAckInfoRequest) AcknowledgeInfo(acknowledgeInfo models.Acknowledge
 	return r
 }
 
+// GetAcknowledgeInfo returns the acknowledgeInfo set with AcknowledgeInfo, or nil if it was not set.
+func (r ApiSorAckInfoRequest) GetAcknowledgeInfo() *models.AcknowledgeInfo {
+	return r.acknowledgeInfo
+}
+
 func (r ApiSorAckInfoRequest) Execute() (*http.Response, error) {
 	return r.ApiService.SorAckInfoExecute(r)
 }

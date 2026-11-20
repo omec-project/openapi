@@ -57,6 +57,11 @@ func (r ApiDataRestorationNotificationRequestBodyDataRestorationCallbackUriPostR
 	return r
 }
 
+// GetDataRestorationNotification returns the dataRestorationNotification set with DataRestorationNotification, or nil if it was not set.
+func (r ApiDataRestorationNotificationRequestBodyDataRestorationCallbackUriPostRequest) GetDataRestorationNotification() *models.DataRestorationNotification {
+	return r.dataRestorationNotification
+}
+
 func (r ApiDataRestorationNotificationRequestBodyDataRestorationCallbackUriPostRequest) Execute() (*http.Response, error) {
 	return r.ApiService.DataRestorationNotificationRequestBodyDataRestorationCallbackUriPostExecute(r)
 }

@@ -60,10 +60,20 @@ func (r ApiGetMultipleIdentifiersRequest) GpsiList(gpsiList []string) ApiGetMult
 	return r
 }
 
+// GetGpsiList returns the gpsiList set with GpsiList, or nil if it was not set.
+func (r ApiGetMultipleIdentifiersRequest) GetGpsiList() *[]string {
+	return r.gpsiList
+}
+
 // Supported Features
 func (r ApiGetMultipleIdentifiersRequest) SupportedFeatures(supportedFeatures string) ApiGetMultipleIdentifiersRequest {
 	r.supportedFeatures = &supportedFeatures
 	return r
+}
+
+// GetSupportedFeatures returns the supportedFeatures set with SupportedFeatures, or nil if it was not set.
+func (r ApiGetMultipleIdentifiersRequest) GetSupportedFeatures() *string {
+	return r.supportedFeatures
 }
 
 func (r ApiGetMultipleIdentifiersRequest) Execute() (*map[string]models.SupiInfo, *http.Response, error) {

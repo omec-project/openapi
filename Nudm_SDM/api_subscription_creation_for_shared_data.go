@@ -58,6 +58,11 @@ func (r ApiSubscribeToSharedDataRequest) SdmSubscription(sdmSubscription models.
 	return r
 }
 
+// GetSdmSubscription returns the sdmSubscription set with SdmSubscription, or nil if it was not set.
+func (r ApiSubscribeToSharedDataRequest) GetSdmSubscription() *models.SdmSubscription {
+	return r.sdmSubscription
+}
+
 func (r ApiSubscribeToSharedDataRequest) Execute() (*models.SdmSubscription, *http.Response, error) {
 	return r.ApiService.SubscribeToSharedDataExecute(r)
 }

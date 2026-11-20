@@ -62,10 +62,20 @@ func (r ApiSubscribeRequest) SdmSubscription(sdmSubscription models.SdmSubscript
 	return r
 }
 
+// GetSdmSubscription returns the sdmSubscription set with SdmSubscription, or nil if it was not set.
+func (r ApiSubscribeRequest) GetSdmSubscription() *models.SdmSubscription {
+	return r.sdmSubscription
+}
+
 // List of IDs identifying shared Data already available at and subscribed by the NF service consumer
 func (r ApiSubscribeRequest) SharedDataIds(sharedDataIds []string) ApiSubscribeRequest {
 	r.sharedDataIds = &sharedDataIds
 	return r
+}
+
+// GetSharedDataIds returns the sharedDataIds set with SharedDataIds, or nil if it was not set.
+func (r ApiSubscribeRequest) GetSharedDataIds() *[]string {
+	return r.sharedDataIds
 }
 
 func (r ApiSubscribeRequest) Execute() (*models.SdmSubscription, *http.Response, error) {

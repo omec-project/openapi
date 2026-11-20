@@ -65,9 +65,19 @@ func (r ApiGetSmsMngtDataRequest) SupportedFeatures(supportedFeatures string) Ap
 	return r
 }
 
+// GetSupportedFeatures returns the supportedFeatures set with SupportedFeatures, or nil if it was not set.
+func (r ApiGetSmsMngtDataRequest) GetSupportedFeatures() *string {
+	return r.supportedFeatures
+}
+
 func (r ApiGetSmsMngtDataRequest) PlmnId(plmnId models.PlmnId) ApiGetSmsMngtDataRequest {
 	r.plmnId = &plmnId
 	return r
+}
+
+// GetPlmnId returns the plmnId set with PlmnId, or nil if it was not set.
+func (r ApiGetSmsMngtDataRequest) GetPlmnId() *models.PlmnId {
+	return r.plmnId
 }
 
 // Validator for conditional requests, as described in RFC 9110, 3.2
@@ -76,10 +86,20 @@ func (r ApiGetSmsMngtDataRequest) IfNoneMatch(ifNoneMatch string) ApiGetSmsMngtD
 	return r
 }
 
+// GetIfNoneMatch returns the ifNoneMatch set with IfNoneMatch, or nil if it was not set.
+func (r ApiGetSmsMngtDataRequest) GetIfNoneMatch() *string {
+	return r.ifNoneMatch
+}
+
 // Validator for conditional requests, as described in RFC 9110, 3.3
 func (r ApiGetSmsMngtDataRequest) IfModifiedSince(ifModifiedSince string) ApiGetSmsMngtDataRequest {
 	r.ifModifiedSince = &ifModifiedSince
 	return r
+}
+
+// GetIfModifiedSince returns the ifModifiedSince set with IfModifiedSince, or nil if it was not set.
+func (r ApiGetSmsMngtDataRequest) GetIfModifiedSince() *string {
+	return r.ifModifiedSince
 }
 
 func (r ApiGetSmsMngtDataRequest) Execute() (*models.SmsManagementSubscriptionData, *http.Response, error) {

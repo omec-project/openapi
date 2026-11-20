@@ -30,7 +30,7 @@ var _ openapi.MappedNullable = &TraceDataResponse{}
 // TraceDataResponse struct for TraceDataResponse
 type TraceDataResponse struct {
 	TraceData         NullableTraceData `json:"traceData" yaml:"traceData,omitempty"`
-	SharedTraceDataId *string           `json:"sharedTraceDataId,omitempty" yaml:"sharedTraceDataId,omitempty" validate:"regexp=^[0-9]{5,6}-.+$"`
+	SharedTraceDataId *string           `json:"sharedTraceDataId,omitempty" yaml:"sharedTraceDataId,omitempty" validate:"regexp=^[0-9]{5\\,6}-.+$"`
 }
 
 // NewTraceDataResponse instantiates a new TraceDataResponse object

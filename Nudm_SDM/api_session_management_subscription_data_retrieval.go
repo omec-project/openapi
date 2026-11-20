@@ -68,9 +68,19 @@ func (r ApiGetSmDataRequest) SupportedFeatures(supportedFeatures string) ApiGetS
 	return r
 }
 
+// GetSupportedFeatures returns the supportedFeatures set with SupportedFeatures, or nil if it was not set.
+func (r ApiGetSmDataRequest) GetSupportedFeatures() *string {
+	return r.supportedFeatures
+}
+
 func (r ApiGetSmDataRequest) SingleNssai(singleNssai models.Snssai) ApiGetSmDataRequest {
 	r.singleNssai = &singleNssai
 	return r
+}
+
+// GetSingleNssai returns the singleNssai set with SingleNssai, or nil if it was not set.
+func (r ApiGetSmDataRequest) GetSingleNssai() *models.Snssai {
+	return r.singleNssai
 }
 
 func (r ApiGetSmDataRequest) Dnn(dnn string) ApiGetSmDataRequest {
@@ -78,9 +88,19 @@ func (r ApiGetSmDataRequest) Dnn(dnn string) ApiGetSmDataRequest {
 	return r
 }
 
+// GetDnn returns the dnn set with Dnn, or nil if it was not set.
+func (r ApiGetSmDataRequest) GetDnn() *string {
+	return r.dnn
+}
+
 func (r ApiGetSmDataRequest) PlmnId(plmnId models.PlmnId) ApiGetSmDataRequest {
 	r.plmnId = &plmnId
 	return r
+}
+
+// GetPlmnId returns the plmnId set with PlmnId, or nil if it was not set.
+func (r ApiGetSmDataRequest) GetPlmnId() *models.PlmnId {
+	return r.plmnId
 }
 
 // Indication whether Disaster Roaming service is applied or not
@@ -89,16 +109,31 @@ func (r ApiGetSmDataRequest) DisasterRoamingInd(disasterRoamingInd bool) ApiGetS
 	return r
 }
 
+// GetDisasterRoamingInd returns the disasterRoamingInd set with DisasterRoamingInd, or nil if it was not set.
+func (r ApiGetSmDataRequest) GetDisasterRoamingInd() *bool {
+	return r.disasterRoamingInd
+}
+
 // Validator for conditional requests, as described in RFC 9110, 3.2
 func (r ApiGetSmDataRequest) IfNoneMatch(ifNoneMatch string) ApiGetSmDataRequest {
 	r.ifNoneMatch = &ifNoneMatch
 	return r
 }
 
+// GetIfNoneMatch returns the ifNoneMatch set with IfNoneMatch, or nil if it was not set.
+func (r ApiGetSmDataRequest) GetIfNoneMatch() *string {
+	return r.ifNoneMatch
+}
+
 // Validator for conditional requests, as described in RFC 9110, 3.3
 func (r ApiGetSmDataRequest) IfModifiedSince(ifModifiedSince string) ApiGetSmDataRequest {
 	r.ifModifiedSince = &ifModifiedSince
 	return r
+}
+
+// GetIfModifiedSince returns the ifModifiedSince set with IfModifiedSince, or nil if it was not set.
+func (r ApiGetSmDataRequest) GetIfModifiedSince() *string {
+	return r.ifModifiedSince
 }
 
 func (r ApiGetSmDataRequest) Execute() (*models.SmSubsData, *http.Response, error) {

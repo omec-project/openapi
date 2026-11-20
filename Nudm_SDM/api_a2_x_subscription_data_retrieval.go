@@ -64,16 +64,31 @@ func (r ApiGetA2xDataRequest) SupportedFeatures(supportedFeatures string) ApiGet
 	return r
 }
 
+// GetSupportedFeatures returns the supportedFeatures set with SupportedFeatures, or nil if it was not set.
+func (r ApiGetA2xDataRequest) GetSupportedFeatures() *string {
+	return r.supportedFeatures
+}
+
 // Validator for conditional requests, as described in RFC 9110, 3.2
 func (r ApiGetA2xDataRequest) IfNoneMatch(ifNoneMatch string) ApiGetA2xDataRequest {
 	r.ifNoneMatch = &ifNoneMatch
 	return r
 }
 
+// GetIfNoneMatch returns the ifNoneMatch set with IfNoneMatch, or nil if it was not set.
+func (r ApiGetA2xDataRequest) GetIfNoneMatch() *string {
+	return r.ifNoneMatch
+}
+
 // Validator for conditional requests, as described in RFC 9110, 3.3
 func (r ApiGetA2xDataRequest) IfModifiedSince(ifModifiedSince string) ApiGetA2xDataRequest {
 	r.ifModifiedSince = &ifModifiedSince
 	return r
+}
+
+// GetIfModifiedSince returns the ifModifiedSince set with IfModifiedSince, or nil if it was not set.
+func (r ApiGetA2xDataRequest) GetIfModifiedSince() *string {
+	return r.ifModifiedSince
 }
 
 func (r ApiGetA2xDataRequest) Execute() (*models.A2xSubscriptionData, *http.Response, error) {

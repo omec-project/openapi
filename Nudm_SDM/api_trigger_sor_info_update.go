@@ -61,6 +61,11 @@ func (r ApiUpdateSORInfoRequest) SorUpdateInfo(sorUpdateInfo models.SorUpdateInf
 	return r
 }
 
+// GetSorUpdateInfo returns the sorUpdateInfo set with SorUpdateInfo, or nil if it was not set.
+func (r ApiUpdateSORInfoRequest) GetSorUpdateInfo() *models.SorUpdateInfo {
+	return r.sorUpdateInfo
+}
+
 func (r ApiUpdateSORInfoRequest) Execute() (*models.SorInfo, *http.Response, error) {
 	return r.ApiService.UpdateSORInfoExecute(r)
 }

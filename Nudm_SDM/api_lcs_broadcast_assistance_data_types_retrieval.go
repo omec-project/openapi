@@ -65,9 +65,19 @@ func (r ApiGetLcsBcaDataRequest) SupportedFeatures(supportedFeatures string) Api
 	return r
 }
 
+// GetSupportedFeatures returns the supportedFeatures set with SupportedFeatures, or nil if it was not set.
+func (r ApiGetLcsBcaDataRequest) GetSupportedFeatures() *string {
+	return r.supportedFeatures
+}
+
 func (r ApiGetLcsBcaDataRequest) PlmnId(plmnId models.PlmnId) ApiGetLcsBcaDataRequest {
 	r.plmnId = &plmnId
 	return r
+}
+
+// GetPlmnId returns the plmnId set with PlmnId, or nil if it was not set.
+func (r ApiGetLcsBcaDataRequest) GetPlmnId() *models.PlmnId {
+	return r.plmnId
 }
 
 // Validator for conditional requests, as described in RFC 9110, 3.2
@@ -76,10 +86,20 @@ func (r ApiGetLcsBcaDataRequest) IfNoneMatch(ifNoneMatch string) ApiGetLcsBcaDat
 	return r
 }
 
+// GetIfNoneMatch returns the ifNoneMatch set with IfNoneMatch, or nil if it was not set.
+func (r ApiGetLcsBcaDataRequest) GetIfNoneMatch() *string {
+	return r.ifNoneMatch
+}
+
 // Validator for conditional requests, as described in RFC 9110, 3.3
 func (r ApiGetLcsBcaDataRequest) IfModifiedSince(ifModifiedSince string) ApiGetLcsBcaDataRequest {
 	r.ifModifiedSince = &ifModifiedSince
 	return r
+}
+
+// GetIfModifiedSince returns the ifModifiedSince set with IfModifiedSince, or nil if it was not set.
+func (r ApiGetLcsBcaDataRequest) GetIfModifiedSince() *string {
+	return r.ifModifiedSince
 }
 
 func (r ApiGetLcsBcaDataRequest) Execute() (*models.LcsBroadcastAssistanceTypesData, *http.Response, error) {

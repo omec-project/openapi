@@ -62,6 +62,11 @@ func (r ApiDeleteAuthRequest) AuthEvent(authEvent models.AuthEvent) ApiDeleteAut
 	return r
 }
 
+// GetAuthEvent returns the authEvent set with AuthEvent, or nil if it was not set.
+func (r ApiDeleteAuthRequest) GetAuthEvent() *models.AuthEvent {
+	return r.authEvent
+}
+
 func (r ApiDeleteAuthRequest) Execute() (*http.Response, error) {
 	return r.ApiService.DeleteAuthExecute(r)
 }

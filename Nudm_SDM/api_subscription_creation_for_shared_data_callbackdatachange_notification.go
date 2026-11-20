@@ -57,6 +57,11 @@ func (r ApiDatachangeNotificationRequestBodyCallbackReferencePostRequest) Modifi
 	return r
 }
 
+// GetModificationNotification returns the modificationNotification set with ModificationNotification, or nil if it was not set.
+func (r ApiDatachangeNotificationRequestBodyCallbackReferencePostRequest) GetModificationNotification() *models.ModificationNotification {
+	return r.modificationNotification
+}
+
 func (r ApiDatachangeNotificationRequestBodyCallbackReferencePostRequest) Execute() (*http.Response, error) {
 	return r.ApiService.DatachangeNotificationRequestBodyCallbackReferencePostExecute(r)
 }

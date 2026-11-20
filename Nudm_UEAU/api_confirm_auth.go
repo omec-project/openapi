@@ -61,6 +61,11 @@ func (r ApiConfirmAuthRequest) AuthEvent(authEvent models.AuthEvent) ApiConfirmA
 	return r
 }
 
+// GetAuthEvent returns the authEvent set with AuthEvent, or nil if it was not set.
+func (r ApiConfirmAuthRequest) GetAuthEvent() *models.AuthEvent {
+	return r.authEvent
+}
+
 func (r ApiConfirmAuthRequest) Execute() (*models.AuthEvent, *http.Response, error) {
 	return r.ApiService.ConfirmAuthExecute(r)
 }

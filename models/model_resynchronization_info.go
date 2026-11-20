@@ -27,7 +27,7 @@ import (
 // checks if the ResynchronizationInfo type satisfies the MappedNullable interface at compile time
 var _ openapi.MappedNullable = &ResynchronizationInfo{}
 
-// ResynchronizationInfo struct for ResynchronizationInfo
+// ResynchronizationInfo Contains RAND and AUTS
 type ResynchronizationInfo struct {
 	Rand string `json:"rand" yaml:"rand" validate:"regexp=^[A-Fa-f0-9]{32}$"`
 	Auts string `json:"auts" yaml:"auts" validate:"regexp=^[A-Fa-f0-9]{28}$"`

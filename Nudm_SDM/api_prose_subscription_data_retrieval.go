@@ -64,16 +64,31 @@ func (r ApiGetProseDataRequest) SupportedFeatures(supportedFeatures string) ApiG
 	return r
 }
 
+// GetSupportedFeatures returns the supportedFeatures set with SupportedFeatures, or nil if it was not set.
+func (r ApiGetProseDataRequest) GetSupportedFeatures() *string {
+	return r.supportedFeatures
+}
+
 // Validator for conditional requests, as described in RFC 9110, 3.2
 func (r ApiGetProseDataRequest) IfNoneMatch(ifNoneMatch string) ApiGetProseDataRequest {
 	r.ifNoneMatch = &ifNoneMatch
 	return r
 }
 
+// GetIfNoneMatch returns the ifNoneMatch set with IfNoneMatch, or nil if it was not set.
+func (r ApiGetProseDataRequest) GetIfNoneMatch() *string {
+	return r.ifNoneMatch
+}
+
 // Validator for conditional requests, as described in RFC 9110, 3.3
 func (r ApiGetProseDataRequest) IfModifiedSince(ifModifiedSince string) ApiGetProseDataRequest {
 	r.ifModifiedSince = &ifModifiedSince
 	return r
+}
+
+// GetIfModifiedSince returns the ifModifiedSince set with IfModifiedSince, or nil if it was not set.
+func (r ApiGetProseDataRequest) GetIfModifiedSince() *string {
+	return r.ifModifiedSince
 }
 
 func (r ApiGetProseDataRequest) Execute() (*models.ProseSubscriptionData, *http.Response, error) {

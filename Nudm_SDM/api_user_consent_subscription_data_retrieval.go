@@ -65,10 +65,20 @@ func (r ApiGetUcDataRequest) SupportedFeatures(supportedFeatures string) ApiGetU
 	return r
 }
 
+// GetSupportedFeatures returns the supportedFeatures set with SupportedFeatures, or nil if it was not set.
+func (r ApiGetUcDataRequest) GetSupportedFeatures() *string {
+	return r.supportedFeatures
+}
+
 // User consent purpose
 func (r ApiGetUcDataRequest) UcPurpose(ucPurpose models.UcPurpose) ApiGetUcDataRequest {
 	r.ucPurpose = &ucPurpose
 	return r
+}
+
+// GetUcPurpose returns the ucPurpose set with UcPurpose, or nil if it was not set.
+func (r ApiGetUcDataRequest) GetUcPurpose() *models.UcPurpose {
+	return r.ucPurpose
 }
 
 // Validator for conditional requests, as described in RFC 9110, 3.2
@@ -77,10 +87,20 @@ func (r ApiGetUcDataRequest) IfNoneMatch(ifNoneMatch string) ApiGetUcDataRequest
 	return r
 }
 
+// GetIfNoneMatch returns the ifNoneMatch set with IfNoneMatch, or nil if it was not set.
+func (r ApiGetUcDataRequest) GetIfNoneMatch() *string {
+	return r.ifNoneMatch
+}
+
 // Validator for conditional requests, as described in RFC 9110, 3.3
 func (r ApiGetUcDataRequest) IfModifiedSince(ifModifiedSince string) ApiGetUcDataRequest {
 	r.ifModifiedSince = &ifModifiedSince
 	return r
+}
+
+// GetIfModifiedSince returns the ifModifiedSince set with IfModifiedSince, or nil if it was not set.
+func (r ApiGetUcDataRequest) GetIfModifiedSince() *string {
+	return r.ifModifiedSince
 }
 
 func (r ApiGetUcDataRequest) Execute() (*models.UcSubscriptionData, *http.Response, error) {

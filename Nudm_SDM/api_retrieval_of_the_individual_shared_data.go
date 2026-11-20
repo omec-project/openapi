@@ -64,16 +64,31 @@ func (r ApiGetIndividualSharedDataRequest) SupportedFeatures(supportedFeatures s
 	return r
 }
 
+// GetSupportedFeatures returns the supportedFeatures set with SupportedFeatures, or nil if it was not set.
+func (r ApiGetIndividualSharedDataRequest) GetSupportedFeatures() *string {
+	return r.supportedFeatures
+}
+
 // Validator for conditional requests, as described in RFC 9110, 3.2
 func (r ApiGetIndividualSharedDataRequest) IfNoneMatch(ifNoneMatch string) ApiGetIndividualSharedDataRequest {
 	r.ifNoneMatch = &ifNoneMatch
 	return r
 }
 
+// GetIfNoneMatch returns the ifNoneMatch set with IfNoneMatch, or nil if it was not set.
+func (r ApiGetIndividualSharedDataRequest) GetIfNoneMatch() *string {
+	return r.ifNoneMatch
+}
+
 // Validator for conditional requests, as described in RFC 9110, 3.3
 func (r ApiGetIndividualSharedDataRequest) IfModifiedSince(ifModifiedSince string) ApiGetIndividualSharedDataRequest {
 	r.ifModifiedSince = &ifModifiedSince
 	return r
+}
+
+// GetIfModifiedSince returns the ifModifiedSince set with IfModifiedSince, or nil if it was not set.
+func (r ApiGetIndividualSharedDataRequest) GetIfModifiedSince() *string {
+	return r.ifModifiedSince
 }
 
 func (r ApiGetIndividualSharedDataRequest) Execute() (*models.SharedDataUdm, *http.Response, error) {

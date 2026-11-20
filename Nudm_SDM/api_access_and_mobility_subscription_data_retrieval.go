@@ -68,10 +68,20 @@ func (r ApiGetAmDataRequest) SupportedFeatures(supportedFeatures string) ApiGetA
 	return r
 }
 
+// GetSupportedFeatures returns the supportedFeatures set with SupportedFeatures, or nil if it was not set.
+func (r ApiGetAmDataRequest) GetSupportedFeatures() *string {
+	return r.supportedFeatures
+}
+
 // Serving PLMN ID or SNPN ID
 func (r ApiGetAmDataRequest) PlmnId(plmnId models.PlmnIdNid) ApiGetAmDataRequest {
 	r.plmnId = &plmnId
 	return r
+}
+
+// GetPlmnId returns the plmnId set with PlmnId, or nil if it was not set.
+func (r ApiGetAmDataRequest) GetPlmnId() *models.PlmnIdNid {
+	return r.plmnId
 }
 
 // List of PLMNs adjacent to the UE&#39;s serving PLMN
@@ -80,10 +90,20 @@ func (r ApiGetAmDataRequest) AdjacentPlmns(adjacentPlmns []models.PlmnId) ApiGet
 	return r
 }
 
+// GetAdjacentPlmns returns the adjacentPlmns set with AdjacentPlmns, or nil if it was not set.
+func (r ApiGetAmDataRequest) GetAdjacentPlmns() *[]models.PlmnId {
+	return r.adjacentPlmns
+}
+
 // Indication whether Disaster Roaming service is applied or not
 func (r ApiGetAmDataRequest) DisasterRoamingInd(disasterRoamingInd bool) ApiGetAmDataRequest {
 	r.disasterRoamingInd = &disasterRoamingInd
 	return r
+}
+
+// GetDisasterRoamingInd returns the disasterRoamingInd set with DisasterRoamingInd, or nil if it was not set.
+func (r ApiGetAmDataRequest) GetDisasterRoamingInd() *bool {
+	return r.disasterRoamingInd
 }
 
 // List of IDs identifying shared Access and Mobility Subscription Data already available at the NF service consumer
@@ -92,16 +112,31 @@ func (r ApiGetAmDataRequest) SharedDataIds(sharedDataIds []string) ApiGetAmDataR
 	return r
 }
 
+// GetSharedDataIds returns the sharedDataIds set with SharedDataIds, or nil if it was not set.
+func (r ApiGetAmDataRequest) GetSharedDataIds() *[]string {
+	return r.sharedDataIds
+}
+
 // Validator for conditional requests, as described in RFC 9110, 3.2
 func (r ApiGetAmDataRequest) IfNoneMatch(ifNoneMatch string) ApiGetAmDataRequest {
 	r.ifNoneMatch = &ifNoneMatch
 	return r
 }
 
+// GetIfNoneMatch returns the ifNoneMatch set with IfNoneMatch, or nil if it was not set.
+func (r ApiGetAmDataRequest) GetIfNoneMatch() *string {
+	return r.ifNoneMatch
+}
+
 // Validator for conditional requests, as described in RFC 9110, 3.3
 func (r ApiGetAmDataRequest) IfModifiedSince(ifModifiedSince string) ApiGetAmDataRequest {
 	r.ifModifiedSince = &ifModifiedSince
 	return r
+}
+
+// GetIfModifiedSince returns the ifModifiedSince set with IfModifiedSince, or nil if it was not set.
+func (r ApiGetAmDataRequest) GetIfModifiedSince() *string {
+	return r.ifModifiedSince
 }
 
 func (r ApiGetAmDataRequest) Execute() (*models.AccessAndMobilitySubscriptionData, *http.Response, error) {

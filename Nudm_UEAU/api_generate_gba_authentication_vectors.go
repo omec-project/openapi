@@ -61,6 +61,11 @@ func (r ApiGenerateGbaAvRequest) GbaAuthenticationInfoRequest(gbaAuthenticationI
 	return r
 }
 
+// GetGbaAuthenticationInfoRequest returns the gbaAuthenticationInfoRequest set with GbaAuthenticationInfoRequest, or nil if it was not set.
+func (r ApiGenerateGbaAvRequest) GetGbaAuthenticationInfoRequest() *models.GbaAuthenticationInfoRequest {
+	return r.gbaAuthenticationInfoRequest
+}
+
 func (r ApiGenerateGbaAvRequest) Execute() (*models.GbaAuthenticationInfoResult, *http.Response, error) {
 	return r.ApiService.GenerateGbaAvExecute(r)
 }

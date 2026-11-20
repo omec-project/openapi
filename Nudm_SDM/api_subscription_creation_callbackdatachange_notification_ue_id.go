@@ -57,6 +57,11 @@ func (r ApiDatachangeNotificationUeIdRequestBodyCallbackReferencePostRequest) Mo
 	return r
 }
 
+// GetModificationNotification returns the modificationNotification set with ModificationNotification, or nil if it was not set.
+func (r ApiDatachangeNotificationUeIdRequestBodyCallbackReferencePostRequest) GetModificationNotification() *models.ModificationNotification {
+	return r.modificationNotification
+}
+
 func (r ApiDatachangeNotificationUeIdRequestBodyCallbackReferencePostRequest) Execute() (*http.Response, error) {
 	return r.ApiService.DatachangeNotificationUeIdRequestBodyCallbackReferencePostExecute(r)
 }

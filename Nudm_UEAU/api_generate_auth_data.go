@@ -61,6 +61,11 @@ func (r ApiGenerateAuthDataRequest) AuthenticationInfoRequest(authenticationInfo
 	return r
 }
 
+// GetAuthenticationInfoRequest returns the authenticationInfoRequest set with AuthenticationInfoRequest, or nil if it was not set.
+func (r ApiGenerateAuthDataRequest) GetAuthenticationInfoRequest() *models.AuthenticationInfoRequest {
+	return r.authenticationInfoRequest
+}
+
 func (r ApiGenerateAuthDataRequest) Execute() (*models.AuthenticationInfoResult, *http.Response, error) {
 	return r.ApiService.GenerateAuthDataExecute(r)
 }

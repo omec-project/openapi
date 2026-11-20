@@ -71,10 +71,20 @@ func (r ApiGetDataSetsRequest) DatasetNames(datasetNames []models.DataSetName) A
 	return r
 }
 
+// GetDatasetNames returns the datasetNames set with DatasetNames, or nil if it was not set.
+func (r ApiGetDataSetsRequest) GetDatasetNames() *[]models.DataSetName {
+	return r.datasetNames
+}
+
 // serving PLMN ID
 func (r ApiGetDataSetsRequest) PlmnId(plmnId models.PlmnIdNid) ApiGetDataSetsRequest {
 	r.plmnId = &plmnId
 	return r
+}
+
+// GetPlmnId returns the plmnId set with PlmnId, or nil if it was not set.
+func (r ApiGetDataSetsRequest) GetPlmnId() *models.PlmnIdNid {
+	return r.plmnId
 }
 
 // List of PLMNs adjacent to the UE&#39;s serving PLMN
@@ -83,14 +93,29 @@ func (r ApiGetDataSetsRequest) AdjacentPlmns(adjacentPlmns []models.PlmnId) ApiG
 	return r
 }
 
+// GetAdjacentPlmns returns the adjacentPlmns set with AdjacentPlmns, or nil if it was not set.
+func (r ApiGetDataSetsRequest) GetAdjacentPlmns() *[]models.PlmnId {
+	return r.adjacentPlmns
+}
+
 func (r ApiGetDataSetsRequest) SingleNssai(singleNssai models.Snssai) ApiGetDataSetsRequest {
 	r.singleNssai = &singleNssai
 	return r
 }
 
+// GetSingleNssai returns the singleNssai set with SingleNssai, or nil if it was not set.
+func (r ApiGetDataSetsRequest) GetSingleNssai() *models.Snssai {
+	return r.singleNssai
+}
+
 func (r ApiGetDataSetsRequest) Dnn(dnn string) ApiGetDataSetsRequest {
 	r.dnn = &dnn
 	return r
+}
+
+// GetDnn returns the dnn set with Dnn, or nil if it was not set.
+func (r ApiGetDataSetsRequest) GetDnn() *string {
+	return r.dnn
 }
 
 // User consent purpose
@@ -99,10 +124,20 @@ func (r ApiGetDataSetsRequest) UcPurpose(ucPurpose models.UcPurpose) ApiGetDataS
 	return r
 }
 
+// GetUcPurpose returns the ucPurpose set with UcPurpose, or nil if it was not set.
+func (r ApiGetDataSetsRequest) GetUcPurpose() *models.UcPurpose {
+	return r.ucPurpose
+}
+
 // Indication whether Disaster Roaming service is applied or not
 func (r ApiGetDataSetsRequest) DisasterRoamingInd(disasterRoamingInd bool) ApiGetDataSetsRequest {
 	r.disasterRoamingInd = &disasterRoamingInd
 	return r
+}
+
+// GetDisasterRoamingInd returns the disasterRoamingInd set with DisasterRoamingInd, or nil if it was not set.
+func (r ApiGetDataSetsRequest) GetDisasterRoamingInd() *bool {
+	return r.disasterRoamingInd
 }
 
 // Supported Features
@@ -111,16 +146,31 @@ func (r ApiGetDataSetsRequest) SupportedFeatures(supportedFeatures string) ApiGe
 	return r
 }
 
+// GetSupportedFeatures returns the supportedFeatures set with SupportedFeatures, or nil if it was not set.
+func (r ApiGetDataSetsRequest) GetSupportedFeatures() *string {
+	return r.supportedFeatures
+}
+
 // Validator for conditional requests, as described in RFC 9110, 3.2
 func (r ApiGetDataSetsRequest) IfNoneMatch(ifNoneMatch string) ApiGetDataSetsRequest {
 	r.ifNoneMatch = &ifNoneMatch
 	return r
 }
 
+// GetIfNoneMatch returns the ifNoneMatch set with IfNoneMatch, or nil if it was not set.
+func (r ApiGetDataSetsRequest) GetIfNoneMatch() *string {
+	return r.ifNoneMatch
+}
+
 // Validator for conditional requests, as described in RFC 9110, 3.3
 func (r ApiGetDataSetsRequest) IfModifiedSince(ifModifiedSince string) ApiGetDataSetsRequest {
 	r.ifModifiedSince = &ifModifiedSince
 	return r
+}
+
+// GetIfModifiedSince returns the ifModifiedSince set with IfModifiedSince, or nil if it was not set.
+func (r ApiGetDataSetsRequest) GetIfModifiedSince() *string {
+	return r.ifModifiedSince
 }
 
 func (r ApiGetDataSetsRequest) Execute() (*models.SubscriptionDataSets, *http.Response, error) {

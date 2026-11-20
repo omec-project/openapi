@@ -61,6 +61,11 @@ func (r ApiGenerateProseAVRequest) ProSeAuthenticationInfoRequest(proSeAuthentic
 	return r
 }
 
+// GetProSeAuthenticationInfoRequest returns the proSeAuthenticationInfoRequest set with ProSeAuthenticationInfoRequest, or nil if it was not set.
+func (r ApiGenerateProseAVRequest) GetProSeAuthenticationInfoRequest() *models.ProSeAuthenticationInfoRequest {
+	return r.proSeAuthenticationInfoRequest
+}
+
 func (r ApiGenerateProseAVRequest) Execute() (*models.ProSeAuthenticationInfoResult, *http.Response, error) {
 	return r.ApiService.GenerateProseAVExecute(r)
 }

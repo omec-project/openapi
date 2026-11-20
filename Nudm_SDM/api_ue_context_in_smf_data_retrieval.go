@@ -62,6 +62,11 @@ func (r ApiGetUeCtxInSmfDataRequest) SupportedFeatures(supportedFeatures string)
 	return r
 }
 
+// GetSupportedFeatures returns the supportedFeatures set with SupportedFeatures, or nil if it was not set.
+func (r ApiGetUeCtxInSmfDataRequest) GetSupportedFeatures() *string {
+	return r.supportedFeatures
+}
+
 func (r ApiGetUeCtxInSmfDataRequest) Execute() (*models.UeContextInSmfData, *http.Response, error) {
 	return r.ApiService.GetUeCtxInSmfDataExecute(r)
 }

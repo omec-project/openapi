@@ -63,10 +63,20 @@ func (r ApiGetTimeSyncSubscriptionDataRequest) IfNoneMatch(ifNoneMatch string) A
 	return r
 }
 
+// GetIfNoneMatch returns the ifNoneMatch set with IfNoneMatch, or nil if it was not set.
+func (r ApiGetTimeSyncSubscriptionDataRequest) GetIfNoneMatch() *string {
+	return r.ifNoneMatch
+}
+
 // Validator for conditional requests, as described in RFC 9110, 3.3
 func (r ApiGetTimeSyncSubscriptionDataRequest) IfModifiedSince(ifModifiedSince string) ApiGetTimeSyncSubscriptionDataRequest {
 	r.ifModifiedSince = &ifModifiedSince
 	return r
+}
+
+// GetIfModifiedSince returns the ifModifiedSince set with IfModifiedSince, or nil if it was not set.
+func (r ApiGetTimeSyncSubscriptionDataRequest) GetIfModifiedSince() *string {
+	return r.ifModifiedSince
 }
 
 func (r ApiGetTimeSyncSubscriptionDataRequest) Execute() (*models.TimeSyncSubscriptionData, *http.Response, error) {

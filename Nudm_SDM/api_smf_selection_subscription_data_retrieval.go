@@ -66,10 +66,20 @@ func (r ApiGetSmfSelDataRequest) SupportedFeatures(supportedFeatures string) Api
 	return r
 }
 
+// GetSupportedFeatures returns the supportedFeatures set with SupportedFeatures, or nil if it was not set.
+func (r ApiGetSmfSelDataRequest) GetSupportedFeatures() *string {
+	return r.supportedFeatures
+}
+
 // serving PLMN ID
 func (r ApiGetSmfSelDataRequest) PlmnId(plmnId models.PlmnId) ApiGetSmfSelDataRequest {
 	r.plmnId = &plmnId
 	return r
+}
+
+// GetPlmnId returns the plmnId set with PlmnId, or nil if it was not set.
+func (r ApiGetSmfSelDataRequest) GetPlmnId() *models.PlmnId {
+	return r.plmnId
 }
 
 // Indication whether Disaster Roaming service is applied or not
@@ -78,16 +88,31 @@ func (r ApiGetSmfSelDataRequest) DisasterRoamingInd(disasterRoamingInd bool) Api
 	return r
 }
 
+// GetDisasterRoamingInd returns the disasterRoamingInd set with DisasterRoamingInd, or nil if it was not set.
+func (r ApiGetSmfSelDataRequest) GetDisasterRoamingInd() *bool {
+	return r.disasterRoamingInd
+}
+
 // Validator for conditional requests, as described in RFC 9110, 3.2
 func (r ApiGetSmfSelDataRequest) IfNoneMatch(ifNoneMatch string) ApiGetSmfSelDataRequest {
 	r.ifNoneMatch = &ifNoneMatch
 	return r
 }
 
+// GetIfNoneMatch returns the ifNoneMatch set with IfNoneMatch, or nil if it was not set.
+func (r ApiGetSmfSelDataRequest) GetIfNoneMatch() *string {
+	return r.ifNoneMatch
+}
+
 // Validator for conditional requests, as described in RFC 9110, 3.3
 func (r ApiGetSmfSelDataRequest) IfModifiedSince(ifModifiedSince string) ApiGetSmfSelDataRequest {
 	r.ifModifiedSince = &ifModifiedSince
 	return r
+}
+
+// GetIfModifiedSince returns the ifModifiedSince set with IfModifiedSince, or nil if it was not set.
+func (r ApiGetSmfSelDataRequest) GetIfModifiedSince() *string {
+	return r.ifModifiedSince
 }
 
 func (r ApiGetSmfSelDataRequest) Execute() (*models.SmfSelectionSubscriptionData, *http.Response, error) {
