@@ -65,9 +65,19 @@ func (r ApiN1N2MessageTransferRequest) N1N2MessageTransferReqData(n1N2MessageTra
 	return r
 }
 
+// GetN1N2MessageTransferReqData returns the n1N2MessageTransferReqData set with N1N2MessageTransferReqData, or nil if it was not set.
+func (r ApiN1N2MessageTransferRequest) GetN1N2MessageTransferReqData() *models.N1N2MessageTransferReqData {
+	return r.n1N2MessageTransferReqData
+}
+
 func (r ApiN1N2MessageTransferRequest) BinaryDataN1Message(binaryDataN1Message *os.File) ApiN1N2MessageTransferRequest {
 	r.binaryDataN1Message = binaryDataN1Message
 	return r
+}
+
+// GetBinaryDataN1Message returns the binaryDataN1Message set with BinaryDataN1Message, or nil if it was not set.
+func (r ApiN1N2MessageTransferRequest) GetBinaryDataN1Message() *os.File {
+	return r.binaryDataN1Message
 }
 
 func (r ApiN1N2MessageTransferRequest) BinaryDataN2Information(binaryDataN2Information *os.File) ApiN1N2MessageTransferRequest {
@@ -75,9 +85,19 @@ func (r ApiN1N2MessageTransferRequest) BinaryDataN2Information(binaryDataN2Infor
 	return r
 }
 
+// GetBinaryDataN2Information returns the binaryDataN2Information set with BinaryDataN2Information, or nil if it was not set.
+func (r ApiN1N2MessageTransferRequest) GetBinaryDataN2Information() *os.File {
+	return r.binaryDataN2Information
+}
+
 func (r ApiN1N2MessageTransferRequest) BinaryMtData(binaryMtData *os.File) ApiN1N2MessageTransferRequest {
 	r.binaryMtData = binaryMtData
 	return r
+}
+
+// GetBinaryMtData returns the binaryMtData set with BinaryMtData, or nil if it was not set.
+func (r ApiN1N2MessageTransferRequest) GetBinaryMtData() *os.File {
+	return r.binaryMtData
 }
 
 func (r ApiN1N2MessageTransferRequest) Execute() (*models.N1N2MessageTransferRspData, *http.Response, error) {

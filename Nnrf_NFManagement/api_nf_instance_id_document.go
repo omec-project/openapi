@@ -310,6 +310,11 @@ func (r ApiGetNFInstanceRequest) RequesterFeatures(requesterFeatures string) Api
 	return r
 }
 
+// GetRequesterFeatures returns the requesterFeatures set with RequesterFeatures, or nil if it was not set.
+func (r ApiGetNFInstanceRequest) GetRequesterFeatures() *string {
+	return r.requesterFeatures
+}
+
 func (r ApiGetNFInstanceRequest) Execute() (*models.NFProfile, *http.Response, error) {
 	return r.ApiService.GetNFInstanceExecute(r)
 }
@@ -565,16 +570,31 @@ func (r ApiRegisterNFInstanceRequest) NFProfile(nFProfile models.NFProfile) ApiR
 	return r
 }
 
+// GetNFProfile returns the nFProfile set with NFProfile, or nil if it was not set.
+func (r ApiRegisterNFInstanceRequest) GetNFProfile() *models.NFProfile {
+	return r.nFProfile
+}
+
 // Content-Encoding, described in IETF RFC 9110
 func (r ApiRegisterNFInstanceRequest) ContentEncoding(contentEncoding string) ApiRegisterNFInstanceRequest {
 	r.contentEncoding = &contentEncoding
 	return r
 }
 
+// GetContentEncoding returns the contentEncoding set with ContentEncoding, or nil if it was not set.
+func (r ApiRegisterNFInstanceRequest) GetContentEncoding() *string {
+	return r.contentEncoding
+}
+
 // Accept-Encoding, described in IETF RFC 9110
 func (r ApiRegisterNFInstanceRequest) AcceptEncoding(acceptEncoding string) ApiRegisterNFInstanceRequest {
 	r.acceptEncoding = &acceptEncoding
 	return r
+}
+
+// GetAcceptEncoding returns the acceptEncoding set with AcceptEncoding, or nil if it was not set.
+func (r ApiRegisterNFInstanceRequest) GetAcceptEncoding() *string {
+	return r.acceptEncoding
 }
 
 func (r ApiRegisterNFInstanceRequest) Execute() (*models.NFProfile, *http.Response, error) {
@@ -841,10 +861,20 @@ func (r ApiUpdateNFInstanceRequest) PatchItem(patchItem []models.PatchItem) ApiU
 	return r
 }
 
+// GetPatchItem returns the patchItem set with PatchItem, or nil if it was not set.
+func (r ApiUpdateNFInstanceRequest) GetPatchItem() *[]models.PatchItem {
+	return r.patchItem
+}
+
 // Content-Encoding, described in IETF RFC 9110
 func (r ApiUpdateNFInstanceRequest) ContentEncoding(contentEncoding string) ApiUpdateNFInstanceRequest {
 	r.contentEncoding = &contentEncoding
 	return r
+}
+
+// GetContentEncoding returns the contentEncoding set with ContentEncoding, or nil if it was not set.
+func (r ApiUpdateNFInstanceRequest) GetContentEncoding() *string {
+	return r.contentEncoding
 }
 
 // Accept-Encoding, described in IETF RFC 9110
@@ -853,10 +883,20 @@ func (r ApiUpdateNFInstanceRequest) AcceptEncoding(acceptEncoding string) ApiUpd
 	return r
 }
 
+// GetAcceptEncoding returns the acceptEncoding set with AcceptEncoding, or nil if it was not set.
+func (r ApiUpdateNFInstanceRequest) GetAcceptEncoding() *string {
+	return r.acceptEncoding
+}
+
 // Validator for conditional requests, as described in IETF RFC 9110, 13.1.1
 func (r ApiUpdateNFInstanceRequest) IfMatch(ifMatch string) ApiUpdateNFInstanceRequest {
 	r.ifMatch = &ifMatch
 	return r
+}
+
+// GetIfMatch returns the ifMatch set with IfMatch, or nil if it was not set.
+func (r ApiUpdateNFInstanceRequest) GetIfMatch() *string {
+	return r.ifMatch
 }
 
 func (r ApiUpdateNFInstanceRequest) Execute() (*models.NFProfile, *http.Response, error) {

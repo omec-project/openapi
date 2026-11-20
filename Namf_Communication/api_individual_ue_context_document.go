@@ -139,9 +139,19 @@ func (r ApiCancelRelocateUEContextRequest) JsonData(jsonData models.UeContextCan
 	return r
 }
 
+// GetJsonData returns the jsonData set with JsonData, or nil if it was not set.
+func (r ApiCancelRelocateUEContextRequest) GetJsonData() *models.UeContextCancelRelocateData {
+	return r.jsonData
+}
+
 func (r ApiCancelRelocateUEContextRequest) BinaryDataGtpcMessage(binaryDataGtpcMessage *os.File) ApiCancelRelocateUEContextRequest {
 	r.binaryDataGtpcMessage = binaryDataGtpcMessage
 	return r
+}
+
+// GetBinaryDataGtpcMessage returns the binaryDataGtpcMessage set with BinaryDataGtpcMessage, or nil if it was not set.
+func (r ApiCancelRelocateUEContextRequest) GetBinaryDataGtpcMessage() *os.File {
+	return r.binaryDataGtpcMessage
 }
 
 func (r ApiCancelRelocateUEContextRequest) Execute() (*http.Response, error) {
@@ -420,9 +430,19 @@ func (r ApiCreateUEContextRequest) JsonData(jsonData models.UeContextCreateData)
 	return r
 }
 
+// GetJsonData returns the jsonData set with JsonData, or nil if it was not set.
+func (r ApiCreateUEContextRequest) GetJsonData() *models.UeContextCreateData {
+	return r.jsonData
+}
+
 func (r ApiCreateUEContextRequest) BinaryDataN2Information(binaryDataN2Information *os.File) ApiCreateUEContextRequest {
 	r.binaryDataN2Information = binaryDataN2Information
 	return r
+}
+
+// GetBinaryDataN2Information returns the binaryDataN2Information set with BinaryDataN2Information, or nil if it was not set.
+func (r ApiCreateUEContextRequest) GetBinaryDataN2Information() *os.File {
+	return r.binaryDataN2Information
 }
 
 func (r ApiCreateUEContextRequest) BinaryDataN2InformationExt1(binaryDataN2InformationExt1 *os.File) ApiCreateUEContextRequest {
@@ -430,9 +450,19 @@ func (r ApiCreateUEContextRequest) BinaryDataN2InformationExt1(binaryDataN2Infor
 	return r
 }
 
+// GetBinaryDataN2InformationExt1 returns the binaryDataN2InformationExt1 set with BinaryDataN2InformationExt1, or nil if it was not set.
+func (r ApiCreateUEContextRequest) GetBinaryDataN2InformationExt1() *os.File {
+	return r.binaryDataN2InformationExt1
+}
+
 func (r ApiCreateUEContextRequest) BinaryDataN2InformationExt2(binaryDataN2InformationExt2 *os.File) ApiCreateUEContextRequest {
 	r.binaryDataN2InformationExt2 = binaryDataN2InformationExt2
 	return r
+}
+
+// GetBinaryDataN2InformationExt2 returns the binaryDataN2InformationExt2 set with BinaryDataN2InformationExt2, or nil if it was not set.
+func (r ApiCreateUEContextRequest) GetBinaryDataN2InformationExt2() *os.File {
+	return r.binaryDataN2InformationExt2
 }
 
 func (r ApiCreateUEContextRequest) BinaryDataN2InformationExt3(binaryDataN2InformationExt3 *os.File) ApiCreateUEContextRequest {
@@ -440,9 +470,19 @@ func (r ApiCreateUEContextRequest) BinaryDataN2InformationExt3(binaryDataN2Infor
 	return r
 }
 
+// GetBinaryDataN2InformationExt3 returns the binaryDataN2InformationExt3 set with BinaryDataN2InformationExt3, or nil if it was not set.
+func (r ApiCreateUEContextRequest) GetBinaryDataN2InformationExt3() *os.File {
+	return r.binaryDataN2InformationExt3
+}
+
 func (r ApiCreateUEContextRequest) BinaryDataN2InformationExt4(binaryDataN2InformationExt4 *os.File) ApiCreateUEContextRequest {
 	r.binaryDataN2InformationExt4 = binaryDataN2InformationExt4
 	return r
+}
+
+// GetBinaryDataN2InformationExt4 returns the binaryDataN2InformationExt4 set with BinaryDataN2InformationExt4, or nil if it was not set.
+func (r ApiCreateUEContextRequest) GetBinaryDataN2InformationExt4() *os.File {
+	return r.binaryDataN2InformationExt4
 }
 
 func (r ApiCreateUEContextRequest) BinaryDataN2InformationExt5(binaryDataN2InformationExt5 *os.File) ApiCreateUEContextRequest {
@@ -450,9 +490,19 @@ func (r ApiCreateUEContextRequest) BinaryDataN2InformationExt5(binaryDataN2Infor
 	return r
 }
 
+// GetBinaryDataN2InformationExt5 returns the binaryDataN2InformationExt5 set with BinaryDataN2InformationExt5, or nil if it was not set.
+func (r ApiCreateUEContextRequest) GetBinaryDataN2InformationExt5() *os.File {
+	return r.binaryDataN2InformationExt5
+}
+
 func (r ApiCreateUEContextRequest) BinaryDataN2InformationExt6(binaryDataN2InformationExt6 *os.File) ApiCreateUEContextRequest {
 	r.binaryDataN2InformationExt6 = binaryDataN2InformationExt6
 	return r
+}
+
+// GetBinaryDataN2InformationExt6 returns the binaryDataN2InformationExt6 set with BinaryDataN2InformationExt6, or nil if it was not set.
+func (r ApiCreateUEContextRequest) GetBinaryDataN2InformationExt6() *os.File {
+	return r.binaryDataN2InformationExt6
 }
 
 func (r ApiCreateUEContextRequest) BinaryDataN2InformationExt7(binaryDataN2InformationExt7 *os.File) ApiCreateUEContextRequest {
@@ -460,9 +510,19 @@ func (r ApiCreateUEContextRequest) BinaryDataN2InformationExt7(binaryDataN2Infor
 	return r
 }
 
+// GetBinaryDataN2InformationExt7 returns the binaryDataN2InformationExt7 set with BinaryDataN2InformationExt7, or nil if it was not set.
+func (r ApiCreateUEContextRequest) GetBinaryDataN2InformationExt7() *os.File {
+	return r.binaryDataN2InformationExt7
+}
+
 func (r ApiCreateUEContextRequest) BinaryDataN2InformationExt8(binaryDataN2InformationExt8 *os.File) ApiCreateUEContextRequest {
 	r.binaryDataN2InformationExt8 = binaryDataN2InformationExt8
 	return r
+}
+
+// GetBinaryDataN2InformationExt8 returns the binaryDataN2InformationExt8 set with BinaryDataN2InformationExt8, or nil if it was not set.
+func (r ApiCreateUEContextRequest) GetBinaryDataN2InformationExt8() *os.File {
+	return r.binaryDataN2InformationExt8
 }
 
 func (r ApiCreateUEContextRequest) BinaryDataN2InformationExt9(binaryDataN2InformationExt9 *os.File) ApiCreateUEContextRequest {
@@ -470,9 +530,19 @@ func (r ApiCreateUEContextRequest) BinaryDataN2InformationExt9(binaryDataN2Infor
 	return r
 }
 
+// GetBinaryDataN2InformationExt9 returns the binaryDataN2InformationExt9 set with BinaryDataN2InformationExt9, or nil if it was not set.
+func (r ApiCreateUEContextRequest) GetBinaryDataN2InformationExt9() *os.File {
+	return r.binaryDataN2InformationExt9
+}
+
 func (r ApiCreateUEContextRequest) BinaryDataN2InformationExt10(binaryDataN2InformationExt10 *os.File) ApiCreateUEContextRequest {
 	r.binaryDataN2InformationExt10 = binaryDataN2InformationExt10
 	return r
+}
+
+// GetBinaryDataN2InformationExt10 returns the binaryDataN2InformationExt10 set with BinaryDataN2InformationExt10, or nil if it was not set.
+func (r ApiCreateUEContextRequest) GetBinaryDataN2InformationExt10() *os.File {
+	return r.binaryDataN2InformationExt10
 }
 
 func (r ApiCreateUEContextRequest) BinaryDataN2InformationExt11(binaryDataN2InformationExt11 *os.File) ApiCreateUEContextRequest {
@@ -480,9 +550,19 @@ func (r ApiCreateUEContextRequest) BinaryDataN2InformationExt11(binaryDataN2Info
 	return r
 }
 
+// GetBinaryDataN2InformationExt11 returns the binaryDataN2InformationExt11 set with BinaryDataN2InformationExt11, or nil if it was not set.
+func (r ApiCreateUEContextRequest) GetBinaryDataN2InformationExt11() *os.File {
+	return r.binaryDataN2InformationExt11
+}
+
 func (r ApiCreateUEContextRequest) BinaryDataN2InformationExt12(binaryDataN2InformationExt12 *os.File) ApiCreateUEContextRequest {
 	r.binaryDataN2InformationExt12 = binaryDataN2InformationExt12
 	return r
+}
+
+// GetBinaryDataN2InformationExt12 returns the binaryDataN2InformationExt12 set with BinaryDataN2InformationExt12, or nil if it was not set.
+func (r ApiCreateUEContextRequest) GetBinaryDataN2InformationExt12() *os.File {
+	return r.binaryDataN2InformationExt12
 }
 
 func (r ApiCreateUEContextRequest) BinaryDataN2InformationExt13(binaryDataN2InformationExt13 *os.File) ApiCreateUEContextRequest {
@@ -490,9 +570,19 @@ func (r ApiCreateUEContextRequest) BinaryDataN2InformationExt13(binaryDataN2Info
 	return r
 }
 
+// GetBinaryDataN2InformationExt13 returns the binaryDataN2InformationExt13 set with BinaryDataN2InformationExt13, or nil if it was not set.
+func (r ApiCreateUEContextRequest) GetBinaryDataN2InformationExt13() *os.File {
+	return r.binaryDataN2InformationExt13
+}
+
 func (r ApiCreateUEContextRequest) BinaryDataN2InformationExt14(binaryDataN2InformationExt14 *os.File) ApiCreateUEContextRequest {
 	r.binaryDataN2InformationExt14 = binaryDataN2InformationExt14
 	return r
+}
+
+// GetBinaryDataN2InformationExt14 returns the binaryDataN2InformationExt14 set with BinaryDataN2InformationExt14, or nil if it was not set.
+func (r ApiCreateUEContextRequest) GetBinaryDataN2InformationExt14() *os.File {
+	return r.binaryDataN2InformationExt14
 }
 
 func (r ApiCreateUEContextRequest) BinaryDataN2InformationExt15(binaryDataN2InformationExt15 *os.File) ApiCreateUEContextRequest {
@@ -500,14 +590,29 @@ func (r ApiCreateUEContextRequest) BinaryDataN2InformationExt15(binaryDataN2Info
 	return r
 }
 
+// GetBinaryDataN2InformationExt15 returns the binaryDataN2InformationExt15 set with BinaryDataN2InformationExt15, or nil if it was not set.
+func (r ApiCreateUEContextRequest) GetBinaryDataN2InformationExt15() *os.File {
+	return r.binaryDataN2InformationExt15
+}
+
 func (r ApiCreateUEContextRequest) BinaryDataN2InformationExt16(binaryDataN2InformationExt16 *os.File) ApiCreateUEContextRequest {
 	r.binaryDataN2InformationExt16 = binaryDataN2InformationExt16
 	return r
 }
 
+// GetBinaryDataN2InformationExt16 returns the binaryDataN2InformationExt16 set with BinaryDataN2InformationExt16, or nil if it was not set.
+func (r ApiCreateUEContextRequest) GetBinaryDataN2InformationExt16() *os.File {
+	return r.binaryDataN2InformationExt16
+}
+
 func (r ApiCreateUEContextRequest) BinaryDataN2InformationExt17(binaryDataN2InformationExt17 *os.File) ApiCreateUEContextRequest {
 	r.binaryDataN2InformationExt17 = binaryDataN2InformationExt17
 	return r
+}
+
+// GetBinaryDataN2InformationExt17 returns the binaryDataN2InformationExt17 set with BinaryDataN2InformationExt17, or nil if it was not set.
+func (r ApiCreateUEContextRequest) GetBinaryDataN2InformationExt17() *os.File {
+	return r.binaryDataN2InformationExt17
 }
 
 func (r ApiCreateUEContextRequest) Execute() (*models.UeContextCreatedData, *http.Response, error) {
@@ -1035,6 +1140,11 @@ func (r ApiEBIAssignmentRequest) AssignEbiData(assignEbiData models.AssignEbiDat
 	return r
 }
 
+// GetAssignEbiData returns the assignEbiData set with AssignEbiData, or nil if it was not set.
+func (r ApiEBIAssignmentRequest) GetAssignEbiData() *models.AssignEbiData {
+	return r.assignEbiData
+}
+
 func (r ApiEBIAssignmentRequest) Execute() (*models.AssignedEbiData, *http.Response, error) {
 	return r.ApiService.EBIAssignmentExecute(r)
 }
@@ -1301,6 +1411,11 @@ func (r ApiRegistrationStatusUpdateRequest) UeRegStatusUpdateReqData(ueRegStatus
 	return r
 }
 
+// GetUeRegStatusUpdateReqData returns the ueRegStatusUpdateReqData set with UeRegStatusUpdateReqData, or nil if it was not set.
+func (r ApiRegistrationStatusUpdateRequest) GetUeRegStatusUpdateReqData() *models.UeRegStatusUpdateReqData {
+	return r.ueRegStatusUpdateReqData
+}
+
 func (r ApiRegistrationStatusUpdateRequest) Execute() (*models.UeRegStatusUpdateRspData, *http.Response, error) {
 	return r.ApiService.RegistrationStatusUpdateExecute(r)
 }
@@ -1554,6 +1669,11 @@ type ApiReleaseUEContextRequest struct {
 func (r ApiReleaseUEContextRequest) UEContextRelease(uEContextRelease models.UEContextRelease) ApiReleaseUEContextRequest {
 	r.uEContextRelease = &uEContextRelease
 	return r
+}
+
+// GetUEContextRelease returns the uEContextRelease set with UEContextRelease, or nil if it was not set.
+func (r ApiReleaseUEContextRequest) GetUEContextRelease() *models.UEContextRelease {
+	return r.uEContextRelease
 }
 
 func (r ApiReleaseUEContextRequest) Execute() (*http.Response, error) {
@@ -1817,9 +1937,19 @@ func (r ApiRelocateUEContextRequest) JsonData(jsonData models.UeContextRelocateD
 	return r
 }
 
+// GetJsonData returns the jsonData set with JsonData, or nil if it was not set.
+func (r ApiRelocateUEContextRequest) GetJsonData() *models.UeContextRelocateData {
+	return r.jsonData
+}
+
 func (r ApiRelocateUEContextRequest) BinaryDataForwardRelocationRequest(binaryDataForwardRelocationRequest *os.File) ApiRelocateUEContextRequest {
 	r.binaryDataForwardRelocationRequest = binaryDataForwardRelocationRequest
 	return r
+}
+
+// GetBinaryDataForwardRelocationRequest returns the binaryDataForwardRelocationRequest set with BinaryDataForwardRelocationRequest, or nil if it was not set.
+func (r ApiRelocateUEContextRequest) GetBinaryDataForwardRelocationRequest() *os.File {
+	return r.binaryDataForwardRelocationRequest
 }
 
 func (r ApiRelocateUEContextRequest) BinaryDataN2Information(binaryDataN2Information *os.File) ApiRelocateUEContextRequest {
@@ -1827,9 +1957,19 @@ func (r ApiRelocateUEContextRequest) BinaryDataN2Information(binaryDataN2Informa
 	return r
 }
 
+// GetBinaryDataN2Information returns the binaryDataN2Information set with BinaryDataN2Information, or nil if it was not set.
+func (r ApiRelocateUEContextRequest) GetBinaryDataN2Information() *os.File {
+	return r.binaryDataN2Information
+}
+
 func (r ApiRelocateUEContextRequest) BinaryDataN2InformationExt1(binaryDataN2InformationExt1 *os.File) ApiRelocateUEContextRequest {
 	r.binaryDataN2InformationExt1 = binaryDataN2InformationExt1
 	return r
+}
+
+// GetBinaryDataN2InformationExt1 returns the binaryDataN2InformationExt1 set with BinaryDataN2InformationExt1, or nil if it was not set.
+func (r ApiRelocateUEContextRequest) GetBinaryDataN2InformationExt1() *os.File {
+	return r.binaryDataN2InformationExt1
 }
 
 func (r ApiRelocateUEContextRequest) BinaryDataN2InformationExt2(binaryDataN2InformationExt2 *os.File) ApiRelocateUEContextRequest {
@@ -1837,9 +1977,19 @@ func (r ApiRelocateUEContextRequest) BinaryDataN2InformationExt2(binaryDataN2Inf
 	return r
 }
 
+// GetBinaryDataN2InformationExt2 returns the binaryDataN2InformationExt2 set with BinaryDataN2InformationExt2, or nil if it was not set.
+func (r ApiRelocateUEContextRequest) GetBinaryDataN2InformationExt2() *os.File {
+	return r.binaryDataN2InformationExt2
+}
+
 func (r ApiRelocateUEContextRequest) BinaryDataN2InformationExt3(binaryDataN2InformationExt3 *os.File) ApiRelocateUEContextRequest {
 	r.binaryDataN2InformationExt3 = binaryDataN2InformationExt3
 	return r
+}
+
+// GetBinaryDataN2InformationExt3 returns the binaryDataN2InformationExt3 set with BinaryDataN2InformationExt3, or nil if it was not set.
+func (r ApiRelocateUEContextRequest) GetBinaryDataN2InformationExt3() *os.File {
+	return r.binaryDataN2InformationExt3
 }
 
 func (r ApiRelocateUEContextRequest) BinaryDataN2InformationExt4(binaryDataN2InformationExt4 *os.File) ApiRelocateUEContextRequest {
@@ -1847,9 +1997,19 @@ func (r ApiRelocateUEContextRequest) BinaryDataN2InformationExt4(binaryDataN2Inf
 	return r
 }
 
+// GetBinaryDataN2InformationExt4 returns the binaryDataN2InformationExt4 set with BinaryDataN2InformationExt4, or nil if it was not set.
+func (r ApiRelocateUEContextRequest) GetBinaryDataN2InformationExt4() *os.File {
+	return r.binaryDataN2InformationExt4
+}
+
 func (r ApiRelocateUEContextRequest) BinaryDataN2InformationExt5(binaryDataN2InformationExt5 *os.File) ApiRelocateUEContextRequest {
 	r.binaryDataN2InformationExt5 = binaryDataN2InformationExt5
 	return r
+}
+
+// GetBinaryDataN2InformationExt5 returns the binaryDataN2InformationExt5 set with BinaryDataN2InformationExt5, or nil if it was not set.
+func (r ApiRelocateUEContextRequest) GetBinaryDataN2InformationExt5() *os.File {
+	return r.binaryDataN2InformationExt5
 }
 
 func (r ApiRelocateUEContextRequest) BinaryDataN2InformationExt6(binaryDataN2InformationExt6 *os.File) ApiRelocateUEContextRequest {
@@ -1857,9 +2017,19 @@ func (r ApiRelocateUEContextRequest) BinaryDataN2InformationExt6(binaryDataN2Inf
 	return r
 }
 
+// GetBinaryDataN2InformationExt6 returns the binaryDataN2InformationExt6 set with BinaryDataN2InformationExt6, or nil if it was not set.
+func (r ApiRelocateUEContextRequest) GetBinaryDataN2InformationExt6() *os.File {
+	return r.binaryDataN2InformationExt6
+}
+
 func (r ApiRelocateUEContextRequest) BinaryDataN2InformationExt7(binaryDataN2InformationExt7 *os.File) ApiRelocateUEContextRequest {
 	r.binaryDataN2InformationExt7 = binaryDataN2InformationExt7
 	return r
+}
+
+// GetBinaryDataN2InformationExt7 returns the binaryDataN2InformationExt7 set with BinaryDataN2InformationExt7, or nil if it was not set.
+func (r ApiRelocateUEContextRequest) GetBinaryDataN2InformationExt7() *os.File {
+	return r.binaryDataN2InformationExt7
 }
 
 func (r ApiRelocateUEContextRequest) BinaryDataN2InformationExt8(binaryDataN2InformationExt8 *os.File) ApiRelocateUEContextRequest {
@@ -1867,9 +2037,19 @@ func (r ApiRelocateUEContextRequest) BinaryDataN2InformationExt8(binaryDataN2Inf
 	return r
 }
 
+// GetBinaryDataN2InformationExt8 returns the binaryDataN2InformationExt8 set with BinaryDataN2InformationExt8, or nil if it was not set.
+func (r ApiRelocateUEContextRequest) GetBinaryDataN2InformationExt8() *os.File {
+	return r.binaryDataN2InformationExt8
+}
+
 func (r ApiRelocateUEContextRequest) BinaryDataN2InformationExt9(binaryDataN2InformationExt9 *os.File) ApiRelocateUEContextRequest {
 	r.binaryDataN2InformationExt9 = binaryDataN2InformationExt9
 	return r
+}
+
+// GetBinaryDataN2InformationExt9 returns the binaryDataN2InformationExt9 set with BinaryDataN2InformationExt9, or nil if it was not set.
+func (r ApiRelocateUEContextRequest) GetBinaryDataN2InformationExt9() *os.File {
+	return r.binaryDataN2InformationExt9
 }
 
 func (r ApiRelocateUEContextRequest) BinaryDataN2InformationExt10(binaryDataN2InformationExt10 *os.File) ApiRelocateUEContextRequest {
@@ -1877,9 +2057,19 @@ func (r ApiRelocateUEContextRequest) BinaryDataN2InformationExt10(binaryDataN2In
 	return r
 }
 
+// GetBinaryDataN2InformationExt10 returns the binaryDataN2InformationExt10 set with BinaryDataN2InformationExt10, or nil if it was not set.
+func (r ApiRelocateUEContextRequest) GetBinaryDataN2InformationExt10() *os.File {
+	return r.binaryDataN2InformationExt10
+}
+
 func (r ApiRelocateUEContextRequest) BinaryDataN2InformationExt11(binaryDataN2InformationExt11 *os.File) ApiRelocateUEContextRequest {
 	r.binaryDataN2InformationExt11 = binaryDataN2InformationExt11
 	return r
+}
+
+// GetBinaryDataN2InformationExt11 returns the binaryDataN2InformationExt11 set with BinaryDataN2InformationExt11, or nil if it was not set.
+func (r ApiRelocateUEContextRequest) GetBinaryDataN2InformationExt11() *os.File {
+	return r.binaryDataN2InformationExt11
 }
 
 func (r ApiRelocateUEContextRequest) BinaryDataN2InformationExt12(binaryDataN2InformationExt12 *os.File) ApiRelocateUEContextRequest {
@@ -1887,9 +2077,19 @@ func (r ApiRelocateUEContextRequest) BinaryDataN2InformationExt12(binaryDataN2In
 	return r
 }
 
+// GetBinaryDataN2InformationExt12 returns the binaryDataN2InformationExt12 set with BinaryDataN2InformationExt12, or nil if it was not set.
+func (r ApiRelocateUEContextRequest) GetBinaryDataN2InformationExt12() *os.File {
+	return r.binaryDataN2InformationExt12
+}
+
 func (r ApiRelocateUEContextRequest) BinaryDataN2InformationExt13(binaryDataN2InformationExt13 *os.File) ApiRelocateUEContextRequest {
 	r.binaryDataN2InformationExt13 = binaryDataN2InformationExt13
 	return r
+}
+
+// GetBinaryDataN2InformationExt13 returns the binaryDataN2InformationExt13 set with BinaryDataN2InformationExt13, or nil if it was not set.
+func (r ApiRelocateUEContextRequest) GetBinaryDataN2InformationExt13() *os.File {
+	return r.binaryDataN2InformationExt13
 }
 
 func (r ApiRelocateUEContextRequest) BinaryDataN2InformationExt14(binaryDataN2InformationExt14 *os.File) ApiRelocateUEContextRequest {
@@ -1897,14 +2097,29 @@ func (r ApiRelocateUEContextRequest) BinaryDataN2InformationExt14(binaryDataN2In
 	return r
 }
 
+// GetBinaryDataN2InformationExt14 returns the binaryDataN2InformationExt14 set with BinaryDataN2InformationExt14, or nil if it was not set.
+func (r ApiRelocateUEContextRequest) GetBinaryDataN2InformationExt14() *os.File {
+	return r.binaryDataN2InformationExt14
+}
+
 func (r ApiRelocateUEContextRequest) BinaryDataN2InformationExt15(binaryDataN2InformationExt15 *os.File) ApiRelocateUEContextRequest {
 	r.binaryDataN2InformationExt15 = binaryDataN2InformationExt15
 	return r
 }
 
+// GetBinaryDataN2InformationExt15 returns the binaryDataN2InformationExt15 set with BinaryDataN2InformationExt15, or nil if it was not set.
+func (r ApiRelocateUEContextRequest) GetBinaryDataN2InformationExt15() *os.File {
+	return r.binaryDataN2InformationExt15
+}
+
 func (r ApiRelocateUEContextRequest) BinaryDataN2InformationExt16(binaryDataN2InformationExt16 *os.File) ApiRelocateUEContextRequest {
 	r.binaryDataN2InformationExt16 = binaryDataN2InformationExt16
 	return r
+}
+
+// GetBinaryDataN2InformationExt16 returns the binaryDataN2InformationExt16 set with BinaryDataN2InformationExt16, or nil if it was not set.
+func (r ApiRelocateUEContextRequest) GetBinaryDataN2InformationExt16() *os.File {
+	return r.binaryDataN2InformationExt16
 }
 
 func (r ApiRelocateUEContextRequest) Execute() (*models.UeContextRelocatedData, *http.Response, error) {
@@ -2433,9 +2648,19 @@ func (r ApiUEContextTransferRequest) UeContextTransferReqData(ueContextTransferR
 	return r
 }
 
+// GetUeContextTransferReqData returns the ueContextTransferReqData set with UeContextTransferReqData, or nil if it was not set.
+func (r ApiUEContextTransferRequest) GetUeContextTransferReqData() *models.UeContextTransferReqData {
+	return r.ueContextTransferReqData
+}
+
 func (r ApiUEContextTransferRequest) BinaryDataN1Message(binaryDataN1Message *os.File) ApiUEContextTransferRequest {
 	r.binaryDataN1Message = binaryDataN1Message
 	return r
+}
+
+// GetBinaryDataN1Message returns the binaryDataN1Message set with BinaryDataN1Message, or nil if it was not set.
+func (r ApiUEContextTransferRequest) GetBinaryDataN1Message() *os.File {
+	return r.binaryDataN1Message
 }
 
 func (r ApiUEContextTransferRequest) Execute() (*models.UeContextTransferRspData, *http.Response, error) {

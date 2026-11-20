@@ -310,6 +310,11 @@ func (r ApiGetSharedDataRequest) RequesterFeatures(requesterFeatures string) Api
 	return r
 }
 
+// GetRequesterFeatures returns the requesterFeatures set with RequesterFeatures, or nil if it was not set.
+func (r ApiGetSharedDataRequest) GetRequesterFeatures() *string {
+	return r.requesterFeatures
+}
+
 func (r ApiGetSharedDataRequest) Execute() (*models.SharedData, *http.Response, error) {
 	return r.ApiService.GetSharedDataExecute(r)
 }
@@ -565,16 +570,31 @@ func (r ApiRegisterSharedDataRequest) SharedData(sharedData models.SharedData) A
 	return r
 }
 
+// GetSharedData returns the sharedData set with SharedData, or nil if it was not set.
+func (r ApiRegisterSharedDataRequest) GetSharedData() *models.SharedData {
+	return r.sharedData
+}
+
 // Content-Encoding, described in IETF RFC 9110
 func (r ApiRegisterSharedDataRequest) ContentEncoding(contentEncoding string) ApiRegisterSharedDataRequest {
 	r.contentEncoding = &contentEncoding
 	return r
 }
 
+// GetContentEncoding returns the contentEncoding set with ContentEncoding, or nil if it was not set.
+func (r ApiRegisterSharedDataRequest) GetContentEncoding() *string {
+	return r.contentEncoding
+}
+
 // Accept-Encoding, described in IETF RFC 9110
 func (r ApiRegisterSharedDataRequest) AcceptEncoding(acceptEncoding string) ApiRegisterSharedDataRequest {
 	r.acceptEncoding = &acceptEncoding
 	return r
+}
+
+// GetAcceptEncoding returns the acceptEncoding set with AcceptEncoding, or nil if it was not set.
+func (r ApiRegisterSharedDataRequest) GetAcceptEncoding() *string {
+	return r.acceptEncoding
 }
 
 func (r ApiRegisterSharedDataRequest) Execute() (*models.SharedData, *http.Response, error) {
@@ -841,10 +861,20 @@ func (r ApiUpdateSharedDataRequest) PatchItem(patchItem []models.PatchItem) ApiU
 	return r
 }
 
+// GetPatchItem returns the patchItem set with PatchItem, or nil if it was not set.
+func (r ApiUpdateSharedDataRequest) GetPatchItem() *[]models.PatchItem {
+	return r.patchItem
+}
+
 // Content-Encoding, described in IETF RFC 9110
 func (r ApiUpdateSharedDataRequest) ContentEncoding(contentEncoding string) ApiUpdateSharedDataRequest {
 	r.contentEncoding = &contentEncoding
 	return r
+}
+
+// GetContentEncoding returns the contentEncoding set with ContentEncoding, or nil if it was not set.
+func (r ApiUpdateSharedDataRequest) GetContentEncoding() *string {
+	return r.contentEncoding
 }
 
 // Accept-Encoding, described in IETF RFC 9110
@@ -853,10 +883,20 @@ func (r ApiUpdateSharedDataRequest) AcceptEncoding(acceptEncoding string) ApiUpd
 	return r
 }
 
+// GetAcceptEncoding returns the acceptEncoding set with AcceptEncoding, or nil if it was not set.
+func (r ApiUpdateSharedDataRequest) GetAcceptEncoding() *string {
+	return r.acceptEncoding
+}
+
 // Validator for conditional requests, as described in IETF RFC 9110, 8.8.3
 func (r ApiUpdateSharedDataRequest) IfMatch(ifMatch string) ApiUpdateSharedDataRequest {
 	r.ifMatch = &ifMatch
 	return r
+}
+
+// GetIfMatch returns the ifMatch set with IfMatch, or nil if it was not set.
+func (r ApiUpdateSharedDataRequest) GetIfMatch() *string {
+	return r.ifMatch
 }
 
 func (r ApiUpdateSharedDataRequest) Execute() (*models.SharedData, *http.Response, error) {

@@ -30,12 +30,11 @@ var _ openapi.MappedNullable = &AmfEvent{}
 
 // AmfEvent Describes an event to be subscribed
 type AmfEvent struct {
-	Type               AmfEventType     `json:"type" yaml:"type"`
-	ImmediateFlag      *bool            `json:"immediateFlag,omitempty" yaml:"immediateFlag,omitempty"`
-	AreaList           []AmfEventArea   `json:"areaList,omitempty" yaml:"areaList,omitempty"`
-	LocationFilterList []LocationFilter `json:"locationFilterList,omitempty" yaml:"locationFilterList,omitempty"`
-	// Integer where the allowed values correspond to the value range of an unsigned 64-bit integer.
-	RefId                 *int32              `json:"refId,omitempty" yaml:"refId,omitempty"`
+	Type                  AmfEventType        `json:"type" yaml:"type"`
+	ImmediateFlag         *bool               `json:"immediateFlag,omitempty" yaml:"immediateFlag,omitempty"`
+	AreaList              []AmfEventArea      `json:"areaList,omitempty" yaml:"areaList,omitempty"`
+	LocationFilterList    []LocationFilter    `json:"locationFilterList,omitempty" yaml:"locationFilterList,omitempty"`
+	RefId                 *uint64             `json:"refId,omitempty" yaml:"refId,omitempty"`
 	TrafficDescriptorList []TrafficDescriptor `json:"trafficDescriptorList,omitempty" yaml:"trafficDescriptorList,omitempty"`
 	ReportUeReachable     *bool               `json:"reportUeReachable,omitempty" yaml:"reportUeReachable,omitempty"`
 	ReachabilityFilter    *ReachabilityFilter `json:"reachabilityFilter,omitempty" yaml:"reachabilityFilter,omitempty"`
@@ -226,9 +225,9 @@ func (o *AmfEvent) SetLocationFilterList(v []LocationFilter) {
 }
 
 // GetRefId returns the RefId field value if set, zero value otherwise.
-func (o *AmfEvent) GetRefId() int32 {
+func (o *AmfEvent) GetRefId() uint64 {
 	if o == nil || openapi.IsNil(o.RefId) {
-		var ret int32
+		var ret uint64
 		return ret
 	}
 	return *o.RefId
@@ -236,7 +235,7 @@ func (o *AmfEvent) GetRefId() int32 {
 
 // GetRefIdOk returns a tuple with the RefId field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *AmfEvent) GetRefIdOk() (*int32, bool) {
+func (o *AmfEvent) GetRefIdOk() (*uint64, bool) {
 	if o == nil || openapi.IsNil(o.RefId) {
 		return nil, false
 	}
@@ -252,8 +251,8 @@ func (o *AmfEvent) HasRefId() bool {
 	return false
 }
 
-// SetRefId gets a reference to the given int32 and assigns it to the RefId field.
-func (o *AmfEvent) SetRefId(v int32) {
+// SetRefId gets a reference to the given uint64 and assigns it to the RefId field.
+func (o *AmfEvent) SetRefId(v uint64) {
 	o.RefId = &v
 }
 

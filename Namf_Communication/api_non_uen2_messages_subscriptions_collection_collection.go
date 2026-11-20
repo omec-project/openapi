@@ -58,6 +58,11 @@ func (r ApiNonUeN2InfoSubscribeRequest) NonUeN2InfoSubscriptionCreateData(nonUeN
 	return r
 }
 
+// GetNonUeN2InfoSubscriptionCreateData returns the nonUeN2InfoSubscriptionCreateData set with NonUeN2InfoSubscriptionCreateData, or nil if it was not set.
+func (r ApiNonUeN2InfoSubscribeRequest) GetNonUeN2InfoSubscriptionCreateData() *models.NonUeN2InfoSubscriptionCreateData {
+	return r.nonUeN2InfoSubscriptionCreateData
+}
+
 func (r ApiNonUeN2InfoSubscribeRequest) Execute() (*models.NonUeN2InfoSubscriptionCreatedData, *http.Response, error) {
 	return r.ApiService.NonUeN2InfoSubscribeExecute(r)
 }

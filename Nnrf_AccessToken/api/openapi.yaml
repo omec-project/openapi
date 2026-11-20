@@ -486,7 +486,7 @@ components:
         accessTokenError:
           $ref: "#/components/schemas/AccessTokenErr"
         accessTokenRequest:
-          $ref: "#/components/schemas/AccessTokenReq_1"
+          $ref: "#/components/schemas/AccessTokenReq"
         nrfId:
           $ref: "#/components/schemas/Fqdn"
         supportedApiVersions:
@@ -673,70 +673,6 @@ components:
           characters (A-Z and a-z), digits (0-9) and/or the hyphen (-) and that shall end
           with either an alphabetic character or a digit.
       type: string
-    AccessTokenReq_1:
-      description: Contains information related to the access token request
-      properties:
-        grant_type:
-          enum:
-            - client_credentials
-          type: string
-        nfInstanceId:
-          $ref: "#/components/schemas/NfInstanceId"
-        nfType:
-          $ref: "#/components/schemas/NFType"
-        targetNfType:
-          $ref: "#/components/schemas/NFType"
-        scope:
-          pattern: "^([a-zA-Z0-9_:-]+)( [a-zA-Z0-9_:-]+)*$"
-          type: string
-        targetNfInstanceId:
-          $ref: "#/components/schemas/NfInstanceId"
-        requesterPlmn:
-          $ref: "#/components/schemas/PlmnId"
-        requesterPlmnList:
-          items:
-            $ref: "#/components/schemas/PlmnId"
-          minItems: 2
-          type: array
-        requesterSnssaiList:
-          items:
-            $ref: "#/components/schemas/Snssai"
-          minItems: 1
-          type: array
-        requesterFqdn:
-          $ref: "#/components/schemas/Fqdn"
-        requesterSnpnList:
-          items:
-            $ref: "#/components/schemas/PlmnIdNid"
-          minItems: 1
-          type: array
-        targetPlmn:
-          $ref: "#/components/schemas/PlmnId"
-        targetSnpn:
-          $ref: "#/components/schemas/PlmnIdNid"
-        targetSnssaiList:
-          items:
-            $ref: "#/components/schemas/Snssai"
-          minItems: 1
-          type: array
-        targetNsiList:
-          items:
-            type: string
-          minItems: 1
-          type: array
-        targetNfSetId:
-          $ref: "#/components/schemas/NfSetId"
-        targetNfServiceSetId:
-          $ref: "#/components/schemas/NfServiceSetId"
-        hnrfAccessTokenUri:
-          $ref: "#/components/schemas/Uri"
-        sourceNfInstanceId:
-          $ref: "#/components/schemas/NfInstanceId"
-      required:
-        - grant_type
-        - nfInstanceId
-        - scope
-      type: object
     NoProfileMatchInfo:
       description: Provides the reason for not finding NF matching the search criteria
       properties:

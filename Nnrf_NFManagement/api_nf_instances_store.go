@@ -74,10 +74,20 @@ func (r ApiGetNFInstancesRequest) NfType(nfType models.NFType) ApiGetNFInstances
 	return r
 }
 
+// GetNfType returns the nfType set with NfType, or nil if it was not set.
+func (r ApiGetNFInstancesRequest) GetNfType() *models.NFType {
+	return r.nfType
+}
+
 // How many items to return at one time
 func (r ApiGetNFInstancesRequest) Limit(limit int32) ApiGetNFInstancesRequest {
 	r.limit = &limit
 	return r
+}
+
+// GetLimit returns the limit set with Limit, or nil if it was not set.
+func (r ApiGetNFInstancesRequest) GetLimit() *int32 {
+	return r.limit
 }
 
 // Page number where the response shall start
@@ -86,10 +96,20 @@ func (r ApiGetNFInstancesRequest) PageNumber(pageNumber int32) ApiGetNFInstances
 	return r
 }
 
+// GetPageNumber returns the pageNumber set with PageNumber, or nil if it was not set.
+func (r ApiGetNFInstancesRequest) GetPageNumber() *int32 {
+	return r.pageNumber
+}
+
 // Maximum number of items in each returned page
 func (r ApiGetNFInstancesRequest) PageSize(pageSize int32) ApiGetNFInstancesRequest {
 	r.pageSize = &pageSize
 	return r
+}
+
+// GetPageSize returns the pageSize set with PageSize, or nil if it was not set.
+func (r ApiGetNFInstancesRequest) GetPageSize() *int32 {
+	return r.pageSize
 }
 
 func (r ApiGetNFInstancesRequest) Execute() (*models.UriList, *http.Response, error) {

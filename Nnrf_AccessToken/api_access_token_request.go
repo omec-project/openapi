@@ -78,15 +78,30 @@ func (r ApiAccessTokenRequestRequest) GrantType(grantType string) ApiAccessToken
 	return r
 }
 
+// GetGrantType returns the grantType set with GrantType, or nil if it was not set.
+func (r ApiAccessTokenRequestRequest) GetGrantType() *string {
+	return r.grantType
+}
+
 // String uniquely identifying a NF instance. The format of the NF Instance ID shall be a Universally Unique Identifier (UUID) version 4, as described in IETF RFC 4122.
 func (r ApiAccessTokenRequestRequest) NfInstanceId(nfInstanceId string) ApiAccessTokenRequestRequest {
 	r.nfInstanceId = &nfInstanceId
 	return r
 }
 
+// GetNfInstanceId returns the nfInstanceId set with NfInstanceId, or nil if it was not set.
+func (r ApiAccessTokenRequestRequest) GetNfInstanceId() *string {
+	return r.nfInstanceId
+}
+
 func (r ApiAccessTokenRequestRequest) Scope(scope string) ApiAccessTokenRequestRequest {
 	r.scope = &scope
 	return r
+}
+
+// GetScope returns the scope set with Scope, or nil if it was not set.
+func (r ApiAccessTokenRequestRequest) GetScope() *string {
+	return r.scope
 }
 
 // Content-Encoding, described in IETF RFC 9110
@@ -95,10 +110,20 @@ func (r ApiAccessTokenRequestRequest) ContentEncoding(contentEncoding string) Ap
 	return r
 }
 
+// GetContentEncoding returns the contentEncoding set with ContentEncoding, or nil if it was not set.
+func (r ApiAccessTokenRequestRequest) GetContentEncoding() *string {
+	return r.contentEncoding
+}
+
 // Accept-Encoding, described in IETF RFC 9110
 func (r ApiAccessTokenRequestRequest) AcceptEncoding(acceptEncoding string) ApiAccessTokenRequestRequest {
 	r.acceptEncoding = &acceptEncoding
 	return r
+}
+
+// GetAcceptEncoding returns the acceptEncoding set with AcceptEncoding, or nil if it was not set.
+func (r ApiAccessTokenRequestRequest) GetAcceptEncoding() *string {
+	return r.acceptEncoding
 }
 
 func (r ApiAccessTokenRequestRequest) NfType(nfType models.NFType) ApiAccessTokenRequestRequest {
@@ -106,9 +131,19 @@ func (r ApiAccessTokenRequestRequest) NfType(nfType models.NFType) ApiAccessToke
 	return r
 }
 
+// GetNfType returns the nfType set with NfType, or nil if it was not set.
+func (r ApiAccessTokenRequestRequest) GetNfType() *models.NFType {
+	return r.nfType
+}
+
 func (r ApiAccessTokenRequestRequest) TargetNfType(targetNfType models.NFType) ApiAccessTokenRequestRequest {
 	r.targetNfType = &targetNfType
 	return r
+}
+
+// GetTargetNfType returns the targetNfType set with TargetNfType, or nil if it was not set.
+func (r ApiAccessTokenRequestRequest) GetTargetNfType() *models.NFType {
+	return r.targetNfType
 }
 
 // String uniquely identifying a NF instance. The format of the NF Instance ID shall be a Universally Unique Identifier (UUID) version 4, as described in IETF RFC 4122.
@@ -117,9 +152,19 @@ func (r ApiAccessTokenRequestRequest) TargetNfInstanceId(targetNfInstanceId stri
 	return r
 }
 
+// GetTargetNfInstanceId returns the targetNfInstanceId set with TargetNfInstanceId, or nil if it was not set.
+func (r ApiAccessTokenRequestRequest) GetTargetNfInstanceId() *string {
+	return r.targetNfInstanceId
+}
+
 func (r ApiAccessTokenRequestRequest) RequesterPlmn(requesterPlmn models.PlmnId) ApiAccessTokenRequestRequest {
 	r.requesterPlmn = &requesterPlmn
 	return r
+}
+
+// GetRequesterPlmn returns the requesterPlmn set with RequesterPlmn, or nil if it was not set.
+func (r ApiAccessTokenRequestRequest) GetRequesterPlmn() *models.PlmnId {
+	return r.requesterPlmn
 }
 
 func (r ApiAccessTokenRequestRequest) RequesterPlmnList(requesterPlmnList []models.PlmnId) ApiAccessTokenRequestRequest {
@@ -127,9 +172,19 @@ func (r ApiAccessTokenRequestRequest) RequesterPlmnList(requesterPlmnList []mode
 	return r
 }
 
+// GetRequesterPlmnList returns the requesterPlmnList set with RequesterPlmnList, or nil if it was not set.
+func (r ApiAccessTokenRequestRequest) GetRequesterPlmnList() *[]models.PlmnId {
+	return r.requesterPlmnList
+}
+
 func (r ApiAccessTokenRequestRequest) RequesterSnssaiList(requesterSnssaiList []models.Snssai) ApiAccessTokenRequestRequest {
 	r.requesterSnssaiList = &requesterSnssaiList
 	return r
+}
+
+// GetRequesterSnssaiList returns the requesterSnssaiList set with RequesterSnssaiList, or nil if it was not set.
+func (r ApiAccessTokenRequestRequest) GetRequesterSnssaiList() *[]models.Snssai {
+	return r.requesterSnssaiList
 }
 
 // Fully Qualified Domain Name
@@ -138,9 +193,19 @@ func (r ApiAccessTokenRequestRequest) RequesterFqdn(requesterFqdn string) ApiAcc
 	return r
 }
 
+// GetRequesterFqdn returns the requesterFqdn set with RequesterFqdn, or nil if it was not set.
+func (r ApiAccessTokenRequestRequest) GetRequesterFqdn() *string {
+	return r.requesterFqdn
+}
+
 func (r ApiAccessTokenRequestRequest) RequesterSnpnList(requesterSnpnList []models.PlmnIdNid) ApiAccessTokenRequestRequest {
 	r.requesterSnpnList = &requesterSnpnList
 	return r
+}
+
+// GetRequesterSnpnList returns the requesterSnpnList set with RequesterSnpnList, or nil if it was not set.
+func (r ApiAccessTokenRequestRequest) GetRequesterSnpnList() *[]models.PlmnIdNid {
+	return r.requesterSnpnList
 }
 
 func (r ApiAccessTokenRequestRequest) TargetPlmn(targetPlmn models.PlmnId) ApiAccessTokenRequestRequest {
@@ -148,9 +213,19 @@ func (r ApiAccessTokenRequestRequest) TargetPlmn(targetPlmn models.PlmnId) ApiAc
 	return r
 }
 
+// GetTargetPlmn returns the targetPlmn set with TargetPlmn, or nil if it was not set.
+func (r ApiAccessTokenRequestRequest) GetTargetPlmn() *models.PlmnId {
+	return r.targetPlmn
+}
+
 func (r ApiAccessTokenRequestRequest) TargetSnpn(targetSnpn models.PlmnIdNid) ApiAccessTokenRequestRequest {
 	r.targetSnpn = &targetSnpn
 	return r
+}
+
+// GetTargetSnpn returns the targetSnpn set with TargetSnpn, or nil if it was not set.
+func (r ApiAccessTokenRequestRequest) GetTargetSnpn() *models.PlmnIdNid {
+	return r.targetSnpn
 }
 
 func (r ApiAccessTokenRequestRequest) TargetSnssaiList(targetSnssaiList []models.Snssai) ApiAccessTokenRequestRequest {
@@ -158,9 +233,19 @@ func (r ApiAccessTokenRequestRequest) TargetSnssaiList(targetSnssaiList []models
 	return r
 }
 
+// GetTargetSnssaiList returns the targetSnssaiList set with TargetSnssaiList, or nil if it was not set.
+func (r ApiAccessTokenRequestRequest) GetTargetSnssaiList() *[]models.Snssai {
+	return r.targetSnssaiList
+}
+
 func (r ApiAccessTokenRequestRequest) TargetNsiList(targetNsiList []string) ApiAccessTokenRequestRequest {
 	r.targetNsiList = &targetNsiList
 	return r
+}
+
+// GetTargetNsiList returns the targetNsiList set with TargetNsiList, or nil if it was not set.
+func (r ApiAccessTokenRequestRequest) GetTargetNsiList() *[]string {
+	return r.targetNsiList
 }
 
 // NF Set Identifier (see clause 28.12 of 3GPP TS 23.003), formatted as the following string \\\&quot;set&lt;Set ID&gt;.&lt;nftype&gt;set.5gc.mnc&lt;MNC&gt;.mcc&lt;MCC&gt;\\\&quot;, or \\\&quot;set&lt;SetID&gt;.&lt;NFType&gt;set.5gc.nid&lt;NID&gt;.mnc&lt;MNC&gt;.mcc&lt;MCC&gt;\\\&quot; with &lt;MCC&gt; encoded as defined in clause 5.4.2 (\\\&quot;Mcc\\\&quot; data type definition) &lt;MNC&gt; encoding the Mobile Network Code part of the PLMN, comprising 3 digits.   If there are only 2 significant digits in the MNC, one \\\&quot;0\\\&quot; digit shall be inserted   at the left side to fill the 3 digits coding of MNC.  Pattern: &#39;^[0-9]{3}$&#39; &lt;NFType&gt; encoded as a value defined in Table 6.1.6.3.3-1 of 3GPP TS 29.510 but   with lower case characters &lt;Set ID&gt; encoded as a string of characters consisting of   alphabetic characters (A-Z and a-z), digits (0-9) and/or the hyphen (-) and that   shall end with either an alphabetic character or a digit.
@@ -169,10 +254,20 @@ func (r ApiAccessTokenRequestRequest) TargetNfSetId(targetNfSetId string) ApiAcc
 	return r
 }
 
+// GetTargetNfSetId returns the targetNfSetId set with TargetNfSetId, or nil if it was not set.
+func (r ApiAccessTokenRequestRequest) GetTargetNfSetId() *string {
+	return r.targetNfSetId
+}
+
 // NF Service Set Identifier (see clause 28.12 of 3GPP TS 23.003) formatted as the following string \\\&quot;set&lt;Set ID&gt;.sn&lt;Service Name&gt;.nfi&lt;NF Instance ID&gt;.5gc.mnc&lt;MNC&gt;.mcc&lt;MCC&gt;\\\&quot;, or \\\&quot;set&lt;SetID&gt;.sn&lt;ServiceName&gt;.nfi&lt;NFInstanceID&gt;.5gc.nid&lt;NID&gt;.mnc&lt;MNC&gt;.mcc&lt;MCC&gt;\\\&quot; with &lt;MCC&gt; encoded as defined in clause 5.4.2 (\\\&quot;Mcc\\\&quot; data type definition) &lt;MNC&gt; encoding the Mobile Network Code part of the PLMN, comprising 3 digits.   If there are only 2 significant digits in the MNC, one \\\&quot;0\\\&quot; digit shall be inserted   at the left side to fill the 3 digits coding of MNC.  Pattern: &#39;^[0-9]{3}$&#39; &lt;NID&gt; encoded as defined in clause 5.4.2 (\\\&quot;Nid\\\&quot; data type definition) &lt;NFInstanceId&gt; encoded as defined in clause 5.3.2 &lt;ServiceName&gt; encoded as defined in 3GPP TS 29.510 &lt;Set ID&gt; encoded as a string of characters consisting of alphabetic   characters (A-Z and a-z), digits (0-9) and/or the hyphen (-) and that shall end   with either an alphabetic character or a digit.
 func (r ApiAccessTokenRequestRequest) TargetNfServiceSetId(targetNfServiceSetId string) ApiAccessTokenRequestRequest {
 	r.targetNfServiceSetId = &targetNfServiceSetId
 	return r
+}
+
+// GetTargetNfServiceSetId returns the targetNfServiceSetId set with TargetNfServiceSetId, or nil if it was not set.
+func (r ApiAccessTokenRequestRequest) GetTargetNfServiceSetId() *string {
+	return r.targetNfServiceSetId
 }
 
 // String providing an URI formatted according to RFC 3986.
@@ -181,10 +276,20 @@ func (r ApiAccessTokenRequestRequest) HnrfAccessTokenUri(hnrfAccessTokenUri stri
 	return r
 }
 
+// GetHnrfAccessTokenUri returns the hnrfAccessTokenUri set with HnrfAccessTokenUri, or nil if it was not set.
+func (r ApiAccessTokenRequestRequest) GetHnrfAccessTokenUri() *string {
+	return r.hnrfAccessTokenUri
+}
+
 // String uniquely identifying a NF instance. The format of the NF Instance ID shall be a Universally Unique Identifier (UUID) version 4, as described in IETF RFC 4122.
 func (r ApiAccessTokenRequestRequest) SourceNfInstanceId(sourceNfInstanceId string) ApiAccessTokenRequestRequest {
 	r.sourceNfInstanceId = &sourceNfInstanceId
 	return r
+}
+
+// GetSourceNfInstanceId returns the sourceNfInstanceId set with SourceNfInstanceId, or nil if it was not set.
+func (r ApiAccessTokenRequestRequest) GetSourceNfInstanceId() *string {
+	return r.sourceNfInstanceId
 }
 
 func (r ApiAccessTokenRequestRequest) Execute() (*models.AccessTokenRsp, *http.Response, error) {

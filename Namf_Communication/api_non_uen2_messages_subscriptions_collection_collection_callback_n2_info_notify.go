@@ -58,6 +58,11 @@ func (r ApiNonUeN2InfoNotifyRequest) N2InformationNotification(n2InformationNoti
 	return r
 }
 
+// GetN2InformationNotification returns the n2InformationNotification set with N2InformationNotification, or nil if it was not set.
+func (r ApiNonUeN2InfoNotifyRequest) GetN2InformationNotification() *models.N2InformationNotification {
+	return r.n2InformationNotification
+}
+
 func (r ApiNonUeN2InfoNotifyRequest) Execute() (*http.Response, error) {
 	return r.ApiService.NonUeN2InfoNotifyExecute(r)
 }

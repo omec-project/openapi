@@ -32,7 +32,7 @@ type N2InterfaceAmfInfo struct {
 	Ipv4EndpointAddress []string `json:"ipv4EndpointAddress,omitempty" yaml:"ipv4EndpointAddress,omitempty"`
 	Ipv6EndpointAddress []string `json:"ipv6EndpointAddress,omitempty" yaml:"ipv6EndpointAddress,omitempty"`
 	// Fully Qualified Domain Name
-	AmfName *string `json:"amfName,omitempty" yaml:"amfName,omitempty" validate:"regexp=^([0-9A-Za-z]([-0-9A-Za-z]{0,61}[0-9A-Za-z])?\\.)+[A-Za-z]{2,63}\\.?$"`
+	AmfName *string `json:"amfName,omitempty" yaml:"amfName,omitempty" validate:"regexp=^([0-9A-Za-z]([-0-9A-Za-z]{0\\,61}[0-9A-Za-z])?\\.)+[A-Za-z]{2\\,63}\\.?$"`
 }
 
 // NewN2InterfaceAmfInfo instantiates a new N2InterfaceAmfInfo object

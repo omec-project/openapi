@@ -33,7 +33,7 @@ type InterfaceUpfInfoItem struct {
 	Ipv4EndpointAddresses []string        `json:"ipv4EndpointAddresses,omitempty" yaml:"ipv4EndpointAddresses,omitempty"`
 	Ipv6EndpointAddresses []string        `json:"ipv6EndpointAddresses,omitempty" yaml:"ipv6EndpointAddresses,omitempty"`
 	// Fully Qualified Domain Name
-	EndpointFqdn    *string `json:"endpointFqdn,omitempty" yaml:"endpointFqdn,omitempty" validate:"regexp=^([0-9A-Za-z]([-0-9A-Za-z]{0,61}[0-9A-Za-z])?\\.)+[A-Za-z]{2,63}\\.?$"`
+	EndpointFqdn    *string `json:"endpointFqdn,omitempty" yaml:"endpointFqdn,omitempty" validate:"regexp=^([0-9A-Za-z]([-0-9A-Za-z]{0\\,61}[0-9A-Za-z])?\\.)+[A-Za-z]{2\\,63}\\.?$"`
 	NetworkInstance *string `json:"networkInstance,omitempty" yaml:"networkInstance,omitempty"`
 }
 

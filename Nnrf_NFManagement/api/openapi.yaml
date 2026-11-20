@@ -6718,7 +6718,7 @@ components:
                 realm: null
               - name: null
                 realm: null
-        customInfo: "{}"
+        customInfo: {}
         recoveryTime: 2000-01-23T04:56:07.000+00:00
         nfServicePersistence: false
         nfServices:
@@ -13511,7 +13511,7 @@ components:
                   realm: null
                 - name: null
                   realm: null
-          customInfo: "{}"
+          customInfo: {}
           recoveryTime: 2000-01-23T04:56:07.000+00:00
           nfServicePersistence: false
           nfServices:
@@ -23036,7 +23036,7 @@ components:
                   realm: null
                 - name: null
                   realm: null
-          customInfo: "{}"
+          customInfo: {}
           recoveryTime: 2000-01-23T04:56:07.000+00:00
           nfServicePersistence: false
           nfServices:
@@ -28711,7 +28711,7 @@ components:
                   realm: null
                 - name: null
                   realm: null
-          customInfo: "{}"
+          customInfo: {}
           recoveryTime: 2000-01-23T04:56:07.000+00:00
           nfServicePersistence: false
           nfServices:
@@ -42434,7 +42434,7 @@ components:
                 realm: null
               - name: null
                 realm: null
-        customInfo: "{}"
+        customInfo: {}
         recoveryTime: 2000-01-23T04:56:07.000+00:00
         nfServicePersistence: false
         nfServices:

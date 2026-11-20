@@ -49,7 +49,7 @@ type PduSessionCreatedData struct {
 	// String identifying a IPv4 address formatted in the 'dotted decimal' notation as defined in RFC 1166.
 	UeIpv4Address *string `json:"ueIpv4Address,omitempty" yaml:"ueIpv4Address,omitempty" validate:"regexp=^(([0-9]|[1-9][0-9]|1[0-9][0-9]|2[0-4][0-9]|25[0-5])\\.){3}([0-9]|[1-9][0-9]|1[0-9][0-9]|2[0-4][0-9]|25[0-5])$"`
 	// String identifying an IPv6 address prefix formatted according to clause 4 of RFC 5952. IPv6Prefix data type may contain an individual /128 IPv6 address.
-	UeIpv6Prefix  *string          `json:"ueIpv6Prefix,omitempty" yaml:"ueIpv6Prefix,omitempty" validate:"regexp=^(((:|(0?|([1-9a-f][0-9a-f]{0,3}))):)((0?|([1-9a-f][0-9a-f]{0,3})):){0,6}(:|(0?|([1-9a-f][0-9a-f]{0,3})))(/(([0-9])|([0-9]{2})|(1[0-1][0-9])|(12[0-8])))|((([^:]+:){7}([^:]+))|((([^:]+:)*[^:]+)?::(([^:]+:)*[^:]+)?))(/.+))$"`
+	UeIpv6Prefix  *string          `json:"ueIpv6Prefix,omitempty" yaml:"ueIpv6Prefix,omitempty" validate:"regexp=^(((:|(0?|([1-9a-f][0-9a-f]{0\\,3}))):)((0?|([1-9a-f][0-9a-f]{0\\,3})):){0\\,6}(:|(0?|([1-9a-f][0-9a-f]{0\\,3})))(/(([0-9])|([0-9]{2})|(1[0-1][0-9])|(12[0-8])))|((([^:]+:){7}([^:]+))|((([^:]+:)*[^:]+)?::(([^:]+:)*[^:]+)?))(/.+))$"`
 	N1SmInfoToUe  *RefToBinaryData `json:"n1SmInfoToUe,omitempty" yaml:"n1SmInfoToUe,omitempty"`
 	EpsPdnCnxInfo *EpsPdnCnxInfo   `json:"epsPdnCnxInfo,omitempty" yaml:"epsPdnCnxInfo,omitempty"`
 	EpsBearerInfo []EpsBearerInfo  `json:"epsBearerInfo,omitempty" yaml:"epsBearerInfo,omitempty"`
@@ -59,7 +59,7 @@ type PduSessionCreatedData struct {
 	MaxIntegrityProtectedDataRateDl *MaxIntegrityProtectedDataRate `json:"maxIntegrityProtectedDataRateDl,omitempty" yaml:"maxIntegrityProtectedDataRateDl,omitempty"`
 	AlwaysOnGranted                 *bool                          `json:"alwaysOnGranted,omitempty" yaml:"alwaysOnGranted,omitempty"`
 	// String identifying a Gpsi shall contain either an External Id or an MSISDN. It shall be formatted as follows -External Identifier= \"extid-'extid', where 'extid' shall be formatted according to clause 19.7.2 of 3GPP TS 23.003 that describes an External Identifier.
-	Gpsi                   *string                 `json:"gpsi,omitempty" yaml:"gpsi,omitempty" validate:"regexp=^(msisdn-[0-9]{5,15}|extid-[^@]+@[^@]+|.+)$"`
+	Gpsi                   *string                 `json:"gpsi,omitempty" yaml:"gpsi,omitempty" validate:"regexp=^(msisdn-[0-9]{5\\,15}|extid-[^@]+@[^@]+|.+)$"`
 	UpSecurity             *UpSecurity             `json:"upSecurity,omitempty" yaml:"upSecurity,omitempty"`
 	RoamingChargingProfile *RoamingChargingProfile `json:"roamingChargingProfile,omitempty" yaml:"roamingChargingProfile,omitempty"`
 	HSmfServiceInstanceId  *string                 `json:"hSmfServiceInstanceId,omitempty" yaml:"hSmfServiceInstanceId,omitempty"`
@@ -69,9 +69,9 @@ type PduSessionCreatedData struct {
 	DnaiList               []string   `json:"dnaiList,omitempty" yaml:"dnaiList,omitempty"`
 	Ipv6MultiHomingInd     *bool      `json:"ipv6MultiHomingInd,omitempty" yaml:"ipv6MultiHomingInd,omitempty"`
 	MaAcceptedInd          *bool      `json:"maAcceptedInd,omitempty" yaml:"maAcceptedInd,omitempty"`
-	HomeProvidedChargingId *string    `json:"homeProvidedChargingId,omitempty" yaml:"homeProvidedChargingId,omitempty" validate:"regexp=^(0|([1-9]{1}[0-9]{0,9}))$"`
+	HomeProvidedChargingId *string    `json:"homeProvidedChargingId,omitempty" yaml:"homeProvidedChargingId,omitempty" validate:"regexp=^(0|([1-9]{1}[0-9]{0\\,9}))$"`
 	// String based Charging ID
-	HomeProvidedSmfChargingId   *string `json:"homeProvidedSmfChargingId,omitempty" yaml:"homeProvidedSmfChargingId,omitempty" validate:"regexp=^(0|([1-9]{1}[0-9]{0,9}))\\.smf-([0-9a-f]{8}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{12})$"`
+	HomeProvidedSmfChargingId   *string `json:"homeProvidedSmfChargingId,omitempty" yaml:"homeProvidedSmfChargingId,omitempty" validate:"regexp=^(0|([1-9]{1}[0-9]{0\\,9}))\\.smf-([0-9a-f]{8}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{12})$"`
 	NefExtBufSupportInd         *bool   `json:"nefExtBufSupportInd,omitempty" yaml:"nefExtBufSupportInd,omitempty"`
 	SmallDataRateControlEnabled *bool   `json:"smallDataRateControlEnabled,omitempty" yaml:"smallDataRateControlEnabled,omitempty"`
 	UeIpv6InterfaceId           *string `json:"ueIpv6InterfaceId,omitempty" yaml:"ueIpv6InterfaceId,omitempty" validate:"regexp=^[A-Fa-f0-9]{16}$"`

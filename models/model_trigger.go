@@ -35,9 +35,8 @@ type Trigger struct {
 	// indicating a time in seconds.
 	TimeLimit *int32 `json:"timeLimit,omitempty" yaml:"timeLimit,omitempty"`
 	// Integer where the allowed values correspond to the value range of an unsigned 32-bit integer.
-	VolumeLimit *int32 `json:"volumeLimit,omitempty" yaml:"volumeLimit,omitempty"`
-	// Integer where the allowed values correspond to the value range of an unsigned 64-bit integer.
-	VolumeLimit64 *int32 `json:"volumeLimit64,omitempty" yaml:"volumeLimit64,omitempty"`
+	VolumeLimit   *int32  `json:"volumeLimit,omitempty" yaml:"volumeLimit,omitempty"`
+	VolumeLimit64 *uint64 `json:"volumeLimit64,omitempty" yaml:"volumeLimit64,omitempty"`
 	// Integer where the allowed values correspond to the value range of an unsigned 32-bit integer.
 	EventLimit *int32 `json:"eventLimit,omitempty" yaml:"eventLimit,omitempty"`
 	// Integer where the allowed values correspond to the value range of an unsigned 32-bit integer.
@@ -185,9 +184,9 @@ func (o *Trigger) SetVolumeLimit(v int32) {
 }
 
 // GetVolumeLimit64 returns the VolumeLimit64 field value if set, zero value otherwise.
-func (o *Trigger) GetVolumeLimit64() int32 {
+func (o *Trigger) GetVolumeLimit64() uint64 {
 	if o == nil || openapi.IsNil(o.VolumeLimit64) {
-		var ret int32
+		var ret uint64
 		return ret
 	}
 	return *o.VolumeLimit64
@@ -195,7 +194,7 @@ func (o *Trigger) GetVolumeLimit64() int32 {
 
 // GetVolumeLimit64Ok returns a tuple with the VolumeLimit64 field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *Trigger) GetVolumeLimit64Ok() (*int32, bool) {
+func (o *Trigger) GetVolumeLimit64Ok() (*uint64, bool) {
 	if o == nil || openapi.IsNil(o.VolumeLimit64) {
 		return nil, false
 	}
@@ -211,8 +210,8 @@ func (o *Trigger) HasVolumeLimit64() bool {
 	return false
 }
 
-// SetVolumeLimit64 gets a reference to the given int32 and assigns it to the VolumeLimit64 field.
-func (o *Trigger) SetVolumeLimit64(v int32) {
+// SetVolumeLimit64 gets a reference to the given uint64 and assigns it to the VolumeLimit64 field.
+func (o *Trigger) SetVolumeLimit64(v uint64) {
 	o.VolumeLimit64 = &v
 }
 

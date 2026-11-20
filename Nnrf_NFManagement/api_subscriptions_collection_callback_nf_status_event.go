@@ -59,10 +59,20 @@ func (r ApiOnNFStatusEventPostRequest) ContentEncoding(contentEncoding string) A
 	return r
 }
 
+// GetContentEncoding returns the contentEncoding set with ContentEncoding, or nil if it was not set.
+func (r ApiOnNFStatusEventPostRequest) GetContentEncoding() *string {
+	return r.contentEncoding
+}
+
 // Notification content
 func (r ApiOnNFStatusEventPostRequest) NotificationData(notificationData models.NotificationData) ApiOnNFStatusEventPostRequest {
 	r.notificationData = &notificationData
 	return r
+}
+
+// GetNotificationData returns the notificationData set with NotificationData, or nil if it was not set.
+func (r ApiOnNFStatusEventPostRequest) GetNotificationData() *models.NotificationData {
+	return r.notificationData
 }
 
 func (r ApiOnNFStatusEventPostRequest) Execute() (*http.Response, error) {

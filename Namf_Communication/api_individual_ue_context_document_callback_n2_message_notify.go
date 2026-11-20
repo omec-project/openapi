@@ -59,6 +59,11 @@ func (r ApiN2InfoNotifyHandoverCompleteRequest) N2InformationNotification(n2Info
 	return r
 }
 
+// GetN2InformationNotification returns the n2InformationNotification set with N2InformationNotification, or nil if it was not set.
+func (r ApiN2InfoNotifyHandoverCompleteRequest) GetN2InformationNotification() *models.N2InformationNotification {
+	return r.n2InformationNotification
+}
+
 func (r ApiN2InfoNotifyHandoverCompleteRequest) Execute() (*models.N2InfoNotificationRspData, *http.Response, error) {
 	return r.ApiService.N2InfoNotifyHandoverCompleteExecute(r)
 }

@@ -307,16 +307,31 @@ func (r ApiUpdateSubscriptionRequest) PatchItem(patchItem []models.PatchItem) Ap
 	return r
 }
 
+// GetPatchItem returns the patchItem set with PatchItem, or nil if it was not set.
+func (r ApiUpdateSubscriptionRequest) GetPatchItem() *[]models.PatchItem {
+	return r.patchItem
+}
+
 // Content-Encoding, described in IETF RFC 9110
 func (r ApiUpdateSubscriptionRequest) ContentEncoding(contentEncoding string) ApiUpdateSubscriptionRequest {
 	r.contentEncoding = &contentEncoding
 	return r
 }
 
+// GetContentEncoding returns the contentEncoding set with ContentEncoding, or nil if it was not set.
+func (r ApiUpdateSubscriptionRequest) GetContentEncoding() *string {
+	return r.contentEncoding
+}
+
 // Accept-Encoding, described in IETF RFC 9110
 func (r ApiUpdateSubscriptionRequest) AcceptEncoding(acceptEncoding string) ApiUpdateSubscriptionRequest {
 	r.acceptEncoding = &acceptEncoding
 	return r
+}
+
+// GetAcceptEncoding returns the acceptEncoding set with AcceptEncoding, or nil if it was not set.
+func (r ApiUpdateSubscriptionRequest) GetAcceptEncoding() *string {
+	return r.acceptEncoding
 }
 
 func (r ApiUpdateSubscriptionRequest) Execute() (*models.SubscriptionData, *http.Response, error) {

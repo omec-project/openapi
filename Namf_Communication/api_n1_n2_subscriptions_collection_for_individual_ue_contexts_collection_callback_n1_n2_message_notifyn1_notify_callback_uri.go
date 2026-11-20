@@ -59,9 +59,19 @@ func (r ApiN1MessageNotifyRequest) JsonData(jsonData models.N1MessageNotificatio
 	return r
 }
 
+// GetJsonData returns the jsonData set with JsonData, or nil if it was not set.
+func (r ApiN1MessageNotifyRequest) GetJsonData() *models.N1MessageNotification {
+	return r.jsonData
+}
+
 func (r ApiN1MessageNotifyRequest) BinaryDataN1Message(binaryDataN1Message *os.File) ApiN1MessageNotifyRequest {
 	r.binaryDataN1Message = binaryDataN1Message
 	return r
+}
+
+// GetBinaryDataN1Message returns the binaryDataN1Message set with BinaryDataN1Message, or nil if it was not set.
+func (r ApiN1MessageNotifyRequest) GetBinaryDataN1Message() *os.File {
+	return r.binaryDataN1Message
 }
 
 func (r ApiN1MessageNotifyRequest) Execute() (*http.Response, error) {

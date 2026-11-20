@@ -60,16 +60,31 @@ func (r ApiCreateSubscriptionRequest) SubscriptionData(subscriptionData models.S
 	return r
 }
 
+// GetSubscriptionData returns the subscriptionData set with SubscriptionData, or nil if it was not set.
+func (r ApiCreateSubscriptionRequest) GetSubscriptionData() *models.SubscriptionData {
+	return r.subscriptionData
+}
+
 // Content-Encoding, described in IETF RFC 9110
 func (r ApiCreateSubscriptionRequest) ContentEncoding(contentEncoding string) ApiCreateSubscriptionRequest {
 	r.contentEncoding = &contentEncoding
 	return r
 }
 
+// GetContentEncoding returns the contentEncoding set with ContentEncoding, or nil if it was not set.
+func (r ApiCreateSubscriptionRequest) GetContentEncoding() *string {
+	return r.contentEncoding
+}
+
 // Accept-Encoding, described in IETF RFC 9110
 func (r ApiCreateSubscriptionRequest) AcceptEncoding(acceptEncoding string) ApiCreateSubscriptionRequest {
 	r.acceptEncoding = &acceptEncoding
 	return r
+}
+
+// GetAcceptEncoding returns the acceptEncoding set with AcceptEncoding, or nil if it was not set.
+func (r ApiCreateSubscriptionRequest) GetAcceptEncoding() *string {
+	return r.acceptEncoding
 }
 
 func (r ApiCreateSubscriptionRequest) Execute() (*models.SubscriptionData, *http.Response, error) {

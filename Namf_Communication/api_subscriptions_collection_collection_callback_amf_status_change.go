@@ -58,6 +58,11 @@ func (r ApiAmfStatusChangeNotifyOnSubscriptionUpdateRequest) AmfStatusChangeNoti
 	return r
 }
 
+// GetAmfStatusChangeNotification returns the amfStatusChangeNotification set with AmfStatusChangeNotification, or nil if it was not set.
+func (r ApiAmfStatusChangeNotifyOnSubscriptionUpdateRequest) GetAmfStatusChangeNotification() *models.AmfStatusChangeNotification {
+	return r.amfStatusChangeNotification
+}
+
 func (r ApiAmfStatusChangeNotifyOnSubscriptionUpdateRequest) Execute() (*http.Response, error) {
 	return r.ApiService.AmfStatusChangeNotifyOnSubscriptionUpdateExecute(r)
 }

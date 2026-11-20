@@ -73,6 +73,11 @@ func (r ApiAMFStatusChangeSubscribeModifyRequest) SubscriptionDataAmf(subscripti
 	return r
 }
 
+// GetSubscriptionDataAmf returns the subscriptionDataAmf set with SubscriptionDataAmf, or nil if it was not set.
+func (r ApiAMFStatusChangeSubscribeModifyRequest) GetSubscriptionDataAmf() *models.SubscriptionDataAmf {
+	return r.subscriptionDataAmf
+}
+
 func (r ApiAMFStatusChangeSubscribeModifyRequest) Execute() (*models.SubscriptionDataAmf, *http.Response, error) {
 	return r.ApiService.AMFStatusChangeSubscribeModifyExecute(r)
 }

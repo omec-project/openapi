@@ -60,9 +60,19 @@ func (r ApiNonUeN2MessageTransferRequest) N2InformationTransferReqData(n2Informa
 	return r
 }
 
+// GetN2InformationTransferReqData returns the n2InformationTransferReqData set with N2InformationTransferReqData, or nil if it was not set.
+func (r ApiNonUeN2MessageTransferRequest) GetN2InformationTransferReqData() *models.N2InformationTransferReqData {
+	return r.n2InformationTransferReqData
+}
+
 func (r ApiNonUeN2MessageTransferRequest) BinaryDataN2Information(binaryDataN2Information *os.File) ApiNonUeN2MessageTransferRequest {
 	r.binaryDataN2Information = binaryDataN2Information
 	return r
+}
+
+// GetBinaryDataN2Information returns the binaryDataN2Information set with BinaryDataN2Information, or nil if it was not set.
+func (r ApiNonUeN2MessageTransferRequest) GetBinaryDataN2Information() *os.File {
+	return r.binaryDataN2Information
 }
 
 func (r ApiNonUeN2MessageTransferRequest) Execute() (*models.N2InformationTransferRspData, *http.Response, error) {

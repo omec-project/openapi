@@ -58,6 +58,11 @@ func (r ApiN1N2TransferFailureNotificationRequest) N1N2MsgTxfrFailureNotificatio
 	return r
 }
 
+// GetN1N2MsgTxfrFailureNotification returns the n1N2MsgTxfrFailureNotification set with N1N2MsgTxfrFailureNotification, or nil if it was not set.
+func (r ApiN1N2TransferFailureNotificationRequest) GetN1N2MsgTxfrFailureNotification() *models.N1N2MsgTxfrFailureNotification {
+	return r.n1N2MsgTxfrFailureNotification
+}
+
 func (r ApiN1N2TransferFailureNotificationRequest) Execute() (*http.Response, error) {
 	return r.ApiService.N1N2TransferFailureNotificationExecute(r)
 }
