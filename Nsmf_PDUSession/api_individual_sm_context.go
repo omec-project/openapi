@@ -102,9 +102,19 @@ func (r ApiReleaseSmContextRequest) SmContextReleaseData(smContextReleaseData mo
 	return r
 }
 
+// GetSmContextReleaseData returns the smContextReleaseData set with SmContextReleaseData, or nil if it was not set.
+func (r ApiReleaseSmContextRequest) GetSmContextReleaseData() *models.SmContextReleaseData {
+	return r.smContextReleaseData
+}
+
 func (r ApiReleaseSmContextRequest) BinaryDataN2SmInformation(binaryDataN2SmInformation *os.File) ApiReleaseSmContextRequest {
 	r.binaryDataN2SmInformation = binaryDataN2SmInformation
 	return r
+}
+
+// GetBinaryDataN2SmInformation returns the binaryDataN2SmInformation set with BinaryDataN2SmInformation, or nil if it was not set.
+func (r ApiReleaseSmContextRequest) GetBinaryDataN2SmInformation() *os.File {
+	return r.binaryDataN2SmInformation
 }
 
 func (r ApiReleaseSmContextRequest) Execute() (*models.SmContextReleasedData, *http.Response, error) {
@@ -237,7 +247,7 @@ func (a *IndividualSMContextAPIService) ReleaseSmContextExecute(r ApiReleaseSmCo
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 400 {
-			var v models.ExtProblemDetails
+			var v models.ProblemDetails
 			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 			if err != nil {
 				newErr.RawError = err.Error()
@@ -248,7 +258,7 @@ func (a *IndividualSMContextAPIService) ReleaseSmContextExecute(r ApiReleaseSmCo
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 401 {
-			var v models.ExtProblemDetails
+			var v models.ProblemDetails
 			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 			if err != nil {
 				newErr.RawError = err.Error()
@@ -259,7 +269,7 @@ func (a *IndividualSMContextAPIService) ReleaseSmContextExecute(r ApiReleaseSmCo
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 403 {
-			var v models.ExtProblemDetails
+			var v models.ProblemDetails
 			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 			if err != nil {
 				newErr.RawError = err.Error()
@@ -270,7 +280,7 @@ func (a *IndividualSMContextAPIService) ReleaseSmContextExecute(r ApiReleaseSmCo
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 404 {
-			var v models.ExtProblemDetails
+			var v models.ProblemDetails
 			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 			if err != nil {
 				newErr.RawError = err.Error()
@@ -292,7 +302,7 @@ func (a *IndividualSMContextAPIService) ReleaseSmContextExecute(r ApiReleaseSmCo
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 413 {
-			var v models.ExtProblemDetails
+			var v models.ProblemDetails
 			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 			if err != nil {
 				newErr.RawError = err.Error()
@@ -303,7 +313,7 @@ func (a *IndividualSMContextAPIService) ReleaseSmContextExecute(r ApiReleaseSmCo
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 415 {
-			var v models.ExtProblemDetails
+			var v models.ProblemDetails
 			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 			if err != nil {
 				newErr.RawError = err.Error()
@@ -314,7 +324,7 @@ func (a *IndividualSMContextAPIService) ReleaseSmContextExecute(r ApiReleaseSmCo
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 429 {
-			var v models.ExtProblemDetails
+			var v models.ProblemDetails
 			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 			if err != nil {
 				newErr.RawError = err.Error()
@@ -325,7 +335,7 @@ func (a *IndividualSMContextAPIService) ReleaseSmContextExecute(r ApiReleaseSmCo
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 500 {
-			var v models.ExtProblemDetails
+			var v models.ProblemDetails
 			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 			if err != nil {
 				newErr.RawError = err.Error()
@@ -336,7 +346,7 @@ func (a *IndividualSMContextAPIService) ReleaseSmContextExecute(r ApiReleaseSmCo
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 502 {
-			var v models.ExtProblemDetails
+			var v models.ProblemDetails
 			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 			if err != nil {
 				newErr.RawError = err.Error()
@@ -347,7 +357,7 @@ func (a *IndividualSMContextAPIService) ReleaseSmContextExecute(r ApiReleaseSmCo
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 503 {
-			var v models.ExtProblemDetails
+			var v models.ProblemDetails
 			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 			if err != nil {
 				newErr.RawError = err.Error()
@@ -383,6 +393,11 @@ type ApiRetrieveSmContextRequest struct {
 func (r ApiRetrieveSmContextRequest) SmContextRetrieveData(smContextRetrieveData models.SmContextRetrieveData) ApiRetrieveSmContextRequest {
 	r.smContextRetrieveData = &smContextRetrieveData
 	return r
+}
+
+// GetSmContextRetrieveData returns the smContextRetrieveData set with SmContextRetrieveData, or nil if it was not set.
+func (r ApiRetrieveSmContextRequest) GetSmContextRetrieveData() *models.SmContextRetrieveData {
+	return r.smContextRetrieveData
 }
 
 func (r ApiRetrieveSmContextRequest) Execute() (*models.SmContextRetrievedData, *http.Response, error) {
@@ -490,7 +505,7 @@ func (a *IndividualSMContextAPIService) RetrieveSmContextExecute(r ApiRetrieveSm
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 400 {
-			var v models.ExtProblemDetails
+			var v models.ProblemDetails
 			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 			if err != nil {
 				newErr.RawError = err.Error()
@@ -501,7 +516,7 @@ func (a *IndividualSMContextAPIService) RetrieveSmContextExecute(r ApiRetrieveSm
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 401 {
-			var v models.ExtProblemDetails
+			var v models.ProblemDetails
 			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 			if err != nil {
 				newErr.RawError = err.Error()
@@ -512,7 +527,7 @@ func (a *IndividualSMContextAPIService) RetrieveSmContextExecute(r ApiRetrieveSm
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 403 {
-			var v models.ExtProblemDetails
+			var v models.ProblemDetails
 			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 			if err != nil {
 				newErr.RawError = err.Error()
@@ -523,7 +538,7 @@ func (a *IndividualSMContextAPIService) RetrieveSmContextExecute(r ApiRetrieveSm
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 404 {
-			var v models.ExtProblemDetails
+			var v models.ProblemDetails
 			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 			if err != nil {
 				newErr.RawError = err.Error()
@@ -545,7 +560,7 @@ func (a *IndividualSMContextAPIService) RetrieveSmContextExecute(r ApiRetrieveSm
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 413 {
-			var v models.ExtProblemDetails
+			var v models.ProblemDetails
 			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 			if err != nil {
 				newErr.RawError = err.Error()
@@ -556,7 +571,7 @@ func (a *IndividualSMContextAPIService) RetrieveSmContextExecute(r ApiRetrieveSm
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 415 {
-			var v models.ExtProblemDetails
+			var v models.ProblemDetails
 			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 			if err != nil {
 				newErr.RawError = err.Error()
@@ -567,7 +582,7 @@ func (a *IndividualSMContextAPIService) RetrieveSmContextExecute(r ApiRetrieveSm
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 429 {
-			var v models.ExtProblemDetails
+			var v models.ProblemDetails
 			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 			if err != nil {
 				newErr.RawError = err.Error()
@@ -578,7 +593,7 @@ func (a *IndividualSMContextAPIService) RetrieveSmContextExecute(r ApiRetrieveSm
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 500 {
-			var v models.ExtProblemDetails
+			var v models.ProblemDetails
 			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 			if err != nil {
 				newErr.RawError = err.Error()
@@ -589,7 +604,7 @@ func (a *IndividualSMContextAPIService) RetrieveSmContextExecute(r ApiRetrieveSm
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 502 {
-			var v models.ExtProblemDetails
+			var v models.ProblemDetails
 			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 			if err != nil {
 				newErr.RawError = err.Error()
@@ -600,7 +615,7 @@ func (a *IndividualSMContextAPIService) RetrieveSmContextExecute(r ApiRetrieveSm
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 503 {
-			var v models.ExtProblemDetails
+			var v models.ProblemDetails
 			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 			if err != nil {
 				newErr.RawError = err.Error()
@@ -649,9 +664,19 @@ func (r ApiSendMoDataRequest) JsonData(jsonData models.SendMoDataReqData) ApiSen
 	return r
 }
 
+// GetJsonData returns the jsonData set with JsonData, or nil if it was not set.
+func (r ApiSendMoDataRequest) GetJsonData() *models.SendMoDataReqData {
+	return r.jsonData
+}
+
 func (r ApiSendMoDataRequest) BinaryMoData(binaryMoData *os.File) ApiSendMoDataRequest {
 	r.binaryMoData = binaryMoData
 	return r
+}
+
+// GetBinaryMoData returns the binaryMoData set with BinaryMoData, or nil if it was not set.
+func (r ApiSendMoDataRequest) GetBinaryMoData() *os.File {
+	return r.binaryMoData
 }
 
 func (r ApiSendMoDataRequest) Execute() (*http.Response, error) {
@@ -916,9 +941,19 @@ func (r ApiUpdateSmContextRequest) SmContextUpdateData(smContextUpdateData model
 	return r
 }
 
+// GetSmContextUpdateData returns the smContextUpdateData set with SmContextUpdateData, or nil if it was not set.
+func (r ApiUpdateSmContextRequest) GetSmContextUpdateData() *models.SmContextUpdateData {
+	return r.smContextUpdateData
+}
+
 func (r ApiUpdateSmContextRequest) BinaryDataN1SmMessage(binaryDataN1SmMessage *os.File) ApiUpdateSmContextRequest {
 	r.binaryDataN1SmMessage = binaryDataN1SmMessage
 	return r
+}
+
+// GetBinaryDataN1SmMessage returns the binaryDataN1SmMessage set with BinaryDataN1SmMessage, or nil if it was not set.
+func (r ApiUpdateSmContextRequest) GetBinaryDataN1SmMessage() *os.File {
+	return r.binaryDataN1SmMessage
 }
 
 func (r ApiUpdateSmContextRequest) BinaryDataN2SmInformation(binaryDataN2SmInformation *os.File) ApiUpdateSmContextRequest {
@@ -926,9 +961,19 @@ func (r ApiUpdateSmContextRequest) BinaryDataN2SmInformation(binaryDataN2SmInfor
 	return r
 }
 
+// GetBinaryDataN2SmInformation returns the binaryDataN2SmInformation set with BinaryDataN2SmInformation, or nil if it was not set.
+func (r ApiUpdateSmContextRequest) GetBinaryDataN2SmInformation() *os.File {
+	return r.binaryDataN2SmInformation
+}
+
 func (r ApiUpdateSmContextRequest) BinaryDataN2SmInformationExt1(binaryDataN2SmInformationExt1 *os.File) ApiUpdateSmContextRequest {
 	r.binaryDataN2SmInformationExt1 = binaryDataN2SmInformationExt1
 	return r
+}
+
+// GetBinaryDataN2SmInformationExt1 returns the binaryDataN2SmInformationExt1 set with BinaryDataN2SmInformationExt1, or nil if it was not set.
+func (r ApiUpdateSmContextRequest) GetBinaryDataN2SmInformationExt1() *os.File {
+	return r.binaryDataN2SmInformationExt1
 }
 
 func (r ApiUpdateSmContextRequest) Execute() (*models.SmContextUpdatedData, *http.Response, error) {

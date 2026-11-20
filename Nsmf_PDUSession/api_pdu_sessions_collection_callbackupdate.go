@@ -59,6 +59,11 @@ func (r ApiModifyPduSessionRequest) VsmfUpdateData(vsmfUpdateData models.VsmfUpd
 	return r
 }
 
+// GetVsmfUpdateData returns the vsmfUpdateData set with VsmfUpdateData, or nil if it was not set.
+func (r ApiModifyPduSessionRequest) GetVsmfUpdateData() *models.VsmfUpdateData {
+	return r.vsmfUpdateData
+}
+
 func (r ApiModifyPduSessionRequest) Execute() (*models.VsmfUpdatedData, *http.Response, error) {
 	return r.ApiService.ModifyPduSessionExecute(r)
 }
@@ -219,7 +224,7 @@ func (a *PDUSessionsCollectionCallbackupdateAPIService) ModifyPduSessionExecute(
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 413 {
-			var v models.ExtProblemDetails
+			var v models.ProblemDetails
 			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 			if err != nil {
 				newErr.RawError = err.Error()
@@ -230,7 +235,7 @@ func (a *PDUSessionsCollectionCallbackupdateAPIService) ModifyPduSessionExecute(
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 415 {
-			var v models.ExtProblemDetails
+			var v models.ProblemDetails
 			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 			if err != nil {
 				newErr.RawError = err.Error()
@@ -241,7 +246,7 @@ func (a *PDUSessionsCollectionCallbackupdateAPIService) ModifyPduSessionExecute(
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 429 {
-			var v models.ExtProblemDetails
+			var v models.ProblemDetails
 			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 			if err != nil {
 				newErr.RawError = err.Error()
@@ -263,7 +268,7 @@ func (a *PDUSessionsCollectionCallbackupdateAPIService) ModifyPduSessionExecute(
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 502 {
-			var v models.ExtProblemDetails
+			var v models.ProblemDetails
 			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 			if err != nil {
 				newErr.RawError = err.Error()

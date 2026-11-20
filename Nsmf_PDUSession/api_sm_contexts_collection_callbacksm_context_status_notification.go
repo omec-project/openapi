@@ -57,6 +57,11 @@ func (r ApiSmContextStatusNotificationPostRequest) SmContextStatusNotification(s
 	return r
 }
 
+// GetSmContextStatusNotification returns the smContextStatusNotification set with SmContextStatusNotification, or nil if it was not set.
+func (r ApiSmContextStatusNotificationPostRequest) GetSmContextStatusNotification() *models.SmContextStatusNotification {
+	return r.smContextStatusNotification
+}
+
 func (r ApiSmContextStatusNotificationPostRequest) Execute() (*http.Response, error) {
 	return r.ApiService.SmContextStatusNotificationPostExecute(r)
 }
@@ -159,7 +164,7 @@ func (a *SMContextsCollectionCallbacksmContextStatusNotificationAPIService) SmCo
 			return localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 400 {
-			var v models.ExtProblemDetails
+			var v models.ProblemDetails
 			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 			if err != nil {
 				newErr.RawError = err.Error()
@@ -170,7 +175,7 @@ func (a *SMContextsCollectionCallbacksmContextStatusNotificationAPIService) SmCo
 			return localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 403 {
-			var v models.ExtProblemDetails
+			var v models.ProblemDetails
 			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 			if err != nil {
 				newErr.RawError = err.Error()
@@ -181,7 +186,7 @@ func (a *SMContextsCollectionCallbacksmContextStatusNotificationAPIService) SmCo
 			return localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 404 {
-			var v models.ExtProblemDetails
+			var v models.ProblemDetails
 			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 			if err != nil {
 				newErr.RawError = err.Error()
@@ -203,7 +208,7 @@ func (a *SMContextsCollectionCallbacksmContextStatusNotificationAPIService) SmCo
 			return localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 413 {
-			var v models.ExtProblemDetails
+			var v models.ProblemDetails
 			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 			if err != nil {
 				newErr.RawError = err.Error()
@@ -214,7 +219,7 @@ func (a *SMContextsCollectionCallbacksmContextStatusNotificationAPIService) SmCo
 			return localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 415 {
-			var v models.ExtProblemDetails
+			var v models.ProblemDetails
 			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 			if err != nil {
 				newErr.RawError = err.Error()
@@ -225,7 +230,7 @@ func (a *SMContextsCollectionCallbacksmContextStatusNotificationAPIService) SmCo
 			return localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 429 {
-			var v models.ExtProblemDetails
+			var v models.ProblemDetails
 			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 			if err != nil {
 				newErr.RawError = err.Error()
@@ -236,7 +241,7 @@ func (a *SMContextsCollectionCallbacksmContextStatusNotificationAPIService) SmCo
 			return localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 500 {
-			var v models.ExtProblemDetails
+			var v models.ProblemDetails
 			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 			if err != nil {
 				newErr.RawError = err.Error()
@@ -247,7 +252,7 @@ func (a *SMContextsCollectionCallbacksmContextStatusNotificationAPIService) SmCo
 			return localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 502 {
-			var v models.ExtProblemDetails
+			var v models.ProblemDetails
 			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 			if err != nil {
 				newErr.RawError = err.Error()
@@ -258,7 +263,7 @@ func (a *SMContextsCollectionCallbacksmContextStatusNotificationAPIService) SmCo
 			return localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 503 {
-			var v models.ExtProblemDetails
+			var v models.ProblemDetails
 			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 			if err != nil {
 				newErr.RawError = err.Error()

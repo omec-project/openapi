@@ -62,14 +62,29 @@ func (r ApiPostPduSessionsRequest) PduSessionCreateData(pduSessionCreateData mod
 	return r
 }
 
+// GetPduSessionCreateData returns the pduSessionCreateData set with PduSessionCreateData, or nil if it was not set.
+func (r ApiPostPduSessionsRequest) GetPduSessionCreateData() *models.PduSessionCreateData {
+	return r.pduSessionCreateData
+}
+
 func (r ApiPostPduSessionsRequest) BinaryDataN1SmInfoFromUe(binaryDataN1SmInfoFromUe *os.File) ApiPostPduSessionsRequest {
 	r.binaryDataN1SmInfoFromUe = binaryDataN1SmInfoFromUe
 	return r
 }
 
+// GetBinaryDataN1SmInfoFromUe returns the binaryDataN1SmInfoFromUe set with BinaryDataN1SmInfoFromUe, or nil if it was not set.
+func (r ApiPostPduSessionsRequest) GetBinaryDataN1SmInfoFromUe() *os.File {
+	return r.binaryDataN1SmInfoFromUe
+}
+
 func (r ApiPostPduSessionsRequest) BinaryDataUnknownN1SmInfo(binaryDataUnknownN1SmInfo *os.File) ApiPostPduSessionsRequest {
 	r.binaryDataUnknownN1SmInfo = binaryDataUnknownN1SmInfo
 	return r
+}
+
+// GetBinaryDataUnknownN1SmInfo returns the binaryDataUnknownN1SmInfo set with BinaryDataUnknownN1SmInfo, or nil if it was not set.
+func (r ApiPostPduSessionsRequest) GetBinaryDataUnknownN1SmInfo() *os.File {
+	return r.binaryDataUnknownN1SmInfo
 }
 
 func (r ApiPostPduSessionsRequest) Execute() (*models.PduSessionCreatedData, *http.Response, error) {
@@ -228,7 +243,7 @@ func (a *PDUSessionsCollectionAPIService) PostPduSessionsExecute(r ApiPostPduSes
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 401 {
-			var v models.ExtProblemDetails
+			var v models.ProblemDetails
 			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 			if err != nil {
 				newErr.RawError = err.Error()
@@ -272,7 +287,7 @@ func (a *PDUSessionsCollectionAPIService) PostPduSessionsExecute(r ApiPostPduSes
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 413 {
-			var v models.ExtProblemDetails
+			var v models.ProblemDetails
 			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 			if err != nil {
 				newErr.RawError = err.Error()
@@ -283,7 +298,7 @@ func (a *PDUSessionsCollectionAPIService) PostPduSessionsExecute(r ApiPostPduSes
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 415 {
-			var v models.ExtProblemDetails
+			var v models.ProblemDetails
 			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 			if err != nil {
 				newErr.RawError = err.Error()
@@ -294,7 +309,7 @@ func (a *PDUSessionsCollectionAPIService) PostPduSessionsExecute(r ApiPostPduSes
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 429 {
-			var v models.ExtProblemDetails
+			var v models.ProblemDetails
 			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 			if err != nil {
 				newErr.RawError = err.Error()
@@ -316,7 +331,7 @@ func (a *PDUSessionsCollectionAPIService) PostPduSessionsExecute(r ApiPostPduSes
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 502 {
-			var v models.ExtProblemDetails
+			var v models.ProblemDetails
 			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 			if err != nil {
 				newErr.RawError = err.Error()

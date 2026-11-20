@@ -59,9 +59,19 @@ func (r ApiTransferMtDataRequest) JsonData(jsonData models.TransferMtDataReqData
 	return r
 }
 
+// GetJsonData returns the jsonData set with JsonData, or nil if it was not set.
+func (r ApiTransferMtDataRequest) GetJsonData() *models.TransferMtDataReqData {
+	return r.jsonData
+}
+
 func (r ApiTransferMtDataRequest) BinaryMtData(binaryMtData *os.File) ApiTransferMtDataRequest {
 	r.binaryMtData = binaryMtData
 	return r
+}
+
+// GetBinaryMtData returns the binaryMtData set with BinaryMtData, or nil if it was not set.
+func (r ApiTransferMtDataRequest) GetBinaryMtData() *os.File {
+	return r.binaryMtData
 }
 
 func (r ApiTransferMtDataRequest) Execute() (*http.Response, error) {
@@ -181,7 +191,7 @@ func (a *PDUSessionsCollectionCallbacktransferMtDataAPIService) TransferMtDataEx
 			return localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 400 {
-			var v models.ExtProblemDetails
+			var v models.ProblemDetails
 			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 			if err != nil {
 				newErr.RawError = err.Error()
@@ -192,7 +202,7 @@ func (a *PDUSessionsCollectionCallbacktransferMtDataAPIService) TransferMtDataEx
 			return localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 401 {
-			var v models.ExtProblemDetails
+			var v models.ProblemDetails
 			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 			if err != nil {
 				newErr.RawError = err.Error()
@@ -203,7 +213,7 @@ func (a *PDUSessionsCollectionCallbacktransferMtDataAPIService) TransferMtDataEx
 			return localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 403 {
-			var v models.ExtProblemDetails
+			var v models.ProblemDetails
 			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 			if err != nil {
 				newErr.RawError = err.Error()
@@ -214,7 +224,7 @@ func (a *PDUSessionsCollectionCallbacktransferMtDataAPIService) TransferMtDataEx
 			return localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 404 {
-			var v models.ExtProblemDetails
+			var v models.ProblemDetails
 			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 			if err != nil {
 				newErr.RawError = err.Error()
@@ -236,7 +246,7 @@ func (a *PDUSessionsCollectionCallbacktransferMtDataAPIService) TransferMtDataEx
 			return localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 413 {
-			var v models.ExtProblemDetails
+			var v models.ProblemDetails
 			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 			if err != nil {
 				newErr.RawError = err.Error()
@@ -247,7 +257,7 @@ func (a *PDUSessionsCollectionCallbacktransferMtDataAPIService) TransferMtDataEx
 			return localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 415 {
-			var v models.ExtProblemDetails
+			var v models.ProblemDetails
 			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 			if err != nil {
 				newErr.RawError = err.Error()
@@ -258,7 +268,7 @@ func (a *PDUSessionsCollectionCallbacktransferMtDataAPIService) TransferMtDataEx
 			return localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 429 {
-			var v models.ExtProblemDetails
+			var v models.ProblemDetails
 			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 			if err != nil {
 				newErr.RawError = err.Error()
@@ -269,7 +279,7 @@ func (a *PDUSessionsCollectionCallbacktransferMtDataAPIService) TransferMtDataEx
 			return localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 500 {
-			var v models.ExtProblemDetails
+			var v models.ProblemDetails
 			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 			if err != nil {
 				newErr.RawError = err.Error()
@@ -280,7 +290,7 @@ func (a *PDUSessionsCollectionCallbacktransferMtDataAPIService) TransferMtDataEx
 			return localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 502 {
-			var v models.ExtProblemDetails
+			var v models.ProblemDetails
 			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 			if err != nil {
 				newErr.RawError = err.Error()
@@ -291,7 +301,7 @@ func (a *PDUSessionsCollectionCallbacktransferMtDataAPIService) TransferMtDataEx
 			return localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 503 {
-			var v models.ExtProblemDetails
+			var v models.ProblemDetails
 			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 			if err != nil {
 				newErr.RawError = err.Error()

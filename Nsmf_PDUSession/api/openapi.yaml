@@ -77,19 +77,19 @@ paths:
                   content:
                     application/problem+json:
                       schema:
-                        $ref: "#/components/schemas/ExtProblemDetails"
+                        $ref: "#/components/schemas/ProblemDetails"
                   description: Bad request
                 "403":
                   content:
                     application/problem+json:
                       schema:
-                        $ref: "#/components/schemas/ExtProblemDetails"
+                        $ref: "#/components/schemas/ProblemDetails"
                   description: Forbidden
                 "404":
                   content:
                     application/problem+json:
                       schema:
-                        $ref: "#/components/schemas/ExtProblemDetails"
+                        $ref: "#/components/schemas/ProblemDetails"
                   description: Not Found
                 "411":
                   content:
@@ -101,37 +101,37 @@ paths:
                   content:
                     application/problem+json:
                       schema:
-                        $ref: "#/components/schemas/ExtProblemDetails"
+                        $ref: "#/components/schemas/ProblemDetails"
                   description: Content Too Large
                 "415":
                   content:
                     application/problem+json:
                       schema:
-                        $ref: "#/components/schemas/ExtProblemDetails"
+                        $ref: "#/components/schemas/ProblemDetails"
                   description: Unsupported Media Type
                 "429":
                   content:
                     application/problem+json:
                       schema:
-                        $ref: "#/components/schemas/ExtProblemDetails"
+                        $ref: "#/components/schemas/ProblemDetails"
                   description: Too Many Requests
                 "500":
                   content:
                     application/problem+json:
                       schema:
-                        $ref: "#/components/schemas/ExtProblemDetails"
+                        $ref: "#/components/schemas/ProblemDetails"
                   description: Internal Server Error
                 "502":
                   content:
                     application/problem+json:
                       schema:
-                        $ref: "#/components/schemas/ExtProblemDetails"
+                        $ref: "#/components/schemas/ProblemDetails"
                   description: Bad Gateway
                 "503":
                   content:
                     application/problem+json:
                       schema:
-                        $ref: "#/components/schemas/ExtProblemDetails"
+                        $ref: "#/components/schemas/ProblemDetails"
                   description: Service Unavailable
               x-callback-request: true
       operationId: PostSmContexts
@@ -545,25 +545,25 @@ paths:
           content:
             application/problem+json:
               schema:
-                $ref: "#/components/schemas/ExtProblemDetails"
+                $ref: "#/components/schemas/ProblemDetails"
           description: Bad request
         "401":
           content:
             application/problem+json:
               schema:
-                $ref: "#/components/schemas/ExtProblemDetails"
+                $ref: "#/components/schemas/ProblemDetails"
           description: Unauthorized
         "403":
           content:
             application/problem+json:
               schema:
-                $ref: "#/components/schemas/ExtProblemDetails"
+                $ref: "#/components/schemas/ProblemDetails"
           description: Forbidden
         "404":
           content:
             application/problem+json:
               schema:
-                $ref: "#/components/schemas/ExtProblemDetails"
+                $ref: "#/components/schemas/ProblemDetails"
           description: Not Found
         "411":
           content:
@@ -575,37 +575,37 @@ paths:
           content:
             application/problem+json:
               schema:
-                $ref: "#/components/schemas/ExtProblemDetails"
+                $ref: "#/components/schemas/ProblemDetails"
           description: Content Too Large
         "415":
           content:
             application/problem+json:
               schema:
-                $ref: "#/components/schemas/ExtProblemDetails"
+                $ref: "#/components/schemas/ProblemDetails"
           description: Unsupported Media Type
         "429":
           content:
             application/problem+json:
               schema:
-                $ref: "#/components/schemas/ExtProblemDetails"
+                $ref: "#/components/schemas/ProblemDetails"
           description: Too Many Requests
         "500":
           content:
             application/problem+json:
               schema:
-                $ref: "#/components/schemas/ExtProblemDetails"
+                $ref: "#/components/schemas/ProblemDetails"
           description: Internal Server Error
         "502":
           content:
             application/problem+json:
               schema:
-                $ref: "#/components/schemas/ExtProblemDetails"
+                $ref: "#/components/schemas/ProblemDetails"
           description: Bad Gateway
         "503":
           content:
             application/problem+json:
               schema:
-                $ref: "#/components/schemas/ExtProblemDetails"
+                $ref: "#/components/schemas/ProblemDetails"
           description: Service Unavailable
         "504":
           content:
@@ -1063,25 +1063,25 @@ paths:
           content:
             application/problem+json:
               schema:
-                $ref: "#/components/schemas/ExtProblemDetails"
+                $ref: "#/components/schemas/ProblemDetails"
           description: Bad request
         "401":
           content:
             application/problem+json:
               schema:
-                $ref: "#/components/schemas/ExtProblemDetails"
+                $ref: "#/components/schemas/ProblemDetails"
           description: Unauthorized
         "403":
           content:
             application/problem+json:
               schema:
-                $ref: "#/components/schemas/ExtProblemDetails"
+                $ref: "#/components/schemas/ProblemDetails"
           description: Forbidden
         "404":
           content:
             application/problem+json:
               schema:
-                $ref: "#/components/schemas/ExtProblemDetails"
+                $ref: "#/components/schemas/ProblemDetails"
           description: Not Found
         "411":
           content:
@@ -1093,37 +1093,37 @@ paths:
           content:
             application/problem+json:
               schema:
-                $ref: "#/components/schemas/ExtProblemDetails"
+                $ref: "#/components/schemas/ProblemDetails"
           description: Content Too Large
         "415":
           content:
             application/problem+json:
               schema:
-                $ref: "#/components/schemas/ExtProblemDetails"
+                $ref: "#/components/schemas/ProblemDetails"
           description: Unsupported Media Type
         "429":
           content:
             application/problem+json:
               schema:
-                $ref: "#/components/schemas/ExtProblemDetails"
+                $ref: "#/components/schemas/ProblemDetails"
           description: Too Many Requests
         "500":
           content:
             application/problem+json:
               schema:
-                $ref: "#/components/schemas/ExtProblemDetails"
+                $ref: "#/components/schemas/ProblemDetails"
           description: Internal Server Error
         "502":
           content:
             application/problem+json:
               schema:
-                $ref: "#/components/schemas/ExtProblemDetails"
+                $ref: "#/components/schemas/ProblemDetails"
           description: Bad Gateway
         "503":
           content:
             application/problem+json:
               schema:
-                $ref: "#/components/schemas/ExtProblemDetails"
+                $ref: "#/components/schemas/ProblemDetails"
           description: Service Unavailable
         default:
           description: Generic Error
@@ -1320,19 +1320,19 @@ paths:
                   content:
                     application/problem+json:
                       schema:
-                        $ref: "#/components/schemas/ExtProblemDetails"
+                        $ref: "#/components/schemas/ProblemDetails"
                   description: Bad request
                 "403":
                   content:
                     application/problem+json:
                       schema:
-                        $ref: "#/components/schemas/ExtProblemDetails"
+                        $ref: "#/components/schemas/ProblemDetails"
                   description: Forbidden
                 "404":
                   content:
                     application/problem+json:
                       schema:
-                        $ref: "#/components/schemas/ExtProblemDetails"
+                        $ref: "#/components/schemas/ProblemDetails"
                   description: Not Found
                 "411":
                   content:
@@ -1344,37 +1344,37 @@ paths:
                   content:
                     application/problem+json:
                       schema:
-                        $ref: "#/components/schemas/ExtProblemDetails"
+                        $ref: "#/components/schemas/ProblemDetails"
                   description: Content Too Large
                 "415":
                   content:
                     application/problem+json:
                       schema:
-                        $ref: "#/components/schemas/ExtProblemDetails"
+                        $ref: "#/components/schemas/ProblemDetails"
                   description: Unsupported Media Type
                 "429":
                   content:
                     application/problem+json:
                       schema:
-                        $ref: "#/components/schemas/ExtProblemDetails"
+                        $ref: "#/components/schemas/ProblemDetails"
                   description: Too Many Requests
                 "500":
                   content:
                     application/problem+json:
                       schema:
-                        $ref: "#/components/schemas/ExtProblemDetails"
+                        $ref: "#/components/schemas/ProblemDetails"
                   description: Internal Server Error
                 "502":
                   content:
                     application/problem+json:
                       schema:
-                        $ref: "#/components/schemas/ExtProblemDetails"
+                        $ref: "#/components/schemas/ProblemDetails"
                   description: Bad Gateway
                 "503":
                   content:
                     application/problem+json:
                       schema:
-                        $ref: "#/components/schemas/ExtProblemDetails"
+                        $ref: "#/components/schemas/ProblemDetails"
                   description: Service Unavailable
                 default:
                   description: Generic Error
@@ -1429,19 +1429,19 @@ paths:
                   content:
                     application/problem+json:
                       schema:
-                        $ref: "#/components/schemas/ExtProblemDetails"
+                        $ref: "#/components/schemas/ProblemDetails"
                   description: Bad request
                 "403":
                   content:
                     application/problem+json:
                       schema:
-                        $ref: "#/components/schemas/ExtProblemDetails"
+                        $ref: "#/components/schemas/ProblemDetails"
                   description: Forbidden
                 "404":
                   content:
                     application/problem+json:
                       schema:
-                        $ref: "#/components/schemas/ExtProblemDetails"
+                        $ref: "#/components/schemas/ProblemDetails"
                   description: Not Found
                 "411":
                   content:
@@ -1453,37 +1453,37 @@ paths:
                   content:
                     application/problem+json:
                       schema:
-                        $ref: "#/components/schemas/ExtProblemDetails"
+                        $ref: "#/components/schemas/ProblemDetails"
                   description: Content Too Large
                 "415":
                   content:
                     application/problem+json:
                       schema:
-                        $ref: "#/components/schemas/ExtProblemDetails"
+                        $ref: "#/components/schemas/ProblemDetails"
                   description: Unsupported Media Type
                 "429":
                   content:
                     application/problem+json:
                       schema:
-                        $ref: "#/components/schemas/ExtProblemDetails"
+                        $ref: "#/components/schemas/ProblemDetails"
                   description: Too Many Requests
                 "500":
                   content:
                     application/problem+json:
                       schema:
-                        $ref: "#/components/schemas/ExtProblemDetails"
+                        $ref: "#/components/schemas/ProblemDetails"
                   description: Internal Server Error
                 "502":
                   content:
                     application/problem+json:
                       schema:
-                        $ref: "#/components/schemas/ExtProblemDetails"
+                        $ref: "#/components/schemas/ProblemDetails"
                   description: Bad Gateway
                 "503":
                   content:
                     application/problem+json:
                       schema:
-                        $ref: "#/components/schemas/ExtProblemDetails"
+                        $ref: "#/components/schemas/ProblemDetails"
                   description: Service Unavailable
                 default:
                   description: Generic Error
@@ -1891,19 +1891,19 @@ paths:
                   content:
                     application/problem+json:
                       schema:
-                        $ref: "#/components/schemas/ExtProblemDetails"
+                        $ref: "#/components/schemas/ProblemDetails"
                   description: Content Too Large
                 "415":
                   content:
                     application/problem+json:
                       schema:
-                        $ref: "#/components/schemas/ExtProblemDetails"
+                        $ref: "#/components/schemas/ProblemDetails"
                   description: Unsupported Media Type
                 "429":
                   content:
                     application/problem+json:
                       schema:
-                        $ref: "#/components/schemas/ExtProblemDetails"
+                        $ref: "#/components/schemas/ProblemDetails"
                   description: Too Many Requests
                 "500":
                   content:
@@ -1979,7 +1979,7 @@ paths:
                   content:
                     application/problem+json:
                       schema:
-                        $ref: "#/components/schemas/ExtProblemDetails"
+                        $ref: "#/components/schemas/ProblemDetails"
                   description: Bad Gateway
                 "503":
                   content:
@@ -2527,19 +2527,19 @@ paths:
                   content:
                     application/problem+json:
                       schema:
-                        $ref: "#/components/schemas/ExtProblemDetails"
+                        $ref: "#/components/schemas/ProblemDetails"
                   description: Content Too Large
                 "415":
                   content:
                     application/problem+json:
                       schema:
-                        $ref: "#/components/schemas/ExtProblemDetails"
+                        $ref: "#/components/schemas/ProblemDetails"
                   description: Unsupported Media Type
                 "429":
                   content:
                     application/problem+json:
                       schema:
-                        $ref: "#/components/schemas/ExtProblemDetails"
+                        $ref: "#/components/schemas/ProblemDetails"
                   description: Too Many Requests
                 "500":
                   content:
@@ -2615,7 +2615,7 @@ paths:
                   content:
                     application/problem+json:
                       schema:
-                        $ref: "#/components/schemas/ExtProblemDetails"
+                        $ref: "#/components/schemas/ProblemDetails"
                   description: Bad Gateway
                 "503":
                   content:
@@ -2828,25 +2828,25 @@ paths:
                   content:
                     application/problem+json:
                       schema:
-                        $ref: "#/components/schemas/ExtProblemDetails"
+                        $ref: "#/components/schemas/ProblemDetails"
                   description: Bad request
                 "401":
                   content:
                     application/problem+json:
                       schema:
-                        $ref: "#/components/schemas/ExtProblemDetails"
+                        $ref: "#/components/schemas/ProblemDetails"
                   description: Unauthorized
                 "403":
                   content:
                     application/problem+json:
                       schema:
-                        $ref: "#/components/schemas/ExtProblemDetails"
+                        $ref: "#/components/schemas/ProblemDetails"
                   description: Forbidden
                 "404":
                   content:
                     application/problem+json:
                       schema:
-                        $ref: "#/components/schemas/ExtProblemDetails"
+                        $ref: "#/components/schemas/ProblemDetails"
                   description: Not Found
                 "411":
                   content:
@@ -2858,37 +2858,37 @@ paths:
                   content:
                     application/problem+json:
                       schema:
-                        $ref: "#/components/schemas/ExtProblemDetails"
+                        $ref: "#/components/schemas/ProblemDetails"
                   description: Content Too Large
                 "415":
                   content:
                     application/problem+json:
                       schema:
-                        $ref: "#/components/schemas/ExtProblemDetails"
+                        $ref: "#/components/schemas/ProblemDetails"
                   description: Unsupported Media Type
                 "429":
                   content:
                     application/problem+json:
                       schema:
-                        $ref: "#/components/schemas/ExtProblemDetails"
+                        $ref: "#/components/schemas/ProblemDetails"
                   description: Too Many Requests
                 "500":
                   content:
                     application/problem+json:
                       schema:
-                        $ref: "#/components/schemas/ExtProblemDetails"
+                        $ref: "#/components/schemas/ProblemDetails"
                   description: Internal Server Error
                 "502":
                   content:
                     application/problem+json:
                       schema:
-                        $ref: "#/components/schemas/ExtProblemDetails"
+                        $ref: "#/components/schemas/ProblemDetails"
                   description: Bad Gateway
                 "503":
                   content:
                     application/problem+json:
                       schema:
-                        $ref: "#/components/schemas/ExtProblemDetails"
+                        $ref: "#/components/schemas/ProblemDetails"
                   description: Service Unavailable
                 "504":
                   content:
@@ -2967,25 +2967,25 @@ paths:
                   content:
                     application/problem+json:
                       schema:
-                        $ref: "#/components/schemas/ExtProblemDetails"
+                        $ref: "#/components/schemas/ProblemDetails"
                   description: Bad request
                 "401":
                   content:
                     application/problem+json:
                       schema:
-                        $ref: "#/components/schemas/ExtProblemDetails"
+                        $ref: "#/components/schemas/ProblemDetails"
                   description: Unauthorized
                 "403":
                   content:
                     application/problem+json:
                       schema:
-                        $ref: "#/components/schemas/ExtProblemDetails"
+                        $ref: "#/components/schemas/ProblemDetails"
                   description: Forbidden
                 "404":
                   content:
                     application/problem+json:
                       schema:
-                        $ref: "#/components/schemas/ExtProblemDetails"
+                        $ref: "#/components/schemas/ProblemDetails"
                   description: Not Found
                 "411":
                   content:
@@ -2997,37 +2997,37 @@ paths:
                   content:
                     application/problem+json:
                       schema:
-                        $ref: "#/components/schemas/ExtProblemDetails"
+                        $ref: "#/components/schemas/ProblemDetails"
                   description: Content Too Large
                 "415":
                   content:
                     application/problem+json:
                       schema:
-                        $ref: "#/components/schemas/ExtProblemDetails"
+                        $ref: "#/components/schemas/ProblemDetails"
                   description: Unsupported Media Type
                 "429":
                   content:
                     application/problem+json:
                       schema:
-                        $ref: "#/components/schemas/ExtProblemDetails"
+                        $ref: "#/components/schemas/ProblemDetails"
                   description: Too Many Requests
                 "500":
                   content:
                     application/problem+json:
                       schema:
-                        $ref: "#/components/schemas/ExtProblemDetails"
+                        $ref: "#/components/schemas/ProblemDetails"
                   description: Internal Server Error
                 "502":
                   content:
                     application/problem+json:
                       schema:
-                        $ref: "#/components/schemas/ExtProblemDetails"
+                        $ref: "#/components/schemas/ProblemDetails"
                   description: Bad Gateway
                 "503":
                   content:
                     application/problem+json:
                       schema:
-                        $ref: "#/components/schemas/ExtProblemDetails"
+                        $ref: "#/components/schemas/ProblemDetails"
                   description: Service Unavailable
                 "504":
                   content:
@@ -3169,7 +3169,7 @@ paths:
           content:
             application/problem+json:
               schema:
-                $ref: "#/components/schemas/ExtProblemDetails"
+                $ref: "#/components/schemas/ProblemDetails"
           description: Unauthorized
         "403":
           content:
@@ -3231,19 +3231,19 @@ paths:
           content:
             application/problem+json:
               schema:
-                $ref: "#/components/schemas/ExtProblemDetails"
+                $ref: "#/components/schemas/ProblemDetails"
           description: Content Too Large
         "415":
           content:
             application/problem+json:
               schema:
-                $ref: "#/components/schemas/ExtProblemDetails"
+                $ref: "#/components/schemas/ProblemDetails"
           description: Unsupported Media Type
         "429":
           content:
             application/problem+json:
               schema:
-                $ref: "#/components/schemas/ExtProblemDetails"
+                $ref: "#/components/schemas/ProblemDetails"
           description: Too Many Requests
         "500":
           content:
@@ -3274,7 +3274,7 @@ paths:
           content:
             application/problem+json:
               schema:
-                $ref: "#/components/schemas/ExtProblemDetails"
+                $ref: "#/components/schemas/ProblemDetails"
           description: Bad Gateway
         "503":
           content:
@@ -3517,7 +3517,7 @@ paths:
           content:
             application/problem+json:
               schema:
-                $ref: "#/components/schemas/ExtProblemDetails"
+                $ref: "#/components/schemas/ProblemDetails"
           description: Unauthorized
         "403":
           content:
@@ -3579,19 +3579,19 @@ paths:
           content:
             application/problem+json:
               schema:
-                $ref: "#/components/schemas/ExtProblemDetails"
+                $ref: "#/components/schemas/ProblemDetails"
           description: Content Too Large
         "415":
           content:
             application/problem+json:
               schema:
-                $ref: "#/components/schemas/ExtProblemDetails"
+                $ref: "#/components/schemas/ProblemDetails"
           description: Unsupported Media Type
         "429":
           content:
             application/problem+json:
               schema:
-                $ref: "#/components/schemas/ExtProblemDetails"
+                $ref: "#/components/schemas/ProblemDetails"
           description: Too Many Requests
         "500":
           content:
@@ -3622,7 +3622,7 @@ paths:
           content:
             application/problem+json:
               schema:
-                $ref: "#/components/schemas/ExtProblemDetails"
+                $ref: "#/components/schemas/ProblemDetails"
           description: Bad Gateway
         "503":
           content:
@@ -3788,25 +3788,25 @@ paths:
           content:
             application/problem+json:
               schema:
-                $ref: "#/components/schemas/ExtProblemDetails"
+                $ref: "#/components/schemas/ProblemDetails"
           description: Bad request
         "401":
           content:
             application/problem+json:
               schema:
-                $ref: "#/components/schemas/ExtProblemDetails"
+                $ref: "#/components/schemas/ProblemDetails"
           description: Unauthorized
         "403":
           content:
             application/problem+json:
               schema:
-                $ref: "#/components/schemas/ExtProblemDetails"
+                $ref: "#/components/schemas/ProblemDetails"
           description: Forbidden
         "404":
           content:
             application/problem+json:
               schema:
-                $ref: "#/components/schemas/ExtProblemDetails"
+                $ref: "#/components/schemas/ProblemDetails"
           description: Not Found
         "411":
           content:
@@ -3818,37 +3818,37 @@ paths:
           content:
             application/problem+json:
               schema:
-                $ref: "#/components/schemas/ExtProblemDetails"
+                $ref: "#/components/schemas/ProblemDetails"
           description: Content Too Large
         "415":
           content:
             application/problem+json:
               schema:
-                $ref: "#/components/schemas/ExtProblemDetails"
+                $ref: "#/components/schemas/ProblemDetails"
           description: Unsupported Media Type
         "429":
           content:
             application/problem+json:
               schema:
-                $ref: "#/components/schemas/ExtProblemDetails"
+                $ref: "#/components/schemas/ProblemDetails"
           description: Too Many Requests
         "500":
           content:
             application/problem+json:
               schema:
-                $ref: "#/components/schemas/ExtProblemDetails"
+                $ref: "#/components/schemas/ProblemDetails"
           description: Internal Server Error
         "502":
           content:
             application/problem+json:
               schema:
-                $ref: "#/components/schemas/ExtProblemDetails"
+                $ref: "#/components/schemas/ProblemDetails"
           description: Bad Gateway
         "503":
           content:
             application/problem+json:
               schema:
-                $ref: "#/components/schemas/ExtProblemDetails"
+                $ref: "#/components/schemas/ProblemDetails"
           description: Service Unavailable
         default:
           description: Generic Error
@@ -3919,25 +3919,25 @@ paths:
           content:
             application/problem+json:
               schema:
-                $ref: "#/components/schemas/ExtProblemDetails"
+                $ref: "#/components/schemas/ProblemDetails"
           description: Bad request
         "401":
           content:
             application/problem+json:
               schema:
-                $ref: "#/components/schemas/ExtProblemDetails"
+                $ref: "#/components/schemas/ProblemDetails"
           description: Unauthorized
         "403":
           content:
             application/problem+json:
               schema:
-                $ref: "#/components/schemas/ExtProblemDetails"
+                $ref: "#/components/schemas/ProblemDetails"
           description: Forbidden
         "404":
           content:
             application/problem+json:
               schema:
-                $ref: "#/components/schemas/ExtProblemDetails"
+                $ref: "#/components/schemas/ProblemDetails"
           description: Not Found
         "411":
           content:
@@ -3949,37 +3949,37 @@ paths:
           content:
             application/problem+json:
               schema:
-                $ref: "#/components/schemas/ExtProblemDetails"
+                $ref: "#/components/schemas/ProblemDetails"
           description: Content Too Large
         "415":
           content:
             application/problem+json:
               schema:
-                $ref: "#/components/schemas/ExtProblemDetails"
+                $ref: "#/components/schemas/ProblemDetails"
           description: Unsupported Media Type
         "429":
           content:
             application/problem+json:
               schema:
-                $ref: "#/components/schemas/ExtProblemDetails"
+                $ref: "#/components/schemas/ProblemDetails"
           description: Too Many Requests
         "500":
           content:
             application/problem+json:
               schema:
-                $ref: "#/components/schemas/ExtProblemDetails"
+                $ref: "#/components/schemas/ProblemDetails"
           description: Internal Server Error
         "502":
           content:
             application/problem+json:
               schema:
-                $ref: "#/components/schemas/ExtProblemDetails"
+                $ref: "#/components/schemas/ProblemDetails"
           description: Bad Gateway
         "503":
           content:
             application/problem+json:
               schema:
-                $ref: "#/components/schemas/ExtProblemDetails"
+                $ref: "#/components/schemas/ProblemDetails"
           description: Service Unavailable
         "504":
           content:
@@ -4065,25 +4065,25 @@ paths:
           content:
             application/problem+json:
               schema:
-                $ref: "#/components/schemas/ExtProblemDetails"
+                $ref: "#/components/schemas/ProblemDetails"
           description: Bad request
         "401":
           content:
             application/problem+json:
               schema:
-                $ref: "#/components/schemas/ExtProblemDetails"
+                $ref: "#/components/schemas/ProblemDetails"
           description: Unauthorized
         "403":
           content:
             application/problem+json:
               schema:
-                $ref: "#/components/schemas/ExtProblemDetails"
+                $ref: "#/components/schemas/ProblemDetails"
           description: Forbidden
         "404":
           content:
             application/problem+json:
               schema:
-                $ref: "#/components/schemas/ExtProblemDetails"
+                $ref: "#/components/schemas/ProblemDetails"
           description: Not Found
         "411":
           content:
@@ -4095,37 +4095,37 @@ paths:
           content:
             application/problem+json:
               schema:
-                $ref: "#/components/schemas/ExtProblemDetails"
+                $ref: "#/components/schemas/ProblemDetails"
           description: Content Too Large
         "415":
           content:
             application/problem+json:
               schema:
-                $ref: "#/components/schemas/ExtProblemDetails"
+                $ref: "#/components/schemas/ProblemDetails"
           description: Unsupported Media Type
         "429":
           content:
             application/problem+json:
               schema:
-                $ref: "#/components/schemas/ExtProblemDetails"
+                $ref: "#/components/schemas/ProblemDetails"
           description: Too Many Requests
         "500":
           content:
             application/problem+json:
               schema:
-                $ref: "#/components/schemas/ExtProblemDetails"
+                $ref: "#/components/schemas/ProblemDetails"
           description: Internal Server Error
         "502":
           content:
             application/problem+json:
               schema:
-                $ref: "#/components/schemas/ExtProblemDetails"
+                $ref: "#/components/schemas/ProblemDetails"
           description: Bad Gateway
         "503":
           content:
             application/problem+json:
               schema:
-                $ref: "#/components/schemas/ExtProblemDetails"
+                $ref: "#/components/schemas/ProblemDetails"
           description: Service Unavailable
         default:
           description: Generic Error
@@ -4490,6 +4490,66 @@ components:
       description: Length Required
     default:
       description: Generic Error
+    "400_1":
+      content:
+        application/problem+json:
+          schema:
+            $ref: "#/components/schemas/ProblemDetails"
+      description: Bad request
+    "403_1":
+      content:
+        application/problem+json:
+          schema:
+            $ref: "#/components/schemas/ProblemDetails"
+      description: Forbidden
+    "404_1":
+      content:
+        application/problem+json:
+          schema:
+            $ref: "#/components/schemas/ProblemDetails"
+      description: Not Found
+    "413_1":
+      content:
+        application/problem+json:
+          schema:
+            $ref: "#/components/schemas/ProblemDetails"
+      description: Content Too Large
+    "415_1":
+      content:
+        application/problem+json:
+          schema:
+            $ref: "#/components/schemas/ProblemDetails"
+      description: Unsupported Media Type
+    "429_1":
+      content:
+        application/problem+json:
+          schema:
+            $ref: "#/components/schemas/ProblemDetails"
+      description: Too Many Requests
+    "500_1":
+      content:
+        application/problem+json:
+          schema:
+            $ref: "#/components/schemas/ProblemDetails"
+      description: Internal Server Error
+    "502_1":
+      content:
+        application/problem+json:
+          schema:
+            $ref: "#/components/schemas/ProblemDetails"
+      description: Bad Gateway
+    "503_1":
+      content:
+        application/problem+json:
+          schema:
+            $ref: "#/components/schemas/ProblemDetails"
+      description: Service Unavailable
+    "401_1":
+      content:
+        application/problem+json:
+          schema:
+            $ref: "#/components/schemas/ProblemDetails"
+      description: Unauthorized
     "504":
       content:
         application/problem+json:
@@ -20859,7 +20919,10 @@ components:
     PostSmContexts_request:
       properties:
         jsonData:
-          $ref: "#/components/schemas/SmContextCreateData"
+          allOf:
+            - $ref: "#/components/schemas/SmContextCreateData"
+          x-multipart-content-type: application/json
+          x-multipart-ref: "{jsonData}"
         binaryDataN1SmMessage:
           format: binary
           type: string
@@ -20879,7 +20942,10 @@ components:
     PostSmContexts_201_response:
       properties:
         jsonData:
-          $ref: "#/components/schemas/SmContextCreatedData"
+          allOf:
+            - $ref: "#/components/schemas/SmContextCreatedData"
+          x-multipart-content-type: application/json
+          x-multipart-ref: "{jsonData}"
         binaryDataN2SmInformation:
           format: binary
           type: string
@@ -20889,7 +20955,10 @@ components:
     PostSmContexts_400_response:
       properties:
         jsonData:
-          $ref: "#/components/schemas/SmContextCreateError"
+          allOf:
+            - $ref: "#/components/schemas/SmContextCreateError"
+          x-multipart-content-type: application/json
+          x-multipart-ref: "{jsonData}"
         binaryDataN1SmMessage:
           format: binary
           type: string
@@ -20904,7 +20973,10 @@ components:
     UpdateSmContext_request:
       properties:
         jsonData:
-          $ref: "#/components/schemas/SmContextUpdateData"
+          allOf:
+            - $ref: "#/components/schemas/SmContextUpdateData"
+          x-multipart-content-type: application/json
+          x-multipart-ref: "{jsonData}"
         binaryDataN1SmMessage:
           format: binary
           type: string
@@ -20924,7 +20996,10 @@ components:
     UpdateSmContext_200_response:
       properties:
         jsonData:
-          $ref: "#/components/schemas/SmContextUpdatedData"
+          allOf:
+            - $ref: "#/components/schemas/SmContextUpdatedData"
+          x-multipart-content-type: application/json
+          x-multipart-ref: "{jsonData}"
         binaryDataN1SmMessage:
           format: binary
           type: string
@@ -20939,7 +21014,10 @@ components:
     UpdateSmContext_400_response:
       properties:
         jsonData:
-          $ref: "#/components/schemas/SmContextUpdateError"
+          allOf:
+            - $ref: "#/components/schemas/SmContextUpdateError"
+          x-multipart-content-type: application/json
+          x-multipart-ref: "{jsonData}"
         binaryDataN1SmMessage:
           format: binary
           type: string
@@ -20954,7 +21032,10 @@ components:
     ReleaseSmContext_request:
       properties:
         jsonData:
-          $ref: "#/components/schemas/SmContextReleaseData"
+          allOf:
+            - $ref: "#/components/schemas/SmContextReleaseData"
+          x-multipart-content-type: application/json
+          x-multipart-ref: "{jsonData}"
         binaryDataN2SmInformation:
           format: binary
           type: string
@@ -20964,7 +21045,10 @@ components:
     SendMoData_request:
       properties:
         jsonData:
-          $ref: "#/components/schemas/SendMoDataReqData"
+          allOf:
+            - $ref: "#/components/schemas/SendMoDataReqData"
+          x-multipart-content-type: application/json
+          x-multipart-ref: "{jsonData}"
         binaryMoData:
           format: binary
           type: string
@@ -20974,7 +21058,10 @@ components:
     PostPduSessions_request:
       properties:
         jsonData:
-          $ref: "#/components/schemas/PduSessionCreateData"
+          allOf:
+            - $ref: "#/components/schemas/PduSessionCreateData"
+          x-multipart-content-type: application/json
+          x-multipart-ref: "{jsonData}"
         binaryDataN1SmInfoFromUe:
           format: binary
           type: string
@@ -20989,7 +21076,10 @@ components:
     PostPduSessions_201_response:
       properties:
         jsonData:
-          $ref: "#/components/schemas/PduSessionCreatedData"
+          allOf:
+            - $ref: "#/components/schemas/PduSessionCreatedData"
+          x-multipart-content-type: application/json
+          x-multipart-ref: "{jsonData}"
         binaryDataN1SmInfoToUe:
           format: binary
           type: string
@@ -20999,7 +21089,10 @@ components:
     PostPduSessions_400_response:
       properties:
         jsonData:
-          $ref: "#/components/schemas/PduSessionCreateError"
+          allOf:
+            - $ref: "#/components/schemas/PduSessionCreateError"
+          x-multipart-content-type: application/json
+          x-multipart-ref: "{jsonData}"
         binaryDataN1SmInfoToUe:
           format: binary
           type: string
@@ -21009,7 +21102,10 @@ components:
     ModifyPduSession_request:
       properties:
         jsonData:
-          $ref: "#/components/schemas/VsmfUpdateData"
+          allOf:
+            - $ref: "#/components/schemas/VsmfUpdateData"
+          x-multipart-content-type: application/json
+          x-multipart-ref: "{jsonData}"
         binaryDataN1SmInfoToUe:
           format: binary
           type: string
@@ -21039,7 +21135,10 @@ components:
     ModifyPduSession_200_response:
       properties:
         jsonData:
-          $ref: "#/components/schemas/VsmfUpdatedData"
+          allOf:
+            - $ref: "#/components/schemas/VsmfUpdatedData"
+          x-multipart-content-type: application/json
+          x-multipart-ref: "{jsonData}"
         binaryDataN1SmInfoFromUe:
           format: binary
           type: string
@@ -21074,7 +21173,10 @@ components:
     ModifyPduSession_400_response:
       properties:
         jsonData:
-          $ref: "#/components/schemas/VsmfUpdateError"
+          allOf:
+            - $ref: "#/components/schemas/VsmfUpdateError"
+          x-multipart-content-type: application/json
+          x-multipart-ref: "{jsonData}"
         binaryDataN1SmInfoFromUe:
           format: binary
           type: string
@@ -21109,7 +21211,10 @@ components:
     TransferMtData_request:
       properties:
         jsonData:
-          $ref: "#/components/schemas/TransferMtDataReqData"
+          allOf:
+            - $ref: "#/components/schemas/TransferMtDataReqData"
+          x-multipart-content-type: application/json
+          x-multipart-ref: "{jsonData}"
         binaryMtData:
           format: binary
           type: string
@@ -21119,7 +21224,10 @@ components:
     UpdatePduSession_request:
       properties:
         jsonData:
-          $ref: "#/components/schemas/HsmfUpdateData"
+          allOf:
+            - $ref: "#/components/schemas/HsmfUpdateData"
+          x-multipart-content-type: application/json
+          x-multipart-ref: "{jsonData}"
         binaryDataN1SmInfoFromUe:
           format: binary
           type: string
@@ -21149,7 +21257,10 @@ components:
     UpdatePduSession_200_response:
       properties:
         jsonData:
-          $ref: "#/components/schemas/HsmfUpdatedData"
+          allOf:
+            - $ref: "#/components/schemas/HsmfUpdatedData"
+          x-multipart-content-type: application/json
+          x-multipart-ref: "{jsonData}"
         binaryDataN1SmInfoToUe:
           format: binary
           type: string
@@ -21174,7 +21285,10 @@ components:
     UpdatePduSession_400_response:
       properties:
         jsonData:
-          $ref: "#/components/schemas/HsmfUpdateError"
+          allOf:
+            - $ref: "#/components/schemas/HsmfUpdateError"
+          x-multipart-content-type: application/json
+          x-multipart-ref: "{jsonData}"
         binaryDataN1SmInfoToUe:
           format: binary
           type: string
@@ -21184,7 +21298,10 @@ components:
     ReleasePduSession_request:
       properties:
         jsonData:
-          $ref: "#/components/schemas/ReleaseData"
+          allOf:
+            - $ref: "#/components/schemas/ReleaseData"
+          x-multipart-content-type: application/json
+          x-multipart-ref: "{jsonData}"
         binaryDataN4Information:
           format: binary
           type: string
@@ -21204,7 +21321,10 @@ components:
     ReleasePduSession_200_response:
       properties:
         jsonData:
-          $ref: "#/components/schemas/ReleasedData"
+          allOf:
+            - $ref: "#/components/schemas/ReleasedData"
+          x-multipart-content-type: application/json
+          x-multipart-ref: "{jsonData}"
         binaryDataN4Information:
           format: binary
           type: string
@@ -21224,7 +21344,10 @@ components:
     TransferMoData_request:
       properties:
         jsonData:
-          $ref: "#/components/schemas/TransferMoDataReqData"
+          allOf:
+            - $ref: "#/components/schemas/TransferMoDataReqData"
+          x-multipart-content-type: application/json
+          x-multipart-ref: "{jsonData}"
         binaryMoData:
           format: binary
           type: string

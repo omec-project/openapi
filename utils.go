@@ -403,9 +403,8 @@ func NewStrictDecoder(data []byte) *json.Decoder {
 }
 
 // Validate walks v and its nested fields, checking any "regexp=<pattern>" rule
-// found in a "validate" struct tag against string-kind values. It replaces the
-// long-unmaintained gopkg.in/validator.v2 package, whose "regexp" rule is the
-// only one ever used by generated models.
+// found in a "validate" struct tag against string-kind values. "regexp" is the
+// only rule generated models use.
 func Validate(v any) error {
 	return validateValue(reflect.ValueOf(v))
 }
@@ -459,7 +458,9 @@ func validateRegexp(rv reflect.Value, pattern string) error {
 	if rv.Kind() != reflect.String {
 		return errors.New("unsupported type")
 	}
-	re, err := regexp.Compile(pattern)
+	// The generator escapes commas in the pattern (e.g. in "{m,n}" quantifiers),
+	// as validator libraries split a tag's rules on them; undo that before compiling.
+	re, err := regexp.Compile(strings.ReplaceAll(pattern, `\,`, ","))
 	if err != nil {
 		return errors.New("bad parameter")
 	}

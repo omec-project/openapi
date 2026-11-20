@@ -62,9 +62,19 @@ func (r ApiPostSmContextsRequest) JsonData(jsonData models.SmContextCreateData) 
 	return r
 }
 
+// GetJsonData returns the jsonData set with JsonData, or nil if it was not set.
+func (r ApiPostSmContextsRequest) GetJsonData() *models.SmContextCreateData {
+	return r.jsonData
+}
+
 func (r ApiPostSmContextsRequest) BinaryDataN1SmMessage(binaryDataN1SmMessage *os.File) ApiPostSmContextsRequest {
 	r.binaryDataN1SmMessage = binaryDataN1SmMessage
 	return r
+}
+
+// GetBinaryDataN1SmMessage returns the binaryDataN1SmMessage set with BinaryDataN1SmMessage, or nil if it was not set.
+func (r ApiPostSmContextsRequest) GetBinaryDataN1SmMessage() *os.File {
+	return r.binaryDataN1SmMessage
 }
 
 func (r ApiPostSmContextsRequest) BinaryDataN2SmInformation(binaryDataN2SmInformation *os.File) ApiPostSmContextsRequest {
@@ -72,9 +82,19 @@ func (r ApiPostSmContextsRequest) BinaryDataN2SmInformation(binaryDataN2SmInform
 	return r
 }
 
+// GetBinaryDataN2SmInformation returns the binaryDataN2SmInformation set with BinaryDataN2SmInformation, or nil if it was not set.
+func (r ApiPostSmContextsRequest) GetBinaryDataN2SmInformation() *os.File {
+	return r.binaryDataN2SmInformation
+}
+
 func (r ApiPostSmContextsRequest) BinaryDataN2SmInformationExt1(binaryDataN2SmInformationExt1 *os.File) ApiPostSmContextsRequest {
 	r.binaryDataN2SmInformationExt1 = binaryDataN2SmInformationExt1
 	return r
+}
+
+// GetBinaryDataN2SmInformationExt1 returns the binaryDataN2SmInformationExt1 set with BinaryDataN2SmInformationExt1, or nil if it was not set.
+func (r ApiPostSmContextsRequest) GetBinaryDataN2SmInformationExt1() *os.File {
+	return r.binaryDataN2SmInformationExt1
 }
 
 func (r ApiPostSmContextsRequest) Execute() (*models.SmContextCreatedData, *http.Response, error) {
