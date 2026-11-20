@@ -4591,7 +4591,7 @@ components:
                     realm: null
                   - name: null
                     realm: null
-            customInfo: "{}"
+            customInfo: {}
             recoveryTime: null
             nfServicePersistence: false
             nfServices:
@@ -8699,7 +8699,7 @@ components:
                     realm: null
                   - name: null
                     realm: null
-            customInfo: "{}"
+            customInfo: {}
             recoveryTime: null
             nfServicePersistence: false
             nfServices:
@@ -12808,7 +12808,7 @@ components:
                     realm: null
                   - name: null
                     realm: null
-            customInfo: "{}"
+            customInfo: {}
             recoveryTime: null
             nfServicePersistence: false
             nfServices:
@@ -16916,7 +16916,7 @@ components:
                     realm: null
                   - name: null
                     realm: null
-            customInfo: "{}"
+            customInfo: {}
             recoveryTime: null
             nfServicePersistence: false
             nfServices:
@@ -21141,7 +21141,7 @@ components:
                     realm: null
                   - name: null
                     realm: null
-            customInfo: "{}"
+            customInfo: {}
             recoveryTime: null
             nfServicePersistence: false
             nfServices:
@@ -25249,7 +25249,7 @@ components:
                     realm: null
                   - name: null
                     realm: null
-            customInfo: "{}"
+            customInfo: {}
             recoveryTime: null
             nfServicePersistence: false
             nfServices:
@@ -29358,7 +29358,7 @@ components:
                     realm: null
                   - name: null
                     realm: null
-            customInfo: "{}"
+            customInfo: {}
             recoveryTime: null
             nfServicePersistence: false
             nfServices:
@@ -33466,7 +33466,7 @@ components:
                     realm: null
                   - name: null
                     realm: null
-            customInfo: "{}"
+            customInfo: {}
             recoveryTime: null
             nfServicePersistence: false
             nfServices:
@@ -37590,7 +37590,7 @@ components:
                 realm: null
               - name: null
                 realm: null
-        customInfo: "{}"
+        customInfo: {}
         recoveryTime: null
         nfServicePersistence: false
         nfServices:
@@ -41647,7 +41647,7 @@ components:
           minItems: 1
           type: array
         noProfileMatchInfo:
-          $ref: "#/components/schemas/NoProfileMatchInfo_1"
+          $ref: "#/components/schemas/NoProfileMatchInfo"
       type: object
     InvalidParam:
       description: It contains an invalid parameter and a related description.
@@ -46911,19 +46911,6 @@ components:
         - grant_type
         - nfInstanceId
         - scope
-      type: object
-    NoProfileMatchInfo_1:
-      description: Provides the reason for not finding NF matching the search criteria
-      properties:
-        reason:
-          $ref: "#/components/schemas/NoProfileMatchReason"
-        queryParamCombinationList:
-          items:
-            $ref: "#/components/schemas/QueryParamCombination"
-          minItems: 1
-          type: array
-      required:
-        - reason
       type: object
     AmfName:
       $ref: "#/components/schemas/Fqdn"

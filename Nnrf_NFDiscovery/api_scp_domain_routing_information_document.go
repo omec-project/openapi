@@ -60,10 +60,20 @@ func (r ApiSCPDomainRoutingInfoGetRequest) Local(local bool) ApiSCPDomainRouting
 	return r
 }
 
+// GetLocal returns the local set with Local, or nil if it was not set.
+func (r ApiSCPDomainRoutingInfoGetRequest) GetLocal() *bool {
+	return r.local
+}
+
 // Accept-Encoding, described in IETF RFC 9110
 func (r ApiSCPDomainRoutingInfoGetRequest) AcceptEncoding(acceptEncoding string) ApiSCPDomainRoutingInfoGetRequest {
 	r.acceptEncoding = &acceptEncoding
 	return r
+}
+
+// GetAcceptEncoding returns the acceptEncoding set with AcceptEncoding, or nil if it was not set.
+func (r ApiSCPDomainRoutingInfoGetRequest) GetAcceptEncoding() *string {
+	return r.acceptEncoding
 }
 
 func (r ApiSCPDomainRoutingInfoGetRequest) Execute() (*models.ScpDomainRoutingInformation, *http.Response, error) {

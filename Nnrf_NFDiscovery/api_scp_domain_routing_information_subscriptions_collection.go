@@ -60,16 +60,31 @@ func (r ApiScpDomainRoutingInfoSubscribeRequest) ScpDomainRoutingInfoSubscriptio
 	return r
 }
 
+// GetScpDomainRoutingInfoSubscription returns the scpDomainRoutingInfoSubscription set with ScpDomainRoutingInfoSubscription, or nil if it was not set.
+func (r ApiScpDomainRoutingInfoSubscribeRequest) GetScpDomainRoutingInfoSubscription() *models.ScpDomainRoutingInfoSubscription {
+	return r.scpDomainRoutingInfoSubscription
+}
+
 // Content-Encoding, described in IETF RFC 9110
 func (r ApiScpDomainRoutingInfoSubscribeRequest) ContentEncoding(contentEncoding string) ApiScpDomainRoutingInfoSubscribeRequest {
 	r.contentEncoding = &contentEncoding
 	return r
 }
 
+// GetContentEncoding returns the contentEncoding set with ContentEncoding, or nil if it was not set.
+func (r ApiScpDomainRoutingInfoSubscribeRequest) GetContentEncoding() *string {
+	return r.contentEncoding
+}
+
 // Accept-Encoding, described in IETF RFC 9110
 func (r ApiScpDomainRoutingInfoSubscribeRequest) AcceptEncoding(acceptEncoding string) ApiScpDomainRoutingInfoSubscribeRequest {
 	r.acceptEncoding = &acceptEncoding
 	return r
+}
+
+// GetAcceptEncoding returns the acceptEncoding set with AcceptEncoding, or nil if it was not set.
+func (r ApiScpDomainRoutingInfoSubscribeRequest) GetAcceptEncoding() *string {
+	return r.acceptEncoding
 }
 
 func (r ApiScpDomainRoutingInfoSubscribeRequest) Execute() (*models.ScpDomainRoutingInfoSubscription, *http.Response, error) {

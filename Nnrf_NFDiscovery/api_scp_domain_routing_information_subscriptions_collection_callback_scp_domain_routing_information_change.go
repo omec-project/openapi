@@ -59,10 +59,20 @@ func (r ApiOnScpDomainRoutingInformationChangePostRequest) ContentEncoding(conte
 	return r
 }
 
+// GetContentEncoding returns the contentEncoding set with ContentEncoding, or nil if it was not set.
+func (r ApiOnScpDomainRoutingInformationChangePostRequest) GetContentEncoding() *string {
+	return r.contentEncoding
+}
+
 // Notification content
 func (r ApiOnScpDomainRoutingInformationChangePostRequest) ScpDomainRoutingInfoNotification(scpDomainRoutingInfoNotification models.ScpDomainRoutingInfoNotification) ApiOnScpDomainRoutingInformationChangePostRequest {
 	r.scpDomainRoutingInfoNotification = &scpDomainRoutingInfoNotification
 	return r
+}
+
+// GetScpDomainRoutingInfoNotification returns the scpDomainRoutingInfoNotification set with ScpDomainRoutingInfoNotification, or nil if it was not set.
+func (r ApiOnScpDomainRoutingInformationChangePostRequest) GetScpDomainRoutingInfoNotification() *models.ScpDomainRoutingInfoNotification {
+	return r.scpDomainRoutingInfoNotification
 }
 
 func (r ApiOnScpDomainRoutingInformationChangePostRequest) Execute() (*http.Response, error) {

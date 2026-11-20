@@ -220,10 +220,20 @@ func (r ApiSearchNFInstancesRequest) TargetNfType(targetNfType models.NFType) Ap
 	return r
 }
 
+// GetTargetNfType returns the targetNfType set with TargetNfType, or nil if it was not set.
+func (r ApiSearchNFInstancesRequest) GetTargetNfType() *models.NFType {
+	return r.targetNfType
+}
+
 // Type of the requester NF
 func (r ApiSearchNFInstancesRequest) RequesterNfType(requesterNfType models.NFType) ApiSearchNFInstancesRequest {
 	r.requesterNfType = &requesterNfType
 	return r
+}
+
+// GetRequesterNfType returns the requesterNfType set with RequesterNfType, or nil if it was not set.
+func (r ApiSearchNFInstancesRequest) GetRequesterNfType() *models.NFType {
+	return r.requesterNfType
 }
 
 // Accept-Encoding, described in IETF RFC 9110
@@ -232,10 +242,20 @@ func (r ApiSearchNFInstancesRequest) AcceptEncoding(acceptEncoding string) ApiSe
 	return r
 }
 
+// GetAcceptEncoding returns the acceptEncoding set with AcceptEncoding, or nil if it was not set.
+func (r ApiSearchNFInstancesRequest) GetAcceptEncoding() *string {
+	return r.acceptEncoding
+}
+
 // collocated NF types that candidate NFs should preferentially support
 func (r ApiSearchNFInstancesRequest) PreferredCollocatedNfTypes(preferredCollocatedNfTypes []models.CollocatedNfType) ApiSearchNFInstancesRequest {
 	r.preferredCollocatedNfTypes = &preferredCollocatedNfTypes
 	return r
+}
+
+// GetPreferredCollocatedNfTypes returns the preferredCollocatedNfTypes set with PreferredCollocatedNfTypes, or nil if it was not set.
+func (r ApiSearchNFInstancesRequest) GetPreferredCollocatedNfTypes() *[]models.CollocatedNfType {
+	return r.preferredCollocatedNfTypes
 }
 
 // NfInstanceId of the requester NF
@@ -244,10 +264,20 @@ func (r ApiSearchNFInstancesRequest) RequesterNfInstanceId(requesterNfInstanceId
 	return r
 }
 
+// GetRequesterNfInstanceId returns the requesterNfInstanceId set with RequesterNfInstanceId, or nil if it was not set.
+func (r ApiSearchNFInstancesRequest) GetRequesterNfInstanceId() *string {
+	return r.requesterNfInstanceId
+}
+
 // Names of the services offered by the NF
 func (r ApiSearchNFInstancesRequest) ServiceNames(serviceNames []models.ServiceName) ApiSearchNFInstancesRequest {
 	r.serviceNames = &serviceNames
 	return r
+}
+
+// GetServiceNames returns the serviceNames set with ServiceNames, or nil if it was not set.
+func (r ApiSearchNFInstancesRequest) GetServiceNames() *[]models.ServiceName {
+	return r.serviceNames
 }
 
 // FQDN of the requester NF
@@ -256,10 +286,20 @@ func (r ApiSearchNFInstancesRequest) RequesterNfInstanceFqdn(requesterNfInstance
 	return r
 }
 
+// GetRequesterNfInstanceFqdn returns the requesterNfInstanceFqdn set with RequesterNfInstanceFqdn, or nil if it was not set.
+func (r ApiSearchNFInstancesRequest) GetRequesterNfInstanceFqdn() *string {
+	return r.requesterNfInstanceFqdn
+}
+
 // Id of the PLMN of either the target NF, or in SNPN scenario the Credentials Holder in the PLMN
 func (r ApiSearchNFInstancesRequest) TargetPlmnList(targetPlmnList []models.PlmnId) ApiSearchNFInstancesRequest {
 	r.targetPlmnList = &targetPlmnList
 	return r
+}
+
+// GetTargetPlmnList returns the targetPlmnList set with TargetPlmnList, or nil if it was not set.
+func (r ApiSearchNFInstancesRequest) GetTargetPlmnList() *[]models.PlmnId {
+	return r.targetPlmnList
 }
 
 // Id of the PLMN where the NF issuing the Discovery request is located
@@ -268,10 +308,20 @@ func (r ApiSearchNFInstancesRequest) RequesterPlmnList(requesterPlmnList []model
 	return r
 }
 
+// GetRequesterPlmnList returns the requesterPlmnList set with RequesterPlmnList, or nil if it was not set.
+func (r ApiSearchNFInstancesRequest) GetRequesterPlmnList() *[]models.PlmnId {
+	return r.requesterPlmnList
+}
+
 // Identity of the NF instance being discovered
 func (r ApiSearchNFInstancesRequest) TargetNfInstanceId(targetNfInstanceId string) ApiSearchNFInstancesRequest {
 	r.targetNfInstanceId = &targetNfInstanceId
 	return r
+}
+
+// GetTargetNfInstanceId returns the targetNfInstanceId set with TargetNfInstanceId, or nil if it was not set.
+func (r ApiSearchNFInstancesRequest) GetTargetNfInstanceId() *string {
+	return r.targetNfInstanceId
 }
 
 // Identities of the NF instances being discovered
@@ -280,10 +330,20 @@ func (r ApiSearchNFInstancesRequest) TargetNfInstanceIdList(targetNfInstanceIdLi
 	return r
 }
 
+// GetTargetNfInstanceIdList returns the targetNfInstanceIdList set with TargetNfInstanceIdList, or nil if it was not set.
+func (r ApiSearchNFInstancesRequest) GetTargetNfInstanceIdList() *[]string {
+	return r.targetNfInstanceIdList
+}
+
 // FQDN of the NF instance being discovered
 func (r ApiSearchNFInstancesRequest) TargetNfFqdn(targetNfFqdn string) ApiSearchNFInstancesRequest {
 	r.targetNfFqdn = &targetNfFqdn
 	return r
+}
+
+// GetTargetNfFqdn returns the targetNfFqdn set with TargetNfFqdn, or nil if it was not set.
+func (r ApiSearchNFInstancesRequest) GetTargetNfFqdn() *string {
+	return r.targetNfFqdn
 }
 
 // Uri of the home NRF
@@ -292,10 +352,20 @@ func (r ApiSearchNFInstancesRequest) HnrfUri(hnrfUri string) ApiSearchNFInstance
 	return r
 }
 
+// GetHnrfUri returns the hnrfUri set with HnrfUri, or nil if it was not set.
+func (r ApiSearchNFInstancesRequest) GetHnrfUri() *string {
+	return r.hnrfUri
+}
+
 // Slice info of the target NF
 func (r ApiSearchNFInstancesRequest) Snssais(snssais []models.Snssai) ApiSearchNFInstancesRequest {
 	r.snssais = &snssais
 	return r
+}
+
+// GetSnssais returns the snssais set with Snssais, or nil if it was not set.
+func (r ApiSearchNFInstancesRequest) GetSnssais() *[]models.Snssai {
+	return r.snssais
 }
 
 // Additional Slices supported by the target NF (Service) instances
@@ -304,10 +374,20 @@ func (r ApiSearchNFInstancesRequest) AdditionalSnssais(additionalSnssais []model
 	return r
 }
 
+// GetAdditionalSnssais returns the additionalSnssais set with AdditionalSnssais, or nil if it was not set.
+func (r ApiSearchNFInstancesRequest) GetAdditionalSnssais() *[]models.Snssai {
+	return r.additionalSnssais
+}
+
 // Slice info of the requester NF
 func (r ApiSearchNFInstancesRequest) RequesterSnssais(requesterSnssais []models.Snssai) ApiSearchNFInstancesRequest {
 	r.requesterSnssais = &requesterSnssais
 	return r
+}
+
+// GetRequesterSnssais returns the requesterSnssais set with RequesterSnssais, or nil if it was not set.
+func (r ApiSearchNFInstancesRequest) GetRequesterSnssais() *[]models.Snssai {
+	return r.requesterSnssais
 }
 
 // PLMN specific Slice info of the target NF
@@ -316,10 +396,20 @@ func (r ApiSearchNFInstancesRequest) PlmnSpecificSnssaiList(plmnSpecificSnssaiLi
 	return r
 }
 
+// GetPlmnSpecificSnssaiList returns the plmnSpecificSnssaiList set with PlmnSpecificSnssaiList, or nil if it was not set.
+func (r ApiSearchNFInstancesRequest) GetPlmnSpecificSnssaiList() *[]models.PlmnSnssai {
+	return r.plmnSpecificSnssaiList
+}
+
 // PLMN-specific slice info of the NF issuing the Discovery request
 func (r ApiSearchNFInstancesRequest) RequesterPlmnSpecificSnssaiList(requesterPlmnSpecificSnssaiList []models.PlmnSnssai) ApiSearchNFInstancesRequest {
 	r.requesterPlmnSpecificSnssaiList = &requesterPlmnSpecificSnssaiList
 	return r
+}
+
+// GetRequesterPlmnSpecificSnssaiList returns the requesterPlmnSpecificSnssaiList set with RequesterPlmnSpecificSnssaiList, or nil if it was not set.
+func (r ApiSearchNFInstancesRequest) GetRequesterPlmnSpecificSnssaiList() *[]models.PlmnSnssai {
+	return r.requesterPlmnSpecificSnssaiList
 }
 
 // Dnn supported by the BSF, SMF or UPF
@@ -328,10 +418,20 @@ func (r ApiSearchNFInstancesRequest) Dnn(dnn string) ApiSearchNFInstancesRequest
 	return r
 }
 
+// GetDnn returns the dnn set with Dnn, or nil if it was not set.
+func (r ApiSearchNFInstancesRequest) GetDnn() *string {
+	return r.dnn
+}
+
 // The IPv4 Index supported by the candidate UPF.
 func (r ApiSearchNFInstancesRequest) Ipv4Index(ipv4Index models.IpIndex) ApiSearchNFInstancesRequest {
 	r.ipv4Index = &ipv4Index
 	return r
+}
+
+// GetIpv4Index returns the ipv4Index set with Ipv4Index, or nil if it was not set.
+func (r ApiSearchNFInstancesRequest) GetIpv4Index() *models.IpIndex {
+	return r.ipv4Index
 }
 
 // The IPv6 Index supported by the candidate UPF.
@@ -340,10 +440,20 @@ func (r ApiSearchNFInstancesRequest) Ipv6Index(ipv6Index models.IpIndex) ApiSear
 	return r
 }
 
+// GetIpv6Index returns the ipv6Index set with Ipv6Index, or nil if it was not set.
+func (r ApiSearchNFInstancesRequest) GetIpv6Index() *models.IpIndex {
+	return r.ipv6Index
+}
+
 // NSI IDs that are served by the services being discovered
 func (r ApiSearchNFInstancesRequest) NsiList(nsiList []string) ApiSearchNFInstancesRequest {
 	r.nsiList = &nsiList
 	return r
+}
+
+// GetNsiList returns the nsiList set with NsiList, or nil if it was not set.
+func (r ApiSearchNFInstancesRequest) GetNsiList() *[]string {
+	return r.nsiList
 }
 
 func (r ApiSearchNFInstancesRequest) SmfServingArea(smfServingArea string) ApiSearchNFInstancesRequest {
@@ -351,9 +461,19 @@ func (r ApiSearchNFInstancesRequest) SmfServingArea(smfServingArea string) ApiSe
 	return r
 }
 
+// GetSmfServingArea returns the smfServingArea set with SmfServingArea, or nil if it was not set.
+func (r ApiSearchNFInstancesRequest) GetSmfServingArea() *string {
+	return r.smfServingArea
+}
+
 func (r ApiSearchNFInstancesRequest) MbsmfServingArea(mbsmfServingArea string) ApiSearchNFInstancesRequest {
 	r.mbsmfServingArea = &mbsmfServingArea
 	return r
+}
+
+// GetMbsmfServingArea returns the mbsmfServingArea set with MbsmfServingArea, or nil if it was not set.
+func (r ApiSearchNFInstancesRequest) GetMbsmfServingArea() *string {
+	return r.mbsmfServingArea
 }
 
 // Tracking Area Identity
@@ -362,10 +482,20 @@ func (r ApiSearchNFInstancesRequest) Tai(tai models.Tai) ApiSearchNFInstancesReq
 	return r
 }
 
+// GetTai returns the tai set with Tai, or nil if it was not set.
+func (r ApiSearchNFInstancesRequest) GetTai() *models.Tai {
+	return r.tai
+}
+
 // AMF Region Identity
 func (r ApiSearchNFInstancesRequest) AmfRegionId(amfRegionId string) ApiSearchNFInstancesRequest {
 	r.amfRegionId = &amfRegionId
 	return r
+}
+
+// GetAmfRegionId returns the amfRegionId set with AmfRegionId, or nil if it was not set.
+func (r ApiSearchNFInstancesRequest) GetAmfRegionId() *string {
+	return r.amfRegionId
 }
 
 // AMF Set Identity
@@ -374,10 +504,20 @@ func (r ApiSearchNFInstancesRequest) AmfSetId(amfSetId string) ApiSearchNFInstan
 	return r
 }
 
+// GetAmfSetId returns the amfSetId set with AmfSetId, or nil if it was not set.
+func (r ApiSearchNFInstancesRequest) GetAmfSetId() *string {
+	return r.amfSetId
+}
+
 // Guami used to search for an appropriate AMF
 func (r ApiSearchNFInstancesRequest) Guami(guami models.Guami) ApiSearchNFInstancesRequest {
 	r.guami = &guami
 	return r
+}
+
+// GetGuami returns the guami set with Guami, or nil if it was not set.
+func (r ApiSearchNFInstancesRequest) GetGuami() *models.Guami {
+	return r.guami
 }
 
 // SUPI of the user
@@ -386,10 +526,20 @@ func (r ApiSearchNFInstancesRequest) Supi(supi string) ApiSearchNFInstancesReque
 	return r
 }
 
+// GetSupi returns the supi set with Supi, or nil if it was not set.
+func (r ApiSearchNFInstancesRequest) GetSupi() *string {
+	return r.supi
+}
+
 // IPv4 address of the UE
 func (r ApiSearchNFInstancesRequest) UeIpv4Address(ueIpv4Address string) ApiSearchNFInstancesRequest {
 	r.ueIpv4Address = &ueIpv4Address
 	return r
+}
+
+// GetUeIpv4Address returns the ueIpv4Address set with UeIpv4Address, or nil if it was not set.
+func (r ApiSearchNFInstancesRequest) GetUeIpv4Address() *string {
+	return r.ueIpv4Address
 }
 
 // IP domain of the UE, which supported by BSF
@@ -398,10 +548,20 @@ func (r ApiSearchNFInstancesRequest) IpDomain(ipDomain string) ApiSearchNFInstan
 	return r
 }
 
+// GetIpDomain returns the ipDomain set with IpDomain, or nil if it was not set.
+func (r ApiSearchNFInstancesRequest) GetIpDomain() *string {
+	return r.ipDomain
+}
+
 // IPv6 prefix of the UE
 func (r ApiSearchNFInstancesRequest) UeIpv6Prefix(ueIpv6Prefix string) ApiSearchNFInstancesRequest {
 	r.ueIpv6Prefix = &ueIpv6Prefix
 	return r
+}
+
+// GetUeIpv6Prefix returns the ueIpv6Prefix set with UeIpv6Prefix, or nil if it was not set.
+func (r ApiSearchNFInstancesRequest) GetUeIpv6Prefix() *string {
+	return r.ueIpv6Prefix
 }
 
 // Combined PGW-C and SMF or a standalone SMF
@@ -410,10 +570,20 @@ func (r ApiSearchNFInstancesRequest) PgwInd(pgwInd bool) ApiSearchNFInstancesReq
 	return r
 }
 
+// GetPgwInd returns the pgwInd set with PgwInd, or nil if it was not set.
+func (r ApiSearchNFInstancesRequest) GetPgwInd() *bool {
+	return r.pgwInd
+}
+
 // Indicates combined PGW-C+SMF or standalone SMF are preferred
 func (r ApiSearchNFInstancesRequest) PreferredPgwInd(preferredPgwInd bool) ApiSearchNFInstancesRequest {
 	r.preferredPgwInd = &preferredPgwInd
 	return r
+}
+
+// GetPreferredPgwInd returns the preferredPgwInd set with PreferredPgwInd, or nil if it was not set.
+func (r ApiSearchNFInstancesRequest) GetPreferredPgwInd() *bool {
+	return r.preferredPgwInd
 }
 
 // PGW FQDN of a combined PGW-C and SMF
@@ -422,10 +592,20 @@ func (r ApiSearchNFInstancesRequest) Pgw(pgw string) ApiSearchNFInstancesRequest
 	return r
 }
 
+// GetPgw returns the pgw set with Pgw, or nil if it was not set.
+func (r ApiSearchNFInstancesRequest) GetPgw() *string {
+	return r.pgw
+}
+
 // PGW IP Address of a combined PGW-C and SMF
 func (r ApiSearchNFInstancesRequest) PgwIp(pgwIp models.IpAddr) ApiSearchNFInstancesRequest {
 	r.pgwIp = &pgwIp
 	return r
+}
+
+// GetPgwIp returns the pgwIp set with PgwIp, or nil if it was not set.
+func (r ApiSearchNFInstancesRequest) GetPgwIp() *models.IpAddr {
+	return r.pgwIp
 }
 
 // GPSI of the user
@@ -434,10 +614,20 @@ func (r ApiSearchNFInstancesRequest) Gpsi(gpsi string) ApiSearchNFInstancesReque
 	return r
 }
 
+// GetGpsi returns the gpsi set with Gpsi, or nil if it was not set.
+func (r ApiSearchNFInstancesRequest) GetGpsi() *string {
+	return r.gpsi
+}
+
 // external group identifier of the user
 func (r ApiSearchNFInstancesRequest) ExternalGroupIdentity(externalGroupIdentity string) ApiSearchNFInstancesRequest {
 	r.externalGroupIdentity = &externalGroupIdentity
 	return r
+}
+
+// GetExternalGroupIdentity returns the externalGroupIdentity set with ExternalGroupIdentity, or nil if it was not set.
+func (r ApiSearchNFInstancesRequest) GetExternalGroupIdentity() *string {
+	return r.externalGroupIdentity
 }
 
 // internal group identifier of the user
@@ -446,10 +636,20 @@ func (r ApiSearchNFInstancesRequest) InternalGroupIdentity(internalGroupIdentity
 	return r
 }
 
+// GetInternalGroupIdentity returns the internalGroupIdentity set with InternalGroupIdentity, or nil if it was not set.
+func (r ApiSearchNFInstancesRequest) GetInternalGroupIdentity() *string {
+	return r.internalGroupIdentity
+}
+
 // PFD data
 func (r ApiSearchNFInstancesRequest) PfdData(pfdData models.PfdData) ApiSearchNFInstancesRequest {
 	r.pfdData = &pfdData
 	return r
+}
+
+// GetPfdData returns the pfdData set with PfdData, or nil if it was not set.
+func (r ApiSearchNFInstancesRequest) GetPfdData() *models.PfdData {
+	return r.pfdData
 }
 
 // data set supported by the NF
@@ -458,10 +658,20 @@ func (r ApiSearchNFInstancesRequest) DataSet(dataSet models.DataSetId) ApiSearch
 	return r
 }
 
+// GetDataSet returns the dataSet set with DataSet, or nil if it was not set.
+func (r ApiSearchNFInstancesRequest) GetDataSet() *models.DataSetId {
+	return r.dataSet
+}
+
 // routing indicator in SUCI
 func (r ApiSearchNFInstancesRequest) RoutingIndicator(routingIndicator string) ApiSearchNFInstancesRequest {
 	r.routingIndicator = &routingIndicator
 	return r
+}
+
+// GetRoutingIndicator returns the routingIndicator set with RoutingIndicator, or nil if it was not set.
+func (r ApiSearchNFInstancesRequest) GetRoutingIndicator() *string {
+	return r.routingIndicator
 }
 
 // Group IDs of the NFs being discovered
@@ -470,10 +680,20 @@ func (r ApiSearchNFInstancesRequest) GroupIdList(groupIdList []string) ApiSearch
 	return r
 }
 
+// GetGroupIdList returns the groupIdList set with GroupIdList, or nil if it was not set.
+func (r ApiSearchNFInstancesRequest) GetGroupIdList() *[]string {
+	return r.groupIdList
+}
+
 // Data network access identifiers of the NFs being discovered
 func (r ApiSearchNFInstancesRequest) DnaiList(dnaiList []string) ApiSearchNFInstancesRequest {
 	r.dnaiList = &dnaiList
 	return r
+}
+
+// GetDnaiList returns the dnaiList set with DnaiList, or nil if it was not set.
+func (r ApiSearchNFInstancesRequest) GetDnaiList() *[]string {
+	return r.dnaiList
 }
 
 // list of PDU Session Type required to be supported by the target NF
@@ -482,10 +702,20 @@ func (r ApiSearchNFInstancesRequest) PduSessionTypes(pduSessionTypes []models.Pd
 	return r
 }
 
+// GetPduSessionTypes returns the pduSessionTypes set with PduSessionTypes, or nil if it was not set.
+func (r ApiSearchNFInstancesRequest) GetPduSessionTypes() *[]models.PduSessionType {
+	return r.pduSessionTypes
+}
+
 // Analytics event(s) requested to be supported by the Nnwdaf_AnalyticsInfo service
 func (r ApiSearchNFInstancesRequest) EventIdList(eventIdList []models.EventId) ApiSearchNFInstancesRequest {
 	r.eventIdList = &eventIdList
 	return r
+}
+
+// GetEventIdList returns the eventIdList set with EventIdList, or nil if it was not set.
+func (r ApiSearchNFInstancesRequest) GetEventIdList() *[]models.EventId {
+	return r.eventIdList
 }
 
 // Analytics event(s) requested to be supported by the Nnwdaf_EventsSubscription service.
@@ -494,10 +724,20 @@ func (r ApiSearchNFInstancesRequest) NwdafEventList(nwdafEventList []models.Nwda
 	return r
 }
 
+// GetNwdafEventList returns the nwdafEventList set with NwdafEventList, or nil if it was not set.
+func (r ApiSearchNFInstancesRequest) GetNwdafEventList() *[]models.NwdafEvent {
+	return r.nwdafEventList
+}
+
 // Event(s) requested to be supported by the Nupf_EventExposure service.
 func (r ApiSearchNFInstancesRequest) UpfEventList(upfEventList []models.EventType) ApiSearchNFInstancesRequest {
 	r.upfEventList = &upfEventList
 	return r
+}
+
+// GetUpfEventList returns the upfEventList set with UpfEventList, or nil if it was not set.
+func (r ApiSearchNFInstancesRequest) GetUpfEventList() *[]models.EventType {
+	return r.upfEventList
 }
 
 // Features required to be supported by the target NF
@@ -506,10 +746,20 @@ func (r ApiSearchNFInstancesRequest) SupportedFeatures(supportedFeatures string)
 	return r
 }
 
+// GetSupportedFeatures returns the supportedFeatures set with SupportedFeatures, or nil if it was not set.
+func (r ApiSearchNFInstancesRequest) GetSupportedFeatures() *string {
+	return r.supportedFeatures
+}
+
 // UPF supporting interworking with EPS or not
 func (r ApiSearchNFInstancesRequest) UpfIwkEpsInd(upfIwkEpsInd bool) ApiSearchNFInstancesRequest {
 	r.upfIwkEpsInd = &upfIwkEpsInd
 	return r
+}
+
+// GetUpfIwkEpsInd returns the upfIwkEpsInd set with UpfIwkEpsInd, or nil if it was not set.
+func (r ApiSearchNFInstancesRequest) GetUpfIwkEpsInd() *bool {
+	return r.upfIwkEpsInd
 }
 
 // PLMN ID supported by a CHF
@@ -518,10 +768,20 @@ func (r ApiSearchNFInstancesRequest) ChfSupportedPlmn(chfSupportedPlmn models.Pl
 	return r
 }
 
+// GetChfSupportedPlmn returns the chfSupportedPlmn set with ChfSupportedPlmn, or nil if it was not set.
+func (r ApiSearchNFInstancesRequest) GetChfSupportedPlmn() *models.PlmnId {
+	return r.chfSupportedPlmn
+}
+
 // preferred target NF location
 func (r ApiSearchNFInstancesRequest) PreferredLocality(preferredLocality string) ApiSearchNFInstancesRequest {
 	r.preferredLocality = &preferredLocality
 	return r
+}
+
+// GetPreferredLocality returns the preferredLocality set with PreferredLocality, or nil if it was not set.
+func (r ApiSearchNFInstancesRequest) GetPreferredLocality() *string {
+	return r.preferredLocality
 }
 
 // preferred target NF location A map (list of key-value pairs) where the key of the map represents the relative priority, for the requester, of each locality description among the list of locality descriptions in this query parameter, encoded as \&quot;1\&quot; (highest priority\&quot;), \&quot;2\&quot;, \&quot;3\&quot;, …, \&quot;n\&quot; (lowest priority)
@@ -530,10 +790,20 @@ func (r ApiSearchNFInstancesRequest) ExtPreferredLocality(extPreferredLocality m
 	return r
 }
 
+// GetExtPreferredLocality returns the extPreferredLocality set with ExtPreferredLocality, or nil if it was not set.
+func (r ApiSearchNFInstancesRequest) GetExtPreferredLocality() *map[string][]models.LocalityDescription {
+	return r.extPreferredLocality
+}
+
 // AccessType supported by the target NF
 func (r ApiSearchNFInstancesRequest) AccessType(accessType models.AccessType) ApiSearchNFInstancesRequest {
 	r.accessType = &accessType
 	return r
+}
+
+// GetAccessType returns the accessType set with AccessType, or nil if it was not set.
+func (r ApiSearchNFInstancesRequest) GetAccessType() *models.AccessType {
+	return r.accessType
 }
 
 // Maximum number of NFProfiles to return in the response
@@ -542,10 +812,20 @@ func (r ApiSearchNFInstancesRequest) Limit(limit int32) ApiSearchNFInstancesRequ
 	return r
 }
 
+// GetLimit returns the limit set with Limit, or nil if it was not set.
+func (r ApiSearchNFInstancesRequest) GetLimit() *int32 {
+	return r.limit
+}
+
 // Features required to be supported by the target NF
 func (r ApiSearchNFInstancesRequest) RequiredFeatures(requiredFeatures []string) ApiSearchNFInstancesRequest {
 	r.requiredFeatures = &requiredFeatures
 	return r
+}
+
+// GetRequiredFeatures returns the requiredFeatures set with RequiredFeatures, or nil if it was not set.
+func (r ApiSearchNFInstancesRequest) GetRequiredFeatures() *[]string {
+	return r.requiredFeatures
 }
 
 // the complex query condition expression
@@ -554,10 +834,20 @@ func (r ApiSearchNFInstancesRequest) ComplexQuery(complexQuery models.ComplexQue
 	return r
 }
 
+// GetComplexQuery returns the complexQuery set with ComplexQuery, or nil if it was not set.
+func (r ApiSearchNFInstancesRequest) GetComplexQuery() *models.ComplexQuery {
+	return r.complexQuery
+}
+
 // Maximum content size of the response expressed in kilo octets
 func (r ApiSearchNFInstancesRequest) MaxPayloadSize(maxPayloadSize int32) ApiSearchNFInstancesRequest {
 	r.maxPayloadSize = &maxPayloadSize
 	return r
+}
+
+// GetMaxPayloadSize returns the maxPayloadSize set with MaxPayloadSize, or nil if it was not set.
+func (r ApiSearchNFInstancesRequest) GetMaxPayloadSize() *int32 {
+	return r.maxPayloadSize
 }
 
 // Extended query for maximum content size of the response expressed in kilo octets
@@ -566,10 +856,20 @@ func (r ApiSearchNFInstancesRequest) MaxPayloadSizeExt(maxPayloadSizeExt int32) 
 	return r
 }
 
+// GetMaxPayloadSizeExt returns the maxPayloadSizeExt set with MaxPayloadSizeExt, or nil if it was not set.
+func (r ApiSearchNFInstancesRequest) GetMaxPayloadSizeExt() *int32 {
+	return r.maxPayloadSizeExt
+}
+
 // ATSSS Capability
 func (r ApiSearchNFInstancesRequest) AtsssCapability(atsssCapability models.AtsssCapability) ApiSearchNFInstancesRequest {
 	r.atsssCapability = &atsssCapability
 	return r
+}
+
+// GetAtsssCapability returns the atsssCapability set with AtsssCapability, or nil if it was not set.
+func (r ApiSearchNFInstancesRequest) GetAtsssCapability() *models.AtsssCapability {
+	return r.atsssCapability
 }
 
 // UPF supporting allocating UE IP addresses/prefixes
@@ -578,10 +878,20 @@ func (r ApiSearchNFInstancesRequest) UpfUeIpAddrInd(upfUeIpAddrInd bool) ApiSear
 	return r
 }
 
+// GetUpfUeIpAddrInd returns the upfUeIpAddrInd set with UpfUeIpAddrInd, or nil if it was not set.
+func (r ApiSearchNFInstancesRequest) GetUpfUeIpAddrInd() *bool {
+	return r.upfUeIpAddrInd
+}
+
 // Requested client type served by the NF
 func (r ApiSearchNFInstancesRequest) ClientType(clientType models.ExternalClientType) ApiSearchNFInstancesRequest {
 	r.clientType = &clientType
 	return r
+}
+
+// GetClientType returns the clientType set with ClientType, or nil if it was not set.
+func (r ApiSearchNFInstancesRequest) GetClientType() *models.ExternalClientType {
+	return r.clientType
 }
 
 // LMF identification to be discovered
@@ -590,10 +900,20 @@ func (r ApiSearchNFInstancesRequest) LmfId(lmfId string) ApiSearchNFInstancesReq
 	return r
 }
 
+// GetLmfId returns the lmfId set with LmfId, or nil if it was not set.
+func (r ApiSearchNFInstancesRequest) GetLmfId() *string {
+	return r.lmfId
+}
+
 // Requested AN node type served by the NF
 func (r ApiSearchNFInstancesRequest) AnNodeType(anNodeType models.AnNodeType) ApiSearchNFInstancesRequest {
 	r.anNodeType = &anNodeType
 	return r
+}
+
+// GetAnNodeType returns the anNodeType set with AnNodeType, or nil if it was not set.
+func (r ApiSearchNFInstancesRequest) GetAnNodeType() *models.AnNodeType {
+	return r.anNodeType
 }
 
 // Requested RAT type served by the NF
@@ -602,10 +922,20 @@ func (r ApiSearchNFInstancesRequest) RatType(ratType models.RatType) ApiSearchNF
 	return r
 }
 
+// GetRatType returns the ratType set with RatType, or nil if it was not set.
+func (r ApiSearchNFInstancesRequest) GetRatType() *models.RatType {
+	return r.ratType
+}
+
 // preferred Tracking Area Identity
 func (r ApiSearchNFInstancesRequest) PreferredTai(preferredTai models.Tai) ApiSearchNFInstancesRequest {
 	r.preferredTai = &preferredTai
 	return r
+}
+
+// GetPreferredTai returns the preferredTai set with PreferredTai, or nil if it was not set.
+func (r ApiSearchNFInstancesRequest) GetPreferredTai() *models.Tai {
+	return r.preferredTai
 }
 
 // preferred NF Instances
@@ -614,10 +944,20 @@ func (r ApiSearchNFInstancesRequest) PreferredNfInstances(preferredNfInstances [
 	return r
 }
 
+// GetPreferredNfInstances returns the preferredNfInstances set with PreferredNfInstances, or nil if it was not set.
+func (r ApiSearchNFInstancesRequest) GetPreferredNfInstances() *[]string {
+	return r.preferredNfInstances
+}
+
 // Validator for conditional requests, as described in IETF RFC 9110, 13.1.2
 func (r ApiSearchNFInstancesRequest) IfNoneMatch(ifNoneMatch string) ApiSearchNFInstancesRequest {
 	r.ifNoneMatch = &ifNoneMatch
 	return r
+}
+
+// GetIfNoneMatch returns the ifNoneMatch set with IfNoneMatch, or nil if it was not set.
+func (r ApiSearchNFInstancesRequest) GetIfNoneMatch() *string {
+	return r.ifNoneMatch
 }
 
 // Target SNPN Identity, or the Credentials Holder in the SNPN
@@ -626,10 +966,20 @@ func (r ApiSearchNFInstancesRequest) TargetSnpn(targetSnpn models.PlmnIdNid) Api
 	return r
 }
 
+// GetTargetSnpn returns the targetSnpn set with TargetSnpn, or nil if it was not set.
+func (r ApiSearchNFInstancesRequest) GetTargetSnpn() *models.PlmnIdNid {
+	return r.targetSnpn
+}
+
 // SNPN ID(s) of the NF instance issuing the Discovery request
 func (r ApiSearchNFInstancesRequest) RequesterSnpnList(requesterSnpnList []models.PlmnIdNid) ApiSearchNFInstancesRequest {
 	r.requesterSnpnList = &requesterSnpnList
 	return r
+}
+
+// GetRequesterSnpnList returns the requesterSnpnList set with RequesterSnpnList, or nil if it was not set.
+func (r ApiSearchNFInstancesRequest) GetRequesterSnpnList() *[]models.PlmnIdNid {
+	return r.requesterSnpnList
 }
 
 // NEF exposured by the AF
@@ -638,10 +988,20 @@ func (r ApiSearchNFInstancesRequest) AfEeData(afEeData models.AfEventExposureDat
 	return r
 }
 
+// GetAfEeData returns the afEeData set with AfEeData, or nil if it was not set.
+func (r ApiSearchNFInstancesRequest) GetAfEeData() *models.AfEventExposureData {
+	return r.afEeData
+}
+
 // UPF collocated with W-AGF
 func (r ApiSearchNFInstancesRequest) WAgfInfo(wAgfInfo models.WAgfInfo) ApiSearchNFInstancesRequest {
 	r.wAgfInfo = &wAgfInfo
 	return r
+}
+
+// GetWAgfInfo returns the wAgfInfo set with WAgfInfo, or nil if it was not set.
+func (r ApiSearchNFInstancesRequest) GetWAgfInfo() *models.WAgfInfo {
+	return r.wAgfInfo
 }
 
 // UPF collocated with TNGF
@@ -650,10 +1010,20 @@ func (r ApiSearchNFInstancesRequest) TngfInfo(tngfInfo models.TngfInfo) ApiSearc
 	return r
 }
 
+// GetTngfInfo returns the tngfInfo set with TngfInfo, or nil if it was not set.
+func (r ApiSearchNFInstancesRequest) GetTngfInfo() *models.TngfInfo {
+	return r.tngfInfo
+}
+
 // UPF collocated with TWIF
 func (r ApiSearchNFInstancesRequest) TwifInfo(twifInfo models.TwifInfo) ApiSearchNFInstancesRequest {
 	r.twifInfo = &twifInfo
 	return r
+}
+
+// GetTwifInfo returns the twifInfo set with TwifInfo, or nil if it was not set.
+func (r ApiSearchNFInstancesRequest) GetTwifInfo() *models.TwifInfo {
+	return r.twifInfo
 }
 
 // The ePDG information to find a preferred UPF
@@ -662,10 +1032,20 @@ func (r ApiSearchNFInstancesRequest) UpfSelectEpdgInfo(upfSelectEpdgInfo models.
 	return r
 }
 
+// GetUpfSelectEpdgInfo returns the upfSelectEpdgInfo set with UpfSelectEpdgInfo, or nil if it was not set.
+func (r ApiSearchNFInstancesRequest) GetUpfSelectEpdgInfo() *models.EpdgInfo {
+	return r.upfSelectEpdgInfo
+}
+
 // Target NF Set ID
 func (r ApiSearchNFInstancesRequest) TargetNfSetId(targetNfSetId string) ApiSearchNFInstancesRequest {
 	r.targetNfSetId = &targetNfSetId
 	return r
+}
+
+// GetTargetNfSetId returns the targetNfSetId set with TargetNfSetId, or nil if it was not set.
+func (r ApiSearchNFInstancesRequest) GetTargetNfSetId() *string {
+	return r.targetNfSetId
 }
 
 // Target NF Service Set ID
@@ -674,10 +1054,20 @@ func (r ApiSearchNFInstancesRequest) TargetNfServiceSetId(targetNfServiceSetId s
 	return r
 }
 
+// GetTargetNfServiceSetId returns the targetNfServiceSetId set with TargetNfServiceSetId, or nil if it was not set.
+func (r ApiSearchNFInstancesRequest) GetTargetNfServiceSetId() *string {
+	return r.targetNfServiceSetId
+}
+
 // NEF ID
 func (r ApiSearchNFInstancesRequest) NefId(nefId string) ApiSearchNFInstancesRequest {
 	r.nefId = &nefId
 	return r
+}
+
+// GetNefId returns the nefId set with NefId, or nil if it was not set.
+func (r ApiSearchNFInstancesRequest) GetNefId() *string {
+	return r.nefId
 }
 
 // Notification Type
@@ -686,10 +1076,20 @@ func (r ApiSearchNFInstancesRequest) NotificationType(notificationType models.No
 	return r
 }
 
+// GetNotificationType returns the notificationType set with NotificationType, or nil if it was not set.
+func (r ApiSearchNFInstancesRequest) GetNotificationType() *models.NotificationType {
+	return r.notificationType
+}
+
 // N1 Message Class
 func (r ApiSearchNFInstancesRequest) N1MsgClass(n1MsgClass models.N1MessageClass) ApiSearchNFInstancesRequest {
 	r.n1MsgClass = &n1MsgClass
 	return r
+}
+
+// GetN1MsgClass returns the n1MsgClass set with N1MsgClass, or nil if it was not set.
+func (r ApiSearchNFInstancesRequest) GetN1MsgClass() *models.N1MessageClass {
+	return r.n1MsgClass
 }
 
 // N2 Information Class
@@ -698,10 +1098,20 @@ func (r ApiSearchNFInstancesRequest) N2InfoClass(n2InfoClass models.N2Informatio
 	return r
 }
 
+// GetN2InfoClass returns the n2InfoClass set with N2InfoClass, or nil if it was not set.
+func (r ApiSearchNFInstancesRequest) GetN2InfoClass() *models.N2InformationClass {
+	return r.n2InfoClass
+}
+
 // areas that can be served by the target NF
 func (r ApiSearchNFInstancesRequest) ServingScope(servingScope []string) ApiSearchNFInstancesRequest {
 	r.servingScope = &servingScope
 	return r
+}
+
+// GetServingScope returns the servingScope set with ServingScope, or nil if it was not set.
+func (r ApiSearchNFInstancesRequest) GetServingScope() *[]string {
+	return r.servingScope
 }
 
 // IMSI of the requester UE to search for an appropriate NF (e.g. HSS, DCSF)
@@ -710,10 +1120,20 @@ func (r ApiSearchNFInstancesRequest) Imsi(imsi string) ApiSearchNFInstancesReque
 	return r
 }
 
+// GetImsi returns the imsi set with Imsi, or nil if it was not set.
+func (r ApiSearchNFInstancesRequest) GetImsi() *string {
+	return r.imsi
+}
+
 // IMPI of the requester UE to search for a target HSS or DCSF
 func (r ApiSearchNFInstancesRequest) ImsPrivateIdentity(imsPrivateIdentity string) ApiSearchNFInstancesRequest {
 	r.imsPrivateIdentity = &imsPrivateIdentity
 	return r
+}
+
+// GetImsPrivateIdentity returns the imsPrivateIdentity set with ImsPrivateIdentity, or nil if it was not set.
+func (r ApiSearchNFInstancesRequest) GetImsPrivateIdentity() *string {
+	return r.imsPrivateIdentity
 }
 
 // IMS Public Identity of the requester UE to search for a target HSS or DCSF
@@ -722,10 +1142,20 @@ func (r ApiSearchNFInstancesRequest) ImsPublicIdentity(imsPublicIdentity string)
 	return r
 }
 
+// GetImsPublicIdentity returns the imsPublicIdentity set with ImsPublicIdentity, or nil if it was not set.
+func (r ApiSearchNFInstancesRequest) GetImsPublicIdentity() *string {
+	return r.imsPublicIdentity
+}
+
 // MSISDN of the requester UE to search for a target HSS or DCSF
 func (r ApiSearchNFInstancesRequest) Msisdn(msisdn string) ApiSearchNFInstancesRequest {
 	r.msisdn = &msisdn
 	return r
+}
+
+// GetMsisdn returns the msisdn set with Msisdn, or nil if it was not set.
+func (r ApiSearchNFInstancesRequest) GetMsisdn() *string {
+	return r.msisdn
 }
 
 // Preferred API version of the services to be discovered
@@ -734,10 +1164,20 @@ func (r ApiSearchNFInstancesRequest) PreferredApiVersions(preferredApiVersions m
 	return r
 }
 
+// GetPreferredApiVersions returns the preferredApiVersions set with PreferredApiVersions, or nil if it was not set.
+func (r ApiSearchNFInstancesRequest) GetPreferredApiVersions() *map[string]string {
+	return r.preferredApiVersions
+}
+
 // PCF supports V2X
 func (r ApiSearchNFInstancesRequest) V2xSupportInd(v2xSupportInd bool) ApiSearchNFInstancesRequest {
 	r.v2xSupportInd = &v2xSupportInd
 	return r
+}
+
+// GetV2xSupportInd returns the v2xSupportInd set with V2xSupportInd, or nil if it was not set.
+func (r ApiSearchNFInstancesRequest) GetV2xSupportInd() *bool {
+	return r.v2xSupportInd
 }
 
 // UPF supports redundant gtp-u to be discovered
@@ -746,10 +1186,20 @@ func (r ApiSearchNFInstancesRequest) RedundantGtpu(redundantGtpu bool) ApiSearch
 	return r
 }
 
+// GetRedundantGtpu returns the redundantGtpu set with RedundantGtpu, or nil if it was not set.
+func (r ApiSearchNFInstancesRequest) GetRedundantGtpu() *bool {
+	return r.redundantGtpu
+}
+
 // UPF supports redundant transport path to be discovered
 func (r ApiSearchNFInstancesRequest) RedundantTransport(redundantTransport bool) ApiSearchNFInstancesRequest {
 	r.redundantTransport = &redundantTransport
 	return r
+}
+
+// GetRedundantTransport returns the redundantTransport set with RedundantTransport, or nil if it was not set.
+func (r ApiSearchNFInstancesRequest) GetRedundantTransport() *bool {
+	return r.redundantTransport
 }
 
 // UPF which is configured for IPUPS functionality to be discovered
@@ -758,10 +1208,20 @@ func (r ApiSearchNFInstancesRequest) Ipups(ipups bool) ApiSearchNFInstancesReque
 	return r
 }
 
+// GetIpups returns the ipups set with Ipups, or nil if it was not set.
+func (r ApiSearchNFInstancesRequest) GetIpups() *bool {
+	return r.ipups
+}
+
 // UPF which is configured to support sxa interface
 func (r ApiSearchNFInstancesRequest) SxaInd(sxaInd bool) ApiSearchNFInstancesRequest {
 	r.sxaInd = &sxaInd
 	return r
+}
+
+// GetSxaInd returns the sxaInd set with SxaInd, or nil if it was not set.
+func (r ApiSearchNFInstancesRequest) GetSxaInd() *bool {
+	return r.sxaInd
 }
 
 // SCP domains the target SCP or SEPP belongs to
@@ -770,10 +1230,20 @@ func (r ApiSearchNFInstancesRequest) ScpDomainList(scpDomainList []string) ApiSe
 	return r
 }
 
+// GetScpDomainList returns the scpDomainList set with ScpDomainList, or nil if it was not set.
+func (r ApiSearchNFInstancesRequest) GetScpDomainList() *[]string {
+	return r.scpDomainList
+}
+
 // Address domain reachable through the SCP
 func (r ApiSearchNFInstancesRequest) AddressDomain(addressDomain string) ApiSearchNFInstancesRequest {
 	r.addressDomain = &addressDomain
 	return r
+}
+
+// GetAddressDomain returns the addressDomain set with AddressDomain, or nil if it was not set.
+func (r ApiSearchNFInstancesRequest) GetAddressDomain() *string {
+	return r.addressDomain
 }
 
 // IPv4 address reachable through the SCP
@@ -782,10 +1252,20 @@ func (r ApiSearchNFInstancesRequest) Ipv4Addr(ipv4Addr string) ApiSearchNFInstan
 	return r
 }
 
+// GetIpv4Addr returns the ipv4Addr set with Ipv4Addr, or nil if it was not set.
+func (r ApiSearchNFInstancesRequest) GetIpv4Addr() *string {
+	return r.ipv4Addr
+}
+
 // IPv6 prefix reachable through the SCP
 func (r ApiSearchNFInstancesRequest) Ipv6Prefix(ipv6Prefix string) ApiSearchNFInstancesRequest {
 	r.ipv6Prefix = &ipv6Prefix
 	return r
+}
+
+// GetIpv6Prefix returns the ipv6Prefix set with Ipv6Prefix, or nil if it was not set.
+func (r ApiSearchNFInstancesRequest) GetIpv6Prefix() *string {
+	return r.ipv6Prefix
 }
 
 // NF Set ID served by the SCP
@@ -794,10 +1274,20 @@ func (r ApiSearchNFInstancesRequest) ServedNfSetId(servedNfSetId string) ApiSear
 	return r
 }
 
+// GetServedNfSetId returns the servedNfSetId set with ServedNfSetId, or nil if it was not set.
+func (r ApiSearchNFInstancesRequest) GetServedNfSetId() *string {
+	return r.servedNfSetId
+}
+
 // Id of the PLMN reachable through the SCP or SEPP
 func (r ApiSearchNFInstancesRequest) RemotePlmnId(remotePlmnId models.PlmnId) ApiSearchNFInstancesRequest {
 	r.remotePlmnId = &remotePlmnId
 	return r
+}
+
+// GetRemotePlmnId returns the remotePlmnId set with RemotePlmnId, or nil if it was not set.
+func (r ApiSearchNFInstancesRequest) GetRemotePlmnId() *models.PlmnId {
+	return r.remotePlmnId
 }
 
 // Id of the SNPN reachable through the SCP or SEPP
@@ -806,10 +1296,20 @@ func (r ApiSearchNFInstancesRequest) RemoteSnpnId(remoteSnpnId models.PlmnIdNid)
 	return r
 }
 
+// GetRemoteSnpnId returns the remoteSnpnId set with RemoteSnpnId, or nil if it was not set.
+func (r ApiSearchNFInstancesRequest) GetRemoteSnpnId() *models.PlmnIdNid {
+	return r.remoteSnpnId
+}
+
 // UPF Instance(s) configured for data forwarding are requested
 func (r ApiSearchNFInstancesRequest) DataForwarding(dataForwarding bool) ApiSearchNFInstancesRequest {
 	r.dataForwarding = &dataForwarding
 	return r
+}
+
+// GetDataForwarding returns the dataForwarding set with DataForwarding, or nil if it was not set.
+func (r ApiSearchNFInstancesRequest) GetDataForwarding() *bool {
+	return r.dataForwarding
 }
 
 // NF Instance(s) serving the full PLMN are preferred
@@ -818,10 +1318,20 @@ func (r ApiSearchNFInstancesRequest) PreferredFullPlmn(preferredFullPlmn bool) A
 	return r
 }
 
+// GetPreferredFullPlmn returns the preferredFullPlmn set with PreferredFullPlmn, or nil if it was not set.
+func (r ApiSearchNFInstancesRequest) GetPreferredFullPlmn() *bool {
+	return r.preferredFullPlmn
+}
+
 // Features supported by the NF Service Consumer that is invoking the Nnrf_NFDiscovery service
 func (r ApiSearchNFInstancesRequest) RequesterFeatures(requesterFeatures string) ApiSearchNFInstancesRequest {
 	r.requesterFeatures = &requesterFeatures
 	return r
+}
+
+// GetRequesterFeatures returns the requesterFeatures set with RequesterFeatures, or nil if it was not set.
+func (r ApiSearchNFInstancesRequest) GetRequesterFeatures() *string {
+	return r.requesterFeatures
 }
 
 // realm-id to search for an appropriate UDSF
@@ -830,10 +1340,20 @@ func (r ApiSearchNFInstancesRequest) RealmId(realmId string) ApiSearchNFInstance
 	return r
 }
 
+// GetRealmId returns the realmId set with RealmId, or nil if it was not set.
+func (r ApiSearchNFInstancesRequest) GetRealmId() *string {
+	return r.realmId
+}
+
 // storage-id to search for an appropriate UDSF
 func (r ApiSearchNFInstancesRequest) StorageId(storageId string) ApiSearchNFInstancesRequest {
 	r.storageId = &storageId
 	return r
+}
+
+// GetStorageId returns the storageId set with StorageId, or nil if it was not set.
+func (r ApiSearchNFInstancesRequest) GetStorageId() *string {
+	return r.storageId
 }
 
 // V-SMF capability supported by the target NF instance(s)
@@ -842,10 +1362,20 @@ func (r ApiSearchNFInstancesRequest) VsmfSupportInd(vsmfSupportInd bool) ApiSear
 	return r
 }
 
+// GetVsmfSupportInd returns the vsmfSupportInd set with VsmfSupportInd, or nil if it was not set.
+func (r ApiSearchNFInstancesRequest) GetVsmfSupportInd() *bool {
+	return r.vsmfSupportInd
+}
+
 // I-SMF capability supported by the target NF instance(s)
 func (r ApiSearchNFInstancesRequest) IsmfSupportInd(ismfSupportInd bool) ApiSearchNFInstancesRequest {
 	r.ismfSupportInd = &ismfSupportInd
 	return r
+}
+
+// GetIsmfSupportInd returns the ismfSupportInd set with IsmfSupportInd, or nil if it was not set.
+func (r ApiSearchNFInstancesRequest) GetIsmfSupportInd() *bool {
+	return r.ismfSupportInd
 }
 
 // Uri of the NRF holding the NF profile of a target NF Instance
@@ -854,10 +1384,20 @@ func (r ApiSearchNFInstancesRequest) NrfDiscUri(nrfDiscUri string) ApiSearchNFIn
 	return r
 }
 
+// GetNrfDiscUri returns the nrfDiscUri set with NrfDiscUri, or nil if it was not set.
+func (r ApiSearchNFInstancesRequest) GetNrfDiscUri() *string {
+	return r.nrfDiscUri
+}
+
 // Preferred vendor specific features of the services to be discovered
 func (r ApiSearchNFInstancesRequest) PreferredVendorSpecificFeatures(preferredVendorSpecificFeatures map[string]map[string][]models.VendorSpecificFeature) ApiSearchNFInstancesRequest {
 	r.preferredVendorSpecificFeatures = &preferredVendorSpecificFeatures
 	return r
+}
+
+// GetPreferredVendorSpecificFeatures returns the preferredVendorSpecificFeatures set with PreferredVendorSpecificFeatures, or nil if it was not set.
+func (r ApiSearchNFInstancesRequest) GetPreferredVendorSpecificFeatures() *map[string]map[string][]models.VendorSpecificFeature {
+	return r.preferredVendorSpecificFeatures
 }
 
 // Preferred vendor specific features of the network function to be discovered
@@ -866,10 +1406,20 @@ func (r ApiSearchNFInstancesRequest) PreferredVendorSpecificNfFeatures(preferred
 	return r
 }
 
+// GetPreferredVendorSpecificNfFeatures returns the preferredVendorSpecificNfFeatures set with PreferredVendorSpecificNfFeatures, or nil if it was not set.
+func (r ApiSearchNFInstancesRequest) GetPreferredVendorSpecificNfFeatures() *map[string][]models.VendorSpecificFeature {
+	return r.preferredVendorSpecificNfFeatures
+}
+
 // PFCP features required to be supported by the target UPF
 func (r ApiSearchNFInstancesRequest) RequiredPfcpFeatures(requiredPfcpFeatures string) ApiSearchNFInstancesRequest {
 	r.requiredPfcpFeatures = &requiredPfcpFeatures
 	return r
+}
+
+// GetRequiredPfcpFeatures returns the requiredPfcpFeatures set with RequiredPfcpFeatures, or nil if it was not set.
+func (r ApiSearchNFInstancesRequest) GetRequiredPfcpFeatures() *string {
+	return r.requiredPfcpFeatures
 }
 
 // Indicates the Home Network Public Key ID which shall be able to be served by the NF instance
@@ -878,10 +1428,20 @@ func (r ApiSearchNFInstancesRequest) HomePubKeyId(homePubKeyId int32) ApiSearchN
 	return r
 }
 
+// GetHomePubKeyId returns the homePubKeyId set with HomePubKeyId, or nil if it was not set.
+func (r ApiSearchNFInstancesRequest) GetHomePubKeyId() *int32 {
+	return r.homePubKeyId
+}
+
 // PCF supports ProSe Capability
 func (r ApiSearchNFInstancesRequest) ProseSupportInd(proseSupportInd bool) ApiSearchNFInstancesRequest {
 	r.proseSupportInd = &proseSupportInd
 	return r
+}
+
+// GetProseSupportInd returns the proseSupportInd set with ProseSupportInd, or nil if it was not set.
+func (r ApiSearchNFInstancesRequest) GetProseSupportInd() *bool {
+	return r.proseSupportInd
 }
 
 // analytics aggregation is supported by NWDAF or not
@@ -890,10 +1450,20 @@ func (r ApiSearchNFInstancesRequest) AnalyticsAggregationInd(analyticsAggregatio
 	return r
 }
 
+// GetAnalyticsAggregationInd returns the analyticsAggregationInd set with AnalyticsAggregationInd, or nil if it was not set.
+func (r ApiSearchNFInstancesRequest) GetAnalyticsAggregationInd() *bool {
+	return r.analyticsAggregationInd
+}
+
 // NF Set Id served by target NF
 func (r ApiSearchNFInstancesRequest) ServingNfSetId(servingNfSetId string) ApiSearchNFInstancesRequest {
 	r.servingNfSetId = &servingNfSetId
 	return r
+}
+
+// GetServingNfSetId returns the servingNfSetId set with ServingNfSetId, or nil if it was not set.
+func (r ApiSearchNFInstancesRequest) GetServingNfSetId() *string {
+	return r.servingNfSetId
 }
 
 // NF type served by the target NF
@@ -902,10 +1472,20 @@ func (r ApiSearchNFInstancesRequest) ServingNfType(servingNfType models.NFType) 
 	return r
 }
 
+// GetServingNfType returns the servingNfType set with ServingNfType, or nil if it was not set.
+func (r ApiSearchNFInstancesRequest) GetServingNfType() *models.NFType {
+	return r.servingNfType
+}
+
 // Lisf of ML Analytics Filter information of Nnwdaf_MLModelProvision service
 func (r ApiSearchNFInstancesRequest) MlAnalyticsInfoList(mlAnalyticsInfoList []models.MlAnalyticsInfo) ApiSearchNFInstancesRequest {
 	r.mlAnalyticsInfoList = &mlAnalyticsInfoList
 	return r
+}
+
+// GetMlAnalyticsInfoList returns the mlAnalyticsInfoList set with MlAnalyticsInfoList, or nil if it was not set.
+func (r ApiSearchNFInstancesRequest) GetMlAnalyticsInfoList() *[]models.MlAnalyticsInfo {
+	return r.mlAnalyticsInfoList
 }
 
 // analytics matadata provisioning is supported by NWDAF or not
@@ -914,10 +1494,20 @@ func (r ApiSearchNFInstancesRequest) AnalyticsMetadataProvInd(analyticsMetadataP
 	return r
 }
 
+// GetAnalyticsMetadataProvInd returns the analyticsMetadataProvInd set with AnalyticsMetadataProvInd, or nil if it was not set.
+func (r ApiSearchNFInstancesRequest) GetAnalyticsMetadataProvInd() *bool {
+	return r.analyticsMetadataProvInd
+}
+
 // the service capability supported by the target NSACF
 func (r ApiSearchNFInstancesRequest) NsacfCapability(nsacfCapability models.NsacfCapability) ApiSearchNFInstancesRequest {
 	r.nsacfCapability = &nsacfCapability
 	return r
+}
+
+// GetNsacfCapability returns the nsacfCapability set with NsacfCapability, or nil if it was not set.
+func (r ApiSearchNFInstancesRequest) GetNsacfCapability() *models.NsacfCapability {
+	return r.nsacfCapability
 }
 
 // List of MBS Session ID(s)
@@ -926,10 +1516,20 @@ func (r ApiSearchNFInstancesRequest) MbsSessionIdList(mbsSessionIdList []models.
 	return r
 }
 
+// GetMbsSessionIdList returns the mbsSessionIdList set with MbsSessionIdList, or nil if it was not set.
+func (r ApiSearchNFInstancesRequest) GetMbsSessionIdList() *[]models.MbsSessionId {
+	return r.mbsSessionIdList
+}
+
 // Area Session ID
 func (r ApiSearchNFInstancesRequest) AreaSessionId(areaSessionId int32) ApiSearchNFInstancesRequest {
 	r.areaSessionId = &areaSessionId
 	return r
+}
+
+// GetAreaSessionId returns the areaSessionId set with AreaSessionId, or nil if it was not set.
+func (r ApiSearchNFInstancesRequest) GetAreaSessionId() *int32 {
+	return r.areaSessionId
 }
 
 // The GMLC Number supported by the GMLC
@@ -938,10 +1538,20 @@ func (r ApiSearchNFInstancesRequest) GmlcNumber(gmlcNumber string) ApiSearchNFIn
 	return r
 }
 
+// GetGmlcNumber returns the gmlcNumber set with GmlcNumber, or nil if it was not set.
+func (r ApiSearchNFInstancesRequest) GetGmlcNumber() *string {
+	return r.gmlcNumber
+}
+
 // N6 IP address of PSA UPF supported by the EASDF
 func (r ApiSearchNFInstancesRequest) UpfN6Ip(upfN6Ip models.IpAddr) ApiSearchNFInstancesRequest {
 	r.upfN6Ip = &upfN6Ip
 	return r
+}
+
+// GetUpfN6Ip returns the upfN6Ip set with UpfN6Ip, or nil if it was not set.
+func (r ApiSearchNFInstancesRequest) GetUpfN6Ip() *models.IpAddr {
+	return r.upfN6Ip
 }
 
 // Tracking Area Identifiers of the NFs being discovered
@@ -950,10 +1560,20 @@ func (r ApiSearchNFInstancesRequest) TaiList(taiList []models.Tai) ApiSearchNFIn
 	return r
 }
 
+// GetTaiList returns the taiList set with TaiList, or nil if it was not set.
+func (r ApiSearchNFInstancesRequest) GetTaiList() *[]models.Tai {
+	return r.taiList
+}
+
 // the NF service consumer supports candidate nfs supporting a subset of TAIs
 func (r ApiSearchNFInstancesRequest) NfTaiListInd(nfTaiListInd bool) ApiSearchNFInstancesRequest {
 	r.nfTaiListInd = &nfTaiListInd
 	return r
+}
+
+// GetNfTaiListInd returns the nfTaiListInd set with NfTaiListInd, or nil if it was not set.
+func (r ApiSearchNFInstancesRequest) GetNfTaiListInd() *bool {
+	return r.nfTaiListInd
 }
 
 // Indicates the precedence of the preference query parameters (from higher to lower)
@@ -962,10 +1582,20 @@ func (r ApiSearchNFInstancesRequest) PreferencesPrecedence(preferencesPrecedence
 	return r
 }
 
+// GetPreferencesPrecedence returns the preferencesPrecedence set with PreferencesPrecedence, or nil if it was not set.
+func (r ApiSearchNFInstancesRequest) GetPreferencesPrecedence() *[]string {
+	return r.preferencesPrecedence
+}
+
 // Indicating the support for onboarding.
 func (r ApiSearchNFInstancesRequest) SupportOnboardingCapability(supportOnboardingCapability bool) ApiSearchNFInstancesRequest {
 	r.supportOnboardingCapability = &supportOnboardingCapability
 	return r
+}
+
+// GetSupportOnboardingCapability returns the supportOnboardingCapability set with SupportOnboardingCapability, or nil if it was not set.
+func (r ApiSearchNFInstancesRequest) GetSupportOnboardingCapability() *bool {
+	return r.supportOnboardingCapability
 }
 
 // UAS NF functionality is supported by NEF or not
@@ -974,10 +1604,20 @@ func (r ApiSearchNFInstancesRequest) UasNfFunctionalityInd(uasNfFunctionalityInd
 	return r
 }
 
+// GetUasNfFunctionalityInd returns the uasNfFunctionalityInd set with UasNfFunctionalityInd, or nil if it was not set.
+func (r ApiSearchNFInstancesRequest) GetUasNfFunctionalityInd() *bool {
+	return r.uasNfFunctionalityInd
+}
+
 // Multi-member AF session with required QoS is supported by NEF or not
 func (r ApiSearchNFInstancesRequest) MultiMemAfSessQosInd(multiMemAfSessQosInd bool) ApiSearchNFInstancesRequest {
 	r.multiMemAfSessQosInd = &multiMemAfSessQosInd
 	return r
+}
+
+// GetMultiMemAfSessQosInd returns the multiMemAfSessQosInd set with MultiMemAfSessQosInd, or nil if it was not set.
+func (r ApiSearchNFInstancesRequest) GetMultiMemAfSessQosInd() *bool {
+	return r.multiMemAfSessQosInd
 }
 
 // member UE selection assistance functionality is supported by NEF or not
@@ -986,10 +1626,20 @@ func (r ApiSearchNFInstancesRequest) MemberUeSelAssistInd(memberUeSelAssistInd b
 	return r
 }
 
+// GetMemberUeSelAssistInd returns the memberUeSelAssistInd set with MemberUeSelAssistInd, or nil if it was not set.
+func (r ApiSearchNFInstancesRequest) GetMemberUeSelAssistInd() *bool {
+	return r.memberUeSelAssistInd
+}
+
 // indicates the V2X capability that the target PCF needs to support.
 func (r ApiSearchNFInstancesRequest) V2xCapability(v2xCapability models.V2xCapability) ApiSearchNFInstancesRequest {
 	r.v2xCapability = &v2xCapability
 	return r
+}
+
+// GetV2xCapability returns the v2xCapability set with V2xCapability, or nil if it was not set.
+func (r ApiSearchNFInstancesRequest) GetV2xCapability() *models.V2xCapability {
+	return r.v2xCapability
 }
 
 // indicates the ProSe capability that the target PCF needs to support.
@@ -998,10 +1648,20 @@ func (r ApiSearchNFInstancesRequest) ProseCapability(proseCapability models.ProS
 	return r
 }
 
+// GetProseCapability returns the proseCapability set with ProseCapability, or nil if it was not set.
+func (r ApiSearchNFInstancesRequest) GetProseCapability() *models.ProSeCapability {
+	return r.proseCapability
+}
+
 // Identifier of shared data stored in the NF being discovered
 func (r ApiSearchNFInstancesRequest) SharedDataId(sharedDataId string) ApiSearchNFInstancesRequest {
 	r.sharedDataId = &sharedDataId
 	return r
+}
+
+// GetSharedDataId returns the sharedDataId set with SharedDataId, or nil if it was not set.
+func (r ApiSearchNFInstancesRequest) GetSharedDataId() *string {
+	return r.sharedDataId
 }
 
 // Home Network Identifier query.
@@ -1010,10 +1670,20 @@ func (r ApiSearchNFInstancesRequest) TargetHni(targetHni string) ApiSearchNFInst
 	return r
 }
 
+// GetTargetHni returns the targetHni set with TargetHni, or nil if it was not set.
+func (r ApiSearchNFInstancesRequest) GetTargetHni() *string {
+	return r.targetHni
+}
+
 // Resolution of the identity of the target PLMN based on the GPSI of the UE
 func (r ApiSearchNFInstancesRequest) TargetNwResolution(targetNwResolution bool) ApiSearchNFInstancesRequest {
 	r.targetNwResolution = &targetNwResolution
 	return r
+}
+
+// GetTargetNwResolution returns the targetNwResolution set with TargetNwResolution, or nil if it was not set.
+func (r ApiSearchNFInstancesRequest) GetTargetNwResolution() *bool {
+	return r.targetNwResolution
 }
 
 // NF Instance IDs to be excluded from the NF Discovery procedure
@@ -1022,10 +1692,20 @@ func (r ApiSearchNFInstancesRequest) ExcludeNfinstList(excludeNfinstList []strin
 	return r
 }
 
+// GetExcludeNfinstList returns the excludeNfinstList set with ExcludeNfinstList, or nil if it was not set.
+func (r ApiSearchNFInstancesRequest) GetExcludeNfinstList() *[]string {
+	return r.excludeNfinstList
+}
+
 // NF service instance IDs to be excluded from the NF Discovery procedure
 func (r ApiSearchNFInstancesRequest) ExcludeNfservinstList(excludeNfservinstList []models.NfServiceInstance) ApiSearchNFInstancesRequest {
 	r.excludeNfservinstList = &excludeNfservinstList
 	return r
+}
+
+// GetExcludeNfservinstList returns the excludeNfservinstList set with ExcludeNfservinstList, or nil if it was not set.
+func (r ApiSearchNFInstancesRequest) GetExcludeNfservinstList() *[]models.NfServiceInstance {
+	return r.excludeNfservinstList
 }
 
 // NF Service Set IDs to be excluded from the NF Discovery procedure
@@ -1034,10 +1714,20 @@ func (r ApiSearchNFInstancesRequest) ExcludeNfservicesetList(excludeNfserviceset
 	return r
 }
 
+// GetExcludeNfservicesetList returns the excludeNfservicesetList set with ExcludeNfservicesetList, or nil if it was not set.
+func (r ApiSearchNFInstancesRequest) GetExcludeNfservicesetList() *[]string {
+	return r.excludeNfservicesetList
+}
+
 // NF Set IDs to be excluded from the NF Discovery procedure
 func (r ApiSearchNFInstancesRequest) ExcludeNfsetList(excludeNfsetList []string) ApiSearchNFInstancesRequest {
 	r.excludeNfsetList = &excludeNfsetList
 	return r
+}
+
+// GetExcludeNfsetList returns the excludeNfsetList set with ExcludeNfsetList, or nil if it was not set.
+func (r ApiSearchNFInstancesRequest) GetExcludeNfsetList() *[]string {
+	return r.excludeNfsetList
 }
 
 // Preferred analytics delays supported by the NWDAF to be discovered
@@ -1046,10 +1736,20 @@ func (r ApiSearchNFInstancesRequest) PreferredAnalyticsDelays(preferredAnalytics
 	return r
 }
 
+// GetPreferredAnalyticsDelays returns the preferredAnalyticsDelays set with PreferredAnalyticsDelays, or nil if it was not set.
+func (r ApiSearchNFInstancesRequest) GetPreferredAnalyticsDelays() *map[string]int32 {
+	return r.preferredAnalyticsDelays
+}
+
 // Indicating the support for High Latency communication.
 func (r ApiSearchNFInstancesRequest) HighLatencyCom(highLatencyCom bool) ApiSearchNFInstancesRequest {
 	r.highLatencyCom = &highLatencyCom
 	return r
+}
+
+// GetHighLatencyCom returns the highLatencyCom set with HighLatencyCom, or nil if it was not set.
+func (r ApiSearchNFInstancesRequest) GetHighLatencyCom() *bool {
+	return r.highLatencyCom
 }
 
 // NSAC Service Area Identifier
@@ -1058,10 +1758,20 @@ func (r ApiSearchNFInstancesRequest) NsacSai(nsacSai string) ApiSearchNFInstance
 	return r
 }
 
+// GetNsacSai returns the nsacSai set with NsacSai, or nil if it was not set.
+func (r ApiSearchNFInstancesRequest) GetNsacSai() *string {
+	return r.nsacSai
+}
+
 // request to discover the complete profile of NF instances
 func (r ApiSearchNFInstancesRequest) CompleteProfile(completeProfile bool) ApiSearchNFInstancesRequest {
 	r.completeProfile = &completeProfile
 	return r
+}
+
+// GetCompleteProfile returns the completeProfile set with CompleteProfile, or nil if it was not set.
+func (r ApiSearchNFInstancesRequest) GetCompleteProfile() *bool {
+	return r.completeProfile
 }
 
 // N32 purposes to be supported by the SEPP
@@ -1070,10 +1780,20 @@ func (r ApiSearchNFInstancesRequest) N32Purposes(n32Purposes []models.N32Purpose
 	return r
 }
 
+// GetN32Purposes returns the n32Purposes set with N32Purposes, or nil if it was not set.
+func (r ApiSearchNFInstancesRequest) GetN32Purposes() *[]models.N32Purpose {
+	return r.n32Purposes
+}
+
 // Preferred features to be supported by the target Network Function.
 func (r ApiSearchNFInstancesRequest) PreferredFeatures(preferredFeatures map[string]string) ApiSearchNFInstancesRequest {
 	r.preferredFeatures = &preferredFeatures
 	return r
+}
+
+// GetPreferredFeatures returns the preferredFeatures set with PreferredFeatures, or nil if it was not set.
+func (r ApiSearchNFInstancesRequest) GetPreferredFeatures() *map[string]string {
+	return r.preferredFeatures
 }
 
 // Id of the remote PLMN served by the target NF service producer
@@ -1082,10 +1802,20 @@ func (r ApiSearchNFInstancesRequest) RemotePlmnIdRoaming(remotePlmnIdRoaming mod
 	return r
 }
 
+// GetRemotePlmnIdRoaming returns the remotePlmnIdRoaming set with RemotePlmnIdRoaming, or nil if it was not set.
+func (r ApiSearchNFInstancesRequest) GetRemotePlmnIdRoaming() *models.PlmnId {
+	return r.remotePlmnIdRoaming
+}
+
 // LMF(s) serving the TAI with PRU(s) existence
 func (r ApiSearchNFInstancesRequest) PruTai(pruTai models.Tai) ApiSearchNFInstancesRequest {
 	r.pruTai = &pruTai
 	return r
+}
+
+// GetPruTai returns the pruTai set with PruTai, or nil if it was not set.
+func (r ApiSearchNFInstancesRequest) GetPruTai() *models.Tai {
+	return r.pruTai
 }
 
 // Indicating the support of PRU function
@@ -1094,10 +1824,20 @@ func (r ApiSearchNFInstancesRequest) PruSupportInd(pruSupportInd bool) ApiSearch
 	return r
 }
 
+// GetPruSupportInd returns the pruSupportInd set with PruSupportInd, or nil if it was not set.
+func (r ApiSearchNFInstancesRequest) GetPruSupportInd() *bool {
+	return r.pruSupportInd
+}
+
 // events supported by the trusted AFs being discovered
 func (r ApiSearchNFInstancesRequest) AfData(afData models.AfData) ApiSearchNFInstancesRequest {
 	r.afData = &afData
 	return r
+}
+
+// GetAfData returns the afData set with AfData, or nil if it was not set.
+func (r ApiSearchNFInstancesRequest) GetAfData() *models.AfData {
+	return r.afData
 }
 
 // Indicating the support for ML Model Accuracy checking.
@@ -1106,10 +1846,20 @@ func (r ApiSearchNFInstancesRequest) MlAccuracyCheckingInd(mlAccuracyCheckingInd
 	return r
 }
 
+// GetMlAccuracyCheckingInd returns the mlAccuracyCheckingInd set with MlAccuracyCheckingInd, or nil if it was not set.
+func (r ApiSearchNFInstancesRequest) GetMlAccuracyCheckingInd() *bool {
+	return r.mlAccuracyCheckingInd
+}
+
 // Indicating the support for Analytics Accuracy checking.
 func (r ApiSearchNFInstancesRequest) AnalyticsAccuracyCheckingInd(analyticsAccuracyCheckingInd bool) ApiSearchNFInstancesRequest {
 	r.analyticsAccuracyCheckingInd = &analyticsAccuracyCheckingInd
 	return r
+}
+
+// GetAnalyticsAccuracyCheckingInd returns the analyticsAccuracyCheckingInd set with AnalyticsAccuracyCheckingInd, or nil if it was not set.
+func (r ApiSearchNFInstancesRequest) GetAnalyticsAccuracyCheckingInd() *bool {
+	return r.analyticsAccuracyCheckingInd
 }
 
 // PCF supports A2X
@@ -1118,10 +1868,20 @@ func (r ApiSearchNFInstancesRequest) A2xSupportInd(a2xSupportInd bool) ApiSearch
 	return r
 }
 
+// GetA2xSupportInd returns the a2xSupportInd set with A2xSupportInd, or nil if it was not set.
+func (r ApiSearchNFInstancesRequest) GetA2xSupportInd() *bool {
+	return r.a2xSupportInd
+}
+
 // indicates the A2X capability that the target PCF needs to support.
 func (r ApiSearchNFInstancesRequest) A2xCapability(a2xCapability models.A2xCapability) ApiSearchNFInstancesRequest {
 	r.a2xCapability = &a2xCapability
 	return r
+}
+
+// GetA2xCapability returns the a2xCapability set with A2xCapability, or nil if it was not set.
+func (r ApiSearchNFInstancesRequest) GetA2xCapability() *models.A2xCapability {
+	return r.a2xCapability
 }
 
 // Indicating the support for ML model storage and retrieval capability.
@@ -1130,10 +1890,20 @@ func (r ApiSearchNFInstancesRequest) MlModelStorageInd(mlModelStorageInd bool) A
 	return r
 }
 
+// GetMlModelStorageInd returns the mlModelStorageInd set with MlModelStorageInd, or nil if it was not set.
+func (r ApiSearchNFInstancesRequest) GetMlModelStorageInd() *bool {
+	return r.mlModelStorageInd
+}
+
 // Indicating the support for data and analytics storage and retrieval capability.
 func (r ApiSearchNFInstancesRequest) DataStorageInd(dataStorageInd bool) ApiSearchNFInstancesRequest {
 	r.dataStorageInd = &dataStorageInd
 	return r
+}
+
+// GetDataStorageInd returns the dataStorageInd set with DataStorageInd, or nil if it was not set.
+func (r ApiSearchNFInstancesRequest) GetDataStorageInd() *bool {
+	return r.dataStorageInd
 }
 
 // Indicating the support for relocation of data subscription.
@@ -1142,10 +1912,20 @@ func (r ApiSearchNFInstancesRequest) DataSubscriptionRelocationSupportInd(dataSu
 	return r
 }
 
+// GetDataSubscriptionRelocationSupportInd returns the dataSubscriptionRelocationSupportInd set with DataSubscriptionRelocationSupportInd, or nil if it was not set.
+func (r ApiSearchNFInstancesRequest) GetDataSubscriptionRelocationSupportInd() *bool {
+	return r.dataSubscriptionRelocationSupportInd
+}
+
 // Indicating the IMS domain name to search for a target DCSF.
 func (r ApiSearchNFInstancesRequest) ImsDomainName(imsDomainName string) ApiSearchNFInstancesRequest {
 	r.imsDomainName = &imsDomainName
 	return r
+}
+
+// GetImsDomainName returns the imsDomainName set with ImsDomainName, or nil if it was not set.
+func (r ApiSearchNFInstancesRequest) GetImsDomainName() *string {
+	return r.imsDomainName
 }
 
 // Indicating the media capability list to search for a target MF, MRF or MRFP.
@@ -1154,10 +1934,20 @@ func (r ApiSearchNFInstancesRequest) MediaCapabilityList(mediaCapabilityList []s
 	return r
 }
 
+// GetMediaCapabilityList returns the mediaCapabilityList set with MediaCapabilityList, or nil if it was not set.
+func (r ApiSearchNFInstancesRequest) GetMediaCapabilityList() *[]string {
+	return r.mediaCapabilityList
+}
+
 // Indicating the support for roaming exchange.
 func (r ApiSearchNFInstancesRequest) RoamingExchangeInd(roamingExchangeInd bool) ApiSearchNFInstancesRequest {
 	r.roamingExchangeInd = &roamingExchangeInd
 	return r
+}
+
+// GetRoamingExchangeInd returns the roamingExchangeInd set with RoamingExchangeInd, or nil if it was not set.
+func (r ApiSearchNFInstancesRequest) GetRoamingExchangeInd() *bool {
+	return r.roamingExchangeInd
 }
 
 // PCF or LMF supports ranging and sidelink positioning Capability
@@ -1166,10 +1956,20 @@ func (r ApiSearchNFInstancesRequest) RangingSlPosSupportInd(rangingSlPosSupportI
 	return r
 }
 
+// GetRangingSlPosSupportInd returns the rangingSlPosSupportInd set with RangingSlPosSupportInd, or nil if it was not set.
+func (r ApiSearchNFInstancesRequest) GetRangingSlPosSupportInd() *bool {
+	return r.rangingSlPosSupportInd
+}
+
 // LMF supporting user plane positioning capability
 func (r ApiSearchNFInstancesRequest) PreferredUpPositioningInd(preferredUpPositioningInd bool) ApiSearchNFInstancesRequest {
 	r.preferredUpPositioningInd = &preferredUpPositioningInd
 	return r
+}
+
+// GetPreferredUpPositioningInd returns the preferredUpPositioningInd set with PreferredUpPositioningInd, or nil if it was not set.
+func (r ApiSearchNFInstancesRequest) GetPreferredUpPositioningInd() *bool {
+	return r.preferredUpPositioningInd
 }
 
 // Indicates that all the NF profiles or NF Instance IDs matching the query parameters are requested to be returned
@@ -1178,10 +1978,20 @@ func (r ApiSearchNFInstancesRequest) CompleteSearchResult(completeSearchResult b
 	return r
 }
 
+// GetCompleteSearchResult returns the completeSearchResult set with CompleteSearchResult, or nil if it was not set.
+func (r ApiSearchNFInstancesRequest) GetCompleteSearchResult() *bool {
+	return r.completeSearchResult
+}
+
 // Indicates whether a PCF supporting URSP delivery in EPS needs to be discovered
 func (r ApiSearchNFInstancesRequest) UrspDeliveryEpsSupportInd(urspDeliveryEpsSupportInd bool) ApiSearchNFInstancesRequest {
 	r.urspDeliveryEpsSupportInd = &urspDeliveryEpsSupportInd
 	return r
+}
+
+// GetUrspDeliveryEpsSupportInd returns the urspDeliveryEpsSupportInd set with UrspDeliveryEpsSupportInd, or nil if it was not set.
+func (r ApiSearchNFInstancesRequest) GetUrspDeliveryEpsSupportInd() *bool {
+	return r.urspDeliveryEpsSupportInd
 }
 
 func (r ApiSearchNFInstancesRequest) Execute() (*models.SearchResult, *http.Response, error) {

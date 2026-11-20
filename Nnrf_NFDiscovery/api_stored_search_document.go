@@ -62,6 +62,11 @@ func (r ApiRetrieveStoredSearchRequest) AcceptEncoding(acceptEncoding string) Ap
 	return r
 }
 
+// GetAcceptEncoding returns the acceptEncoding set with AcceptEncoding, or nil if it was not set.
+func (r ApiRetrieveStoredSearchRequest) GetAcceptEncoding() *string {
+	return r.acceptEncoding
+}
+
 func (r ApiRetrieveStoredSearchRequest) Execute() (*models.StoredSearchResult, *http.Response, error) {
 	return r.ApiService.RetrieveStoredSearchExecute(r)
 }

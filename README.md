@@ -67,15 +67,15 @@ Note, enum values are always validated and all unused variables are silently ign
 ### URLs Configuration per Operation
 
 Each operation can use different server URL defined using `OperationServers` map in the `Configuration`.
-An operation is uniquely identified by `"{classname}Service.{nickname}"` string (e.g. `""`).
+An operation is uniquely identified by `"{classname}Service.{nickname}"` string (e.g. `"SMContextsCollectionAPIService.PostSmContexts"`).
 Similar rules for overriding default operation server index and variables applies by using `openapi.ContextOperationServerIndices` and `openapi.ContextOperationServerVariables` context maps.
 
 ```go
 ctx := context.WithValue(context.Background(), openapi.ContextOperationServerIndices, map[string]int{
-	"": 0,
+	"SMContextsCollectionAPIService.PostSmContexts": 0,
 })
 ctx = context.WithValue(ctx, openapi.ContextOperationServerVariables, map[string]map[string]string{
-	"": {
+	"SMContextsCollectionAPIService.PostSmContexts": {
 		"apiRoot": "<apiRoot value>",
 	},
 })
