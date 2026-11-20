@@ -61,6 +61,11 @@ func (r ApiSendRoutingInfoSmRequest) RoutingInfoSmRequest(routingInfoSmRequest m
 	return r
 }
 
+// GetRoutingInfoSmRequest returns the routingInfoSmRequest set with RoutingInfoSmRequest, or nil if it was not set.
+func (r ApiSendRoutingInfoSmRequest) GetRoutingInfoSmRequest() *models.RoutingInfoSmRequest {
+	return r.routingInfoSmRequest
+}
+
 func (r ApiSendRoutingInfoSmRequest) Execute() (*models.RoutingInfoSmResponse, *http.Response, error) {
 	return r.ApiService.SendRoutingInfoSmExecute(r)
 }

@@ -81,6 +81,14 @@ func (o *AddEventNotifyDatas) SetAddEventNotifyDatas(v []EventNotifyData) {
 	o.AddEventNotifyDatas = v
 }
 
+func (o AddEventNotifyDatas) MarshalJSON() ([]byte, error) {
+	toSerialize, err := o.ToMap()
+	if err != nil {
+		return []byte{}, err
+	}
+	return json.Marshal(toSerialize)
+}
+
 func (o AddEventNotifyDatas) ToMap() (map[string]any, error) {
 	toSerialize := map[string]any{}
 	if !openapi.IsNil(o.AddEventNotifyDatas) {

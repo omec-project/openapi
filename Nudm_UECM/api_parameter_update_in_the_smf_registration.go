@@ -64,10 +64,20 @@ func (r ApiUpdateSmfRegistrationRequest) SmfRegistrationModification(smfRegistra
 	return r
 }
 
+// GetSmfRegistrationModification returns the smfRegistrationModification set with SmfRegistrationModification, or nil if it was not set.
+func (r ApiUpdateSmfRegistrationRequest) GetSmfRegistrationModification() *models.SmfRegistrationModification {
+	return r.smfRegistrationModification
+}
+
 // Features required to be supported by the target NF
 func (r ApiUpdateSmfRegistrationRequest) SupportedFeatures(supportedFeatures string) ApiUpdateSmfRegistrationRequest {
 	r.supportedFeatures = &supportedFeatures
 	return r
+}
+
+// GetSupportedFeatures returns the supportedFeatures set with SupportedFeatures, or nil if it was not set.
+func (r ApiUpdateSmfRegistrationRequest) GetSupportedFeatures() *string {
+	return r.supportedFeatures
 }
 
 func (r ApiUpdateSmfRegistrationRequest) Execute() (*models.PatchResult, *http.Response, error) {

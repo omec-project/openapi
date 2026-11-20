@@ -118,6 +118,14 @@ func (o *UeAreaIndication) SetInternationalAreaInd(v bool) {
 	o.InternationalAreaInd = &v
 }
 
+func (o UeAreaIndication) MarshalJSON() ([]byte, error) {
+	toSerialize, err := o.ToMap()
+	if err != nil {
+		return []byte{}, err
+	}
+	return json.Marshal(toSerialize)
+}
+
 func (o UeAreaIndication) ToMap() (map[string]any, error) {
 	toSerialize := map[string]any{}
 	if !openapi.IsNil(o.Country) {

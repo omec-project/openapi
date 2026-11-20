@@ -101,6 +101,14 @@ func (o *CipheringSetReport) SetStorageOutcome(v StorageOutcome) {
 	o.StorageOutcome = v
 }
 
+func (o CipheringSetReport) MarshalJSON() ([]byte, error) {
+	toSerialize, err := o.ToMap()
+	if err != nil {
+		return []byte{}, err
+	}
+	return json.Marshal(toSerialize)
+}
+
 func (o CipheringSetReport) ToMap() (map[string]any, error) {
 	toSerialize := map[string]any{}
 	toSerialize["cipheringSetID"] = o.CipheringSetID

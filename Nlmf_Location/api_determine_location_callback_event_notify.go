@@ -58,6 +58,11 @@ func (r ApiEventNotifyPostRequest) EventNotifyDataExt(eventNotifyDataExt models.
 	return r
 }
 
+// GetEventNotifyDataExt returns the eventNotifyDataExt set with EventNotifyDataExt, or nil if it was not set.
+func (r ApiEventNotifyPostRequest) GetEventNotifyDataExt() *models.EventNotifyDataExt {
+	return r.eventNotifyDataExt
+}
+
 func (r ApiEventNotifyPostRequest) Execute() (*http.Response, error) {
 	return r.ApiService.EventNotifyPostExecute(r)
 }

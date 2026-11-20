@@ -58,6 +58,11 @@ func (r ApiStaleCheckNotificationRequestBodyStaleCheckCallbackUriPostRequest) Pd
 	return r
 }
 
+// GetPduSessionIds returns the pduSessionIds set with PduSessionIds, or nil if it was not set.
+func (r ApiStaleCheckNotificationRequestBodyStaleCheckCallbackUriPostRequest) GetPduSessionIds() *models.PduSessionIds {
+	return r.pduSessionIds
+}
+
 func (r ApiStaleCheckNotificationRequestBodyStaleCheckCallbackUriPostRequest) Execute() (*models.PduSessionIds, *http.Response, error) {
 	return r.ApiService.StaleCheckNotificationRequestBodyStaleCheckCallbackUriPostExecute(r)
 }

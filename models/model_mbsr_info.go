@@ -114,6 +114,14 @@ func (o *MbsrInfo) SetEcgi(v Ecgi) {
 	o.Ecgi = &v
 }
 
+func (o MbsrInfo) MarshalJSON() ([]byte, error) {
+	toSerialize, err := o.ToMap()
+	if err != nil {
+		return []byte{}, err
+	}
+	return json.Marshal(toSerialize)
+}
+
 func (o MbsrInfo) ToMap() (map[string]any, error) {
 	toSerialize := map[string]any{}
 	if !openapi.IsNil(o.Ncgi) {

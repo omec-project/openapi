@@ -57,6 +57,11 @@ func (r ApiLocationContextTransferRequest) LocContextData(locContextData models.
 	return r
 }
 
+// GetLocContextData returns the locContextData set with LocContextData, or nil if it was not set.
+func (r ApiLocationContextTransferRequest) GetLocContextData() *models.LocContextData {
+	return r.locContextData
+}
+
 func (r ApiLocationContextTransferRequest) Execute() (*http.Response, error) {
 	return r.ApiService.LocationContextTransferExecute(r)
 }

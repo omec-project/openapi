@@ -57,6 +57,11 @@ func (r ApiPcscfRestorationNotificationAmfNon3gppRequestBodyPcscfRestorationCall
 	return r
 }
 
+// GetPcscfRestorationNotification returns the pcscfRestorationNotification set with PcscfRestorationNotification, or nil if it was not set.
+func (r ApiPcscfRestorationNotificationAmfNon3gppRequestBodyPcscfRestorationCallbackUriPostRequest) GetPcscfRestorationNotification() *models.PcscfRestorationNotification {
+	return r.pcscfRestorationNotification
+}
+
 func (r ApiPcscfRestorationNotificationAmfNon3gppRequestBodyPcscfRestorationCallbackUriPostRequest) Execute() (*http.Response, error) {
 	return r.ApiService.PcscfRestorationNotificationAmfNon3gppRequestBodyPcscfRestorationCallbackUriPostExecute(r)
 }

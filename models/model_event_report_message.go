@@ -100,6 +100,14 @@ func (o *EventReportMessage) SetEventContent(v RefToBinaryData) {
 	o.EventContent = v
 }
 
+func (o EventReportMessage) MarshalJSON() ([]byte, error) {
+	toSerialize, err := o.ToMap()
+	if err != nil {
+		return []byte{}, err
+	}
+	return json.Marshal(toSerialize)
+}
+
 func (o EventReportMessage) ToMap() (map[string]any, error) {
 	toSerialize := map[string]any{}
 	toSerialize["eventClass"] = o.EventClass

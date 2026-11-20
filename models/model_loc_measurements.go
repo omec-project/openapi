@@ -81,6 +81,14 @@ func (o *LocMeasurements) SetRstd(v int32) {
 	o.Rstd = &v
 }
 
+func (o LocMeasurements) MarshalJSON() ([]byte, error) {
+	toSerialize, err := o.ToMap()
+	if err != nil {
+		return []byte{}, err
+	}
+	return json.Marshal(toSerialize)
+}
+
 func (o LocMeasurements) ToMap() (map[string]any, error) {
 	toSerialize := map[string]any{}
 	if !openapi.IsNil(o.Rstd) {

@@ -215,6 +215,14 @@ func (o *LocMeasurementReq) SetTimeWindows(v []string) {
 	o.TimeWindows = v
 }
 
+func (o LocMeasurementReq) MarshalJSON() ([]byte, error) {
+	toSerialize, err := o.ToMap()
+	if err != nil {
+		return []byte{}, err
+	}
+	return json.Marshal(toSerialize)
+}
+
 func (o LocMeasurementReq) ToMap() (map[string]any, error) {
 	toSerialize := map[string]any{}
 	if !openapi.IsNil(o.Ncgi) {

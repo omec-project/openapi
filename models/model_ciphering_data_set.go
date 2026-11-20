@@ -286,6 +286,14 @@ func (o *CipheringDataSet) SetTaiList(v string) {
 	o.TaiList = &v
 }
 
+func (o CipheringDataSet) MarshalJSON() ([]byte, error) {
+	toSerialize, err := o.ToMap()
+	if err != nil {
+		return []byte{}, err
+	}
+	return json.Marshal(toSerialize)
+}
+
 func (o CipheringDataSet) ToMap() (map[string]any, error) {
 	toSerialize := map[string]any{}
 	toSerialize["cipheringSetID"] = o.CipheringSetID

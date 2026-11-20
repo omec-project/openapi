@@ -60,6 +60,11 @@ func (r ApiDeregAMFRequest) AmfDeregInfo(amfDeregInfo models.AmfDeregInfo) ApiDe
 	return r
 }
 
+// GetAmfDeregInfo returns the amfDeregInfo set with AmfDeregInfo, or nil if it was not set.
+func (r ApiDeregAMFRequest) GetAmfDeregInfo() *models.AmfDeregInfo {
+	return r.amfDeregInfo
+}
+
 func (r ApiDeregAMFRequest) Execute() (*http.Response, error) {
 	return r.ApiService.DeregAMFExecute(r)
 }

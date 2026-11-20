@@ -1023,6 +1023,14 @@ func (o *LocationData) SetRangingSlCapability(v string) {
 	o.RangingSlCapability = &v
 }
 
+func (o LocationData) MarshalJSON() ([]byte, error) {
+	toSerialize, err := o.ToMap()
+	if err != nil {
+		return []byte{}, err
+	}
+	return json.Marshal(toSerialize)
+}
+
 func (o LocationData) ToMap() (map[string]any, error) {
 	toSerialize := map[string]any{}
 	toSerialize["locationEstimate"] = o.LocationEstimate

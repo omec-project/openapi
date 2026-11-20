@@ -58,6 +58,11 @@ func (r ApiUPNotifyPostRequest) UpNotifyData(upNotifyData models.UpNotifyData) A
 	return r
 }
 
+// GetUpNotifyData returns the upNotifyData set with UpNotifyData, or nil if it was not set.
+func (r ApiUPNotifyPostRequest) GetUpNotifyData() *models.UpNotifyData {
+	return r.upNotifyData
+}
+
 func (r ApiUPNotifyPostRequest) Execute() (*http.Response, error) {
 	return r.ApiService.UPNotifyPostExecute(r)
 }

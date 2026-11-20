@@ -58,6 +58,11 @@ func (r ApiDeregistrationNotificationAmf3gppRequestBodyDeregCallbackUriPostReque
 	return r
 }
 
+// GetDeregistrationData returns the deregistrationData set with DeregistrationData, or nil if it was not set.
+func (r ApiDeregistrationNotificationAmf3gppRequestBodyDeregCallbackUriPostRequest) GetDeregistrationData() *models.DeregistrationData {
+	return r.deregistrationData
+}
+
 func (r ApiDeregistrationNotificationAmf3gppRequestBodyDeregCallbackUriPostRequest) Execute() (*models.DeregistrationRespData, *http.Response, error) {
 	return r.ApiService.DeregistrationNotificationAmf3gppRequestBodyDeregCallbackUriPostExecute(r)
 }

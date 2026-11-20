@@ -64,10 +64,20 @@ func (r ApiUpdateNwdafRegistrationRequest) NwdafRegistrationModification(nwdafRe
 	return r
 }
 
+// GetNwdafRegistrationModification returns the nwdafRegistrationModification set with NwdafRegistrationModification, or nil if it was not set.
+func (r ApiUpdateNwdafRegistrationRequest) GetNwdafRegistrationModification() *models.NwdafRegistrationModification {
+	return r.nwdafRegistrationModification
+}
+
 // Supported Features
 func (r ApiUpdateNwdafRegistrationRequest) SupportedFeatures(supportedFeatures string) ApiUpdateNwdafRegistrationRequest {
 	r.supportedFeatures = &supportedFeatures
 	return r
+}
+
+// GetSupportedFeatures returns the supportedFeatures set with SupportedFeatures, or nil if it was not set.
+func (r ApiUpdateNwdafRegistrationRequest) GetSupportedFeatures() *string {
+	return r.supportedFeatures
 }
 
 func (r ApiUpdateNwdafRegistrationRequest) Execute() (*models.UpdateNwdafRegistration200Response, *http.Response, error) {

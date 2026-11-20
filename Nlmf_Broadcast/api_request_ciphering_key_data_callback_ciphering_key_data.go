@@ -59,6 +59,11 @@ func (r ApiCipheringKeyDataPostRequest) CipheringKeyInfo(cipheringKeyInfo models
 	return r
 }
 
+// GetCipheringKeyInfo returns the cipheringKeyInfo set with CipheringKeyInfo, or nil if it was not set.
+func (r ApiCipheringKeyDataPostRequest) GetCipheringKeyInfo() *models.CipheringKeyInfo {
+	return r.cipheringKeyInfo
+}
+
 func (r ApiCipheringKeyDataPostRequest) Execute() (*models.CipheringKeyResponse, *http.Response, error) {
 	return r.ApiService.CipheringKeyDataPostExecute(r)
 }

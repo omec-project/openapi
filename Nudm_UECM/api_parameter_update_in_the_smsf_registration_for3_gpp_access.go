@@ -62,10 +62,20 @@ func (r ApiUpdateSmsf3GppRegistrationRequest) SmsfRegistrationModification(smsfR
 	return r
 }
 
+// GetSmsfRegistrationModification returns the smsfRegistrationModification set with SmsfRegistrationModification, or nil if it was not set.
+func (r ApiUpdateSmsf3GppRegistrationRequest) GetSmsfRegistrationModification() *models.SmsfRegistrationModification {
+	return r.smsfRegistrationModification
+}
+
 // Features required to be supported by the target NF
 func (r ApiUpdateSmsf3GppRegistrationRequest) SupportedFeatures(supportedFeatures string) ApiUpdateSmsf3GppRegistrationRequest {
 	r.supportedFeatures = &supportedFeatures
 	return r
+}
+
+// GetSupportedFeatures returns the supportedFeatures set with SupportedFeatures, or nil if it was not set.
+func (r ApiUpdateSmsf3GppRegistrationRequest) GetSupportedFeatures() *string {
+	return r.supportedFeatures
 }
 
 func (r ApiUpdateSmsf3GppRegistrationRequest) Execute() (*models.PatchResult, *http.Response, error) {

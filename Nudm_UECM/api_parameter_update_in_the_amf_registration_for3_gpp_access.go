@@ -62,10 +62,20 @@ func (r ApiUpdate3GppRegistrationRequest) Amf3GppAccessRegistrationModification(
 	return r
 }
 
+// GetAmf3GppAccessRegistrationModification returns the amf3GppAccessRegistrationModification set with Amf3GppAccessRegistrationModification, or nil if it was not set.
+func (r ApiUpdate3GppRegistrationRequest) GetAmf3GppAccessRegistrationModification() *models.Amf3GppAccessRegistrationModification {
+	return r.amf3GppAccessRegistrationModification
+}
+
 // Features required to be supported by the target NF
 func (r ApiUpdate3GppRegistrationRequest) SupportedFeatures(supportedFeatures string) ApiUpdate3GppRegistrationRequest {
 	r.supportedFeatures = &supportedFeatures
 	return r
+}
+
+// GetSupportedFeatures returns the supportedFeatures set with SupportedFeatures, or nil if it was not set.
+func (r ApiUpdate3GppRegistrationRequest) GetSupportedFeatures() *string {
+	return r.supportedFeatures
 }
 
 func (r ApiUpdate3GppRegistrationRequest) Execute() (*models.PatchResult, *http.Response, error) {

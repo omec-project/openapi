@@ -61,6 +61,11 @@ func (r ApiCall3GppRegistrationRequest) Amf3GppAccessRegistration(amf3GppAccessR
 	return r
 }
 
+// GetAmf3GppAccessRegistration returns the amf3GppAccessRegistration set with Amf3GppAccessRegistration, or nil if it was not set.
+func (r ApiCall3GppRegistrationRequest) GetAmf3GppAccessRegistration() *models.Amf3GppAccessRegistration {
+	return r.amf3GppAccessRegistration
+}
+
 func (r ApiCall3GppRegistrationRequest) Execute() (*models.Amf3GppAccessRegistration, *http.Response, error) {
 	return r.ApiService.Call3GppRegistrationExecute(r)
 }

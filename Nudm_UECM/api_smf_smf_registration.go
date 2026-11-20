@@ -77,14 +77,29 @@ func (r ApiGetSmfRegistrationRequest) SingleNssai(singleNssai models.Snssai) Api
 	return r
 }
 
+// GetSingleNssai returns the singleNssai set with SingleNssai, or nil if it was not set.
+func (r ApiGetSmfRegistrationRequest) GetSingleNssai() *models.Snssai {
+	return r.singleNssai
+}
+
 func (r ApiGetSmfRegistrationRequest) Dnn(dnn string) ApiGetSmfRegistrationRequest {
 	r.dnn = &dnn
 	return r
 }
 
+// GetDnn returns the dnn set with Dnn, or nil if it was not set.
+func (r ApiGetSmfRegistrationRequest) GetDnn() *string {
+	return r.dnn
+}
+
 func (r ApiGetSmfRegistrationRequest) SupportedFeatures(supportedFeatures string) ApiGetSmfRegistrationRequest {
 	r.supportedFeatures = &supportedFeatures
 	return r
+}
+
+// GetSupportedFeatures returns the supportedFeatures set with SupportedFeatures, or nil if it was not set.
+func (r ApiGetSmfRegistrationRequest) GetSupportedFeatures() *string {
+	return r.supportedFeatures
 }
 
 func (r ApiGetSmfRegistrationRequest) Execute() (*models.SmfRegistrationInfo, *http.Response, error) {
@@ -290,6 +305,11 @@ type ApiRegistrationRequest struct {
 func (r ApiRegistrationRequest) SmfRegistration(smfRegistration models.SmfRegistration) ApiRegistrationRequest {
 	r.smfRegistration = &smfRegistration
 	return r
+}
+
+// GetSmfRegistration returns the smfRegistration set with SmfRegistration, or nil if it was not set.
+func (r ApiRegistrationRequest) GetSmfRegistration() *models.SmfRegistration {
+	return r.smfRegistration
 }
 
 func (r ApiRegistrationRequest) Execute() (*models.SmfRegistration, *http.Response, error) {

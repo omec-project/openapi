@@ -65,9 +65,19 @@ func (r ApiGetRegistrationsRequest) RegistrationDatasetNames(registrationDataset
 	return r
 }
 
+// GetRegistrationDatasetNames returns the registrationDatasetNames set with RegistrationDatasetNames, or nil if it was not set.
+func (r ApiGetRegistrationsRequest) GetRegistrationDatasetNames() *[]models.RegistrationDataSetName {
+	return r.registrationDatasetNames
+}
+
 func (r ApiGetRegistrationsRequest) SupportedFeatures(supportedFeatures string) ApiGetRegistrationsRequest {
 	r.supportedFeatures = &supportedFeatures
 	return r
+}
+
+// GetSupportedFeatures returns the supportedFeatures set with SupportedFeatures, or nil if it was not set.
+func (r ApiGetRegistrationsRequest) GetSupportedFeatures() *string {
+	return r.supportedFeatures
 }
 
 func (r ApiGetRegistrationsRequest) SingleNssai(singleNssai models.Snssai) ApiGetRegistrationsRequest {
@@ -75,9 +85,19 @@ func (r ApiGetRegistrationsRequest) SingleNssai(singleNssai models.Snssai) ApiGe
 	return r
 }
 
+// GetSingleNssai returns the singleNssai set with SingleNssai, or nil if it was not set.
+func (r ApiGetRegistrationsRequest) GetSingleNssai() *models.Snssai {
+	return r.singleNssai
+}
+
 func (r ApiGetRegistrationsRequest) Dnn(dnn string) ApiGetRegistrationsRequest {
 	r.dnn = &dnn
 	return r
+}
+
+// GetDnn returns the dnn set with Dnn, or nil if it was not set.
+func (r ApiGetRegistrationsRequest) GetDnn() *string {
+	return r.dnn
 }
 
 func (r ApiGetRegistrationsRequest) Execute() (*models.RegistrationDataSets, *http.Response, error) {

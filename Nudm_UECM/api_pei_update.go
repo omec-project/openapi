@@ -60,6 +60,11 @@ func (r ApiPeiUpdateRequest) PeiUpdateInfo(peiUpdateInfo models.PeiUpdateInfo) A
 	return r
 }
 
+// GetPeiUpdateInfo returns the peiUpdateInfo set with PeiUpdateInfo, or nil if it was not set.
+func (r ApiPeiUpdateRequest) GetPeiUpdateInfo() *models.PeiUpdateInfo {
+	return r.peiUpdateInfo
+}
+
 func (r ApiPeiUpdateRequest) Execute() (*http.Response, error) {
 	return r.ApiService.PeiUpdateExecute(r)
 }

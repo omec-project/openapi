@@ -61,6 +61,11 @@ func (r ApiGetNon3GppRegistrationRequest) SupportedFeatures(supportedFeatures st
 	return r
 }
 
+// GetSupportedFeatures returns the supportedFeatures set with SupportedFeatures, or nil if it was not set.
+func (r ApiGetNon3GppRegistrationRequest) GetSupportedFeatures() *string {
+	return r.supportedFeatures
+}
+
 func (r ApiGetNon3GppRegistrationRequest) Execute() (*models.AmfNon3GppAccessRegistration, *http.Response, error) {
 	return r.ApiService.GetNon3GppRegistrationExecute(r)
 }

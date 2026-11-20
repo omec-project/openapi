@@ -61,10 +61,20 @@ func (r ApiNon3GppSmsfDeregistrationRequest) SmsfSetId(smsfSetId string) ApiNon3
 	return r
 }
 
+// GetSmsfSetId returns the smsfSetId set with SmsfSetId, or nil if it was not set.
+func (r ApiNon3GppSmsfDeregistrationRequest) GetSmsfSetId() *string {
+	return r.smsfSetId
+}
+
 // Validator for conditional requests, as described in IETF RFC 9110, 3.1
 func (r ApiNon3GppSmsfDeregistrationRequest) IfMatch(ifMatch string) ApiNon3GppSmsfDeregistrationRequest {
 	r.ifMatch = &ifMatch
 	return r
+}
+
+// GetIfMatch returns the ifMatch set with IfMatch, or nil if it was not set.
+func (r ApiNon3GppSmsfDeregistrationRequest) GetIfMatch() *string {
+	return r.ifMatch
 }
 
 func (r ApiNon3GppSmsfDeregistrationRequest) Execute() (*http.Response, error) {

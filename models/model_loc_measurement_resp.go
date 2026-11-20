@@ -235,6 +235,14 @@ func (o *LocMeasurementResp) SetLocalLocationEstimate(v LocalArea) {
 	o.LocalLocationEstimate = &v
 }
 
+func (o LocMeasurementResp) MarshalJSON() ([]byte, error) {
+	toSerialize, err := o.ToMap()
+	if err != nil {
+		return []byte{}, err
+	}
+	return json.Marshal(toSerialize)
+}
+
 func (o LocMeasurementResp) ToMap() (map[string]any, error) {
 	toSerialize := map[string]any{}
 	toSerialize["locMeasurements"] = o.LocMeasurements

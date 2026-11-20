@@ -63,10 +63,20 @@ func (r ApiGetNwdafRegistrationRequest) AnalyticsIds(analyticsIds []models.Event
 	return r
 }
 
+// GetAnalyticsIds returns the analyticsIds set with AnalyticsIds, or nil if it was not set.
+func (r ApiGetNwdafRegistrationRequest) GetAnalyticsIds() *[]models.EventId {
+	return r.analyticsIds
+}
+
 // Supported Features
 func (r ApiGetNwdafRegistrationRequest) SupportedFeatures(supportedFeatures string) ApiGetNwdafRegistrationRequest {
 	r.supportedFeatures = &supportedFeatures
 	return r
+}
+
+// GetSupportedFeatures returns the supportedFeatures set with SupportedFeatures, or nil if it was not set.
+func (r ApiGetNwdafRegistrationRequest) GetSupportedFeatures() *string {
+	return r.supportedFeatures
 }
 
 func (r ApiGetNwdafRegistrationRequest) Execute() ([]models.NwdafRegistration, *http.Response, error) {

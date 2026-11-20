@@ -61,6 +61,11 @@ func (r ApiIpSmGwRegistrationRequest) IpSmGwRegistration(ipSmGwRegistration mode
 	return r
 }
 
+// GetIpSmGwRegistration returns the ipSmGwRegistration set with IpSmGwRegistration, or nil if it was not set.
+func (r ApiIpSmGwRegistrationRequest) GetIpSmGwRegistration() *models.IpSmGwRegistration {
+	return r.ipSmGwRegistration
+}
+
 func (r ApiIpSmGwRegistrationRequest) Execute() (*models.IpSmGwRegistration, *http.Response, error) {
 	return r.ApiService.IpSmGwRegistrationExecute(r)
 }

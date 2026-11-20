@@ -57,6 +57,11 @@ func (r ApiReauthNotificationAmfNon3gppRequestBodyReauthNotifyCallbackUriPostReq
 	return r
 }
 
+// GetReauthNotificationInfo returns the reauthNotificationInfo set with ReauthNotificationInfo, or nil if it was not set.
+func (r ApiReauthNotificationAmfNon3gppRequestBodyReauthNotifyCallbackUriPostRequest) GetReauthNotificationInfo() *models.ReauthNotificationInfo {
+	return r.reauthNotificationInfo
+}
+
 func (r ApiReauthNotificationAmfNon3gppRequestBodyReauthNotifyCallbackUriPostRequest) Execute() (*http.Response, error) {
 	return r.ApiService.ReauthNotificationAmfNon3gppRequestBodyReauthNotifyCallbackUriPostExecute(r)
 }

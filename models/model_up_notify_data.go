@@ -135,6 +135,14 @@ func (o *UpNotifyData) SetTargetLMFId(v string) {
 	o.TargetLMFId = &v
 }
 
+func (o UpNotifyData) MarshalJSON() ([]byte, error) {
+	toSerialize, err := o.ToMap()
+	if err != nil {
+		return []byte{}, err
+	}
+	return json.Marshal(toSerialize)
+}
+
 func (o UpNotifyData) ToMap() (map[string]any, error) {
 	toSerialize := map[string]any{}
 	toSerialize["notifCorrelationId"] = o.NotifCorrelationId

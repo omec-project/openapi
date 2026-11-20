@@ -5505,7 +5505,10 @@ components:
     DetermineLocation_request:
       properties:
         jsonData:
-          $ref: "#/components/schemas/InputData"
+          allOf:
+            - $ref: "#/components/schemas/InputData"
+          x-multipart-content-type: application/json
+          x-multipart-ref: "{jsonData}"
         binaryDataLppMessage:
           format: binary
           type: string

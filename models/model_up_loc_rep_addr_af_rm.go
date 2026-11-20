@@ -32,7 +32,7 @@ type UpLocRepAddrAfRm struct {
 	Ipv4Addrs []string `json:"ipv4Addrs,omitempty" yaml:"ipv4Addrs,omitempty"`
 	Ipv6Addrs []string `json:"ipv6Addrs,omitempty" yaml:"ipv6Addrs,omitempty"`
 	// Fully Qualified Domain Name
-	Fqdn *string `json:"fqdn,omitempty" yaml:"fqdn,omitempty" validate:"regexp=^([0-9A-Za-z]([-0-9A-Za-z]{0,61}[0-9A-Za-z])?\\.)+[A-Za-z]{2,63}\\.?$"`
+	Fqdn *string `json:"fqdn,omitempty" yaml:"fqdn,omitempty" validate:"regexp=^([0-9A-Za-z]([-0-9A-Za-z]{0\\,61}[0-9A-Za-z])?\\.)+[A-Za-z]{2\\,63}\\.?$"`
 }
 
 // NewUpLocRepAddrAfRm instantiates a new UpLocRepAddrAfRm object

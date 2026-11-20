@@ -60,6 +60,11 @@ func (r ApiAuthTriggerRequest) AuthTriggerInfo(authTriggerInfo models.AuthTrigge
 	return r
 }
 
+// GetAuthTriggerInfo returns the authTriggerInfo set with AuthTriggerInfo, or nil if it was not set.
+func (r ApiAuthTriggerRequest) GetAuthTriggerInfo() *models.AuthTriggerInfo {
+	return r.authTriggerInfo
+}
+
 func (r ApiAuthTriggerRequest) Execute() (*http.Response, error) {
 	return r.ApiService.AuthTriggerExecute(r)
 }

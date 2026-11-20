@@ -61,6 +61,11 @@ func (r ApiCall3GppSmsfRegistrationRequest) SmsfRegistration(smsfRegistration mo
 	return r
 }
 
+// GetSmsfRegistration returns the smsfRegistration set with SmsfRegistration, or nil if it was not set.
+func (r ApiCall3GppSmsfRegistrationRequest) GetSmsfRegistration() *models.SmsfRegistration {
+	return r.smsfRegistration
+}
+
 func (r ApiCall3GppSmsfRegistrationRequest) Execute() (*models.SmsfRegistration, *http.Response, error) {
 	return r.ApiService.Call3GppSmsfRegistrationExecute(r)
 }

@@ -81,6 +81,14 @@ func (o *AddLocationDatas) SetAddLocationDatas(v []LocationData) {
 	o.AddLocationDatas = v
 }
 
+func (o AddLocationDatas) MarshalJSON() ([]byte, error) {
+	toSerialize, err := o.ToMap()
+	if err != nil {
+		return []byte{}, err
+	}
+	return json.Marshal(toSerialize)
+}
+
 func (o AddLocationDatas) ToMap() (map[string]any, error) {
 	toSerialize := map[string]any{}
 	if !openapi.IsNil(o.AddLocationDatas) {

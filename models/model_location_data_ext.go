@@ -1056,6 +1056,14 @@ func (o *LocationDataExt) SetAddLocationDatas(v []LocationData) {
 	o.AddLocationDatas = v
 }
 
+func (o LocationDataExt) MarshalJSON() ([]byte, error) {
+	toSerialize, err := o.ToMap()
+	if err != nil {
+		return []byte{}, err
+	}
+	return json.Marshal(toSerialize)
+}
+
 func (o LocationDataExt) ToMap() (map[string]any, error) {
 	toSerialize := map[string]any{}
 	toSerialize["locationEstimate"] = o.LocationEstimate

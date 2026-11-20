@@ -63,6 +63,11 @@ func (r ApiNwdafRegistrationRequest) NwdafRegistration(nwdafRegistration models.
 	return r
 }
 
+// GetNwdafRegistration returns the nwdafRegistration set with NwdafRegistration, or nil if it was not set.
+func (r ApiNwdafRegistrationRequest) GetNwdafRegistration() *models.NwdafRegistration {
+	return r.nwdafRegistration
+}
+
 func (r ApiNwdafRegistrationRequest) Execute() (*models.NwdafRegistration, *http.Response, error) {
 	return r.ApiService.NwdafRegistrationExecute(r)
 }

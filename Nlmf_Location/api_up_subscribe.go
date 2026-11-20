@@ -58,6 +58,11 @@ func (r ApiUpSubscriptionsRequest) UpSubscription(upSubscription models.UpSubscr
 	return r
 }
 
+// GetUpSubscription returns the upSubscription set with UpSubscription, or nil if it was not set.
+func (r ApiUpSubscriptionsRequest) GetUpSubscription() *models.UpSubscription {
+	return r.upSubscription
+}
+
 func (r ApiUpSubscriptionsRequest) Execute() (*models.UpSubscription, *http.Response, error) {
 	return r.ApiService.UpSubscriptionsExecute(r)
 }

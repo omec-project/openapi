@@ -107,6 +107,14 @@ func (o *UeConnectivityState) SetConnectivitystate(v CmState) {
 	o.Connectivitystate = &v
 }
 
+func (o UeConnectivityState) MarshalJSON() ([]byte, error) {
+	toSerialize, err := o.ToMap()
+	if err != nil {
+		return []byte{}, err
+	}
+	return json.Marshal(toSerialize)
+}
+
 func (o UeConnectivityState) ToMap() (map[string]any, error) {
 	toSerialize := map[string]any{}
 	toSerialize["accessType"] = o.AccessType

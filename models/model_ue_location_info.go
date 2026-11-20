@@ -251,6 +251,14 @@ func (o *UELocationInfo) SetTimestampOfVelocityEstimate(v time.Time) {
 	o.TimestampOfVelocityEstimate = &v
 }
 
+func (o UELocationInfo) MarshalJSON() ([]byte, error) {
+	toSerialize, err := o.ToMap()
+	if err != nil {
+		return []byte{}, err
+	}
+	return json.Marshal(toSerialize)
+}
+
 func (o UELocationInfo) ToMap() (map[string]any, error) {
 	toSerialize := map[string]any{}
 	if !openapi.IsNil(o.LocationEstimate) {

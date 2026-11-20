@@ -74,6 +74,14 @@ func (o *CipherResponseData) SetDataAvailability(v DataAvailability) {
 	o.DataAvailability = v
 }
 
+func (o CipherResponseData) MarshalJSON() ([]byte, error) {
+	toSerialize, err := o.ToMap()
+	if err != nil {
+		return []byte{}, err
+	}
+	return json.Marshal(toSerialize)
+}
+
 func (o CipherResponseData) ToMap() (map[string]any, error) {
 	toSerialize := map[string]any{}
 	toSerialize["dataAvailability"] = o.DataAvailability

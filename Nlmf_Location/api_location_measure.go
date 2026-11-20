@@ -58,6 +58,11 @@ func (r ApiLocationMeasureRequest) LocMeasurementReq(locMeasurementReq models.Lo
 	return r
 }
 
+// GetLocMeasurementReq returns the locMeasurementReq set with LocMeasurementReq, or nil if it was not set.
+func (r ApiLocationMeasureRequest) GetLocMeasurementReq() *models.LocMeasurementReq {
+	return r.locMeasurementReq
+}
+
 func (r ApiLocationMeasureRequest) Execute() (*models.LocMeasurementResp, *http.Response, error) {
 	return r.ApiService.LocationMeasureExecute(r)
 }

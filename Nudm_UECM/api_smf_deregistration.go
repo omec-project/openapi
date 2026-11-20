@@ -64,15 +64,30 @@ func (r ApiSmfDeregistrationRequest) SmfSetId(smfSetId string) ApiSmfDeregistrat
 	return r
 }
 
+// GetSmfSetId returns the smfSetId set with SmfSetId, or nil if it was not set.
+func (r ApiSmfDeregistrationRequest) GetSmfSetId() *string {
+	return r.smfSetId
+}
+
 func (r ApiSmfDeregistrationRequest) SmfInstanceId(smfInstanceId string) ApiSmfDeregistrationRequest {
 	r.smfInstanceId = &smfInstanceId
 	return r
+}
+
+// GetSmfInstanceId returns the smfInstanceId set with SmfInstanceId, or nil if it was not set.
+func (r ApiSmfDeregistrationRequest) GetSmfInstanceId() *string {
+	return r.smfInstanceId
 }
 
 // Indication on SMF event subscriptions implicitly unsubscribed.
 func (r ApiSmfDeregistrationRequest) SmfEventsImplicitlyUnsubscribed(smfEventsImplicitlyUnsubscribed bool) ApiSmfDeregistrationRequest {
 	r.smfEventsImplicitlyUnsubscribed = &smfEventsImplicitlyUnsubscribed
 	return r
+}
+
+// GetSmfEventsImplicitlyUnsubscribed returns the smfEventsImplicitlyUnsubscribed set with SmfEventsImplicitlyUnsubscribed, or nil if it was not set.
+func (r ApiSmfDeregistrationRequest) GetSmfEventsImplicitlyUnsubscribed() *bool {
+	return r.smfEventsImplicitlyUnsubscribed
 }
 
 func (r ApiSmfDeregistrationRequest) Execute() (*http.Response, error) {

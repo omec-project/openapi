@@ -181,6 +181,14 @@ func (o *DetermineLocationRequest) SetBinaryDataLppMessageExt2(v *os.File) {
 	o.BinaryDataLppMessageExt2 = &v
 }
 
+func (o DetermineLocationRequest) MarshalJSON() ([]byte, error) {
+	toSerialize, err := o.ToMap()
+	if err != nil {
+		return []byte{}, err
+	}
+	return json.Marshal(toSerialize)
+}
+
 func (o DetermineLocationRequest) ToMap() (map[string]any, error) {
 	toSerialize := map[string]any{}
 	if !openapi.IsNil(o.JsonData) {

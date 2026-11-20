@@ -57,6 +57,11 @@ func (r ApiCancelLocationRequest) CancelLocData(cancelLocData models.CancelLocDa
 	return r
 }
 
+// GetCancelLocData returns the cancelLocData set with CancelLocData, or nil if it was not set.
+func (r ApiCancelLocationRequest) GetCancelLocData() *models.CancelLocData {
+	return r.cancelLocData
+}
+
 func (r ApiCancelLocationRequest) Execute() (*http.Response, error) {
 	return r.ApiService.CancelLocationExecute(r)
 }

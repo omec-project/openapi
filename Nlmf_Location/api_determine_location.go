@@ -62,9 +62,19 @@ func (r ApiDetermineLocationRequest) InputData(inputData models.InputData) ApiDe
 	return r
 }
 
+// GetInputData returns the inputData set with InputData, or nil if it was not set.
+func (r ApiDetermineLocationRequest) GetInputData() *models.InputData {
+	return r.inputData
+}
+
 func (r ApiDetermineLocationRequest) BinaryDataLppMessage(binaryDataLppMessage *os.File) ApiDetermineLocationRequest {
 	r.binaryDataLppMessage = binaryDataLppMessage
 	return r
+}
+
+// GetBinaryDataLppMessage returns the binaryDataLppMessage set with BinaryDataLppMessage, or nil if it was not set.
+func (r ApiDetermineLocationRequest) GetBinaryDataLppMessage() *os.File {
+	return r.binaryDataLppMessage
 }
 
 func (r ApiDetermineLocationRequest) BinaryDataLppMessageExt1(binaryDataLppMessageExt1 *os.File) ApiDetermineLocationRequest {
@@ -72,9 +82,19 @@ func (r ApiDetermineLocationRequest) BinaryDataLppMessageExt1(binaryDataLppMessa
 	return r
 }
 
+// GetBinaryDataLppMessageExt1 returns the binaryDataLppMessageExt1 set with BinaryDataLppMessageExt1, or nil if it was not set.
+func (r ApiDetermineLocationRequest) GetBinaryDataLppMessageExt1() *os.File {
+	return r.binaryDataLppMessageExt1
+}
+
 func (r ApiDetermineLocationRequest) BinaryDataLppMessageExt2(binaryDataLppMessageExt2 *os.File) ApiDetermineLocationRequest {
 	r.binaryDataLppMessageExt2 = binaryDataLppMessageExt2
 	return r
+}
+
+// GetBinaryDataLppMessageExt2 returns the binaryDataLppMessageExt2 set with BinaryDataLppMessageExt2, or nil if it was not set.
+func (r ApiDetermineLocationRequest) GetBinaryDataLppMessageExt2() *os.File {
+	return r.binaryDataLppMessageExt2
 }
 
 func (r ApiDetermineLocationRequest) Execute() (*models.LocationDataExt, *http.Response, error) {

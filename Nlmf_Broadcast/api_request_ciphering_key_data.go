@@ -58,6 +58,11 @@ func (r ApiCipheringKeyDataRequest) CipherRequestData(cipherRequestData models.C
 	return r
 }
 
+// GetCipherRequestData returns the cipherRequestData set with CipherRequestData, or nil if it was not set.
+func (r ApiCipheringKeyDataRequest) GetCipherRequestData() *models.CipherRequestData {
+	return r.cipherRequestData
+}
+
 func (r ApiCipheringKeyDataRequest) Execute() (*models.CipherResponseData, *http.Response, error) {
 	return r.ApiService.CipheringKeyDataExecute(r)
 }

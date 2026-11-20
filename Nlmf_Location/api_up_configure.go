@@ -57,6 +57,11 @@ func (r ApiUpConfigRequest) UpConfig(upConfig models.UpConfig) ApiUpConfigReques
 	return r
 }
 
+// GetUpConfig returns the upConfig set with UpConfig, or nil if it was not set.
+func (r ApiUpConfigRequest) GetUpConfig() *models.UpConfig {
+	return r.upConfig
+}
+
 func (r ApiUpConfigRequest) Execute() (*http.Response, error) {
 	return r.ApiService.UpConfigExecute(r)
 }

@@ -57,6 +57,11 @@ func (r ApiTriggerPCSCFRestorationRequest) TriggerRequest(triggerRequest models.
 	return r
 }
 
+// GetTriggerRequest returns the triggerRequest set with TriggerRequest, or nil if it was not set.
+func (r ApiTriggerPCSCFRestorationRequest) GetTriggerRequest() *models.TriggerRequest {
+	return r.triggerRequest
+}
+
 func (r ApiTriggerPCSCFRestorationRequest) Execute() (*http.Response, error) {
 	return r.ApiService.TriggerPCSCFRestorationExecute(r)
 }
