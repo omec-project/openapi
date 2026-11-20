@@ -58,6 +58,11 @@ func (r ApiEventNotificationPduSessionPduSessionPostRequest) PduSessionEventNoti
 	return r
 }
 
+// GetPduSessionEventNotification returns the pduSessionEventNotification set with PduSessionEventNotification, or nil if it was not set.
+func (r ApiEventNotificationPduSessionPduSessionPostRequest) GetPduSessionEventNotification() *models.PduSessionEventNotification {
+	return r.pduSessionEventNotification
+}
+
 func (r ApiEventNotificationPduSessionPduSessionPostRequest) Execute() (*http.Response, error) {
 	return r.ApiService.EventNotificationPduSessionPduSessionPostExecute(r)
 }

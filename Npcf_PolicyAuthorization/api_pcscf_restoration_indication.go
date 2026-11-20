@@ -58,6 +58,11 @@ func (r ApiPcscfRestorationRequest) PcscfRestorationRequestData(pcscfRestoration
 	return r
 }
 
+// GetPcscfRestorationRequestData returns the pcscfRestorationRequestData set with PcscfRestorationRequestData, or nil if it was not set.
+func (r ApiPcscfRestorationRequest) GetPcscfRestorationRequestData() *models.PcscfRestorationRequestData {
+	return r.pcscfRestorationRequestData
+}
+
 func (r ApiPcscfRestorationRequest) Execute() (*http.Response, error) {
 	return r.ApiService.PcscfRestorationExecute(r)
 }

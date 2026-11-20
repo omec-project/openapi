@@ -58,6 +58,11 @@ func (r ApiPolicyUpdateNotificationUpdatePostRequest) PolicyUpdate(policyUpdate 
 	return r
 }
 
+// GetPolicyUpdate returns the policyUpdate set with PolicyUpdate, or nil if it was not set.
+func (r ApiPolicyUpdateNotificationUpdatePostRequest) GetPolicyUpdate() *models.PolicyUpdate {
+	return r.policyUpdate
+}
+
 func (r ApiPolicyUpdateNotificationUpdatePostRequest) Execute() (*models.AmRequestedValueRep, *http.Response, error) {
 	return r.ApiService.PolicyUpdateNotificationUpdatePostExecute(r)
 }

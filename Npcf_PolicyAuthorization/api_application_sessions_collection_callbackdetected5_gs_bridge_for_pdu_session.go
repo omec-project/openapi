@@ -58,6 +58,11 @@ func (r ApiDetected5GsBridgeForPduSessionNewBridgePostRequest) PduSessionTsnBrid
 	return r
 }
 
+// GetPduSessionTsnBridge returns the pduSessionTsnBridge set with PduSessionTsnBridge, or nil if it was not set.
+func (r ApiDetected5GsBridgeForPduSessionNewBridgePostRequest) GetPduSessionTsnBridge() *models.PduSessionTsnBridge {
+	return r.pduSessionTsnBridge
+}
+
 func (r ApiDetected5GsBridgeForPduSessionNewBridgePostRequest) Execute() (*http.Response, error) {
 	return r.ApiService.Detected5GsBridgeForPduSessionNewBridgePostExecute(r)
 }

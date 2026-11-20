@@ -66,10 +66,20 @@ func (r ApiNSSelectionGetRequest) NfType(nfType models.NFType) ApiNSSelectionGet
 	return r
 }
 
+// GetNfType returns the nfType set with NfType, or nil if it was not set.
+func (r ApiNSSelectionGetRequest) GetNfType() *models.NFType {
+	return r.nfType
+}
+
 // NF Instance ID of the NF service consumer
 func (r ApiNSSelectionGetRequest) NfId(nfId string) ApiNSSelectionGetRequest {
 	r.nfId = &nfId
 	return r
+}
+
+// GetNfId returns the nfId set with NfId, or nil if it was not set.
+func (r ApiNSSelectionGetRequest) GetNfId() *string {
+	return r.nfId
 }
 
 // Requested network slice information during Registration procedure
@@ -78,10 +88,20 @@ func (r ApiNSSelectionGetRequest) SliceInfoRequestForRegistration(sliceInfoReque
 	return r
 }
 
+// GetSliceInfoRequestForRegistration returns the sliceInfoRequestForRegistration set with SliceInfoRequestForRegistration, or nil if it was not set.
+func (r ApiNSSelectionGetRequest) GetSliceInfoRequestForRegistration() *models.SliceInfoForRegistration {
+	return r.sliceInfoRequestForRegistration
+}
+
 // Requested network slice information during PDU session establishment procedure
 func (r ApiNSSelectionGetRequest) SliceInfoRequestForPduSession(sliceInfoRequestForPduSession models.SliceInfoForPDUSession) ApiNSSelectionGetRequest {
 	r.sliceInfoRequestForPduSession = &sliceInfoRequestForPduSession
 	return r
+}
+
+// GetSliceInfoRequestForPduSession returns the sliceInfoRequestForPduSession set with SliceInfoRequestForPduSession, or nil if it was not set.
+func (r ApiNSSelectionGetRequest) GetSliceInfoRequestForPduSession() *models.SliceInfoForPDUSession {
+	return r.sliceInfoRequestForPduSession
 }
 
 // Requested network slice information during UE confuguration update procedure
@@ -90,10 +110,20 @@ func (r ApiNSSelectionGetRequest) SliceInfoRequestForUeCu(sliceInfoRequestForUeC
 	return r
 }
 
+// GetSliceInfoRequestForUeCu returns the sliceInfoRequestForUeCu set with SliceInfoRequestForUeCu, or nil if it was not set.
+func (r ApiNSSelectionGetRequest) GetSliceInfoRequestForUeCu() *models.SliceInfoForUEConfigurationUpdate {
+	return r.sliceInfoRequestForUeCu
+}
+
 // PLMN ID of the HPLMN
 func (r ApiNSSelectionGetRequest) HomePlmnId(homePlmnId models.PlmnId) ApiNSSelectionGetRequest {
 	r.homePlmnId = &homePlmnId
 	return r
+}
+
+// GetHomePlmnId returns the homePlmnId set with HomePlmnId, or nil if it was not set.
+func (r ApiNSSelectionGetRequest) GetHomePlmnId() *models.PlmnId {
+	return r.homePlmnId
 }
 
 // TAI of the UE
@@ -102,10 +132,20 @@ func (r ApiNSSelectionGetRequest) Tai(tai models.Tai) ApiNSSelectionGetRequest {
 	return r
 }
 
+// GetTai returns the tai set with Tai, or nil if it was not set.
+func (r ApiNSSelectionGetRequest) GetTai() *models.Tai {
+	return r.tai
+}
+
 // Features required to be supported by the NFs in the target slice instance
 func (r ApiNSSelectionGetRequest) SupportedFeatures(supportedFeatures string) ApiNSSelectionGetRequest {
 	r.supportedFeatures = &supportedFeatures
 	return r
+}
+
+// GetSupportedFeatures returns the supportedFeatures set with SupportedFeatures, or nil if it was not set.
+func (r ApiNSSelectionGetRequest) GetSupportedFeatures() *string {
+	return r.supportedFeatures
 }
 
 func (r ApiNSSelectionGetRequest) Execute() (*models.AuthorizedNetworkSliceInfo, *http.Response, error) {

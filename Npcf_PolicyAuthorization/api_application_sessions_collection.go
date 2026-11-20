@@ -59,6 +59,11 @@ func (r ApiPostAppSessionsRequest) AppSessionContext(appSessionContext models.Ap
 	return r
 }
 
+// GetAppSessionContext returns the appSessionContext set with AppSessionContext, or nil if it was not set.
+func (r ApiPostAppSessionsRequest) GetAppSessionContext() *models.AppSessionContext {
+	return r.appSessionContext
+}
+
 func (r ApiPostAppSessionsRequest) Execute() (*models.AppSessionContext, *http.Response, error) {
 	return r.ApiService.PostAppSessionsExecute(r)
 }

@@ -58,6 +58,11 @@ func (r ApiEventNotificationAppSessionsNotifyPostRequest) EventsNotification(eve
 	return r
 }
 
+// GetEventsNotification returns the eventsNotification set with EventsNotification, or nil if it was not set.
+func (r ApiEventNotificationAppSessionsNotifyPostRequest) GetEventsNotification() *models.EventsNotification {
+	return r.eventsNotification
+}
+
 func (r ApiEventNotificationAppSessionsNotifyPostRequest) Execute() (*http.Response, error) {
 	return r.ApiService.EventNotificationAppSessionsNotifyPostExecute(r)
 }

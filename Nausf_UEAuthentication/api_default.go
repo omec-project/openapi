@@ -134,6 +134,11 @@ func (r ApiEapAuthMethodRequest) EapSession(eapSession models.EapSession) ApiEap
 	return r
 }
 
+// GetEapSession returns the eapSession set with EapSession, or nil if it was not set.
+func (r ApiEapAuthMethodRequest) GetEapSession() *models.EapSession {
+	return r.eapSession
+}
+
 func (r ApiEapAuthMethodRequest) Execute() (*models.EapSession, *http.Response, error) {
 	return r.ApiService.EapAuthMethodExecute(r)
 }
@@ -383,6 +388,11 @@ type ApiProseAuthRequest struct {
 func (r ApiProseAuthRequest) ProSeEapSession(proSeEapSession models.ProSeEapSession) ApiProseAuthRequest {
 	r.proSeEapSession = &proSeEapSession
 	return r
+}
+
+// GetProSeEapSession returns the proSeEapSession set with ProSeEapSession, or nil if it was not set.
+func (r ApiProseAuthRequest) GetProSeEapSession() *models.ProSeEapSession {
+	return r.proSeEapSession
 }
 
 func (r ApiProseAuthRequest) Execute() (*models.ProSeEapSession, *http.Response, error) {
@@ -635,6 +645,11 @@ func (r ApiProseAuthenticationsPostRequest) ProSeAuthenticationInfo(proSeAuthent
 	return r
 }
 
+// GetProSeAuthenticationInfo returns the proSeAuthenticationInfo set with ProSeAuthenticationInfo, or nil if it was not set.
+func (r ApiProseAuthenticationsPostRequest) GetProSeAuthenticationInfo() *models.ProSeAuthenticationInfo {
+	return r.proSeAuthenticationInfo
+}
+
 func (r ApiProseAuthenticationsPostRequest) Execute() (*models.ProSeAuthenticationResult, *http.Response, error) {
 	return r.ApiService.ProseAuthenticationsPostExecute(r)
 }
@@ -883,6 +898,11 @@ type ApiRgAuthenticationsPostRequest struct {
 func (r ApiRgAuthenticationsPostRequest) RgAuthenticationInfo(rgAuthenticationInfo models.RgAuthenticationInfo) ApiRgAuthenticationsPostRequest {
 	r.rgAuthenticationInfo = &rgAuthenticationInfo
 	return r
+}
+
+// GetRgAuthenticationInfo returns the rgAuthenticationInfo set with RgAuthenticationInfo, or nil if it was not set.
+func (r ApiRgAuthenticationsPostRequest) GetRgAuthenticationInfo() *models.RgAuthenticationInfo {
+	return r.rgAuthenticationInfo
 }
 
 func (r ApiRgAuthenticationsPostRequest) Execute() (*models.RgAuthCtx, *http.Response, error) {
@@ -1136,6 +1156,11 @@ func (r ApiUeAuthenticationsAuthCtxId5gAkaConfirmationPutRequest) ConfirmationDa
 	return r
 }
 
+// GetConfirmationData returns the confirmationData set with ConfirmationData, or nil if it was not set.
+func (r ApiUeAuthenticationsAuthCtxId5gAkaConfirmationPutRequest) GetConfirmationData() *models.ConfirmationData {
+	return r.confirmationData
+}
+
 func (r ApiUeAuthenticationsAuthCtxId5gAkaConfirmationPutRequest) Execute() (*models.ConfirmationDataResponse, *http.Response, error) {
 	return r.ApiService.UeAuthenticationsAuthCtxId5gAkaConfirmationPutExecute(r)
 }
@@ -1386,6 +1411,11 @@ func (r ApiUeAuthenticationsDeregisterPostRequest) DeregistrationInfo(deregistra
 	return r
 }
 
+// GetDeregistrationInfo returns the deregistrationInfo set with DeregistrationInfo, or nil if it was not set.
+func (r ApiUeAuthenticationsDeregisterPostRequest) GetDeregistrationInfo() *models.DeregistrationInfo {
+	return r.deregistrationInfo
+}
+
 func (r ApiUeAuthenticationsDeregisterPostRequest) Execute() (*http.Response, error) {
 	return r.ApiService.UeAuthenticationsDeregisterPostExecute(r)
 }
@@ -1622,6 +1652,11 @@ type ApiUeAuthenticationsPostRequest struct {
 func (r ApiUeAuthenticationsPostRequest) AuthenticationInfo(authenticationInfo models.AuthenticationInfo) ApiUeAuthenticationsPostRequest {
 	r.authenticationInfo = &authenticationInfo
 	return r
+}
+
+// GetAuthenticationInfo returns the authenticationInfo set with AuthenticationInfo, or nil if it was not set.
+func (r ApiUeAuthenticationsPostRequest) GetAuthenticationInfo() *models.AuthenticationInfo {
+	return r.authenticationInfo
 }
 
 func (r ApiUeAuthenticationsPostRequest) Execute() (*models.UEAuthenticationCtx, *http.Response, error) {

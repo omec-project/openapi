@@ -273,6 +273,11 @@ func (r ApiUpdateEventsSubscRequest) EventsSubscReqData(eventsSubscReqData model
 	return r
 }
 
+// GetEventsSubscReqData returns the eventsSubscReqData set with EventsSubscReqData, or nil if it was not set.
+func (r ApiUpdateEventsSubscRequest) GetEventsSubscReqData() *models.EventsSubscReqData {
+	return r.eventsSubscReqData
+}
+
 func (r ApiUpdateEventsSubscRequest) Execute() (*models.EventsSubscPutData, *http.Response, error) {
 	return r.ApiService.UpdateEventsSubscExecute(r)
 }

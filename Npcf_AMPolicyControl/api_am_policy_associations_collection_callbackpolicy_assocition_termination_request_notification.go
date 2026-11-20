@@ -57,6 +57,11 @@ func (r ApiPolicyAssocitionTerminationRequestNotificationTerminatePostRequest) T
 	return r
 }
 
+// GetTerminationNotification returns the terminationNotification set with TerminationNotification, or nil if it was not set.
+func (r ApiPolicyAssocitionTerminationRequestNotificationTerminatePostRequest) GetTerminationNotification() *models.TerminationNotification {
+	return r.terminationNotification
+}
+
 func (r ApiPolicyAssocitionTerminationRequestNotificationTerminatePostRequest) Execute() (*http.Response, error) {
 	return r.ApiService.PolicyAssocitionTerminationRequestNotificationTerminatePostExecute(r)
 }

@@ -29,8 +29,7 @@ var _ openapi.MappedNullable = &TsnBridgeInfo{}
 
 // TsnBridgeInfo Contains parameters that describe and identify the TSC user plane node.
 type TsnBridgeInfo struct {
-	// Integer where the allowed values correspond to the value range of an unsigned 64-bit integer.
-	BridgeId *int32 `json:"bridgeId,omitempty" yaml:"bridgeId,omitempty"`
+	BridgeId *uint64 `json:"bridgeId,omitempty" yaml:"bridgeId,omitempty"`
 	// String identifying a MAC address formatted in the hexadecimal notation according to clause 1.1 and clause 2.1 of RFC 7042.
 	DsttAddr *string `json:"dsttAddr,omitempty" yaml:"dsttAddr,omitempty" validate:"regexp=^([0-9a-fA-F]{2})((-[0-9a-fA-F]{2}){5})$"`
 	// Unsigned Integer, i.e. only value 0 and integers above 0 are permissible.
@@ -61,9 +60,9 @@ func NewTsnBridgeInfoWithDefaults() *TsnBridgeInfo {
 }
 
 // GetBridgeId returns the BridgeId field value if set, zero value otherwise.
-func (o *TsnBridgeInfo) GetBridgeId() int32 {
+func (o *TsnBridgeInfo) GetBridgeId() uint64 {
 	if o == nil || openapi.IsNil(o.BridgeId) {
-		var ret int32
+		var ret uint64
 		return ret
 	}
 	return *o.BridgeId
@@ -71,7 +70,7 @@ func (o *TsnBridgeInfo) GetBridgeId() int32 {
 
 // GetBridgeIdOk returns a tuple with the BridgeId field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *TsnBridgeInfo) GetBridgeIdOk() (*int32, bool) {
+func (o *TsnBridgeInfo) GetBridgeIdOk() (*uint64, bool) {
 	if o == nil || openapi.IsNil(o.BridgeId) {
 		return nil, false
 	}
@@ -87,8 +86,8 @@ func (o *TsnBridgeInfo) HasBridgeId() bool {
 	return false
 }
 
-// SetBridgeId gets a reference to the given int32 and assigns it to the BridgeId field.
-func (o *TsnBridgeInfo) SetBridgeId(v int32) {
+// SetBridgeId gets a reference to the given uint64 and assigns it to the BridgeId field.
+func (o *TsnBridgeInfo) SetBridgeId(v uint64) {
 	o.BridgeId = &v
 }
 

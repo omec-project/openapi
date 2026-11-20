@@ -88,6 +88,11 @@ func (r ApiDeleteAppSessionRequest) EventsSubscReqData(eventsSubscReqData models
 	return r
 }
 
+// GetEventsSubscReqData returns the eventsSubscReqData set with EventsSubscReqData, or nil if it was not set.
+func (r ApiDeleteAppSessionRequest) GetEventsSubscReqData() *models.EventsSubscReqData {
+	return r.eventsSubscReqData
+}
+
 func (r ApiDeleteAppSessionRequest) Execute() (*models.AppSessionContext, *http.Response, error) {
 	return r.ApiService.DeleteAppSessionExecute(r)
 }
@@ -550,6 +555,11 @@ type ApiModAppSessionRequest struct {
 func (r ApiModAppSessionRequest) AppSessionContextUpdateDataPatch(appSessionContextUpdateDataPatch models.AppSessionContextUpdateDataPatch) ApiModAppSessionRequest {
 	r.appSessionContextUpdateDataPatch = &appSessionContextUpdateDataPatch
 	return r
+}
+
+// GetAppSessionContextUpdateDataPatch returns the appSessionContextUpdateDataPatch set with AppSessionContextUpdateDataPatch, or nil if it was not set.
+func (r ApiModAppSessionRequest) GetAppSessionContextUpdateDataPatch() *models.AppSessionContextUpdateDataPatch {
+	return r.appSessionContextUpdateDataPatch
 }
 
 func (r ApiModAppSessionRequest) Execute() (*models.AppSessionContext, *http.Response, error) {

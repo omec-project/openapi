@@ -58,6 +58,11 @@ func (r ApiCreateSMPolicyRequest) SmPolicyContextData(smPolicyContextData models
 	return r
 }
 
+// GetSmPolicyContextData returns the smPolicyContextData set with SmPolicyContextData, or nil if it was not set.
+func (r ApiCreateSMPolicyRequest) GetSmPolicyContextData() *models.SmPolicyContextData {
+	return r.smPolicyContextData
+}
+
 func (r ApiCreateSMPolicyRequest) Execute() (*models.SmPolicyDecision, *http.Response, error) {
 	return r.ApiService.CreateSMPolicyExecute(r)
 }

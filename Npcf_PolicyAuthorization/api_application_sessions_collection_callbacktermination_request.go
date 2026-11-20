@@ -58,6 +58,11 @@ func (r ApiTerminationRequestTerminatePostRequest) TerminationInfo(terminationIn
 	return r
 }
 
+// GetTerminationInfo returns the terminationInfo set with TerminationInfo, or nil if it was not set.
+func (r ApiTerminationRequestTerminatePostRequest) GetTerminationInfo() *models.TerminationInfo {
+	return r.terminationInfo
+}
+
 func (r ApiTerminationRequestTerminatePostRequest) Execute() (*http.Response, error) {
 	return r.ApiService.TerminationRequestTerminatePostExecute(r)
 }

@@ -86,6 +86,11 @@ func (r ApiDeleteSMPolicyRequest) SmPolicyDeleteData(smPolicyDeleteData models.S
 	return r
 }
 
+// GetSmPolicyDeleteData returns the smPolicyDeleteData set with SmPolicyDeleteData, or nil if it was not set.
+func (r ApiDeleteSMPolicyRequest) GetSmPolicyDeleteData() *models.SmPolicyDeleteData {
+	return r.smPolicyDeleteData
+}
+
 func (r ApiDeleteSMPolicyRequest) Execute() (*http.Response, error) {
 	return r.ApiService.DeleteSMPolicyExecute(r)
 }
@@ -538,6 +543,11 @@ type ApiUpdateSMPolicyRequest struct {
 func (r ApiUpdateSMPolicyRequest) SmPolicyUpdateContextData(smPolicyUpdateContextData models.SmPolicyUpdateContextData) ApiUpdateSMPolicyRequest {
 	r.smPolicyUpdateContextData = &smPolicyUpdateContextData
 	return r
+}
+
+// GetSmPolicyUpdateContextData returns the smPolicyUpdateContextData set with SmPolicyUpdateContextData, or nil if it was not set.
+func (r ApiUpdateSMPolicyRequest) GetSmPolicyUpdateContextData() *models.SmPolicyUpdateContextData {
+	return r.smPolicyUpdateContextData
 }
 
 func (r ApiUpdateSMPolicyRequest) Execute() (*models.SmPolicyDecision, *http.Response, error) {

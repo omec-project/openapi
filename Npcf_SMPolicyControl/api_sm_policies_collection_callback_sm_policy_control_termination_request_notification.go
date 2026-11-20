@@ -57,6 +57,11 @@ func (r ApiSmPolicyControlTerminationRequestNotificationTerminatePostRequest) Sm
 	return r
 }
 
+// GetSmTerminationNotification returns the smTerminationNotification set with SmTerminationNotification, or nil if it was not set.
+func (r ApiSmPolicyControlTerminationRequestNotificationTerminatePostRequest) GetSmTerminationNotification() *models.SmTerminationNotification {
+	return r.smTerminationNotification
+}
+
 func (r ApiSmPolicyControlTerminationRequestNotificationTerminatePostRequest) Execute() (*http.Response, error) {
 	return r.ApiService.SmPolicyControlTerminationRequestNotificationTerminatePostExecute(r)
 }

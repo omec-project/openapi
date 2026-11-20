@@ -58,6 +58,11 @@ func (r ApiSmPolicyUpdateNotificationUpdatePostRequest) SmPolicyNotification(smP
 	return r
 }
 
+// GetSmPolicyNotification returns the smPolicyNotification set with SmPolicyNotification, or nil if it was not set.
+func (r ApiSmPolicyUpdateNotificationUpdatePostRequest) GetSmPolicyNotification() *models.SmPolicyNotification {
+	return r.smPolicyNotification
+}
+
 func (r ApiSmPolicyUpdateNotificationUpdatePostRequest) Execute() (*models.SmPoliciesPost200Response, *http.Response, error) {
 	return r.ApiService.SmPolicyUpdateNotificationUpdatePostExecute(r)
 }

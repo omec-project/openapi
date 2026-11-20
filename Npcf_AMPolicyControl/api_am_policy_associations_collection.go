@@ -58,6 +58,11 @@ func (r ApiCreateIndividualAMPolicyAssociationRequest) PolicyAssociationRequest(
 	return r
 }
 
+// GetPolicyAssociationRequest returns the policyAssociationRequest set with PolicyAssociationRequest, or nil if it was not set.
+func (r ApiCreateIndividualAMPolicyAssociationRequest) GetPolicyAssociationRequest() *models.PolicyAssociationRequest {
+	return r.policyAssociationRequest
+}
+
 func (r ApiCreateIndividualAMPolicyAssociationRequest) Execute() (*models.PolicyAssociation, *http.Response, error) {
 	return r.ApiService.CreateIndividualAMPolicyAssociationExecute(r)
 }

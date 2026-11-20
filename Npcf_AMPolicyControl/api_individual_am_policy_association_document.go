@@ -496,6 +496,11 @@ func (r ApiReportObservedEventTriggersForIndividualAMPolicyAssociationRequest) P
 	return r
 }
 
+// GetPolicyAssociationUpdateRequest returns the policyAssociationUpdateRequest set with PolicyAssociationUpdateRequest, or nil if it was not set.
+func (r ApiReportObservedEventTriggersForIndividualAMPolicyAssociationRequest) GetPolicyAssociationUpdateRequest() *models.PolicyAssociationUpdateRequest {
+	return r.policyAssociationUpdateRequest
+}
+
 func (r ApiReportObservedEventTriggersForIndividualAMPolicyAssociationRequest) Execute() (*models.PolicyUpdate, *http.Response, error) {
 	return r.ApiService.ReportObservedEventTriggersForIndividualAMPolicyAssociationExecute(r)
 }
