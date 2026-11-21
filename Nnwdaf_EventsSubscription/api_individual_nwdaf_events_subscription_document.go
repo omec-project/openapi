@@ -283,6 +283,11 @@ func (r ApiUpdateNWDAFEventsSubscriptionRequest) NnwdafEventsSubscription(nnwdaf
 	return r
 }
 
+// GetNnwdafEventsSubscription returns the nnwdafEventsSubscription set with NnwdafEventsSubscription, or nil if it was not set.
+func (r ApiUpdateNWDAFEventsSubscriptionRequest) GetNnwdafEventsSubscription() *models.NnwdafEventsSubscription {
+	return r.nnwdafEventsSubscription
+}
+
 func (r ApiUpdateNWDAFEventsSubscriptionRequest) Execute() (*models.NnwdafEventsSubscription, *http.Response, error) {
 	return r.ApiService.UpdateNWDAFEventsSubscriptionExecute(r)
 }

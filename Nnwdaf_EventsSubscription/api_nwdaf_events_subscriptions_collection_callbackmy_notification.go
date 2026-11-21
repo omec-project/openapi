@@ -57,6 +57,11 @@ func (r ApiMyNotificationPostRequest) NnwdafEventsSubscriptionNotification(nnwda
 	return r
 }
 
+// GetNnwdafEventsSubscriptionNotification returns the nnwdafEventsSubscriptionNotification set with NnwdafEventsSubscriptionNotification, or nil if it was not set.
+func (r ApiMyNotificationPostRequest) GetNnwdafEventsSubscriptionNotification() *[]models.NnwdafEventsSubscriptionNotification {
+	return r.nnwdafEventsSubscriptionNotification
+}
+
 func (r ApiMyNotificationPostRequest) Execute() (*http.Response, error) {
 	return r.ApiService.MyNotificationPostExecute(r)
 }

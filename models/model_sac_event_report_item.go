@@ -187,6 +187,14 @@ func (o *SACEventReportItem) SetSliceStautsInfo(v SACEventStatus) {
 	o.SliceStautsInfo = &v
 }
 
+func (o SACEventReportItem) MarshalJSON() ([]byte, error) {
+	toSerialize, err := o.ToMap()
+	if err != nil {
+		return []byte{}, err
+	}
+	return json.Marshal(toSerialize)
+}
+
 func (o SACEventReportItem) ToMap() (map[string]any, error) {
 	toSerialize := map[string]any{}
 	toSerialize["eventType"] = o.EventType

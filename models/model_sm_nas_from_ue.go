@@ -102,6 +102,14 @@ func (o *SmNasFromUe) SetTimeStamp(v time.Time) {
 	o.TimeStamp = v
 }
 
+func (o SmNasFromUe) MarshalJSON() ([]byte, error) {
+	toSerialize, err := o.ToMap()
+	if err != nil {
+		return []byte{}, err
+	}
+	return json.Marshal(toSerialize)
+}
+
 func (o SmNasFromUe) ToMap() (map[string]any, error) {
 	toSerialize := map[string]any{}
 	toSerialize["smNasType"] = o.SmNasType

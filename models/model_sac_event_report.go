@@ -107,6 +107,14 @@ func (o *SACEventReport) SetNotifyCorrelationId(v string) {
 	o.NotifyCorrelationId = &v
 }
 
+func (o SACEventReport) MarshalJSON() ([]byte, error) {
+	toSerialize, err := o.ToMap()
+	if err != nil {
+		return []byte{}, err
+	}
+	return json.Marshal(toSerialize)
+}
+
 func (o SACEventReport) ToMap() (map[string]any, error) {
 	toSerialize := map[string]any{}
 	toSerialize["report"] = o.Report

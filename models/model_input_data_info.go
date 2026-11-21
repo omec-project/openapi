@@ -244,6 +244,14 @@ func (o *InputDataInfo) SetNfSetIds(v []string) {
 	o.NfSetIds = v
 }
 
+func (o InputDataInfo) MarshalJSON() ([]byte, error) {
+	toSerialize, err := o.ToMap()
+	if err != nil {
+		return []byte{}, err
+	}
+	return json.Marshal(toSerialize)
+}
+
 func (o InputDataInfo) ToMap() (map[string]any, error) {
 	toSerialize := map[string]any{}
 	if !openapi.IsNil(o.Ratio) {

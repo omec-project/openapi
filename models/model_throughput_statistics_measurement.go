@@ -320,6 +320,14 @@ func (o *ThroughputStatisticsMeasurement) SetDlPeakPacketThroughput(v string) {
 	o.DlPeakPacketThroughput = &v
 }
 
+func (o ThroughputStatisticsMeasurement) MarshalJSON() ([]byte, error) {
+	toSerialize, err := o.ToMap()
+	if err != nil {
+		return []byte{}, err
+	}
+	return json.Marshal(toSerialize)
+}
+
 func (o ThroughputStatisticsMeasurement) ToMap() (map[string]any, error) {
 	toSerialize := map[string]any{}
 	if !openapi.IsNil(o.UlAverageThroughput) {

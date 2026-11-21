@@ -174,6 +174,14 @@ func (o *TransactionInfo) SetTransacMetrics(v []TransactionMetric) {
 	o.TransacMetrics = v
 }
 
+func (o TransactionInfo) MarshalJSON() ([]byte, error) {
+	toSerialize, err := o.ToMap()
+	if err != nil {
+		return []byte{}, err
+	}
+	return json.Marshal(toSerialize)
+}
+
 func (o TransactionInfo) ToMap() (map[string]any, error) {
 	toSerialize := map[string]any{}
 	toSerialize["transaction"] = o.Transaction

@@ -114,6 +114,14 @@ func (o *NetworkPerfReq) SetOrderDirection(v MatchingDirection) {
 	o.OrderDirection = &v
 }
 
+func (o NetworkPerfReq) MarshalJSON() ([]byte, error) {
+	toSerialize, err := o.ToMap()
+	if err != nil {
+		return []byte{}, err
+	}
+	return json.Marshal(toSerialize)
+}
+
 func (o NetworkPerfReq) ToMap() (map[string]any, error) {
 	toSerialize := map[string]any{}
 	if !openapi.IsNil(o.OrderCriterion) {

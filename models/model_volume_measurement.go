@@ -34,13 +34,10 @@ type VolumeMeasurement struct {
 	// String representing a Traffic Volume measured in bytes; the prefixes follow the symbols from The International System of Units, and represent x1000 multipliers.
 	UlVolume *string `json:"ulVolume,omitempty" yaml:"ulVolume,omitempty" validate:"regexp=^\\d+(\\.\\d+)? (B|kB|MB|GB|TB)$"`
 	// String representing a Traffic Volume measured in bytes; the prefixes follow the symbols from The International System of Units, and represent x1000 multipliers.
-	DlVolume *string `json:"dlVolume,omitempty" yaml:"dlVolume,omitempty" validate:"regexp=^\\d+(\\.\\d+)? (B|kB|MB|GB|TB)$"`
-	// Integer where the allowed values correspond to the value range of an unsigned 64-bit integer.
-	TotalNbOfPackets *int32 `json:"totalNbOfPackets,omitempty" yaml:"totalNbOfPackets,omitempty"`
-	// Integer where the allowed values correspond to the value range of an unsigned 64-bit integer.
-	UlNbOfPackets *int32 `json:"ulNbOfPackets,omitempty" yaml:"ulNbOfPackets,omitempty"`
-	// Integer where the allowed values correspond to the value range of an unsigned 64-bit integer.
-	DlNbOfPackets *int32 `json:"dlNbOfPackets,omitempty" yaml:"dlNbOfPackets,omitempty"`
+	DlVolume         *string `json:"dlVolume,omitempty" yaml:"dlVolume,omitempty" validate:"regexp=^\\d+(\\.\\d+)? (B|kB|MB|GB|TB)$"`
+	TotalNbOfPackets *uint64 `json:"totalNbOfPackets,omitempty" yaml:"totalNbOfPackets,omitempty"`
+	UlNbOfPackets    *uint64 `json:"ulNbOfPackets,omitempty" yaml:"ulNbOfPackets,omitempty"`
+	DlNbOfPackets    *uint64 `json:"dlNbOfPackets,omitempty" yaml:"dlNbOfPackets,omitempty"`
 }
 
 // NewVolumeMeasurement instantiates a new VolumeMeasurement object
@@ -157,9 +154,9 @@ func (o *VolumeMeasurement) SetDlVolume(v string) {
 }
 
 // GetTotalNbOfPackets returns the TotalNbOfPackets field value if set, zero value otherwise.
-func (o *VolumeMeasurement) GetTotalNbOfPackets() int32 {
+func (o *VolumeMeasurement) GetTotalNbOfPackets() uint64 {
 	if o == nil || openapi.IsNil(o.TotalNbOfPackets) {
-		var ret int32
+		var ret uint64
 		return ret
 	}
 	return *o.TotalNbOfPackets
@@ -167,7 +164,7 @@ func (o *VolumeMeasurement) GetTotalNbOfPackets() int32 {
 
 // GetTotalNbOfPacketsOk returns a tuple with the TotalNbOfPackets field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *VolumeMeasurement) GetTotalNbOfPacketsOk() (*int32, bool) {
+func (o *VolumeMeasurement) GetTotalNbOfPacketsOk() (*uint64, bool) {
 	if o == nil || openapi.IsNil(o.TotalNbOfPackets) {
 		return nil, false
 	}
@@ -183,15 +180,15 @@ func (o *VolumeMeasurement) HasTotalNbOfPackets() bool {
 	return false
 }
 
-// SetTotalNbOfPackets gets a reference to the given int32 and assigns it to the TotalNbOfPackets field.
-func (o *VolumeMeasurement) SetTotalNbOfPackets(v int32) {
+// SetTotalNbOfPackets gets a reference to the given uint64 and assigns it to the TotalNbOfPackets field.
+func (o *VolumeMeasurement) SetTotalNbOfPackets(v uint64) {
 	o.TotalNbOfPackets = &v
 }
 
 // GetUlNbOfPackets returns the UlNbOfPackets field value if set, zero value otherwise.
-func (o *VolumeMeasurement) GetUlNbOfPackets() int32 {
+func (o *VolumeMeasurement) GetUlNbOfPackets() uint64 {
 	if o == nil || openapi.IsNil(o.UlNbOfPackets) {
-		var ret int32
+		var ret uint64
 		return ret
 	}
 	return *o.UlNbOfPackets
@@ -199,7 +196,7 @@ func (o *VolumeMeasurement) GetUlNbOfPackets() int32 {
 
 // GetUlNbOfPacketsOk returns a tuple with the UlNbOfPackets field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *VolumeMeasurement) GetUlNbOfPacketsOk() (*int32, bool) {
+func (o *VolumeMeasurement) GetUlNbOfPacketsOk() (*uint64, bool) {
 	if o == nil || openapi.IsNil(o.UlNbOfPackets) {
 		return nil, false
 	}
@@ -215,15 +212,15 @@ func (o *VolumeMeasurement) HasUlNbOfPackets() bool {
 	return false
 }
 
-// SetUlNbOfPackets gets a reference to the given int32 and assigns it to the UlNbOfPackets field.
-func (o *VolumeMeasurement) SetUlNbOfPackets(v int32) {
+// SetUlNbOfPackets gets a reference to the given uint64 and assigns it to the UlNbOfPackets field.
+func (o *VolumeMeasurement) SetUlNbOfPackets(v uint64) {
 	o.UlNbOfPackets = &v
 }
 
 // GetDlNbOfPackets returns the DlNbOfPackets field value if set, zero value otherwise.
-func (o *VolumeMeasurement) GetDlNbOfPackets() int32 {
+func (o *VolumeMeasurement) GetDlNbOfPackets() uint64 {
 	if o == nil || openapi.IsNil(o.DlNbOfPackets) {
-		var ret int32
+		var ret uint64
 		return ret
 	}
 	return *o.DlNbOfPackets
@@ -231,7 +228,7 @@ func (o *VolumeMeasurement) GetDlNbOfPackets() int32 {
 
 // GetDlNbOfPacketsOk returns a tuple with the DlNbOfPackets field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *VolumeMeasurement) GetDlNbOfPacketsOk() (*int32, bool) {
+func (o *VolumeMeasurement) GetDlNbOfPacketsOk() (*uint64, bool) {
 	if o == nil || openapi.IsNil(o.DlNbOfPackets) {
 		return nil, false
 	}
@@ -247,9 +244,17 @@ func (o *VolumeMeasurement) HasDlNbOfPackets() bool {
 	return false
 }
 
-// SetDlNbOfPackets gets a reference to the given int32 and assigns it to the DlNbOfPackets field.
-func (o *VolumeMeasurement) SetDlNbOfPackets(v int32) {
+// SetDlNbOfPackets gets a reference to the given uint64 and assigns it to the DlNbOfPackets field.
+func (o *VolumeMeasurement) SetDlNbOfPackets(v uint64) {
 	o.DlNbOfPackets = &v
+}
+
+func (o VolumeMeasurement) MarshalJSON() ([]byte, error) {
+	toSerialize, err := o.ToMap()
+	if err != nil {
+		return []byte{}, err
+	}
+	return json.Marshal(toSerialize)
 }
 
 func (o VolumeMeasurement) ToMap() (map[string]any, error) {

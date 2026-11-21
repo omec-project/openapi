@@ -74,6 +74,14 @@ func (o *ContextIdList) SetContextIds(v []AnalyticsContextIdentifier) {
 	o.ContextIds = v
 }
 
+func (o ContextIdList) MarshalJSON() ([]byte, error) {
+	toSerialize, err := o.ToMap()
+	if err != nil {
+		return []byte{}, err
+	}
+	return json.Marshal(toSerialize)
+}
+
 func (o ContextIdList) ToMap() (map[string]any, error) {
 	toSerialize := map[string]any{}
 	toSerialize["contextIds"] = o.ContextIds

@@ -48,6 +48,14 @@ func NewNnwdafEventsSubscriptionNotificationWithDefaults() *NnwdafEventsSubscrip
 	return &this
 }
 
+func (o NnwdafEventsSubscriptionNotification) MarshalJSON() ([]byte, error) {
+	toSerialize, err := o.ToMap()
+	if err != nil {
+		return []byte{}, err
+	}
+	return json.Marshal(toSerialize)
+}
+
 func (o NnwdafEventsSubscriptionNotification) ToMap() (map[string]any, error) {
 	toSerialize := map[string]any{}
 	return toSerialize, nil

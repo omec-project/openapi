@@ -140,6 +140,14 @@ func (o *NefEventSubs) SetEventRepInfo(v ReportingInformation) {
 	o.EventRepInfo = &v
 }
 
+func (o NefEventSubs) MarshalJSON() ([]byte, error) {
+	toSerialize, err := o.ToMap()
+	if err != nil {
+		return []byte{}, err
+	}
+	return json.Marshal(toSerialize)
+}
+
 func (o NefEventSubs) ToMap() (map[string]any, error) {
 	toSerialize := map[string]any{}
 	toSerialize["event"] = o.Event

@@ -378,6 +378,14 @@ func (o *DccfEvent) SetUpfEvent(v EventType) {
 	o.UpfEvent = &v
 }
 
+func (o DccfEvent) MarshalJSON() ([]byte, error) {
+	toSerialize, err := o.ToMap()
+	if err != nil {
+		return []byte{}, err
+	}
+	return json.Marshal(toSerialize)
+}
+
 func (o DccfEvent) ToMap() (map[string]any, error) {
 	toSerialize := map[string]any{}
 	if !openapi.IsNil(o.NwdafEvent) {

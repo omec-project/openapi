@@ -58,6 +58,11 @@ func (r ApiCreateIndividualSubcriptionRequest) NnwdafDataManagementSubsc(nnwdafD
 	return r
 }
 
+// GetNnwdafDataManagementSubsc returns the nnwdafDataManagementSubsc set with NnwdafDataManagementSubsc, or nil if it was not set.
+func (r ApiCreateIndividualSubcriptionRequest) GetNnwdafDataManagementSubsc() *models.NnwdafDataManagementSubsc {
+	return r.nnwdafDataManagementSubsc
+}
+
 func (r ApiCreateIndividualSubcriptionRequest) Execute() (*models.NnwdafDataManagementSubsc, *http.Response, error) {
 	return r.ApiService.CreateIndividualSubcriptionExecute(r)
 }

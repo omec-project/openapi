@@ -418,6 +418,14 @@ func (o *EventSubscriptionSmf) SetUpfEvents(v []UpfEvent) {
 	o.UpfEvents = v
 }
 
+func (o EventSubscriptionSmf) MarshalJSON() ([]byte, error) {
+	toSerialize, err := o.ToMap()
+	if err != nil {
+		return []byte{}, err
+	}
+	return json.Marshal(toSerialize)
+}
+
 func (o EventSubscriptionSmf) ToMap() (map[string]any, error) {
 	toSerialize := map[string]any{}
 	toSerialize["event"] = o.Event

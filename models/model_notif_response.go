@@ -75,6 +75,14 @@ func (o *NotifResponse) SetRetrievalInd(v bool) {
 	o.RetrievalInd = v
 }
 
+func (o NotifResponse) MarshalJSON() ([]byte, error) {
+	toSerialize, err := o.ToMap()
+	if err != nil {
+		return []byte{}, err
+	}
+	return json.Marshal(toSerialize)
+}
+
 func (o NotifResponse) ToMap() (map[string]any, error) {
 	toSerialize := map[string]any{}
 	toSerialize["retrievalInd"] = o.RetrievalInd

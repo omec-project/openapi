@@ -259,6 +259,14 @@ func (o *SubscriptionTransferInfo) SetModelInfo(v []ModelInfo) {
 	o.ModelInfo = v
 }
 
+func (o SubscriptionTransferInfo) MarshalJSON() ([]byte, error) {
+	toSerialize, err := o.ToMap()
+	if err != nil {
+		return []byte{}, err
+	}
+	return json.Marshal(toSerialize)
+}
+
 func (o SubscriptionTransferInfo) ToMap() (map[string]any, error) {
 	toSerialize := map[string]any{}
 	toSerialize["transReqType"] = o.TransReqType

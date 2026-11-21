@@ -45,7 +45,7 @@ type ProblemDetailsAnalyticsInfoRequest struct {
 	AccessTokenError   *AccessTokenErr `json:"accessTokenError,omitempty" yaml:"accessTokenError,omitempty"`
 	AccessTokenRequest *AccessTokenReq `json:"accessTokenRequest,omitempty" yaml:"accessTokenRequest,omitempty"`
 	// Fully Qualified Domain Name
-	NrfId                *string             `json:"nrfId,omitempty" yaml:"nrfId,omitempty" validate:"regexp=^([0-9A-Za-z]([-0-9A-Za-z]{0,61}[0-9A-Za-z])?\\.)+[A-Za-z]{2,63}\\.?$"`
+	NrfId                *string             `json:"nrfId,omitempty" yaml:"nrfId,omitempty" validate:"regexp=^([0-9A-Za-z]([-0-9A-Za-z]{0\\,61}[0-9A-Za-z])?\\.)+[A-Za-z]{2\\,63}\\.?$"`
 	SupportedApiVersions []string            `json:"supportedApiVersions,omitempty" yaml:"supportedApiVersions,omitempty"`
 	NoProfileMatchInfo   *NoProfileMatchInfo `json:"noProfileMatchInfo,omitempty" yaml:"noProfileMatchInfo,omitempty"`
 	// indicating a time in seconds.
@@ -515,6 +515,14 @@ func (o *ProblemDetailsAnalyticsInfoRequest) HasRvWaitTime() bool {
 // SetRvWaitTime gets a reference to the given int32 and assigns it to the RvWaitTime field.
 func (o *ProblemDetailsAnalyticsInfoRequest) SetRvWaitTime(v int32) {
 	o.RvWaitTime = &v
+}
+
+func (o ProblemDetailsAnalyticsInfoRequest) MarshalJSON() ([]byte, error) {
+	toSerialize, err := o.ToMap()
+	if err != nil {
+		return []byte{}, err
+	}
+	return json.Marshal(toSerialize)
 }
 
 func (o ProblemDetailsAnalyticsInfoRequest) ToMap() (map[string]any, error) {

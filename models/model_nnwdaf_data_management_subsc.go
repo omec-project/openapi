@@ -659,6 +659,14 @@ func (o *NnwdafDataManagementSubsc) SetStoreHandl(v StorageHandlingInformation) 
 	o.StoreHandl = &v
 }
 
+func (o NnwdafDataManagementSubsc) MarshalJSON() ([]byte, error) {
+	toSerialize, err := o.ToMap()
+	if err != nil {
+		return []byte{}, err
+	}
+	return json.Marshal(toSerialize)
+}
+
 func (o NnwdafDataManagementSubsc) ToMap() (map[string]any, error) {
 	toSerialize := map[string]any{}
 	if !openapi.IsNil(o.AdrfId) {

@@ -787,6 +787,14 @@ func (o *NefEventNotification) SetDatVolTransTimeInfos(v []DatVolTransTimeCollec
 	o.DatVolTransTimeInfos = v
 }
 
+func (o NefEventNotification) MarshalJSON() ([]byte, error) {
+	toSerialize, err := o.ToMap()
+	if err != nil {
+		return []byte{}, err
+	}
+	return json.Marshal(toSerialize)
+}
+
 func (o NefEventNotification) ToMap() (map[string]any, error) {
 	toSerialize := map[string]any{}
 	toSerialize["event"] = o.Event

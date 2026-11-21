@@ -155,6 +155,14 @@ func (o *SmNasFromSmf) SetAppliedSmccType(v AppliedSmccType) {
 	o.AppliedSmccType = v
 }
 
+func (o SmNasFromSmf) MarshalJSON() ([]byte, error) {
+	toSerialize, err := o.ToMap()
+	if err != nil {
+		return []byte{}, err
+	}
+	return json.Marshal(toSerialize)
+}
+
 func (o SmNasFromSmf) ToMap() (map[string]any, error) {
 	toSerialize := map[string]any{}
 	toSerialize["smNasType"] = o.SmNasType

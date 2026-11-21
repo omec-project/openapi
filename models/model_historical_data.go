@@ -178,6 +178,14 @@ func (o *HistoricalData) SetData(v []DataNotification) {
 	o.Data = v
 }
 
+func (o HistoricalData) MarshalJSON() ([]byte, error) {
+	toSerialize, err := o.ToMap()
+	if err != nil {
+		return []byte{}, err
+	}
+	return json.Marshal(toSerialize)
+}
+
 func (o HistoricalData) ToMap() (map[string]any, error) {
 	toSerialize := map[string]any{}
 	if !openapi.IsNil(o.StartTime) {

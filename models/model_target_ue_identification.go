@@ -191,6 +191,14 @@ func (o *TargetUeIdentification) UnsetUeIpAddr() {
 	o.UeIpAddr.Unset()
 }
 
+func (o TargetUeIdentification) MarshalJSON() ([]byte, error) {
+	toSerialize, err := o.ToMap()
+	if err != nil {
+		return []byte{}, err
+	}
+	return json.Marshal(toSerialize)
+}
+
 func (o TargetUeIdentification) ToMap() (map[string]any, error) {
 	toSerialize := map[string]any{}
 	if !openapi.IsNil(o.Supis) {

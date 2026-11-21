@@ -109,6 +109,14 @@ func (o *NotifyEndpoint) SetNotifCorrId(v string) {
 	o.NotifCorrId = &v
 }
 
+func (o NotifyEndpoint) MarshalJSON() ([]byte, error) {
+	toSerialize, err := o.ToMap()
+	if err != nil {
+		return []byte{}, err
+	}
+	return json.Marshal(toSerialize)
+}
+
 func (o NotifyEndpoint) ToMap() (map[string]any, error) {
 	toSerialize := map[string]any{}
 	toSerialize["notifUri"] = o.NotifUri

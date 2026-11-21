@@ -218,6 +218,14 @@ func (o *ModelProvisionParamsExt) SetAccuLevels(v []Accuracy) {
 	o.AccuLevels = v
 }
 
+func (o ModelProvisionParamsExt) MarshalJSON() ([]byte, error) {
+	toSerialize, err := o.ToMap()
+	if err != nil {
+		return []byte{}, err
+	}
+	return json.Marshal(toSerialize)
+}
+
 func (o ModelProvisionParamsExt) ToMap() (map[string]any, error) {
 	toSerialize := map[string]any{}
 	if !openapi.IsNil(o.ReqRepRatio) {

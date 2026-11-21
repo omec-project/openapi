@@ -264,6 +264,14 @@ func (o *ParameterProcessingInstruction) SetAreas(v []NetworkAreaInfo) {
 	o.Areas = v
 }
 
+func (o ParameterProcessingInstruction) MarshalJSON() ([]byte, error) {
+	toSerialize, err := o.ToMap()
+	if err != nil {
+		return []byte{}, err
+	}
+	return json.Marshal(toSerialize)
+}
+
 func (o ParameterProcessingInstruction) ToMap() (map[string]any, error) {
 	toSerialize := map[string]any{}
 	toSerialize["name"] = o.Name

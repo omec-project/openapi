@@ -312,6 +312,14 @@ func (o *NnwdafDataManagementNotif) SetPendNotifCause(v PendingNotificationCause
 	o.PendNotifCause = &v
 }
 
+func (o NnwdafDataManagementNotif) MarshalJSON() ([]byte, error) {
+	toSerialize, err := o.ToMap()
+	if err != nil {
+		return []byte{}, err
+	}
+	return json.Marshal(toSerialize)
+}
+
 func (o NnwdafDataManagementNotif) ToMap() (map[string]any, error) {
 	toSerialize := map[string]any{}
 	if o.DataNotification.IsSet() {

@@ -130,6 +130,14 @@ func (o *NotifSummaryReport) SetEventReports(v []EventParamReport) {
 	o.EventReports = v
 }
 
+func (o NotifSummaryReport) MarshalJSON() ([]byte, error) {
+	toSerialize, err := o.ToMap()
+	if err != nil {
+		return []byte{}, err
+	}
+	return json.Marshal(toSerialize)
+}
+
 func (o NotifSummaryReport) ToMap() (map[string]any, error) {
 	toSerialize := map[string]any{}
 	toSerialize["eventId"] = o.EventId.Get()

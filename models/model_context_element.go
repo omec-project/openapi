@@ -449,6 +449,14 @@ func (o *ContextElement) SetModelAccuInfos(v []MlModelAccuracyInfo) {
 	o.ModelAccuInfos = v
 }
 
+func (o ContextElement) MarshalJSON() ([]byte, error) {
+	toSerialize, err := o.ToMap()
+	if err != nil {
+		return []byte{}, err
+	}
+	return json.Marshal(toSerialize)
+}
+
 func (o ContextElement) ToMap() (map[string]any, error) {
 	toSerialize := map[string]any{}
 	toSerialize["contextId"] = o.ContextId

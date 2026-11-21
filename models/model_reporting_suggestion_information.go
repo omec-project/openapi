@@ -108,6 +108,14 @@ func (o *ReportingSuggestionInformation) SetReportingTimeInfo(v int32) {
 	o.ReportingTimeInfo = &v
 }
 
+func (o ReportingSuggestionInformation) MarshalJSON() ([]byte, error) {
+	toSerialize, err := o.ToMap()
+	if err != nil {
+		return []byte{}, err
+	}
+	return json.Marshal(toSerialize)
+}
+
 func (o ReportingSuggestionInformation) ToMap() (map[string]any, error) {
 	toSerialize := map[string]any{}
 	toSerialize["reportingUrgency"] = o.ReportingUrgency

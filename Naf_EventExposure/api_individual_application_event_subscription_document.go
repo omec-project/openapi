@@ -286,6 +286,11 @@ func (r ApiGetAfEventExposureSubscRequest) SuppFeat(suppFeat string) ApiGetAfEve
 	return r
 }
 
+// GetSuppFeat returns the suppFeat set with SuppFeat, or nil if it was not set.
+func (r ApiGetAfEventExposureSubscRequest) GetSuppFeat() *string {
+	return r.suppFeat
+}
+
 func (r ApiGetAfEventExposureSubscRequest) Execute() (*models.AfEventExposureSubsc, *http.Response, error) {
 	return r.ApiService.GetAfEventExposureSubscExecute(r)
 }
@@ -504,6 +509,11 @@ type ApiPutAfEventExposureSubscRequest struct {
 func (r ApiPutAfEventExposureSubscRequest) AfEventExposureSubsc(afEventExposureSubsc models.AfEventExposureSubsc) ApiPutAfEventExposureSubscRequest {
 	r.afEventExposureSubsc = &afEventExposureSubsc
 	return r
+}
+
+// GetAfEventExposureSubsc returns the afEventExposureSubsc set with AfEventExposureSubsc, or nil if it was not set.
+func (r ApiPutAfEventExposureSubscRequest) GetAfEventExposureSubsc() *models.AfEventExposureSubsc {
+	return r.afEventExposureSubsc
 }
 
 func (r ApiPutAfEventExposureSubscRequest) Execute() (*models.AfEventExposureSubsc, *http.Response, error) {

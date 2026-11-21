@@ -176,6 +176,14 @@ func (o *MlModelAccuracyInfo) SetAccuSubInfo(v ModelProvisionParamsExt) {
 	o.AccuSubInfo = &v
 }
 
+func (o MlModelAccuracyInfo) MarshalJSON() ([]byte, error) {
+	toSerialize, err := o.ToMap()
+	if err != nil {
+		return []byte{}, err
+	}
+	return json.Marshal(toSerialize)
+}
+
 func (o MlModelAccuracyInfo) ToMap() (map[string]any, error) {
 	toSerialize := map[string]any{}
 	toSerialize["subscriptionId"] = o.SubscriptionId

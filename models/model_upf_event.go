@@ -276,6 +276,14 @@ func (o *UpfEvent) SetReportingSuggestionInfo(v ReportingSuggestionInformation) 
 	o.ReportingSuggestionInfo = &v
 }
 
+func (o UpfEvent) MarshalJSON() ([]byte, error) {
+	toSerialize, err := o.ToMap()
+	if err != nil {
+		return []byte{}, err
+	}
+	return json.Marshal(toSerialize)
+}
+
 func (o UpfEvent) ToMap() (map[string]any, error) {
 	toSerialize := map[string]any{}
 	toSerialize["type"] = o.Type

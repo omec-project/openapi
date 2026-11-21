@@ -272,6 +272,11 @@ func (r ApiUpdateNWDAFDataSubscriptionRequest) NnwdafDataManagementSubsc(nnwdafD
 	return r
 }
 
+// GetNnwdafDataManagementSubsc returns the nnwdafDataManagementSubsc set with NnwdafDataManagementSubsc, or nil if it was not set.
+func (r ApiUpdateNWDAFDataSubscriptionRequest) GetNnwdafDataManagementSubsc() *models.NnwdafDataManagementSubsc {
+	return r.nnwdafDataManagementSubsc
+}
+
 func (r ApiUpdateNWDAFDataSubscriptionRequest) Execute() (*models.NnwdafDataManagementSubsc, *http.Response, error) {
 	return r.ApiService.UpdateNWDAFDataSubscriptionExecute(r)
 }

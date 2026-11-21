@@ -75,6 +75,14 @@ func (o *ContextData) SetContextElems(v []ContextElement) {
 	o.ContextElems = v
 }
 
+func (o ContextData) MarshalJSON() ([]byte, error) {
+	toSerialize, err := o.ToMap()
+	if err != nil {
+		return []byte{}, err
+	}
+	return json.Marshal(toSerialize)
+}
+
 func (o ContextData) ToMap() (map[string]any, error) {
 	toSerialize := map[string]any{}
 	toSerialize["contextElems"] = o.ContextElems

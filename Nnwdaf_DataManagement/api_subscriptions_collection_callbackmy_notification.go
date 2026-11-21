@@ -58,6 +58,11 @@ func (r ApiMyNotificationPostRequest) NnwdafDataManagementNotif(nnwdafDataManage
 	return r
 }
 
+// GetNnwdafDataManagementNotif returns the nnwdafDataManagementNotif set with NnwdafDataManagementNotif, or nil if it was not set.
+func (r ApiMyNotificationPostRequest) GetNnwdafDataManagementNotif() *models.NnwdafDataManagementNotif {
+	return r.nnwdafDataManagementNotif
+}
+
 func (r ApiMyNotificationPostRequest) Execute() (*models.NotifResponse, *http.Response, error) {
 	return r.ApiService.MyNotificationPostExecute(r)
 }

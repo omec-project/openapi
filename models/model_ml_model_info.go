@@ -149,6 +149,14 @@ func (o *MLModelInfo) SetModelProvSetId(v string) {
 	o.ModelProvSetId = &v
 }
 
+func (o MLModelInfo) MarshalJSON() ([]byte, error) {
+	toSerialize, err := o.ToMap()
+	if err != nil {
+		return []byte{}, err
+	}
+	return json.Marshal(toSerialize)
+}
+
 func (o MLModelInfo) ToMap() (map[string]any, error) {
 	toSerialize := map[string]any{}
 	if !openapi.IsNil(o.MlFileAddrs) {

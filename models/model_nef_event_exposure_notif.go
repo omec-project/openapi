@@ -100,6 +100,14 @@ func (o *NefEventExposureNotif) SetEventNotifs(v []NefEventNotification) {
 	o.EventNotifs = v
 }
 
+func (o NefEventExposureNotif) MarshalJSON() ([]byte, error) {
+	toSerialize, err := o.ToMap()
+	if err != nil {
+		return []byte{}, err
+	}
+	return json.Marshal(toSerialize)
+}
+
 func (o NefEventExposureNotif) ToMap() (map[string]any, error) {
 	toSerialize := map[string]any{}
 	toSerialize["notifId"] = o.NotifId

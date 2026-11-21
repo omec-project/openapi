@@ -107,6 +107,14 @@ func (o *ResourceUsageRequPerNwPerfType) SetRscUsgReq(v ResourceUsageRequirement
 	o.RscUsgReq = &v
 }
 
+func (o ResourceUsageRequPerNwPerfType) MarshalJSON() ([]byte, error) {
+	toSerialize, err := o.ToMap()
+	if err != nil {
+		return []byte{}, err
+	}
+	return json.Marshal(toSerialize)
+}
+
 func (o ResourceUsageRequPerNwPerfType) ToMap() (map[string]any, error) {
 	toSerialize := map[string]any{}
 	toSerialize["nwPerfType"] = o.NwPerfType

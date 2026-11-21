@@ -63,10 +63,20 @@ func (r ApiGetNWDAFAnalyticsRequest) EventId(eventId models.EventId) ApiGetNWDAF
 	return r
 }
 
+// GetEventId returns the eventId set with EventId, or nil if it was not set.
+func (r ApiGetNWDAFAnalyticsRequest) GetEventId() *models.EventId {
+	return r.eventId
+}
+
 // Identifies the analytics reporting requirement information.
 func (r ApiGetNWDAFAnalyticsRequest) AnaReq(anaReq models.EventReportingRequirement) ApiGetNWDAFAnalyticsRequest {
 	r.anaReq = &anaReq
 	return r
+}
+
+// GetAnaReq returns the anaReq set with AnaReq, or nil if it was not set.
+func (r ApiGetNWDAFAnalyticsRequest) GetAnaReq() *models.EventReportingRequirement {
+	return r.anaReq
 }
 
 // Identify the analytics.
@@ -75,16 +85,31 @@ func (r ApiGetNWDAFAnalyticsRequest) EventFilter(eventFilter models.EventFilter)
 	return r
 }
 
+// GetEventFilter returns the eventFilter set with EventFilter, or nil if it was not set.
+func (r ApiGetNWDAFAnalyticsRequest) GetEventFilter() *models.EventFilter {
+	return r.eventFilter
+}
+
 // To filter irrelevant responses related to unsupported features.
 func (r ApiGetNWDAFAnalyticsRequest) SupportedFeatures(supportedFeatures string) ApiGetNWDAFAnalyticsRequest {
 	r.supportedFeatures = &supportedFeatures
 	return r
 }
 
+// GetSupportedFeatures returns the supportedFeatures set with SupportedFeatures, or nil if it was not set.
+func (r ApiGetNWDAFAnalyticsRequest) GetSupportedFeatures() *string {
+	return r.supportedFeatures
+}
+
 // Identify the target UE information.
 func (r ApiGetNWDAFAnalyticsRequest) TgtUe(tgtUe models.TargetUeInformation) ApiGetNWDAFAnalyticsRequest {
 	r.tgtUe = &tgtUe
 	return r
+}
+
+// GetTgtUe returns the tgtUe set with TgtUe, or nil if it was not set.
+func (r ApiGetNWDAFAnalyticsRequest) GetTgtUe() *models.TargetUeInformation {
+	return r.tgtUe
 }
 
 func (r ApiGetNWDAFAnalyticsRequest) Execute() (*models.AnalyticsData, *http.Response, error) {

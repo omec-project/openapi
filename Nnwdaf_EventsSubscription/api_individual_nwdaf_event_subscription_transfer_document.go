@@ -282,6 +282,11 @@ func (r ApiUpdateNWDAFEventSubscriptionTransferRequest) AnalyticsSubscriptionsTr
 	return r
 }
 
+// GetAnalyticsSubscriptionsTransfer returns the analyticsSubscriptionsTransfer set with AnalyticsSubscriptionsTransfer, or nil if it was not set.
+func (r ApiUpdateNWDAFEventSubscriptionTransferRequest) GetAnalyticsSubscriptionsTransfer() *models.AnalyticsSubscriptionsTransfer {
+	return r.analyticsSubscriptionsTransfer
+}
+
 func (r ApiUpdateNWDAFEventSubscriptionTransferRequest) Execute() (*http.Response, error) {
 	return r.ApiService.UpdateNWDAFEventSubscriptionTransferExecute(r)
 }

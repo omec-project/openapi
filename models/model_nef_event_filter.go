@@ -173,6 +173,14 @@ func (o *NefEventFilter) SetCollAttrs(v []CollectiveBehaviourFilter) {
 	o.CollAttrs = v
 }
 
+func (o NefEventFilter) MarshalJSON() ([]byte, error) {
+	toSerialize, err := o.ToMap()
+	if err != nil {
+		return []byte{}, err
+	}
+	return json.Marshal(toSerialize)
+}
+
 func (o NefEventFilter) ToMap() (map[string]any, error) {
 	toSerialize := map[string]any{}
 	toSerialize["tgtUe"] = o.TgtUe

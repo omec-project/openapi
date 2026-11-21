@@ -30,9 +30,9 @@ var _ openapi.MappedNullable = &AmfEventSubscriptionInfo{}
 // AmfEventSubscriptionInfo Individual AMF Event Subscription Information
 type AmfEventSubscriptionInfo struct {
 	// String providing an URI formatted according to RFC 3986.
-	SubId               string  `json:"subId" yaml:"subId"`
-	NotifyCorrelationId *string `json:"notifyCorrelationId,omitempty" yaml:"notifyCorrelationId,omitempty"`
-	RefIdList           []int32 `json:"refIdList" yaml:"refIdList"`
+	SubId               string   `json:"subId" yaml:"subId"`
+	NotifyCorrelationId *string  `json:"notifyCorrelationId,omitempty" yaml:"notifyCorrelationId,omitempty"`
+	RefIdList           []uint64 `json:"refIdList" yaml:"refIdList"`
 	// String providing an URI formatted according to RFC 3986.
 	OldSubId *string `json:"oldSubId,omitempty" yaml:"oldSubId,omitempty"`
 }
@@ -41,7 +41,7 @@ type AmfEventSubscriptionInfo struct {
 // This constructor will assign default values to properties that have it defined,
 // and makes sure properties required by API are set, but the set of arguments
 // will change when the set of required properties is changed
-func NewAmfEventSubscriptionInfo(subId string, refIdList []int32) *AmfEventSubscriptionInfo {
+func NewAmfEventSubscriptionInfo(subId string, refIdList []uint64) *AmfEventSubscriptionInfo {
 	this := AmfEventSubscriptionInfo{}
 	this.SubId = subId
 	this.RefIdList = refIdList
@@ -113,9 +113,9 @@ func (o *AmfEventSubscriptionInfo) SetNotifyCorrelationId(v string) {
 }
 
 // GetRefIdList returns the RefIdList field value
-func (o *AmfEventSubscriptionInfo) GetRefIdList() []int32 {
+func (o *AmfEventSubscriptionInfo) GetRefIdList() []uint64 {
 	if o == nil {
-		var ret []int32
+		var ret []uint64
 		return ret
 	}
 
@@ -124,7 +124,7 @@ func (o *AmfEventSubscriptionInfo) GetRefIdList() []int32 {
 
 // GetRefIdListOk returns a tuple with the RefIdList field value
 // and a boolean to check if the value has been set.
-func (o *AmfEventSubscriptionInfo) GetRefIdListOk() ([]int32, bool) {
+func (o *AmfEventSubscriptionInfo) GetRefIdListOk() ([]uint64, bool) {
 	if o == nil {
 		return nil, false
 	}
@@ -132,7 +132,7 @@ func (o *AmfEventSubscriptionInfo) GetRefIdListOk() ([]int32, bool) {
 }
 
 // SetRefIdList sets field value
-func (o *AmfEventSubscriptionInfo) SetRefIdList(v []int32) {
+func (o *AmfEventSubscriptionInfo) SetRefIdList(v []uint64) {
 	o.RefIdList = v
 }
 

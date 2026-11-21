@@ -114,6 +114,14 @@ func (o *SACEventStatus) SetReachedNumPduSess(v SACInfo) {
 	o.ReachedNumPduSess = &v
 }
 
+func (o SACEventStatus) MarshalJSON() ([]byte, error) {
+	toSerialize, err := o.ToMap()
+	if err != nil {
+		return []byte{}, err
+	}
+	return json.Marshal(toSerialize)
+}
+
 func (o SACEventStatus) ToMap() (map[string]any, error) {
 	toSerialize := map[string]any{}
 	if !openapi.IsNil(o.ReachedNumUes) {

@@ -354,6 +354,14 @@ func (o *QosMonitoringMeasurement) SetDefaultQosFlowInd(v bool) {
 	o.DefaultQosFlowInd = &v
 }
 
+func (o QosMonitoringMeasurement) MarshalJSON() ([]byte, error) {
+	toSerialize, err := o.ToMap()
+	if err != nil {
+		return []byte{}, err
+	}
+	return json.Marshal(toSerialize)
+}
+
 func (o QosMonitoringMeasurement) ToMap() (map[string]any, error) {
 	toSerialize := map[string]any{}
 	if !openapi.IsNil(o.DlPacketDelay) {

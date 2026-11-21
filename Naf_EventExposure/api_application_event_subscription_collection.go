@@ -58,6 +58,11 @@ func (r ApiPostAfEventExposureSubscRequest) AfEventExposureSubsc(afEventExposure
 	return r
 }
 
+// GetAfEventExposureSubsc returns the afEventExposureSubsc set with AfEventExposureSubsc, or nil if it was not set.
+func (r ApiPostAfEventExposureSubscRequest) GetAfEventExposureSubsc() *models.AfEventExposureSubsc {
+	return r.afEventExposureSubsc
+}
+
 func (r ApiPostAfEventExposureSubscRequest) Execute() (*models.AfEventExposureSubsc, *http.Response, error) {
 	return r.ApiService.PostAfEventExposureSubscExecute(r)
 }

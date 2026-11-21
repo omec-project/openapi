@@ -946,6 +946,14 @@ func (o *AnalyticsData) SetSuppFeat(v string) {
 	o.SuppFeat = &v
 }
 
+func (o AnalyticsData) MarshalJSON() ([]byte, error) {
+	toSerialize, err := o.ToMap()
+	if err != nil {
+		return []byte{}, err
+	}
+	return json.Marshal(toSerialize)
+}
+
 func (o AnalyticsData) ToMap() (map[string]any, error) {
 	toSerialize := map[string]any{}
 	if !openapi.IsNil(o.Start) {

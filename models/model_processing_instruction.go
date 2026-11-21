@@ -137,6 +137,14 @@ func (o *ProcessingInstruction) SetParamProcInstructs(v []ParameterProcessingIns
 	o.ParamProcInstructs = v
 }
 
+func (o ProcessingInstruction) MarshalJSON() ([]byte, error) {
+	toSerialize, err := o.ToMap()
+	if err != nil {
+		return []byte{}, err
+	}
+	return json.Marshal(toSerialize)
+}
+
 func (o ProcessingInstruction) ToMap() (map[string]any, error) {
 	toSerialize := map[string]any{}
 	toSerialize["eventId"] = o.EventId.Get()

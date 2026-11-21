@@ -1697,6 +1697,14 @@ func (o *EventFilter) SetRelProxReqs(v []RelProxReq) {
 	o.RelProxReqs = v
 }
 
+func (o EventFilter) MarshalJSON() ([]byte, error) {
+	toSerialize, err := o.ToMap()
+	if err != nil {
+		return []byte{}, err
+	}
+	return json.Marshal(toSerialize)
+}
+
 func (o EventFilter) ToMap() (map[string]any, error) {
 	toSerialize := map[string]any{}
 	if !openapi.IsNil(o.AnySlice) {

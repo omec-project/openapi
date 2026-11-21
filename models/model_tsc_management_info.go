@@ -114,6 +114,14 @@ func (o *TscManagementInfo) SetUmic(v BridgeManagementContainer) {
 	o.Umic = &v
 }
 
+func (o TscManagementInfo) MarshalJSON() ([]byte, error) {
+	toSerialize, err := o.ToMap()
+	if err != nil {
+		return []byte{}, err
+	}
+	return json.Marshal(toSerialize)
+}
+
 func (o TscManagementInfo) ToMap() (map[string]any, error) {
 	toSerialize := map[string]any{}
 	if !openapi.IsNil(o.Pmics) {

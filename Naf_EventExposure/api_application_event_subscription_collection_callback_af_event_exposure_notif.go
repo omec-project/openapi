@@ -57,6 +57,11 @@ func (r ApiAfEventExposureNotifPostRequest) AfEventExposureNotif(afEventExposure
 	return r
 }
 
+// GetAfEventExposureNotif returns the afEventExposureNotif set with AfEventExposureNotif, or nil if it was not set.
+func (r ApiAfEventExposureNotifPostRequest) GetAfEventExposureNotif() *models.AfEventExposureNotif {
+	return r.afEventExposureNotif
+}
+
 func (r ApiAfEventExposureNotifPostRequest) Execute() (*http.Response, error) {
 	return r.ApiService.AfEventExposureNotifPostExecute(r)
 }

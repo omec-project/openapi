@@ -149,6 +149,14 @@ func (o *PduSessionInfoSmf) SetPduSessStatus(v PduSessionStatus) {
 	o.PduSessStatus = &v
 }
 
+func (o PduSessionInfoSmf) MarshalJSON() ([]byte, error) {
+	toSerialize, err := o.ToMap()
+	if err != nil {
+		return []byte{}, err
+	}
+	return json.Marshal(toSerialize)
+}
+
 func (o PduSessionInfoSmf) ToMap() (map[string]any, error) {
 	toSerialize := map[string]any{}
 	if !openapi.IsNil(o.N4SessId) {

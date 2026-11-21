@@ -109,6 +109,14 @@ func (o *RequestedContext) SetNfConsumerInfo(v string) {
 	o.NfConsumerInfo = &v
 }
 
+func (o RequestedContext) MarshalJSON() ([]byte, error) {
+	toSerialize, err := o.ToMap()
+	if err != nil {
+		return []byte{}, err
+	}
+	return json.Marshal(toSerialize)
+}
+
 func (o RequestedContext) ToMap() (map[string]any, error) {
 	toSerialize := map[string]any{}
 	toSerialize["contexts"] = o.Contexts

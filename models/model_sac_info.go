@@ -217,6 +217,14 @@ func (o *SACInfo) SetUesWithPduSessionInd(v bool) {
 	o.UesWithPduSessionInd = &v
 }
 
+func (o SACInfo) MarshalJSON() ([]byte, error) {
+	toSerialize, err := o.ToMap()
+	if err != nil {
+		return []byte{}, err
+	}
+	return json.Marshal(toSerialize)
+}
+
 func (o SACInfo) ToMap() (map[string]any, error) {
 	toSerialize := map[string]any{}
 	if !openapi.IsNil(o.NumericValNumUes) {

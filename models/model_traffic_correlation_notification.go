@@ -35,7 +35,7 @@ type TrafficCorrelationNotification struct {
 	TfcCorrId string   `json:"tfcCorrId" yaml:"tfcCorrId"`
 	Dnais     []string `json:"dnais,omitempty" yaml:"dnais,omitempty"`
 	// Fully Qualified Domain Name
-	EasFqdn   *string        `json:"easFqdn,omitempty" yaml:"easFqdn,omitempty" validate:"regexp=^([0-9A-Za-z]([-0-9A-Za-z]{0,61}[0-9A-Za-z])?\\.)+[A-Za-z]{2,63}\\.?$"`
+	EasFqdn   *string        `json:"easFqdn,omitempty" yaml:"easFqdn,omitempty" validate:"regexp=^([0-9A-Za-z]([-0-9A-Za-z]{0\\,61}[0-9A-Za-z])?\\.)+[A-Za-z]{2\\,63}\\.?$"`
 	EasIpAddr NullableIpAddr `json:"easIpAddr" yaml:"easIpAddr,omitempty"`
 	// Unsigned Integer, i.e. only value 0 and integers above 0 are permissible.
 	PduSessionNbr int32 `json:"pduSessionNbr" yaml:"pduSessionNbr"`
@@ -235,6 +235,14 @@ func (o *TrafficCorrelationNotification) GetPduSessionNbrOk() (*int32, bool) {
 // SetPduSessionNbr sets field value
 func (o *TrafficCorrelationNotification) SetPduSessionNbr(v int32) {
 	o.PduSessionNbr = v
+}
+
+func (o TrafficCorrelationNotification) MarshalJSON() ([]byte, error) {
+	toSerialize, err := o.ToMap()
+	if err != nil {
+		return []byte{}, err
+	}
+	return json.Marshal(toSerialize)
 }
 
 func (o TrafficCorrelationNotification) ToMap() (map[string]any, error) {

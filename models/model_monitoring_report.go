@@ -30,13 +30,12 @@ var _ openapi.MappedNullable = &MonitoringReport{}
 
 // MonitoringReport struct for MonitoringReport
 type MonitoringReport struct {
-	// Integer where the allowed values correspond to the value range of an unsigned 64-bit integer.
-	ReferenceId              int32                     `json:"referenceId" yaml:"referenceId"`
+	ReferenceId              uint64                    `json:"referenceId" yaml:"referenceId"`
 	EventType                EventTypeUdm              `json:"eventType" yaml:"eventType"`
 	Report                   *Report                   `json:"report,omitempty" yaml:"report,omitempty"`
 	ReachabilityForSmsReport *ReachabilityForSmsReport `json:"reachabilityForSmsReport,omitempty" yaml:"reachabilityForSmsReport,omitempty"`
 	// String identifying a Gpsi shall contain either an External Id or an MSISDN. It shall be formatted as follows -External Identifier= \"extid-'extid', where 'extid' shall be formatted according to clause 19.7.2 of 3GPP TS 23.003 that describes an External Identifier.
-	Gpsi *string `json:"gpsi,omitempty" yaml:"gpsi,omitempty" validate:"regexp=^(msisdn-[0-9]{5,15}|extid-[^@]+@[^@]+|.+)$"`
+	Gpsi *string `json:"gpsi,omitempty" yaml:"gpsi,omitempty" validate:"regexp=^(msisdn-[0-9]{5\\,15}|extid-[^@]+@[^@]+|.+)$"`
 	// string with format 'date-time' as defined in OpenAPI.
 	TimeStamp          time.Time           `json:"timeStamp" yaml:"timeStamp"`
 	ReachabilityReport *ReachabilityReport `json:"reachabilityReport,omitempty" yaml:"reachabilityReport,omitempty"`
@@ -46,7 +45,7 @@ type MonitoringReport struct {
 // This constructor will assign default values to properties that have it defined,
 // and makes sure properties required by API are set, but the set of arguments
 // will change when the set of required properties is changed
-func NewMonitoringReport(referenceId int32, eventType EventTypeUdm, timeStamp time.Time) *MonitoringReport {
+func NewMonitoringReport(referenceId uint64, eventType EventTypeUdm, timeStamp time.Time) *MonitoringReport {
 	this := MonitoringReport{}
 	this.ReferenceId = referenceId
 	this.EventType = eventType
@@ -63,9 +62,9 @@ func NewMonitoringReportWithDefaults() *MonitoringReport {
 }
 
 // GetReferenceId returns the ReferenceId field value
-func (o *MonitoringReport) GetReferenceId() int32 {
+func (o *MonitoringReport) GetReferenceId() uint64 {
 	if o == nil {
-		var ret int32
+		var ret uint64
 		return ret
 	}
 
@@ -74,7 +73,7 @@ func (o *MonitoringReport) GetReferenceId() int32 {
 
 // GetReferenceIdOk returns a tuple with the ReferenceId field value
 // and a boolean to check if the value has been set.
-func (o *MonitoringReport) GetReferenceIdOk() (*int32, bool) {
+func (o *MonitoringReport) GetReferenceIdOk() (*uint64, bool) {
 	if o == nil {
 		return nil, false
 	}
@@ -82,7 +81,7 @@ func (o *MonitoringReport) GetReferenceIdOk() (*int32, bool) {
 }
 
 // SetReferenceId sets field value
-func (o *MonitoringReport) SetReferenceId(v int32) {
+func (o *MonitoringReport) SetReferenceId(v uint64) {
 	o.ReferenceId = v
 }
 

@@ -107,6 +107,14 @@ func (o *AnalyticsSubscriptionsTransfer) SetFailTransEventReports(v []NwdafEvent
 	o.FailTransEventReports = v
 }
 
+func (o AnalyticsSubscriptionsTransfer) MarshalJSON() ([]byte, error) {
+	toSerialize, err := o.ToMap()
+	if err != nil {
+		return []byte{}, err
+	}
+	return json.Marshal(toSerialize)
+}
+
 func (o AnalyticsSubscriptionsTransfer) ToMap() (map[string]any, error) {
 	toSerialize := map[string]any{}
 	toSerialize["subsTransInfos"] = o.SubsTransInfos

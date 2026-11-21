@@ -60,10 +60,20 @@ func (r ApiGetNwdafContextRequest) ContextIds(contextIds models.ContextIdList) A
 	return r
 }
 
+// GetContextIds returns the contextIds set with ContextIds, or nil if it was not set.
+func (r ApiGetNwdafContextRequest) GetContextIds() *models.ContextIdList {
+	return r.contextIds
+}
+
 // Identfies the type(s) of the analytics context information the consumer wishes to receive.
 func (r ApiGetNwdafContextRequest) ReqContext(reqContext models.RequestedContext) ApiGetNwdafContextRequest {
 	r.reqContext = &reqContext
 	return r
+}
+
+// GetReqContext returns the reqContext set with ReqContext, or nil if it was not set.
+func (r ApiGetNwdafContextRequest) GetReqContext() *models.RequestedContext {
+	return r.reqContext
 }
 
 func (r ApiGetNwdafContextRequest) Execute() (*models.ContextData, *http.Response, error) {

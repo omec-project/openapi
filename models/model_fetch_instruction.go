@@ -137,6 +137,14 @@ func (o *FetchInstruction) SetExpiry(v time.Time) {
 	o.Expiry = &v
 }
 
+func (o FetchInstruction) MarshalJSON() ([]byte, error) {
+	toSerialize, err := o.ToMap()
+	if err != nil {
+		return []byte{}, err
+	}
+	return json.Marshal(toSerialize)
+}
+
 func (o FetchInstruction) ToMap() (map[string]any, error) {
 	toSerialize := map[string]any{}
 	toSerialize["fetchUri"] = o.FetchUri

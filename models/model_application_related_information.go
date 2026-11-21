@@ -114,6 +114,14 @@ func (o *ApplicationRelatedInformation) SetDomainInfoList(v []DomainInformation)
 	o.DomainInfoList = v
 }
 
+func (o ApplicationRelatedInformation) MarshalJSON() ([]byte, error) {
+	toSerialize, err := o.ToMap()
+	if err != nil {
+		return []byte{}, err
+	}
+	return json.Marshal(toSerialize)
+}
+
 func (o ApplicationRelatedInformation) ToMap() (map[string]any, error) {
 	toSerialize := map[string]any{}
 	if !openapi.IsNil(o.Urls) {

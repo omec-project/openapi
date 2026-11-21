@@ -114,6 +114,14 @@ func (o *UserDataCongestReq) SetOrderDirection(v MatchingDirection) {
 	o.OrderDirection = &v
 }
 
+func (o UserDataCongestReq) MarshalJSON() ([]byte, error) {
+	toSerialize, err := o.ToMap()
+	if err != nil {
+		return []byte{}, err
+	}
+	return json.Marshal(toSerialize)
+}
+
 func (o UserDataCongestReq) ToMap() (map[string]any, error) {
 	toSerialize := map[string]any{}
 	if !openapi.IsNil(o.OrderCriterion) {

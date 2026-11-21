@@ -126,6 +126,14 @@ func (o *FormattingInstruction) UnsetReportingOptions() {
 	o.ReportingOptions.Unset()
 }
 
+func (o FormattingInstruction) MarshalJSON() ([]byte, error) {
+	toSerialize, err := o.ToMap()
+	if err != nil {
+		return []byte{}, err
+	}
+	return json.Marshal(toSerialize)
+}
+
 func (o FormattingInstruction) ToMap() (map[string]any, error) {
 	toSerialize := map[string]any{}
 	if !openapi.IsNil(o.ConsTrigNotif) {

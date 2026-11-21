@@ -387,6 +387,14 @@ func (o *AreaEventInfoExt) SetAdditionalCheckInd(v bool) {
 	o.AdditionalCheckInd = &v
 }
 
+func (o AreaEventInfoExt) MarshalJSON() ([]byte, error) {
+	toSerialize, err := o.ToMap()
+	if err != nil {
+		return []byte{}, err
+	}
+	return json.Marshal(toSerialize)
+}
+
 func (o AreaEventInfoExt) ToMap() (map[string]any, error) {
 	toSerialize := map[string]any{}
 	toSerialize["areaDefinition"] = o.AreaDefinition

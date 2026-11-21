@@ -102,6 +102,14 @@ func (o *UeTrajectoryInfo) SetLocation(v UserLocation) {
 	o.Location = v
 }
 
+func (o UeTrajectoryInfo) MarshalJSON() ([]byte, error) {
+	toSerialize, err := o.ToMap()
+	if err != nil {
+		return []byte{}, err
+	}
+	return json.Marshal(toSerialize)
+}
+
 func (o UeTrajectoryInfo) ToMap() (map[string]any, error) {
 	toSerialize := map[string]any{}
 	toSerialize["ts"] = o.Ts

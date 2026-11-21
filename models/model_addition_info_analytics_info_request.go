@@ -82,6 +82,14 @@ func (o *AdditionInfoAnalyticsInfoRequest) SetRvWaitTime(v int32) {
 	o.RvWaitTime = &v
 }
 
+func (o AdditionInfoAnalyticsInfoRequest) MarshalJSON() ([]byte, error) {
+	toSerialize, err := o.ToMap()
+	if err != nil {
+		return []byte{}, err
+	}
+	return json.Marshal(toSerialize)
+}
+
 func (o AdditionInfoAnalyticsInfoRequest) ToMap() (map[string]any, error) {
 	toSerialize := map[string]any{}
 	if !openapi.IsNil(o.RvWaitTime) {
