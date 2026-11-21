@@ -34,11 +34,9 @@ type QosFlowsUsageReport struct {
 	// string with format 'date-time' as defined in OpenAPI.
 	StartTimestamp *time.Time `json:"startTimestamp,omitempty" yaml:"startTimestamp,omitempty"`
 	// string with format 'date-time' as defined in OpenAPI.
-	EndTimestamp *time.Time `json:"endTimestamp,omitempty" yaml:"endTimestamp,omitempty"`
-	// Integer where the allowed values correspond to the value range of an unsigned 64-bit integer.
-	UplinkVolume *int32 `json:"uplinkVolume,omitempty" yaml:"uplinkVolume,omitempty"`
-	// Integer where the allowed values correspond to the value range of an unsigned 64-bit integer.
-	DownlinkVolume *int32 `json:"downlinkVolume,omitempty" yaml:"downlinkVolume,omitempty"`
+	EndTimestamp   *time.Time `json:"endTimestamp,omitempty" yaml:"endTimestamp,omitempty"`
+	UplinkVolume   *uint64    `json:"uplinkVolume,omitempty" yaml:"uplinkVolume,omitempty"`
+	DownlinkVolume *uint64    `json:"downlinkVolume,omitempty" yaml:"downlinkVolume,omitempty"`
 }
 
 // NewQosFlowsUsageReport instantiates a new QosFlowsUsageReport object
@@ -155,9 +153,9 @@ func (o *QosFlowsUsageReport) SetEndTimestamp(v time.Time) {
 }
 
 // GetUplinkVolume returns the UplinkVolume field value if set, zero value otherwise.
-func (o *QosFlowsUsageReport) GetUplinkVolume() int32 {
+func (o *QosFlowsUsageReport) GetUplinkVolume() uint64 {
 	if o == nil || openapi.IsNil(o.UplinkVolume) {
-		var ret int32
+		var ret uint64
 		return ret
 	}
 	return *o.UplinkVolume
@@ -165,7 +163,7 @@ func (o *QosFlowsUsageReport) GetUplinkVolume() int32 {
 
 // GetUplinkVolumeOk returns a tuple with the UplinkVolume field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *QosFlowsUsageReport) GetUplinkVolumeOk() (*int32, bool) {
+func (o *QosFlowsUsageReport) GetUplinkVolumeOk() (*uint64, bool) {
 	if o == nil || openapi.IsNil(o.UplinkVolume) {
 		return nil, false
 	}
@@ -181,15 +179,15 @@ func (o *QosFlowsUsageReport) HasUplinkVolume() bool {
 	return false
 }
 
-// SetUplinkVolume gets a reference to the given int32 and assigns it to the UplinkVolume field.
-func (o *QosFlowsUsageReport) SetUplinkVolume(v int32) {
+// SetUplinkVolume gets a reference to the given uint64 and assigns it to the UplinkVolume field.
+func (o *QosFlowsUsageReport) SetUplinkVolume(v uint64) {
 	o.UplinkVolume = &v
 }
 
 // GetDownlinkVolume returns the DownlinkVolume field value if set, zero value otherwise.
-func (o *QosFlowsUsageReport) GetDownlinkVolume() int32 {
+func (o *QosFlowsUsageReport) GetDownlinkVolume() uint64 {
 	if o == nil || openapi.IsNil(o.DownlinkVolume) {
-		var ret int32
+		var ret uint64
 		return ret
 	}
 	return *o.DownlinkVolume
@@ -197,7 +195,7 @@ func (o *QosFlowsUsageReport) GetDownlinkVolume() int32 {
 
 // GetDownlinkVolumeOk returns a tuple with the DownlinkVolume field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *QosFlowsUsageReport) GetDownlinkVolumeOk() (*int32, bool) {
+func (o *QosFlowsUsageReport) GetDownlinkVolumeOk() (*uint64, bool) {
 	if o == nil || openapi.IsNil(o.DownlinkVolume) {
 		return nil, false
 	}
@@ -213,8 +211,8 @@ func (o *QosFlowsUsageReport) HasDownlinkVolume() bool {
 	return false
 }
 
-// SetDownlinkVolume gets a reference to the given int32 and assigns it to the DownlinkVolume field.
-func (o *QosFlowsUsageReport) SetDownlinkVolume(v int32) {
+// SetDownlinkVolume gets a reference to the given uint64 and assigns it to the DownlinkVolume field.
+func (o *QosFlowsUsageReport) SetDownlinkVolume(v uint64) {
 	o.DownlinkVolume = &v
 }
 

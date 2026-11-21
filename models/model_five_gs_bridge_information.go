@@ -28,8 +28,7 @@ var _ openapi.MappedNullable = &FiveGSBridgeInformation{}
 
 // FiveGSBridgeInformation struct for FiveGSBridgeInformation
 type FiveGSBridgeInformation struct {
-	// Integer where the allowed values correspond to the value range of an unsigned 64-bit integer.
-	BridgeId int32 `json:"bridgeId" yaml:"bridgeId"`
+	BridgeId uint64 `json:"bridgeId" yaml:"bridgeId"`
 	// Integer where the allowed values correspond to the value range of an unsigned 16-bit integer.
 	NWTTPortNumber *int32 `json:"nWTTPortNumber,omitempty" yaml:"nWTTPortNumber,omitempty"`
 	// Integer where the allowed values correspond to the value range of an unsigned 16-bit integer.
@@ -40,7 +39,7 @@ type FiveGSBridgeInformation struct {
 // This constructor will assign default values to properties that have it defined,
 // and makes sure properties required by API are set, but the set of arguments
 // will change when the set of required properties is changed
-func NewFiveGSBridgeInformation(bridgeId int32) *FiveGSBridgeInformation {
+func NewFiveGSBridgeInformation(bridgeId uint64) *FiveGSBridgeInformation {
 	this := FiveGSBridgeInformation{}
 	this.BridgeId = bridgeId
 	return &this
@@ -55,9 +54,9 @@ func NewFiveGSBridgeInformationWithDefaults() *FiveGSBridgeInformation {
 }
 
 // GetBridgeId returns the BridgeId field value
-func (o *FiveGSBridgeInformation) GetBridgeId() int32 {
+func (o *FiveGSBridgeInformation) GetBridgeId() uint64 {
 	if o == nil {
-		var ret int32
+		var ret uint64
 		return ret
 	}
 
@@ -66,7 +65,7 @@ func (o *FiveGSBridgeInformation) GetBridgeId() int32 {
 
 // GetBridgeIdOk returns a tuple with the BridgeId field value
 // and a boolean to check if the value has been set.
-func (o *FiveGSBridgeInformation) GetBridgeIdOk() (*int32, bool) {
+func (o *FiveGSBridgeInformation) GetBridgeIdOk() (*uint64, bool) {
 	if o == nil {
 		return nil, false
 	}
@@ -74,7 +73,7 @@ func (o *FiveGSBridgeInformation) GetBridgeIdOk() (*int32, bool) {
 }
 
 // SetBridgeId sets field value
-func (o *FiveGSBridgeInformation) SetBridgeId(v int32) {
+func (o *FiveGSBridgeInformation) SetBridgeId(v uint64) {
 	o.BridgeId = v
 }
 

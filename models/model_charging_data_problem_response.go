@@ -25,14 +25,14 @@ import (
 
 // ChargingDataProblemResponse - struct for ChargingDataProblemResponse
 type ChargingDataProblemResponse struct {
-	ChargingNotifyResponse *ChargingNotifyResponse
-	ProblemDetails         *ProblemDetails
+	ChargingDataResponse *ChargingDataResponse
+	ProblemDetails       *ProblemDetails
 }
 
-// ChargingNotifyResponseAsChargingDataProblemResponse is a convenience function that returns ChargingNotifyResponse wrapped in ChargingDataProblemResponse
-func ChargingNotifyResponseAsChargingDataProblemResponse(v *ChargingNotifyResponse) ChargingDataProblemResponse {
+// ChargingDataResponseAsChargingDataProblemResponse is a convenience function that returns ChargingDataResponse wrapped in ChargingDataProblemResponse
+func ChargingDataResponseAsChargingDataProblemResponse(v *ChargingDataResponse) ChargingDataProblemResponse {
 	return ChargingDataProblemResponse{
-		ChargingNotifyResponse: v,
+		ChargingDataResponse: v,
 	}
 }
 
@@ -47,21 +47,21 @@ func ProblemDetailsAsChargingDataProblemResponse(v *ProblemDetails) ChargingData
 func (dst *ChargingDataProblemResponse) UnmarshalJSON(data []byte) error {
 	var err error
 	match := 0
-	// try to unmarshal data into ChargingNotifyResponse
-	err = openapi.NewStrictDecoder(data).Decode(&dst.ChargingNotifyResponse)
+	// try to unmarshal data into ChargingDataResponse
+	err = openapi.NewStrictDecoder(data).Decode(&dst.ChargingDataResponse)
 	if err == nil {
-		jsonChargingNotifyResponse, _ := json.Marshal(dst.ChargingNotifyResponse)
-		if string(jsonChargingNotifyResponse) == "{}" { // empty struct
-			dst.ChargingNotifyResponse = nil
+		jsonChargingDataResponse, _ := json.Marshal(dst.ChargingDataResponse)
+		if string(jsonChargingDataResponse) == "{}" { // empty struct
+			dst.ChargingDataResponse = nil
 		} else {
-			if err = openapi.Validate(dst.ChargingNotifyResponse); err != nil {
-				dst.ChargingNotifyResponse = nil
+			if err = openapi.Validate(dst.ChargingDataResponse); err != nil {
+				dst.ChargingDataResponse = nil
 			} else {
 				match++
 			}
 		}
 	} else {
-		dst.ChargingNotifyResponse = nil
+		dst.ChargingDataResponse = nil
 	}
 
 	// try to unmarshal data into ProblemDetails
@@ -83,7 +83,7 @@ func (dst *ChargingDataProblemResponse) UnmarshalJSON(data []byte) error {
 
 	if match > 1 { // more than 1 match
 		// reset to nil
-		dst.ChargingNotifyResponse = nil
+		dst.ChargingDataResponse = nil
 		dst.ProblemDetails = nil
 
 		return openapi.ReportError("data matches more than one schema in oneOf(ChargingDataProblemResponse)")
@@ -96,8 +96,8 @@ func (dst *ChargingDataProblemResponse) UnmarshalJSON(data []byte) error {
 
 // Marshal data from the first non-nil pointers in the struct to JSON
 func (src ChargingDataProblemResponse) MarshalJSON() ([]byte, error) {
-	if src.ChargingNotifyResponse != nil {
-		return json.Marshal(&src.ChargingNotifyResponse)
+	if src.ChargingDataResponse != nil {
+		return json.Marshal(&src.ChargingDataResponse)
 	}
 
 	if src.ProblemDetails != nil {
@@ -112,8 +112,8 @@ func (obj *ChargingDataProblemResponse) GetActualInstance() any {
 	if obj == nil {
 		return nil
 	}
-	if obj.ChargingNotifyResponse != nil {
-		return obj.ChargingNotifyResponse
+	if obj.ChargingDataResponse != nil {
+		return obj.ChargingDataResponse
 	}
 
 	if obj.ProblemDetails != nil {
@@ -126,8 +126,8 @@ func (obj *ChargingDataProblemResponse) GetActualInstance() any {
 
 // Get the actual instance value
 func (obj ChargingDataProblemResponse) GetActualInstanceValue() any {
-	if obj.ChargingNotifyResponse != nil {
-		return *obj.ChargingNotifyResponse
+	if obj.ChargingDataResponse != nil {
+		return *obj.ChargingDataResponse
 	}
 
 	if obj.ProblemDetails != nil {

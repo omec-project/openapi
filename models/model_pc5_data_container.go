@@ -31,15 +31,14 @@ var _ openapi.MappedNullable = &PC5DataContainer{}
 type PC5DataContainer struct {
 	LocalSequenceNumber *string `json:"localSequenceNumber,omitempty" yaml:"localSequenceNumber,omitempty"`
 	// string with format 'date-time' as defined in OpenAPI.
-	ChangeTime              *time.Time    `json:"changeTime,omitempty" yaml:"changeTime,omitempty"`
-	CoverageStatus          *bool         `json:"coverageStatus,omitempty" yaml:"coverageStatus,omitempty"`
-	UserLocationInformation *UserLocation `json:"userLocationInformation,omitempty" yaml:"userLocationInformation,omitempty"`
-	// Integer where the allowed values correspond to the value range of an unsigned 64-bit integer.
-	DataVolume         *int32                   `json:"dataVolume,omitempty" yaml:"dataVolume,omitempty"`
-	ChangeCondition    *string                  `json:"changeCondition,omitempty" yaml:"changeCondition,omitempty"`
-	RadioResourcesId   *RadioResourcesIndicator `json:"radioResourcesId,omitempty" yaml:"radioResourcesId,omitempty"`
-	RadioFrequency     *string                  `json:"radioFrequency,omitempty" yaml:"radioFrequency,omitempty"`
-	PC5RadioTechnology *string                  `json:"pC5RadioTechnology,omitempty" yaml:"pC5RadioTechnology,omitempty"`
+	ChangeTime              *time.Time               `json:"changeTime,omitempty" yaml:"changeTime,omitempty"`
+	CoverageStatus          *bool                    `json:"coverageStatus,omitempty" yaml:"coverageStatus,omitempty"`
+	UserLocationInformation *UserLocation            `json:"userLocationInformation,omitempty" yaml:"userLocationInformation,omitempty"`
+	DataVolume              *uint64                  `json:"dataVolume,omitempty" yaml:"dataVolume,omitempty"`
+	ChangeCondition         *string                  `json:"changeCondition,omitempty" yaml:"changeCondition,omitempty"`
+	RadioResourcesId        *RadioResourcesIndicator `json:"radioResourcesId,omitempty" yaml:"radioResourcesId,omitempty"`
+	RadioFrequency          *string                  `json:"radioFrequency,omitempty" yaml:"radioFrequency,omitempty"`
+	PC5RadioTechnology      *string                  `json:"pC5RadioTechnology,omitempty" yaml:"pC5RadioTechnology,omitempty"`
 }
 
 // NewPC5DataContainer instantiates a new PC5DataContainer object
@@ -188,9 +187,9 @@ func (o *PC5DataContainer) SetUserLocationInformation(v UserLocation) {
 }
 
 // GetDataVolume returns the DataVolume field value if set, zero value otherwise.
-func (o *PC5DataContainer) GetDataVolume() int32 {
+func (o *PC5DataContainer) GetDataVolume() uint64 {
 	if o == nil || openapi.IsNil(o.DataVolume) {
-		var ret int32
+		var ret uint64
 		return ret
 	}
 	return *o.DataVolume
@@ -198,7 +197,7 @@ func (o *PC5DataContainer) GetDataVolume() int32 {
 
 // GetDataVolumeOk returns a tuple with the DataVolume field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *PC5DataContainer) GetDataVolumeOk() (*int32, bool) {
+func (o *PC5DataContainer) GetDataVolumeOk() (*uint64, bool) {
 	if o == nil || openapi.IsNil(o.DataVolume) {
 		return nil, false
 	}
@@ -214,8 +213,8 @@ func (o *PC5DataContainer) HasDataVolume() bool {
 	return false
 }
 
-// SetDataVolume gets a reference to the given int32 and assigns it to the DataVolume field.
-func (o *PC5DataContainer) SetDataVolume(v int32) {
+// SetDataVolume gets a reference to the given uint64 and assigns it to the DataVolume field.
+func (o *PC5DataContainer) SetDataVolume(v uint64) {
 	o.DataVolume = &v
 }
 

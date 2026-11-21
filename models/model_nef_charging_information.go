@@ -29,15 +29,15 @@ var _ openapi.MappedNullable = &NEFChargingInformation{}
 // NEFChargingInformation struct for NEFChargingInformation
 type NEFChargingInformation struct {
 	// String identifying a Gpsi shall contain either an External Id or an MSISDN. It shall be formatted as follows -External Identifier= \"extid-'extid', where 'extid' shall be formatted according to clause 19.7.2 of 3GPP TS 23.003 that describes an External Identifier.
-	ExternalIndividualIdentifier *string  `json:"externalIndividualIdentifier,omitempty" yaml:"externalIndividualIdentifier,omitempty" validate:"regexp=^(msisdn-[0-9]{5,15}|extid-[^@]+@[^@]+|.+)$"`
+	ExternalIndividualIdentifier *string  `json:"externalIndividualIdentifier,omitempty" yaml:"externalIndividualIdentifier,omitempty" validate:"regexp=^(msisdn-[0-9]{5\\,15}|extid-[^@]+@[^@]+|.+)$"`
 	ExternalIndividualIdList     []string `json:"externalIndividualIdList,omitempty" yaml:"externalIndividualIdList,omitempty"`
 	// String identifying a Supi that shall contain either an IMSI, a network specific identifier, a Global Cable Identifier (GCI) or a Global Line Identifier (GLI) as specified in clause 2.2A of 3GPP TS 23.003. It shall be formatted as follows  - for an IMSI \"imsi-<imsi>\", where <imsi> shall be formatted according to clause 2.2    of 3GPP TS 23.003 that describes an IMSI.  - for a network specific identifier \"nai-<nai>, where <nai> shall be formatted    according to clause 28.7.2 of 3GPP TS 23.003 that describes an NAI.  - for a GCI \"gci-<gci>\", where <gci> shall be formatted according to clause 28.15.2    of 3GPP TS 23.003.  - for a GLI \"gli-<gli>\", where <gli> shall be formatted according to clause 28.16.2 of    3GPP TS 23.003.To enable that the value is used as part of an URI, the string shall    only contain characters allowed according to the \"lower-with-hyphen\" naming convention    defined in 3GPP TS 29.501.
-	InternalIndividualIdentifier *string  `json:"internalIndividualIdentifier,omitempty" yaml:"internalIndividualIdentifier,omitempty" validate:"regexp=^(imsi-[0-9]{5,15}|nai-.+|gci-.+|gli-.+|.+)$"`
+	InternalIndividualIdentifier *string  `json:"internalIndividualIdentifier,omitempty" yaml:"internalIndividualIdentifier,omitempty" validate:"regexp=^(imsi-[0-9]{5\\,15}|nai-.+|gci-.+|gli-.+|.+)$"`
 	InternalIndividualIdList     []string `json:"internalIndividualIdList,omitempty" yaml:"internalIndividualIdList,omitempty"`
 	// String identifying External Group Identifier that identifies a group made up of one or more  subscriptions associated to a group of IMSIs, as specified in clause 19.7.3 of 3GPP TS 23.003.
 	ExternalGroupIdentifier *string `json:"externalGroupIdentifier,omitempty" yaml:"externalGroupIdentifier,omitempty" validate:"regexp=^extgroupid-[^@]+@[^@]+$"`
 	// String identifying a group of devices network internal globally unique ID which identifies a set of IMSIs, as specified in clause 19.9 of 3GPP TS 23.003.
-	GroupIdentifier          *string           `json:"groupIdentifier,omitempty" yaml:"groupIdentifier,omitempty" validate:"regexp=^[A-Fa-f0-9]{8}-[0-9]{3}-[0-9]{2,3}-([A-Fa-f0-9][A-Fa-f0-9]){1,10}$"`
+	GroupIdentifier          *string           `json:"groupIdentifier,omitempty" yaml:"groupIdentifier,omitempty" validate:"regexp=^[A-Fa-f0-9]{8}-[0-9]{3}-[0-9]{2\\,3}-([A-Fa-f0-9][A-Fa-f0-9]){1\\,10}$"`
 	APIDirection             *APIDirection     `json:"aPIDirection,omitempty" yaml:"aPIDirection,omitempty"`
 	APITargetNetworkFunction *NFIdentification `json:"aPITargetNetworkFunction,omitempty" yaml:"aPITargetNetworkFunction,omitempty"`
 	// Integer where the allowed values correspond to the value range of an unsigned 32-bit integer.

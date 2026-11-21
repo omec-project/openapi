@@ -57,6 +57,11 @@ func (r ApiChargingNotificationPostRequest) ChargingNotifyRequest(chargingNotify
 	return r
 }
 
+// GetChargingNotifyRequest returns the chargingNotifyRequest set with ChargingNotifyRequest, or nil if it was not set.
+func (r ApiChargingNotificationPostRequest) GetChargingNotifyRequest() *models.ChargingNotifyRequest {
+	return r.chargingNotifyRequest
+}
+
 func (r ApiChargingNotificationPostRequest) Execute() (*models.ChargingNotifyResponse, *http.Response, error) {
 	return r.ApiService.ChargingNotificationPostExecute(r)
 }
@@ -162,7 +167,7 @@ func (a *DefaultCallbackchargingNotificationAPIService) ChargingNotificationPost
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 400 {
-			var v models.ChargingDataProblemResponse
+			var v models.ChargingNotifyProblemResponse
 			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 			if err != nil {
 				newErr.RawError = err.Error()

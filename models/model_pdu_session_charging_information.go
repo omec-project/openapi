@@ -33,12 +33,12 @@ type PDUSessionChargingInformation struct {
 	// Deprecated
 	ChargingId *int32 `json:"chargingId,omitempty" yaml:"chargingId,omitempty"`
 	// String based Charging ID
-	SMFchargingId *string `json:"sMFchargingId,omitempty" yaml:"sMFchargingId,omitempty" validate:"regexp=^(0|([1-9]{1}[0-9]{0,9}))\\.smf-([0-9a-f]{8}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{12})$"`
+	SMFchargingId *string `json:"sMFchargingId,omitempty" yaml:"sMFchargingId,omitempty" validate:"regexp=^(0|([1-9]{1}[0-9]{0\\,9}))\\.smf-([0-9a-f]{8}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{12})$"`
 	// Integer where the allowed values correspond to the value range of an unsigned 32-bit integer.
 	// Deprecated
 	HomeProvidedChargingId *int32 `json:"homeProvidedChargingId,omitempty" yaml:"homeProvidedChargingId,omitempty"`
 	// String based Charging ID
-	SMFHomeProvidedChargingId    *string          `json:"sMFHomeProvidedChargingId,omitempty" yaml:"sMFHomeProvidedChargingId,omitempty" validate:"regexp=^(0|([1-9]{1}[0-9]{0,9}))\\.smf-([0-9a-f]{8}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{12})$"`
+	SMFHomeProvidedChargingId    *string          `json:"sMFHomeProvidedChargingId,omitempty" yaml:"sMFHomeProvidedChargingId,omitempty" validate:"regexp=^(0|([1-9]{1}[0-9]{0\\,9}))\\.smf-([0-9a-f]{8}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{12})$"`
 	UserInformation              *UserInformation `json:"userInformation,omitempty" yaml:"userInformation,omitempty"`
 	UserLocationinfo             *UserLocation    `json:"userLocationinfo,omitempty" yaml:"userLocationinfo,omitempty"`
 	IMSSessionInformation        NullableCallInfo `json:"iMSSessionInformation" yaml:"iMSSessionInformation,omitempty"`

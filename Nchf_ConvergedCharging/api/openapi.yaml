@@ -82,7 +82,7 @@ paths:
                   content:
                     application/problem+json:
                       schema:
-                        $ref: "#/components/schemas/ChargingDataProblemResponse"
+                        $ref: "#/components/schemas/ChargingDataProblemResponse_1"
                   description: Bad request
                 default:
                   description: Generic Error
@@ -44033,6 +44033,10 @@ components:
       pattern: "(^[A-Fa-f0-9]{4}$)|(^[A-Fa-f0-9]{6}$)"
       type: string
     ChargingDataProblemResponse:
+      oneOf:
+        - $ref: "#/components/schemas/ProblemDetails"
+        - $ref: "#/components/schemas/ChargingDataResponse"
+    ChargingDataProblemResponse_1:
       oneOf:
         - $ref: "#/components/schemas/ProblemDetails"
         - $ref: "#/components/schemas/ChargingNotifyResponse"

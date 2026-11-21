@@ -84,6 +84,11 @@ func (r ApiChargingdataChargingDataRefReleasePostRequest) ChargingDataRequest(ch
 	return r
 }
 
+// GetChargingDataRequest returns the chargingDataRequest set with ChargingDataRequest, or nil if it was not set.
+func (r ApiChargingdataChargingDataRefReleasePostRequest) GetChargingDataRequest() *models.ChargingDataRequest {
+	return r.chargingDataRequest
+}
+
 func (r ApiChargingdataChargingDataRefReleasePostRequest) Execute() (*http.Response, error) {
 	return r.ApiService.ChargingdataChargingDataRefReleasePostExecute(r)
 }
@@ -281,6 +286,11 @@ type ApiChargingdataChargingDataRefUpdatePostRequest struct {
 func (r ApiChargingdataChargingDataRefUpdatePostRequest) ChargingDataRequest(chargingDataRequest models.ChargingDataRequest) ApiChargingdataChargingDataRefUpdatePostRequest {
 	r.chargingDataRequest = &chargingDataRequest
 	return r
+}
+
+// GetChargingDataRequest returns the chargingDataRequest set with ChargingDataRequest, or nil if it was not set.
+func (r ApiChargingdataChargingDataRefUpdatePostRequest) GetChargingDataRequest() *models.ChargingDataRequest {
+	return r.chargingDataRequest
 }
 
 func (r ApiChargingdataChargingDataRefUpdatePostRequest) Execute() (*models.ChargingDataResponse, *http.Response, error) {
@@ -524,6 +534,11 @@ type ApiChargingdataPostRequest struct {
 func (r ApiChargingdataPostRequest) ChargingDataRequest(chargingDataRequest models.ChargingDataRequest) ApiChargingdataPostRequest {
 	r.chargingDataRequest = &chargingDataRequest
 	return r
+}
+
+// GetChargingDataRequest returns the chargingDataRequest set with ChargingDataRequest, or nil if it was not set.
+func (r ApiChargingdataPostRequest) GetChargingDataRequest() *models.ChargingDataRequest {
+	return r.chargingDataRequest
 }
 
 func (r ApiChargingdataPostRequest) Execute() (*models.ChargingDataResponse, *http.Response, error) {

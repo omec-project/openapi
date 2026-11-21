@@ -35,10 +35,8 @@ type EdgeInfrastructureUsageChargingInformation struct {
 	MeanVirtualMemoryUsage *float32 `json:"meanVirtualMemoryUsage,omitempty" yaml:"meanVirtualMemoryUsage,omitempty"`
 	// string with format 'float' as defined in OpenAPI.
 	MeanVirtualDiskUsage *float32 `json:"meanVirtualDiskUsage,omitempty" yaml:"meanVirtualDiskUsage,omitempty"`
-	// Integer where the allowed values correspond to the value range of an unsigned 64-bit integer.
-	MeasuredInBytes *int32 `json:"measuredInBytes,omitempty" yaml:"measuredInBytes,omitempty"`
-	// Integer where the allowed values correspond to the value range of an unsigned 64-bit integer.
-	MeasuredOutBytes *int32 `json:"measuredOutBytes,omitempty" yaml:"measuredOutBytes,omitempty"`
+	MeasuredInBytes      *uint64  `json:"measuredInBytes,omitempty" yaml:"measuredInBytes,omitempty"`
+	MeasuredOutBytes     *uint64  `json:"measuredOutBytes,omitempty" yaml:"measuredOutBytes,omitempty"`
 	// string with format 'date-time' as defined in OpenAPI.
 	DurationStartTime *time.Time `json:"durationStartTime,omitempty" yaml:"durationStartTime,omitempty"`
 	// string with format 'date-time' as defined in OpenAPI.
@@ -159,9 +157,9 @@ func (o *EdgeInfrastructureUsageChargingInformation) SetMeanVirtualDiskUsage(v f
 }
 
 // GetMeasuredInBytes returns the MeasuredInBytes field value if set, zero value otherwise.
-func (o *EdgeInfrastructureUsageChargingInformation) GetMeasuredInBytes() int32 {
+func (o *EdgeInfrastructureUsageChargingInformation) GetMeasuredInBytes() uint64 {
 	if o == nil || openapi.IsNil(o.MeasuredInBytes) {
-		var ret int32
+		var ret uint64
 		return ret
 	}
 	return *o.MeasuredInBytes
@@ -169,7 +167,7 @@ func (o *EdgeInfrastructureUsageChargingInformation) GetMeasuredInBytes() int32 
 
 // GetMeasuredInBytesOk returns a tuple with the MeasuredInBytes field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *EdgeInfrastructureUsageChargingInformation) GetMeasuredInBytesOk() (*int32, bool) {
+func (o *EdgeInfrastructureUsageChargingInformation) GetMeasuredInBytesOk() (*uint64, bool) {
 	if o == nil || openapi.IsNil(o.MeasuredInBytes) {
 		return nil, false
 	}
@@ -185,15 +183,15 @@ func (o *EdgeInfrastructureUsageChargingInformation) HasMeasuredInBytes() bool {
 	return false
 }
 
-// SetMeasuredInBytes gets a reference to the given int32 and assigns it to the MeasuredInBytes field.
-func (o *EdgeInfrastructureUsageChargingInformation) SetMeasuredInBytes(v int32) {
+// SetMeasuredInBytes gets a reference to the given uint64 and assigns it to the MeasuredInBytes field.
+func (o *EdgeInfrastructureUsageChargingInformation) SetMeasuredInBytes(v uint64) {
 	o.MeasuredInBytes = &v
 }
 
 // GetMeasuredOutBytes returns the MeasuredOutBytes field value if set, zero value otherwise.
-func (o *EdgeInfrastructureUsageChargingInformation) GetMeasuredOutBytes() int32 {
+func (o *EdgeInfrastructureUsageChargingInformation) GetMeasuredOutBytes() uint64 {
 	if o == nil || openapi.IsNil(o.MeasuredOutBytes) {
-		var ret int32
+		var ret uint64
 		return ret
 	}
 	return *o.MeasuredOutBytes
@@ -201,7 +199,7 @@ func (o *EdgeInfrastructureUsageChargingInformation) GetMeasuredOutBytes() int32
 
 // GetMeasuredOutBytesOk returns a tuple with the MeasuredOutBytes field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *EdgeInfrastructureUsageChargingInformation) GetMeasuredOutBytesOk() (*int32, bool) {
+func (o *EdgeInfrastructureUsageChargingInformation) GetMeasuredOutBytesOk() (*uint64, bool) {
 	if o == nil || openapi.IsNil(o.MeasuredOutBytes) {
 		return nil, false
 	}
@@ -217,8 +215,8 @@ func (o *EdgeInfrastructureUsageChargingInformation) HasMeasuredOutBytes() bool 
 	return false
 }
 
-// SetMeasuredOutBytes gets a reference to the given int32 and assigns it to the MeasuredOutBytes field.
-func (o *EdgeInfrastructureUsageChargingInformation) SetMeasuredOutBytes(v int32) {
+// SetMeasuredOutBytes gets a reference to the given uint64 and assigns it to the MeasuredOutBytes field.
+func (o *EdgeInfrastructureUsageChargingInformation) SetMeasuredOutBytes(v uint64) {
 	o.MeasuredOutBytes = &v
 }
 

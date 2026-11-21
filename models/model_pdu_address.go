@@ -31,12 +31,12 @@ type PDUAddress struct {
 	// String identifying a IPv4 address formatted in the 'dotted decimal' notation as defined in RFC 1166.
 	PduIPv4Address *string `json:"pduIPv4Address,omitempty" yaml:"pduIPv4Address,omitempty" validate:"regexp=^(([0-9]|[1-9][0-9]|1[0-9][0-9]|2[0-4][0-9]|25[0-5])\\.){3}([0-9]|[1-9][0-9]|1[0-9][0-9]|2[0-4][0-9]|25[0-5])$"`
 	// String identifying an IPv6 address formatted according to clause 4 of RFC5952. The mixed IPv4 IPv6 notation according to clause 5 of RFC5952 shall not be used.
-	PduIPv6AddresswithPrefix *string `json:"pduIPv6AddresswithPrefix,omitempty" yaml:"pduIPv6AddresswithPrefix,omitempty" validate:"regexp=^((((:|(0?|([1-9a-f][0-9a-f]{0,3}))):)((0?|([1-9a-f][0-9a-f]{0,3})):){0,6}(:|(0?|([1-9a-f][0-9a-f]{0,3}))))|((([^:]+:){7}([^:]+))|((([^:]+:)*[^:]+)?::(([^:]+:)*[^:]+)?)))$"`
+	PduIPv6AddresswithPrefix *string `json:"pduIPv6AddresswithPrefix,omitempty" yaml:"pduIPv6AddresswithPrefix,omitempty" validate:"regexp=^((((:|(0?|([1-9a-f][0-9a-f]{0\\,3}))):)((0?|([1-9a-f][0-9a-f]{0\\,3})):){0\\,6}(:|(0?|([1-9a-f][0-9a-f]{0\\,3}))))|((([^:]+:){7}([^:]+))|((([^:]+:)*[^:]+)?::(([^:]+:)*[^:]+)?)))$"`
 	PduAddressprefixlength   *int32  `json:"pduAddressprefixlength,omitempty" yaml:"pduAddressprefixlength,omitempty"`
 	IPv4dynamicAddressFlag   *bool   `json:"iPv4dynamicAddressFlag,omitempty" yaml:"iPv4dynamicAddressFlag,omitempty"`
 	IPv6dynamicPrefixFlag    *bool   `json:"iPv6dynamicPrefixFlag,omitempty" yaml:"iPv6dynamicPrefixFlag,omitempty"`
 	// String identifying an IPv6 address prefix formatted according to clause 4 of RFC 5952. IPv6Prefix data type may contain an individual /128 IPv6 address.
-	AddIpv6AddrPrefixes   *string  `json:"addIpv6AddrPrefixes,omitempty" yaml:"addIpv6AddrPrefixes,omitempty" validate:"regexp=^(((:|(0?|([1-9a-f][0-9a-f]{0,3}))):)((0?|([1-9a-f][0-9a-f]{0,3})):){0,6}(:|(0?|([1-9a-f][0-9a-f]{0,3})))(/(([0-9])|([0-9]{2})|(1[0-1][0-9])|(12[0-8])))|((([^:]+:){7}([^:]+))|((([^:]+:)*[^:]+)?::(([^:]+:)*[^:]+)?))(/.+))$"`
+	AddIpv6AddrPrefixes   *string  `json:"addIpv6AddrPrefixes,omitempty" yaml:"addIpv6AddrPrefixes,omitempty" validate:"regexp=^(((:|(0?|([1-9a-f][0-9a-f]{0\\,3}))):)((0?|([1-9a-f][0-9a-f]{0\\,3})):){0\\,6}(:|(0?|([1-9a-f][0-9a-f]{0\\,3})))(/(([0-9])|([0-9]{2})|(1[0-1][0-9])|(12[0-8])))|((([^:]+:){7}([^:]+))|((([^:]+:)*[^:]+)?::(([^:]+:)*[^:]+)?))(/.+))$"`
 	AddIpv6AddrPrefixList []string `json:"addIpv6AddrPrefixList,omitempty" yaml:"addIpv6AddrPrefixList,omitempty"`
 }
 

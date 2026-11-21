@@ -31,7 +31,7 @@ type SNPNInformation struct {
 	SNPNID     PlmnIdNid   `json:"sNPNID" yaml:"sNPNID"`
 	AccessType *AccessType `json:"accessType,omitempty" yaml:"accessType,omitempty"`
 	// Fully Qualified Domain Name
-	N3IwfFqdn *string `json:"n3IwfFqdn,omitempty" yaml:"n3IwfFqdn,omitempty" validate:"regexp=^([0-9A-Za-z]([-0-9A-Za-z]{0,61}[0-9A-Za-z])?\\.)+[A-Za-z]{2,63}\\.?$"`
+	N3IwfFqdn *string `json:"n3IwfFqdn,omitempty" yaml:"n3IwfFqdn,omitempty" validate:"regexp=^([0-9A-Za-z]([-0-9A-Za-z]{0\\,61}[0-9A-Za-z])?\\.)+[A-Za-z]{2\\,63}\\.?$"`
 }
 
 // NewSNPNInformation instantiates a new SNPNInformation object

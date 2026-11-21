@@ -37,12 +37,11 @@ type MultipleUnitInformation struct {
 	// indicating a time in seconds.
 	ValidityTime *int32 `json:"validityTime,omitempty" yaml:"validityTime,omitempty"`
 	// indicating a time in seconds.
-	QuotaHoldingTime    *int32               `json:"quotaHoldingTime,omitempty" yaml:"quotaHoldingTime,omitempty"`
-	FinalUnitIndication *FinalUnitIndication `json:"finalUnitIndication,omitempty" yaml:"finalUnitIndication,omitempty"`
-	TimeQuotaThreshold  *int32               `json:"timeQuotaThreshold,omitempty" yaml:"timeQuotaThreshold,omitempty"`
-	// Integer where the allowed values correspond to the value range of an unsigned 64-bit integer.
-	VolumeQuotaThreshold *int32 `json:"volumeQuotaThreshold,omitempty" yaml:"volumeQuotaThreshold,omitempty"`
-	UnitQuotaThreshold   *int32 `json:"unitQuotaThreshold,omitempty" yaml:"unitQuotaThreshold,omitempty"`
+	QuotaHoldingTime     *int32               `json:"quotaHoldingTime,omitempty" yaml:"quotaHoldingTime,omitempty"`
+	FinalUnitIndication  *FinalUnitIndication `json:"finalUnitIndication,omitempty" yaml:"finalUnitIndication,omitempty"`
+	TimeQuotaThreshold   *int32               `json:"timeQuotaThreshold,omitempty" yaml:"timeQuotaThreshold,omitempty"`
+	VolumeQuotaThreshold *uint64              `json:"volumeQuotaThreshold,omitempty" yaml:"volumeQuotaThreshold,omitempty"`
+	UnitQuotaThreshold   *int32               `json:"unitQuotaThreshold,omitempty" yaml:"unitQuotaThreshold,omitempty"`
 	// String uniquely identifying a NF instance. The format of the NF Instance ID shall be a Universally Unique Identifier (UUID) version 4, as described in IETF RFC 4122.
 	UPFID                   *string                  `json:"uPFID,omitempty" yaml:"uPFID,omitempty"`
 	AnnouncementInformation *AnnouncementInformation `json:"announcementInformation,omitempty" yaml:"announcementInformation,omitempty"`
@@ -349,9 +348,9 @@ func (o *MultipleUnitInformation) SetTimeQuotaThreshold(v int32) {
 }
 
 // GetVolumeQuotaThreshold returns the VolumeQuotaThreshold field value if set, zero value otherwise.
-func (o *MultipleUnitInformation) GetVolumeQuotaThreshold() int32 {
+func (o *MultipleUnitInformation) GetVolumeQuotaThreshold() uint64 {
 	if o == nil || openapi.IsNil(o.VolumeQuotaThreshold) {
-		var ret int32
+		var ret uint64
 		return ret
 	}
 	return *o.VolumeQuotaThreshold
@@ -359,7 +358,7 @@ func (o *MultipleUnitInformation) GetVolumeQuotaThreshold() int32 {
 
 // GetVolumeQuotaThresholdOk returns a tuple with the VolumeQuotaThreshold field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *MultipleUnitInformation) GetVolumeQuotaThresholdOk() (*int32, bool) {
+func (o *MultipleUnitInformation) GetVolumeQuotaThresholdOk() (*uint64, bool) {
 	if o == nil || openapi.IsNil(o.VolumeQuotaThreshold) {
 		return nil, false
 	}
@@ -375,8 +374,8 @@ func (o *MultipleUnitInformation) HasVolumeQuotaThreshold() bool {
 	return false
 }
 
-// SetVolumeQuotaThreshold gets a reference to the given int32 and assigns it to the VolumeQuotaThreshold field.
-func (o *MultipleUnitInformation) SetVolumeQuotaThreshold(v int32) {
+// SetVolumeQuotaThreshold gets a reference to the given uint64 and assigns it to the VolumeQuotaThreshold field.
+func (o *MultipleUnitInformation) SetVolumeQuotaThreshold(v uint64) {
 	o.VolumeQuotaThreshold = &v
 }
 

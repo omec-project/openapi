@@ -33,13 +33,10 @@ type MultipleQFIcontainer struct {
 	// string with format 'date-time' as defined in OpenAPI.
 	TriggerTimestamp *time.Time `json:"triggerTimestamp,omitempty" yaml:"triggerTimestamp,omitempty"`
 	// Integer where the allowed values correspond to the value range of an unsigned 32-bit integer.
-	Time *int32 `json:"time,omitempty" yaml:"time,omitempty"`
-	// Integer where the allowed values correspond to the value range of an unsigned 64-bit integer.
-	TotalVolume *int32 `json:"totalVolume,omitempty" yaml:"totalVolume,omitempty"`
-	// Integer where the allowed values correspond to the value range of an unsigned 64-bit integer.
-	UplinkVolume *int32 `json:"uplinkVolume,omitempty" yaml:"uplinkVolume,omitempty"`
-	// Integer where the allowed values correspond to the value range of an unsigned 64-bit integer.
-	DownlinkVolume          *int32                   `json:"downlinkVolume,omitempty" yaml:"downlinkVolume,omitempty"`
+	Time                    *int32                   `json:"time,omitempty" yaml:"time,omitempty"`
+	TotalVolume             *uint64                  `json:"totalVolume,omitempty" yaml:"totalVolume,omitempty"`
+	UplinkVolume            *uint64                  `json:"uplinkVolume,omitempty" yaml:"uplinkVolume,omitempty"`
+	DownlinkVolume          *uint64                  `json:"downlinkVolume,omitempty" yaml:"downlinkVolume,omitempty"`
 	LocalSequenceNumber     int32                    `json:"localSequenceNumber" yaml:"localSequenceNumber"`
 	QFIContainerInformation *QFIContainerInformation `json:"qFIContainerInformation,omitempty" yaml:"qFIContainerInformation,omitempty"`
 }
@@ -159,9 +156,9 @@ func (o *MultipleQFIcontainer) SetTime(v int32) {
 }
 
 // GetTotalVolume returns the TotalVolume field value if set, zero value otherwise.
-func (o *MultipleQFIcontainer) GetTotalVolume() int32 {
+func (o *MultipleQFIcontainer) GetTotalVolume() uint64 {
 	if o == nil || openapi.IsNil(o.TotalVolume) {
-		var ret int32
+		var ret uint64
 		return ret
 	}
 	return *o.TotalVolume
@@ -169,7 +166,7 @@ func (o *MultipleQFIcontainer) GetTotalVolume() int32 {
 
 // GetTotalVolumeOk returns a tuple with the TotalVolume field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *MultipleQFIcontainer) GetTotalVolumeOk() (*int32, bool) {
+func (o *MultipleQFIcontainer) GetTotalVolumeOk() (*uint64, bool) {
 	if o == nil || openapi.IsNil(o.TotalVolume) {
 		return nil, false
 	}
@@ -185,15 +182,15 @@ func (o *MultipleQFIcontainer) HasTotalVolume() bool {
 	return false
 }
 
-// SetTotalVolume gets a reference to the given int32 and assigns it to the TotalVolume field.
-func (o *MultipleQFIcontainer) SetTotalVolume(v int32) {
+// SetTotalVolume gets a reference to the given uint64 and assigns it to the TotalVolume field.
+func (o *MultipleQFIcontainer) SetTotalVolume(v uint64) {
 	o.TotalVolume = &v
 }
 
 // GetUplinkVolume returns the UplinkVolume field value if set, zero value otherwise.
-func (o *MultipleQFIcontainer) GetUplinkVolume() int32 {
+func (o *MultipleQFIcontainer) GetUplinkVolume() uint64 {
 	if o == nil || openapi.IsNil(o.UplinkVolume) {
-		var ret int32
+		var ret uint64
 		return ret
 	}
 	return *o.UplinkVolume
@@ -201,7 +198,7 @@ func (o *MultipleQFIcontainer) GetUplinkVolume() int32 {
 
 // GetUplinkVolumeOk returns a tuple with the UplinkVolume field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *MultipleQFIcontainer) GetUplinkVolumeOk() (*int32, bool) {
+func (o *MultipleQFIcontainer) GetUplinkVolumeOk() (*uint64, bool) {
 	if o == nil || openapi.IsNil(o.UplinkVolume) {
 		return nil, false
 	}
@@ -217,15 +214,15 @@ func (o *MultipleQFIcontainer) HasUplinkVolume() bool {
 	return false
 }
 
-// SetUplinkVolume gets a reference to the given int32 and assigns it to the UplinkVolume field.
-func (o *MultipleQFIcontainer) SetUplinkVolume(v int32) {
+// SetUplinkVolume gets a reference to the given uint64 and assigns it to the UplinkVolume field.
+func (o *MultipleQFIcontainer) SetUplinkVolume(v uint64) {
 	o.UplinkVolume = &v
 }
 
 // GetDownlinkVolume returns the DownlinkVolume field value if set, zero value otherwise.
-func (o *MultipleQFIcontainer) GetDownlinkVolume() int32 {
+func (o *MultipleQFIcontainer) GetDownlinkVolume() uint64 {
 	if o == nil || openapi.IsNil(o.DownlinkVolume) {
-		var ret int32
+		var ret uint64
 		return ret
 	}
 	return *o.DownlinkVolume
@@ -233,7 +230,7 @@ func (o *MultipleQFIcontainer) GetDownlinkVolume() int32 {
 
 // GetDownlinkVolumeOk returns a tuple with the DownlinkVolume field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *MultipleQFIcontainer) GetDownlinkVolumeOk() (*int32, bool) {
+func (o *MultipleQFIcontainer) GetDownlinkVolumeOk() (*uint64, bool) {
 	if o == nil || openapi.IsNil(o.DownlinkVolume) {
 		return nil, false
 	}
@@ -249,8 +246,8 @@ func (o *MultipleQFIcontainer) HasDownlinkVolume() bool {
 	return false
 }
 
-// SetDownlinkVolume gets a reference to the given int32 and assigns it to the DownlinkVolume field.
-func (o *MultipleQFIcontainer) SetDownlinkVolume(v int32) {
+// SetDownlinkVolume gets a reference to the given uint64 and assigns it to the DownlinkVolume field.
+func (o *MultipleQFIcontainer) SetDownlinkVolume(v uint64) {
 	o.DownlinkVolume = &v
 }
 

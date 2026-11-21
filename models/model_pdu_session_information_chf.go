@@ -41,7 +41,7 @@ type PDUSessionInformationChf struct {
 	// String representing a Data Network as defined in clause 9A of 3GPP TS 23.003; it shall contain either a DNN Network Identifier, or a full DNN with both the Network Identifier and Operator Identifier, as specified in 3GPP TS 23.003 clause 9.1.1 and 9.1.2. It shall be coded as string in which the labels are separated by dots (e.g. \"Label1.Label2.Label3\").
 	DnnId                                string                                `json:"dnnId" yaml:"dnnId"`
 	DnnSelectionMode                     *DnnSelectionMode                     `json:"dnnSelectionMode,omitempty" yaml:"dnnSelectionMode,omitempty"`
-	ChargingCharacteristics              *string                               `json:"chargingCharacteristics,omitempty" yaml:"chargingCharacteristics,omitempty" validate:"regexp=^[0-9a-fA-F]{1,4}$"`
+	ChargingCharacteristics              *string                               `json:"chargingCharacteristics,omitempty" yaml:"chargingCharacteristics,omitempty" validate:"regexp=^[0-9a-fA-F]{1\\,4}$"`
 	ChargingCharacteristicsSelectionMode *ChargingCharacteristicsSelectionMode `json:"chargingCharacteristicsSelectionMode,omitempty" yaml:"chargingCharacteristicsSelectionMode,omitempty"`
 	// string with format 'date-time' as defined in OpenAPI.
 	StartTime *time.Time `json:"startTime,omitempty" yaml:"startTime,omitempty"`

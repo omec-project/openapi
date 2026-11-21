@@ -30,7 +30,8 @@ var _ openapi.MappedNullable = &MonitoringReport{}
 
 // MonitoringReport struct for MonitoringReport
 type MonitoringReport struct {
-	ReferenceId              uint64                    `json:"referenceId" yaml:"referenceId"`
+	// Integer where the allowed values correspond to the value range of an unsigned 64-bit integer.
+	ReferenceId              int32                     `json:"referenceId" yaml:"referenceId"`
 	EventType                EventTypeUdm              `json:"eventType" yaml:"eventType"`
 	Report                   *Report                   `json:"report,omitempty" yaml:"report,omitempty"`
 	ReachabilityForSmsReport *ReachabilityForSmsReport `json:"reachabilityForSmsReport,omitempty" yaml:"reachabilityForSmsReport,omitempty"`
@@ -45,7 +46,7 @@ type MonitoringReport struct {
 // This constructor will assign default values to properties that have it defined,
 // and makes sure properties required by API are set, but the set of arguments
 // will change when the set of required properties is changed
-func NewMonitoringReport(referenceId uint64, eventType EventTypeUdm, timeStamp time.Time) *MonitoringReport {
+func NewMonitoringReport(referenceId int32, eventType EventTypeUdm, timeStamp time.Time) *MonitoringReport {
 	this := MonitoringReport{}
 	this.ReferenceId = referenceId
 	this.EventType = eventType
@@ -62,9 +63,9 @@ func NewMonitoringReportWithDefaults() *MonitoringReport {
 }
 
 // GetReferenceId returns the ReferenceId field value
-func (o *MonitoringReport) GetReferenceId() uint64 {
+func (o *MonitoringReport) GetReferenceId() int32 {
 	if o == nil {
-		var ret uint64
+		var ret int32
 		return ret
 	}
 
@@ -73,7 +74,7 @@ func (o *MonitoringReport) GetReferenceId() uint64 {
 
 // GetReferenceIdOk returns a tuple with the ReferenceId field value
 // and a boolean to check if the value has been set.
-func (o *MonitoringReport) GetReferenceIdOk() (*uint64, bool) {
+func (o *MonitoringReport) GetReferenceIdOk() (*int32, bool) {
 	if o == nil {
 		return nil, false
 	}
@@ -81,7 +82,7 @@ func (o *MonitoringReport) GetReferenceIdOk() (*uint64, bool) {
 }
 
 // SetReferenceId sets field value
-func (o *MonitoringReport) SetReferenceId(v uint64) {
+func (o *MonitoringReport) SetReferenceId(v int32) {
 	o.ReferenceId = v
 }
 
